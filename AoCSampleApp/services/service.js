@@ -2,29 +2,28 @@ const request = require('request');
 const fs = require('fs');
 const https = require('https');
 const jwt = require('njwt');
-
-const NodeCache = require( "node-cache" );
+const NodeCache = require("node-cache");
 const myCache = new NodeCache();
-
+require('dotenv').config()
 
 function authService() {
   return new Promise(resolve => {
 
     let successtoken;
-    value = myCache.get( "AuthKey" );
+    value = myCache.get("AuthKey");
     console.log("Start: Cache Value:", value);
 
-    if ( value == undefined ){
-            
+    if (value == undefined) {
+
       const clientData = {
-        id: 'IWc2vCSzCQ',
-        secret: 'U58HhVO3c9mO12bj2XFXRYajCtCN7mG2pxQeQK2B5NL6X0si6mB7ZNEoRaFhP1CWi9MUzd2dlkX8uOKMtDXGuO0blu0GWOgK',
-        email: 'aishwarya0324@mailinator.com',
-        org: '59919yozdcm',
+        id: process.env.CLIENT_ID,
+        secret: process.env.CLIENT_SECRET,
+        email: process.env.EMAIL,
+        org: process.env.ORG,
         server: 'api.ibmaspera.com',
         scope: 'admin:all'
       };
-  
+
       // Get current time in Seconds (nbf and exp take Seconds)
       const now = new Date().getTime() / 1000;
       const privateKey = fs.readFileSync('jwtRS256.key');
@@ -35,11 +34,11 @@ function authService() {
         nbf: now - 60000,
         exp: now + 60000,
       };
-  
+
       // Specify alg here as RS256
       const jwtToken = jwt.create(claims, privateKey, 'RS256');
       const token = jwtToken.compact();
-  
+
       // Make POST with Basic Auth
       const basicAuth = Buffer.from(`${clientData.id}:${clientData.secret}`).toString('base64');
       const options = {
@@ -52,51 +51,50 @@ function authService() {
           'Authorization': `Basic ${basicAuth}`,
         },
       };
-  
-  
+
+
       const req = https.request(options, res => {
         res.on('data', data => {
-          if(data.toString() && JSON.parse(data.toString())){
-            
+          if (data.toString() && JSON.parse(data.toString())) {
             const jsonData = JSON.parse(data.toString());
             const au = `Bearer ${jsonData.access_token}`;
-            successtoken = myCache.set( "AuthKey", au, 3600 );
-            if(successtoken){
+            successtoken = myCache.set("AuthKey", au, 3600);
+            if (successtoken) {
               console.log("Successful Cache ");
               resolve(au)
             }
-            else{
+            else {
               console.log("Error in cache");
             }
-            
+
           }
-          else{
+          else {
             console.log("Failed getting token", data);
-        }
-          
-  
+          }
+
+
         });
       });
-  
+
       req.on('error', error => {
         console.error(error);
       });
-  
-  
+
+
       req.end();
-  
-    
-    
-    
-          }
-
-  else{
-
-    console.log("Cache Value: ", value);
-    resolve(value);
 
 
-  }
+
+
+    }
+
+    else {
+
+      console.log("Cache Value: ", value);
+      resolve(value);
+
+
+    }
 
 
 
@@ -109,10 +107,10 @@ function user_authService() {
   return new Promise(resolve => {
 
     const clientData = {
-      id: 'IWc2vCSzCQ',
-      secret: 'U58HhVO3c9mO12bj2XFXRYajCtCN7mG2pxQeQK2B5NL6X0si6mB7ZNEoRaFhP1CWi9MUzd2dlkX8uOKMtDXGuO0blu0GWOgK',
-      email: 'aishwarya0324@mailinator.com',
-      org: '59919yozdcm',
+      id: process.env.CLIENT_ID,
+      secret: process.env.CLIENT_SECRET,
+      email: process.env.EMAIL,
+      org: process.env.ORG,
       server: 'api.ibmaspera.com',
       scope: 'user:all'
     };
@@ -171,12 +169,12 @@ function nuser_authService() {
   return new Promise(resolve => {
 
     const clientData = {
-      id: 'IWc2vCSzCQ',
-      secret: 'U58HhVO3c9mO12bj2XFXRYajCtCN7mG2pxQeQK2B5NL6X0si6mB7ZNEoRaFhP1CWi9MUzd2dlkX8uOKMtDXGuO0blu0GWOgK',
-      email: 'aishwarya0324@mailinator.com',
-      org: '59919yozdcm',
+      id: process.env.CLIENT_ID,
+      secret: process.env.CLIENT_SECRET,
+      email: process.env.EMAIL,
+      org: process.env.ORG,
       server: 'api.ibmaspera.com',
-      scope: 'node.guRrU4wfWtqdKstuKIPLb03l:user:all'
+      scope: process.env.NODE_SCOPE
     };
 
     // Get current time in Seconds (nbf and exp take Seconds)
@@ -211,7 +209,7 @@ function nuser_authService() {
     const req = https.request(options, res => {
       res.on('data', data => {
 
-        console.log('data:',data.toString());
+        console.log('data:', data.toString());
         const jsonData = JSON.parse(data.toString());
         const au = `Bearer ${jsonData.access_token}`;
         resolve(au);
@@ -236,32 +234,45 @@ exports.addworkspace = function (name = "", desc = "") {
 
   return new Promise((resolve, reject) => {
 
-    var reqbody = { "name": name, "description": desc, "node_id": "46167" }
-
     authService().then((authtoken) => {
-      let options =
-      {
-        method: 'POST',
-        url: 'https://api.ibmaspera.com/api/v1/admin/workspaces',
-        headers:
-        {
-          'content-type': 'application/json',
+
+      let defnode_options = {
+        'method': 'GET',
+        'url': 'https://api.ibmaspera.com/api/v1/admin/nodes',
+        'headers': {
           'accept': 'application/json',
-          'Authorization': authtoken,
-        },
-        body: reqbody,
-        json: true
+          'Authorization': authtoken
+        }
       };
 
-      request(options, function (error, res, body) {
-        if (error) reject(error);
-        console.log(body);
-        resolve(body)
+      request(defnode_options, function (error, response) {
+        if (error) throw new Error(error);
+        const jsonbody = JSON.parse(response.body)
+        // Default Workspace's Node ID
+        var def_wksp_node = jsonbody[0]["id"]
 
+        var reqbody = { "name": name, "description": desc, "node_id": def_wksp_node }
+        let options =
+        {
+          method: 'POST',
+          url: 'https://api.ibmaspera.com/api/v1/admin/workspaces',
+          headers:
+          {
+            'content-type': 'application/json',
+            'accept': 'application/json',
+            'Authorization': authtoken,
+          },
+          body: reqbody,
+          json: true
+        };
+
+        request(options, function (error, res, body) {
+          if (error) reject(error);
+          console.log(body);
+          resolve(body)
+
+        });
       });
-
-      //response.send("Workspace created");
-
     })
 
   });
@@ -293,9 +304,6 @@ exports.adduser = function (useremail = "") {
         console.log(body);
         resolve(body);
       });
-
-      //response.send("User created");
-
     })
 
   });
@@ -325,7 +333,7 @@ exports.deluser = function (userid = "") {
         console.log(body);
         resolve(body);
       });
-      
+
     })
 
   });
@@ -335,7 +343,7 @@ exports.addmember = function (workspaceID = "", userperms = "", userid = "") {
 
   return new Promise((resolve, reject) => {
 
-    var reqbody = { 
+    var reqbody = {
       can_invite_by_email: false,
       manager: userperms,
       member_id: userid,
@@ -363,31 +371,42 @@ exports.addmember = function (workspaceID = "", userperms = "", userid = "") {
         if (error) reject(error);
         resolve(body);
       });
-
-      //response.send("User created");
-      
     })
 
   });
 }
 
-exports.sendpackages = function (pkgname= "", filepkg = "", userid = "") {
+exports.sendpackages = function (pkgname = "", filepkg = "", userid = "") {
 
   return new Promise((resolve, reject) => {
 
-      var pid;
-      var reqbody = 
+    authService().then((authtoken) => {
+
+      let wk_options = {
+        'method': 'GET',
+        'url': 'https://api.ibmaspera.com/api/v1/admin/workspaces',
+        'headers': {
+          'Authorization': authtoken
+        }
+      };
+      request(wk_options, function (error, response) {
+        if (error) throw new Error(error);
+        const jsondataform = JSON.parse(response.body);
+        var def_wksp_id = jsondataform[0]["id"];
+
+        var pid;
+        var reqbody =
         {
-          "recipients":[{"id":userid,"type":"user"}],
-          "upload_notification_recipients":[],
-          "download_notification_recipients":[],"bcc_recipients":[],
-          "file_names":[filepkg],
-          "name":pkgname,
-          "workspace_id":"52374",
-          "encryption_at_rest":false,
-          "single_source":true,
-          "read":true,
-          "transfers_expected":1
+          "recipients": [{ "id": userid, "type": "user" }],
+          "upload_notification_recipients": [],
+          "download_notification_recipients": [], "bcc_recipients": [],
+          "file_names": [filepkg],
+          "name": pkgname,
+          "workspace_id": def_wksp_id,
+          "encryption_at_rest": false,
+          "single_source": true,
+          "read": true,
+          "transfers_expected": 1
         }
 
         user_authService().then((authtoken) => {
@@ -407,46 +426,46 @@ exports.sendpackages = function (pkgname= "", filepkg = "", userid = "") {
           };
 
           request(options, function (error, res, body) {
-            if (error) throw new(error);
-            //console.log(body["id"]);
+            if (error) throw new (error);
             pid = body["id"];
-        
-            //const pid = await GetPackageId();
+
             var fullUrl = 'https://api.ibmaspera.com/api/v1/packages/'.concat(pid);
-           
-              var reqbody1 = {
-                "sent": true,
-                "transfers_expected": 1
-              };
-        
-              const opts =
-                {
-                  method: 'PUT',
-                  url: fullUrl,
-                  headers:
-                  {
-                    'accept': 'application/json',
-                    'Authorization': authtoken,
-                  },
-                  body: reqbody1,
-                  json: true
-                };
-        
-          
-              request(opts, function (error, res, body) {
-                    if (error) throw new(error);
-                    console.log(body);
-                    resolve(body)
-        
-                });
-        
-              
+
+            var reqbody1 = {
+              "sent": true,
+              "transfers_expected": 1
+            };
+
+            const opts =
+            {
+              method: 'PUT',
+              url: fullUrl,
+              headers:
+              {
+                'accept': 'application/json',
+                'Authorization': authtoken,
+              },
+              body: reqbody1,
+              json: true
+            };
+
+
+            request(opts, function (error, res, body) {
+              if (error) throw new (error);
+              console.log(body);
+              resolve(body)
+
             });
 
+
+          });
+
         })
+      });
+    })
 
   });
-} 
+}
 
 
 
@@ -455,82 +474,77 @@ exports.getfiles = function () {
   return new Promise((resolve, reject) => {
 
     authService().then((authtoken) => {
-      
+
       var nodeurl;
       const options =
-        {
-          method: 'GET',
-          url: 'https://api.ibmaspera.com/api/v1/admin/nodes',
-          headers:
-          {
-            'content-type': 'application/json',
-            'accept': 'application/json',
-            'Authorization': authtoken,
-          }
-        };
-
-  
-  request(options, function (error, res, body) {
-    if (error) throw new(error);
-    const jsondata = JSON.parse(body);
-    nodeurl = jsondata[0]["url"].toString();
-    var n = nodeurl.lastIndexOf(":");
-    nodeurl = nodeurl.substring(0,n);
-
-    let options01 =
       {
         method: 'GET',
-        url: 'https://api.ibmaspera.com/api/v1/admin/workspaces',
+        url: 'https://api.ibmaspera.com/api/v1/admin/nodes',
         headers:
         {
+          'content-type': 'application/json',
           'accept': 'application/json',
           'Authorization': authtoken,
         }
       };
 
-      request(options01, function (error, res, body) {
-        if (error) throw new(error);
-        const jsonform01 = JSON.parse(body.toString());
-        var homefileid = jsonform01[0]["home_file_id"].toString();
-        
 
-        var finalurl = nodeurl.concat('/files/').concat(homefileid).concat('/files');
-        //console.log(finalurl);
+      request(options, function (error, res, body) {
+        if (error) throw new (error);
+        const jsondata = JSON.parse(body);
+        nodeurl = jsondata[0]["url"].toString();
+        var n = nodeurl.lastIndexOf(":");
+        nodeurl = nodeurl.substring(0, n);
 
-
-        nuser_authService().then((authtoken) => {
-          //console.log('Authtoken(user): ', authtoken);
-
-          let options02 =
+        let options01 =
         {
           method: 'GET',
-          url: finalurl,
+          url: 'https://api.ibmaspera.com/api/v1/admin/workspaces',
           headers:
           {
-            'X-Aspera-AccessKey': 'guRrU4wfWtqdKstuKIPLb03l',
-            'Authorization': authtoken
+            'accept': 'application/json',
+            'Authorization': authtoken,
           }
         };
-  
-        var file_list = [];
-        request(options02, function (error, res, body) {
-          if (error) throw new(error);
-          const jsonform02 = JSON.parse(body.toString());
-          for(var i = 0; i<jsonform02.length; i++){
-            let file_names = {};
-            file_names["name"] = jsonform02[i]["name"];
-            file_list.push(file_names);
-          }
-          //console.log(file_list);
-          resolve(file_list);
+
+        request(options01, function (error, res, body) {
+          if (error) throw new (error);
+          const jsonform01 = JSON.parse(body.toString());
+          var homefileid = jsonform01[0]["home_file_id"].toString();
+
+
+          var finalurl = nodeurl.concat('/files/').concat(homefileid).concat('/files');
+          nuser_authService().then((authtoken) => {
+
+            let options02 =
+            {
+              method: 'GET',
+              url: finalurl,
+              headers:
+              {
+                'X-Aspera-AccessKey': process.env.ASPERA_ACCESS_KEY,
+                'Authorization': authtoken
+              }
+            };
+
+            var file_list = [];
+            request(options02, function (error, res, body) {
+              if (error) throw new (error);
+              const jsonform02 = JSON.parse(body.toString());
+              for (var i = 0; i < jsonform02.length; i++) {
+                let file_names = {};
+                file_names["name"] = jsonform02[i]["name"];
+                file_list.push(file_names);
+              }
+              resolve(file_list);
+            });
+          })
+
+
         });
-      })
 
 
-    });
-
-
-    });
+      });
 
     })
 
@@ -625,11 +639,11 @@ exports.getpackages = function () {
           'accept': 'application/json',
           'Authorization': authtoken,
         },
-        qs:{
+        qs: {
           'package_sent': true,
-          'deleted' : false,
-          'include_draft' : false,
-          'received' : true
+          'deleted': false,
+          'include_draft': false,
+          'received': true
         }
 
       };
@@ -644,91 +658,6 @@ exports.getpackages = function () {
           pkg_arr.push(list_pkg)
         }
         resolve(pkg_arr);
-      });
-    })
-
-  });
-}
-
-exports.gettransfers = function () {
-  return new Promise((resolve, reject) => {
-    let transfer_dict = {}; // individual entries
-    let transfer_finallist = {};
-
-    authService().then((authtoken) => {
-      let options =
-      {
-        method: 'GET',
-        url: 'https://api.ibmaspera.com/analytics/v2/organizations/59919/transfers',
-        headers:
-        {
-          'accept': 'application/json',
-          'Authorization': authtoken,
-        }
-      };
-
-      request(options, function (error, res, body) {
-        if (error) reject(error);
-        const jsondata = JSON.parse(body.toString());
-        //console.log(jsonform["total_transfers"]);
-
-        for (var i = 0; i < jsondata["transfers"].length; i++) {
-
-          transfer_dict["Transfer ID"] = jsondata["transfers"][i]["xfer_id"].toString();
-          transfer_dict["Direction"] = jsondata["transfers"][i]["direction"].toString();
-          transfer_dict["Status"] = jsondata["transfers"][i]["status"].toString();
-          transfer_dict["Session Start"] = jsondata["transfers"][i]["session_started_at"].toString();
-          transfer_dict["Session Stop"] = jsondata["transfers"][i]["session_stopped_at"].toString();
-
-          transfer_finallist[i] = transfer_dict
-          transfer_dict = {}
-
-        }
-
-        resolve(transfer_finallist);
-      });
-    })
-
-  });
-}
-
-exports.getdataevents = function () {
-  return new Promise((resolve, reject) => {
-    let event_dict = {}; // individual entries
-    let event_finallist = {};
-
-    authService().then((authtoken) => {
-      let options =
-      {
-        method: 'GET',
-        url: 'https://api.ibmaspera.com/analytics/v2/organizations/59919/application_events',
-        headers:
-        {
-          'accept': 'application/json',
-          'Authorization': authtoken,
-        }
-      };
-
-      request(options, function (error, res, body) {
-        if (error) reject(error);
-        const jsondata = JSON.parse(body.toString());
-
-        for (var i = 0; i < jsondata["application_events"].length; i++) {
-
-          event_dict["Event ID"] = jsondata["application_events"][i]["event_id"].toString();
-          event_dict["Event Type"] = jsondata["application_events"][i]["event_type"].toString();
-          event_dict["By User Name"] = jsondata["application_events"][i]["triggered_by_user_name"].toString();
-          event_dict["By User Email"] = jsondata["application_events"][i]["triggered_by_user_email"].toString();
-          event_dict["Event Start"] = jsondata["application_events"][i]["created_at"].toString();
-
-
-
-          event_finallist[i] = event_dict
-          event_dict = {}
-
-        }
-
-        resolve(event_finallist);
       });
     })
 

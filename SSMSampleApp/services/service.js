@@ -1,5 +1,5 @@
 const request = require('request');
-require('dotenv/config')
+require('dotenv/config');
 
 function authService() {
   return new Promise(resolve => {

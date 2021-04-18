@@ -99,10 +99,10 @@
   async function listUsers(flag) {
     if (flag) {
 
+      document.getElementById("overlay").style.display = "block";
       document.querySelector('#user-list').innerHTML = '';
       let response = await fetch("/getusers");
       let result = await response.json();
-      document.getElementById("overlay").style.display = "block";
 
       let select = document.getElementById('user-list');
 
@@ -202,9 +202,10 @@
   async function listFiles() {
 
     document.querySelector('#filepkg').innerHTML = '';
+    document.getElementById("overlay").style.display = "block";
     let response = await fetch("/getfiles");
     let result = await response.json();
-    document.getElementById("overlay").style.display = "block";
+    
 
     let select = document.getElementById('filepkg');
     for (let i = 0; i < result.length; i++) {

@@ -25,6 +25,15 @@ class Server {
       srvr.close(0);
     })
 
+    
+    this.app.get("/getcustomerdetails", function (request, response) {
+
+      getcustomerdetails().then((res) => {
+        response.json(res);
+      })
+    });
+    
+    
     this.app.get("/getmysubscriptions", function (request, response) {
 
       getmysubscriptions().then((mysubsp_list) => {

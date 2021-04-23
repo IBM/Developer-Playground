@@ -31,6 +31,44 @@ function authService() {
 
 }
 
+
+exports.getcustomerdetails = function () {
+
+  return new Promise((resolve, reject) => {
+
+    authService().then((authtoken) => {
+
+      let opts = {
+        method: 'GET',
+        url: 'https://api.ibm.com/scx/sbs_orgaccess/customer',
+        qs:{
+          emailAddress: process.env.USERNAME,
+          _namedQuery: 'getCustomersByContactEmail',
+          _pageNumber: '1',
+          _pageSize: '10'
+        },
+        headers: {
+          'X-IBM-Client-Id': process.env.CLIENT_ID,
+          'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
+          'Authorization': authtoken
+        }
+      };
+      var cust_arr = {};
+
+      request(opts, function (error, response) {
+        if (error) reject(error);
+        const jsonft = JSON.parse(response.body);
+        cust_arr["Name"] = jsonft["List"][0]["Organization"]["OrgName"];
+        cust_arr["ID"] = jsonft["List"][0]["Owner"];
+
+        resolve(cust_arr);
+      });
+
+    })
+
+  });
+}
+
 exports.getmysubscriptions = function () {
 
   return new Promise((resolve, reject) => {

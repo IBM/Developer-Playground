@@ -3,9 +3,6 @@ metadata:
 attributes:
   persistVolumes: 'false'
 components:
-  - id: che-incubator/typescript/latest
-    memoryLimit: 512Mi
-    type: chePlugin
   - mountSources: true
     endpoints:
       - name: access-ibm-marketplace

@@ -80,14 +80,14 @@ ul, ol,b{
 <br/>
 
 <br/><li> Get the Code.</li><br/>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd%20${CHE_PROJECTS_ROOT}%20%26%26%20git%20clone%20https://github.ibm.com/Aishwarya-Pradeep/dev-playground-SampleAppGen.git">Get the Code</a>
+<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd%20${CHE_PROJECTS_ROOT}%20%26%26%20git%20clone%20-b%20aspera%20https://github.com/IBM/Developer-Playground.git">Get the Code</a>
 <br/><br/>
 
 <li> Build the Application.</li><br/>
-<a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd%20${CHE_PROJECTS_ROOT}/dev-playground-SampleAppGen/AspSampleApp%20%26%26%20npm%20install">Build the Application</a><br><br>
+<a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd%20${CHE_PROJECTS_ROOT}/AoCSampleApp%20%26%26%20npm%20install">Build the Application</a><br><br>
 
 <li> Launch the Application.</li><br/>
-<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=Aspera$$cd%20${CHE_PROJECTS_ROOT}/dev-playground-SampleAppGen/AspSampleApp%20%26%26%20node%20app.js&completion=The%20application%20has%20been%20launched.">Launch the Application</a><br><br>
+<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=Aspera$$cd%20${CHE_PROJECTS_ROOT}/AoCSampleApp%20%26%26%20node%20app.js&completion=The%20application%20has%20been%20launched.">Launch the Application</a><br><br>
 
 <p>You will see a dialog box saying " The application has been launched." </p>
 

@@ -80,7 +80,7 @@ ul, ol,b{
 <br/>
 
 <br/><li> Get the Code.</li><br/>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd%20${CHE_PROJECTS_ROOT}%20%26%26%20git%20clone%20-b%20aspera%20https://github.com/pgirishibm/Developer-Playground.git">Get the Code</a>
+<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd%20${CHE_PROJECTS_ROOT}%20%26%26%20git%20clone%20-b%20aspera%20https://github.com/IBM/Developer-Playground.git">Get the Code</a>
 <br/><br/>
 
 <li> Build the Application.</li><br/>

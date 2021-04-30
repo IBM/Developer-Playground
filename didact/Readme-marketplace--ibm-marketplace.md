@@ -101,7 +101,7 @@ ul, ol,b{
 <br/>
 
 <br/><li> Get the Code.</li><br/>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd%20${CHE_PROJECTS_ROOT}%20%26%26%20git%20clone%20-b%20playground%20https://github.ibm.com/digital-marketplace/ipm-pivot.git">Get the Code</a>
+<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd%20${CHE_PROJECTS_ROOT}%20%26%26%20git%20clone%20-b%20playground%20https://github.com/IBM/ipm-marketplace-app.git">Get the Code</a>
 <br/>
 
 <br/><li> Configure the Appilication. It  will create a <b>.env</b> file to enter your API credentials i.e Client_ID and Client_Secret.</li><br/>

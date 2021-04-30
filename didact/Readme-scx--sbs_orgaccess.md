@@ -86,7 +86,7 @@ ul, ol,b{
 
 
 <li> Get the Code.</li><br/>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=NodeJSTerminal$$git%20clone%20https://github.ibm.com/Aishwarya-Pradeep/dev-playground-SaaSUser-SampleAppGen.git">Get the Code</a><br><br>
+<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=NodeJSTerminal$$git%20clone%20https://github.com/IBM/Developer-Playground.git">Get the Code</a><br><br>
 
 <br>
 

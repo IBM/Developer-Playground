@@ -1,0 +1,581 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+  <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+  <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+  <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+  <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+</head>
+<script>
+
+function openGC(evt, api) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(api).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+function openSS(evt, api1) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent1");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks1");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(api1).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+function openPT(evt, api) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(api).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+
+  async function addrgeocode() {
+
+  let query = document.getElementById("gquery").value;
+
+  if (query === "") {
+      window.alert("Required data values are missing");
+    }
+  else{
+
+  query = query.replace(" ","+"); 
+  document.getElementById("overlay").style.display = "block";
+
+  let response = await fetch('/addrgeocode?query=' + query);
+  let result = await response.json();
+
+  console.log("RES: ", response);
+
+  var table4 = document.getElementById("address-geocode");
+  table4.style.display = "";
+
+  var tbodyRef4 = document.getElementById('address-geocode').getElementsByClassName('tbody4')[0];
+  tbodyRef4.innerHTML = '';
+  tbodyRef4 = document.getElementById('address-geocode').getElementsByClassName('tbody4')[0];
+
+    
+    document.getElementById("stores").style.display = 'none';
+    document.getElementById('closest-addr').style.display = 'none';
+
+    document.getElementById("departures").style.display = 'none';
+    document.getElementById("sub-departures").style.display = 'none';
+    document.getElementById("stations").style.display = 'none';
+
+    document.getElementById("overlay").style.display = "none";
+
+    if(JSON.stringify(result) === JSON.stringify({})){
+        //console.log("Results unavailable");
+        window.alert("Results not found");
+      }
+
+
+  for (var key in result) {
+    if (result.hasOwnProperty(key)){
+      var val = result[key];
+
+    var row = tbodyRef4.insertRow();
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    // var cell4 = row.insertCell(3);
+
+    cell1.innerHTML = val["title"];
+    cell2.innerHTML = val["address"];
+    cell3.innerHTML = val["position"];
+    // cell4.innerHTML = val["mapview"];
+
+    }
+
+  }
+ }
+}
+
+  async function liststores() {
+
+    let query = document.getElementById("g1query").value;
+    let storequery = document.getElementById("squery").value;
+
+    if ((query === "") || (storequery === "")) {
+      window.alert("Required data values are missing");
+    }
+    else{
+
+    query = storequery.concat(" ").concat(query)
+    query = query.replace(" ","+"); 
+
+    //console.log("Query:",query);
+    document.getElementById("overlay").style.display = "block";
+    
+    let response = await fetch('/liststores?query=' + query);
+    let result = await response.json();
+
+    var table5 = document.getElementById("stores");
+    table5.style.display = "";
+
+    var tbodyRef5 = document.getElementById('stores').getElementsByClassName('tbody5')[0];
+    tbodyRef5.innerHTML = '';
+    tbodyRef5 = document.getElementById('stores').getElementsByClassName('tbody5')[0];
+
+    
+    document.getElementById("address-geocode").style.display = 'none';
+    document.getElementById('closest-addr').style.display = 'none';
+
+    document.getElementById("departures").style.display = 'none';
+    document.getElementById("sub-departures").style.display = 'none';
+    document.getElementById("stations").style.display = 'none';
+
+    document.getElementById("overlay").style.display = "none";
+
+    if(JSON.stringify(result) === JSON.stringify({})){
+        //console.log("Results unavailable");
+        window.alert("Results not found");
+      }
+
+
+    for (var key in result) {
+      if (result.hasOwnProperty(key)){
+        var val = result[key];
+
+      var row = tbodyRef5.insertRow();
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+    
+
+      cell1.innerHTML = val["title"];
+      cell2.innerHTML = val["address"];
+      cell3.innerHTML = val["position"];
+      
+
+      }
+
+    }
+  }
+}
+
+  async function revaddrgeocode() {
+
+    let lat = document.getElementById("latitude0").value;
+    let long = document.getElementById("longitude0").value;
+
+
+    if ((lat === "") || (long === "")) {
+      window.alert("Required data values are missing");
+    }
+    else{
+
+    let location = lat.concat(",").concat(long);
+
+    document.getElementById("overlay").style.display = "block";
+
+    let response = await fetch('/revaddrgeocode?location='+ location);
+    let result = await response.json();
+
+    var table6 = document.getElementById("closest-addr");
+    table6.style.display = "";
+
+    var tbodyRef6 = document.getElementById('closest-addr').getElementsByClassName('tbody6')[0];
+    tbodyRef6.innerHTML = '';
+    tbodyRef6 = document.getElementById('closest-addr').getElementsByClassName('tbody6')[0];
+
+   
+    document.getElementById("address-geocode").style.display = 'none';
+    document.getElementById("stores").style.display = 'none';
+
+    document.getElementById("departures").style.display = 'none';
+    document.getElementById("sub-departures").style.display = 'none';
+    document.getElementById("stations").style.display = 'none';
+    
+
+    document.getElementById("overlay").style.display = "none";
+
+    if(JSON.stringify(result) === JSON.stringify({})){
+        //console.log("Results unavailable");
+        window.alert("Results not found");
+      }
+
+        var val = result;
+        var row = tbodyRef6.insertRow();
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        // var cell4 = row.insertCell(3);
+
+        cell1.innerHTML = val["address"];
+        cell2.innerHTML = val["position"];
+        cell3.innerHTML = val["distance"];
+        // cell4.innerHTML = val["mapview"];
+
+}
+
+}
+
+
+  async function getstations() {
+
+    let lat = document.getElementById("tlatitude0").value;
+    let long = document.getElementById("tlongitude0").value;
+
+    if ((lat === "") || (long === "")) {
+    window.alert("Required data values are missing");
+    }
+    else{
+
+    let location = lat.concat(",").concat(long);
+
+    document.getElementById("overlay").style.display = "block";
+
+    let response = await fetch('/getstations?location='+ location);
+    let result = await response.json();
+
+    var table0 = document.getElementById("stations");
+    table0.style.display = "";
+
+    var tbodyRef0 = document.getElementById('stations').getElementsByClassName('ptbody0')[0];
+    tbodyRef0.innerHTML = '';
+    tbodyRef0 = document.getElementById('stations').getElementsByClassName('ptbody0')[0];
+
+    document.getElementById("departures").style.display = 'none';
+    document.getElementById("sub-departures").style.display = 'none';
+
+    document.getElementById('closest-addr').style.display = 'none';
+    document.getElementById("address-geocode").style.display = 'none';
+    document.getElementById("stores").style.display = 'none';
+
+
+    document.getElementById("overlay").style.display = "none";
+
+    if(JSON.stringify(result) === JSON.stringify({})){
+        //console.log("Results unavailable");
+        window.alert("Results not found");
+        document.getElementById("stations").style.display = 'none';
+    }
+
+    for (var key in result) {
+        if (result.hasOwnProperty(key)){
+        var val = result[key];
+
+        var row = tbodyRef0.insertRow();
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+
+        cell1.innerHTML = val["id"];
+        cell2.innerHTML = val["name"];
+        cell3.innerHTML = val["location"];
+
+        }
+    }
+    }
+}
+
+  async function getdepartures() {
+
+      let lat = document.getElementById("tlatitude1").value;
+      let long = document.getElementById("tlongitude1").value;
+      let radius = document.getElementById("tradius").value;
+
+      if ((lat === "") || (long === "") || (radius === "")) {
+      window.alert("Required data values are missing");
+      }
+      else{
+
+      let location = lat.concat(",").concat(long).concat(";r=").concat(radius);
+
+      document.getElementById("overlay").style.display = "block";
+
+      let response = await fetch('/getdepartures?location='+ location);
+      let result = await response.json();
+
+      var table1 = document.getElementById("departures");
+      table1.style.display = "";
+
+      var tbodyRef1 = document.getElementById('departures').getElementsByClassName('ptbody1')[0];
+      tbodyRef1.innerHTML = '';
+      tbodyRef1 = document.getElementById('departures').getElementsByClassName('ptbody1')[0];
+
+
+      document.getElementById("stations").style.display = 'none';
+      document.getElementById("sub-departures").style.display = 'none';
+
+      document.getElementById('closest-addr').style.display = 'none';
+      document.getElementById("address-geocode").style.display = 'none';
+      document.getElementById("stores").style.display = 'none';
+
+
+      document.getElementById("overlay").style.display = "none";
+
+
+
+      if(JSON.stringify(result) === JSON.stringify({})){
+          //console.log("Results unavailable");
+          document.getElementById("departures").style.display = 'none';
+          document.getElementById("sub-departures").style.display = 'none';
+          window.alert("Results not found");
+      }
+
+      for(var i=0;i<Object.keys(result).length;i++){
+
+          var val = result[i];
+          var row = tbodyRef1.insertRow();
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          var cell3 = row.insertCell(2);
+
+          cell1.innerHTML = val["name"];
+          cell2.innerHTML = val["location"];
+          cell3.innerHTML = `<input type='button' value='List Departures' onclick='displaydeparture(${i})' > `;
+
+      }
+      }
+}
+
+  async function displaydeparture(depvalue){
+
+  let lat = document.getElementById("tlatitude1").value;
+  let long = document.getElementById("tlongitude1").value;
+  let radius = document.getElementById("tradius").value;
+
+  let location = lat.concat(",").concat(long).concat(";r=").concat(radius);
+
+  document.getElementById("overlay").style.display = "block";
+
+  let response = await fetch('/displaydeparture?location='+ location);
+  let result = await response.json();
+
+  if (result[depvalue] === undefined){
+      document.getElementById("sub-departures").style.display = 'none';
+    }
+    else{
+
+  var subtable1 = document.getElementById("sub-departures");
+  subtable1.style.display = "";
+
+  var subtbodyRef1 = document.getElementById('sub-departures').getElementsByClassName('subptbody1')[0];
+  subtbodyRef1.innerHTML = '';
+  subtbodyRef1 = document.getElementById('sub-departures').getElementsByClassName('subptbody1')[0];
+
+  document.getElementById("stations").style.display = 'none';
+  document.getElementById("overlay").style.display = "none";
+
+  document.getElementById('closest-addr').style.display = 'none';  
+  document.getElementById("address-geocode").style.display = 'none';
+  document.getElementById("stores").style.display = 'none';
+
+
+
+  for(var i=0; i < result[depvalue]["departure"].length; i++){
+      var srow = subtbodyRef1.insertRow();
+      var scell1 = srow.insertCell(0);
+      var scell2 = srow.insertCell(1);
+      var scell3 = srow.insertCell(2);
+      scell1.innerHTML = result[depvalue]["departure"][i]["departure time"] ;
+      scell2.innerHTML = result[depvalue]["departure"][i]["departure transport"] ;
+      scell3.innerHTML = result[depvalue]["departure"][i]["departure point"] ;
+  }
+}
+
+}
+
+
+</script>
+
+<div id="overlay" style="display: none">
+  <div class="loading" id="loading"></div>
+</div>
+
+<div id="publictransit-geocoding">
+
+   <!-- Geocoding -->
+    <span style="color: rgb(21, 21, 21);"> Location Details </span><hr style="border-top: 1px solid rgb(21, 21, 21);"><br>
+
+    <div class="tab">
+      <button class="tablinks" onclick="openGC(event, 'GCArea')"> Area &rarr; Coordinates </button>
+      <button class="tablinks" onclick="openGC(event, 'RGCArea')">Coordinates &rarr; Area</button>
+    </div>
+
+    <div id="GCArea" class="tabcontent">
+      <input type="text" name="gquery" id="gquery" class="field-divided" placeholder="Query: Address/Area" size=10 required /> 
+      <button type = "submit" onclick="addrgeocode()">Get Area Coordinates </button> 
+
+    </div>
+    
+
+
+    <div id="RGCArea" class="tabcontent">
+      <input type="text" name="latitude0" id="latitude0" class="field-divided" placeholder="Latitude" size=10 required /> 
+      <input type="text" name="longitude0" id="longitude0" class="field-divided" placeholder="Longitude" size=10 required /> <br><br>
+      <button type = "submit" onclick="revaddrgeocode()">Get Closest Address </button> 
+      </div>
+
+      <br> 
+      <table class = address-geocode id = "address-geocode" style="width:50%;display:none;">
+        <thead>
+                  <th>Name</th>
+                  <th>Address</th>
+                  <th>Location</th>
+                 
+        </thead>
+
+        <tbody class="tbody4">
+
+        </tbody>
+                          
+      </table>
+
+
+      <table class = closest-addr id = "closest-addr" style="width:50%;display:none;">
+        <thead>
+                  <th>Address</th>
+                  <th>Position</th>
+                  <th>Distance</th>
+                
+        </thead>
+
+        <tbody class="tbody6">
+
+        </tbody>
+                          
+      </table>
+
+    <br>
+    <br>
+
+ 
+
+    <!--Public Transit Services-->
+
+    <span style="color: rgb(21, 21, 21);"> Public Transit Services </span><hr style="border-top: 1px solid rgb(21, 21, 21);"><br>
+
+    <div class="tab">
+        <button class="tablinks" onclick="openPT(event, 'PTStations')"> Transit Stations Near You</button>
+        <button class="tablinks" onclick="openPT(event, 'PTDepartures')"> Next Departures From Now </button>
+    </div>
+  
+     <div id="PTStations" class="tabcontent">
+        <input type="text" name="tlatitude0" id="tlatitude0" class="field-divided" placeholder="Latitude" size=10 required /> 
+        <input type="text" name="tlongitude0" id="tlongitude0" class="field-divided" placeholder="Longitude" size=10 required /> <br><br>
+        <button type = "submit" onclick="getstations()">Get Transit Stations</button> 
+     </div>
+
+     <div id="PTDepartures" class="tabcontent">
+        <input type="text" name="tlatitude1" id="tlatitude1" class="field-divided" placeholder="Latitude" size=10 required /> 
+        <input type="text" name="tlongitude1" id="tlongitude1" class="field-divided" placeholder="Longitude" size=10 required /> <br><br>
+        <input type="text" name="tradius" id="tradius" class="field-divided" placeholder="Radius" size=10 required /> <br><br>
+        <button type = "submit" onclick="getdepartures(); displaydeparture()">Get Closest Departures </button> 
+     </div>
+
+     <table class = stations id = "stations" style="width:50%;display:none;">
+      <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Location</th>
+      </thead>
+
+      <tbody class="ptbody0">
+
+      </tbody>
+                        
+    </table>
+  
+    <table class = departures id = "departures" style="width:50%;display:none;">
+      <thead>
+                <th>Name</th>
+                <th>Location</th>
+
+      </thead>
+
+      <tbody class="ptbody1">
+          
+      </tbody>
+                        
+    </table>
+
+    <table class = sub-departures id = "sub-departures" style="width:50%;display:none;">
+      <thead>
+          <th>Departure Time</th>
+          <th>Departure Transport</th>
+          <th>Departure Point</th>
+
+      </thead>
+
+      <tbody class="subptbody1">
+
+      </tbody>
+
+  </table>
+
+      <table class = stores id = "stores" style="width:50%;display:none;">
+        <thead>
+                  <th>Name</th>
+                  <th>Address</th>
+                  <th>Location</th>
+        </thead>
+
+        <tbody class="tbody5">
+
+        </tbody>
+                          
+      </table>
+
+    <br><br>
+    <br>
+    
+ <!-- Map -->
+
+ <span style="color: rgb(21, 21, 21);"> Bird's Eye! </span><hr style="border-top: 1px solid rgb(21, 21, 21);"><br>
+
+ <div style="width: 70vw;height: 70vh;" id="mapContainer"></div>
+ <script>
+   var platform = new H.service.Platform({
+         apikey: 'mN6WyDxNAInRpLzAEb0iLugOSESUAZGl8sde868Y4LI'
+     });
+     var defaultLayers = platform.createDefaultLayers();
+     
+     //this map is centered over Europe
+     var map = new H.Map(document.getElementById('mapContainer'),
+         defaultLayers.vector.normal.map,
+         {
+             center: { lat: 50, lng: 5 },
+             zoom: 4,
+             pixelRatio: window.devicePixelRatio || 1
+         }
+     );
+     window.addEventListener('resize', () => map.getViewPort().resize());
+
+     var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+     var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+     var LocationOfMarker = { lat: 19.741755, lng: -155.844437 };
+
+
+ </script>
+
+
+</div>

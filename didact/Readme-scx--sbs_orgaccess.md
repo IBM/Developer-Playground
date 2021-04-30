@@ -105,6 +105,9 @@ ul, ol,b{
 
 <li>Explore the Code.</li><br/>
 <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=workbench.view.explorer">Explore the Code</a><br><br>
+<br>
+
+<p> Want to explore this project more? Head on to <a href = "https://github.com/IBM/Developer-Playground/tree/master" > the GitHub repository</a> </p>
 
 </ol>
 <br/>

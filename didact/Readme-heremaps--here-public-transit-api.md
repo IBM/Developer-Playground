@@ -94,7 +94,7 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
 <br>
 
 <li> Get the Code</li><br/>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=NodeJSTerminal$$git%20clone%20https://github.ibm.com/Aishwarya-Pradeep/dev-playground-HERETech-SampleAppGen.git">Get the Code</a><br><br>
+<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=NodeJSTerminal$$git%20clone%20https://github.com/IBM/Developer-Playground.git">Get the Code</a><br><br>
 
 <br>
 
@@ -115,7 +115,7 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
 <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=workbench.view.explorer">Explore the Code</a><br><br>
 <br>
 
-<p> Want to explore this project more? Head on to <a href = "https://github.com/IBM/Developer-Playground/tree/master" > the GitHub repository</a> </p>
+<p> Want to explore this project more? Head on to <a href = "https://github.com/IBM/Developer-Playground/tree/master"> the GitHub repository</a> </p>
 
 </ol>
 <br/>

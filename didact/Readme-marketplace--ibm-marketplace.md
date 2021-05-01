@@ -130,17 +130,17 @@ ol,ul,li{
 
 <li> After obtaining API credentials, get the application code by clicking the "Clone the Repositry" button. </li><br>
 
-<a class="button is-dark is-medium" title="Clone the repositry" href='didact://?commandId=vscode.didact.sendNamedTerminalAString&text=IPM-Marketplace-App$$git%20clone%20-b%20playground%20https%3A%2F%2Fgithub.ibm.com%2Fdigital-marketplace%2Fipm-pivot.git' >Clone the Repositry</a>
+<a class="button is-dark is-medium" title="Clone the repositry" href='didact://?commandId=vscode.didact.sendNamedTerminalAString&text=IPM-Marketplace-App$$cd%20${CHE_PROJECTS_ROOT}/ipm-marketplace-app%20%26%26%20git%20clone%20-b%20playground%20https%3A%2F%2Fgithub.com%2FIBM%2Fipm-marketplace-app.git' >Clone the Repositry</a>
 <br><br>
 
 <li>Now click on the "Build Application" button.</li><br/>
 
-<a class="button is-dark is-medium" title="Build Appilication" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=IPM-Marketplace-App$$cd%20${CHE_PROJECTS_ROOT}/ipm-pivot%20%26%26%20touch%20.env%20%26%26%20printf%20%22%23%20IBM%20Marketplace%20API%20CLIENT_ID%5CnCLIENT_ID%3D%5Cn%5Cn%23%20IBM%20Marketplace%20CLIENT_SECRET%5CnCLIENT_SECRET%3D%22%20%3E%3E%20.env%20%26%26%20npm%20install&completion=The%20.env%20file%20is%20created">Build Application</a><br><br>
+<a class="button is-dark is-medium" title="Build Appilication" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=IPM-Marketplace-App$$cd%20${CHE_PROJECTS_ROOT}/ipm-marketplace-app%20%26%26%20touch%20.env%20%26%26%20printf%20%22%23%20IBM%20Marketplace%20API%20CLIENT_ID%5CnCLIENT_ID%3D%5Cn%5Cn%23%20IBM%20Marketplace%20CLIENT_SECRET%5CnCLIENT_SECRET%3D%22%20%3E%3E%20.env%20%26%26%20npm%20install&completion=The%20.env%20file%20is%20created">Build Application</a><br><br>
 
 <li>Next click the "Configure Application" button in order to enter the API Credentials i.e. Client_ID and Client_Secret in the <b>.env</b> file.</li>
 <br>
 
-<a class="button is-dark is-medium" title="Configure Application" href="didact://?commandId=file-search.openFile&projectFilePath=ipm-pivot/.env">Configure Application</a>
+<a class="button is-dark is-medium" title="Configure Application" href="didact://?commandId=file-search.openFile&projectFilePath=ipm-marketplace-app/.env">Configure Application</a>
 <br><br>
 
 <li>You must verify the required configurations before launching the application by clicking the "Validate all Requirements" button.</li><br><br>
@@ -148,8 +148,8 @@ ol,ul,li{
 | Requirement (Click to Verify)  | Status |
 | :--- | :--- |
 | [Check if Node exists on CLI](didact://?commandId=vscode.didact.cliCommandSuccessful&text=node-status$$npm%20--version%20%26%26%20node%20--version "Ensure that Node is available at the command line"){.didact} | *Status: unknown*{#node-status} | 
-| [Check if .env exists on CLI](didact://?commandId=vscode.didact.cliCommandSuccessful&text=file-status$$%5B%20-f%20%2Fprojects%2Fipm-pivot%2F.env%20%5D%20%26%26%20echo%20%24%3F "Ensure that .env file is available in the folder"){.didact}| *Status: unknown*{#file-status} |
-| [Check if the credentials are valid and exists on CLI](didact://?commandId=vscode.didact.cliCommandSuccessful&text=cred-status$$grep%20-c%20%27CLIENT_ID%3D%5Ba-zA-z0-9%5D%27%20%2Fprojects%2Fipm-pivot%2F.env%20%26%26%20grep%20-c%20%27CLIENT_SECRET%3D%5Ba-zA-z0-9%5D%27%20%2Fprojects%2Fipm-pivot%2F.env%20%26%26%20echo%20%24%3F "Ensure that the credentials do exist."){.didact}| *Status: unknown*{#cred-status} |
+| [Check if .env exists on CLI](didact://?commandId=vscode.didact.cliCommandSuccessful&text=file-status$$%5B%20-f%20%2Fprojects%2Fipm-marketplace-app%2F.env%20%5D%20%26%26%20echo%20%24%3F "Ensure that .env file is available in the folder"){.didact}| *Status: unknown*{#file-status} |
+| [Check if the credentials are valid and exists on CLI](didact://?commandId=vscode.didact.cliCommandSuccessful&text=cred-status$$grep%20-c%20%27CLIENT_ID%3D%5Ba-zA-z0-9%5D%27%20%2Fprojects%2Fipm-marketplace-app%2F.env%20%26%26%20grep%20-c%20%27CLIENT_SECRET%3D%5Ba-zA-z0-9%5D%27%20%2Fprojects%2Fipm-marketplace-app%2F.env%20%26%26%20echo%20%24%3F "Ensure that the credentials do exist."){.didact}| *Status: unknown*{#cred-status} |
 
 
 <br>
@@ -158,7 +158,7 @@ ol,ul,li{
 <br><br>
 
 <li> Once you have configured the Application with the API credentials in the <b>.env</b> file, then launch the application by clicking the "Launch Application" button.</li><br/>
-<a class="button is-dark is-medium" title="Launch Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=IPM-Marketplace-App$$cd%20${CHE_PROJECTS_ROOT}/ipm-pivot%20%26%26%20ps -ef| grep 'npm\|./bin/www' | awk 'NR==1 || NR==2'| xargs kill -9;npm%20run%20start&completion=The%20application%20has%20been%20launched.">Launch Application</a><br><br>
+<a class="button is-dark is-medium" title="Launch Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=IPM-Marketplace-App$$cd%20${CHE_PROJECTS_ROOT}/ipm-marketplace-app%20%26%26%20ps -ef| grep 'npm\|./bin/www' | awk 'NR==1 || NR==2'| xargs kill -9;npm%20run%20start&completion=The%20application%20has%20been%20launched.">Launch Application</a><br><br>
 
 <p>You will see a dialogue box with a message <b>"A process is now listening on port 3000. External URL is https://container-url.com"</b>. <br><br> Click the "Open Link" button. You will see your application in the Preview Tab.</p>
 <br>
@@ -176,12 +176,12 @@ ol,ul,li{
 <br>
 
 <li>Next stop the Application by clicking the "Stop Application" button.</li><br>
-<a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=IPM-Marketplace-App$$cd%20${CHE_PROJECTS_ROOT}/ipm-pivot%20%26%26%20npm%20run%20start-dev" >Stop Application</a>
+<a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=IPM-Marketplace-App$$cd%20${CHE_PROJECTS_ROOT}/ipm-marketplace-app%20%26%26%20npm%20run%20start-dev" >Stop Application</a>
 <br>
 <br>
 
 <li>Now click the "Rebuild & Launch Application" button.</li><br>
-<a class="button is-dark is-medium" title="Rebuild & Launch Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=IPM-Marketplace-App$$cd%20${CHE_PROJECTS_ROOT}/ipm-pivot%20%26%26%20ps -ef| grep 'npm\|./bin/www' | awk 'NR==1 || NR==2'| xargs kill -9;npm%20run%20build-clean%20%26%26%20npm%20run%20build-client%20%26%26%20npm%20run%20start" >Rebuild & Launch Application</a>
+<a class="button is-dark is-medium" title="Rebuild & Launch Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=IPM-Marketplace-App$$cd%20${CHE_PROJECTS_ROOT}/ipm-marketplace-app%20%26%26%20ps -ef| grep 'npm\|./bin/www' | awk 'NR==1 || NR==2'| xargs kill -9;npm%20run%20build-clean%20%26%26%20npm%20run%20build-client%20%26%26%20npm%20run%20start" >Rebuild & Launch Application</a>
 <br><br>
 
 <p>You will see a dialogue box with a message <b>"A process is now listening on port 3000. External URL is https://container-url.com"</b>. <br><br> Click the "Open Link" button. This time you will need to refresh the url in the Preview tab to see your application with the code changes.</p>
@@ -190,7 +190,7 @@ ol,ul,li{
 </ol>
 
 
-<p>To understand more details about the interactions of APIs within the appliction, click <a class="user_exp" title="IBM Configuration for Partner Marketplace Integration" href="didact://?commandId=vscode.didact.startDidact&projectFilePath=/ipm-pivot/Readme2.didact.md">IBM Configuration for Partner Marketplace Integration</a>.</p>
+<p>To understand more details about the interactions of APIs within the appliction, click <a class="user_exp" title="IBM Configuration for Partner Marketplace Integration" href="didact://?commandId=vscode.didact.startDidact&projectFilePath=/ipm-marketplace-app/Readme2.didact.md">IBM Configuration for Partner Marketplace Integration</a>.</p>
 <br>
 <br>
 

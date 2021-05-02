@@ -80,7 +80,7 @@ ul, ol,b{
 <br>
 
 <li> Get the Code.</li><br/>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=AsperaonCloud$$git%20clone%20-b%20aspera%20https://github.com/IBM/Developer-Playground.git">Get the Code</a>
+<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=AsperaonCloud$$git%20clone%20-b%20aspera%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}">Get the Code</a>
 <br><br>
 
 <br>

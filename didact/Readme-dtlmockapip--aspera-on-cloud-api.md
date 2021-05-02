@@ -73,27 +73,35 @@ ul, ol,b{
 
 <h3>Aspera on Cloud or (AoC) is Aspera’s on-demand SaaS offering for global content sharing. AoC enables fast, easy, and secure exchange of files and folders of any size between end users, even across separate organizations, in both local and remote locations. Using AoC, organizations can store and readily access files and folders in multiple cloud-based and on-premises storage systems. </h3>
 
-<p>Try out the Sample Application</p>
+<br>
 
-<li> Lets Start.</li><br/>
-<a class="button is-dark is-medium" title="Start Terminal" href="didact://?commandId=terminal-for-nodejs-container:new">Start Terminal</a>
-<br/>
+<p>Try out the Sample Application!</p>
 
-<br/><li> Get the Code.</li><br/>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd%20${CHE_PROJECTS_ROOT}%20%26%26%20git%20clone%20-b%20aspera%20https://github.com/IBM/Developer-Playground.git">Get the Code</a>
-<br/><br/>
+<br>
+
+<li> Get the Code.</li><br/>
+<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=AsperaonCloud$$git%20clone%20-b%20aspera%20https://github.com/IBM/Developer-Playground.git">Get the Code</a>
+<br><br>
+
+<br>
 
 <li> Build the Application.</li><br/>
-<a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd%20${CHE_PROJECTS_ROOT}/AoCSampleApp%20%26%26%20npm%20install">Build the Application</a><br><br>
+<a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=AsperaonCloud$$cd%20${CHE_PROJECTS_ROOT}/AoCSampleApp%20%26%26%20npm%20install">Build the Application</a><br><br>
+
+<br>
 
 <li> Launch the Application.</li><br/>
-<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=Aspera$$cd%20${CHE_PROJECTS_ROOT}/AoCSampleApp%20%26%26%20node%20app.js&completion=The%20application%20has%20been%20launched.">Launch the Application</a><br><br>
+<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=AsperaonCloud$$cd%20${CHE_PROJECTS_ROOT}/AoCSampleApp$$npm%20start&completion=The%20application%20has%20been%20launched.">Launch the Application</a><br><br>
 
 <p>You will see a dialog box saying " The application has been launched." </p>
 
-<br/><li>Explore the Code.</li><br/>
+<br>
+
+<li>Explore the Code.</li><br/>
 <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=workbench.view.explorer">Explore the Code</a><br><br>
 
+<br>
+<p> Want to explore this project more? Head on to <a href = "https://github.com/IBM/Developer-Playground/tree/master" > the GitHub repository</a> </p>
 
 </ol>
 <br/>

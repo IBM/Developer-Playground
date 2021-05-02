@@ -79,24 +79,19 @@ ul, ol,b{
 
 <br>
 
-<li> Lets Start!</li><br/>
-
-<a class="button is-dark is-medium" title="Start Terminal" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=NodeJSTerminal">Start Terminal</a><br><br>
-
-
 
 <li> Get the Code.</li><br/>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=NodeJSTerminal$$git%20clone%20https://github.com/IBM/Developer-Playground.git">Get the Code</a><br><br>
+<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=SSM$$git%20clone%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/">Get the Code</a><br><br>
 
 <br>
 
 <li> Build the Application.</li><br/>
-<a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=NodeJSTerminal$$cd%20dev-playground-SaaSUser-SampleAppGen/SaaS-SampleApp%20%26%26%20npm%20install">Build the Application</a><br><br>
+<a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=SSM$$cd%20${CHE_PROJECTS_ROOT}/SSMSampleApp%20%26%26%20npm%20install">Build the Application</a><br><br>
 
 <br>
 
 <li> Launch the Application.</li><br/>
-<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=NodeJSTerminal$$npm%20start&completion=The%20application%20has%20been%20launched.">Launch the Application</a><br><br>
+<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=SSM$$npm%20start&completion=The%20application%20has%20been%20launched.">Launch the Application</a><br><br>
 
 
 <p>You will see a dialog box saying " The application has been launched." </p>

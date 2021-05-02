@@ -1,6 +1,6 @@
 const ejs = require('ejs');
 const express = require('express');
-const { getmysubscriptions, getsubscribers, inviteuser, revokesubscription } = require('./services/service')
+const { getmysubscriptions, getsubscribers, inviteuser, revokesubscription, getcustomerdetails } = require('./services/service')
 
 
 var app = express();

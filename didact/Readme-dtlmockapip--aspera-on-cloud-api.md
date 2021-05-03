@@ -90,6 +90,12 @@ ul, ol,b{
 
 <br>
 
+<p>Configure the Application by filling in your credentials into the environment file  </p>
+<li> Configure the Application</li><br/>
+
+<a class="button is-dark is-medium" title="Configure the Application" href="didact://?commandId=vscode.open&projectFilePath=AoCSampleApp/.env">Configure the Application</a><br><br>
+<br>
+
 <li> Launch the Application.</li><br/>
 <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=AsperaonCloud$$cd%20${CHE_PROJECTS_ROOT}/AoCSampleApp%20%26%26%20npm%20start&completion=The%20application%20has%20been%20launched.">Launch the Application</a><br><br>
 
@@ -97,11 +103,26 @@ ul, ol,b{
 
 <br>
 
+<p> If you'd like to make changes and explore the application, make sure to stop it first! </p>
+<li>Stop Application</li><br>
+<a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=AsperaonCloud" >Stop Application</a><br><br>
+
+<br>
+<p> Explore and Play! </p>
+
 <li>Explore the Code.</li><br/>
 <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=workbench.view.explorer">Explore the Code</a><br><br>
 
 <br>
-<p> Want to explore this project more? Head on to <a href = "https://github.com/IBM/Developer-Playground/tree/master" > the GitHub repository</a> </p>
+
+<p> To view the changes you've made, re-launch the application </p>
+
+<li>Re-Launch Application</li><br>
+<a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=AsperaonCloud$$cd%20${CHE_PROJECTS_ROOT}/AoCSampleApp%20%26%26%20npm%20start&completion=The%20application%20has%20been%20launched.">Launch the Application</a><br><br>
+
+
+
+<p> Want to explore this project more? Head on to <a href = "https://github.com/IBM/Developer-Playground/tree/master" > the GitHub Repository</a> </p>
 
 </ol>
 <br/>

@@ -130,7 +130,7 @@ ol,ul,li{
 
 <li> After obtaining API credentials, get the application code by clicking the "Clone the Repositry" button. </li><br>
 
-<a class="button is-dark is-medium" title="Clone the repositry" href='didact://?commandId=vscode.didact.sendNamedTerminalAString&text=IPM-Marketplace-App$$cd%20${CHE_PROJECTS_ROOT}/ipm-marketplace-app%20%26%26%20git%20clone%20-b%20playground%20https%3A%2F%2Fgithub.com%2FIBM%2Fipm-marketplace-app.git' >Clone the Repositry</a>
+<a class="button is-dark is-medium" title="Clone the repositry" href='didact://?commandId=vscode.didact.sendNamedTerminalAString&text=IPM-Marketplace-App$$git%20clone%20-b%20playground%20https%3A%2F%2Fgithub.com%2FIBM%2Fipm-marketplace-app.git' >Clone the Repositry</a>
 <br><br>
 
 <li>Now click on the "Build Application" button.</li><br/>

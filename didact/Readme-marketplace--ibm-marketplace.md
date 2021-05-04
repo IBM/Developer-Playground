@@ -130,18 +130,19 @@ ol,ul,li{
 
 <li> After obtaining API credentials, get the application code by clicking the "Clone the Repositry" button. </li><br>
 
-<a class="button is-dark is-medium" title="Clone the repositry" href='didact://?commandId=vscode.didact.sendNamedTerminalAString&text=IPM-Marketplace-App$$git%20clone%20-b%20playground%20https%3A%2F%2Fgithub.com%2FIBM%2Fipm-marketplace-app.git' >Clone the Repositry</a>
+<a class="button is-dark is-medium" title="Clone the repositry" href='didact://?commandId=vscode.didact.sendNamedTerminalAString&text=IPM-Marketplace-App$$git%20clone%20-b%20playground%20https%3A%2F%2Fgithub.com%2FIBM%2Fipm-marketplace-app.git%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/ipm-marketplace-app%20%26%26%20touch%20.env%20%26%26%20printf%20%22%23%20IBM%20Marketplace%20API%20CLIENT_ID%5CnCLIENT_ID%3D%5Cn%5Cn%23%20IBM%20Marketplace%20CLIENT_SECRET%5CnCLIENT_SECRET%3D%22%20%3E%20.env' >Clone the Repositry</a>
 <br><br>
-
-<li>Now click on the "Build Application" button.</li><br/>
-
-<a class="button is-dark is-medium" title="Build Appilication" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=IPM-Marketplace-App$$cd%20${CHE_PROJECTS_ROOT}/ipm-marketplace-app%20%26%26%20touch%20.env%20%26%26%20printf%20%22%23%20IBM%20Marketplace%20API%20CLIENT_ID%5CnCLIENT_ID%3D%5Cn%5Cn%23%20IBM%20Marketplace%20CLIENT_SECRET%5CnCLIENT_SECRET%3D%22%20%3E%3E%20.env%20%26%26%20npm%20install&completion=The%20.env%20file%20is%20created">Build Application</a><br><br>
 
 <li>Next click the "Configure Application" button in order to enter the API Credentials i.e. Client_ID and Client_Secret in the <b>.env</b> file.</li>
 <br>
 
 <a class="button is-dark is-medium" title="Configure Application" href="didact://?commandId=file-search.openFile&projectFilePath=ipm-marketplace-app/.env">Configure Application</a>
 <br><br>
+
+<li>Now click on the "Build Application" button.</li><br/>
+
+<a class="button is-dark is-medium" title="Build Appilication" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=IPM-Marketplace-App$$cd%20${CHE_PROJECTS_ROOT}/ipm-marketplace-app%20%26%26%20touch%20.env%20%26%26%20printf%20%22%5Cn%5Cn%23%20CCP%20API%20url%5CnCCP_API%3Dhttps%3A%2F%2Fwwwstage.ibm.com%2Fmarketplace%2Fpurchase%2Fconfiguration%5Cn%5Cn%23%20Staging%20IBM%20Marketplace%20API%20url%5CnSA_URL%3Dhttps%3A%2F%2Fdev.api.ibm.com%2Fmarketplace%2Ftest%2Fv2%22%20%3E%3E%20.env%20%26%26%20npm%20install&completion=The%20.env%20file%20is%20created">Build Application</a><br><br>
+
 
 <li>You must verify the required configurations before launching the application by clicking the "Validate all Requirements" button.</li><br><br>
 

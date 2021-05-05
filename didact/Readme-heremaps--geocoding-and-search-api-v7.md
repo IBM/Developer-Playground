@@ -101,7 +101,7 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
 <p>Halt! Identify yourself! Follow the steps below to obtain your credentials and configure the application </p>
 <ol>
  <li>Head over to <a title= "IBM API Hub" href="https://developer.ibm.com/apis/">IBM API Hub</a> and sign in with your IBM ID</li><br>
-  <li>Subscribe to the <a title= "HERE Geocoding" href="https://developer.ibm.com/apis/catalog/heremaps--geocoding-and-search-api-v7/Introduction">HERE Geocoding and Services API</a></li><br>
+  <li>Subscribe to the <a title= "HEREGeocoding" href="https://developer.ibm.com/apis/catalog/heremaps--geocoding-and-search-api-v7/Introduction">HERE Geocoding and Services API</a></li><br>
   <li>Sign up for HERE Developer and follow the prompts to obtain Client ID, Client Secret and API Key</li><br>
   <li>Let's get the credentials by configuring the application </li><br>
 </ol>
@@ -111,7 +111,8 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
 
 
 <p> You're all set to get started! </p>
-<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREGeocodingandSearch$$npm%20start&completion=The%20application%20has%20been%20launched.">Launch the Application</a><br><br>
+<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREGeocodingandSearch$$cd%20${CHE_PROJECTS_ROOT}/Developer-Playground/HERESampleapp1%20%26%26%20npm%20start&completion=The%20application%20has%20been%20launched.">Launch the Application</a><br><br>
+<br>
 
 <p>You will see a dialog box saying " The application has been launched." </p>
 
@@ -128,7 +129,7 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
 
 
 <p> To view the changes you've made, re-launch the application </p>
-<a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREGeocodingandSearch$$npm%20start&completion=The%20application%20has%20been%20launched.">Re-Launch the Application</a><br><br>
+<a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREGeocodingandSearch$$cd%20${CHE_PROJECTS_ROOT}/Developer-Playground/HERESampleapp1%20%26%26%20npm%20start&completion=The%20application%20has%20been%20launched.">Re-Launch the Application</a><br><br>
 <br>
 
 <p> Want to explore this project more? Head over to <a href = "https://github.com/IBM/Developer-Playground/tree/master" > the GitHub Repository</a> </p>

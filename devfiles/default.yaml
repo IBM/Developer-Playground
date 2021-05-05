@@ -1,11 +1,5 @@
 metadata:
   name: sample-app
-projects:
-  - name: react-web-app
-    source:
-      location: 'https://github.com/che-samples/react-web-app.git'
-      type: git
-      branch: master
 attributes:
   persistVolumes: 'false'
 components:

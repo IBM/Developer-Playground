@@ -128,9 +128,6 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
 
 
 <p> To view the changes you've made, re-launch the application </p>
-
-
-<li>Re-Launch Application</li><br>
 <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREGeocodingandSearch$$npm%20start&completion=The%20application%20has%20been%20launched.">Re-Launch the Application</a><br><br>
 <br>
 

@@ -118,7 +118,6 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
 <br>
 
 <p> If you'd like to make changes and explore the application, make sure to stop it first! </p>
-<li>Stop Application</li><br>
 <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=HEREGeocodingandSearch" >Stop Application</a><br><br>
 
 <br>

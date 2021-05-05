@@ -89,7 +89,7 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
 <br>
 
 <li> Get the Code</li><br/>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREGeocodingandSearch$$git%20clone%20-b%20HERE%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/">Get the Code</a><br><br>
+<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREGeocodingandSearch$$git%20clone%20-b%20HERE%20--sparse%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/Developer-Playground%20%26%26%20git%20sparse-checkout%20init%20--cone%20%26%26%20git%20sparse-checkout%20add%20HERESampleapp1">Get the Code</a><br><br>
 
 <br>
 
@@ -98,18 +98,43 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
 
 <br>
 
+<p>Fill your credentials in the environment file </p>
+<li> Configure the Application</li><br/>
+
+<a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=vscode.open&projectFilePath=Developer-Playground/HERESampleapp1/.env">Configure the Application</a>
+<br>
+
+
 <li> Launch the Application.</li><br/>
-<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREGeocodingandSearch$$cd%20${CHE_PROJECTS_ROOT}/HERESampleapp1%20%26%26%20npm%20start&completion=The%20application%20has%20been%20launched.">Launch the Application</a><br><br>
+<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREGeocodingandSearch$$npm%20start&completion=The%20application%20has%20been%20launched.">Launch the Application</a><br><br>
 
 
 <p>You will see a dialog box saying " The application has been launched." </p>
 
 <br>
-<li>Explore the Code.</li><br/>
+
+<p> If you'd like to make changes and explore the application, make sure to stop it first! </p>
+<li>Stop Application</li><br>
+<a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=HEREGeocodingandSearch" >Stop Application</a><br><br>
+
+<br>
+
+<p> Explore and Play! </p>
+
+<li>Explore the Code</li><br/>
 <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=workbench.view.explorer">Explore the Code</a><br><br>
 <br>
 
-<p> Want to explore this project more? Head on to <a href = "https://github.com/IBM/Developer-Playground/tree/master" > the GitHub repository</a> </p>
+
+<p> To view the changes you've made, re-launch the application </p>
+
+
+<li>Re-Launch Application</li><br>
+<a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREGeocodingandSearch$$npm%20start&completion=The%20application%20has%20been%20launched.">Re-Launch the Application</a><br><br>
+<br>
+
+
+
 
 </ol>
 <br/>

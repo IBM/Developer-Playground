@@ -89,19 +89,19 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
 <br>
 
 <p>In order to begin, we'll need the application's source code. Let's get that down!</p>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREGeocodingandSearch$$git%20clone%20-b%20HERE%20--sparse%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/Developer-Playground%20%26%26%20git%20sparse-checkout%20init%20--cone%20%26%26%20git%20sparse-checkout%20add%20HERESampleapp1">Get the Code</a><br><br>
+<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREGeocodingandSearch$$git%20clone%20-b%20HERE%20--sparse%20https://github.com/IBM/Developer-Playground.git%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/Developer-Playground%20%26%26%20git%20sparse-checkout%20init%20--cone%20%26%26%20git%20sparse-checkout%20add%20HERESampleapp1">Get the Code</a><br><br>
 
 <br>
 
 <p>Awesome! We've got the codes! In order to see it in action, we've to build it first!</p>
-<a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREGeocodingandSearch$$cd%20${CHE_PROJECTS_ROOT}/HERESampleapp1%20%26%26%20npm%20install">Build the Application</a><br><br>
+<a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREGeocodingandSearch$$cd%20${CHE_PROJECTS_ROOT}/Developer-Playground/HERESampleapp1%20%26%26%20npm%20install">Build the Application</a><br><br>
 
 <br>
 
 <p>Halt! Identify yourself! Follow the steps below to obtain your credentials and configure the application </p>
 <ol>
  <li>Head over to <a title= "IBM API Hub" href="https://developer.ibm.com/apis/">IBM API Hub</a> and sign in with your IBM ID</li><br>
-  <li>Subscribe to the <a title= "AoC Subscribe" href="https://developer.ibm.com/apis/catalog/heremaps--geocoding-and-search-api-v7/Introduction">HERE Geocoding and Services API</a></li><br>
+  <li>Subscribe to the <a title= "HERE Geocoding" href="https://developer.ibm.com/apis/catalog/heremaps--geocoding-and-search-api-v7/Introduction">HERE Geocoding and Services API</a></li><br>
   <li>Sign up for HERE Developer and follow the prompts to obtain Client ID, Client Secret and API Key</li><br>
   <li>Let's get the credentials by configuring the application </li><br>
 </ol>

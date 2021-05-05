@@ -65,21 +65,11 @@ ul, ol,b{
     font-family: 'IBM Plex Sans', sans-serif;
     color:#fff;
 }
-
 </style>
-<script>
-function copytoClipboard(value) {
-    var tempInput = document.createElement("input");
-    tempInput.style = "position: absolute; left: -1000px; top: -1000px";
-    tempInput.value = value;
-    document.body.appendChild(tempInput);
-    tempInput.select();
-    document.execCommand("copy");
-    document.body.removeChild(tempInput);
-}
-</script>
+
 <body style="font-family: 'IBM Plex Sans', sans-serif;background-color:#1a1a1a;">
 <div style="font-family: 'IBM Plex Sans', sans-serif;background-color:#1a1a1a;">
+
 <h2 class="title is-3 ">Aspera on Cloud API  Sample Application</h2>
 
 <h3>Aspera on Cloud or (AoC) is Aspera’s on-demand SaaS offering for global content sharing. AoC enables fast, easy, and secure exchange of files and folders of any size between end users, even across separate organizations, in both local and remote locations. Using AoC, organizations can store and readily access files and folders in multiple cloud-based and on-premises storage systems. </h3>
@@ -113,8 +103,8 @@ function copytoClipboard(value) {
   <li>Click "Create new" and type in "my-custom-integration", and check the box right below it  </li><br>
   <li>Under "Redirect URIs" give a name and select it. Click "Save". Voila! Your Client ID and Client Secret's here! </li><br>
   <li>We're almost done! Within the same tab, next to 'Profile', go to 'JSON Web Token Auth'. Beside 'Settings', check both the boxes </li><br>
-  <li>Next to 'Keys', under "Allowed keys", choose "User-specific keys and global key", and paste the "Public Key (PEM Format)" 
-      <button onclick="copytoClipboard('-----BEGIN PUBLIC KEY----- MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAyklcsZFn99KW77qMIs8K X5EmATzIsLfwbpOG5B+lUMQGsp1kFwqMzSZaf0b4fuyKKBqSCpj8bqhUmUxFkjPM vpIz0zduqLyBDt+JMZbD4E6Rxg797WnCHuVVgOK74dYf4KdfiJ0OUua6frqavFL+ mhvNp6uTCfmLBfWVqnCKjht80zib7n+M00Y7zht6ZDTrxcGMH2qtqoYSI77YZGxg ndw7SLcehicHVzST7KzepkQvAYMexM/eiLeaDj6ymfwflvJHH8J3i9LfBJZ0/mUa XbgOSn7VCv5rZB6gpihsic4Gs2nn9I7cxOQS/XLmaVfgsGiIpUfNA7cby/Q7bf/w uBy6beoI0a5nxr4z8MdrK2e1HXhOnG8TXSFQAulGMOPP6exZaeiWk+/3xTRFjrsP B8/A5iDtvF0BvL6OY868HwnT+vitvtq4JdH1gAY8An0Unh+vnZqPhl9jWOjycXQJ HWo8g3P1uqgJL0dkHfBDHObfYTZuiEFjbJgAO3MLesbX7mTSkva5ZA7/o5awKbY7 VEgA0p1sSgFxEdYlZKAyra3bAL4iQ9j8B/3kPyQDMfYB4lZwV7Qdp+iAho7UjYaB bQds3PxeeEmDyI0a2qa6wrxfJllDDGW9b2eGnlZvXZunt57JLHLcJ32YAEYjEm7W owXAMbm9fMi6X5aEyVbqI4cCAwEAAQ== -----END PUBLIC KEY-----')">Copy Public Key to Clipboard</button> </li><br>
+  <li>Next to 'Keys', under "Allowed keys", choose "User-specific keys and global key", and paste the "Public Key (PEM Format)" from
+  <a href="didact://?commandId=vscode.open&projectFilePath=AoCSampleApp/jwtRS256.key.pub">here</a></li><br>
 
   <li>Click "Save". We've now completed the Authentication setup! </li><br>
   <li>Let's get the credentials by configuring the application </li><br>

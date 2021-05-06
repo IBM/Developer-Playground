@@ -109,7 +109,7 @@ function openPT(evt, api) {
   let response = await fetch('/addrgeocode?query=' + query);
   let result = await response.json();
 
-  console.log("RES: ", response);
+  
 
   var table4 = document.getElementById("address-geocode");
   table4.style.display = "";
@@ -274,6 +274,27 @@ function openPT(evt, api) {
 }
 
 }
+
+//   async function getcoordinates(loc) {
+
+//   let query = loc;
+//   query = query.replace(" ","+"); 
+
+//   let response = await fetch('/addrgeocode?query=' + query);
+//   let result = await response.json();
+
+
+//   if(JSON.stringify(result) === JSON.stringify({})){
+//       window.alert("Results not found");
+//     }
+
+//   else{
+//     console.log("RESULT: ", result[0]["position"].join());
+//     return(result[0]["position"].join());
+//   }
+
+// }
+
 
 
   async function getstations() {
@@ -506,7 +527,6 @@ function openPT(evt, api) {
     <br>
     <br>
 
- 
 
     <!--Public Transit Services-->
 
@@ -590,88 +610,151 @@ function openPT(evt, api) {
 
  <span style="color: rgb(21, 21, 21);"> My way or the Highway? </span><hr style="border-top: 1px solid rgb(21, 21, 21);"><br>
     
- <div id = "complete">
-  
-  <input type="text" name="pointa" id="pointa" class="field-divided" placeholder="From [LAT,LONG]" size=10 required /> <br><br>
-  <input type="text" name="pointb" id="pointb" class="field-divided" placeholder="To [LAT,LONG]" size=10 required /> <br><br>
-  <label for="mode">Choose the Mode of Travel</label>
-    <select name="travel" id="travel">
-      <option value="car">Drive a Car!</option>
-      <option value="pedestrian">Walk my legs off!</option>
-      <option value="pubtransport">Go Green! Using Public Transport</option>
-    </select>
-  <br><br>
-  <button type = "submit" onclick="startcalculating(document.getElementById('pointa').value, document.getElementById('pointb').value, document.getElementById('travel').value)">Calculate Route</button> 
-<br>
+  <div class="tab1">
+    <button class="tablinks1" onclick="openSS(event, 'ByCoords')"> With Coordinates </button>
+    <button class="tablinks1" onclick="openSS(event, 'ByArea')"> With Area</button>
+  </div>
 
-<div id = "route-display">
-  <div id="map"></div>
+  <div id="ByCoords" class="tabcontent1">
+    <input type="text" name="pointa" id="pointa" class="field-divided" placeholder="From [LAT,LONG]" size=10 required /> <br><br>
+    <input type="text" name="pointb" id="pointb" class="field-divided" placeholder="To [LAT,LONG]" size=10 required /> <br><br>
+    <label for="mode">Choose the Mode of Travel</label>
+      <select name="travel" id="travel">
+        <option value="car">Drive a Car!</option>
+        <option value="pedestrian">Walk my legs off!</option>
+        <option value="pubtransport">Go Green! Using Public Transport</option>
+      </select>
+    <br><br>
+    <button type = "submit" onclick="startcalculating(document.getElementById('pointa').value, document.getElementById('pointb').value, document.getElementById('travel').value)">Calculate Route</button> 
+    <br>
+  
+ </div>
+  
+ <div id="ByArea" class="tabcontent1">
+  <input type="text" name="fromloc" id="fromloc" class="field-divided" placeholder="From" size=10 required /> <br><br>
+    <input type="text" name="toloc" id="toloc" class="field-divided" placeholder="To" size=10 required /> <br><br>
+    <label for="mode1">Choose the Mode of Travel</label>
+      <select name="travel1" id="travel1">
+        <option value="car">Drive a Car!</option>
+        <option value="pedestrian">Walk my legs off!</option>
+        <option value="pubtransport">Go Green! Using Public Transport</option>
+      </select>
+    <br><br>
+    <button type = "submit" onclick="consolidate(document.getElementById('fromloc').value,document.getElementById('toloc').value, document.getElementById('travel1').value)">Calculate Route</button> 
+      
+ </div>
+
+ <div id = "route-display">
+  <div id='map'></div>
   <div id="panel"></div>
 </div>
 
 
 <script>
 
+async function consolidate(from,to,mode){
+  
+  let pta,ptb,ptt;
+  ptt = mode;
+
+  //from --
+  let query = from;
+  query = query.replace(" ","+"); 
+
+  let response = await fetch('/addrgeocode?query=' + query);
+  let result = await response.json();
+
+
+  if(JSON.stringify(result) === JSON.stringify({})){
+      window.alert("Results not found");
+    }
+
+  else{
+    pta = result[0]["position"].join();
+  }
+
+  //to --
+  query = to;
+  query = query.replace(" ","+");
+  response = await fetch('/addrgeocode?query=' + query);
+  result = await response.json();
+  if(JSON.stringify(result) === JSON.stringify({})){
+      window.alert("Results not found");
+    }
+    else{
+    ptb = result[0]["position"].join();
+  }
+
+  startcalculating(pta,ptb,ptt);
+
+
+}
+
+
 function startcalculating(pa,pb,pt){
 
-  if(pt === "pubtransport"){
-    function calculateRouteFromAtoB (platform) {
-    var router = platform.getPublicTransitService(),
-      routeRequestParams = {
-        origin: pa, 
-        destination: pb,
-        return: 'polyline,actions,travelSummary'
-      };
+console.log("IN HERE");
+console.log("PA,PB,PT:", pa,pb,pt);
+
+if(pt === "pubtransport"){
+  function calculateRouteFromAtoB (platform) {
+  var router = platform.getPublicTransitService(),
+    routeRequestParams = {
+      origin: pa, 
+      destination: pb,
+      return: 'polyline,actions,travelSummary'
+    };
 
 
-  router.getRoutes(
-    routeRequestParams,
-    onSuccess,
-    onError
-  );
+router.getRoutes(
+  routeRequestParams,
+  onSuccess,
+  onError
+);
 }
 /**
- * This function will be called once the Routing REST API provides a response
- * @param  {Object} result          A JSONP object representing the calculated route
- *
- */
+* This function will be called once the Routing REST API provides a response
+* @param  {Object} result          A JSONP object representing the calculated route
+*
+*/
 function onSuccess(result) {
-  var route = result.routes[0];
 
-  addRouteShapeToMap(route);
-  addManueversToMap(route);
-  addManueversToPanel(route);
-  addSummaryToPanel(route);
+var route = result.routes[0];
+
+addRouteShapeToMap(route);
+addManueversToMap(route);
+addManueversToPanel(route);
+addSummaryToPanel(route);
 
 }
 
 /**
- * This function will be called if a communication error occurs during the JSON-P request
- * @param  {Object} error  The error message received.
- */
+* This function will be called if a communication error occurs during the JSON-P request
+* @param  {Object} error  The error message received.
+*/
 function onError(error) {
-  alert('Can\'t reach the remote server');
+alert('Can\'t reach the remote server');
 }
 
 
-    document.getElementById('map').innerHTML = "";
-    document.getElementById('panel').innerHTML = "";
+  document.getElementById('map').innerHTML = "";
+  document.getElementById('panel').innerHTML = "";
 
-    var mapContainer = document.getElementById('map');
-    var routeInstructionsContainer = document.getElementById('panel');
+  var mapContainer = document.getElementById('map');
+  var routeInstructionsContainer = document.getElementById('panel');
 
 
 var platform = new H.service.Platform({
-  apikey: "<%= process.env.APIKEY%>"
+apikey: "<%= process.env.APIKEY%>"
 });
 var defaultLayers = platform.createDefaultLayers();
 
 
 var map = new H.Map(mapContainer,
-  defaultLayers.vector.normal.map,{
-  center: {lat:52.5160, lng:13.3779},
-  zoom: 13,
-  pixelRatio: window.devicePixelRatio || 1
+defaultLayers.vector.normal.map,{
+center: {lat:52.5160, lng:13.3779},
+zoom: 13,
+pixelRatio: window.devicePixelRatio || 1
 });
 window.addEventListener('resize', () => map.getViewPort().resize());
 
@@ -683,370 +766,376 @@ var ui = H.ui.UI.createDefault(map, defaultLayers);
 var bubble;
 
 /**
- * Opens/Closes a infobubble
- * @param  {H.geo.Point} position     The location on the map.
- * @param  {String} text              The contents of the infobubble.
- */
+* Opens/Closes a infobubble
+* @param  {H.geo.Point} position     The location on the map.
+* @param  {String} text              The contents of the infobubble.
+*/
 function openBubble(position, text){
- if(!bubble){
-    bubble =  new H.ui.InfoBubble(
-      position,
-      {content: text});
-    ui.addBubble(bubble);
-  } else {
-    bubble.setPosition(position);
-    bubble.setContent(text);
-    bubble.open();
-  }
+if(!bubble){
+  bubble =  new H.ui.InfoBubble(
+    position,
+    {content: text});
+  ui.addBubble(bubble);
+} else {
+  bubble.setPosition(position);
+  bubble.setContent(text);
+  bubble.open();
+}
 }
 
 
 /**
- * Creates a H.map.Polyline from the shape of the route and adds it to the map.
- * @param {Object} route A route as received from the H.service.RoutingService
- */
+* Creates a H.map.Polyline from the shape of the route and adds it to the map.
+* @param {Object} route A route as received from the H.service.RoutingService
+*/
 function addRouteShapeToMap(route){
-  var group = new H.map.Group();
 
-  route.sections.forEach(function(section) {
-    group.addObject(
-      new H.map.Polyline(
-        H.geo.LineString.fromFlexiblePolyline(section.polyline), {
-          style: {
-            lineWidth: 4,
-            strokeColor: 'rgba(0, 128, 255, 0.7)'
-          }
-        }
-      )
-    );
-  });
-
-  map.addObject(group);
-  map.getViewModel().setLookAtData({
-    bounds: group.getBoundingBox()
-  });
-}
-
-/**
- * Creates a series of H.map.Marker points from the route and adds them to the map.
- * @param {Object} route  A route as received from the H.service.RoutingService
- */
-function addManueversToMap(route){
-  var svgMarkup = '<svg width="18" height="18" ' +
-    'xmlns="http://www.w3.org/2000/svg">' +
-    '<circle cx="8" cy="8" r="8" ' +
-      'fill="#1b468d" stroke="white" stroke-width="1"  />' +
-    '</svg>',
-    dotIcon = new H.map.Icon(svgMarkup, {anchor: {x:8, y:8}}),
-    group = new  H.map.Group(),
-    i;
-
-    route.sections.forEach((section) => {
-      let poly = H.geo.LineString.fromFlexiblePolyline(section.polyline).getLatLngAltArray();
-    
-      let actions = section.actions;
-      if (actions) {
-        for (i = 0;  i < actions.length; i += 1) {
-          let action = actions[i];
-          var marker =  new H.map.Marker({
-            lat: poly[action.offset * 3],
-            lng: poly[action.offset * 3 + 1]},
-            {icon: dotIcon});
-          marker.instruction = action.instruction;
-          group.addObject(marker);
+try{
+var group = new H.map.Group();
+route.sections.forEach(function(section) {
+  group.addObject(
+    new H.map.Polyline(
+      H.geo.LineString.fromFlexiblePolyline(section.polyline), {
+        style: {
+          lineWidth: 4,
+          strokeColor: 'rgba(0, 128, 255, 0.7)'
         }
       }
-    });
+    )
+  );
+});
 
-    group.addEventListener('tap', function (evt) {
-      map.setCenter(evt.target.getGeometry());
-      openBubble(
-        evt.target.getGeometry(), evt.target.instruction);
-    }, false);
+map.addObject(group);
+map.getViewModel().setLookAtData({
+  bounds: group.getBoundingBox()
+});
+}
+catch(err){
+  document.getElementById('map').innerHTML = "";
+  alert('Results Unavailable');
+}
+}
+
+/**
+* Creates a series of H.map.Marker points from the route and adds them to the map.
+* @param {Object} route  A route as received from the H.service.RoutingService
+*/
+function addManueversToMap(route){
+var svgMarkup = '<svg width="18" height="18" ' +
+  'xmlns="http://www.w3.org/2000/svg">' +
+  '<circle cx="8" cy="8" r="8" ' +
+    'fill="#1b468d" stroke="white" stroke-width="1"  />' +
+  '</svg>',
+  dotIcon = new H.map.Icon(svgMarkup, {anchor: {x:8, y:8}}),
+  group = new  H.map.Group(),
+  i;
+
+  route.sections.forEach((section) => {
+    let poly = H.geo.LineString.fromFlexiblePolyline(section.polyline).getLatLngAltArray();
   
-    map.addObject(group);
-}
-
-/**
- * Creates a series of H.map.Marker points from the route and adds them to the map.
- * @param {Object} route  A route as received from the H.service.RoutingService
- */
-function addSummaryToPanel(route){
-  let duration = 0,
-      distance = 0;
-
-  route.sections.forEach((section) => {
-    distance += section.travelSummary.length;
-    duration += section.travelSummary.duration;
-  });
-
-  var summaryDiv = document.createElement('div'),
-   content = '';
-   content += '<b>Total distance</b>: ' + distance  + 'm. <br/>';
-   content += '<b>Travel Time</b>: ' + duration.toMMSS();
-
-
-  summaryDiv.style.fontSize = 'small';
-  summaryDiv.style.marginLeft ='5%';
-  summaryDiv.style.marginRight ='5%';
-  summaryDiv.innerHTML = content;
-  routeInstructionsContainer.appendChild(summaryDiv);
-}
-
-/**
- * Creates a series of H.map.Marker points from the route and adds them to the map.
- * @param {Object} route  A route as received from the H.service.RoutingService
- */
-function addManueversToPanel(route){
-  var nodeOL = document.createElement('ol');
-
-  nodeOL.style.fontSize = 'small';
-  nodeOL.style.marginLeft ='5%';
-  nodeOL.style.marginRight ='5%';
-  nodeOL.className = 'directions';
-
-  route.sections.forEach((section) => {
-    debugger
-    if (section.actions) {
-      section.actions.forEach((action, idx) => {
-        var li = document.createElement('li'),
-            spanArrow = document.createElement('span'),
-            spanInstruction = document.createElement('span');
-
-        spanArrow.className = 'arrow ' + (action.direction || '') + action.action;
-        spanInstruction.innerHTML = section.actions[idx].instruction;
-        li.appendChild(spanArrow);
-        li.appendChild(spanInstruction);
-
-        nodeOL.appendChild(li);
-      });
+    let actions = section.actions;
+    if (actions) {
+      for (i = 0;  i < actions.length; i += 1) {
+        let action = actions[i];
+        var marker =  new H.map.Marker({
+          lat: poly[action.offset * 3],
+          lng: poly[action.offset * 3 + 1]},
+          {icon: dotIcon});
+        marker.instruction = action.instruction;
+        group.addObject(marker);
+      }
     }
   });
 
-  routeInstructionsContainer.appendChild(nodeOL);
+  group.addEventListener('tap', function (evt) {
+    map.setCenter(evt.target.getGeometry());
+    openBubble(
+      evt.target.getGeometry(), evt.target.instruction);
+  }, false);
+
+  map.addObject(group);
+}
+
+/**
+* Creates a series of H.map.Marker points from the route and adds them to the map.
+* @param {Object} route  A route as received from the H.service.RoutingService
+*/
+function addSummaryToPanel(route){
+let duration = 0,
+    distance = 0;
+
+route.sections.forEach((section) => {
+  distance += section.travelSummary.length;
+  duration += section.travelSummary.duration;
+});
+
+var summaryDiv = document.createElement('div'),
+ content = '';
+ content += '<b>Total distance</b>: ' + distance  + 'm. <br/>';
+ content += '<b>Travel Time</b>: ' + duration.toMMSS();
+
+
+summaryDiv.style.fontSize = 'small';
+summaryDiv.style.marginLeft ='5%';
+summaryDiv.style.marginRight ='5%';
+summaryDiv.innerHTML = content;
+routeInstructionsContainer.appendChild(summaryDiv);
+}
+
+/**
+* Creates a series of H.map.Marker points from the route and adds them to the map.
+* @param {Object} route  A route as received from the H.service.RoutingService
+*/
+function addManueversToPanel(route){
+var nodeOL = document.createElement('ol');
+
+nodeOL.style.fontSize = 'small';
+nodeOL.style.marginLeft ='5%';
+nodeOL.style.marginRight ='5%';
+nodeOL.className = 'directions';
+
+route.sections.forEach((section) => {
+  debugger
+  if (section.actions) {
+    section.actions.forEach((action, idx) => {
+      var li = document.createElement('li'),
+          spanArrow = document.createElement('span'),
+          spanInstruction = document.createElement('span');
+
+      spanArrow.className = 'arrow ' + (action.direction || '') + action.action;
+      spanInstruction.innerHTML = section.actions[idx].instruction;
+      li.appendChild(spanArrow);
+      li.appendChild(spanInstruction);
+
+      nodeOL.appendChild(li);
+    });
+  }
+});
+
+routeInstructionsContainer.appendChild(nodeOL);
 }
 
 
 Number.prototype.toMMSS = function () {
-  return  Math.floor(this / 60)  +' minutes '+ (this % 60)  + ' seconds.';
+return  Math.floor(this / 60)  +' minutes '+ (this % 60)  + ' seconds.';
 }
 
 calculateRouteFromAtoB (platform);
 
-  }
-  else{
-   function calculateRouteFromAtoB (platform) {
-
-          var router = platform.getRoutingService(null, 8),
-          routeRequestParams = {
-            routingMode: 'fast',
-            transportMode: pt,
-            origin: pa,
-            destination: pb,
-            return: 'polyline,turnByTurnActions,actions,instructions,travelSummary'
-          };
-    
-      router.calculateRoute(
-        routeRequestParams,
-        onSuccess,
-        onError
-      );
-   }
-    /**
-     * This function will be called once the Routing REST API provides a response
-     * @param  {Object} result     JSONP object representing the calculated route
-     *
-     */
-    function onSuccess(result) {
-      var route = result.routes[0];
-
-      addRouteShapeToMap(route);
-      addManueversToMap(route);
-      addWaypointsToPanel(route);
-      addManueversToPanel(route);
-      addSummaryToPanel(route);
-    }
-    
-    /**
-     * This function will be called if a communication error occurs during the JSON-P request
-     * @param  {Object} error  The error message received.
-     */
-    function onError(error) {
-      alert('Can\'t reach the remote server');
-    }
-        
-    document.getElementById('map').innerHTML = "";
-    document.getElementById('panel').innerHTML = "";
-
-    var mapContainer = document.getElementById('map');
-    var routeInstructionsContainer = document.getElementById('panel');
-    
-
-    var platform = new H.service.Platform({
-      apikey: "<%= process.env.APIKEY%>"
-    });
-    
-    var defaultLayers = platform.createDefaultLayers();
-    
-    var map = new H.Map(mapContainer,
-      defaultLayers.vector.normal.map,{
-      center: {lat:52.5160, lng:13.3779},
-      zoom: 13,
-      pixelRatio: window.devicePixelRatio || 1
-    });
-    window.addEventListener('resize', () => map.getViewPort().resize());
-    
-
-    var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
-    
-    var ui = H.ui.UI.createDefault(map, defaultLayers);
-    
-    var bubble;
-    
-
-    function openBubble(position, text){
-     if(!bubble){
-        bubble =  new H.ui.InfoBubble(
-          position,
-          {content: text});
-        ui.addBubble(bubble);
-      } else {
-        bubble.setPosition(position);
-        bubble.setContent(text);
-        bubble.open();
-      }
-    }
-    
-    function addRouteShapeToMap(route){
-      route.sections.forEach((section) => {
-        let linestring = H.geo.LineString.fromFlexiblePolyline(section.polyline);
-    
-        let polyline = new H.map.Polyline(linestring, {
-          style: {
-            lineWidth: 4,
-            strokeColor: 'rgba(0, 128, 255, 0.7)'
-          }
-        });
-    
-        map.addObject(polyline);
-
-        map.getViewModel().setLookAtData({
-          bounds: polyline.getBoundingBox()
-        });
-      });
-    }
-    
-    function addManueversToMap(route){
-      var svgMarkup = '<svg width="18" height="18" ' +
-        'xmlns="http://www.w3.org/2000/svg">' +
-        '<circle cx="8" cy="8" r="8" ' +
-          'fill="#1b468d" stroke="white" stroke-width="1"  />' +
-        '</svg>',
-        dotIcon = new H.map.Icon(svgMarkup, {anchor: {x:8, y:8}}),
-        group = new  H.map.Group(),
-        i,
-        j;
-      route.sections.forEach((section) => {
-        let poly = H.geo.LineString.fromFlexiblePolyline(section.polyline).getLatLngAltArray();
-    
-        let actions = section.actions;
-        for (i = 0;  i < actions.length; i += 1) {
-          let action = actions[i];
-          var marker =  new H.map.Marker({
-            lat: poly[action.offset * 3],
-            lng: poly[action.offset * 3 + 1]},
-            {icon: dotIcon});
-          marker.instruction = action.instruction;
-          group.addObject(marker);
-        }
-    
-        group.addEventListener('tap', function (evt) {
-          map.setCenter(evt.target.getGeometry());
-          openBubble(
-             evt.target.getGeometry(), evt.target.instruction);
-        }, false);
-    
-        map.addObject(group);
-      });
-    }
-    
-
-    function addWaypointsToPanel(route) {
-      var nodeH3 = document.createElement('h3'),
-          labels = [];
-    
-      route.sections.forEach((section) => {
-        labels.push(
-          section.turnByTurnActions[0].nextRoad.name[0].value)
-        labels.push(
-          section.turnByTurnActions[section.turnByTurnActions.length - 1].currentRoad.name[0].value)
-      });
-      
-      nodeH3.textContent = labels.join(' - ');
-      routeInstructionsContainer.innerHTML = '';
-      routeInstructionsContainer.appendChild(nodeH3);
-    }
-    
-
-    function addSummaryToPanel(route){
-      let duration = 0,
-          distance = 0;
-    
-      route.sections.forEach((section) => {
-        distance += section.travelSummary.length;
-        duration += section.travelSummary.duration;
-      });
-    
-      var summaryDiv = document.createElement('div'),
-       content = '';
-       content += '<b>Total distance</b>: ' + distance  + 'm. <br/>';
-       content += '<b>Travel Time</b>: ' + duration.toMMSS() + ' (in current traffic)';
-    
-    
-      summaryDiv.style.fontSize = 'small';
-      summaryDiv.style.marginLeft ='5%';
-      summaryDiv.style.marginRight ='5%';
-      summaryDiv.innerHTML = content;
-      routeInstructionsContainer.appendChild(summaryDiv);
-    }
-    
-    function addManueversToPanel(route){
-      var nodeOL = document.createElement('ol');
-    
-      nodeOL.style.fontSize = 'small';
-      nodeOL.style.marginLeft ='5%';
-      nodeOL.style.marginRight ='5%';
-      nodeOL.className = 'directions';
-    
-      route.sections.forEach((section) => {
-        section.actions.forEach((action, idx) => {
-          var li = document.createElement('li'),
-              spanArrow = document.createElement('span'),
-              spanInstruction = document.createElement('span');
-    
-          spanArrow.className = 'arrow ' + (action.direction || '') + action.action;
-          spanInstruction.innerHTML = section.actions[idx].instruction;
-          li.appendChild(spanArrow);
-          li.appendChild(spanInstruction);
-    
-          nodeOL.appendChild(li);
-        });
-      });
-    
-      routeInstructionsContainer.appendChild(nodeOL);
-    }
-    
-    
-    Number.prototype.toMMSS = function () {
-      return  Math.floor(this / 60)  +' minutes '+ (this % 60)  + ' seconds.';
-    }
-    
-
-    calculateRouteFromAtoB (platform);
-  }
-
 }
 
+else{
+ function calculateRouteFromAtoB (platform) {
+
+        var router = platform.getRoutingService(null, 8),
+        routeRequestParams = {
+          routingMode: 'fast',
+          transportMode: pt,
+          origin: pa,
+          destination: pb,
+          return: 'polyline,turnByTurnActions,actions,instructions,travelSummary'
+        };
+  
+    router.calculateRoute(
+      routeRequestParams,
+      onSuccess,
+      onError
+    );
+ }
+  /**
+   * This function will be called once the Routing REST API provides a response
+   * @param  {Object} result     JSONP object representing the calculated route
+   *
+   */
+  function onSuccess(result) {
+    var route = result.routes[0];
+
+    addRouteShapeToMap(route);
+    addManueversToMap(route);
+    addWaypointsToPanel(route);
+    addManueversToPanel(route);
+    addSummaryToPanel(route);
+  }
+  
+  /**
+   * This function will be called if a communication error occurs during the JSON-P request
+   * @param  {Object} error  The error message received.
+   */
+  function onError(error) {
+    alert('Can\'t reach the remote server');
+  }
+      
+  document.getElementById('map').innerHTML = "";
+  document.getElementById('panel').innerHTML = "";
+
+  var mapContainer = document.getElementById('map');
+  var routeInstructionsContainer = document.getElementById('panel');
+  
+
+  var platform = new H.service.Platform({
+    apikey: "<%= process.env.APIKEY%>"
+  });
+  
+  var defaultLayers = platform.createDefaultLayers();
+  
+  var map = new H.Map(mapContainer,
+    defaultLayers.vector.normal.map,{
+    center: {lat:52.5160, lng:13.3779},
+    zoom: 13,
+    pixelRatio: window.devicePixelRatio || 1
+  });
+  window.addEventListener('resize', () => map.getViewPort().resize());
+  
+
+  var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+  
+  var ui = H.ui.UI.createDefault(map, defaultLayers);
+  
+  var bubble;
+  
+
+  function openBubble(position, text){
+   if(!bubble){
+      bubble =  new H.ui.InfoBubble(
+        position,
+        {content: text});
+      ui.addBubble(bubble);
+    } else {
+      bubble.setPosition(position);
+      bubble.setContent(text);
+      bubble.open();
+    }
+  }
+  
+  function addRouteShapeToMap(route){
+    route.sections.forEach((section) => {
+      let linestring = H.geo.LineString.fromFlexiblePolyline(section.polyline);
+  
+      let polyline = new H.map.Polyline(linestring, {
+        style: {
+          lineWidth: 4,
+          strokeColor: 'rgba(0, 128, 255, 0.7)'
+        }
+      });
+  
+      map.addObject(polyline);
+
+      map.getViewModel().setLookAtData({
+        bounds: polyline.getBoundingBox()
+      });
+    });
+  }
+  
+  function addManueversToMap(route){
+    var svgMarkup = '<svg width="18" height="18" ' +
+      'xmlns="http://www.w3.org/2000/svg">' +
+      '<circle cx="8" cy="8" r="8" ' +
+        'fill="#1b468d" stroke="white" stroke-width="1"  />' +
+      '</svg>',
+      dotIcon = new H.map.Icon(svgMarkup, {anchor: {x:8, y:8}}),
+      group = new  H.map.Group(),
+      i,
+      j;
+    route.sections.forEach((section) => {
+      let poly = H.geo.LineString.fromFlexiblePolyline(section.polyline).getLatLngAltArray();
+  
+      let actions = section.actions;
+      for (i = 0;  i < actions.length; i += 1) {
+        let action = actions[i];
+        var marker =  new H.map.Marker({
+          lat: poly[action.offset * 3],
+          lng: poly[action.offset * 3 + 1]},
+          {icon: dotIcon});
+        marker.instruction = action.instruction;
+        group.addObject(marker);
+      }
+  
+      group.addEventListener('tap', function (evt) {
+        map.setCenter(evt.target.getGeometry());
+        openBubble(
+           evt.target.getGeometry(), evt.target.instruction);
+      }, false);
+  
+      map.addObject(group);
+    });
+  }
+  
+
+  function addWaypointsToPanel(route) {
+    var nodeH3 = document.createElement('h3'),
+        labels = [];
+  
+    route.sections.forEach((section) => {
+      labels.push(
+        section.turnByTurnActions[0].nextRoad.name[0].value)
+      labels.push(
+        section.turnByTurnActions[section.turnByTurnActions.length - 1].currentRoad.name[0].value)
+    });
+    
+    nodeH3.textContent = labels.join(' - ');
+    routeInstructionsContainer.innerHTML = '';
+    routeInstructionsContainer.appendChild(nodeH3);
+  }
+  
+
+  function addSummaryToPanel(route){
+    let duration = 0,
+        distance = 0;
+  
+    route.sections.forEach((section) => {
+      distance += section.travelSummary.length;
+      duration += section.travelSummary.duration;
+    });
+  
+    var summaryDiv = document.createElement('div'),
+     content = '';
+     content += '<b>Total distance</b>: ' + distance  + 'm. <br/>';
+     content += '<b>Travel Time</b>: ' + duration.toMMSS() + ' (in current traffic)';
+  
+  
+    summaryDiv.style.fontSize = 'small';
+    summaryDiv.style.marginLeft ='5%';
+    summaryDiv.style.marginRight ='5%';
+    summaryDiv.innerHTML = content;
+    routeInstructionsContainer.appendChild(summaryDiv);
+  }
+  
+  function addManueversToPanel(route){
+    var nodeOL = document.createElement('ol');
+  
+    nodeOL.style.fontSize = 'small';
+    nodeOL.style.marginLeft ='5%';
+    nodeOL.style.marginRight ='5%';
+    nodeOL.className = 'directions';
+  
+    route.sections.forEach((section) => {
+      section.actions.forEach((action, idx) => {
+        var li = document.createElement('li'),
+            spanArrow = document.createElement('span'),
+            spanInstruction = document.createElement('span');
+  
+        spanArrow.className = 'arrow ' + (action.direction || '') + action.action;
+        spanInstruction.innerHTML = section.actions[idx].instruction;
+        li.appendChild(spanArrow);
+        li.appendChild(spanInstruction);
+  
+        nodeOL.appendChild(li);
+      });
+    });
+  
+    routeInstructionsContainer.appendChild(nodeOL);
+  }
+  
+  
+  Number.prototype.toMMSS = function () {
+    return  Math.floor(this / 60)  +' minutes '+ (this % 60)  + ' seconds.';
+  }
+  
+
+  calculateRouteFromAtoB (platform);
+}
+
+}
 </script>
 
 

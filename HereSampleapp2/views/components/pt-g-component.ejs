@@ -3,6 +3,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+
   <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
   <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
   <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
@@ -357,16 +358,36 @@ function openPT(evt, api) {
 
   async function getdepartures() {
 
-      let lat = document.getElementById("tlatitude1").value;
-      let long = document.getElementById("tlongitude1").value;
+      // let lat = document.getElementById("tlatitude1").value;
+      // let long = document.getElementById("tlongitude1").value;
+
+      let query = document.getElementById("tarea").value;
+      let location;
+
+      query = query.replace(" ","+"); 
+
+      let response = await fetch('/addrgeocode?query=' + query);
+      let result = await response.json();
+
+
+      if(JSON.stringify(result) === JSON.stringify({})){
+          window.alert("Results not found");
+        }
+
+      else{
+         location = result[0]["position"].join();
+      }
+
+
       let radius = document.getElementById("tradius").value;
 
-      if ((lat === "") || (long === "") || (radius === "")) {
+      //if ((lat === "") || (long === "") || (radius === "")) {
+        if((query === "") ||  (radius === "")){
       window.alert("Required data values are missing");
       }
       else{
 
-      let location = lat.concat(",").concat(long).concat(";r=").concat(radius);
+      location = location.concat(";r=").concat(radius);
 
       document.getElementById("overlay").style.display = "block";
 
@@ -418,16 +439,34 @@ function openPT(evt, api) {
 
   async function displaydeparture(depvalue){
 
-  let lat = document.getElementById("tlatitude1").value;
-  let long = document.getElementById("tlongitude1").value;
+  // let lat = document.getElementById("tlatitude1").value;
+  // let long = document.getElementById("tlongitude1").value;
+
+    let query = document.getElementById("tarea").value;
+    let location;
+
+    query = query.replace(" ","+"); 
+
+      let response = await fetch('/addrgeocode?query=' + query);
+      let result = await response.json();
+
+
+      if(JSON.stringify(result) === JSON.stringify({})){
+          window.alert("Results not found");
+        }
+
+      else{
+         location = result[0]["position"].join();
+      }
+
   let radius = document.getElementById("tradius").value;
 
-  let location = lat.concat(",").concat(long).concat(";r=").concat(radius);
+  location = location.concat(";r=").concat(radius);
 
   document.getElementById("overlay").style.display = "block";
 
-  let response = await fetch('/displaydeparture?location='+ location);
-  let result = await response.json();
+  response = await fetch('/displaydeparture?location='+ location);
+  result = await response.json();
 
   if (result[depvalue] === undefined){
       document.getElementById("sub-departures").style.display = 'none';
@@ -482,7 +521,7 @@ function openPT(evt, api) {
 
     <div id="GCArea" class="tabcontent">
       <input type="text" name="gquery" id="gquery" class="field-divided" placeholder="Query: Address/Area" size=10 required /> 
-      <button type = "submit" onclick="addrgeocode()">Get Area Coordinates </button> 
+      <button type = "submit" onclick="addrgeocode()">Get Area Coordinates </button>
 
     </div>
     
@@ -544,8 +583,10 @@ function openPT(evt, api) {
      </div>
 
      <div id="PTDepartures" class="tabcontent">
-        <input type="text" name="tlatitude1" id="tlatitude1" class="field-divided" placeholder="Latitude" size=10 required /> 
+        <!-- <input type="text" name="tlatitude1" id="tlatitude1" class="field-divided" placeholder="Latitude" size=10 required /> 
         <input type="text" name="tlongitude1" id="tlongitude1" class="field-divided" placeholder="Longitude" size=10 required /> <br><br>
+         -->
+         <input type="text" name="tarea" id="tarea" class="field-divided" placeholder="Area" size=10 required /> 
         <input type="text" name="tradius" id="tradius" class="field-divided" placeholder="Radius" size=10 required /> <br><br>
         <button type = "submit" onclick="getdepartures(); displaydeparture()">Get Closest Departures </button> 
      </div>

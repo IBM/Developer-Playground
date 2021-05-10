@@ -103,9 +103,8 @@ ul, ol,b{
   <li>Click "Create new" and type in "my-custom-integration", and check the box right below it  </li><br>
   <li>Under "Redirect URIs" give a name and select it. Click "Save". Voila! Your Client ID and Client Secret's here! </li><br>
   <li>We're almost done! Within the same tab, next to 'Profile', go to 'JSON Web Token Auth'. Beside 'Settings', check both the boxes </li><br>
-  <li>Next to 'Keys', under "Allowed keys", choose "User-specific keys and global key", and paste the "Public Key (PEM Format)" from
-  <a href="didact://?commandId=vscode.open&projectFilePath=AoCSampleApp/jwtRS256.key.pub">here</a></li><br>
-
+  <li>Next to 'Keys', under "Allowed keys", choose "User-specific keys and global key", and paste the "Public Key (PEM Format)". Click to copy this from 
+  <a href="didact://?commandId=vscode.didact.copyToClipboardCommand&text=-----BEGIN%20PUBLIC%20KEY-----%0AMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAyklcsZFn99KW77qMIs8K%0AX5EmATzIsLfwbpOG5B%2BlUMQGsp1kFwqMzSZaf0b4fuyKKBqSCpj8bqhUmUxFkjPM%0AvpIz0zduqLyBDt%2BJMZbD4E6Rxg797WnCHuVVgOK74dYf4KdfiJ0OUua6frqavFL%2B%0AmhvNp6uTCfmLBfWVqnCKjht80zib7n%2BM00Y7zht6ZDTrxcGMH2qtqoYSI77YZGxg%0Andw7SLcehicHVzST7KzepkQvAYMexM%2FeiLeaDj6ymfwflvJHH8J3i9LfBJZ0%2FmUa%0AXbgOSn7VCv5rZB6gpihsic4Gs2nn9I7cxOQS%2FXLmaVfgsGiIpUfNA7cby%2FQ7bf%2Fw%0AuBy6beoI0a5nxr4z8MdrK2e1HXhOnG8TXSFQAulGMOPP6exZaeiWk%2B%2F3xTRFjrsP%0AB8%2FA5iDtvF0BvL6OY868HwnT%2Bvitvtq4JdH1gAY8An0Unh%2BvnZqPhl9jWOjycXQJ%0AHWo8g3P1uqgJL0dkHfBDHObfYTZuiEFjbJgAO3MLesbX7mTSkva5ZA7%2Fo5awKbY7%0AVEgA0p1sSgFxEdYlZKAyra3bAL4iQ9j8B%2F3kPyQDMfYB4lZwV7Qdp%2BiAho7UjYaB%0AbQds3PxeeEmDyI0a2qa6wrxfJllDDGW9b2eGnlZvXZunt57JLHLcJ32YAEYjEm7W%0AowXAMbm9fMi6X5aEyVbqI4cCAwEAAQ%3D%3D%0A-----END%20PUBLIC%20KEY-----%0A">here</a></li><br>
   <li>Click "Save". We've now completed the Authentication setup! </li><br>
   <li>Let's get the credentials by configuring the application </li><br>
 </ol>

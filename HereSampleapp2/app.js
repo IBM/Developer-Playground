@@ -1,6 +1,6 @@
 const ejs = require('ejs');
 const express = require('express');
-const {addrgeocode,liststores,revaddrgeocode,getstations,getdepartures,displaydeparture} = require('./services/service')
+const {addrgeocode,revaddrgeocode,getstations,getdepartures,displaydeparture} = require('./services/service')
 
 
 var app = express();
@@ -32,19 +32,6 @@ class Server {
       let q = request.query.query;
 
       addrgeocode(q).then((res)=>{
-        response.json(res);
-      }).catch((e) => {
-        response.end({result: "fail"})
-        console.log("Error : ",e)
-      })
-
-    });
-
-    this.app.get("/liststores", function (request, response) {
-
-      let q = request.query.query;
-
-      liststores(q).then((res)=>{
         response.json(res);
       }).catch((e) => {
         response.end({result: "fail"})

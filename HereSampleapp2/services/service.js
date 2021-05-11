@@ -1,10 +1,11 @@
 const request = require('request');
-// const NodeCache = require("node-cache");
-// const myCache = new NodeCache();
 const OAuth = require('oauth-1.0a')
 const crypto = require('crypto'); 
 require('dotenv').config()
 
+/* 
+This function generates the Bearer Token Required for Authentication while making API calls
+*/
 function generateToken() {
   return new Promise(resolve => {
   const oauth = OAuth({
@@ -45,6 +46,11 @@ function generateToken() {
 });
 }
 
+
+/* 
+This corresponds to the UI function: "Area -> Coordinates" under Location Details section
+Refer: https://developer.ibm.com/apis/catalog/heremaps--geocoding-and-search-api-v7/api/API--heremaps--geocoding-and-search-api-v7#get-931594696
+*/
   exports.addrgeocode = function (query= "") {
 
     return new Promise((resolve, reject) => {
@@ -104,113 +110,64 @@ function generateToken() {
     });
   }
 
-  exports.liststores = function (query= "") {
 
-    return new Promise((resolve, reject) => {
-
-      generateToken().then((authtoken) => {
-
-        let options = {
-          method: 'GET',
-          url: 'https://geocode.search.hereapi.com/v1/geocode',
-          qs:{
-            q: query
-          },
-          headers: {
-            'Authorization': authtoken
-          }
-        };
-        
-        var addr_details = {};
-        var final_addr = {};
-        var arr_addr = [];
-
-        request(options, function (error, response) {
-          if (error) reject(error);
-          const jsondt5 = JSON.parse(response.body);
-
-          if(jsondt5["items"] === undefined){
-            console.log("No results");
-            final_addr = {};
-            resolve(final_addr);
-          }
-          else{
-        
-          for(var i = 0; i<jsondt5["items"].length;i++){
-                addr_details["title"] = jsondt5["items"][i]["title"];
-                addr_details["address"] = jsondt5["items"][i]["address"]["label"];
-                arr_addr.push(jsondt5["items"][i]["position"]["lat"])
-                arr_addr.push(jsondt5["items"][i]["position"]["lng"])
-                addr_details["position"] = arr_addr;
-                arr_addr = [];
-                final_addr[i] = addr_details;
-                addr_details = {};
-              }
-              resolve(final_addr);
-            }
-        });
-        
-
-      })
-
-    });
-  }
-
+/*
+This corresponds to the UI function: "Coordinates -> Area" under Location Details section
+Refer: https://developer.ibm.com/apis/catalog/heremaps--geocoding-and-search-api-v7/api/API--heremaps--geocoding-and-search-api-v7#get410761011
+*/
   exports.revaddrgeocode = function (location= "") {
 
-    return new Promise((resolve, reject) => {
+      return new Promise((resolve, reject) => {
 
-      generateToken().then((authtoken) => {
+        generateToken().then((authtoken) => {
 
-        let options = {
-          method: 'GET',
-          url: 'https://revgeocode.search.hereapi.com/v1/revgeocode',
-          qs: {
-            at: location,
-          },
-          headers: {
-            'Authorization': authtoken
-          }
-        };
-        
-        var closest_addr = {};
-        var temp0 = [];
+          let options = {
+            method: 'GET',
+            url: 'https://revgeocode.search.hereapi.com/v1/revgeocode',
+            qs: {
+              at: location,
+            },
+            headers: {
+              'Authorization': authtoken
+            }
+          };
+          
+          var closest_addr = {};
+          var temp0 = [];
 
-        request(options, function (error, response) {
-          if (error) reject (error);
-        
-          const jsondt6 = JSON.parse(response.body);
+          request(options, function (error, response) {
+            if (error) reject (error);
+          
+            const jsondt6 = JSON.parse(response.body);
 
-          if(jsondt6["items"] === undefined){
-            console.log("No results");
-            closest_addr = {};
-            resolve(closest_addr);
-          }
-          else{
-            closest_addr["address"] = jsondt6["items"][0]["address"]["label"];
-            temp0.push(jsondt6["items"][0]["position"]["lat"])
-            temp0.push(jsondt6["items"][0]["position"]["lng"])
-            closest_addr["position"] = temp0;
-            temp0 = [];
-            closest_addr["distance"] = jsondt6["items"][0]["distance"];
-            // temp0.push(jsondt6["items"][0]["mapView"]["west"])
-            // temp0.push(jsondt6["items"][0]["mapView"]["south"])
-            // temp0.push(jsondt6["items"][0]["mapView"]["east"])
-            // temp0.push(jsondt6["items"][0]["mapView"]["north"])
-            // closest_addr["mapview"] = temp0;
-            // temp0 = [];
-        
-            resolve(closest_addr);
+            if(jsondt6["items"] === undefined){
+              console.log("No results");
+              closest_addr = {};
+              resolve(closest_addr);
+            }
+            else{
+              closest_addr["address"] = jsondt6["items"][0]["address"]["label"];
+              temp0.push(jsondt6["items"][0]["position"]["lat"])
+              temp0.push(jsondt6["items"][0]["position"]["lng"])
+              closest_addr["position"] = temp0;
+              temp0 = [];
+              closest_addr["distance"] = jsondt6["items"][0]["distance"];        
+              resolve(closest_addr);
 
-          }
-        });
-        
+            }
+          });
+          
 
-      })
+        })
 
-    });
+      });
   }
 
+
+/*
+This corresponds to the UI function: "Transit Stations Near You" under Public Transit Services section
+Refer: https://developer.ibm.com/apis/catalog/heremaps--here-public-transit-api/api/API--heremaps--here-public-transit-api#getStations
+*/
   exports.getstations = function (location= "") {
 
     return new Promise((resolve, reject) => {
@@ -265,8 +222,13 @@ function generateToken() {
 
     });
   });
-}
+  }
 
+
+/*
+These correspond to the UI function: "Next Departures From Now" under Public Transit Services section
+Refer: https://developer.ibm.com/apis/catalog/heremaps--here-public-transit-api/api/API--heremaps--here-public-transit-api#getDepartures
+*/
   exports.getdepartures = function (location= "") {
 
   return new Promise((resolve, reject) => {
@@ -301,7 +263,6 @@ function generateToken() {
       
         for(var i = 0; i < dpjsondata["boards"].length; i++){
       
-          //dep_details["id"] = dpjsondata["boards"][i]["place"]["id"];
           dep_details["name"] = dpjsondata["boards"][i]["place"]["name"];
           temp.push(dpjsondata["boards"][i]["place"]["location"]["lat"])
           temp.push(dpjsondata["boards"][i]["place"]["location"]["lng"])
@@ -318,7 +279,7 @@ function generateToken() {
       });
   });
 });
-}
+  }
 
   exports.displaydeparture = function (location= "") {
 
@@ -378,4 +339,4 @@ function generateToken() {
       });
   });
 });
-}
+  }

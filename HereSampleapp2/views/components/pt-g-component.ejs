@@ -3,12 +3,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-
   <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
   <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
   <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
   <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
   <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   
      <meta http-equiv="Content-type" content="text/html;charset=UTF-8">  
@@ -120,7 +124,6 @@ function openPT(evt, api) {
   tbodyRef4 = document.getElementById('address-geocode').getElementsByClassName('tbody4')[0];
 
     
-    document.getElementById("stores").style.display = 'none';
     document.getElementById('closest-addr').style.display = 'none';
 
     document.getElementById("departures").style.display = 'none';
@@ -130,7 +133,6 @@ function openPT(evt, api) {
     document.getElementById("overlay").style.display = "none";
 
     if(JSON.stringify(result) === JSON.stringify({})){
-        //console.log("Results unavailable");
         window.alert("Results not found");
       }
 
@@ -143,80 +145,15 @@ function openPT(evt, api) {
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
-    // var cell4 = row.insertCell(3);
 
     cell1.innerHTML = val["title"];
     cell2.innerHTML = val["address"];
     cell3.innerHTML = val["position"];
-    // cell4.innerHTML = val["mapview"];
 
     }
 
   }
  }
-}
-
-  async function liststores() {
-
-    let query = document.getElementById("g1query").value;
-    let storequery = document.getElementById("squery").value;
-
-    if ((query === "") || (storequery === "")) {
-      window.alert("Required data values are missing");
-    }
-    else{
-
-    query = storequery.concat(" ").concat(query)
-    query = query.replace(" ","+"); 
-
-    //console.log("Query:",query);
-    document.getElementById("overlay").style.display = "block";
-    
-    let response = await fetch('/liststores?query=' + query);
-    let result = await response.json();
-
-    var table5 = document.getElementById("stores");
-    table5.style.display = "";
-
-    var tbodyRef5 = document.getElementById('stores').getElementsByClassName('tbody5')[0];
-    tbodyRef5.innerHTML = '';
-    tbodyRef5 = document.getElementById('stores').getElementsByClassName('tbody5')[0];
-
-    
-    document.getElementById("address-geocode").style.display = 'none';
-    document.getElementById('closest-addr').style.display = 'none';
-
-    document.getElementById("departures").style.display = 'none';
-    document.getElementById("sub-departures").style.display = 'none';
-    document.getElementById("stations").style.display = 'none';
-
-    document.getElementById("overlay").style.display = "none";
-
-    if(JSON.stringify(result) === JSON.stringify({})){
-        //console.log("Results unavailable");
-        window.alert("Results not found");
-      }
-
-
-    for (var key in result) {
-      if (result.hasOwnProperty(key)){
-        var val = result[key];
-
-      var row = tbodyRef5.insertRow();
-      var cell1 = row.insertCell(0);
-      var cell2 = row.insertCell(1);
-      var cell3 = row.insertCell(2);
-    
-
-      cell1.innerHTML = val["title"];
-      cell2.innerHTML = val["address"];
-      cell3.innerHTML = val["position"];
-      
-
-      }
-
-    }
-  }
 }
 
   async function revaddrgeocode() {
@@ -246,7 +183,6 @@ function openPT(evt, api) {
 
    
     document.getElementById("address-geocode").style.display = 'none';
-    document.getElementById("stores").style.display = 'none';
 
     document.getElementById("departures").style.display = 'none';
     document.getElementById("sub-departures").style.display = 'none';
@@ -256,7 +192,6 @@ function openPT(evt, api) {
     document.getElementById("overlay").style.display = "none";
 
     if(JSON.stringify(result) === JSON.stringify({})){
-        //console.log("Results unavailable");
         window.alert("Results not found");
       }
 
@@ -265,37 +200,13 @@ function openPT(evt, api) {
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
-        // var cell4 = row.insertCell(3);
 
         cell1.innerHTML = val["address"];
         cell2.innerHTML = val["position"];
         cell3.innerHTML = val["distance"];
-        // cell4.innerHTML = val["mapview"];
-
 }
 
 }
-
-//   async function getcoordinates(loc) {
-
-//   let query = loc;
-//   query = query.replace(" ","+"); 
-
-//   let response = await fetch('/addrgeocode?query=' + query);
-//   let result = await response.json();
-
-
-//   if(JSON.stringify(result) === JSON.stringify({})){
-//       window.alert("Results not found");
-//     }
-
-//   else{
-//     console.log("RESULT: ", result[0]["position"].join());
-//     return(result[0]["position"].join());
-//   }
-
-// }
-
 
 
   async function getstations() {
@@ -327,13 +238,10 @@ function openPT(evt, api) {
 
     document.getElementById('closest-addr').style.display = 'none';
     document.getElementById("address-geocode").style.display = 'none';
-    document.getElementById("stores").style.display = 'none';
-
 
     document.getElementById("overlay").style.display = "none";
 
     if(JSON.stringify(result) === JSON.stringify({})){
-        //console.log("Results unavailable");
         window.alert("Results not found");
         document.getElementById("stations").style.display = 'none';
     }
@@ -358,9 +266,6 @@ function openPT(evt, api) {
 
   async function getdepartures() {
 
-      // let lat = document.getElementById("tlatitude1").value;
-      // let long = document.getElementById("tlongitude1").value;
-
       let query = document.getElementById("tarea").value;
       let location;
 
@@ -381,10 +286,10 @@ function openPT(evt, api) {
 
       let radius = document.getElementById("tradius").value;
 
-      //if ((lat === "") || (long === "") || (radius === "")) {
-        if((query === "") ||  (radius === "")){
-      window.alert("Required data values are missing");
+      if((query === "") ||  (radius === "")){
+        window.alert("Required data values are missing");
       }
+
       else{
 
       location = location.concat(";r=").concat(radius);
@@ -404,18 +309,14 @@ function openPT(evt, api) {
 
       document.getElementById("stations").style.display = 'none';
       document.getElementById("sub-departures").style.display = 'none';
-
       document.getElementById('closest-addr').style.display = 'none';
       document.getElementById("address-geocode").style.display = 'none';
-      document.getElementById("stores").style.display = 'none';
-
 
       document.getElementById("overlay").style.display = "none";
 
 
 
       if(JSON.stringify(result) === JSON.stringify({})){
-          //console.log("Results unavailable");
           document.getElementById("departures").style.display = 'none';
           document.getElementById("sub-departures").style.display = 'none';
           window.alert("Results not found");
@@ -439,9 +340,6 @@ function openPT(evt, api) {
 
   async function displaydeparture(depvalue){
 
-  // let lat = document.getElementById("tlatitude1").value;
-  // let long = document.getElementById("tlongitude1").value;
-
     let query = document.getElementById("tarea").value;
     let location;
 
@@ -459,46 +357,45 @@ function openPT(evt, api) {
          location = result[0]["position"].join();
       }
 
-  let radius = document.getElementById("tradius").value;
+      let radius = document.getElementById("tradius").value;
 
-  location = location.concat(";r=").concat(radius);
+      location = location.concat(";r=").concat(radius);
 
-  document.getElementById("overlay").style.display = "block";
+      document.getElementById("overlay").style.display = "block";
 
-  response = await fetch('/displaydeparture?location='+ location);
-  result = await response.json();
+      response = await fetch('/displaydeparture?location='+ location);
+      result = await response.json();
 
-  if (result[depvalue] === undefined){
-      document.getElementById("sub-departures").style.display = 'none';
-    }
-    else{
+      if (result[depvalue] === undefined){
+          document.getElementById("sub-departures").style.display = 'none';
+        }
+      else{
 
-  var subtable1 = document.getElementById("sub-departures");
-  subtable1.style.display = "";
+        var subtable1 = document.getElementById("sub-departures");
+        subtable1.style.display = "";
 
-  var subtbodyRef1 = document.getElementById('sub-departures').getElementsByClassName('subptbody1')[0];
-  subtbodyRef1.innerHTML = '';
-  subtbodyRef1 = document.getElementById('sub-departures').getElementsByClassName('subptbody1')[0];
+        var subtbodyRef1 = document.getElementById('sub-departures').getElementsByClassName('subptbody1')[0];
+        subtbodyRef1.innerHTML = '';
+        subtbodyRef1 = document.getElementById('sub-departures').getElementsByClassName('subptbody1')[0];
 
-  document.getElementById("stations").style.display = 'none';
-  document.getElementById("overlay").style.display = "none";
+        document.getElementById("stations").style.display = 'none';
+        document.getElementById("overlay").style.display = "none";
 
-  document.getElementById('closest-addr').style.display = 'none';  
-  document.getElementById("address-geocode").style.display = 'none';
-  document.getElementById("stores").style.display = 'none';
-
+        document.getElementById('closest-addr').style.display = 'none';  
+        document.getElementById("address-geocode").style.display = 'none';
 
 
-  for(var i=0; i < result[depvalue]["departure"].length; i++){
-      var srow = subtbodyRef1.insertRow();
-      var scell1 = srow.insertCell(0);
-      var scell2 = srow.insertCell(1);
-      var scell3 = srow.insertCell(2);
-      scell1.innerHTML = result[depvalue]["departure"][i]["departure time"] ;
-      scell2.innerHTML = result[depvalue]["departure"][i]["departure transport"] ;
-      scell3.innerHTML = result[depvalue]["departure"][i]["departure point"] ;
-  }
-}
+
+        for(var i=0; i < result[depvalue]["departure"].length; i++){
+            var srow = subtbodyRef1.insertRow();
+            var scell1 = srow.insertCell(0);
+            var scell2 = srow.insertCell(1);
+            var scell3 = srow.insertCell(2);
+            scell1.innerHTML = result[depvalue]["departure"][i]["departure time"] ;
+            scell2.innerHTML = result[depvalue]["departure"][i]["departure transport"] ;
+            scell3.innerHTML = result[depvalue]["departure"][i]["departure point"] ;
+        }
+      }
 
 }
 
@@ -514,7 +411,8 @@ function openPT(evt, api) {
    <!-- Geocoding -->
     <span style="color: rgb(21, 21, 21);"> Location Details </span><hr style="border-top: 1px solid rgb(21, 21, 21);"><br>
 
-    <div class="tab">
+    <div class="tab" >
+
       <button class="tablinks" onclick="openGC(event, 'GCArea')"> Area &rarr; Coordinates </button>
       <button class="tablinks" onclick="openGC(event, 'RGCArea')">Coordinates &rarr; Area</button>
     </div>
@@ -534,7 +432,7 @@ function openPT(evt, api) {
       </div>
 
       <br> 
-      <table class = address-geocode id = "address-geocode" style="width:50%;display:none;">
+      <table class = "table table-striped" id = "address-geocode" style="width:50%;display:none;">
         <thead>
                   <th>Name</th>
                   <th>Address</th>
@@ -549,7 +447,7 @@ function openPT(evt, api) {
       </table>
 
 
-      <table class = closest-addr id = "closest-addr" style="width:50%;display:none;">
+      <table class = "table table-striped" id = "closest-addr" style="width:50%;display:none;">
         <thead>
                   <th>Address</th>
                   <th>Position</th>
@@ -583,15 +481,12 @@ function openPT(evt, api) {
      </div>
 
      <div id="PTDepartures" class="tabcontent">
-        <!-- <input type="text" name="tlatitude1" id="tlatitude1" class="field-divided" placeholder="Latitude" size=10 required /> 
-        <input type="text" name="tlongitude1" id="tlongitude1" class="field-divided" placeholder="Longitude" size=10 required /> <br><br>
-         -->
          <input type="text" name="tarea" id="tarea" class="field-divided" placeholder="Area" size=10 required /> 
         <input type="text" name="tradius" id="tradius" class="field-divided" placeholder="Radius" size=10 required /> <br><br>
         <button type = "submit" onclick="getdepartures(); displaydeparture()">Get Closest Departures </button> 
      </div>
 
-     <table class = stations id = "stations" style="width:50%;display:none;">
+     <table class = "table table-striped" id = "stations" style="width:50%;display:none;">
       <thead>
                 <th>ID</th>
                 <th>Name</th>
@@ -604,7 +499,7 @@ function openPT(evt, api) {
                         
     </table>
   
-    <table class = departures id = "departures" style="width:50%;display:none;">
+    <table class = "table table-striped" id = "departures" style="width:50%;display:none;">
       <thead>
                 <th>Name</th>
                 <th>Location</th>
@@ -617,7 +512,7 @@ function openPT(evt, api) {
                         
     </table>
 <br>
-    <table class = sub-departures id = "sub-departures" style="width:50%;display:none;">
+    <table class = "table table-striped" id = "sub-departures" style="width:50%;display:none;">
       <thead>
           <th>Departure Time</th>
           <th>Departure Transport</th>
@@ -630,19 +525,6 @@ function openPT(evt, api) {
       </tbody>
 
   </table>
-
-      <table class = stores id = "stores" style="width:50%;display:none;">
-        <thead>
-                  <th>Name</th>
-                  <th>Address</th>
-                  <th>Location</th>
-        </thead>
-
-        <tbody class="tbody5">
-
-        </tbody>
-                          
-      </table>
 
     <br><br>
     <br>
@@ -693,6 +575,9 @@ function openPT(evt, api) {
 
 <script>
 
+/*This function gets the From Area and To Area as input from the UI 
+ and then returns the coordinates of the 'From' and 'To' input values
+*/
 async function consolidate(from,to,mode){
   
   let pta,ptb,ptt;
@@ -734,8 +619,7 @@ async function consolidate(from,to,mode){
 
 function startcalculating(pa,pb,pt){
 
-console.log("IN HERE");
-console.log("PA,PB,PT:", pa,pb,pt);
+document.getElementById("overlay").style.display = "block";
 
 if(pt === "pubtransport"){
   function calculateRouteFromAtoB (platform) {
@@ -753,6 +637,7 @@ router.getRoutes(
   onError
 );
 }
+
 /**
 * This function will be called once the Routing REST API provides a response
 * @param  {Object} result          A JSONP object representing the calculated route
@@ -1172,7 +1057,7 @@ else{
     return  Math.floor(this / 60)  +' minutes '+ (this % 60)  + ' seconds.';
   }
   
-
+  document.getElementById("overlay").style.display = "none";
   calculateRouteFromAtoB (platform);
 }
 

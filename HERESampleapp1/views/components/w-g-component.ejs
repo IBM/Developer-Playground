@@ -1,3 +1,8 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <script>
 
 function openGC(evt, api) {
@@ -77,7 +82,6 @@ function openW(evt, api) {
     document.getElementById("overlay").style.display = "none";
 
     if(JSON.stringify(result) === JSON.stringify({})){
-      //console.log("Results unavailable");
       window.alert("Results not found");
       document.getElementById('week-forecast-table').style.display = 'none'
     }
@@ -155,7 +159,6 @@ function openW(evt, api) {
     document.getElementById("overlay").style.display = "none";
 
     if(JSON.stringify(result) === JSON.stringify({})){
-      //console.log("Results unavailable");
       window.alert("Results not found");
     }
 
@@ -179,13 +182,6 @@ function openW(evt, api) {
       }
     
     }
-
-  
-  
-
-
-
-
  
   }
 }
@@ -222,15 +218,11 @@ function openW(evt, api) {
     document.getElementById("overlay").style.display = "none";
 
     if(JSON.stringify(result) === JSON.stringify({})){
-      //console.log("Results unavailable");
       window.alert("Results not found");
       document.getElementById("alerts-table").style.display = 'none';
     }
 
-
       var val = result;
-
-      console.log("VALUE ALERT  : ",val)
       var row = tbody.insertRow();
       var cell1 = row.insertCell(0);
       var cell2 = row.insertCell(1);
@@ -280,7 +272,6 @@ function openW(evt, api) {
     document.getElementById("overlay").style.display = "none";
 
     if(JSON.stringify(result) === JSON.stringify({})){
-        //console.log("Results unavailable");
         window.alert("Results not found");
         document.getElementById("astro-table").style.display = 'none';
       }
@@ -345,7 +336,6 @@ function openW(evt, api) {
     document.getElementById("overlay").style.display = "none";
 
     if(JSON.stringify(result) === JSON.stringify({})){
-        //console.log("Results unavailable");
         window.alert("Results not found");
         document.getElementById("categorycha").style.display = 'none';
       }
@@ -389,8 +379,6 @@ function openW(evt, api) {
   let response = await fetch('/addrgeocode?query=' + query);
   let result = await response.json();
 
-  // console.log("RES: ", response);
-
   var table4 = document.getElementById("address-geocode");
   table4.style.display = "";
 
@@ -410,7 +398,6 @@ function openW(evt, api) {
     document.getElementById("overlay").style.display = "none";
 
     if(JSON.stringify(result) === JSON.stringify({})){
-        //console.log("Results unavailable");
         window.alert("Results not found");
         document.getElementById("address-geocode").style.display = 'none';
 
@@ -449,7 +436,6 @@ function openW(evt, api) {
     query = storequery.concat(" ").concat(query)
     query = query.replace(" ","+"); 
 
-    //console.log("Query:",query);
     document.getElementById("overlay").style.display = "block";
     
     let response = await fetch('/liststores?query=' + query);
@@ -474,7 +460,6 @@ function openW(evt, api) {
     document.getElementById("overlay").style.display = "none";
 
     if(JSON.stringify(result) === JSON.stringify({})){
-        //console.log("Results unavailable");
         window.alert("Results not found");
         document.getElementById("stores").style.display = 'none';
       }
@@ -538,7 +523,6 @@ function openW(evt, api) {
     document.getElementById("overlay").style.display = "none";
 
     if(JSON.stringify(result) === JSON.stringify({})){
-        //console.log("Results unavailable");
         window.alert("Results not found");
         document.getElementById('closest-addr').style.display = 'none';
       }
@@ -548,12 +532,10 @@ function openW(evt, api) {
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
-        // var cell4 = row.insertCell(3);
 
         cell1.innerHTML = val["address"];
         cell2.innerHTML = val["position"];
         cell3.innerHTML = val["distance"];
-        // cell4.innerHTML = val["mapview"];
 
 }
 
@@ -593,7 +575,7 @@ function openW(evt, api) {
       </div>
 
     <br><br>
-    <table class = address-geocode id = "address-geocode" style="width:50%;display:none;">
+    <table class = "table table-striped" id = "address-geocode" style="width:50%;display:none;">
       <thead>
                 <th>Name</th>
                 <th>Address</th>
@@ -607,7 +589,7 @@ function openW(evt, api) {
                         
     </table>
 
-    <table class = closest-addr id = "closest-addr" style="width:50%;display:none;">
+    <table class = "table table-striped" id = "closest-addr" style="width:50%;display:none;">
       <thead>
                 <th>Address</th>
                 <th>Position</th>
@@ -650,7 +632,7 @@ function openW(evt, api) {
       <button type = "submit" onclick="liststores()"> Get All Places Near You </button> 
     </div>
 
-    <table class = categorycha id = "categorycha" style="width:50%;display:none;">
+    <table class = "table table-striped" id = "categorycha" style="width:50%;display:none;">
       <thead>
                 <th>Name</th>
                 <th>Address</th>
@@ -664,7 +646,7 @@ function openW(evt, api) {
                         
     </table>
 
-    <table class = stores id = "stores" style="width:50%;display:none;">
+    <table class = "table table-striped" id = "stores" style="width:50%;display:none;">
       <thead>
                 <th>Name</th>
                 <th>Address</th>
@@ -710,7 +692,7 @@ function openW(evt, api) {
         <br>
 
 
-    <table class = week-forecast-table id = "week-forecast-table" style="width:50%;display:none;">
+    <table class = "table table-striped" id = "week-forecast-table" style="width:50%;display:none;">
       <thead>
                 <th>Day</th>
                 <th>Description</th>
@@ -724,7 +706,7 @@ function openW(evt, api) {
                         
     </table>
   
-    <table class = alerts-table id = "alerts-table" style="width:50%;display:none;">
+    <table class = "table table-striped" id = "alerts-table" style="width:50%;display:none;">
       <thead>
                 <th>Country</th>
                 <th>State</th>
@@ -739,7 +721,7 @@ function openW(evt, api) {
                         
     </table>
   
-    <table class = astro-table id = "astro-table" style="width:50%;display:none;">
+    <table class = "table table-striped" id = "astro-table" style="width:50%;display:none;">
       <thead>
                 <th>Sun Rise</th>
                 <th>Sun Set</th>

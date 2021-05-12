@@ -1,3 +1,8 @@
+/*****  
+This file consists of all the API calls made to the HERE Server
+If you'd like to quickly get started on customizing the application, head over to views -> components -> w-g-component.js
+*****/
+
 const request = require('request');
 const OAuth = require('oauth-1.0a')
 const crypto = require('crypto'); 
@@ -145,12 +150,6 @@ Refer: https://developer.ibm.com/apis/catalog/heremaps--geocoding-and-search-api
           closest_addr["position"] = temp0;
           temp0 = [];
           closest_addr["distance"] = jsondt6["items"][0]["distance"];
-          // temp0.push(jsondt6["items"][0]["mapView"]["west"])
-          // temp0.push(jsondt6["items"][0]["mapView"]["south"])
-          // temp0.push(jsondt6["items"][0]["mapView"]["east"])
-          // temp0.push(jsondt6["items"][0]["mapView"]["north"])
-          // closest_addr["mapview"] = temp0;
-          // temp0 = [];
       
           resolve(closest_addr);
 

@@ -81,10 +81,12 @@ Intended Audience IBMers, Business Partners, and IBM clients via seller. Prerequ
 <br/><br/>
 
 <li>Open My Sterling Notebook</li><br/>
-<a class="button is-dark is-medium" title="Open My Sterling Notebook" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=jupyter$$cd%20${CHE_PROJECTS_ROOT}/react-web-app%20%26%26%20npm%20install">Open My Sterling Notebook</a><br><br>
+<a class="button is-dark is-medium" title="Open My Sterling Notebook" href="didact://?commandId=file-search.openFile&projectFilePath= playground-jupyter/examples/Sterling/IH-Demo-Tutorials-Notebook.ipynb">Open My Sterling Notebook</a><br><br>
 
+ playground-jupyter/examples/sarcasmDetection.ipynb 
+ 
 <li>Open My Sample Notebook</li><br/>
-<a class="button is-dark is-medium" title="Open My Sample Notebook" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=jupyter$$cd%20${CHE_PROJECTS_ROOT}/react-web-app%20%26%26%20npm%20install">Open My Sample Notebook</a><br><br>
+<a class="button is-dark is-medium" title="Open My Sample Notebook" href="didact://?commandId=file-search.openFile&projectFilePath=playground-jupyter/examples/sarcasmDetection.ipynb">Open My Sample Notebook</a><br><br>
 
 
 </ol>

@@ -1,11 +1,11 @@
 metadata:
-  name: saas-user-and-subscription-management
+  name: ssm
 attributes:
   persistVolumes: 'false'
 components:
   - mountSources: true
     endpoints:
-      - name: access-saas-user-and-subscription-management
+      - name: access-ssm
         port: 3000
     memoryLimit: 2Gi
     type: dockerimage
@@ -17,21 +17,21 @@ components:
     type: chePlugin
 apiVersion: 1.0.0
 commands:
-  - name: Install and Run SaaS User and Subscription Management Sample App
+  - name: Install and Run SSM Sample App
     actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/saas-user-and-subscription-management'
+      - workdir: '${CHE_PROJECTS_ROOT}/ssm'
         type: exec
         command: yarn install && yarn start
         component: nodejs
-  - name: Install all required dependencies for SaaS User and Subscription Management Sample App
+  - name: Install all required dependencies for SSM Sample App
     actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/saas-user-and-subscription-management'
+      - workdir: '${CHE_PROJECTS_ROOT}/ssm'
         type: exec
         command: yarn install
         component: nodejs
-  - name: Start the SaaS User and Subscription Management Sample App
+  - name: Start the SSM Sample App
     actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/saas-user-and-subscription-management'
+      - workdir: '${CHE_PROJECTS_ROOT}/ssm'
         type: exec
         command: yarn start
         component: nodejs

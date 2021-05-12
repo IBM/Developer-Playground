@@ -1,3 +1,17 @@
+<!-- Explore!
+Task 1:
+  We already have a function that gives the coordinates of an area. 
+  Let's add a function that does the opposite! It should give the area of given coordinates
+  This would involve the Reverse Geocode API : (Refer service.js : line 115)
+  Uncomment Line 576 and restart the app. This would enable the functionality.
+Task 2:
+  Let's add a function that gets the astronomy forecast for a city
+  This would involve the Astronomy forecast API : (Refer service.js : line 386)
+  Uncomment Line 706 and restart the app. This would enable the functionality.
+-->
+
+
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -558,7 +572,8 @@ function openW(evt, api) {
 
     <div class="tab">
       <button class="tablinks" onclick="openGC(event, 'GCArea')"> Area &rarr; Coordinates </button>
-      <button class="tablinks" onclick="openGC(event, 'RGCArea')">Coordinates &rarr; Area</button>
+      <!--Uncomment the below line [Task 1]-->
+      <!-- <button class="tablinks" onclick="openGC(event, 'RGCArea')">Coordinates &rarr; Area</button> -->
     </div>
 
     <div id="GCArea" class="tabcontent">
@@ -575,6 +590,7 @@ function openW(evt, api) {
       </div>
 
     <br><br>
+    
     <table class = "table table-striped" id = "address-geocode" style="width:50%;display:none;">
       <thead>
                 <th>Name</th>
@@ -686,7 +702,8 @@ function openW(evt, api) {
     
         <input type="text" name="city" id="city" class="field-divided" placeholder="City" size=10 required /><br><br>
         <button type = "submit" onclick="getalerts()">Get Extreme Weather Warnings </button> 
-        <button type = "submit" onclick="getastroforecast()">Get Astronomy Forecast </button> 
+        <!--Uncomment the below line [Task 2]-->
+        <!-- <button type = "submit" onclick="getastroforecast()">Get Astronomy Forecast </button>  -->
     
       <br><br>
         <br>

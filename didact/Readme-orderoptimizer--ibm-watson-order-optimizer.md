@@ -76,8 +76,8 @@ ul, ol,b{
 Intended Audience IBMers, Business Partners, and IBM clients via seller. Prerequisites Review IBM Sterling Fulfillment Optimizer with Watson documentation in the IBM Knowledge Center at https://www.ibm.com/support/knowledgecenter/en/SSZMC6/landing/welcome.html</h3>
 
 
-<br/><li> Get My Jupyter Notebook.</li><br/>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=jupyter$$cd%20${CHE_PROJECTS_ROOT}%20%26%26%20git%20clone%20https://github.ibm.com/ibm-api-marketplace/playground-jupyter">Get the Code</a>
+<br/><li>Get My Jupyter Notebook.</li><br/>
+<a class="button is-dark is-medium" title="Get My Jupyter Notebook" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=jupyter$$cd%20${CHE_PROJECTS_ROOT}%20%26%26%20git%20clone%20https://github.ibm.com/ibm-api-marketplace/playground-jupyter">Get My Jupyter Notebook</a>
 <br/><br/>
 
 <li>Open My Sterling Notebook</li><br/>

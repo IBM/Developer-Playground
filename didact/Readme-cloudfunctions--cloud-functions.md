@@ -144,13 +144,10 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 </body>
 
 
-
 <span style="color:grey"><h2>3. Clone the GitHub repo for this Sample App</h2></span>
 
-<p>This Sample app needs to be cloned onto the Developer playground. It only takes a few minutes to do so.</p>
+<p>This Sample app needs to be cloned onto the Developer playground.</p>
 
-
-<p href="didact://?commandId=send">
 <a class="button is-dark is-medium" title="Get the code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs$$git+clone+https://github.ibm.com/SUMANVITA-K/LoanApp-CP">Get the code</a><br>
 
 <span style="color:grey"><h2>4.Deploy AutoAI Model</h2></span>

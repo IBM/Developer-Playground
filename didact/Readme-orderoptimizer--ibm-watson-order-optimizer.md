@@ -85,7 +85,7 @@ ul, ol,b{
 
 
 <li>Open My Sterling Notebook</li><br/>
-<a class="button is-dark is-medium" title="Open My Sterling Notebook" href="didact://?commandId=file-search.openFile&projectFilePath= playground-jupyter/examples/Sterling/IH-Demo-Tutorials-Notebook.ipynb">Open My Sterling Notebook</a><br><br>
+<a class="button is-dark is-medium" title="Open My Sterling Notebook" href="didact://?commandId=file-search.openFile&projectFilePath=playground-jupyter/examples/Sterling/IH-Demo-Tutorials-Notebook.ipynb">Open My Sterling Notebook</a><br><br>
 
  playground-jupyter/examples/sarcasmDetection.ipynb 
  

@@ -91,7 +91,7 @@ ul, ol,b{
 ​
 <body>
 
-<img src = "https://github.com/IBM/Developer-Playground/blob/master/didact/images/unnamed.jpg" width = "500" height= "500">
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/unnamed.jpg" width = "500" height= "500">
 
 
 <h2 class="title is-3 ">Cloud Pak Sample App</h2>
@@ -124,17 +124,17 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 <a class="button is-dark is-medium" title="Event Streams" href="https://cloud.ibm.com/catalog/services/event-streams">Event Streams</a><br><br>
 <p>Step 2 : After creating the instance you will be re-directed to a page as shown below.Select topic and click on create topic
  </p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/master/didact/images/Step1.jpg" width = "500" height= "500">
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/Step1.jpg" width = "750" height= "750">
 <p>Step 3 : Give your topic an appropriate name and click next</p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/master/didact/images/step2-kafka.jpg" width = "500" height= "500">
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step2-kafka.jpg" width = "750" height= "750">
 
 <p>Step 4 :Select the number of partitions and click next</p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/master/didact/images/step3-kafka.jpg" width = "500" height= "500">
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step3-kafka.jpg" width = "750" height= "750">
 
 <p>Step 5 : Choose message retention as per requirement and click on create topic.</p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/master/didact/images/step4-kafka.jpg" width = "500" height= "500">
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step4-kafka.jpg" width = "750" height= "750">
 <p>Step 6 : Now u can see the topic that you have created under the topics section.Now select service credentials section and click on new credentials.Give the credentials a name and select the role as manager. Once the credentials are created you can view it in the table. Expand the table row and make note of <b>apikey</b>,<b>kafka_brokers_sasl</b></p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/master/didact/images/step5-kafka.jpg" width = "500" height= "500">
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step5-kafka.jpg" width = "750" height= "750">
 
 <h5>2.2 Waston Machine Learning </h5>
 <p>IBM Watson Machine Learning helps data scientists and developers accelerate AI and machine learning deployment on IBM Cloud Pak for Data.With watson machine learning you can deploy AI models at scale across any cloud on an open.</p>
@@ -157,18 +157,18 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 <li>
 <p>Step 1 : Go to <a href="https://cloud.ibm.com/">IBM cloud</a> and login with your mail id. click on the Manage tab and select Access (IAM), the cloud Identity and Access Management page will be displayed.
  </p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/master/didact/images/Step1.jpg" width = "500" height= "500">
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/Step1.jpg" width = "750" height= "750">
 </li>
 <li>
 <p>Step 2 :  Click on API keys on the left panel.</p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/master/didact/images/step2.jpg" width = "500" height= "500">
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step2.jpg" width = "750" height= "750">
 </li>
 <li><p>Step 3 : In API keys, click on Create an IBM Cloud API key and give a Name and Description Accordingly as shown</p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/master/didact/images/step3.jpg" width = "500" height= "500">
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step3.jpg" width = "750" height= "750">
 </li>
 <li>
 <p>Step 4 : Once the API key is generated Successfully, copy the key and paste it in the termial.</p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/master/didact/images/step4.jpg" width = "500" height= "500">
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step4.jpg" width = "750" height= "750">
 </li>
 </ul>
 
@@ -176,14 +176,14 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 <li>
 <p>Step 1 : Go to <a href="https://dataplatform.cloud.ibm.com/">IBM CloudPak for data</a> and login with your mail id. Once you login click on view all spaces button as shown in the figure below.
  </p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/master/didact/images/step1-spaceId.png" width = "500" height= "500">
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step1-spaceId.png" width = "750" height= "750">
 </li>
 <li>
 <p>Step 2 :  Click on create deployment space.</p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/master/didact/images/step2-spaceId.png" width = "500" height= "500">
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step2-spaceId.png" width = "750" height= "750">
 </li>
 <li><p>Step 3 : Give the deployment a name and add a machine learning instance that you have earlier created.Click on create button after filling the details.</p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/master/didact/images/step3-spaceID.png" width = "500" height= "500">
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step3-spaceID.png" width = "750" height= "750">
 </li>
 <li>
 <p>Step 4 : Click on view deployement space and then select manage tab.Under this tab, copy the space GUID.</p>

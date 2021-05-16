@@ -193,7 +193,7 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 
 <a class="button is-dark is-medium" title="Build the App" href="didact://?commandId=terminal-for-python-nodejs-container:new">Open Python Terminal</a><br>
 
-<a class="button is-dark is-medium" title="Build the App" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-nodejs%20terminal%203$$cd%20${CHE_PROJECTS_ROOT}/LoanApp-CP;alias%20python='/usr/local/bin/python3.8’;python3.8%20-m%20pip%20install%20-r%20requirements.txt;python3.8%20deployNew.py">Deploy Model</a><br>
+<a class="button is-dark is-medium" title="Build the App" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-nodejs%20terminal%203$$cd%20${CHE_PROJECTS_ROOT}/LoanApp-CP;alias%20python='/usr/local/bin/python3.8';python3.8%20-m%20pip%20install%20-r%20requirements.txt;python3.8%20deployNew.py">Deploy Model</a><br>
 
 
 <span style="color:grey"><h2>5. Build the App</h2></span>

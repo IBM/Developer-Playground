@@ -224,4 +224,4 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 
 <p>Deleting deployment will help you save CUH.</p>
 
-<a class="button is-dark is-medium" title="Delete deployment" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-nodejs%20terminal%203$$python3+deleteDeploy.py">Delete deployment</a><br>
+<a class="button is-dark is-medium" title="Delete deployment" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-nodejs%20terminal%203$$python3.8+deleteDeploy.py">Delete deployment</a><br>

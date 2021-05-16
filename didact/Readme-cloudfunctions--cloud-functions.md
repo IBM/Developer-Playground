@@ -206,7 +206,7 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 
 <p>Add the sasl password value,broker list and topic name collected from the above steps in the .env file </p>
 
-<a class="button is-dark is-medium" title="Edit environment variables" href="didact://?commandId=vscode.open&projectFilePath={CHE_PROJECTS_ROOT}/LoanApp-CP/.env">Edit environment variables</a><br>
+<a class="button is-dark is-medium" title="Edit environment variables" href="didact://?commandId=vscode.open&projectFilePath=${CHE_PROJECTS_ROOT}/LoanApp-CP/.env">Edit environment variables</a><br>
 
 <span style="color:grey"><h2>7.Launch the Application</h2></span>
 

@@ -212,7 +212,7 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 
 <p>Upon launching the app,the application will start running. </p>
 
-<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs$$npm+start">Launch the Application</a><br>
+<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-nodejs%20terminal%203$$npm+start">Launch the Application</a><br>
 
 <!-- <span style="color:grey"><h2>7. Explore the Code.</h2></span>
 
@@ -224,4 +224,4 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 
 <p>Deleting deployment will help you save CUH.</p>
 
-<a class="button is-dark is-medium" title="Delete deployment" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=Python$$python3+deleteDeploy.py">Delete deployment</a><br>
+<a class="button is-dark is-medium" title="Delete deployment" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-nodejs%20terminal%203$$python3+deleteDeploy.py">Delete deployment</a><br>

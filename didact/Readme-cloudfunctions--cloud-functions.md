@@ -199,14 +199,14 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 <span style="color:grey"><h2>5. Build the App</h2></span>
 
 <p> Build the application to explore it's functionalities within the given terminal.</p>
-<a class="button is-dark is-medium" title="Build the App" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs$$cd%20${CHE_PROJECTS_ROOT}/LoanApp-CP;npm+install">Build the App</a><br>
+<a class="button is-dark is-medium" title="Build the App" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-nodejs%20terminal%203$$cd%20${CHE_PROJECTS_ROOT}/LoanApp-CP;npm%20install">Build the App</a><br>
 
 <span style="color:grey"><h4>6.Adding credentials to the App</h4></span>
 
 
 <p>Add the sasl password value,broker list and topic name collected from the above steps in the .env file </p>
 
-<a class="button is-dark is-medium" title="Edit environment variables" href="didact://?commandId=vscode.open&projectFilePath=./projects/LoanApp-CP/.env">Edit environment variables</a><br>
+<a class="button is-dark is-medium" title="Edit environment variables" href="didact://?commandId=vscode.open&projectFilePath={CHE_PROJECTS_ROOT}/LoanApp-CP/.env">Edit environment variables</a><br>
 
 <span style="color:grey"><h2>7.Launch the Application</h2></span>
 

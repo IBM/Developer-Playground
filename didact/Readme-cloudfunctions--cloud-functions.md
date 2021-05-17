@@ -193,7 +193,7 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 
 <a class="button is-dark is-medium" title="Build the App" href="didact://?commandId=terminal-for-python-nodejs-container:new">Open Python Terminal</a><br>
 
-<a class="button is-dark is-medium" title="Build the App" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-nodejs%20terminal%203$$cd%20${CHE_PROJECTS_ROOT}/LoanApp-CP;alias%20python='/usr/local/bin/python3.8';python3.8%20-m%20pip%20install%20-r%20requirements.txt;python3.8%20deployNew.py">Deploy Model</a><br>
+<a class="button is-dark is-medium" title="Build the App" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-nodejs%20terminal%203$$cd%20${CHE_PROJECTS_ROOT}/LoanApp-CP;alias%20python='/usr/local/bin/python3.8';python3.8%20-m%20pip%20install%20-r%20requirements.txt;python3.8%20DeployModel/deployMLModel.py">Deploy Model</a><br>
 
 
 <span style="color:grey"><h2>5. Build the App</h2></span>
@@ -206,7 +206,7 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 
 <p>Add the sasl password value,broker list and topic name collected from the above steps in the .env file </p>
 
-<a class="button is-dark is-medium" title="Edit environment variables" href="didact://?commandId=vscode.open&projectFilePath=${CHE_PROJECTS_ROOT}/LoanApp-CP/.env">Edit environment variables</a><br>
+<a class="button is-dark is-medium" title="Edit environment variables" href="didact://?commandId=vscode.open&projectFilePath=LoanApp-CP/.env">Edit environment variables</a><br>
 
 <span style="color:grey"><h2>7.Launch the Application</h2></span>
 
@@ -224,4 +224,4 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 
 <p>Deleting deployment will help you save CUH.</p>
 
-<a class="button is-dark is-medium" title="Delete deployment" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-nodejs%20terminal%203$$python3.8+deleteDeploy.py">Delete deployment</a><br>
+<a class="button is-dark is-medium" title="Delete deployment" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-nodejs%20terminal%203$$python3.8%20DeleteDeploy/deleteDeploy.py">Delete deployment</a><br>

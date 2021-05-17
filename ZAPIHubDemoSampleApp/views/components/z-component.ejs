@@ -1,0 +1,128 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+
+async function getAtmLocation(){
+
+  let zipcode = document.getElementById('zipcode').value;
+  if ((zipcode === "")) {
+  window.alert("Required data value is missing");
+  }
+  else{
+  document.getElementById("overlay").style.display = "block";
+
+  let response = await fetch('/getatmlocation?zipcode=' + zipcode);
+  let result = await response.json();
+
+    var table0 = document.getElementById("atm-table");
+    table0.style.display = "";
+
+    var tbodyRef0 = document.getElementById('atm-table').getElementsByClassName('tbody0')[0];
+    tbodyRef0.innerHTML = '';
+    tbodyRef0 = document.getElementById('atm-table').getElementsByClassName('tbody0')[0];
+
+    document.getElementById("overlay").style.display = "none"
+
+    // for (var key in result) {
+    //   if (result.hasOwnProperty(key)) {
+        var val = result;
+
+        var row = tbodyRef0.insertRow();
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1); 
+        var cell3 = row.insertCell(2); 
+        var cell4 = row.insertCell(3); 
+        var cell5 = row.insertCell(4); 
+        var cell6 = row.insertCell(5); 
+
+
+        cell1.innerHTML = val["code"];
+        cell2.innerHTML = val["name"];
+        cell3.innerHTML = val["city"];
+        cell4.innerHTML = val["landmark"];
+        cell5.innerHTML = val["zipcode"];
+        cell6.innerHTML = val["location"];
+
+      //}
+    //}
+    }
+}
+
+
+async function calcLoanPayable(){
+
+
+let emi = document.getElementById('emi').value;
+let tenure = document.getElementById('tenure').value;
+
+if ((emi === "") || (tenure === "")) {
+  window.alert("Required data value is missing");
+  }
+else {
+document.getElementById("overlay").style.display = "block";
+
+let response = await fetch('/calcloanpayable?emi=' + emi + '&tenure=' + tenure);
+let result = await response.json();
+
+
+document.getElementById("overlay").style.display = "none";
+document.getElementById("atm-table").style.display = "none";
+
+document.getElementById("loan-detail").innerHTML = "Total Liability: " + " " + result;    
+}
+}
+
+</script>
+
+
+<div id="overlay" style="display: none">
+  <div class="loading" id="loading"></div>
+</div>
+
+
+<div id="z-apihubdemo">
+  <span style="color: rgb(21, 21, 21);"> ATM </span> <hr style="border-top: 1px solid rgb(21, 21, 21);"><br>
+
+  <input type="text" name="zipcode" id="zipcode" class="field-divided" placeholder="Enter Zipcode" size=10 required /> <br><br>
+  <button type="submit" onclick="getAtmLocation()">Get Bank ATMs in the Area</button>
+
+  <br>
+  <br>
+
+  <table class = "table table-striped" id="atm-table" style="width:70%;display:none;">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>City</th>
+        <th>Landmark</th>
+        <th>Zipcode</th>
+        <th>Location</th>
+      </tr>
+
+    </thead>
+
+    <tbody class="tbody0">
+
+
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+  <span style="color: rgb(21, 21, 21);"> Loan </span> <hr style="border-top: 1px solid rgb(21, 21, 21);"><br>
+
+  <input type="text" name="emi" id="emi" class="field-divided" placeholder="EMI" size=10 required /> <br> <br>
+  <input type="text" name="tenure" id="tenure" class="field-divided" placeholder="Tenure" size=10 required /> <br> <br>
+  <button type="submit" onclick="calcLoanPayable()">Calculate Loan Payable</button>
+
+  <br>
+  <br>
+
+  <p id="loan-detail"> </p>
+
+
+</div>

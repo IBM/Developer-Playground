@@ -139,7 +139,15 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 <h5>2.2 Waston Machine Learning </h5>
 <p>IBM Watson Machine Learning helps data scientists and developers accelerate AI and machine learning deployment on IBM Cloud Pak for Data.With watson machine learning you can deploy AI models at scale across any cloud on an open.</p>
 <a class="button is-dark is-medium" title="Machine Learning" href="https://dataplatform.cloud.ibm.com/data/catalog/pm-20?context=cpdaas&target=services">Machine Learning</a><br><br>
+<p>Clicking on the button will open up a page in the browser as shown below. After choosing the light plan, give the instance a name and click on the <b>create</b> button on the right panel.</p>
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/machineLearning-instance.png" width = "750" height= "750">
+
+
+<h5>2.3 Mongo DB database </h5>
 <a class="button is-dark is-medium" title="Databases for MongoDB" href="https://dataplatform.cloud.ibm.com/data/catalog/databases-for-mongodb?context=cpdaas&target=services">Databases for MongoDB</a><br>
+<p>Clicking on the button will open up a page in the browser as shown below. Give the instance a name and  click on the <b>create</b> button on the right panel.</p>
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/Mongo-instance.png" width = "750" height= "750">
+
 
 </body>
 
@@ -153,7 +161,7 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 <span style="color:grey"><h2>4.Deploy AutoAI Model</h2></span>
 
 <p>To deploy the autoAI model to deployment space the program will ask for API key and space id</p>
-<ul><h6>Steps to generate API Key</h6>
+<ul><h6>4.1 Steps to generate API Key</h6>
 <li>
 <p>Step 1 : Go to <a href="https://cloud.ibm.com/">IBM cloud</a> and login with your mail id. click on the Manage tab and select Access (IAM), the cloud Identity and Access Management page will be displayed.
  </p>
@@ -167,12 +175,12 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 <img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step3.jpg" width = "750" height= "750">
 </li>
 <li>
-<p>Step 4 : Once the API key is generated Successfully, copy the key and paste it in the termial.</p>
+<p>Step 4 : Once the API key is generated Successfully, copy the API Key as store it so that it can be used while deploying the model.</p>
 <img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step4.jpg" width = "750" height= "750">
 </li>
 </ul>
 
-<ul><h6>Steps to generate deployment space</h6>
+<ul><h6>4.2 Steps to generate deployment space</h6>
 <li>
 <p>Step 1 : Go to <a href="https://dataplatform.cloud.ibm.com/">IBM CloudPak for data</a> and login with your mail id. Once you login click on view all spaces button as shown in the figure below.
  </p>
@@ -182,7 +190,7 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 <p>Step 2 :  Click on create deployment space.</p>
 <img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step2-spaceId.png" width = "750" height= "750">
 </li>
-<li><p>Step 3 : Give the deployment a name and add a machine learning instance that you have earlier created.Click on create button after filling the details.</p>
+<li><p>Step 3 : Give the deployment a name and add a machine learning instance created in step2.2 .Click on create button after filling the details.</p>
 <img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step3-spaceID.png" width = "750" height= "750">
 </li>
 <li>
@@ -193,6 +201,7 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 
 <a class="button is-dark is-medium" title="Build the App" href="didact://?commandId=terminal-for-python-nodejs-container:new">Open Python Terminal</a><br>
 
+<p>Clicking on this button will first install all the libraries required to run the python based ML model. After the installation is complete you would be asked to enter the API Key and space Id that you have generated from steps 4.1 and 4.2</p>
 <a class="button is-dark is-medium" title="Build the App" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-nodejs%20terminal%203$$cd%20${CHE_PROJECTS_ROOT}/LoanApp-CP;alias%20python='/usr/local/bin/python3.8';python3.8%20-m%20pip%20install%20-r%20requirements.txt;python3.8%20DeployModel/DeployMLModel.py">Deploy Model</a><br>
 
 
@@ -222,6 +231,6 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 
 <span style="color:grey"><h2>8.Delete Deployment</h2></span>
 
-<p>Deleting deployment will help you save CUH.</p>
+<p>Deleting deployment will help you save Capacity Unit Hours(CUH).</p>
 
 <a class="button is-dark is-medium" title="Delete deployment" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-nodejs%20terminal%203$$python3.8%20DeleteDeploy/deleteDeploy.py">Delete deployment</a><br>

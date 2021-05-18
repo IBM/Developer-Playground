@@ -125,7 +125,7 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 <p>Step 2 : After creating the instance you will be re-directed to a page as shown below.Select topic and click on create topic
  </p>
 <img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/Step1.jpg" width = "750" height= "750">
-<p>Step 3 : Give your topic an appropriate name and click next</p>
+<p>Step 3 : Give your topic an appropriate name and click next. Make sure to remember the topic name as it will be used in step 6.</p>
 <img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step2-kafka.jpg" width = "750" height= "750">
 
 <p>Step 4 :Select the number of partitions and click next</p>
@@ -223,6 +223,7 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 
 <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-nodejs%20terminal%203$$npm+start">Launch the Application</a><br>
 
+
 <!-- <span style="color:grey"><h2>7. Explore the Code.</h2></span>
 
 <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=workbench.view.explorer">Explore the Code</a><br><br>
@@ -230,6 +231,10 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 <p> -->
 
 <span style="color:grey"><h2>8.Delete Deployment</h2></span>
+
+<p>Before deleting the deployment,make sure to stop the application</p>
+
+<a class="button is-dark is-medium" title="Stop the application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=python-nodejs%20terminal%203">Stop Application</a><br>
 
 <p>Deleting deployment will help you save Capacity Unit Hours(CUH).</p>
 

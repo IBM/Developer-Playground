@@ -75,16 +75,12 @@ ul, ol,b{
 
 </h3>Intended Audience IBMers, Business Partners, and IBM clients via seller. Prerequisites Review IBM Sterling Fulfillment Optimizer with Watson documentation in the IBM Knowledge Center at https://www.ibm.com/support/knowledgecenter/en/SSZMC6/landing/welcome.html</h3>
 
+
 <br/><li>Configure Jupyter</li><br/>
-<a class="button is-dark is-medium" title="Configure Jupyter" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=jupyter$$cd%20/conf;npm%20install%20node-fetch;node%20trailfetch.js">Configure Jupyter</a>
+<a class="button is-dark is-medium" title="Configure Jupyter" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=jupyter$$cd%20${CHE_PROJECTS_ROOT}%20%26%26%20git%20clone%20https://github.ibm.com/ibm-api-marketplace/playground-jupyter;cd%20${CHE_PROJECTS_ROOT}/playground-jupyter/conf;npm%20install%20node-fetch;node%20trailfetch.js">Configure Jupyter</a>
 
 <li>Create New Jupyter Notebook</li><br/>
 <a class="button is-dark is-medium" title="Create New Jupyter Notebook" href="didact://?commandId=python.datascience.createnewnotebook">Create New Jupyter Notebook</a><br><br>
-
-
-<br/><li>Get My Jupyter Notebook.</li><br/>
-<a class="button is-dark is-medium" title="Get My Jupyter Notebook" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=jupyter$$cd%20${CHE_PROJECTS_ROOT}%20%26%26%20git%20clone%20https://github.ibm.com/ibm-api-marketplace/playground-jupyter">Get My Jupyter Notebook</a>
-<br/><br/>
 
 
 <li>Open My Sterling Notebook</li><br/>

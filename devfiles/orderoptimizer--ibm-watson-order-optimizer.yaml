@@ -10,6 +10,5 @@ components:
     type: chePlugin
   - id: ms-python/python/latest
     preferences:
-      python.dataScience.jupyterServerURI: 'http://169.60.204.172/user/admin/?token=74875e1c2e0e4b02bc47d280007b0a35'
       python.disableInstallationCheck: true
     type: chePlugin

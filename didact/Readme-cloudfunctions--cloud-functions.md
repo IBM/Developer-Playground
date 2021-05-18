@@ -140,13 +140,13 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 <p>IBM Watson Machine Learning helps data scientists and developers accelerate AI and machine learning deployment on IBM Cloud Pak for Data.With watson machine learning you can deploy AI models at scale across any cloud on an open.</p>
 <a class="button is-dark is-medium" title="Machine Learning" href="https://dataplatform.cloud.ibm.com/data/catalog/pm-20?context=cpdaas&target=services">Machine Learning</a><br><br>
 <p>Clicking on the button will open up a page in the browser as shown below. After choosing the light plan, give the instance a name and click on the <b>create</b> button on the right panel.</p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/bd2e464b160ce4751ec84fe1593c37a367206553/didact/images/machineLearning-instance.png" width = "750" height= "750">
+<img src = "https://github.com/IBM/Developer-Playground/raw/bd2e464b160ce4751ec84fe1593c37a367206553/didact/images/machineLearning-instance.png" width = "750" height= "750">
 
 
 <h5>2.3 Mongo DB database </h5>
 <a class="button is-dark is-medium" title="Databases for MongoDB" href="https://dataplatform.cloud.ibm.com/data/catalog/databases-for-mongodb?context=cpdaas&target=services">Databases for MongoDB</a><br>
 <p>Clicking on the button will open up a page in the browser as shown below. Give the instance a name and  click on the <b>create</b> button on the right panel.</p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/bd2e464b160ce4751ec84fe1593c37a367206553/didact/images/Mongo-instance.png" width = "750" height= "750">
+<img src = "https://github.com/IBM/Developer-Playground/raw/bd2e464b160ce4751ec84fe1593c37a367206553/didact/images/Mongo-instance.png" width = "750" height= "750">
 
 
 </body>

@@ -112,7 +112,7 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 
 <span style="color:grey"><h2> 2. Check prerequisites linked to Cloud account</h2></span>
 
-<p> This sample app requires the user to avail certain instances present in the Services catalog. The lite version of these services will suffice. The instances are listed below:</p>
+<p> This sample app requires the user to avail certain instances present in the Services catalog. The instances are listed below:</p>
 
 
 <h5>2.1 Event Streams</h5>
@@ -120,7 +120,7 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 
 <h6>Follow the below steps to create an event stream instance and connect your application data to event streams.</h6>
 
-<p>Step1: Click the below button to create event stream instance. Choose lite plan amd select the region and finally click on create button.</p>
+<p>Step1: Click the below button to create event stream instance.</p>
 <a class="button is-dark is-medium" title="Event Streams" href="https://cloud.ibm.com/catalog/services/event-streams">Event Streams</a><br><br>
 <p>Step 2 : After creating the instance you will be re-directed to a page as shown below.Select topic and click on create topic
  </p>

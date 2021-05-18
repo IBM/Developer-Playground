@@ -84,12 +84,12 @@ ul, ol,b{
 
 
 <li>Open My Sterling Notebook</li><br/>
-<a class="button is-dark is-medium" title="Open My Sterling Notebook" href="didact://?commandId=file-search.openFile&projectFilePath=playground-jupyter/examples/Sterling/IH-Demo-Tutorials-Notebook.ipynb">Open My Sterling Notebook</a><br><br>
+<a class="button is-dark is-medium" title="Open My Sterling Notebook" href="didact://?commandId=python.datascience.opennotebook&projectFilePath=/projects/playground-jupyter/examples/Sterling/IH-Demo-Tutorials-Notebook.ipynb">Open My Sterling Notebook</a><br><br>
 
  playground-jupyter/examples/sarcasmDetection.ipynb 
  
 <li>Open My Sample Notebook</li><br/>
-<a class="button is-dark is-medium" title="Open My Sample Notebook" href="didact://?commandId=file-search.openFile&projectFilePath=playground-jupyter/examples/sarcasmDetection.ipynb">Open My Sample Notebook</a><br><br>
+<a class="button is-dark is-medium" title="Open My Sample Notebook" href="didact://?commandId=python.datascience.opennotebook&projectFilePath=/projects/playground-jupyter/examples/Sterling/sarcasmDetection.ipynb">Open My Sample Notebook</a><br><br>
 
 
 </ol>

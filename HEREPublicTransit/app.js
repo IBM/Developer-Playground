@@ -87,6 +87,17 @@ class Server {
       })
 
     });
+    
+    this.app.get("/checkserver", function (request, response) {
+      
+      checkserver().then((res)=>{
+        response.json(res);
+      }).catch((e) => {
+        response.end({result: "fail"})
+        console.log("Error : ",e)
+      })
+
+    });
 
   }
 

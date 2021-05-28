@@ -1,6 +1,6 @@
 const ejs = require('ejs');
 const express = require('express');
-const {addrgeocode,revaddrgeocode,getstations,getdepartures,displaydeparture} = require('./services/service')
+const {addrgeocode,revaddrgeocode,getstations,getdepartures,displaydeparture,checkserver} = require('./services/service')
 
 
 var app = express();

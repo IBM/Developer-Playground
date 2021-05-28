@@ -211,6 +211,11 @@ function openPT(evt, api) {
 
   async function getstations() {
 
+    let response = await fetch('/checkserver');
+    let result = await response.json();
+
+    if(result === "ok"){
+
     let lat = document.getElementById("tlatitude0").value;
     let long = document.getElementById("tlongitude0").value;
 
@@ -223,8 +228,8 @@ function openPT(evt, api) {
 
     document.getElementById("overlay").style.display = "block";
 
-    let response = await fetch('/getstations?location='+ location);
-    let result = await response.json();
+    response = await fetch('/getstations?location='+ location);
+    result = await response.json();
 
     var table0 = document.getElementById("stations");
     table0.style.display = "";
@@ -262,17 +267,26 @@ function openPT(evt, api) {
         }
     }
     }
+  }
+  else{
+    window.alert("Service is currently encountering a failure");
+  }
 }
 
   async function getdepartures() {
+
+    let response = await fetch('/checkserver');
+    let result = await response.json();
+
+    if(result === "ok"){
 
       let query = document.getElementById("tarea").value;
       let location;
 
       query = query.replace(" ","+"); 
 
-      let response = await fetch('/addrgeocode?query=' + query);
-      let result = await response.json();
+      response = await fetch('/addrgeocode?query=' + query);
+      result = await response.json();
 
 
       if(JSON.stringify(result) === JSON.stringify({})){
@@ -336,17 +350,26 @@ function openPT(evt, api) {
 
       }
       }
+    }
+    else{
+      window.alert("Service is currently encountering a failure");
+    }
 }
 
   async function displaydeparture(depvalue){
+
+    let response = await fetch('/checkserver');
+    let result = await response.json();
+
+    if(result === "ok"){
 
     let query = document.getElementById("tarea").value;
     let location;
 
     query = query.replace(" ","+"); 
 
-      let response = await fetch('/addrgeocode?query=' + query);
-      let result = await response.json();
+      response = await fetch('/addrgeocode?query=' + query);
+      result = await response.json();
 
 
       if(JSON.stringify(result) === JSON.stringify({})){
@@ -396,9 +419,12 @@ function openPT(evt, api) {
             scell3.innerHTML = result[depvalue]["departure"][i]["departure point"] ;
         }
       }
+    }
+      else{
+        window.alert("Service is currently encountering a failure");
+      }
 
 }
-
 
 </script>
 

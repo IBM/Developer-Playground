@@ -340,3 +340,27 @@ Refer: https://developer.ibm.com/apis/catalog/heremaps--here-public-transit-api/
   });
 });
   }
+
+/* 
+This checks the status of the service.
+Refer: https://developer.ibm.com/apis/catalog/heremaps--here-public-transit-api/api/API--heremaps--here-public-transit-api#getHealth
+*/
+exports.checkserver = function () {
+  return new Promise((resolve, reject) => {
+
+    var options = {
+      'method': 'GET',
+      'url': 'https://transit.hereapi.com/v8/health',
+      'headers': {
+        'accept': 'application/json'
+      }
+    };
+    request(options, function (error, response) {
+      if (error) reject(error);
+      const jdata = JSON.parse(response.body);
+      resolve(jdata["status"]);
+    });
+
+
+  })
+}

@@ -1,3 +1,4 @@
+apiVersion: 1.0.0
 metadata:
   name: alert-notification
 attributes:
@@ -7,6 +8,3 @@ components:
     type: chePlugin
   - id: redhat/vscode-didact/latest
     type: chePlugin
-apiVersion: 1.0.0
-
-

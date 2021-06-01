@@ -1,0 +1,292 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+
+<script>
+
+async function copyToClip(str) {
+  async function listener(e) {
+    e.clipboardData.setData("text/html", str);
+    e.clipboardData.setData("text/plain", str);
+    e.preventDefault();
+  }
+  document.addEventListener("copy", listener);
+  document.execCommand("copy");
+  document.removeEventListener("copy", listener);
+};
+
+async function get_class_parity(){
+
+  let label = document.getElementById('label_col').value;
+  let fpath = document.getElementById('files1').value;
+
+  let ftemp = document.getElementById('files1');
+  let fname = ftemp.options[ftemp.selectedIndex].text;
+
+  document.getElementById("overlay").style.display = "block";
+
+  let response = await fetch('/getclassparity?label=' + label + '&fpath=' + fpath + '&fname=' + fname);
+  let result = await response.json();
+
+    var table0 = document.getElementById("job1-table");
+    table0.style.display = "";
+
+    var tbodyRef0 = document.getElementById('job1-table').getElementsByClassName('tbody0')[0];
+    tbodyRef0.innerHTML = '';
+    tbodyRef0 = document.getElementById('job1-table').getElementsByClassName('tbody0')[0];
+
+    document.getElementById("display1-result").style.display = 'none';
+    document.getElementById("overlay").style.display = "none"
+
+        var val = result;
+        var row = tbodyRef0.insertRow();
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1); 
+        var cell3 = row.insertCell(2);
+
+        cell1.innerHTML = val["JobID"];
+        cell2.innerHTML = val["message"];
+
+        copyToClip(val["JobID"]);
+        alert('Job ID copied to Clipboard');
+        //console.log('done');
+        //cell3.innerHTML = '<button type = "submit" onclick="() => navigator.clipboard.writeText(\'Copy this text to clipboard\')"> Copy  </button>' ;
+        //cell3.innerHTML = '<button type = "submit" onclick="() => navigator.clipboard.writeText(\"Copy this text to clipboard\")"> Copy the stuff </button>';
+        //cell3.innerHTML = '<button type = "submit" onclick="copyToClip( ${val["JobID"]})">Copy the stuff </button>'
+        
+}
+
+async function rtemp(subid) {
+
+console.log("SSS-id: ", subid);
+}
+
+
+async function get_results(){
+
+  let jobid = document.getElementById('job_id').value;
+
+  document.getElementById("overlay").style.display = "block";
+
+  let response = await fetch('/getresults?jobid=' + jobid);
+  let result = await response.json();
+
+  if(JSON.stringify(result) === JSON.stringify({})){
+      window.alert("Analysis is still in progress. Try in a while");
+      document.getElementById("overlay").style.display = "none";
+    }
+  else{
+  var table1 = document.getElementById("display1-result");
+  table1.style.display = "";
+
+  var tbodyRef1 = document.getElementById('display1-result').getElementsByClassName('tbody1')[0];
+  tbodyRef1.innerHTML = '';
+  tbodyRef1 = document.getElementById('display1-result').getElementsByClassName('tbody1')[0];
+
+  var theadRef1 = document.getElementById('display1-result').getElementsByClassName('thead1')[0];
+  theadRef1.innerHTML = '';
+  theadRef1 = document.getElementById('display1-result').getElementsByClassName('thead1')[0];
+
+  document.getElementById("overlay").style.display = "none";
+
+      var val = result;
+      var keys = Object.keys(val);
+
+      var col = theadRef1.insertRow();
+      var row = tbodyRef1.insertRow();
+
+      // Create the table heading with keys... 
+
+      for(var i=0; i < keys.length ; i++){
+        col.insertCell(i).innerHTML = keys[i];
+      }
+
+      for(var j=0; j < keys.length ; j++){
+        row.insertCell(j).innerHTML = val[keys[j]];
+      }
+      
+      }
+}
+
+async function get_class_overlap(){
+
+  let label = document.getElementById('label_col').value;
+  let fpath = document.getElementById('files1').value;
+
+  let ftemp = document.getElementById('files1');
+  let fname = ftemp.options[ftemp.selectedIndex].text;
+
+  document.getElementById("overlay").style.display = "block";
+
+  let response = await fetch('/getclassoverlap?label=' + label + '&fpath=' + fpath + '&fname=' + fname);
+  let result = await response.json();
+
+  var table1 = document.getElementById("job1-table");
+  table1.style.display = "";
+
+  var tbodyRef1 = document.getElementById('job1-table').getElementsByClassName('tbody0')[0];
+  tbodyRef1.innerHTML = '';
+  tbodyRef1 = document.getElementById('job1-table').getElementsByClassName('tbody0')[0];
+
+  document.getElementById("display1-result").style.display = 'none';
+  document.getElementById("overlay").style.display = "none"
+
+      var val = result;
+
+      var row = tbodyRef1.insertRow();
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1); 
+
+
+      cell1.innerHTML = val["JobID"];
+      cell2.innerHTML = val["message"];
+      copyToClip(val["JobID"]);
+      alert('Job ID copied to Clipboard');
+      
+  
+}
+
+async function get_label_purity(){
+
+  let label = document.getElementById('label_col').value;
+  let fpath = document.getElementById('files1').value;
+
+  let ftemp = document.getElementById('files1');
+  let fname = ftemp.options[ftemp.selectedIndex].text;
+
+  document.getElementById("overlay").style.display = "block";
+
+  let response = await fetch('/getlabelpurity?label=' + label + '&fpath=' + fpath + '&fname=' + fname);
+  let result = await response.json();
+
+  var table1 = document.getElementById("job1-table");
+  table1.style.display = "";
+
+  var tbodyRef2 = document.getElementById('job1-table').getElementsByClassName('tbody0')[0];
+  tbodyRef2.innerHTML = '';
+  tbodyRef2 = document.getElementById('job1-table').getElementsByClassName('tbody0')[0];
+
+  document.getElementById("display1-result").style.display = 'none';
+  document.getElementById("overlay").style.display = "none"
+
+    var val = result;
+
+    var row = tbodyRef2.insertRow();
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1); 
+
+
+    cell1.innerHTML = val["JobID"];
+    cell2.innerHTML = val["message"];
+    copyToClip(val["JobID"]);
+        alert('Job ID copied to Clipboard');
+}
+
+async function get_outlier_detection(){
+
+  let label = document.getElementById('label_col').value;
+  let fpath = document.getElementById('files1').value;
+
+  let ftemp = document.getElementById('files1');
+  let fname = ftemp.options[ftemp.selectedIndex].text;
+
+  document.getElementById("overlay").style.display = "block";
+
+  let response = await fetch('/getoutlierdetection?label=' + label + '&fpath=' + fpath + '&fname=' + fname);
+  let result = await response.json();
+
+  var table1 = document.getElementById("job1-table");
+  table1.style.display = "";
+
+  var tbodyRef3 = document.getElementById('job1-table').getElementsByClassName('tbody0')[0];
+  tbodyRef3.innerHTML = '';
+  tbodyRef3 = document.getElementById('job1-table').getElementsByClassName('tbody0')[0];
+
+  document.getElementById("display1-result").style.display = 'none';
+  document.getElementById("overlay").style.display = "none"
+
+  var val = result;
+
+  var row = tbodyRef3.insertRow();
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1); 
+
+
+  cell1.innerHTML = val["JobID"];
+  cell2.innerHTML = val["message"];
+
+  copyToClip(val["JobID"]);
+  alert('Job ID copied to Clipboard');
+  
+
+}
+
+
+</script>
+
+
+<div id="overlay" style="display: none">
+  <div class="loading" id="loading"></div>
+</div>
+
+
+<div id="data-quality-ai">
+  <span style="color: rgb(21, 21, 21);"> Apply Data Quality Processing  </span> <hr style="border-top: 1px solid rgb(21, 21, 21);"><br>
+
+  <label> Choose File to be processed: </label>
+  <select id="files1" name="files1" placeholder="Choose File from dropdown">
+    <option value="/Users/aishwaryapradeep/Desktop/demo/credit-g.csv"> credit-g.csv </option>
+    <option value="/Users/aishwaryapradeep/Desktop/demo/breast-cancer.csv"> breast-cancer.csv </option>
+    <option value="/Users/aishwaryapradeep/Desktop/demo/adult.csv"> adult.csv </option>
+  </select>
+
+  <input type="text" name="label_col" id="label_col" class="field-divided" placeholder="Label Column (Optional)" size=10 /> <br> <br>
+
+
+  <button type="submit" onclick="get_class_overlap()">Check Class Overlap</button>
+  <button type="submit" onclick="get_class_parity()">Check Class Parity</button>
+  <button type="submit" onclick="get_label_purity()">Check Label Purity</button>
+  <button type="submit" onclick="get_outlier_detection()">Perform Outlier Detection</button>
+
+  <br>
+  <br>
+
+
+  <table class = "table table-striped" id="job1-table" style="width:70%;display:none;">
+    <thead>
+      <tr>
+        <th>Job ID</th>
+        <th>Message</th>
+      </tr>
+
+    </thead>
+
+    <tbody class="tbody0">
+
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+  <span style="color: rgb(21, 21, 21);"> Fetch your Data's Analysed Results </span> <hr style="border-top: 1px solid rgb(21, 21, 21);"><br>
+
+  <input type="text" name="job_id" id="job_id" class="field-divided" placeholder="Job ID" size=10 required /> <br> <br>
+  <button type="submit" onclick="get_results()">Get Results</button>
+
+  <br>
+  <br>
+  <table class = "table table-striped" id="display1-result" style="width:70%;display:none;">
+    <thead class="thead1">
+
+    </thead>
+
+    <tbody class="tbody1">
+
+    </tbody>
+  </table>
+
+
+</div>

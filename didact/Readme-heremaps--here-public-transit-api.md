@@ -89,13 +89,13 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
 <br>
 
 <p>In order to begin, we'll need the application's source code. Let's get that down!</p>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREPublicTransit$$git%20clone%20-b%20HERE%20--sparse%20https://github.com/IBM/Developer-Playground.git%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/Developer-Playground%20%26%26%20git%20sparse-checkout%20init%20--cone%20%26%26%20git%20sparse-checkout%20add%20HereSampleapp2">Get the Code</a><br><br>
+<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREPublicTransit$$git%20clone%20-b%20HERE%20--sparse%20https://github.com/IBM/Developer-Playground.git%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/Developer-Playground%20%26%26%20git%20sparse-checkout%20init%20--cone%20%26%26%20git%20sparse-checkout%20add%20HEREPublicTransit">Get the Code</a><br><br>
 
 
 <br>
 
 <p>Awesome! We've got the codes! In order to see it in action, we've to build it first!</p>
-<a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREPublicTransit$$cd%20${CHE_PROJECTS_ROOT}/Developer-Playground/HereSampleapp2%20%26%26%20npm%20install">Build the Application</a><br><br>
+<a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREPublicTransit$$cd%20${CHE_PROJECTS_ROOT}/Developer-Playground/HEREPublicTransit%20%26%26%20npm%20install">Build the Application</a><br><br>
 
 <br>
 
@@ -107,11 +107,11 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
   <li>Let's get the credentials by configuring the application </li><br>
 </ol>
 
-<a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=vscode.open&projectFilePath=Developer-Playground/HereSampleapp2/.env">Configure the Application</a><br><br>
+<a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=vscode.open&projectFilePath=Developer-Playground/HEREPublicTransit/.env">Configure the Application</a><br><br>
 <br>
 
 <p> You're all set to get started! </p>
-<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREPublicTransit$$cd%20${CHE_PROJECTS_ROOT}/Developer-Playground/HereSampleapp2%20%26%26%20npm%20start&completion=The%20application%20has%20been%20launched.">Launch the Application</a><br><br>
+<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREPublicTransit$$cd%20${CHE_PROJECTS_ROOT}/Developer-Playground/HEREPublicTransit%20%26%26%20npm%20start&completion=The%20application%20has%20been%20launched.">Launch the Application</a><br><br>
 
 
 <p>You will see a dialog box saying " The application has been launched." </p>
@@ -124,11 +124,11 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
 <br>
 
 <p> The stage is yours! </p>
-<a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=workbench.view.explorer">Explore the Code</a><br><br>
+<a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=vscode.open&projectFilePath=Developer-Playground/HEREPublicTransit/services/service.js">Explore the Code</a><br><br>
 <br>
 
 <p> To view the changes you've made, re-launch the application </p>
-<a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREPublicTransit$$cd%20${CHE_PROJECTS_ROOT}/Developer-Playground/HereSampleapp2%20%26%26%20npm%20start&completion=The%20application%20has%20been%20launched.">Re-Launch the Application</a><br><br>
+<a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREPublicTransit$$cd%20${CHE_PROJECTS_ROOT}/Developer-Playground/HEREPublicTransit%20%26%26%20npm%20start&completion=The%20application%20has%20been%20launched.">Re-Launch the Application</a><br><br>
 
 <p> Want to explore this project more? Head over to <a href = "https://github.com/IBM/Developer-Playground/tree/master" > the GitHub Repository</a> </p>
 

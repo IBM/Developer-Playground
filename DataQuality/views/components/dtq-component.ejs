@@ -1,0 +1,276 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+
+<script>
+
+async function copyToClip(str) {
+  async function listener(e) {
+    e.clipboardData.setData("text/html", str);
+    e.clipboardData.setData("text/plain", str);
+    e.preventDefault();
+  }
+  document.addEventListener("copy", listener);
+  document.execCommand("copy");
+  document.removeEventListener("copy", listener);
+};
+
+async function get_results1(){
+
+  let jobid = document.getElementById('job1_id').value;
+
+  document.getElementById("overlay1").style.display = "block";
+
+  let response = await fetch('/getresults?jobid=' + jobid);
+  let result = await response.json();
+
+  if(JSON.stringify(result) === JSON.stringify({})){
+      window.alert("Analysis is still in progress. Try in a while");
+      document.getElementById("overlay1").style.display = "none";
+    }
+  else{
+  var table1 = document.getElementById("display-result");
+  table1.style.display = "";
+
+  var tbodyRef1 = document.getElementById('display-result').getElementsByClassName('tbody01')[0];
+  tbodyRef1.innerHTML = '';
+  tbodyRef1 = document.getElementById('display-result').getElementsByClassName('tbody01')[0];
+
+  var theadRef1 = document.getElementById('display-result').getElementsByClassName('thead01')[0];
+  theadRef1.innerHTML = '';
+  theadRef1 = document.getElementById('display-result').getElementsByClassName('thead01')[0];
+
+  document.getElementById("overlay1").style.display = "none"
+
+      var val = result;
+      var keys = Object.keys(val);
+
+      var col = theadRef1.insertRow();
+      var row = tbodyRef1.insertRow();
+
+      // Create the table heading with keys... 
+
+      for(var i=0; i < keys.length ; i++){
+        col.insertCell(i).innerHTML = keys[i];
+      }
+
+      for(var j=0; j < keys.length ; j++){
+        row.insertCell(j).innerHTML = val[keys[j]];
+      }
+      
+      }
+}
+
+async function get_data_completeness(){
+
+  let fpath = document.getElementById('files').value;
+  let ftemp = document.getElementById('files');
+  let fname = ftemp.options[ftemp.selectedIndex].text;
+
+  document.getElementById("overlay1").style.display = "block";
+
+  let response = await fetch('/chkdatacompleteness?fpath=' + fpath + '&fname=' + fname);
+  let result = await response.json();
+
+  var table1 = document.getElementById("job-table");
+  table1.style.display = "";
+
+  var tbodyRef4 = document.getElementById('job-table').getElementsByClassName('tbody0')[0];
+  tbodyRef4.innerHTML = '';
+  tbodyRef4 = document.getElementById('job-table').getElementsByClassName('tbody0')[0];
+
+  document.getElementById("display-result").style.display = 'none';
+  document.getElementById("overlay1").style.display = "none"
+
+  var val = result;
+
+  var row = tbodyRef4.insertRow();
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1); 
+
+
+  cell1.innerHTML = val["JobID"];
+  cell2.innerHTML = val["message"];
+
+  copyToClip(val["JobID"]);
+        alert('Job ID copied to Clipboard');
+
+
+}
+
+async function get_data_duplicates(){
+
+  let fpath = document.getElementById('files').value;
+  let ftemp = document.getElementById('files');
+  let fname = ftemp.options[ftemp.selectedIndex].text;
+
+  document.getElementById("overlay1").style.display = "block";
+
+  let response = await fetch('/chkdataduplicates?fpath=' + fpath + '&fname=' + fname);
+  let result = await response.json();
+
+  var table1 = document.getElementById("job-table");
+  table1.style.display = "";
+
+  var tbodyRef5 = document.getElementById('job-table').getElementsByClassName('tbody0')[0];
+  tbodyRef5.innerHTML = '';
+  tbodyRef5 = document.getElementById('job-table').getElementsByClassName('tbody0')[0];
+
+  document.getElementById("display-result").style.display = 'none';
+  document.getElementById("overlay1").style.display = "none"
+
+  var val = result;
+
+  var row = tbodyRef5.insertRow();
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1); 
+
+
+  cell1.innerHTML = val["JobID"];
+  cell2.innerHTML = val["message"];
+  copyToClip(val["JobID"]);
+        alert('Job ID copied to Clipboard');
+
+}
+
+async function get_data_homogeneity(){
+
+  let fpath = document.getElementById('files').value;
+  let ftemp = document.getElementById('files');
+  let fname = ftemp.options[ftemp.selectedIndex].text;
+
+  document.getElementById("overlay1").style.display = "block";
+
+  let response = await fetch('/chkdatahomogeneity?fpath=' + fpath + '&fname=' + fname);
+  let result = await response.json();
+
+  var table1 = document.getElementById("job-table");
+  table1.style.display = "";
+
+  var tbodyRef6 = document.getElementById('job-table').getElementsByClassName('tbody0')[0];
+  tbodyRef6.innerHTML = '';
+  tbodyRef6 = document.getElementById('job-table').getElementsByClassName('tbody0')[0];
+
+  document.getElementById("display-result").style.display = 'none';
+  document.getElementById("overlay1").style.display = "none"
+
+  var val = result;
+
+  var row = tbodyRef6.insertRow();
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1); 
+
+
+  cell1.innerHTML = val["JobID"];
+  cell2.innerHTML = val["message"];
+
+  copyToClip(val["JobID"]);
+        alert('Job ID copied to Clipboard');
+
+
+}
+
+async function get_data_profiler(){
+
+  let fpath = document.getElementById('files').value;
+  let ftemp = document.getElementById('files');
+  let fname = ftemp.options[ftemp.selectedIndex].text;
+
+  document.getElementById("overlay1").style.display = "block";
+
+  let response = await fetch('/chkdataprofile?fpath=' + fpath + '&fname=' + fname);
+  let result = await response.json();
+
+  var table1 = document.getElementById("job-table");
+  table1.style.display = "";
+
+  var tbodyRef7 = document.getElementById('job-table').getElementsByClassName('tbody0')[0];
+  tbodyRef7.innerHTML = '';
+  tbodyRef7 = document.getElementById('job-table').getElementsByClassName('tbody0')[0];
+
+  document.getElementById("display-result").style.display = 'none';
+  document.getElementById("overlay1").style.display = "none"
+
+  var val = result;
+
+  var row = tbodyRef7.insertRow();
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1); 
+
+
+  cell1.innerHTML = val["JobID"];
+  cell2.innerHTML = val["message"];
+
+  copyToClip(val["JobID"]);
+  alert('Job ID copied to Clipboard');
+
+
+}
+
+
+</script>
+
+
+<div id="overlay1" style="display: none">
+  <div class="loading1" id="loading1"></div>
+</div>
+
+
+<div id="dataset-quality-ai">
+  <span style="color: rgb(21, 21, 21);"> Apply Dataset Quality Processing  </span> <hr style="border-top: 1px solid rgb(21, 21, 21);"><br>
+
+  <label> Choose File to be processed: </label>
+  <select id="files" name="files" placeholder="Choose File from dropdown">
+    <option value="/Users/aishwaryapradeep/Desktop/demo/credit-g.csv"> credit-g.csv </option>
+    <option value="/Users/aishwaryapradeep/Desktop/demo/breast-cancer.csv"> breast-cancer.csv </option>
+    <option value="/Users/aishwaryapradeep/Desktop/demo/adult.csv"> adult.csv </option>
+  </select>
+  <br>
+  <br>
+
+  <button type="submit" onclick="get_data_completeness()">Check Data Completeness</button>
+  <button type="submit" onclick="get_data_duplicates()">Check Data Duplicates</button>
+  <button type="submit" onclick="get_data_homogeneity()">Check Data Homogeneity</button>
+  <button type="submit" onclick="get_data_profiler()">Check Data Profile</button>
+
+  <br>
+  <br>
+
+  <table class = "table table-striped" id="job-table" style="width:70%;display:none;">
+    <thead>
+      <tr>
+        <th>Job ID</th>
+        <th>Message</th>
+      </tr>
+
+    </thead>
+
+    <tbody class="tbody0">
+
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+  <span style="color: rgb(21, 21, 21);"> Fetch your Data's Analysed Results </span> <hr style="border-top: 1px solid rgb(21, 21, 21);"><br>
+
+  <input type="text" name="job1_id" id="job1_id" class="field-divided" placeholder="Job ID" size=10 required /> <br> <br>
+  <button type="submit" onclick="get_results1()">Get Results</button>
+
+  <br>
+  <br>
+  <table class = "table table-striped" id="display-result" style="width:70%;display:none;">
+    <thead class="thead01">
+
+    </thead>
+
+    <tbody class="tbody01">
+
+    </tbody>
+  </table>
+
+
+</div>

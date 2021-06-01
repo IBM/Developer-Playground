@@ -1,3 +1,8 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <script>
 
   async function getcustomerdetails(){
@@ -167,10 +172,11 @@
   <hr style="border-top: 1px solid rgb(21, 21, 21);"><br>
 
   <button type="submit" onclick="listSubscriptions() ; getcustomerdetails()">Get My Subscriptions</button>
+  <br><br>
   <p id="cust-details"> </p>
   <br>
   <br>
-  <table class="subscriptions-table" id="subscriptions-table" style="width:70%;display:none;">
+  <table class = "table table-striped" id="subscriptions-table" style="width:70%;display:none;">
     <thead>
       <tr>
         <th>Part Number</th>
@@ -212,7 +218,7 @@
   <br>
 
 
-  <table class=subscribers-table id="subscriberValues" style="width:50%;display:none;">
+  <table class = "table table-striped" id="subscriberValues" style="width:50%;display:none;">
     <thead>
       <th>Subscriber ID</th>
       <th>Org Name</th>

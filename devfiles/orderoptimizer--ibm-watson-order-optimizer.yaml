@@ -6,7 +6,7 @@ attributes:
 components:
   - id: redhat/vscode-didact/latest
     type: chePlugin
-  - id: ibm-playground/api-hub/0.0.999
+  - id: ibm-playground/api-hub/latest
     type: chePlugin
   - id: ms-python/python/latest
     preferences:

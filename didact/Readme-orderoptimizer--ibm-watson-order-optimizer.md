@@ -82,9 +82,11 @@ ul, ol,b{
 <li>Create New Jupyter Notebook</li><br/>
 <a class="button is-dark is-medium" title="Create New Jupyter Notebook" href="didact://?commandId=python.datascience.createnewnotebook">Create New Jupyter Notebook</a><br><br>
 
-
-<li>Open My Sterling Notebook</li><br/>
-<a class="button is-dark is-medium" title="Open My Sterling Notebook" href="didact://?commandId=python.datascience.opennotebook&projectFilePath=playground-jupyter/examples/Sterling/IH-Demo-Tutorials-Notebook.ipynb">Open My Sterling Notebook</a><br><br>
+<li>Get Sterling Notebook</li><br/>
+<a class="button is-dark is-medium" title="Get Sterling Notebook" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=jupyter$$cd%20${CHE_PROJECTS_ROOT}%20%26%26%20git%20clone%20-b%20sterling%20https://github.com/IBM/Developer-Playground">Get Sterling Notebook</a><br><br>
+    
+<li>Open Sterling Notebook</li><br/>
+<a class="button is-dark is-medium" title="Open Sterling Notebook" href="didact://?commandId=python.datascience.opennotebook&projectFilePath=Developer-Playground/Sterling/IH-Demo-Tutorials-Notebook.ipynb">Open Sterling Notebook</a><br><br>
 
  
 <li>Open My Sample Notebook</li><br/>

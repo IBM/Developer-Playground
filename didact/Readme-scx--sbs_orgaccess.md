@@ -81,12 +81,12 @@ ul, ol,b{
 <br>
 
 <p>In order to begin, we'll need the application's source code. Let's get that down!</p>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=SSM$$git%20clone%20-b%20ssm%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/">Get the Code</a><br><br>
+<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=SSM$$git%20clone%20-b%20ssm%20https://github.com/IBM/Developer-Playground.git%20sbs-orgaccess/">Get the Code</a><br><br>
 
 <br>
 
 <p>Awesome! We've got the codes! In order to see it in action, we've to build it first!</p>
-<a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=SSM$$cd%20${CHE_PROJECTS_ROOT}/SSMSampleApp%20%26%26%20npm%20install">Build the Application</a><br><br>
+<a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=SSM$$cd%20${CHE_PROJECTS_ROOT}/sbs-orgaccess/SSMSampleApp%20%26%26%20npm%20install">Build the Application</a><br><br>
 
 <br>
 
@@ -102,11 +102,11 @@ ul, ol,b{
   <li>Let's get the credentials by configuring the application </li><br>
 </ol>
 
-<a class="button is-dark is-medium" title="Configure the Application" href="didact://?commandId=vscode.open&projectFilePath=SSMSampleApp/.env">Configure the Application</a><br><br>
+<a class="button is-dark is-medium" title="Configure the Application" href="didact://?commandId=vscode.open&projectFilePath=sbs-orgaccess/SSMSampleApp/.env">Configure the Application</a><br><br>
 <br>
 
 <p> You're all set to get started! </p>
-<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=SSM$$cd%20${CHE_PROJECTS_ROOT}/SSMSampleApp%20%26%26%20npm%20start&completion=The%20application%20has%20been%20launched.">Launch the Application</a><br><br>
+<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=SSM$$cd%20${CHE_PROJECTS_ROOT}/sbs-orgaccess/SSMSampleApp%20%26%26%20npm%20start&completion=The%20application%20has%20been%20launched.">Launch the Application</a><br><br>
 
 <p>You will see a dialog box saying "The application has been launched" </p>
 
@@ -118,13 +118,14 @@ ul, ol,b{
 
 <br>
 
+
 <p> The stage is yours! </p>
-<a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=workbench.view.explorer">Explore the Code</a><br><br>
+<a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=vscode.open&projectFilePath=sbs-orgaccess/SSMSampleApp/services/service.js">Explore the Code</a><br><br>
 <br>
 
 
 <p> To view the changes you've made, re-launch the application </p>
-<a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=SSM$$cd%20${CHE_PROJECTS_ROOT}/SSMSampleApp%20%26%26%20npm%20start&completion=The%20application%20has%20been%20launched.">Re-Launch the Application</a><br><br>
+<a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=SSM$$cd%20${CHE_PROJECTS_ROOT}/sbs-orgaccess/SSMSampleApp%20%26%26%20npm%20start&completion=The%20application%20has%20been%20launched.">Re-Launch the Application</a><br><br>
 
 <br>
 

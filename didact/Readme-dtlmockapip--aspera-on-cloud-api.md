@@ -81,7 +81,7 @@ ul, ol,b{
 <br>
 
 <p>In order to begin, we'll need the application's source code. Let's get that down!</p>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=AsperaonCloud$$git%20clone%20-b%20aspera%20https://github.com/IBM/Developer-Playground.git%20aspera-on-cloud/">Get the Code</a>
+<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=AsperaonCloud$$git%20clone%20-b%20aspera%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/aspera-on-cloud/">Get the Code</a>
 <br><br>
 
 <br>

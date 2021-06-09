@@ -89,7 +89,7 @@ The Data quality for AI is an integrated toolkit that provides various data prof
 <br>
 
 <p>In order to begin, we'll need the application's source code. Let's get that down!</p>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=data-quality$$git%20clone%20-b%20DART%20https://github.com/IBM/Developer-Playground.git%20data-quality/">Get the Code</a><br><br>
+<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=data-quality$$git%20clone%20-b%20DART%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/data-quality/">Get the Code</a><br><br>
 
 <br>
 

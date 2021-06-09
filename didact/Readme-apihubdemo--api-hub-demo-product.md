@@ -82,7 +82,7 @@ ul, ol,b{
 <br>
 
 <p>In order to begin, we'll need the application's source code. Let's get that down!</p>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=zapi$$git%20clone%20-b%20z-apihub-demo%20https://github.com/IBM/Developer-Playground.git%20apihub-demo/">Get the Code</a><br><br>
+<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=zapi$$git%20clone%20-b%20z-apihub-demo%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/apihub-demo/">Get the Code</a><br><br>
 
 <br>
 

@@ -106,9 +106,7 @@ ul, ol,b{
 <br>
 
 <p> You're all set to get started! </p>
-<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=SSM$$cd%20${CHE_PROJECTS_ROOT}/sbs-orgaccess/SSMSampleApp%20%26%26%20npm%20start&completion=The%20application%20has%20been%20launched.">Launch the Application</a><br><br>
-
-<p>You will see a dialog box saying "The application has been launched" </p>
+<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=SSM$$cd%20${CHE_PROJECTS_ROOT}/sbs-orgaccess/SSMSampleApp%20%26%26%20npm%20start">Launch the Application</a><br><br>
 
 <br>
 
@@ -125,7 +123,7 @@ ul, ol,b{
 
 
 <p> To view the changes you've made, re-launch the application </p>
-<a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=SSM$$cd%20${CHE_PROJECTS_ROOT}/sbs-orgaccess/SSMSampleApp%20%26%26%20npm%20start&completion=The%20application%20has%20been%20launched.">Re-Launch the Application</a><br><br>
+<a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=SSM$$cd%20${CHE_PROJECTS_ROOT}/sbs-orgaccess/SSMSampleApp%20%26%26%20npm%20start">Re-Launch the Application</a><br><br>
 
 <br>
 

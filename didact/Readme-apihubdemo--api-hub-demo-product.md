@@ -82,7 +82,7 @@ ul, ol,b{
 <br>
 
 <p>In order to begin, we'll need the application's source code. Let's get that down!</p>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=zapi$$git%20clone%20-b%20z-apihub-demo%20https://github.com/IBM/Developer-Playground.git%20apihub-demo/">Get the Code</a><br><br>
+<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=zapi$$git%20clone%20-b%20z-apihub-demo%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/apihub-demo/">Get the Code</a><br><br>
 
 <br>
 
@@ -103,10 +103,7 @@ ul, ol,b{
 
 
 <p> You're all set to get started! </p>
-<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=zapi$$cd%20${CHE_PROJECTS_ROOT}/apihub-demo/ZAPIHubDemoSampleApp%20%26%26%20npm%20start&completion=The%20application%20has%20been%20launched.">Launch the Application</a><br><br>
-<br>
-
-<p>You will see a dialog box saying " The application has been launched." </p>
+<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=zapi$$cd%20${CHE_PROJECTS_ROOT}/apihub-demo/ZAPIHubDemoSampleApp%20%26%26%20npm%20start">Launch the Application</a><br><br>
 
 <br>
 
@@ -121,7 +118,7 @@ ul, ol,b{
 
 
 <p> To view the changes you've made, re-launch the application and refresh the preview </p>
-<a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=zapi$$cd%20${CHE_PROJECTS_ROOT}/apihub-demo/ZAPIHubDemoSampleApp%20%26%26%20npm%20start&completion=The%20application%20has%20been%20launched.">Re-Launch the Application</a><br><br>
+<a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=zapi$$cd%20${CHE_PROJECTS_ROOT}/apihub-demo/ZAPIHubDemoSampleApp%20%26%26%20npm%20start">Re-Launch the Application</a><br><br>
 <br>
 
 <p> Want to explore this project more? Head over to <a href = "https://github.com/IBM/Developer-Playground/tree/master" > the GitHub Repository</a> </p>

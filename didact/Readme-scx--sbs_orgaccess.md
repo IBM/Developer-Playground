@@ -81,7 +81,7 @@ ul, ol,b{
 <br>
 
 <p>In order to begin, we'll need the application's source code. Let's get that down!</p>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=SSM$$git%20clone%20-b%20ssm%20https://github.com/IBM/Developer-Playground.git%20sbs-orgaccess/">Get the Code</a><br><br>
+<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=SSM$$git%20clone%20-b%20ssm%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/sbs-orgaccess/">Get the Code</a><br><br>
 
 <br>
 

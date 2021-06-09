@@ -75,10 +75,6 @@ ul, ol,b{
 
 <p>Try out the Sample Application</p>
 
-<li> Lets Start.</li><br/>
-<a class="button is-dark is-medium" title="Start Terminal" href="didact://?commandId=terminal-for-nodejs-container:new">Start Terminal</a>
-<br/>
-
 <br/><li> Get the Code.</li><br/>
 <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd%20${CHE_PROJECTS_ROOT}%20%26%26%20git%20clone%20https://github.com/che-samples/react-web-app.git">Get the Code</a>
 <br/><br/>

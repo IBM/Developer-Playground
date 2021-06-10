@@ -159,7 +159,7 @@ ol,ul,li{
 <br><br>
 
 <li> Once you have configured the Application with the API credentials in the <b>.env</b> file, then launch the application by clicking the "Launch Application" button.</li><br/>
-<a class="button is-dark is-medium" title="Launch Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=IPM-Marketplace-App$$cd%20${CHE_PROJECTS_ROOT}/ipm-marketplace-app%20%26%26%20ps -ef| grep 'npm\|./bin/www' | awk 'NR==1 || NR==2'| xargs kill -9;npm%20run%20start">Launch Application</a><br><br>
+<a class="button is-dark is-medium" title="Launch Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=IPM-Marketplace-App$$cd%20${CHE_PROJECTS_ROOT}/ipm-marketplace-app%20%26%26%20npm%20run%20start">Launch Application</a><br><br>
 
 <p>You will see a dialogue box with a message <b>"A process is now listening on port 3000. External URL is https://container-url.com"</b>. <br><br> Click the "Open Link" button. You will see your application in the Preview Tab.</p>
 <br>
@@ -182,7 +182,7 @@ ol,ul,li{
 <br>
 
 <li>Now click the "Rebuild & Launch Application" button.</li><br>
-<a class="button is-dark is-medium" title="Rebuild & Launch Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=IPM-Marketplace-App$$cd%20${CHE_PROJECTS_ROOT}/ipm-marketplace-app%20%26%26%20ps -ef| grep 'npm\|./bin/www' | awk 'NR==1 || NR==2'| xargs kill -9;npm%20run%20build-clean%20%26%26%20npm%20run%20build-client%20%26%26%20npm%20run%20start" >Rebuild & Launch Application</a>
+<a class="button is-dark is-medium" title="Rebuild & Launch Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=IPM-Marketplace-App$$cd%20${CHE_PROJECTS_ROOT}/ipm-marketplace-app%20%26%26%20npm%20run%20build-clean%20%26%26%20npm%20run%20build-client%20%26%26%20npm%20run%20start" >Rebuild & Launch Application</a>
 <br><br>
 
 <p>You will see a dialogue box with a message <b>"A process is now listening on port 3000. External URL is https://container-url.com"</b>. <br><br> Click the "Open Link" button. This time you will need to refresh the url in the Preview tab to see your application with the code changes.</p>

@@ -1,13 +1,15 @@
 const request = require('request');
 require('dotenv/config');
 
+var env_var = JSON.stringify(process.env.PLAYGROUND_ENVIRONMENT);
+env_var = env_var.substring(1,8);
 
 exports.getatmlocation = function (zipcode = "") {
 
   return new Promise((resolve, reject) => {
 
     var szipcode = zipcode.toString();
-    var fullUrl = 'https://dev.api.ibm.com/apihubdemo/test/bankapis/atm/zipcode/'.concat(szipcode);
+    var fullUrl = process.env[env_var.concat("_").concat("ATM_URL")].concat(szipcode);
 
       let options =
       {
@@ -27,9 +29,7 @@ exports.getatmlocation = function (zipcode = "") {
       request(options, function (error, response) {
         if (error) reject(error);
         const jsonform1 = JSON.parse(response.body);
-      
-        //for(var i = 0; i<jsonform1.length;i++){
-        
+              
           atm_details["code"] = jsonform1["code"];
           atm_details["name"] = jsonform1["name"];
           atm_details["city"] = jsonform1["cityName"];
@@ -39,14 +39,9 @@ exports.getatmlocation = function (zipcode = "") {
           temp.push(jsonform1["longitude"])
           atm_details["location"] = temp;
           temp = [];
-          
-          //atms[i] = atm_details;
-          //atm_details = {};
-      
-      //}
-      
+            
       resolve(atm_details);
-        // resolve(atms);
+
       });      
 
   });
@@ -58,7 +53,7 @@ exports.calcloanpayable = function (emi = "",tenure = "") {
 
     var semi = emi.toString();
     var stenure = tenure.toString();
-    var fullUrl = 'https://dev.api.ibm.com/apihubdemo/test/bankapis/loan/emi/'.concat(semi).concat('/tenure/').concat(stenure);
+    var fullUrl = process.env[env_var.concat("_").concat("LOAN_URL")].concat(semi).concat('/tenure/').concat(stenure);
 
       let options =
       {

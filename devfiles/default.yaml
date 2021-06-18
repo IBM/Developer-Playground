@@ -4,7 +4,7 @@ metadata:
 attributes:
   persistVolumes: 'false'
 components:
-   - mountSources: true
+  - mountSources: true
     endpoints:
       - name: nodejs
         port: 4100

@@ -91,7 +91,7 @@ ul, ol,b{
 ​
 <body>
 
-<img src = "https://github.com/IBM/Developer-Playground/blob/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/unnamed.jpg" width = "500" height= "500">
+<img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/unnamed.jpg" width = "500" height= "500">
 
 
 <h2 class="title is-3 ">Cloud Pak Sample App</h2>
@@ -128,12 +128,12 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 <a class="button is-dark is-medium" title="IBM MQ" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs terminal 1$$ibmcloud resource service-instance-create mqinstance mqcloud lite eu-gb">IBM MQ</a><br><br>
 <p>Step 2 : After creating the instance you will be re-directed to a page as shown below.click on create button to create queue manager.
  </p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step2.png" width = "750" height= "750">
+<img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step2.png" width = "750" height= "750">
 <p>Step 3 : Give queue manager a name and click on create.</p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step3.png" width = "750" height= "750">
+<img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step3.png" width = "750" height= "750">
 
 <p>Step 4 : Creating queue manager takes some time. When the status changes to running it indicates that queue manager is ready to use.</p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step4.png" width = "750" height= "750">
+<img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step4.png" width = "750" height= "750">
 
 <p>Step 5 : Click on Application credentials and click on Add.</p>
 <img src = "https://github.com/IBM/Developer-Playground/blob/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step5.png" width = "750" height= "750">

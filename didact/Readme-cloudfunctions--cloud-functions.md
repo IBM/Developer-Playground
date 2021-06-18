@@ -91,7 +91,7 @@ ul, ol,b{
 ​
 <body>
 
-<img src = "unnamed.jpg" width = "500" height= "500">
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/unnamed.jpg" width = "500" height= "500">
 
 
 <h2 class="title is-3 ">Cloud Pak Sample App</h2>
@@ -105,103 +105,93 @@ ul, ol,b{
 
 To ensure a completely immersive experience with Cloud Pak services, create an account on IBM's cloud platform.
 
-<a class="button is-dark is-medium" title="Build the App" href="didact://?commandId=terminal-for-nodejs-container:new">Open Terminal</a><br>
+<a class="button is-dark is-medium" title="Log in here" href="https://dataplatform.cloud.ibm.com/login?context=cpdaas">Log in here</a>
+<br/>
 
-<p>On click of the below button will help you login through IBM cloud CLI commands.</p>
-
-<a class="button is-dark is-medium" title="Log in here" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd ${CHE_PROJECTS_ROOT}/LoanAPP-MQ ;ibmcloud%20login%20-r%20eu-gb%20--sso%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">Log in here</a><br>
-
-
+ 
 
 <span style="color:grey"><h2> 2. Check prerequisites linked to Cloud account</h2></span>
 
-<p> This sample app requires the user to avail certain instances present in the Services catalog. The lite version of these services will suffice. The instances are listed below:</p>
+<p> This sample app requires the user to avail certain instances present in the Services catalog. The instances are listed below:</p>
 
 
-<h4>2.1 IBM MQ</h4>
+<h5>2.1 Event Streams</h5>
+<p>Built on Apache Kafka, IBM Event Streams which is a part of IBM's Cloud Pak for integration is a high-throughput, fault-tolerant, event streaming platform that helps you build intelligent, responsive, event-driven applications.</p>
 
-<p>IBM MQ(Message Queue) provides proven, enterprise-grade messaging capabilities, such as point-to-point and publish/subscribe models, to facilitate the flow of information between applications.It enables asynchronous messaging.</p>
+<h6>Follow the below steps to create an event stream instance and connect your application data to event streams.</h6>
 
-<h5>Follow the below steps to create an IBM MQ instance and connect your application data to IBM MQ.</h5>
-
-<p>Step1: Click the below button to create IBM MQ instance through IBM cloud CLI commands.</p>
-<a class="button is-dark is-medium" title="IBM MQ" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs terminal 1$$ibmcloud resource service-instance-create mqinstance mqcloud lite eu-gb">IBM MQ</a><br><br>
-<p>Step 2 : After creating the instance you will be re-directed to a page as shown below.click on create button to create queue manager.
+<p>Step1: Click the below button to create event stream instance.</p>
+<a class="button is-dark is-medium" title="Event Streams" href="https://cloud.ibm.com/catalog/services/event-streams">Event Streams</a><br><br>
+<p>Step 2 : After creating the instance you will be re-directed to a page as shown below.Select topic and click on create topic
  </p>
-<img src = "MQ-step2.png" width = "500" height= "500">
-<p>Step 3 : Give queue manager a name and click on create.</p>
-<img src = "MQ-step3.png" width = "500" height= "500">
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/Step1.jpg" width = "750" height= "750">
+<p>Step 3 : Give your topic an appropriate name and click next. Make sure to remember the topic name as it will be used in step 6.</p>
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step2-kafka.jpg" width = "750" height= "750">
 
-<p>Step 4 : Creating queue manager takes some time. When the status changes to running it indicates that queue manager is ready to use.</p>
-<img src = "MQ-step4.png" width = "500" height= "500">
+<p>Step 4 :Select the number of partitions and click next</p>
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step3-kafka.jpg" width = "750" height= "750">
 
-<p>Step 5 : Click on Application credentials and click on Add.</p>
-<img src = "MQ-step5.png" width = "500" height= "500">
-<p>Step 6 : Give a display name and click in add and generate API Key.Download the file</p>
-<img src = "MQ-step6.png" width = "500" height= "500">
-<p>Step 7 : Go to <b>Queue managers</b> tab and click on the queue manager that you have created in step in step3.</p>
-<img src = "MQ-step7.png" width = "500" height= "500">
-<p>Step 8 : Download the connection information as shown in the below image.</p>
-<img src = "MQ-step8.png" width = "500" height= "500">
-<br/>
-<br/>
-<br/>
-<h4>2.2 Waston Machine Learning </h4>
+<p>Step 5 : Choose message retention as per requirement and click on create topic.</p>
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step4-kafka.jpg" width = "750" height= "750">
+<p>Step 6 : Now u can see the topic that you have created under the topics section.Now select service credentials section and click on new credentials.Give the credentials a name and select the role as manager. Once the credentials are created you can view it in the table. Expand the table row and make note of <b>apikey</b>,<b>kafka_brokers_sasl</b></p>
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step5-kafka.jpg" width = "750" height= "750">
+
+<h5>2.2 Waston Machine Learning </h5>
 <p>IBM Watson Machine Learning helps data scientists and developers accelerate AI and machine learning deployment on IBM Cloud Pak for Data.With watson machine learning you can deploy AI models at scale across any cloud on an open.</p>
+<a class="button is-dark is-medium" title="Machine Learning" href="https://dataplatform.cloud.ibm.com/data/catalog/pm-20?context=cpdaas&target=services">Machine Learning</a><br><br>
+<p>Clicking on the button will open up a page in the browser as shown below. After choosing the light plan, give the instance a name and click on the <b>create</b> button on the right panel.</p>
+<img src = "https://github.com/IBM/Developer-Playground/raw/bd2e464b160ce4751ec84fe1593c37a367206553/didact/images/machineLearning-instance.png" width = "750" height= "750">
 
-<p>Click on the below button to create a machine learning instance on IBM cloud .</p>
 
-<a class="button is-dark is-medium" title="Machine Learning" href="https://dataplatform.cloud.ibm.com/data/catalog/pm-20?context=cpdaas&target=services">Machine Learning</a>
-<br>
-
-<p>On clicking the above button you will be redirected to a page as shown in the below figure.</p>
-<img src = "machineLearning-instance.png" width = "500" height= "500">
-<br/>
-<br/>̌
-<h4>2.3 MongoDB on IBM cloud</h4>
-<p>Click on the below button to create a MongoDB instance on IBM cloud .</p>
+<h5>2.3 Mongo DB database </h5>
 <a class="button is-dark is-medium" title="Databases for MongoDB" href="https://dataplatform.cloud.ibm.com/data/catalog/databases-for-mongodb?context=cpdaas&target=services">Databases for MongoDB</a><br>
-<p>On clicking the above button you will be redirected to a page as shown in the below figure.</p>
-<img src = "Mongo-instance.png" width = "500" height= "500">
-<br>
-</body>
+<p>Clicking on the button will open up a page in the browser as shown below. Give the instance a name and  click on the <b>create</b> button on the right panel.</p>
+<img src = "https://github.com/IBM/Developer-Playground/raw/bd2e464b160ce4751ec84fe1593c37a367206553/didact/images/Mongo-instance.png" width = "750" height= "750">
 
+
+</body>
 
 
 <span style="color:grey"><h2>3. Clone the GitHub repo for this Sample App</h2></span>
 
-<p>This Sample app needs to be cloned onto the Developer playground. It only takes a few minutes to do so.</p>
+<p>This Sample app needs to be cloned onto the Developer playground.</p>
 
-
-<p href="didact://?commandId=send">
-<a class="button is-dark is-medium" title="Get the code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs terminal 1$$git+clone+https://github.ibm.com/SUMANVITA-K/LoanAPP-MQ">Get the code</a><br>
+<a class="button is-dark is-medium" title="Get the code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs$$git+clone+https://github.ibm.com/SUMANVITA-K/LoanApp-CP">Get the code</a><br>
 
 <span style="color:grey"><h2>4.Deploy AutoAI Model</h2></span>
 
-<p>To deploy the AutoAI model to deployment space the program will require API key and space id</p>
-<ul><h6>Steps to generate API Key</h6>
+<p>To deploy the autoAI model to deployment space the program will ask for API key and space id</p>
+<ul><h6>4.1 Steps to generate API Key</h6>
 <li>
-<p>Step 1 : Haven't logged in to IBM Cloud ? then click  <a  href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd ${CHE_PROJECTS_ROOT}/LoanAPP-MQ ;ibmcloud%20login%20-r%20eu-gb%20--sso%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">login to ibm cloud</a>
+<p>Step 1 : Go to <a href="https://cloud.ibm.com/">IBM cloud</a> and login with your mail id. click on the Manage tab and select Access (IAM), the cloud Identity and Access Management page will be displayed.
  </p>
-
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/Step1.jpg" width = "750" height= "750">
 </li>
 <li>
-<p>Step 2 :  Click <a href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd ${CHE_PROJECTS_ROOT}/LoanAPP-MQ ; ibmcloud%20iam api-key-create%20MyKey%20-d%20'this is my API key'%20--file ${CHE_PROJECTS_ROOT}/LoanAPP-MQ/key_file">Generate api key</a> through IBM cloud CLI commands.</p>This will generate API key with name <b>MyKey</b> and the value of API key will be stored in <b>key_file</b> file in the main directory of the project.
+<p>Step 2 :  Click on API keys on the left panel.</p>
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step2.jpg" width = "750" height= "750">
+</li>
+<li><p>Step 3 : In API keys, click on Create an IBM Cloud API key and give a Name and Description Accordingly as shown</p>
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step3.jpg" width = "750" height= "750">
+</li>
+<li>
+<p>Step 4 : Once the API key is generated Successfully, copy the API Key as store it so that it can be used while deploying the model.</p>
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step4.jpg" width = "750" height= "750">
 </li>
 </ul>
 
-<ul><h6>Steps to generate deployment space</h6>
+<ul><h6>4.2 Steps to generate deployment space</h6>
 <li>
 <p>Step 1 : Go to <a href="https://dataplatform.cloud.ibm.com/">IBM CloudPak for data</a> and login with your mail id. Once you login click on view all spaces button as shown in the figure below.
  </p>
-<img src = "step1-spaceId.png" width = "500" height= "500">
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step1-spaceId.png" width = "750" height= "750">
 </li>
 <li>
 <p>Step 2 :  Click on create deployment space.</p>
-<img src = "step2-spaceId.png" width = "500" height= "500">
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step2-spaceId.png" width = "750" height= "750">
 </li>
-<li><p>Step 3 : Give the deployment a name and add a machine learning instance that you have earlier created.Click on create button after filling the details.</p>
-<img src = "step3-spaceID.png" width = "500" height= "500">
+<li><p>Step 3 : Give the deployment a name and add a machine learning instance created in step2.2 .Click on create button after filling the details.</p>
+<img src = "https://github.com/IBM/Developer-Playground/raw/4be4c6c9dd9cc9164a7447b07b4c54e7daca9a97/didact/images/step3-spaceID.png" width = "750" height= "750">
 </li>
 <li>
 <p>Step 4 : Click on view deployement space and then select manage tab.Under this tab, copy the space GUID.</p>
@@ -209,45 +199,43 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 </li>
 </ul>
 
+<a class="button is-dark is-medium" title="Build the App" href="didact://?commandId=terminal-for-python-nodejs-container:new">Open Python Terminal</a><br>
 
-<a class="button is-dark is-medium" title="Deploy the model" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs terminal 1$$cd ${CHE_PROJECTS_ROOT}/LoanAPP-MQ ; pip3.8+install+-r+requirements.txt;python3.8+./DeployModel/DeployMLModel.py">Deploy Model</a><br>
+<p>Clicking on this button will first install all the libraries required to run the python based ML model. After the installation is complete you would be asked to enter the API Key and space Id that you have generated from steps 4.1 and 4.2</p>
+<a class="button is-dark is-medium" title="Build the App" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-nodejs%20terminal%203$$cd%20${CHE_PROJECTS_ROOT}/LoanApp-CP;alias%20python='/usr/local/bin/python3.8';python3.8%20-m%20pip%20install%20-r%20requirements.txt;python3.8%20DeployModel/DeployMLModel.py">Deploy Model</a><br>
 
 
 <span style="color:grey"><h2>5. Build the App</h2></span>
 
 <p> Build the application to explore it's functionalities within the given terminal.</p>
-<a class="button is-dark is-medium" title="Build the App" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs terminal 1$$cd ${CHE_PROJECTS_ROOT}/LoanAPP-MQ ;npm+install">Build the App</a><br>
+<a class="button is-dark is-medium" title="Build the App" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-nodejs%20terminal%203$$cd%20${CHE_PROJECTS_ROOT}/LoanApp-CP;npm%20install">Build the App</a><br>
 
 <span style="color:grey"><h4>6.Adding credentials to the App</h4></span>
 
-<p>CLick the below button to open the .env file. </p>
 
-<a class="button is-dark is-medium" title="Edit environment variables" href="didact://?commandId=vscode.open&projectFilePath=LoanAPP-MQ/.env">Edit Environment Variables</a><br>
-<br/>
-<b>Follow the below instructions to plugin the correct values in the env file.</b>
-<br/>
-<p>Open the connection information file that you have downloaded from section 2.1 step8.Replace the values of <b>host_name</b>, <b>queue_manager_name</b> in .env file with <b>hostname</b>, <b>queueManagerName</b> </p> of connection_info.json file respectively.Now open the Application API key file that you have downloaded from section2.1 step 6.Replace <b>user_name</b>, <b>api_key_mq</b> of .env file with the <b>mqUsername</b>, <b>apiKey</b> of applicationApiKey.json file respectively.
+<p>Add the sasl password value,broker list and topic name collected from the above steps in the .env file </p>
 
-<br/>
-
+<a class="button is-dark is-medium" title="Edit environment variables" href="didact://?commandId=vscode.open&projectFilePath=LoanApp-CP/.env">Edit environment variables</a><br>
 
 <span style="color:grey"><h2>7.Launch the Application</h2></span>
 
 <p>Upon launching the app,the application will start running. </p>
 
-<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs terminal 1$$cd ${CHE_PROJECTS_ROOT}/LoanAPP-MQ ; npm+start">Launch the Application</a><br>
+<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-nodejs%20terminal%203$$npm+start">Launch the Application</a><br>
+
 
 <!-- <span style="color:grey"><h2>7. Explore the Code.</h2></span>
 
 <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=workbench.view.explorer">Explore the Code</a><br><br>
 
 <p> -->
-<span style="color:grey"><h2>8.Stop the application</h2></span>
 
-<a class="button is-dark is-medium" title="Stop terminal" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=nodejs%20terminal%201">Stop Terminal</a><br>
+<span style="color:grey"><h2>8.Delete Deployment</h2></span>
 
-<span style="color:grey"><h2>9.Delete Deployment</h2></span>
+<p>Before deleting the deployment,make sure to stop the application</p>
 
-<p>Deleting deployment will help you save CUH.</p>
+<a class="button is-dark is-medium" title="Stop the application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=python-nodejs%20terminal%203">Stop Application</a><br>
 
-<a class="button is-dark is-medium" title="Delete deployment" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs terminal 1$$cd ${CHE_PROJECTS_ROOT}/LoanAPP-MQ ;python3.8+./DeleteDeploy/deleteDeploy.py">Delete Deployment</a><br>
+<p>Deleting deployment will help you save Capacity Unit Hours(CUH).</p>
+
+<a class="button is-dark is-medium" title="Delete deployment" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=python-nodejs%20terminal%203$$python3.8%20DeleteDeploy/deleteDeploy.py">Delete deployment</a><br>

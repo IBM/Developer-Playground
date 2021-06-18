@@ -136,13 +136,13 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 <img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step4.png" width = "750" height= "750">
 
 <p>Step 5 : Click on Application credentials and click on Add.</p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step5.png" width = "750" height= "750">
+<img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step5.png" width = "750" height= "750">
 <p>Step 6 : Give a display name and click in add and generate API Key.Download the file</p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step6.png" width = "750" height= "750">
+<img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step6.png" width = "750" height= "750">
 <p>Step 7 : Go to <b>Queue managers</b> tab and click on the queue manager that you have created in step in step3.</p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step7.png" width = "750" height= "750">
+<img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step7.png" width = "750" height= "750">
 <p>Step 8 : Download the connection information as shown in the below image.</p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step8.png" width = "750" height= "750">
+<img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step8.png" width = "750" height= "750">
 <br/>
 <br/>
 <br/>
@@ -155,14 +155,14 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 <br>
 
 <p>On clicking the above button you will be redirected to a page as shown in the below figure.</p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/machineLearning-instance.png" width = "750" height= "750">
+<img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/machineLearning-instance.png" width = "750" height= "750">
 <br/>
 <br/>̌
 <h4>2.3 MongoDB on IBM cloud</h4>
 <p>Click on the below button to create a MongoDB instance on IBM cloud .</p>
 <a class="button is-dark is-medium" title="Databases for MongoDB" href="https://dataplatform.cloud.ibm.com/data/catalog/databases-for-mongodb?context=cpdaas&target=services">Databases for MongoDB</a><br>
 <p>On clicking the above button you will be redirected to a page as shown in the below figure.</p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/Mongo-instance.png" width = "750" height= "750">
+<img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/Mongo-instance.png" width = "750" height= "750">
 <br>
 </body>
 
@@ -194,14 +194,14 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 <li>
 <p>Step 1 : Go to <a href="https://dataplatform.cloud.ibm.com/">IBM CloudPak for data</a> and login with your mail id. Once you login click on view all spaces button as shown in the figure below.
  </p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/step1-spaceId.png" width = "750" height= "750">
+<img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/step1-spaceId.png" width = "750" height= "750">
 </li>
 <li>
 <p>Step 2 :  Click on create deployment space.</p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/step2-spaceId.png" width = "750" height= "750">
+<img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/step2-spaceId.png" width = "750" height= "750">
 </li>
 <li><p>Step 3 : Give the deployment a name and add a machine learning instance that you have earlier created.Click on create button after filling the details.</p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/step3-spaceID.png" width = "750" height= "750">
+<img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/step3-spaceID.png" width = "750" height= "750">
 </li>
 <li>
 <p>Step 4 : Click on view deployement space and then select manage tab.Under this tab, copy the space GUID.</p>

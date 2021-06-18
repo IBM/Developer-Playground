@@ -16,3 +16,5 @@ components:
     alias: nodejs
   - id: redhat/vscode-didact/latest
     type: chePlugin
+  - id: ibm-playground/api-hub/latest
+    type: chePlugin

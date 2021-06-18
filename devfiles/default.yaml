@@ -4,8 +4,6 @@ metadata:
 attributes:
   persistVolumes: 'false'
 components:
-  - id: che-incubator/typescript/latest
-    type: chePlugin
   - mountSources: true
     endpoints:
       - name: nodejs

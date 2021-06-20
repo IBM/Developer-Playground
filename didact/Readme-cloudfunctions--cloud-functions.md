@@ -188,8 +188,8 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 <li>
 
 <p>Step 2 :  Click the below button to generate api key through IBM cloud CLI commands.
-<a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd ${CHE_PROJECTS_ROOT}/LoanAPP-MQ ; ibmcloud%20iam api-key-create%20MyKey%20-d%20'this is my API key'%20--file ${CHE_PROJECTS_ROOT}/LoanAPP-MQ/key_file">Generate api key</a><br> 
-</p>This will generate API key with name <b>MyKey</b> and the value of API key will be stored in <b>key_file</b> file in the main directory of the project.
+<a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd ${CHE_PROJECTS_ROOT}/LoanAPP-MQ ; ibmcloud%20iam%20api-key-create%20ApiKey-LoanApp-MQ%20-d%20'this is API key for loanapp-MQ'%20--file ${CHE_PROJECTS_ROOT}/LoanAPP-MQ/key_file">Generate api key</a><br> 
+</p>This will generate API key with name <b>ApiKey-LoanApp-MQ</b> and the value of API key will be stored in <b>key_file</b> file in the main directory of the project.
 </li>
 </ul>
 
@@ -254,3 +254,8 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 <p>Deleting deployment will help you save CUH.</p>
 
 <a class="button is-dark is-medium" title="Delete deployment" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs terminal 1$$cd ${CHE_PROJECTS_ROOT}/LoanAPP-MQ ;python3.8+./DeleteDeploy/deleteDeploy.py">Delete Deployment</a><br>
+  
+<span style="color:grey"><h2>10.Delete API key</h2></span>
+
+<p>Click the below button to delete API key generated in step 4 through IBM cloud CLI command both from the sample app and IBM cloud.</p>
+<a class="button is-dark is-medium" title="Delete API Key" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs terminal 1$$cd ${CHE_PROJECTS_ROOT}/LoanAPP-MQ ;ibmcloud iam api-key-delete ApiKey-LoanApp-MQ ; rm ${CHE_PROJECTS_ROOT}/LoanAPP-MQ/key_file">Delete API Key</a><br>

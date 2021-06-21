@@ -366,8 +366,8 @@ exports.getresults = function (jobid = "") {
       'method': 'POST',
       'url': process.env[env_var.concat("_").concat("results")],
       'headers': {
-        'X-IBM-Client-Id': '9c71be54-cc92-49e5-80d9-6da1566726df',
-        'X-IBM-Client-Secret': 'eQ3uT2sN7fO0gJ8oX5rI0fO0pD6iW1jD3fA7gD7oV1xX7hD5pK',
+        'X-IBM-Client-Id': process.env.CLIENT_ID,
+        'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
         'accept': 'application/json',
         'content-type': 'multipart/form-data; boundary=---011000010111000001101001',
       },

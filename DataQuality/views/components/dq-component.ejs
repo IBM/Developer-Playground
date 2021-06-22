@@ -27,9 +27,18 @@ async function get_class_parity(){
   let fname = ftemp.options[ftemp.selectedIndex].text;
 
   document.getElementById("overlay").style.display = "block";
-
-  let response = await fetch('/getclassparity?label=' + label + '&fpath=' + fpath + '&fname=' + fname);
+  let response = await fetch('/checkserver');
   let result = await response.json();
+
+  if(JSON.stringify(result["message"]) === undefined){
+    window.alert("Server is encountering a failure");
+    document.getElementById("overlay").style.display = "none";
+  }
+
+  else{
+
+  response = await fetch('/getclassparity?label=' + label + '&fpath=' + fpath + '&fname=' + fname);
+  result = await response.json();
 
     var table0 = document.getElementById("job1-table");
     table0.style.display = "";
@@ -52,18 +61,9 @@ async function get_class_parity(){
 
         copyToClip(val["JobID"]);
         alert('Job ID copied to Clipboard');
-        //console.log('done');
-        //cell3.innerHTML = '<button type = "submit" onclick="() => navigator.clipboard.writeText(\'Copy this text to clipboard\')"> Copy  </button>' ;
-        //cell3.innerHTML = '<button type = "submit" onclick="() => navigator.clipboard.writeText(\"Copy this text to clipboard\")"> Copy the stuff </button>';
-        //cell3.innerHTML = '<button type = "submit" onclick="copyToClip( ${val["JobID"]})">Copy the stuff </button>'
-        
+
+  }   
 }
-
-async function rtemp(subid) {
-
-console.log("SSS-id: ", subid);
-}
-
 
 async function get_results(){
 
@@ -71,8 +71,17 @@ async function get_results(){
 
   document.getElementById("overlay").style.display = "block";
 
-  let response = await fetch('/getresults?jobid=' + jobid);
+  let response = await fetch('/checkserver');
   let result = await response.json();
+
+  if(JSON.stringify(result["message"]) === undefined){
+    window.alert("Server is encountering a failure");
+    document.getElementById("overlay").style.display = "none";
+
+  }
+  else{
+  response = await fetch('/getresults?jobid=' + jobid);
+  result = await response.json();
 
   if(JSON.stringify(result) === JSON.stringify({})){
       window.alert("Analysis is still in progress. Try in a while");
@@ -98,8 +107,6 @@ async function get_results(){
       var col = theadRef1.insertRow();
       var row = tbodyRef1.insertRow();
 
-      // Create the table heading with keys... 
-
       for(var i=0; i < keys.length ; i++){
         col.insertCell(i).innerHTML = keys[i];
       }
@@ -109,6 +116,7 @@ async function get_results(){
       }
       
       }
+    }
 }
 
 async function get_class_overlap(){
@@ -120,9 +128,16 @@ async function get_class_overlap(){
   let fname = ftemp.options[ftemp.selectedIndex].text;
 
   document.getElementById("overlay").style.display = "block";
-
-  let response = await fetch('/getclassoverlap?label=' + label + '&fpath=' + fpath + '&fname=' + fname);
+  let response = await fetch('/checkserver');
   let result = await response.json();
+
+  if(JSON.stringify(result["message"]) === undefined){
+    window.alert("Server is encountering a failure");
+    document.getElementById("overlay").style.display = "none";
+  }
+  else{
+  response = await fetch('/getclassoverlap?label=' + label + '&fpath=' + fpath + '&fname=' + fname);
+  result = await response.json();
 
   var table1 = document.getElementById("job1-table");
   table1.style.display = "";
@@ -146,7 +161,7 @@ async function get_class_overlap(){
       copyToClip(val["JobID"]);
       alert('Job ID copied to Clipboard');
       
-  
+  }
 }
 
 async function get_label_purity(){
@@ -158,9 +173,16 @@ async function get_label_purity(){
   let fname = ftemp.options[ftemp.selectedIndex].text;
 
   document.getElementById("overlay").style.display = "block";
-
-  let response = await fetch('/getlabelpurity?label=' + label + '&fpath=' + fpath + '&fname=' + fname);
+  let response = await fetch('/checkserver');
   let result = await response.json();
+
+  if(JSON.stringify(result["message"]) === undefined){
+    window.alert("Server is encountering a failure");
+    document.getElementById("overlay").style.display = "none";
+  }
+  else{
+  response = await fetch('/getlabelpurity?label=' + label + '&fpath=' + fpath + '&fname=' + fname);
+  result = await response.json();
 
   var table1 = document.getElementById("job1-table");
   table1.style.display = "";
@@ -183,6 +205,7 @@ async function get_label_purity(){
     cell2.innerHTML = val["message"];
     copyToClip(val["JobID"]);
         alert('Job ID copied to Clipboard');
+ }
 }
 
 async function get_outlier_detection(){
@@ -194,9 +217,16 @@ async function get_outlier_detection(){
   let fname = ftemp.options[ftemp.selectedIndex].text;
 
   document.getElementById("overlay").style.display = "block";
-
-  let response = await fetch('/getoutlierdetection?label=' + label + '&fpath=' + fpath + '&fname=' + fname);
+  let response = await fetch('/checkserver');
   let result = await response.json();
+
+  if(JSON.stringify(result["message"]) === undefined){
+    window.alert("Server is encountering a failure");
+    document.getElementById("overlay").style.display = "none";
+  }
+  else{
+  response = await fetch('/getoutlierdetection?label=' + label + '&fpath=' + fpath + '&fname=' + fname);
+  result = await response.json();
 
   var table1 = document.getElementById("job1-table");
   table1.style.display = "";
@@ -221,12 +251,11 @@ async function get_outlier_detection(){
   copyToClip(val["JobID"]);
   alert('Job ID copied to Clipboard');
   
+ }
 
 }
 
-
 </script>
-
 
 <div id="overlay" style="display: none">
   <div class="loading" id="loading"></div>

@@ -4,7 +4,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-
 <script>
 
 async function copyToClip(str) {
@@ -24,8 +23,17 @@ async function get_results1(){
 
   document.getElementById("overlay1").style.display = "block";
 
-  let response = await fetch('/getresults?jobid=' + jobid);
+  let response = await fetch('/checkserver');
   let result = await response.json();
+
+  if(JSON.stringify(result["message"]) === undefined){
+    window.alert("Server is encountering a failure");
+    document.getElementById("overlay").style.display = "none";
+  }
+  else{
+  response = await fetch('/getresults?jobid=' + jobid);
+  result = await response.json();
+
 
   if(JSON.stringify(result) === JSON.stringify({})){
       window.alert("Analysis is still in progress. Try in a while");
@@ -51,8 +59,6 @@ async function get_results1(){
       var col = theadRef1.insertRow();
       var row = tbodyRef1.insertRow();
 
-      // Create the table heading with keys... 
-
       for(var i=0; i < keys.length ; i++){
         col.insertCell(i).innerHTML = keys[i];
       }
@@ -62,6 +68,7 @@ async function get_results1(){
       }
       
       }
+ }
 }
 
 async function get_data_completeness(){
@@ -72,8 +79,16 @@ async function get_data_completeness(){
 
   document.getElementById("overlay1").style.display = "block";
 
-  let response = await fetch('/chkdatacompleteness?fpath=' + fpath + '&fname=' + fname);
+  let response = await fetch('/checkserver');
   let result = await response.json();
+
+  if(JSON.stringify(result["message"]) === undefined){
+    window.alert("Server is encountering a failure");
+    document.getElementById("overlay").style.display = "none";
+  }
+  else{
+  response = await fetch('/chkdatacompleteness?fpath=' + fpath + '&fname=' + fname);
+  result = await response.json();
 
   var table1 = document.getElementById("job-table");
   table1.style.display = "";
@@ -97,8 +112,7 @@ async function get_data_completeness(){
 
   copyToClip(val["JobID"]);
         alert('Job ID copied to Clipboard');
-
-
+  }
 }
 
 async function get_data_duplicates(){
@@ -109,8 +123,16 @@ async function get_data_duplicates(){
 
   document.getElementById("overlay1").style.display = "block";
 
-  let response = await fetch('/chkdataduplicates?fpath=' + fpath + '&fname=' + fname);
+  let response = await fetch('/checkserver');
   let result = await response.json();
+
+  if(JSON.stringify(result["message"]) === undefined){
+    window.alert("Server is encountering a failure");
+    document.getElementById("overlay").style.display = "none";
+  }
+  else{
+  response = await fetch('/chkdataduplicates?fpath=' + fpath + '&fname=' + fname);
+  result = await response.json();
 
   var table1 = document.getElementById("job-table");
   table1.style.display = "";
@@ -133,7 +155,7 @@ async function get_data_duplicates(){
   cell2.innerHTML = val["message"];
   copyToClip(val["JobID"]);
         alert('Job ID copied to Clipboard');
-
+  }
 }
 
 async function get_data_homogeneity(){
@@ -144,8 +166,16 @@ async function get_data_homogeneity(){
 
   document.getElementById("overlay1").style.display = "block";
 
-  let response = await fetch('/chkdatahomogeneity?fpath=' + fpath + '&fname=' + fname);
+  let response = await fetch('/checkserver');
   let result = await response.json();
+
+  if(JSON.stringify(result["message"]) === undefined){
+    window.alert("Server is encountering a failure");
+    document.getElementById("overlay").style.display = "none";
+  }
+  else{
+  response = await fetch('/chkdatahomogeneity?fpath=' + fpath + '&fname=' + fname);
+  result = await response.json();
 
   var table1 = document.getElementById("job-table");
   table1.style.display = "";
@@ -170,7 +200,7 @@ async function get_data_homogeneity(){
   copyToClip(val["JobID"]);
         alert('Job ID copied to Clipboard');
 
-
+  }
 }
 
 async function get_data_profiler(){
@@ -181,8 +211,16 @@ async function get_data_profiler(){
 
   document.getElementById("overlay1").style.display = "block";
 
-  let response = await fetch('/chkdataprofile?fpath=' + fpath + '&fname=' + fname);
+  let response = await fetch('/checkserver');
   let result = await response.json();
+
+  if(JSON.stringify(result["message"]) === undefined){
+    window.alert("Server is encountering a failure");
+    document.getElementById("overlay").style.display = "none";
+  }
+  else{ 
+  response = await fetch('/chkdataprofile?fpath=' + fpath + '&fname=' + fname);
+  result = await response.json();
 
   var table1 = document.getElementById("job-table");
   table1.style.display = "";
@@ -206,12 +244,13 @@ async function get_data_profiler(){
 
   copyToClip(val["JobID"]);
   alert('Job ID copied to Clipboard');
-
-
+  
+ }
 }
 
 
 </script>
+
 
 
 <div id="overlay1" style="display: none">

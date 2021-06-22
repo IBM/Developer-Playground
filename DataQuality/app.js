@@ -2,7 +2,7 @@ const ejs = require('ejs');
 const express = require('express');
 const dotenv = require('dotenv');
 dotenv.config();
-const { getclassparity, getresults, getclassoverlap, getlabelpurity, getoutlierdetection, chkdatacompleteness, chkdataduplicates, chkdatahomogeneity, chkdataprofile } = require('./services/service')
+const { getclassparity, getresults, checkserver, getclassoverlap, getlabelpurity, getoutlierdetection, chkdatacompleteness, chkdataduplicates, chkdatahomogeneity, chkdataprofile } = require('./services/service')
 
 
 var app = express();
@@ -94,6 +94,19 @@ class Server {
       let jobid = request.query.jobid;
 
       getresults(jobid).then((res) => {
+        response.json(res);
+      }).catch((e) => {
+        response.end({ result: "fail" })
+        //console.log("Error : ",e)
+      })
+
+    });
+
+    this.app.get("/checkserver", function (request, response) {
+
+      let jobid = request.query.jobid;
+
+      checkserver(jobid).then((res) => {
         response.json(res);
       }).catch((e) => {
         response.end({ result: "fail" })

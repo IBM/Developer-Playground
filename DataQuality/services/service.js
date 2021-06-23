@@ -379,10 +379,6 @@ exports.getresults = function (jobid = "") {
     var finalresult = {}
     request(options, function (error, response) {
       if (error) reject(error);
-
-      // Implement "IF" condition checking for "type" whether class parity, class overlap etc.
-      // accordingly append data fields into and resolve the same
-      /// condition when results are not ready AKA response is 'null', then alert/resolve "Analysis is still in progress. Try in a while"
       const jsondata1 = JSON.parse(response.body);
 
       if(jsondata1["message"] == "Job Finished"){
@@ -405,8 +401,6 @@ exports.getresults = function (jobid = "") {
 
         ky = "String Columns" + ": " + JSON.stringify(jsondata1["response"]["results"]["details"]["Basic_Profile"]["string_columns"]["count"]);
         finalresult[ky] = jsondata1["response"]["results"]["details"]["Basic_Profile"]["string_columns"]["column_names"]
-
-        //finalresult["Max Categorical Column String Length"] = jsondata1["response"]["results"]["details"]["Max_Categorical_Column_String_Length"]
 
 
         finalresult["Score"] = jsondata1["response"]["results"]["score"];

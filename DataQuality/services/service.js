@@ -2,8 +2,6 @@ const request = require('request');
 var fs = require('fs');
 require('dotenv/config');
 
-var env_var = JSON.stringify(process.env.PLAYGROUND_ENVIRONMENT);
-env_var = env_var.substring(1,8);
 
 exports.getclassparity = function (label = "", fpath = "", fname = "") {
 
@@ -15,7 +13,7 @@ exports.getclassparity = function (label = "", fpath = "", fname = "") {
 
     var options = {
       'method': 'POST',
-      'url': process.env[env_var.concat("_").concat("cparity")],
+      'url': 'https://dev.api.ibm.com/dataquality4ai/test/data_quality/structured/class_parity',
       'headers': {
         'X-IBM-Client-Id': process.env.CLIENT_ID,
         'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
@@ -64,7 +62,7 @@ exports.getclassoverlap = function (label = "", fpath = "", fname = "") {
 
     var options = {
       'method': 'POST',
-      'url': process.env[env_var.concat("_").concat("coverlap")],
+      'url': 'https://dev.api.ibm.com/dataquality4ai/test/data_quality/structured/class_overlap',
       'headers': {
         'X-IBM-Client-Id': process.env.CLIENT_ID,
         'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
@@ -108,7 +106,7 @@ exports.getlabelpurity = function (label = "", fpath = "", fname = "") {
 
     var options = {
       'method': 'POST',
-      'url': process.env[env_var.concat("_").concat("labelpurity")],
+      'url': 'https://dev.api.ibm.com/dataquality4ai/test/data_quality/structured/label_purity',
       'headers': {
         'X-IBM-Client-Id': process.env.CLIENT_ID,
         'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
@@ -152,7 +150,7 @@ exports.getoutlierdetection = function (label = "", fpath = "", fname = "") {
 
     var options = {
       'method': 'POST',
-      'url': process.env[env_var.concat("_").concat("outlierdetect")],
+      'url': 'https://dev.api.ibm.com/dataquality4ai/test/data_quality/structured/outlier_detection',
       'headers': {
         'X-IBM-Client-Id': process.env.CLIENT_ID,
         'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
@@ -195,7 +193,7 @@ exports.chkdatacompleteness = function (fpath = "", fname = "") {
 
     var options = {
       'method': 'POST',
-      'url': process.env[env_var.concat("_").concat("dcompleteness")],
+      'url': 'https://dev.api.ibm.com/dataquality4ai/test/data_quality/structured/data_completeness',
       'headers': {
         'X-IBM-Client-Id': process.env.CLIENT_ID,
         'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
@@ -237,7 +235,7 @@ exports.chkdataduplicates = function (fpath = "", fname = "") {
 
     var options = {
       'method': 'POST',
-      'url': process.env[env_var.concat("_").concat("dduplicates")],
+      'url': 'https://dev.api.ibm.com/dataquality4ai/test/data_quality/structured/data_duplicates',
       'headers': {
         'X-IBM-Client-Id': process.env.CLIENT_ID,
         'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
@@ -279,7 +277,7 @@ exports.chkdatahomogeneity = function (fpath = "", fname = "") {
 
     var options = {
       'method': 'POST',
-      'url': process.env[env_var.concat("_").concat("dhomogeneity")],
+      'url': 'https://dev.api.ibm.com/dataquality4ai/test/data_quality/structured/data_homogeneity',
       'headers': {
         'X-IBM-Client-Id': process.env.CLIENT_ID,
         'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
@@ -321,7 +319,7 @@ exports.chkdataprofile = function (fpath = "", fname = "") {
 
     var options = {
       'method': 'POST',
-      'url': process.env[env_var.concat("_").concat("dprofile")],
+      'url': 'https://dev.api.ibm.com/dataquality4ai/test/data_quality/structured/data_profiler',
       'headers': {
         'X-IBM-Client-Id': process.env.CLIENT_ID,
         'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
@@ -355,6 +353,8 @@ exports.chkdataprofile = function (fpath = "", fname = "") {
 }
 
 
+
+
 exports.getresults = function (jobid = "") {
 
   var jobid = jobid.toString();
@@ -364,7 +364,7 @@ exports.getresults = function (jobid = "") {
     var request = require('request');
     var options = {
       'method': 'POST',
-      'url': process.env[env_var.concat("_").concat("results")],
+      'url': 'https://dev.api.ibm.com/dataquality4ai/test/get_result',
       'headers': {
         'X-IBM-Client-Id': process.env.CLIENT_ID,
         'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
@@ -379,6 +379,10 @@ exports.getresults = function (jobid = "") {
     var finalresult = {}
     request(options, function (error, response) {
       if (error) reject(error);
+
+      // Implement "IF" condition checking for "type" whether class parity, class overlap etc.
+      // accordingly append data fields into and resolve the same
+      /// condition when results are not ready AKA response is 'null', then alert/resolve "Analysis is still in progress. Try in a while"
       const jsondata1 = JSON.parse(response.body);
 
       if(jsondata1["message"] == "Job Finished"){
@@ -401,6 +405,9 @@ exports.getresults = function (jobid = "") {
 
         ky = "String Columns" + ": " + JSON.stringify(jsondata1["response"]["results"]["details"]["Basic_Profile"]["string_columns"]["count"]);
         finalresult[ky] = jsondata1["response"]["results"]["details"]["Basic_Profile"]["string_columns"]["column_names"]
+
+        //finalresult["Max Categorical Column String Length"] = jsondata1["response"]["results"]["details"]["Max_Categorical_Column_String_Length"]
+
 
         finalresult["Score"] = jsondata1["response"]["results"]["score"];
         resolve(finalresult)
@@ -431,4 +438,24 @@ exports.getresults = function (jobid = "") {
   });
 }
 
+exports.checkserver = function () {
+  return new Promise((resolve, reject) => {
 
+    var options = {
+      'method': 'GET',
+      'url': 'https://dev.api.ibm.com/dataquality4ai/test/connection_check',
+      'headers': {
+        'accept': 'application/json',
+        'X-IBM-Client-Id': process.env.CLIENT_ID,
+        'X-IBM-Client-Secret': process.env.CLIENT_SECRET
+      }
+    };
+    request(options, function (error, response) {
+      if (error) reject(error);
+      const jdata = JSON.parse(response.body);
+      resolve(jdata);
+    });
+
+
+  })
+}

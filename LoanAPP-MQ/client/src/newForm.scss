@@ -1,0 +1,42 @@
+@import '@carbon/colors/scss/colors';
+// .notification--success{
+//     background-color:$carbon--green-30;
+// }
+// .bx--inline-notification__title{
+//     color:$carbon--gray-100;
+// }
+.header {
+    padding: 60px;
+    text-align: center;
+    background:black;
+    color: white;
+    font-size: 30px;
+  }
+  hr.new4 {
+    border: 2px solid #0f62fe;
+    margin-left: 1rem;
+    width: 50%;
+    }
+.tilePlacement{
+  position: fixed;
+  width: 200%;
+  top: 40%;
+  left: 30%;
+  transform: translate(-40%, -40%);
+}
+.tilePlacement2{
+  position: fixed;
+
+  top: 40%;
+  left: 50%;
+  transform: translate(-40%, -40%);
+}
+.bx--side-nav__navigation{
+  background-color:white;
+}
+.bx--side-nav__link{
+  color:Gray 70;
+}
+.bx--side-nav__link:focus{
+  border:$carbon--blue-60;
+}

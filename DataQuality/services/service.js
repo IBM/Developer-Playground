@@ -2,6 +2,8 @@ const request = require('request');
 var fs = require('fs');
 require('dotenv/config');
 
+var env_var = JSON.stringify(process.env.PLAYGROUND_ENVIRONMENT);
+env_var = env_var.substring(1,8);
 
 exports.getclassparity = function (label = "", fpath = "", fname = "") {
 
@@ -13,7 +15,7 @@ exports.getclassparity = function (label = "", fpath = "", fname = "") {
 
     var options = {
       'method': 'POST',
-      'url': 'https://dev.api.ibm.com/dataquality4ai/test/data_quality/structured/class_parity',
+      'url': process.env[env_var.concat("_").concat("cparity")],
       'headers': {
         'X-IBM-Client-Id': process.env.CLIENT_ID,
         'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
@@ -62,7 +64,7 @@ exports.getclassoverlap = function (label = "", fpath = "", fname = "") {
 
     var options = {
       'method': 'POST',
-      'url': 'https://dev.api.ibm.com/dataquality4ai/test/data_quality/structured/class_overlap',
+      'url': process.env[env_var.concat("_").concat("coverlap")],
       'headers': {
         'X-IBM-Client-Id': process.env.CLIENT_ID,
         'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
@@ -106,7 +108,7 @@ exports.getlabelpurity = function (label = "", fpath = "", fname = "") {
 
     var options = {
       'method': 'POST',
-      'url': 'https://dev.api.ibm.com/dataquality4ai/test/data_quality/structured/label_purity',
+      'url': process.env[env_var.concat("_").concat("labelpurity")],
       'headers': {
         'X-IBM-Client-Id': process.env.CLIENT_ID,
         'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
@@ -150,7 +152,7 @@ exports.getoutlierdetection = function (label = "", fpath = "", fname = "") {
 
     var options = {
       'method': 'POST',
-      'url': 'https://dev.api.ibm.com/dataquality4ai/test/data_quality/structured/outlier_detection',
+      'url': process.env[env_var.concat("_").concat("outlierdetect")],
       'headers': {
         'X-IBM-Client-Id': process.env.CLIENT_ID,
         'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
@@ -193,7 +195,7 @@ exports.chkdatacompleteness = function (fpath = "", fname = "") {
 
     var options = {
       'method': 'POST',
-      'url': 'https://dev.api.ibm.com/dataquality4ai/test/data_quality/structured/data_completeness',
+      'url': process.env[env_var.concat("_").concat("dcompleteness")],
       'headers': {
         'X-IBM-Client-Id': process.env.CLIENT_ID,
         'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
@@ -235,7 +237,7 @@ exports.chkdataduplicates = function (fpath = "", fname = "") {
 
     var options = {
       'method': 'POST',
-      'url': 'https://dev.api.ibm.com/dataquality4ai/test/data_quality/structured/data_duplicates',
+      'url': process.env[env_var.concat("_").concat("dduplicates")],
       'headers': {
         'X-IBM-Client-Id': process.env.CLIENT_ID,
         'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
@@ -277,7 +279,7 @@ exports.chkdatahomogeneity = function (fpath = "", fname = "") {
 
     var options = {
       'method': 'POST',
-      'url': 'https://dev.api.ibm.com/dataquality4ai/test/data_quality/structured/data_homogeneity',
+      'url': process.env[env_var.concat("_").concat("dhomogeneity")],
       'headers': {
         'X-IBM-Client-Id': process.env.CLIENT_ID,
         'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
@@ -319,7 +321,7 @@ exports.chkdataprofile = function (fpath = "", fname = "") {
 
     var options = {
       'method': 'POST',
-      'url': 'https://dev.api.ibm.com/dataquality4ai/test/data_quality/structured/data_profiler',
+      'url': process.env[env_var.concat("_").concat("dprofile")],
       'headers': {
         'X-IBM-Client-Id': process.env.CLIENT_ID,
         'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
@@ -364,7 +366,7 @@ exports.getresults = function (jobid = "") {
     var request = require('request');
     var options = {
       'method': 'POST',
-      'url': 'https://dev.api.ibm.com/dataquality4ai/test/get_result',
+      'url': process.env[env_var.concat("_").concat("results")],
       'headers': {
         'X-IBM-Client-Id': process.env.CLIENT_ID,
         'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
@@ -437,7 +439,7 @@ exports.checkserver = function () {
 
     var options = {
       'method': 'GET',
-      'url': 'https://dev.api.ibm.com/dataquality4ai/test/connection_check',
+      'url': process.env[env_var.concat("_").concat("check")],
       'headers': {
         'accept': 'application/json',
         'X-IBM-Client-Id': process.env.CLIENT_ID,

@@ -126,22 +126,25 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 
 <p>Step1: Click the below button to create IBM MQ instance through IBM cloud CLI commands.</p>
 <a class="button is-dark is-medium" title="IBM MQ" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs terminal 1$$ibmcloud resource service-instance-create mqinstance mqcloud lite eu-gb">IBM MQ</a><br><br>
-<p>Step 2 : After creating the instance you will be re-directed to a page as shown below.click on create button to create queue manager.
+<p>Step 2 : Go to <a href='https://cloud.ibm.com/resources'>IBM cloud resources.Expand the <b>services</b> row and click the <b>mqinstace</b> that has been created.</a>
+ </p>
+<img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/IBM-cloud-resourceList.png" width = "750" height= "750">
+<p>Step 3 : On clicking the instance you will be re-directed to a page as shown below.click on create button to create queue manager.
  </p>
 <img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step2.png" width = "750" height= "750">
-<p>Step 3 : Give queue manager a name and click on create.</p>
+<p>Step 4 : Give queue manager a name and click on create.</p>
 <img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step3.png" width = "750" height= "750">
 
-<p>Step 4 : Creating queue manager takes some time. When the status changes to running it indicates that queue manager is ready to use.</p>
+<p>Step 5 : Creating queue manager takes some time. When the status changes to running it indicates that queue manager is ready to use.</p>
 <img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step4.png" width = "750" height= "750">
 
-<p>Step 5 : Click on Application credentials and click on Add.</p>
+<p>Step 6 : Click on Application credentials and click on Add.</p>
 <img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step5.png" width = "750" height= "750">
-<p>Step 6 : Give a display name and click in add and generate API Key.Download the file</p>
+<p>Step 7 : Give a display name and click in add and generate API Key.Download the file</p>
 <img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step6.png" width = "750" height= "750">
-<p>Step 7 : Go to <b>Queue managers</b> tab and click on the queue manager that you have created in step in step3.</p>
+<p>Step 8 : Go to <b>Queue managers</b> tab and click on the queue manager that you have created in step in step3.</p>
 <img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step7.png" width = "750" height= "750">
-<p>Step 8 : Download the connection information as shown in the below image.</p>
+<p>Step 9 : Download the connection information as shown in the below image.</p>
 <img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step8.png" width = "750" height= "750">
 <br/>
 <br/>
@@ -187,9 +190,9 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 </li>
 <li>
 
-<p>Step 2 :  Click the below button to generate api key through IBM cloud CLI commands.
+<p>Step 2 :  Click the below button to generate api key through IBM cloud CLI commands.</p><br>
 <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd ${CHE_PROJECTS_ROOT}/LoanAPP-MQ ; ibmcloud%20iam%20api-key-create%20ApiKey-LoanApp-MQ%20-d%20'this is API key for loanapp-MQ'%20--file ${CHE_PROJECTS_ROOT}/LoanAPP-MQ/key_file">Generate api key</a><br> 
-</p>This will generate API key with name <b>ApiKey-LoanApp-MQ</b> and the value of API key will be stored in <b>key_file</b> file in the main directory of the project.
+<p>This will generate API key with name <b>ApiKey-LoanApp-MQ</b> and the value of API key will be stored in <b>key_file</b> file in the main directory of the project.</p>
 </li>
 </ul>
 

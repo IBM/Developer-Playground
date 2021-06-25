@@ -7,8 +7,8 @@ const { getatmlocation, calcloanpayable } = require('./services/service')
 
 
 var app = express();
-portfinder.basePort = 3060;
-portfinder.highestPort = 3069;
+portfinder.basePort = 3100;
+portfinder.highestPort = 9999;
 
 class Server {
   constructor(app) {

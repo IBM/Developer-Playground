@@ -1,14 +1,15 @@
 const ejs = require('ejs');
 const express = require('express');
+const portfinder = require("portfinder");
 const { getmysubscriptions, getsubscribers, inviteuser, revokesubscription, getcustomerdetails } = require('./services/service')
 
 
 var app = express();
-var port = process.env.PORT || 3050
+portfinder.basePort = 3100;
+portfinder.highestPort = 9999;
 
 class Server {
-  constructor(port, app) {
-    this.port = port;
+  constructor(app) {
     this.app = app;
   }
   core() {
@@ -88,16 +89,15 @@ class Server {
 
 
   listen() {
-    this.app.listen(this.port, (err) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log("App is listening on port  : ", port)
-      }
+    portfinder.getPort((err, port) => {
+      if (err) throw err;
+      this.app.listen(port, () =>
+        console.log(`App listening on port: ${port}`)
+      );
     });
   }
 }
 
-let server = new Server(port, app);
+let server = new Server(app);
 server.core();
 server.listen();

@@ -1,16 +1,17 @@
 const ejs = require('ejs');
 const express = require('express');
 const dotenv = require('dotenv');
+const portfinder = require("portfinder");
 dotenv.config();
 const { getatmlocation, calcloanpayable } = require('./services/service')
 
 
 var app = express();
-var port = process.env.PORT || 3060
+portfinder.basePort = 3060;
+portfinder.highestPort = 3069;
 
 class Server {
-  constructor(port, app) {
-    this.port = port;
+  constructor(app) {
     this.app = app;
   }
   core() {
@@ -60,16 +61,15 @@ class Server {
  
 
   listen() {
-    this.app.listen(this.port, (err) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log("App is listening on port  : ", port)
-      }
+    portfinder.getPort((err, port) => {
+      if (err) throw err;
+      this.app.listen(port, () =>
+        console.log(`App listening on port: ${port}`)
+      );
     });
   }
 }
 
-let server = new Server(port, app);
+let server = new Server(app);
 server.core();
 server.listen();

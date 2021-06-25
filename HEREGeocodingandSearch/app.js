@@ -1,16 +1,17 @@
 const ejs = require('ejs');
 const express = require('express');
 const {getweeklyforecast,getalerts,getastroforecast,categorychain,addrgeocode,liststores,revaddrgeocode} = require('./services/service')
-
+const portfinder = require("portfinder");
 
 var app = express();
-var port = process.env.PORT || 3070
+portfinder.basePort = 3100;
+portfinder.highestPort = 9999;
 
 class Server {
-  constructor(port, app) {
-    this.port = port;
+  constructor(app) {
     this.app = app;
   }
+  
   core() {
     this.app.use('/assets', express.static(__dirname + '/public'))
     this.app.set('views', __dirname + '/views');
@@ -121,16 +122,15 @@ class Server {
   }
 
   listen() {
-    this.app.listen(this.port, (err) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log("App is listening on port  : ", port)
-      }
+    portfinder.getPort((err, port) => {
+      if (err) throw err;
+      this.app.listen(port, () =>
+        console.log(`App listening on port: ${port}`)
+      );
     });
   }
 }
 
-let server = new Server(port, app);
+let server = new Server(app);
 server.core();
 server.listen();

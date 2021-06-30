@@ -1,6 +1,9 @@
 const request = require('request');
 require('dotenv/config');
 
+var env_var = JSON.stringify(process.env.PLAYGROUND_ENVIRONMENT);
+env_var = env_var.substring(1,8);
+
 function authService() {
   return new Promise(resolve => {
     const cli_id = process.env.CLIENT_ID
@@ -8,7 +11,7 @@ function authService() {
     const basicAuth = Buffer.from(`${cli_id}:${cli_sec}`).toString('base64');
     const options = {
       method: 'POST',
-      url: 'https://api.ibm.com/scx/sbs_orgaccess/oauth2/token',
+      url: process.env[env_var.concat("_").concat("oauth")],
       headers: {
         'Authorization': `Basic ${basicAuth}`,
 
@@ -40,7 +43,7 @@ exports.getcustomerdetails = function () {
 
       let opts = {
         method: 'GET',
-        url: 'https://api.ibm.com/scx/sbs_orgaccess/customer',
+        url: process.env[env_var.concat("_").concat("customer_details")],
         qs:{
           emailAddress: process.env.USERNAME,
           _namedQuery: 'getCustomersByContactEmail',
@@ -82,7 +85,7 @@ exports.getmysubscriptions = function () {
 
       let c_options = {
         method: 'GET',
-        url: 'https://api.ibm.com/scx/sbs_orgaccess/customer',
+        url: process.env[env_var.concat("_").concat("subscriptions")],
         qs: {
           _namedQuery: 'getCustomersByContactEmail',
           _pageNumber: '1',
@@ -148,11 +151,11 @@ exports.getsubscribers = function (id) {
     let data;
     let subs_dict = {}; // individual entries
     let subscribers_list = {}; // final list of subscribers
-    //console.log("id  : ",id)
+
     authService().then((authtoken) => {
       let options = {
         method: 'GET',
-        url: 'https://api.ibm.com/scx/run/sbs_orgaccess/subscriber',
+        url: process.env[env_var.concat("_").concat("subscribers")],
         qs: {
           _namedQuery: 'getSubscriberListBySubscription',
           _pageNumber: '1',
@@ -212,7 +215,7 @@ exports.inviteuser = function (sbpid = "", gname = "", uemail = "", fname = "") 
     authService().then((authtoken) => {
       let options = {
         method: 'POST',
-        url: 'https://api.ibm.com/scx/run/sbs_orgaccess/subscriber/inviteUser',
+        url: process.env[env_var.concat("_").concat("invite")],
         qs: {
           subscriptionId: sbpid
         },
@@ -243,7 +246,7 @@ exports.revokesubscription = function (subid = "", seatid = "") {
 
   var subid = subid.toString();
   var seatid = seatid.toString();
-  var fullUrl = 'https://api.ibm.com/scx/run/sbs_orgaccess/subscriber/'.concat(subid).concat('/seat/').concat(seatid);
+  var fullUrl = process.env[env_var.concat("_").concat("revoke")].concat(subid).concat('/seat/').concat(seatid);
 
   console.log(fullUrl);
 

@@ -141,10 +141,8 @@ class Server {
     this.app.get("/getclassparity", function (request, response) {
 
       let label = request.query.label;
-      let fpath = request.query.fpath;
-      let fname = request.query.fname;
 
-      getclassparity(label,fpath,fname).then((res) => {
+      getclassparity(label).then((res) => {
         response.json(res);
       }).catch((e) => {
         response.end({ result: "fail" })
@@ -156,10 +154,8 @@ class Server {
     this.app.get("/getclassoverlap", function (request, response) {
 
       let label = request.query.label;
-      let fpath = request.query.fpath;
-      let fname = request.query.fname;
 
-      getclassoverlap(label,fpath,fname).then((res) => {
+      getclassoverlap(label).then((res) => {
         response.json(res);
       }).catch((e) => {
         response.end({ result: "fail" })
@@ -171,10 +167,8 @@ class Server {
     this.app.get("/getlabelpurity", function (request, response) {
 
       let label = request.query.label;
-      let fpath = request.query.fpath;
-      let fname = request.query.fname;
 
-      getlabelpurity(label,fpath,fname).then((res) => {
+      getlabelpurity(label).then((res) => {
         response.json(res);
       }).catch((e) => {
         response.end({ result: "fail" })
@@ -186,10 +180,8 @@ class Server {
     this.app.get("/getoutlierdetection", function (request, response) {
 
       let label = request.query.label;
-      let fpath = request.query.fpath;
-      let fname = request.query.fname;
 
-      getoutlierdetection(label,fpath,fname).then((res) => {
+      getoutlierdetection(label).then((res) => {
         response.json(res);
       }).catch((e) => {
         response.end({ result: "fail" })
@@ -214,9 +206,7 @@ class Server {
 
     this.app.get("/checkserver", function (request, response) {
 
-      let jobid = request.query.jobid;
-
-      checkserver(jobid).then((res) => {
+      checkserver().then((res) => {
         response.json(res);
       }).catch((e) => {
         response.end({ result: "fail" })
@@ -228,10 +218,7 @@ class Server {
 
     this.app.get("/chkdatacompleteness", function (request, response) {
 
-      let fpath = request.query.fpath;
-      let fname = request.query.fname;
-
-      chkdatacompleteness(fpath,fname).then((res) => {
+      chkdatacompleteness().then((res) => {
         response.json(res);
       }).catch((e) => {
         response.end({ result: "fail" })
@@ -242,10 +229,7 @@ class Server {
 
     this.app.get("/chkdataduplicates", function (request, response) {
 
-      let fpath = request.query.fpath;
-      let fname = request.query.fname;
-
-      chkdataduplicates(fpath,fname).then((res) => {
+      chkdataduplicates().then((res) => {
         response.json(res);
       }).catch((e) => {
         response.end({ result: "fail" })
@@ -256,10 +240,7 @@ class Server {
 
     this.app.get("/chkdatahomogeneity", function (request, response) {
 
-      let fpath = request.query.fpath;
-      let fname = request.query.fname;
-
-      chkdatahomogeneity(fpath,fname).then((res) => {
+      chkdatahomogeneity().then((res) => {
         response.json(res);
       }).catch((e) => {
         response.end({ result: "fail" })
@@ -270,10 +251,7 @@ class Server {
 
     this.app.get("/chkdataprofile", function (request, response) {
 
-      let fpath = request.query.fpath;
-      let fname = request.query.fname;
-
-      chkdataprofile(fpath,fname).then((res) => {
+      chkdataprofile().then((res) => {
         response.json(res);
       }).catch((e) => {
         response.end({ result: "fail" })

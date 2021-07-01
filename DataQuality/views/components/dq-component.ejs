@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -21,10 +22,12 @@ async function copyToClip(str) {
 async function get_class_parity(){
 
   let label = document.getElementById('label_col').value;
-  let fpath = document.getElementById('files1').value;
+  
+  if (label === "") {
+      window.alert("Label column is missing");
+    }
 
-  let ftemp = document.getElementById('files1');
-  let fname = ftemp.options[ftemp.selectedIndex].text;
+  else {
 
   document.getElementById("overlay").style.display = "block";
   let response = await fetch('/checkserver');
@@ -37,7 +40,7 @@ async function get_class_parity(){
 
   else{
 
-  response = await fetch('/getclassparity?label=' + label + '&fpath=' + fpath + '&fname=' + fname);
+  response = await fetch('/getclassparity?label=' + label);
   result = await response.json();
 
     var table0 = document.getElementById("job1-table");
@@ -62,12 +65,18 @@ async function get_class_parity(){
         copyToClip(val["JobID"]);
         alert('Job ID copied to Clipboard');
 
-  }   
+  }  
+ } 
 }
 
 async function get_results(){
 
   let jobid = document.getElementById('job_id').value;
+
+  if (jobid === "") {
+      window.alert("Label column is missing");
+    }
+  else{
 
   document.getElementById("overlay").style.display = "block";
 
@@ -117,15 +126,17 @@ async function get_results(){
       
       }
     }
+  }
 }
 
 async function get_class_overlap(){
 
   let label = document.getElementById('label_col').value;
-  let fpath = document.getElementById('files1').value;
+  if (label === "") {
+      window.alert("Label column is missing");
+    }
 
-  let ftemp = document.getElementById('files1');
-  let fname = ftemp.options[ftemp.selectedIndex].text;
+  else {
 
   document.getElementById("overlay").style.display = "block";
   let response = await fetch('/checkserver');
@@ -136,7 +147,7 @@ async function get_class_overlap(){
     document.getElementById("overlay").style.display = "none";
   }
   else{
-  response = await fetch('/getclassoverlap?label=' + label + '&fpath=' + fpath + '&fname=' + fname);
+  response = await fetch('/getclassoverlap?label=' + label);
   result = await response.json();
 
   var table1 = document.getElementById("job1-table");
@@ -161,16 +172,18 @@ async function get_class_overlap(){
       copyToClip(val["JobID"]);
       alert('Job ID copied to Clipboard');
       
+    }
   }
+
 }
 
 async function get_label_purity(){
 
   let label = document.getElementById('label_col').value;
-  let fpath = document.getElementById('files1').value;
-
-  let ftemp = document.getElementById('files1');
-  let fname = ftemp.options[ftemp.selectedIndex].text;
+  if (label === "") {
+      window.alert("Label column is missing");
+    }
+  else{
 
   document.getElementById("overlay").style.display = "block";
   let response = await fetch('/checkserver');
@@ -181,7 +194,7 @@ async function get_label_purity(){
     document.getElementById("overlay").style.display = "none";
   }
   else{
-  response = await fetch('/getlabelpurity?label=' + label + '&fpath=' + fpath + '&fname=' + fname);
+  response = await fetch('/getlabelpurity?label=' + label);
   result = await response.json();
 
   var table1 = document.getElementById("job1-table");
@@ -205,16 +218,17 @@ async function get_label_purity(){
     cell2.innerHTML = val["message"];
     copyToClip(val["JobID"]);
         alert('Job ID copied to Clipboard');
+  }
  }
 }
 
 async function get_outlier_detection(){
 
   let label = document.getElementById('label_col').value;
-  let fpath = document.getElementById('files1').value;
-
-  let ftemp = document.getElementById('files1');
-  let fname = ftemp.options[ftemp.selectedIndex].text;
+  if (label === "") {
+      window.alert("Label column is missing");
+    }
+  else{
 
   document.getElementById("overlay").style.display = "block";
   let response = await fetch('/checkserver');
@@ -225,7 +239,7 @@ async function get_outlier_detection(){
     document.getElementById("overlay").style.display = "none";
   }
   else{
-  response = await fetch('/getoutlierdetection?label=' + label + '&fpath=' + fpath + '&fname=' + fname);
+  response = await fetch('/getoutlierdetection?label=' + label);
   result = await response.json();
 
   var table1 = document.getElementById("job1-table");
@@ -252,7 +266,7 @@ async function get_outlier_detection(){
   alert('Job ID copied to Clipboard');
   
  }
-
+  }
 }
 
 
@@ -336,3 +350,4 @@ document.getElementById("fileuploadform1").onsubmit = async (err) => {
 
 
 </div>
+

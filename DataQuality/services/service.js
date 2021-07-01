@@ -5,11 +5,11 @@ require('dotenv/config');
 var env_var = JSON.stringify(process.env.PLAYGROUND_ENVIRONMENT);
 env_var = env_var.substring(1,8);
 
-exports.getclassparity = function (label = "", fpath = "", fname = "") {
+exports.getclassparity = function (label = "") {
 
   var label = label.toString();
-  var fpath = fpath.toString();
-  var fname = fname.toString();
+  var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
+  var fname = 'data.csv'
 
   return new Promise((resolve, reject) => {
 
@@ -54,11 +54,11 @@ exports.getclassparity = function (label = "", fpath = "", fname = "") {
   });
 }
 
-exports.getclassoverlap = function (label = "", fpath = "", fname = "") {
+exports.getclassoverlap = function (label = "") {
 
   var label = label.toString();
-  var fpath = fpath.toString();
-  var fname = fname.toString();
+  var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
+  var fname = 'data.csv'
 
   return new Promise((resolve, reject) => {
 
@@ -98,11 +98,11 @@ exports.getclassoverlap = function (label = "", fpath = "", fname = "") {
   });
 }
 
-exports.getlabelpurity = function (label = "", fpath = "", fname = "") {
+exports.getlabelpurity = function (label = "") {
 
   var label = label.toString();
-  var fpath = fpath.toString();
-  var fname = fname.toString();
+  var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
+  var fname = 'data.csv'
 
   return new Promise((resolve, reject) => {
 
@@ -142,11 +142,11 @@ exports.getlabelpurity = function (label = "", fpath = "", fname = "") {
   });
 }
 
-exports.getoutlierdetection = function (label = "", fpath = "", fname = "") {
+exports.getoutlierdetection = function (label = "") {
 
   var label = label.toString();
-  var fpath = fpath.toString();
-  var fname = fname.toString();
+  var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
+  var fname = 'data.csv'
 
   return new Promise((resolve, reject) => {
 
@@ -186,10 +186,10 @@ exports.getoutlierdetection = function (label = "", fpath = "", fname = "") {
   });
 }
 
-exports.chkdatacompleteness = function (fpath = "", fname = "") {
+exports.chkdatacompleteness = function () {
 
-  var fpath = fpath.toString();
-  var fname = fname.toString();
+  var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
+  var fname = 'data.csv'
 
   return new Promise((resolve, reject) => {
 
@@ -228,10 +228,10 @@ exports.chkdatacompleteness = function (fpath = "", fname = "") {
   });
 }
 
-exports.chkdataduplicates = function (fpath = "", fname = "") {
+exports.chkdataduplicates = function () {
 
-  var fpath = fpath.toString();
-  var fname = fname.toString();
+  var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
+  var fname = 'data.csv'
 
   return new Promise((resolve, reject) => {
 
@@ -270,10 +270,10 @@ exports.chkdataduplicates = function (fpath = "", fname = "") {
   });
 }
 
-exports.chkdatahomogeneity = function (fpath = "", fname = "") {
+exports.chkdatahomogeneity = function () {
 
-  var fpath = fpath.toString();
-  var fname = fname.toString();
+  var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
+  var fname = 'data.csv'
 
   return new Promise((resolve, reject) => {
 
@@ -312,10 +312,10 @@ exports.chkdatahomogeneity = function (fpath = "", fname = "") {
   });
 }
 
-exports.chkdataprofile = function (fpath = "", fname = "") {
+exports.chkdataprofile = function () {
 
-  var fpath = fpath.toString();
-  var fname = fname.toString();
+  var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
+  var fname = 'data.csv'
 
   return new Promise((resolve, reject) => {
 
@@ -390,7 +390,7 @@ exports.getresults = function (jobid = "") {
         finalresult["Message"] = jsondata1["message"];
         finalresult["Metric"] = jsondata1["response"]["results"]["title"];
         finalresult["Methodology"] = jsondata1["response"]["metadata"]["method_details"]["definition"];
-        finalresult["Dataset"] = jsondata1["response"]["metadata"]["dataset_details"][0]["name"];
+        //finalresult["Dataset"] = jsondata1["response"]["metadata"]["dataset_details"][0]["name"];
 
         finalresult["Number of Columns"] = jsondata1["response"]["results"]["details"]["Basic_Profile"]["num_columns"]
         finalresult["Number of Samples"] = jsondata1["response"]["results"]["details"]["Basic_Profile"]["num_samples"]
@@ -415,7 +415,7 @@ exports.getresults = function (jobid = "") {
       finalresult["Message"] = jsondata1["message"];
       finalresult["Metric"] = jsondata1["response"]["results"]["title"];
       finalresult["Methodology"] = jsondata1["response"]["metadata"]["method_details"]["definition"];
-      finalresult["Dataset"] = jsondata1["response"]["metadata"]["dataset_details"][0]["name"];
+      //finalresult["Dataset"] = jsondata1["response"]["metadata"]["dataset_details"][0]["name"];
       finalresult["Result"] = jsondata1["response"]["results"]["explanation"];
       finalresult["Score"] = jsondata1["response"]["results"]["score"];
 

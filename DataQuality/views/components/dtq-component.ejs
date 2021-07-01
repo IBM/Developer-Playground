@@ -249,6 +249,23 @@ async function get_data_profiler(){
 }
 
 
+    window.addEventListener("load",function () {
+
+    document.getElementById("fileuploadform").onsubmit = async (e) => {
+
+      e.preventDefault();
+      let response = await fetch('/upload', {
+        method: 'POST',
+        body: new FormData(fileuploadform)
+      });
+
+      let result = await response.json();
+
+      window.alert(JSON.stringify(result["result"]));
+    };
+  })
+
+
 </script>
 
 
@@ -260,14 +277,12 @@ async function get_data_profiler(){
 
 <div id="dataset-quality-ai">
   <span style="color: rgb(21, 21, 21);"> Apply Dataset Quality Processing  </span> <hr style="border-top: 1px solid rgb(21, 21, 21);"><br>
-
-  <label> Choose File to be processed: </label>
-  <select id="files" name="files" placeholder="Choose File from dropdown">
-    <option value="/projects/data-quality/DataQuality/credit-g.csv"> credit-g.csv </option>
-    <option value="/projects/data-quality/DataQuality/breast-cancer.csv"> breast-cancer.csv </option>
-    <option value="/projects/data-quality/DataQuality/adult.csv"> adult.csv </option>
-  </select>
-  <br>
+  
+    <form id="fileuploadform">
+      <input type="file" name="upfile">
+      <input type="submit" value="Submit">
+    </form>
+  
   <br>
 
   <button type="submit" onclick="get_data_completeness()">Check Data Completeness</button>

@@ -255,6 +255,24 @@ async function get_outlier_detection(){
 
 }
 
+
+window.addEventListener("load",function () {
+document.getElementById("fileuploadform1").onsubmit = async (err) => {
+
+  err.preventDefault();
+
+  let response = await fetch('/uploaddq', {
+    method: 'POST',
+    body: new FormData(fileuploadform1)
+  });
+
+  let result = await response.json();
+
+  window.alert(JSON.stringify(result["result"]));
+};
+
+})
+
 </script>
 
 <div id="overlay" style="display: none">
@@ -265,14 +283,13 @@ async function get_outlier_detection(){
 <div id="data-quality-ai">
   <span style="color: rgb(21, 21, 21);"> Apply Data Quality Processing  </span> <hr style="border-top: 1px solid rgb(21, 21, 21);"><br>
 
-  <label> Choose File to be processed: </label>
-  <select id="files1" name="files1" placeholder="Choose File from dropdown">
-    <option value="/projects/data-quality/DataQuality/credit-g.csv"> credit-g.csv </option>
-    <option value="/projects/data-quality/DataQuality/breast-cancer.csv"> breast-cancer.csv </option>
-    <option value="/projects/data-quality/DataQuality/adult.csv"> adult.csv </option>
-  </select>
+    <form id="fileuploadform1">
+      <input type="file" name="upfile1">
+      <input type="submit" value="Submit">
+    </form>
 
-  <input type="text" name="label_col" id="label_col" class="field-divided" placeholder="Label Column" size=10 /> <br> <br>
+    <br>
+    <input type="text" name="label_col" id="label_col" class="field-divided" placeholder="Label Column" size=10 /> <br> <br>
 
 
   <button type="submit" onclick="get_class_overlap()">Check Class Overlap</button>

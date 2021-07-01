@@ -73,10 +73,6 @@ async function get_results1(){
 
 async function get_data_completeness(){
 
-  let fpath = document.getElementById('files').value;
-  let ftemp = document.getElementById('files');
-  let fname = ftemp.options[ftemp.selectedIndex].text;
-
   document.getElementById("overlay1").style.display = "block";
 
   let response = await fetch('/checkserver');
@@ -87,7 +83,7 @@ async function get_data_completeness(){
     document.getElementById("overlay").style.display = "none";
   }
   else{
-  response = await fetch('/chkdatacompleteness?fpath=' + fpath + '&fname=' + fname);
+  response = await fetch('/chkdatacompleteness');
   result = await response.json();
 
   var table1 = document.getElementById("job-table");
@@ -117,10 +113,6 @@ async function get_data_completeness(){
 
 async function get_data_duplicates(){
 
-  let fpath = document.getElementById('files').value;
-  let ftemp = document.getElementById('files');
-  let fname = ftemp.options[ftemp.selectedIndex].text;
-
   document.getElementById("overlay1").style.display = "block";
 
   let response = await fetch('/checkserver');
@@ -131,7 +123,7 @@ async function get_data_duplicates(){
     document.getElementById("overlay").style.display = "none";
   }
   else{
-  response = await fetch('/chkdataduplicates?fpath=' + fpath + '&fname=' + fname);
+  response = await fetch('/chkdataduplicates');
   result = await response.json();
 
   var table1 = document.getElementById("job-table");
@@ -160,10 +152,6 @@ async function get_data_duplicates(){
 
 async function get_data_homogeneity(){
 
-  let fpath = document.getElementById('files').value;
-  let ftemp = document.getElementById('files');
-  let fname = ftemp.options[ftemp.selectedIndex].text;
-
   document.getElementById("overlay1").style.display = "block";
 
   let response = await fetch('/checkserver');
@@ -174,7 +162,7 @@ async function get_data_homogeneity(){
     document.getElementById("overlay").style.display = "none";
   }
   else{
-  response = await fetch('/chkdatahomogeneity?fpath=' + fpath + '&fname=' + fname);
+  response = await fetch('/chkdatahomogeneity');
   result = await response.json();
 
   var table1 = document.getElementById("job-table");
@@ -205,10 +193,6 @@ async function get_data_homogeneity(){
 
 async function get_data_profiler(){
 
-  let fpath = document.getElementById('files').value;
-  let ftemp = document.getElementById('files');
-  let fname = ftemp.options[ftemp.selectedIndex].text;
-
   document.getElementById("overlay1").style.display = "block";
 
   let response = await fetch('/checkserver');
@@ -219,7 +203,7 @@ async function get_data_profiler(){
     document.getElementById("overlay").style.display = "none";
   }
   else{ 
-  response = await fetch('/chkdataprofile?fpath=' + fpath + '&fname=' + fname);
+  response = await fetch('/chkdataprofile');
   result = await response.json();
 
   var table1 = document.getElementById("job-table");

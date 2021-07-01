@@ -4,7 +4,9 @@ const dotenv = require('dotenv');
 const portfinder = require("portfinder");
 dotenv.config();
 const { getclassparity, getresults, checkserver, getclassoverlap, getlabelpurity, getoutlierdetection, chkdatacompleteness, chkdataduplicates, chkdatahomogeneity, chkdataprofile } = require('./services/service')
-
+const multer = require("multer");
+const path = require('path');
+const fs = require('fs');
 
 var app = express();
 portfinder.basePort = 3100;
@@ -28,6 +30,112 @@ class Server {
     this.app.get('/exit', function (req, res) {
       srvr.close(0);
     })
+  
+    var upload = multer({
+      dest: "/projects/data-quality/DataQuality/filefolder"
+      }).single('upfile');
+
+    var upload1 = multer({
+        dest: "/projects/data-quality/DataQuality/filefolder"
+        }).single('upfile1');
+    
+    this.app.post("/upload", upload, function(req,res) {
+     
+      // File is not uploaded
+        if(req.file == undefined){
+
+          res.send({result:"no file"});
+        }
+
+        // File uploaded
+        else{
+
+        const tempPath = req.file.path;
+        const targetPath = path.join(__dirname, "./filefolder/data.csv");
+
+        // check extension
+        if ((path.extname(req.file.originalname).toLowerCase() === ".csv"))  {
+
+          // check file size
+                if(req.file.size <= 15728640){
+
+                  fs.rename(tempPath, targetPath, er => { 
+                    res.send({ result: "file uploaded" })
+                  });
+
+                }
+                else{
+                  fs.unlink(tempPath, err => {
+                    if (err) throw(err);
+                    else{
+                      res.send({result:"File is too large"});
+                    }
+                });
+              }
+          
+        } else {
+
+            fs.unlink(tempPath, err => {
+              if (err) throw(err);
+              else{
+                res.send({result:"File is not a CSV"});
+              }
+              
+            });
+        }
+       }
+       
+    });
+
+    this.app.post("/uploaddq", upload1, function(req,res) {
+
+      // File is not uploaded
+        if(req.file == undefined){
+
+          res.send({result:"no file"});
+        }
+
+        // File uploaded
+        else{
+
+        const tempPath = req.file.path;
+        const targetPath = path.join(__dirname, "./filefolder/data.csv");
+
+        // check extension
+        if ((path.extname(req.file.originalname).toLowerCase() === ".csv"))  {
+
+          // check file size
+                if(req.file.size <= 15728640){
+
+                  fs.rename(tempPath, targetPath, er => { 
+                    res.send({ result: "file uploaded" })
+                  });
+
+                }
+                else{
+                  fs.unlink(tempPath, err => {
+                    if (err) throw(err);
+                    else{
+                      res.send({result:"File is too large"});
+                    }
+                });
+                }
+
+          
+        } else {
+
+            fs.unlink(tempPath, err => {
+              if (err) throw(err);
+              else{
+                res.send({result:"File is not a CSV"});
+              }
+              
+            });
+        }
+       }
+       
+    });
+  
 
 
     this.app.get("/getclassparity", function (request, response) {

@@ -106,7 +106,7 @@ exports.getmysubscriptions = function () {
 
         let options = {
           method: 'GET',
-          url: 'https://api.ibm.com/scx/run/sbs_orgaccess/subscription',
+          url: process.env[env_var.concat("_").concat("subcrpt")],
           qs: {
             _namedQuery: 'getSubscriptionByCustomer',
             _pageNumber: '1',

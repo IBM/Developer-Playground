@@ -8,3 +8,4 @@ components:
     type: chePlugin
   - id: ibm-playground/api-hub/latest
     type: chePlugin
+

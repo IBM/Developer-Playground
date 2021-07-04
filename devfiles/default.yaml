@@ -4,14 +4,6 @@ metadata:
 attributes:
   persistVolumes: 'false'
 components:
-  - mountSources: true
-    endpoints:
-      - name: nodejs
-        port: 4100
-    memoryLimit: 2Gi
-    type: dockerimage
-    image: 'quay.io/pgirishibm/che-nodejs-python:latest'
-    alias: nodejs
   - id: redhat/vscode-didact/latest
     type: chePlugin
   - id: ibm-playground/api-hub/latest

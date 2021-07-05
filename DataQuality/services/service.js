@@ -5,11 +5,17 @@ require('dotenv/config');
 var env_var = JSON.stringify(process.env.PLAYGROUND_ENVIRONMENT);
 env_var = env_var.substring(1,8);
 
-exports.getclassparity = function (label = "") {
+exports.getclassparity = function (label = "", fpath = "", fname="") {
 
   var label = label.toString();
-  var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
-  var fname = 'data.csv'
+  if((fpath == "") && (fname == "")){
+    var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
+    var fname = 'data.csv'
+  }
+  else{
+    var fpath = fpath.toString();
+    var fname = fname.toString();
+  }
 
   return new Promise((resolve, reject) => {
 
@@ -54,11 +60,17 @@ exports.getclassparity = function (label = "") {
   });
 }
 
-exports.getclassoverlap = function (label = "") {
+exports.getclassoverlap = function (label = "",fpath = "", fname="") {
 
   var label = label.toString();
-  var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
-  var fname = 'data.csv'
+  if((fpath == "") && (fname == "")){
+    var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
+    var fname = 'data.csv'
+  }
+  else{
+    var fpath = fpath.toString();
+    var fname = fname.toString();
+  }
 
   return new Promise((resolve, reject) => {
 
@@ -98,11 +110,17 @@ exports.getclassoverlap = function (label = "") {
   });
 }
 
-exports.getlabelpurity = function (label = "") {
+exports.getlabelpurity = function (label = "",fpath = "", fname="") {
 
   var label = label.toString();
-  var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
-  var fname = 'data.csv'
+  if((fpath == "") && (fname == "")){
+    var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
+    var fname = 'data.csv'
+  }
+  else{
+    var fpath = fpath.toString();
+    var fname = fname.toString();
+  }
 
   return new Promise((resolve, reject) => {
 
@@ -142,11 +160,17 @@ exports.getlabelpurity = function (label = "") {
   });
 }
 
-exports.getoutlierdetection = function (label = "") {
+exports.getoutlierdetection = function (label = "",fpath = "", fname="") {
 
   var label = label.toString();
-  var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
-  var fname = 'data.csv'
+  if((fpath == "") && (fname == "")){
+    var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
+    var fname = 'data.csv'
+  }
+  else{
+    var fpath = fpath.toString();
+    var fname = fname.toString();
+  }
 
   return new Promise((resolve, reject) => {
 
@@ -186,10 +210,16 @@ exports.getoutlierdetection = function (label = "") {
   });
 }
 
-exports.chkdatacompleteness = function () {
+exports.chkdatacompleteness = function (fpath = "", fname = "") {
 
-  var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
-  var fname = 'data.csv'
+  if((fpath == "") && (fname == "")){
+    var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
+    var fname = 'data.csv'
+  }
+  else{
+    var fpath = fpath.toString();
+    var fname = fname.toString();
+  }
 
   return new Promise((resolve, reject) => {
 
@@ -228,10 +258,16 @@ exports.chkdatacompleteness = function () {
   });
 }
 
-exports.chkdataduplicates = function () {
+exports.chkdataduplicates = function (fpath = "", fname="") {
 
-  var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
-  var fname = 'data.csv'
+  if((fpath == "") && (fname == "")){
+    var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
+    var fname = 'data.csv'
+  }
+  else{
+    var fpath = fpath.toString();
+    var fname = fname.toString();
+  }
 
   return new Promise((resolve, reject) => {
 
@@ -270,10 +306,16 @@ exports.chkdataduplicates = function () {
   });
 }
 
-exports.chkdatahomogeneity = function () {
+exports.chkdatahomogeneity = function (fpath = "", fname="") {
 
-  var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
-  var fname = 'data.csv'
+  if((fpath == "") && (fname == "")){
+    var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
+    var fname = 'data.csv'
+  }
+  else{
+    var fpath = fpath.toString();
+    var fname = fname.toString();
+  }
 
   return new Promise((resolve, reject) => {
 
@@ -312,10 +354,16 @@ exports.chkdatahomogeneity = function () {
   });
 }
 
-exports.chkdataprofile = function () {
+exports.chkdataprofile = function (fpath = "", fname="") {
 
-  var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
-  var fname = 'data.csv'
+  if((fpath == "") && (fname == "")){
+    var fpath = '/projects/data-quality/DataQuality/filefolder/data.csv';
+    var fname = 'data.csv'
+  }
+  else{
+    var fpath = fpath.toString();
+    var fname = fname.toString();
+  }
 
   return new Promise((resolve, reject) => {
 

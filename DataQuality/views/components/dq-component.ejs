@@ -29,6 +29,34 @@ async function get_class_parity(){
 
   else {
 
+    let fpath = ''
+    let ftemp = ''
+    let fname = ''
+
+    let choice;
+    if (document.getElementById('sample1').checked) {
+        choice = "sample";
+      }
+
+    else{
+       choice = "custom";
+    }
+
+
+    if(choice == "sample"){
+      // sample datasets
+    fpath = document.getElementById('files1').value;
+    ftemp = document.getElementById('files1');
+    fname = ftemp.options[ftemp.selectedIndex].text;
+    }
+    else{
+      // uploaded datasets
+      fpath = ''
+      ftemp = ''
+      fname = ''
+    }
+
+
   document.getElementById("overlay").style.display = "block";
   let response = await fetch('/checkserver');
   let result = await response.json();
@@ -39,8 +67,8 @@ async function get_class_parity(){
   }
 
   else{
-
-  response = await fetch('/getclassparity?label=' + label);
+    
+  response = await fetch('/getclassparity?label=' + label + '&fpath=' + fpath + '&fname=' +fname);
   result = await response.json();
 
     var table0 = document.getElementById("job1-table");
@@ -138,6 +166,33 @@ async function get_class_overlap(){
 
   else {
 
+    let fpath = ''
+    let ftemp = ''
+    let fname = ''
+
+    let choice;
+    if (document.getElementById('sample1').checked) {
+        choice = "sample";
+      }
+
+    else{
+       choice = "custom";
+    }
+
+
+    if(choice == "sample"){
+      // sample datasets
+    fpath = document.getElementById('files1').value;
+    ftemp = document.getElementById('files1');
+    fname = ftemp.options[ftemp.selectedIndex].text;
+    }
+    else{
+      // uploaded datasets
+      fpath = ''
+      ftemp = ''
+      fname = ''
+    }
+
   document.getElementById("overlay").style.display = "block";
   let response = await fetch('/checkserver');
   let result = await response.json();
@@ -147,7 +202,8 @@ async function get_class_overlap(){
     document.getElementById("overlay").style.display = "none";
   }
   else{
-  response = await fetch('/getclassoverlap?label=' + label);
+
+  response = await fetch('/getclassoverlap?label=' + label + '&fpath=' + fpath + '&fname=' +fname);
   result = await response.json();
 
   var table1 = document.getElementById("job1-table");
@@ -185,6 +241,35 @@ async function get_label_purity(){
     }
   else{
 
+
+    let fpath = ''
+    let ftemp = ''
+    let fname = ''
+
+    let choice;
+    if (document.getElementById('sample1').checked) {
+        choice = "sample";
+      }
+
+    else{
+       choice = "custom";
+    }
+
+
+    if(choice == "sample"){
+      // sample datasets
+    fpath = document.getElementById('files1').value;
+    ftemp = document.getElementById('files1');
+    fname = ftemp.options[ftemp.selectedIndex].text;
+    }
+    else{
+      // uploaded datasets
+      fpath = ''
+      ftemp = ''
+      fname = ''
+    }
+
+
   document.getElementById("overlay").style.display = "block";
   let response = await fetch('/checkserver');
   let result = await response.json();
@@ -194,7 +279,8 @@ async function get_label_purity(){
     document.getElementById("overlay").style.display = "none";
   }
   else{
-  response = await fetch('/getlabelpurity?label=' + label);
+
+  response = await fetch('/getlabelpurity?label=' + label + '&fpath=' + fpath + '&fname=' +fname);
   result = await response.json();
 
   var table1 = document.getElementById("job1-table");
@@ -230,6 +316,35 @@ async function get_outlier_detection(){
     }
   else{
 
+
+    let fpath = ''
+    let ftemp = ''
+    let fname = ''
+
+    let choice;
+    if (document.getElementById('sample1').checked) {
+        choice = "sample";
+      }
+
+    else{
+       choice = "custom";
+    }
+
+
+    if(choice == "sample"){
+      // sample datasets
+    fpath = document.getElementById('files1').value;
+    ftemp = document.getElementById('files1');
+    fname = ftemp.options[ftemp.selectedIndex].text;
+    }
+    else{
+      // uploaded datasets
+      fpath = ''
+      ftemp = ''
+      fname = ''
+    }
+
+
   document.getElementById("overlay").style.display = "block";
   let response = await fetch('/checkserver');
   let result = await response.json();
@@ -239,7 +354,8 @@ async function get_outlier_detection(){
     document.getElementById("overlay").style.display = "none";
   }
   else{
-  response = await fetch('/getoutlierdetection?label=' + label);
+
+  response = await fetch('/getoutlierdetection?label=' + label + '&fpath=' + fpath + '&fname=' +fname);
   result = await response.json();
 
   var table1 = document.getElementById("job1-table");
@@ -269,6 +385,20 @@ async function get_outlier_detection(){
   }
 }
 
+function S1ShowHideDiv(sample1) {
+        var s1choose = document.getElementById("sample1-dataset");
+        s1choose.style.display = sample1.checked ? "block" : "none";
+        document.getElementById("custom1-dataset").style.display = "none";
+    }
+  
+  function C1ShowHideDiv(custom) {
+        var c1choose = document.getElementById("custom1-dataset");
+        c1choose.style.display = custom1.checked ? "block" : "none";
+        document.getElementById("sample1-dataset").style.display = "none";
+    }
+
+
+
 
 window.addEventListener("load",function () {
 document.getElementById("fileuploadform1").onsubmit = async (err) => {
@@ -297,12 +427,33 @@ document.getElementById("fileuploadform1").onsubmit = async (err) => {
 <div id="data-quality-ai">
   <span style="color: rgb(21, 21, 21);"> Apply Data Quality Processing  </span> <hr style="border-top: 1px solid rgb(21, 21, 21);"><br>
 
-    <form id="fileuploadform1">
-      <input type="file" name="upfile1">
-      <input type="submit" value="Submit">
-    </form>
+  <label> Select type of dataset: </label>
+  <input type="radio" name="dataset1" id="sample1" value="sample" onclick="S1ShowHideDiv(this)"> Use sample dataset<br>
+  <input type="radio" name="dataset1" id="custom1" value="custom" onclick="C1ShowHideDiv(this)"> Upload your own dataset
 
-    <br>
+  <br>
+  <br>
+
+  <div id="sample1-dataset" style="display: none">
+  <label> Choose Sample Dataset to be processed: </label>
+  <select id="files1" name="files1" placeholder="Choose File from dropdown">
+    <option value="/projects/data-quality/DataQuality/credit-g.csv"> credit-g.csv </option>
+    <option value="/projects/data-quality/DataQuality/breast-cancer.csv"> breast-cancer.csv </option>
+    <option value="/projects/data-quality/DataQuality/adult.csv"> adult.csv </option>
+  </select>
+</div>
+
+<div id="custom1-dataset" style="display: none">
+
+  <label> Upload your Dataset to be processed: </label>
+  <form id="fileuploadform1">
+    <input type="file" name="upfile1">
+    <input type="submit" value="Submit">
+  </form>
+
+</div>
+
+<br>
     <input type="text" name="label_col" id="label_col" class="field-divided" placeholder="Label Column" size=10 /> <br> <br>
 
 

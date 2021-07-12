@@ -128,7 +128,7 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 <a class="button is-dark is-medium" title="IBM MQ" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs terminal 1$$ibmcloud resource service-instance-create mqinstance mqcloud lite eu-gb">IBM MQ</a><br><br>
 <p>Step 2 : Go to <a href='https://cloud.ibm.com/resources'>IBM cloud resources</a>.Expand the <b>services</b> row and click the <b>mqinstace</b> that has been created.
  </p>
-<img src = "https://github.com/IBM/Developer-Playground/blob/d74eff025600d4cab158f2c7926946275984cfbc/didact/images/IBM-cloud-resourceList.png" width = "750" height= "750">
+<img src = "https://github.com/IBM/Developer-Playground/raw/d74eff025600d4cab158f2c7926946275984cfbc/didact/images/IBM-cloud-resourceList.png" width = "750" height= "750">
 <p>Step 3 : On clicking the instance you will be re-directed to a page as shown below.click on create button to create queue manager.
  </p>
 <img src = "https://github.com/IBM/Developer-Playground/raw/475f1649ea46e4b31f7e9f4a8cb1760e59f03d55/didact/images/MQ-step2.png" width = "750" height= "750">

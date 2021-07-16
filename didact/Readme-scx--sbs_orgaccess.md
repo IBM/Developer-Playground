@@ -80,24 +80,24 @@ ul, ol,b{
 
 <br>
 
-<p>In order to begin, we'll need the application's source code. Let's get that down!</p>
+<p>To begin, we'll need the application's source code. Let's get that down!</p>
 <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=SSM$$git%20clone%20-b%20ssm%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/sbs-orgaccess/">Get the Code</a><br><br>
 
 <br>
 
-<p>Awesome! We've got the codes! In order to see it in action, we've to build it first!</p>
+<p>Awesome! We've got the code! To see it in action, we've to build it first!</p>
 <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=SSM$$cd%20${CHE_PROJECTS_ROOT}/sbs-orgaccess/SSMSampleApp%20%26%26%20npm%20install">Build the Application</a><br><br>
 
 <br>
 
 
-<p>Halt! Identify yourself! Follow the steps below to obtain your credentials and configure the application </p>
+<p>Halt! Identify yourself! Take the following steps to obtain your credentials and configure the application </p>
 <br>
   <ol>
   <li>Head over to <a title= "IBM API Hub" href="https://developer.ibm.com/apis/">IBM API Hub</a> and sign in with your IBM ID</li><br>
-  <li>Please note that you must be subscribed to atleast one other IBM Product on APIHub. For example, you can subscribe to <a title= "IBMFOC" href="https://developer.ibm.com/apis/catalog/industryresearch--i2r-fss/Introduction">IBM FOC Enterprise Microservices</a></li><br>
+  <li>Please note that you must be subscribed to at least one other IBM Product on APIHub. For example, you can subscribe to <a title= "IBMFOC" href="https://developer.ibm.com/apis/catalog/industryresearch--i2r-fss/Introduction">IBM FOC Enterprise Microservices</a></li><br>
   <li>Now check out <a title= "My Subscriptions" href="https://developer.ibm.com/profile/myapis">API Subscriptions</a></li><br>
-  <li>You should see a subscription for SaaS User and Subscription and Management, click that and proceed</li><br>
+  <li>You should see a subscription for SaaS User and Subscription and Management, select that and proceed</li><br>
   <li>You can obtain your Client ID/Secret from here. If you don't see any, you can "Generate API Key"</li><br>
   <li>Let's get the credentials by configuring the application </li><br>
 </ol>

@@ -54,14 +54,14 @@ ul, ol,b{
 }
 .button.is-dark.is-medium {
   font-family: 'IBM Plex Sans', sans-serif;
-  background-color: #0f62fe;
-  border-color: #0f62fe;
+  background-color: #1a1a1a;
+  border-color: white;
   color: #fff;
 }
 .button.is-dark.is-medium:hover {
   font-family: 'IBM Plex Sans', sans-serif;
-  background-color: #0f62fe;
-  border-color: #0f62fe;
+  background-color: #2a67f5;
+  border-color: white;
   color: #fff;
 }
 .title.is-3{
@@ -198,10 +198,12 @@ ol,ul,li{
 <p>If you have some interesting ideas and you would like to contribute, please check out the project on <a class="user_exp" href="https://github.com/IBM/ipm-marketplace-app">IPM Marketplace App Github</a>, where new ideas are welcomed and feel free to <a class="user_exp" href="https://github.com/IBM/ipm-marketplace-app/issues">submit feature requests, submit pull requests for codes, log bugs and so on</a>.</p>
 
 
-<br><br><br>
+<br><br>
 
-
-
+<a class="button is-dark is-medium" title="View product details" href="https://www.ibm.com/products" target="_blank">View product details</a>
+&nbsp;&nbsp;
+<a class="button is-dark is-medium" title="Get trial subscription" href="https://www.ibm.com/account/reg/us-en/signup?formid=urx-30474" target="_blank">Get trial subscription</a>
+<br><br>
 </div>
 </body>
 </html>

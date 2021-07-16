@@ -88,7 +88,7 @@ The Data quality for AI is an integrated toolkit that provides various data prof
 
 <br>
 
-<p>In order to begin, we'll need the application's source code. Let's get that down!</p>
+<p>To begin, we'll need the application's source code. Let's get that down!</p>
 <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=data-quality$$git%20clone%20-b%20DART%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/data-quality/">Get the Code</a><br><br>
 
 <br>
@@ -98,12 +98,12 @@ The Data quality for AI is an integrated toolkit that provides various data prof
 
 <br>
 
-<p>Halt! Identify yourself! Follow the steps below to obtain your credentials and configure the application </p>
+<p>Halt! Identify yourself. Take the following steps to obtain your credentials and configure the application </p>
 <ol>
  <li>Head over to <a title= "IBM API Hub" href="https://developer.ibm.com/apis/">IBM API Hub</a> and sign in with your IBM ID</li><br>
   <li>Subscribe to the <a title= "Data Quality" href="https://developer.ibm.com/apis/catalog/dataquality4ai--data-quality-for-ai/Introduction">Data Quality for AI Product</a></li><br>
    <li>Now check out <a title= "My Subscriptions" href="https://developer.ibm.com/profile/myapis">API Subscriptions</a></li><br>
-  <li>You should see a subscription for Data Quality for AI, click that and proceed</li><br>
+  <li>You should see a subscription for Data Quality for AI, select that and proceed</li><br>
   <li>You can obtain your Client ID/Secret from here. If you don't see any, you can "Generate API Key"</li><br>
   <li>Let's get the credentials by configuring the application </li><br>
 </ol>
@@ -134,6 +134,11 @@ The Data quality for AI is an integrated toolkit that provides various data prof
 </ol>
 <br/>
 
+<a class="button is-dark is-medium" title="View product details" href="https://www.ibm.com/products/dqaiapi
+" target="_blank">View product details</a>
+&nbsp;&nbsp;
+<a class="button is-dark is-medium" title="Get trial subscription" href=" https://www.ibm.com/account/reg/us-en/signup?formid=urx-50307" target="_blank">Get trial subscription</a>
+<br><br>
 </div>
 
 </body>

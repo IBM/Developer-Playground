@@ -80,7 +80,7 @@ ul, ol,b{
 
 <br>
 
-<p>In order to begin, we'll need the application's source code. Let's get that down!</p>
+<p>To begin, we'll need the application's source code. Let's get that down!</p>
 <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=AsperaonCloud$$git%20clone%20-b%20aspera%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/aspera-on-cloud/">Get the Code</a>
 <br><br>
 
@@ -92,7 +92,7 @@ ul, ol,b{
 <br>
 
 
-<p>Halt! Identify yourself! Follow the steps below to obtain your credentials and configure the application </p>
+<p>Halt! Identify yourself. Take the following steps to obtain your credentials and configure the application </p>
 <br>
 <ol>
   <li>Head over to <a title= "IBM API Hub" href="https://developer.ibm.com/apis/">IBM API Hub</a> and sign in with your IBM ID</li><br>
@@ -135,7 +135,12 @@ ul, ol,b{
 </ol>
 <br/>
 
-
+<a class="button is-dark is-medium" title="View product details" href="https://www.ibm.com/cloud/aspera" target="_blank">View product details</a>
+&nbsp;&nbsp;
+<a class="button is-dark is-medium" title="But this API" href="https://www.ibm.com/cloud/aspera/pricing" target="_blank">Buy this API</a>
+&nbsp;&nbsp;
+<a class="button is-dark is-medium" title="Get trial subscription" href="https://www.ibm.com/account/reg/us-en/signup?formid=urx-30538" target="_blank">Get trial subscription</a>
+<br><br>
 </div>
 </body>
 </html>

@@ -88,18 +88,18 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
 
 <br>
 
-<p>In order to begin, we'll need the application's source code. Let's get that down!</p>
+<p>To begin, we'll need the application's source code. Let's get that down!</p>
 <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREPublicTransit$$git%20clone%20-b%20HERE%20--sparse%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/here-public-transit/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/here-public-transit/%20%26%26%20git%20sparse-checkout%20init%20--cone%20%26%26%20git%20sparse-checkout%20add%20HEREPublicTransit">Get the Code</a><br><br>
 
 
 <br>
 
-<p>Awesome! We've got the codes! In order to see it in action, we've to build it first!</p>
+<p>Awesome! We've got the code! To see it in action, we've to build it first!</p>
 <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREPublicTransit$$cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20install">Build the Application</a><br><br>
 
 <br>
 
-<p>Halt! Identify yourself! Follow the steps below to obtain your credentials and configure the application </p>
+<p>Halt! Identify yourself! Take the following steps to obtain your credentials and configure the application </p>
 <ol>
  <li>Head over to <a title= "IBM API Hub" href="https://developer.ibm.com/apis/">IBM API Hub</a> and sign in with your IBM ID</li><br>
   <li>Subscribe to the <a title= "HEREPublictransit" href="https://developer.ibm.com/apis/catalog/heremaps--here-public-transit-api/Introduction">HERE Public Transit API</a></li><br>
@@ -133,6 +133,12 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
 </ol>
 <br/>
 
+<a class="button is-dark is-medium" title="View product details" href="https://developer.here.com/documentation/public-transit/dev_guide/index.html" target="_blank">View product details</a>
+&nbsp;&nbsp;
+<a class="button is-dark is-medium" title="But this API" href="https://developer.here.com/pricing" target="_blank">Buy this API</a>
+&nbsp;&nbsp;
+<a class="button is-dark is-medium" title="Get trial subscription" href="https://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account" target="_blank">Get trial subscription</a>
+<br><br>
 </div>
 
 </body>

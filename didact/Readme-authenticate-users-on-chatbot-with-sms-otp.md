@@ -70,7 +70,7 @@ This is an Interactive instructions, follow the steps to setup a working instanc
 
 ### 1. Clone the GitHub repository
 
-<a class="button is-dark is-small" title="Open Terminal" href="didact://?commandId=terminal-for-nodejs-container:new" >Open Terminal</a>
+<!-- <a class="button is-dark is-small" title="Open Terminal" href="didact://?commandId=terminal-for-nodejs-container:new" >Open Terminal</a> -->
 
 <a class="button is-dark is-small" title="Clone the Repo" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%202$$git%20clone%20https%3A%2F%2Fgithub.com%2FIBM%2Fauthenticate-users-on-your-chatbot-with-sms-otp.git%20%26%26%20cd%20authenticate-users-on-your-chatbot-with-sms-otp%2F%20%26%26%20cd%20custom-apis-for-authentication%20%26%26%20pip3%20install%20-r%20requirements.txt%20%26%26%20cd%20..%20%26%26%20cd%20node-web-application%20%20%26%26%20npm%20install%20%26%26%20cd%20.." >Get the Code Pattern on Playground</a>
 
@@ -100,7 +100,7 @@ Configure the APIs by entering the credentials copied in the previous steps and 
 
 You need to be logged in to your IBM Cloud account in the Developer Playground to create and configure services.
 
-<a class="button is-dark is-small" title="Open Terminal" href="didact://?commandId=terminal-for-nodejs-container:new" >Open new terminal</a><br/>
+<!-- <a class="button is-dark is-small" title="Open Terminal" href="didact://?commandId=terminal-for-nodejs-container:new" >Open new terminal</a><br/> -->
 
 <a class="button is-dark is-small" title="Login to IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%203$$ibmcloud%20login%20--sso%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">Login to IBM Cloud</a>
 

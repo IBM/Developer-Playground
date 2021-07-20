@@ -18,7 +18,7 @@
 		"title":"IBM Analytics Engine",
 		"description":"A single Hadoop and Spark service providing an environment to develop and deploy advanced analytics applications in minutes",
 		"href":"https://www.ibm.com/in-en/cloud/analytics-engine",
-		"tags":["marketplace--ibm-marketplace","api2","heremaps--here-public-transit-api","heremaps--geocoding-and-search-api-v7"]
+		"tags":["marketplace--ibm-marketplace","api2","heremaps--here-public-transit-api","heremaps--geocoding-and-search-api-v7","aspera--aspera-on-cloud-api"]
 	},
 	{
         "name": "Internet of Things Platform",
@@ -46,13 +46,13 @@
 		"title":"IBM Cloudant",
 		"description":"The data layer for hyperscale, resilient, globally available applications, based on open source Apache CouchDB",
 		"href":"https://www.ibm.com/in-en/cloud/cloudant",
-		"tags":["dtlmockapip--aspera-on-cloud-api","api2","dataquality4ai--data-quality-for-ai"]
+		"tags":["dtlmockapip--aspera-on-cloud-api","api2","dataquality4ai--data-quality-for-ai","aspera--aspera-on-cloud-api"]
 	},
 	{
         "name": "DB2",
 		"title":"IBM Db2",
 		"description":"Transform and modernize your data management with AI-driven solutions",
 		"href":"https://www.ibm.com/in-en/analytics/db2",
-		"tags":["dtlmockapip--aspera-on-cloud-api","api2"]
+		"tags":["dtlmockapip--aspera-on-cloud-api","api2","aspera--aspera-on-cloud-api"]
 	}
 ]

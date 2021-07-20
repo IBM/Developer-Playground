@@ -89,13 +89,13 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
 <br>
 
 <p>To begin, we'll need the application's source code. Let's get that down!</p>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREPublicTransit$$git%20clone%20-b%20HERE%20--sparse%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/here-public-transit/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/here-public-transit/%20%26%26%20git%20sparse-checkout%20init%20--cone%20%26%26%20git%20sparse-checkout%20add%20HEREPublicTransit">Get the Code</a><br><br>
+<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Cget-code%7CHEREPublicTransit|git%20clone%20-b%20HERE%20--sparse%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/here-public-transit/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/here-public-transit/%20%26%26%20git%20sparse-checkout%20init%20--cone%20%26%26%20git%20sparse-checkout%20add%20HEREPublicTransit">Get the Code</a><br><br>
 
 
 <br>
 
 <p>Awesome! We've got the code! To see it in action, we've to build it first!</p>
-<a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREPublicTransit$$cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20install">Build the Application</a><br><br>
+<a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Cbuild-application%7CHEREPublicTransit%7Ccd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20install">Build the Application</a><br><br>
 
 <br>
 
@@ -107,25 +107,25 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
   <li>Let's get the credentials by configuring the application </li><br>
 </ol>
 
-<a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=vscode.open&projectFilePath=here-public-transit/HEREPublicTransit/.env">Configure the Application</a><br><br>
+<a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cconfigure-application%7CprojectFilePath=here-public-transit/HEREPublicTransit/.env">Configure the Application</a><br><br>
 <br>
 
 <p> You're all set to get started! </p>
-<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREPublicTransit$$cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20start">Launch the Application</a><br><br>
+<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Claunch-application%7CHEREPublicTransit|cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20start">Launch the Application</a><br><br>
 
 <br>
 
 <p> If you'd like to make changes and explore the application, make sure to stop it first! </p>
-<a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=HEREPublicTransit" >Stop Application</a><br><br>
+<a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Cstop-application%7CHEREPublicTransit" >Stop Application</a><br><br>
 
 <br>
 
 <p> The stage is yours! </p>
-<a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=vscode.open&projectFilePath=here-public-transit/HEREPublicTransit/services/service.js">Explore the Code</a><br><br>
+<a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cexplore-code%7CprojectFilePath=here-public-transit/HEREPublicTransit/services/service.js">Explore the Code</a><br><br>
 <br>
 
 <p> To view the changes you've made, re-launch the application </p>
-<a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=HEREPublicTransit$$cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20start">Re-Launch the Application</a><br><br>
+<a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Crelaunch-application%7CHEREPublicTransit|cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20start">Re-Launch the Application</a><br><br>
 
 <p> Want to explore this project more? Head over to <a href = "https://github.com/IBM/Developer-Playground/tree/master" > the GitHub Repository</a> </p>
 
@@ -133,11 +133,11 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
 </ol>
 <br/>
 
-<a class="button is-dark is-medium" title="View product details" href="https://developer.here.com/documentation/public-transit/dev_guide/index.html" target="_blank">View product details</a>
+<a class="button is-dark is-medium" title="View product details" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cview-product-details%7Chttps://developer.here.com/documentation/public-transit/dev_guide/index.html" target="_blank">View product details</a>
 &nbsp;&nbsp;
-<a class="button is-dark is-medium" title="But this API" href="https://developer.here.com/pricing" target="_blank">Buy this API</a>
+<a class="button is-dark is-medium" title="But this API" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cbut-this-product%7Chttps://developer.here.com/pricing" target="_blank">Buy this API</a>
 &nbsp;&nbsp;
-<a class="button is-dark is-medium" title="Get trial subscription" href="https://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account" target="_blank">Get trial subscription</a>
+<a class="button is-dark is-medium" title="Get trial subscription" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cget-trial-subscription%7Chttps://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account" target="_blank">Get trial subscription</a>
 <br><br>
 </div>
 

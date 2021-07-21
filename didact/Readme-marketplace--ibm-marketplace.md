@@ -136,7 +136,7 @@ ol,ul,li{
 <li>Next click the "Configure Application" button in order to enter the API Credentials i.e. Client_ID and Client_Secret in the <b>.env</b> file.</li>
 <br>
 
-<a class="button is-dark is-medium" title="Configure Application" href="didact://?commandId=extension.openFile&text=IPM-Marketplace-App%7Cconfigure-app%7Cipm-marketplace-app/.env">Configure Application</a>
+<a class="button is-dark is-medium" title="Configure Application" href="didact://?commandId=extension.openFile&text=IPM-Marketplace-App%7Cconfigure-app%7C/{CHE_PROJECTS_ROOT}/ipm-marketplace-app/.env">Configure Application</a>
 <br><br>
 
 <li>Now click on the "Build Application" button.</li><br/>
@@ -177,8 +177,7 @@ ol,ul,li{
 <br>
 
 <li>Next stop the Application by clicking the "Stop Application" button.</li><br>
-<a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=extension.sendToTerminal&text=IPM-Marketplace-App%7Cstop-application%7CIPM-Marketplace-App|cd%20${CHE_PROJECTS_ROOT}/ipm-marketplace-app%20%26%26%20npm%20run%20start-dev" >Stop Application</a>
-<br>
+<a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=IPM-Marketplace-App$$cd%20${CHE_PROJECTS_ROOT}/ipm-marketplace-app%20%26%26%20npm%20run%20start-dev" >Stop Application</a><br>
 <br>
 
 <li>Now click the "Rebuild & Launch Application" button.</li><br>

@@ -102,7 +102,7 @@ ul, ol,b{
   <li>Let's get the credentials by configuring the application </li><br>
 </ol>
 
-<a class="button is-dark is-medium" title="Configure the Application" href="didact://?commandId=extension.openFile&text=SSM%7Cconfigure-application%7C/projects/sbs-orgaccess/SSMSampleApp/.env">Configure the Application</a><br><br>
+<a class="button is-dark is-medium" title="Configure the Application" href="didact://?commandId=extension.openFile&text=SSM%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/sbs-orgaccess/SSMSampleApp/.env">Configure the Application</a><br><br>
 <br>
 
 <p> You're all set to get started! </p>
@@ -118,7 +118,7 @@ ul, ol,b{
 
 
 <p> The stage is yours! </p>
-<a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=SSM%7Cexplore-code%7C/projects/sbs-orgaccess/SSMSampleApp/services/service.js">Explore the Code</a><br><br>
+<a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=SSM%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/sbs-orgaccess/SSMSampleApp/services/service.js">Explore the Code</a><br><br>
 <br>
 
 

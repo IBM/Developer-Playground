@@ -108,7 +108,7 @@ ul, ol,b{
   <li>Click "Save". We've now completed the Authentication setup! </li><br>
   <li>Let's get the credentials by configuring the application </li><br>
 </ol>
-<a class="button is-dark is-medium" title="Configure the Application" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cconfigure-application%7C/projects/aspera-on-cloud/AoCSampleApp/.env">Configure the Application</a><br><br>
+<a class="button is-dark is-medium" title="Configure the Application" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/aspera-on-cloud/AoCSampleApp/.env">Configure the Application</a><br><br>
 <br>
 
 <p> You're all set to get started! </p>
@@ -122,7 +122,7 @@ ul, ol,b{
 <br>
 
 <p> The stage is yours! </p>
-<a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cexplore-code%7C/projects/aspera-on-cloud/AoCSampleApp/services/service.js">Explore the Code</a><br><br>
+<a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/aspera-on-cloud/AoCSampleApp/services/service.js">Explore the Code</a><br><br>
 <br>
 
 <p> To view the changes you've made, re-launch the application </p>

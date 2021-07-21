@@ -136,7 +136,7 @@ ol,ul,li{
 <li>Next click the "Configure Application" button in order to enter the API Credentials i.e. Client_ID and Client_Secret in the <b>.env</b> file.</li>
 <br>
 
-<a class="button is-dark is-medium" title="Configure Application" href="didact://?commandId=extension.openFile&text=IPM-Marketplace-App%7Cconfigure-app%7C/{CHE_PROJECTS_ROOT}/ipm-marketplace-app/.env">Configure Application</a>
+<a class="button is-dark is-medium" title="Configure Application" href="didact://?commandId=extension.openFile&text=IPM-Marketplace-App%7Cconfigure-app%7C/${CHE_PROJECTS_ROOT}/ipm-marketplace-app/.env">Configure Application</a>
 <br><br>
 
 <li>Now click on the "Build Application" button.</li><br/>

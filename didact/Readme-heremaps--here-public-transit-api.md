@@ -107,7 +107,7 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
   <li>Let's get the credentials by configuring the application </li><br>
 </ol>
 
-<a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cconfigure-application%7CprojectFilePath=here-public-transit/HEREPublicTransit/.env">Configure the Application</a><br><br>
+<a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cconfigure-application%7C/projects/here-public-transit/HEREPublicTransit/.env">Configure the Application</a><br><br>
 <br>
 
 <p> You're all set to get started! </p>
@@ -116,12 +116,12 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
 <br>
 
 <p> If you'd like to make changes and explore the application, make sure to stop it first! </p>
-<a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Cstop-application%7CHEREPublicTransit" >Stop Application</a><br><br>
+<a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=HEREPublicTransit" >Stop Application</a><br><br>
 
 <br>
 
 <p> The stage is yours! </p>
-<a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cexplore-code%7CprojectFilePath=here-public-transit/HEREPublicTransit/services/service.js">Explore the Code</a><br><br>
+<a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cexplore-code%7C/projects/here-public-transit/HEREPublicTransit/services/service.js">Explore the Code</a><br><br>
 <br>
 
 <p> To view the changes you've made, re-launch the application </p>
@@ -135,7 +135,7 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
 
 <a class="button is-dark is-medium" title="View product details" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cview-product-details%7Chttps://developer.here.com/documentation/public-transit/dev_guide/index.html" target="_blank">View product details</a>
 &nbsp;&nbsp;
-<a class="button is-dark is-medium" title="But this API" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cbut-this-product%7Chttps://developer.here.com/pricing" target="_blank">Buy this API</a>
+<a class="button is-dark is-medium" title="Buy this API" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cbut-this-product%7Chttps://developer.here.com/pricing" target="_blank">Buy this API</a>
 &nbsp;&nbsp;
 <a class="button is-dark is-medium" title="Get trial subscription" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cget-trial-subscription%7Chttps://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account" target="_blank">Get trial subscription</a>
 <br><br>

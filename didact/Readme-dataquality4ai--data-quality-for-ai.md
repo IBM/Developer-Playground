@@ -89,12 +89,12 @@ The Data quality for AI is an integrated toolkit that provides various data prof
 <br>
 
 <p>To begin, we'll need the application's source code. Let's get that down!</p>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=data-quality$$git%20clone%20-b%20DART%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/data-quality/">Get the Code</a><br><br>
+<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cget-code%7Cdata-quality|git%20clone%20-b%20DART%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/data-quality/">Get the Code</a><br><br>
 
 <br>
 
 <p>Awesome! We've got the codes! In order to see it in action, we've to build it first!</p>
-<a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=data-quality$$cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install">Build the Application</a><br><br>
+<a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cbuild-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install">Build the Application</a><br><br>
 
 <br>
 
@@ -108,11 +108,11 @@ The Data quality for AI is an integrated toolkit that provides various data prof
   <li>Let's get the credentials by configuring the application </li><br>
 </ol>
 
-<a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=vscode.open&projectFilePath=data-quality/DataQuality/.env">Configure the Application</a><br><br>
+<a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/.env">Configure the Application</a><br><br>
 <br>
 
 <p> You're all set to get started! </p>
-<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=data-quality$$cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20start">Launch the Application</a><br><br>
+<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Claunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20start">Launch the Application</a><br><br>
 
 <br>
 
@@ -122,11 +122,11 @@ The Data quality for AI is an integrated toolkit that provides various data prof
 <br>
 
 <p> The stage is yours! </p>
-<a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=vscode.open&projectFilePath=data-quality/DataQuality/services/service.js">Explore the Code</a><br><br>
+<a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/services/service.js">Explore the Code</a><br><br>
 <br>
 
 <p> To view the changes you've made, re-launch the application and refresh the preview </p>
-<a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=data-quality$$cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20start">Re-Launch the Application</a><br><br>
+<a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Crelaunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20start">Re-Launch the Application</a><br><br>
 
 <p> Want to explore this project more? Head over to <a href = "https://github.com/IBM/Developer-Playground/tree/master" > the GitHub Repository</a> </p>
 
@@ -134,10 +134,10 @@ The Data quality for AI is an integrated toolkit that provides various data prof
 </ol>
 <br/>
 
-<a class="button is-dark is-medium" title="View product details" href="https://www.ibm.com/products/dqaiapi
+<a class="button is-dark is-medium" title="View product details" href="didact://?commandId=extension.openURL&text=data-quality%7Cview-product-details%7Chttps://www.ibm.com/products/dqaiapi
 " target="_blank">View product details</a>
 &nbsp;&nbsp;
-<a class="button is-dark is-medium" title="Get trial subscription" href=" https://www.ibm.com/account/reg/us-en/signup?formid=urx-50307" target="_blank">Get trial subscription</a>
+<a class="button is-dark is-medium" title="Get trial subscription" href="didact://?commandId=extension.openURL&text=data-quality%7Cget-trial-subscription%7Chttps://www.ibm.com/account/reg/us-en/signup?formid=urx-50307" target="_blank">Get trial subscription</a>
 <br><br>
 </div>
 

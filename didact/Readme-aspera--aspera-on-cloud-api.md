@@ -81,13 +81,13 @@ ul, ol,b{
 <br>
 
 <p>To begin, we'll need the application's source code. Let's get that down!</p>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=AsperaonCloud$$git%20clone%20-b%20aspera%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/aspera-on-cloud/">Get the Code</a>
+<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=AsperaonCloud%7Cget-code%7CAsperaonCloud|git%20clone%20-b%20aspera%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/aspera-on-cloud/">Get the Code</a>
 <br><br>
 
 <br>
 
 <p>Awesome! We've got the codes! In order to see it in action, we've to build it first!</p>
-<a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=AsperaonCloud$$cd%20${CHE_PROJECTS_ROOT}/aspera-on-cloud/AoCSampleApp%20%26%26%20npm%20install">Build the Application</a><br><br>
+<a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=AsperaonCloud%7Cbuild-application%7CAsperaonCloud|cd%20${CHE_PROJECTS_ROOT}/aspera-on-cloud/AoCSampleApp%20%26%26%20npm%20install">Build the Application</a><br><br>
 
 <br>
 
@@ -108,11 +108,11 @@ ul, ol,b{
   <li>Click "Save". We've now completed the Authentication setup! </li><br>
   <li>Let's get the credentials by configuring the application </li><br>
 </ol>
-<a class="button is-dark is-medium" title="Configure the Application" href="didact://?commandId=vscode.open&projectFilePath=aspera-on-cloud/AoCSampleApp/.env">Configure the Application</a><br><br>
+<a class="button is-dark is-medium" title="Configure the Application" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/aspera-on-cloud/AoCSampleApp/.env">Configure the Application</a><br><br>
 <br>
 
 <p> You're all set to get started! </p>
-<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=AsperaonCloud$$cd%20${CHE_PROJECTS_ROOT}/aspera-on-cloud/AoCSampleApp%20%26%26%20npm%20start">Launch the Application</a><br><br>
+<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=AsperaonCloud%7Claunch-application%7CAsperaonCloud|cd%20${CHE_PROJECTS_ROOT}/aspera-on-cloud/AoCSampleApp%20%26%26%20npm%20start">Launch the Application</a><br><br>
 
 <br>
 
@@ -122,11 +122,11 @@ ul, ol,b{
 <br>
 
 <p> The stage is yours! </p>
-<a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=vscode.open&projectFilePath=aspera-on-cloud/AoCSampleApp/services/service.js">Explore the Code</a><br><br>
+<a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/aspera-on-cloud/AoCSampleApp/services/service.js">Explore the Code</a><br><br>
 <br>
 
 <p> To view the changes you've made, re-launch the application </p>
-<a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=AsperaonCloud$$cd%20${CHE_PROJECTS_ROOT}/aspera-on-cloud/AoCSampleApp%20%26%26%20npm%20start">Re-Launch the Application</a><br><br>
+<a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=AsperaonCloud%7Crelaunch-application%7CAsperaonCloud|cd%20${CHE_PROJECTS_ROOT}/aspera-on-cloud/AoCSampleApp%20%26%26%20npm%20start">Re-Launch the Application</a><br><br>
 
 
 
@@ -135,11 +135,11 @@ ul, ol,b{
 </ol>
 <br/>
 
-<a class="button is-dark is-medium" title="View product details" href="https://www.ibm.com/cloud/aspera" target="_blank">View product details</a>
+<a class="button is-dark is-medium" title="View product details" href="didact://?commandId=extension.openURL&text=AsperaonCloud%7Cview-product-details%7Chttps://www.ibm.com/cloud/aspera" target="_blank">View product details</a>
 &nbsp;&nbsp;
-<a class="button is-dark is-medium" title="But this API" href="https://www.ibm.com/cloud/aspera/pricing" target="_blank">Buy this API</a>
+<a class="button is-dark is-medium" title="Buy this API" href="didact://?commandId=extension.openURL&text=AsperaonCloud%7Cbuy-this-product%7Chttps://www.ibm.com/cloud/aspera/pricing" target="_blank">Buy this API</a>
 &nbsp;&nbsp;
-<a class="button is-dark is-medium" title="Get trial subscription" href="https://www.ibm.com/account/reg/us-en/signup?formid=urx-30538" target="_blank">Get trial subscription</a>
+<a class="button is-dark is-medium" title="Get trial subscription" href="didact://?commandId=extension.openURL&text=AsperaonCloud%7Cget-trial-subscription%7Chttps://www.ibm.com/account/reg/us-en/signup?formid=urx-30538" target="_blank">Get trial subscription</a>
 <br><br>
 </div>
 </body>

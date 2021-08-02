@@ -1,0 +1,18 @@
+{
+	"allapis": [
+		{
+			"VPCs": [
+				{
+					"apiName": "list_dedicated_host_groups",
+					"title": "List all dedicated host groups",
+					"description": "This request lists all dedicated host groups in the region. Host groups\nare a collection of dedicated hosts for placement of instances. Each\ndedicated host must belong to one and only one group. Host groups do not\nspan zones."
+				},
+				{
+					"apiName": "create_dedicated_host_group",
+					"title": "Create a dedicated host group",
+					"description": "This request creates a new dedicated host group."
+				}
+			]
+		}
+	]
+}

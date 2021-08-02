@@ -1,0 +1,12 @@
+[
+  {
+    "language": "python",
+    "apiName": "list_dedicated_host_groups",
+    "codesnippet": "cmVzcG9uc2UgPSBzZXJ2aWNlLmxpc3RfZGVkaWNhdGVkX2hvc3RfZ3JvdXBzKClcbmRlZGljYXRlZF9ob3N0X2dyb3VwcyA9IHJlc3BvbnNlLmdldF9yZXN1bHQoKVsnZGVkaWNhdGVkX2hvc3RfZ3JvdXBzJ10="
+  },
+  {
+    "language": "python",
+    "apiName": "create_dedicated_host_group",
+    "codesnippet": "em9uZV9pZGVudGl0eV9tb2RlbCA9IHt9XG56b25lX2lkZW50aXR5X21vZGVsWyduYW1lJ10gPSAndXMtc291dGgtMSdcblxuY2xhc3NfID0gJ214MidcbmZhbWlseSA9ICdiYWxhbmNlZCdcbnpvbmUgPSB6b25lX2lkZW50aXR5X21vZGVsXG5cbnJlc3BvbnNlID0gc2VydmljZS5jcmVhdGVfZGVkaWNhdGVkX2hvc3RfZ3JvdXAoXG4gICAgY2xhc3NfLCBmYW1pbHksIHpvbmUp"
+  }
+]

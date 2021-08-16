@@ -11,6 +11,11 @@
 					"apiName": "create_dedicated_host_group",
 					"title": "Create a dedicated host group",
 					"description": "This request creates a new dedicated host group."
+				},
+				{
+					"apiName": "delete_vpc",
+					"title": "Delete a dedicated host group",
+					"description": "This request deletes a new dedicated host group."
 				}
 			]
 		}

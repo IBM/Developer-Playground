@@ -3,18 +3,18 @@
 		{
 			"VPCs": [
 				{
-					"apiName": "list_dedicated_host_groups",
-					"title": "List all dedicated host groups",
+					"apiName": "list_vpc",
+					"title": "List VPCs",
 					"description": "This request lists all dedicated host groups in the region. Host groups\nare a collection of dedicated hosts for placement of instances. Each\ndedicated host must belong to one and only one group. Host groups do not\nspan zones."
 				},
 				{
-					"apiName": "create_dedicated_host_group",
-					"title": "Create a dedicated host group",
+					"apiName": "create_vpc",
+					"title": "Create VPC",
 					"description": "This request creates a new dedicated host group."
 				},
 				{
 					"apiName": "delete_vpc",
-					"title": "Delete a dedicated host group",
+					"title": "Delete VPC",
 					"description": "This request deletes a new dedicated host group."
 				}
 			]

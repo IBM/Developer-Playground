@@ -82,7 +82,7 @@ Create these services and configure the credentials in the code pattern with jus
 ### 3. Build and Run the Application
 You can build and run the Application within the Developer Playground, click on **Build and Run** to start the application.
 
-<a class="button is-dark is-small" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$cd%20${CHE_PROJECTS_ROOT}/extract-textual-insights-from-video20%26%26%20python3.8%20app.py">Build and Run</a>
+<a class="button is-dark is-small" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$cd%20${CHE_PROJECTS_ROOT}/extract-textual-insights-from-video%20%26%26%20python3.8%20app.py">Build and Run</a>
 
 You can make use of any meeting video or classroom video that you have or you can download the [video](http://videos.bigdatauniversity.com/DV0101EN/Module_0_Welcome.mp4) that we have used for the demonstration purpose.
 

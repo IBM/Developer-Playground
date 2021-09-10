@@ -63,7 +63,7 @@ This is an Interactive instructions, follow the steps to setup a working instanc
 ### 2. Create and Configure IBM Watson Services
 You need to be logged in to your IBM Cloud account in the Developer Playground to create and configure services.
 
-<a class="button is-dark is-small" title="Login to IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$cd%20${CHE_PROJECTS_ROOT}/extract-textual-insights-from-video20%26%26%20ibmcloud%20login%20--sso%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">Login to IBM Cloud</a>
+<a class="button is-dark is-small" title="Login to IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$cd%20${CHE_PROJECTS_ROOT}/extract-textual-insights-from-video%20%26%26%20ibmcloud%20login%20--sso%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">Login to IBM Cloud</a>
 
 Do not have an IBM Cloud Account? click [here](https://cloud.ibm.com/registration) to create one for free.
 
@@ -77,7 +77,7 @@ This code pattern uses the following IBM Watson Services:
 
 Create these services and configure the credentials in the code pattern with just a click of button.
 
-<a class="button is-dark is-small" title="Create IBM Watson Services" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$cd%20${CHE_PROJECTS_ROOT}/extract-textual-insights-from-video20%26%26%20chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh" >Create IBM Watson Services</a>
+<a class="button is-dark is-small" title="Create IBM Watson Services" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$cd%20${CHE_PROJECTS_ROOT}/extract-textual-insights-from-video%20%26%26%20chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh" >Create IBM Watson Services</a>
 
 ### 3. Build and Run the Application
 You can build and run the Application within the Developer Playground, click on **Build and Run** to start the application.
@@ -91,7 +91,7 @@ You can make use of any meeting video or classroom video that you have or you ca
 ### 4. Clean up
 Completed the code pattern? Click on **Clean up** to delete the IBM Cloud services that were created.
 
-<a class="button is-dark is-small" title="Delete services from IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$cd%20${CHE_PROJECTS_ROOT}/extract-textual-insights-from-video20%26%26%20chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean up</a>
+<a class="button is-dark is-small" title="Delete services from IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$cd%20${CHE_PROJECTS_ROOT}/extract-textual-insights-from-video%20%26%26%20chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean up</a>
 
 You can also manage the created services in [IBM Cloud Dashboard](https://cloud.ibm.com/resources).
 

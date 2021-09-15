@@ -1,146 +1,269 @@
 <html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-html,div,body{
-    background-color:#1a1a1a;
+  html,
+  div,
+  body {
+    background-color: #1a1a1a;
     font-family: 'IBM Plex Sans', sans-serif;
-}
-.content h2,h3,h4
-{
+    font-size: 18px;
+  }
+  body {
+    font-family: Helvetica, sans-serif;
+  }
+  /* The actual timeline (the vertical ruler) */
+  .timeline {
+    position: absolute;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-left: 50px;
+  }
+  .content p {
+    margin: 0px;
+    margin-bottom: 15px;
+  }
+  /* The actual timeline (the vertical ruler) */
+  .timeline::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    background-color: white;
+    top: 0;
+    bottom: 0;
+    left: 18px;
+    margin-left: -2px;
+  }
+  /* Container around content */
+  .container {
+    padding: 0px 0px;
+    width: 70%;
+    align-content: left;
+    margin: 0px 0px 0px 0px;
+    margin-left: 25px;
+  }
+  /* The circles on the timeline */
+  .container::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    right: -6px;
+    background-color: white;
+    border: 0px solid #FF9F55;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+    margin: 0px 0px 0px 0px;
+  }
+  /* Place the container to the left */
+  .left {
+    left: 0px;
+  }
+  /* Place the container to the right */
+  .right {
+    left: 0px;
+  }
+  /* Add arrows to the left container (pointing right) */
+  .left::before {
+    content: " ";
+    height: 0;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    right: 30px;
+    border: medium solid white;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent white;
+  }
+  /* Fix the circle for containers on the right side */
+  .right::after {
+    left: -13px;
+  }
+  /* The actual content */
+  .content {
+    padding: 5px 10px;
+    color: white;
+    background: transparent;
+  }
+  .button.is-dark.is-medium {
     font-family: 'IBM Plex Sans', sans-serif;
-    background-color:#1a1a1a;
-}
-.content h2,p{
-    color:#fff;
-    font-family: 'IBM Plex Sans', sans-serif;
-}
-.content p{
-  font-family: 'IBM Plex Sans', sans-serif;  
-  font:15px;
-  color: #fff;
-}
-pre{
-    background-color:#d9dbde;
-    color:#000;
-    font-family: 'IBM Plex Sans', sans-serif;
-    font:12px;
-}
-.content h4{
-    font-family: 'IBM Plex Sans', sans-serif;
-    color:#fff;
-}
-.content h6{
-    font-family: 'IBM Plex Sans', sans-serif;
-    background-color:#1a1a1a;
-    color:#fff;
-}
-.content h3{
-    font-family: 'IBM Plex Sans', sans-serif;
-    color: #2a67f5;
-    background-color:#1a1a1a;
-}
-ul, ol,b{ 
-    font-family: 'IBM Plex Sans', sans-serif;
+    background: transparent;
+    border-color: white;
     color: #fff;
-}
-#ul1{
-  font-family: 'IBM Plex Sans', sans-serif;
-    color: #fff;
-}
-.button.is-dark.is-medium {
-  font-family: 'IBM Plex Sans', sans-serif;
-  background-color: #1a1a1a;
-  border-color: white;
-  color: #fff;
-}
-.button.is-dark.is-medium:hover {
-  font-family: 'IBM Plex Sans', sans-serif;
-  background-color: #2a67f5;
-  border-color: white;
-  color: #fff;
-}
-.title.is-3{
-  font-family: 'IBM Plex Sans', sans-serif;
-  color:#fff;
-}
-.subtitle.is-4{
+    border: 1px solid white;
+    padding: 10px;
+    margin-bottom: 13px;
+    border-radius: 0px;
+  }
+  .button.is-dark.is-medium:hover {
     font-family: 'IBM Plex Sans', sans-serif;
-    color:#fff;
+    background-color: #2a67f5;
+    border-color: white;
+    color: #fff;
+  }
+  .footer {
+    display: flex;
+    background-color: #343A3E;
+    margin: 800px 0px 0px 20px;
+    padding: 0px;
+    max-width: 1250px;
+  }
+  .github-icon {
+    min-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+    object-position: 250% 100px;
+    opacity: 15%;
+    bottom: 15px;
+  }
+  .image-content {
+    padding: 5px 10px;
+    background: transparent;
+    color: black;
+    position: absolute;
+    font-size: 27px;
+  }
+  .image-div {
+    position: relative;
+    background-color: white;
+    min-width: 50%;
+    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url("https://github.com/bodarajeshkumar/Developer-Playground/blob/master/didact/images/git.svg?raw=true");
+    background-position: -50% 60px;
+    background-repeat: no-repeat;
+    padding-top: 20px;
+    padding-left: 20px;
+  }
+  .image-btn {
+    position: absolute;
+    right: 0;
+    bottom: 0%;
+    padding: 10px;
+    padding-bottom:25px;
+    background-color: #0261FF;
+  }
+  .image-link {
+    color: white;
+    margin-right: 20px;
+  }
+  .header
+  {
+    background-image: url('https://raw.githubusercontent.com/bodarajeshkumar/Developer-Playground/master/didact/images/banner-image.jpg');
+    width: 100%;
+    height: fixed;
+    min-height: 400px;
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom:20px;
+    margin-left:30px;
+    margin-right:30px;
+    background-size: contain;
+    max-width: 1250px;
+  }
+  .header .right-content
+  {
+    float:right;
+    width:50%;
+    background-color:#2a67f5;
+    min-height:400px;
+    padding:20px;
+  }
+  .header .right-content h4
+  {
+    background: none;
+    color: white
+  }
+  @media only screen and (max-width: 700px) {
+  .footer {
+    margin: 1000px 0px 0px 20px;
+  }
+  @media only screen and (max-width: 800px) {
+  .footer {
+    margin: 900px 0px 0px 20px;
+  }
+  @media only screen and (max-width: 400px) {
+  .footer {
+    margin: 1300px 0px 0px 20px;
+  }
 }
 </style>
-
-<body style="font-family: 'IBM Plex Sans', sans-serif;background-color:#1a1a1a;">
-<div style="font-family: 'IBM Plex Sans', sans-serif;background-color:#1a1a1a;">
-
-<h2 class="title is-3 ">HERE Technologies Sample Application</h2>
-
-<h3> HERE Technologies provide comprehensive mapping content, an integrated suite of solutions, services and development tools and a marketplace for data to solve your complex location-based problems.</h3>
-
-<h4>
-The HERE Public Transit provides the best public transit routes while highlighting walking directions to stops, pedestrian access points, station locations and transfer locations along the way. Your users will be able to use agency data, external services and data collected by HERE to discover public transit options, request public transit routes and transit-related information. </h4>
-<h4>
-The HERE Geocoding and Search unlocks the search and geocoding capabilities of HERE services to provide developers with unmatched flexibility to create differentiating location-enabled applications. Your users will be able to search for HERE points of interests, forward and reverse geocode address and geo-positions from the HERE map, access Bring Your Own Data (BYOD), and benefit from faster data updates.
-</h4>
-
-
-<br>
-
-<p>Try out a Sample Application!</p>
-
-<br>
-
-<p>To begin, we'll need the application's source code. Let's get that down!</p>
-<a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Cget-code%7CHEREPublicTransit|git%20clone%20-b%20HERE%20--sparse%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/here-public-transit/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/here-public-transit/%20%26%26%20git%20sparse-checkout%20init%20--cone%20%26%26%20git%20sparse-checkout%20add%20HEREPublicTransit">Get the Code</a><br><br>
-
-
-<br>
-
-<p>Awesome! We've got the code! To see it in action, we've to build it first!</p>
-<a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Cbuild-application%7CHEREPublicTransit%7Ccd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20install">Build the Application</a><br><br>
-
-<br>
-
-<p>Halt! Identify yourself! Take the following steps to obtain your credentials and configure the application </p>
-<ol>
- <li>Head over to <a title= "IBM API Hub" href="https://developer.ibm.com/apis/">IBM API Hub</a> and sign in with your IBM ID</li><br>
-  <li>Subscribe to the <a title= "HEREPublictransit" href="https://developer.ibm.com/apis/catalog/heremaps--here-public-transit-api/Introduction">HERE Public Transit API</a></li><br>
-  <li>Sign up for HERE Developer and follow the prompts to obtain Client ID, Client Secret and API Key</li><br>
-  <li>Let's get the credentials by configuring the application </li><br>
-</ol>
-
-<a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit/.env">Configure the Application</a><br><br>
-<br>
-
-<p> You're all set to get started! </p>
-<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Claunch-application%7CHEREPublicTransit|cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20start">Launch the Application</a><br><br>
-
-<br>
-
-<p> If you'd like to make changes and explore the application, make sure to stop it first! </p>
-<a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=HEREPublicTransit" >Stop Application</a><br><br>
-
-<br>
-
-<p> The stage is yours! </p>
-<a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit/services/service.js">Explore the Code</a><br><br>
-<br>
-
-<p> To view the changes you've made, re-launch the application </p>
-<a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Crelaunch-application%7CHEREPublicTransit|cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20start">Re-Launch the Application</a><br><br>
-
-<p> Want to explore this project more? Head over to <a href = "https://github.com/IBM/Developer-Playground/tree/master" > the GitHub Repository</a> </p>
-
-
-</ol>
-<br/>
-
-<a class="button is-dark is-medium" title="View product details" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cview-product-details%7Chttps://developer.here.com/documentation/public-transit/dev_guide/index.html" target="_blank">View product details</a>
-&nbsp;&nbsp;
-<a class="button is-dark is-medium" title="Buy this API" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cbut-this-product%7Chttps://developer.here.com/pricing" target="_blank">Buy this API</a>
-&nbsp;&nbsp;
-<a class="button is-dark is-medium" title="Get trial subscription" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cget-trial-subscription%7Chttps://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account" target="_blank">Get trial subscription</a>
-<br><br>
-</div>
-
+</head>
+<body>
+   <div class="header">
+      <div class="right-content">
+         <h4>HERE Technologies Sample Application</h4>
+         Here technologies provide comprehensive mapping content
+      </div>
+   </div>
+   <div class="timeline">
+      <div class="container right">
+         <div class="content">
+            <p>To begin, we'll need the application's source code. Let's get that down!</p>
+            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Cget-code%7CHEREPublicTransit|git%20clone%20-b%20HERE%20--sparse%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/here-public-transit/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/here-public-transit/%20%26%26%20git%20sparse-checkout%20init%20--cone%20%26%26%20git%20sparse-checkout%20add%20HEREPublicTransit">Get the Code</a>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>Awesome! We've got the code! To see it in action, we've to build it first!
+            </p>
+            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Cbuild-application%7CHEREPublicTransit%7Ccd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20install">Build Application</a>
+            <p>
+               Halt! Identify yourself! Take the following steps to obtain your credentials and configure the application
+            </p>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>Head over to <a title= "IBM API Hub" href="https://developer.ibm.com/apis/">IBM API Hub</a> and sign in with your IBM ID
+            </p>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>Subscribe to the <a title= "HEREPublictransit" href="https://developer.ibm.com/apis/catalog/heremaps--here-public-transit-api/Introduction">HERE Public Transit API</a>
+            </p>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>Sign up for HERE Developer and follow the prompts to obtain Client ID, Client Secret and API Key
+            </p>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>Let's get the credentials by configuring the application</p>
+            </p>
+            <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit/.env">Configure Application</a>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>You're all set to get started! </p>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Claunch-application%7CHEREPublicTransit|cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20start">Launch Application</a>
+         </div>
+      </div>
+   </div>
+   <div class="footer">
+      <div class="content" style="padding:30px;padding-left:60px;padding-bottom: 0px;">
+         <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
+         <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=HEREPublicTransit" >Stop Application</a>
+         <p>The stage is yours!</p>
+         <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit/services/service.js">Explore Code</a>
+         <p>To view the changes you've made, re-launch the application</p>
+         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Crelaunch-application%7CHEREPublicTransit|cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20start">Re-Launch Application</a>
+      </div>
+      <div class="image-div">
+         <p class="image-content">Want to explore this project more?
+            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a>Github Repository</a></span>
+         </p>
+         <div class="image-btn">
+            <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cview-product-details%7Chttps://developer.here.com/documentation/public-transit/dev_guide/index.html" target="_blank">View Product Details <span>&#8594;</span></a></br>
+            <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cbuy-this-product%7Chttps://developer.here.com/pricing" target="_blank">Buy this API <span>&#8594;</span></a></br>
+            <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cget-trial-subscription%7Chttps://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account" target="_blank">Get Trial Subcription <span>&#8594;</span></a>
+         </div>
+      </div>
+   </div>
+   <br><br>
 </body>
-
 </html>

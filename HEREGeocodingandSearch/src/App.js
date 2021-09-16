@@ -37,10 +37,14 @@ function App() {
           <br />
           <Tabs type="container">
             <Tab id="tab-g1" label="Get Co-ordinates">
+              <div className="TabArea">
               <Geocode1 />
+              </div>
             </Tab>
             <Tab id="tab-g2" label="Get Area">
+              <div className="TabArea">
               <Geocode2 />
+              </div>
             </Tab>
           </Tabs>
 
@@ -49,10 +53,14 @@ function App() {
           <br />
           <Tabs type="container">
             <Tab id="tab-s1" label="By Area">
+              <div className="TabArea">
               <Search1 />
+              </div>
             </Tab>
             <Tab id="tab-s2" label="By Co-ordinates">
+              <div className="TabArea">
               <Search2 />
+              </div>
             </Tab>
           </Tabs>
 
@@ -61,10 +69,14 @@ function App() {
           <br />
           <Tabs type="container">
             <Tab id="tab-w1" label="By Area">
+              <div className="TabArea">
               <Weather1 />
+              </div>
             </Tab>
             <Tab id="tab-w2" label="By Co-ordinates">
+              <div className="TabArea">
               <Weather2 />
+              </div>
             </Tab>
           </Tabs>
 

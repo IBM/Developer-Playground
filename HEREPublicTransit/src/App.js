@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.css';
+
 import { Tabs, Tab } from 'carbon-components-react';
 import {Header,HeaderName} from "carbon-components-react/lib/components/UIShell";
 
@@ -34,10 +35,14 @@ function App() {
 
         <Tabs type='container'>
           <Tab id="tab-g1" label="Get Co-ordinates">
+            <div className="TabArea">
             <Geocode1 />
+            </div>
           </Tab>
           <Tab id="tab-g2" label="Get Area">
+            <div className="TabArea">
             <Geocode2 />
+            </div>
           </Tab>
         </Tabs>
      
@@ -46,10 +51,14 @@ function App() {
 
          <Tabs type='container'>
           <Tab id="tab-s1" label="Transit Stations">
+            <div className="TabArea">
             <Transit1 />
+            </div>
           </Tab>
           <Tab id="tab-s2" label="Next Departures">
+            <div className="TabArea">
             <Transit2 />
+            </div>
           </Tab>
         </Tabs>
 
@@ -57,10 +66,14 @@ function App() {
 
          <Tabs type='container'>
           <Tab id="tab-t1" label="By Co-ordinates">
+            <div className="TabArea">
             <Mapf1 />
+            </div>
           </Tab>
           <Tab id="tab-t2" label="By Area">
+            <div className="TabArea">
              <Mapf2 />
+             </div>
           </Tab>
         </Tabs>
 

@@ -138,7 +138,7 @@ function err3closef() {
       <TextInput id={'longitude'} labelText = {'Longitude*'} invalid = {lngerrstate} invalidText = {errtext} helperText="Add valid co-ordinates." placeholder = {'Longitude'} size = 'lg' value={longitude} onChange={validLongf} />
       </div>
       
-      <div className="ButtonArea" >
+      <div className="CButtonArea" >
         <Button type="submit" disabled = {buttonstate}> Get Places Near You </Button>
       </div>
 

@@ -131,7 +131,7 @@ function err3closef() {
       </div>
       
       <br/>
-      <div className="ButtonArea">
+      <div className="CButtonArea">
         <Button type="submit" disabled = {buttonstate} > Get Places Near You </Button>
       </div>
 

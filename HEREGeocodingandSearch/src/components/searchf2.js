@@ -158,7 +158,7 @@ const validLongf = (e) => {
       <TextInput id={'area-query'} labelText = {'Area*'} size = 'lg' invalid = {arerrstate} invalidText = {arerrtext} helperText="Input values only in alphabets - Public places/Hotels/Restaurants." placeholder = {'Query: Area/Address'} value={areaquery} onChange={validArea} />
     </div>  
       <br/>
-      <div className="ButtonArea">
+      <div className="CButtonArea">
         <Button type="submit" disabled = {buttonstate} > Get Places Near You </Button>
       </div>
 

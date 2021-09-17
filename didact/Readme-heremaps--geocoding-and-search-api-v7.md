@@ -111,7 +111,7 @@ The HERE Geocoding and Search unlocks the search and geocoding capabilities of H
 
 
 <p> You're all set to get started! </p>
-<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREGeocodingandSearch%7Claunch-application%7CHEREGeocodingandSearch|cd%20${CHE_PROJECTS_ROOT}/here-geocoding/HEREGeocodingandSearch%20%26%26%20npm%20start">Launch the Application</a><br><br>
+<a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREGeocodingandSearch%7Claunch-application%7CHEREGeocodingandSearch|cd%20${CHE_PROJECTS_ROOT}/here-geocoding/HEREGeocodingandSearch%20%26%26%20npx%20serve%20build%20-l%203001">Launch the Application</a><br><br>
 
 <br>
 

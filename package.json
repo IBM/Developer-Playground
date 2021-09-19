@@ -1,0 +1,58 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "proxy": "http://localhost:4000",
+  "private": true,
+  "dependencies": {
+    "@carbon/icons-react": "10.22.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.21.4",
+    "carbon-components": "10.25.0",
+    "carbon-components-react": "7.25.0",
+    "carbon-icons": "7.0.7",
+    "cors": "^2.8.5",
+    "csvtojson": "^2.0.10",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "multer": "^1.4.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "recharts": "^2.1.2",
+    "request": "^2.88.2",
+    "sass": "1.29.0",
+    "strftime": "^0.10.0",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "react": "react-scripts start",
+    "server": "node server.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "start": "concurrently \"npm run server \" \"npm run react\" ",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.1"
+  }
+}

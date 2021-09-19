@@ -1,4 +1,3 @@
-const { clientId, clientSecret } = require("./credentials")
 const promiseRequest = require("./promiseRequest");
 const fs = require("fs");
 
@@ -9,8 +8,8 @@ const getResult = async (jobId) => {
             method: 'GET',
             url: `https://api.ibm.com/ai4industry/run/result/${jobId}`,
             headers: {
-                'X-IBM-Client-Id': clientId,
-                'X-IBM-Client-Secret': clientSecret,
+                'X-IBM-Client-Id': process.env.CLIENT_ID,
+                'X-IBM-Client-Secret': process.env.CLIENT_SECRET,
                 accept: 'application/json'
             }
         };

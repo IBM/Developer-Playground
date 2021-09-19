@@ -30,7 +30,7 @@ const anomalyDetect = async ({
     time_column,
     recent_data}) => {
 
-    let filepath = "./sample.json"
+    let filepath = "./data/sample.json"
     let apiEndpoint = apiEndpoints[0]
     if(dataset_type === 'customdt')
         filepath = "./data/data.json"

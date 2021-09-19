@@ -2,11 +2,13 @@ const express = require('express')
 const cors = require('cors')
 const csvtojson = require('csvtojson');
 const multer = require("multer");
-const anomalyDetect = require('./anomalyDetect');
+const anomalyDetect = require('./anomaly/anomalyDetect');
 const fs = require('fs');
 const bodyParser = require('body-parser');
-const getResult = require('./getResult');
-const path = require('path');
+const getResult = require('./anomaly/getResult');
+const dotenv = require('dotenv');
+
+dotenv.config({path: './.env'})
 
 
 const app = express();
@@ -19,7 +21,7 @@ app.use(express.static( "./data"));
 
 app.get("/sampledata", async (req, res) => {
   //const jsonArray = await csvtojson().fromFile("./sample.csv");
-  let jsonArray = JSON.parse(fs.readFileSync("./sample.json"))
+  let jsonArray = JSON.parse(fs.readFileSync("./data/sample.json"))
   res.status(200).json(jsonArray)
 })
 

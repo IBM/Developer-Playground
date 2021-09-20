@@ -1,0 +1,36 @@
+.app{
+    padding: 24px;
+}
+.app-content{
+    margin-top: 40px;
+    margin-bottom: 24px;
+}
+.app-header{
+    margin-top: 64px;
+}
+.chart-result{
+    margin-top: 72px;
+    margin-bottom: 40px;
+}
+.target{
+    margin-top: 72px;
+    margin-bottom: 24px;
+    font-weight: bold;
+}
+.others{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+.hidden-options{
+    margin-top: 24px;
+}
+.chart-area{
+    margin-left: -50px
+}
+#time_column{
+    margin-bottom: 40px;
+}
+.fetch-results{
+    margin-top: 30px;
+}

@@ -181,7 +181,7 @@
   }
   .header
   {
-    background-image: url('https://github.com/bodarajeshkumar/Developer-Playground/blob/master/didact/images/banner-image.jpg?raw=true');
+    background-image: url('https://github.com/IBM/Developer-Playground/blob/development/didact/images/banner-image.jpg?raw=true');
     width: 100%;
     height: fixed;
     min-height: 300px;
@@ -266,23 +266,23 @@
       <div class="right-content">
          <h4>HERE Technologies Sample Application</h4>
          <div>
-          Here Maps is one-stop solution to most of the problems in this domain. HERE Technologies provide comprehensive mapping content, an integrated suite of solutions, services and development tools and a marketplace for data to solve your complex location-based problems.
-        </div>
-          <div>
-          Showcasing a sample application using `Here Public Transit API` by Here Maps:
-          </div>
-          <div>
-          Are you at the crossroads trying to decide 
+            Here Maps is one-stop solution to most of the problems in this domain. HERE Technologies provide comprehensive mapping content, an integrated suite of solutions, services and development tools and a marketplace for data to solve your complex location-based problems.
          </div>
-           <ul>
-              <li>Walking directions to stops.</li>
-              <li>Pedestrian access points.</li>
-              <li>Station locations.</li>
-              <li>Transfer locations.</li>
-          </ul>
-          <div>
+         <div>
+            Showcasing a sample application using `Here Public Transit API` by Here Maps:
+         </div>
+         <div>
+            Are you at the crossroads trying to decide 
+         </div>
+         <ul>
+            <li>Walking directions to stops.</li>
+            <li>Pedestrian access points.</li>
+            <li>Station locations.</li>
+            <li>Transfer locations.</li>
+         </ul>
+         <div>
             Don't worry, you don't have to code to figure it out. It's just a few clicks away
-          </div>     
+         </div>
       </div>
    </div>
    <div class="timeline">
@@ -345,7 +345,7 @@
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
-            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a>Github Repository</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/HERE/HEREPublicTransit">Github Repository</a></span>
          </p>
          <div class="image-btn">
             <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cview-product-details%7Chttps://developer.here.com/documentation/public-transit/dev_guide/index.html" target="_blank">View Product Details <span>&#8594;</span></a>

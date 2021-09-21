@@ -123,7 +123,7 @@
   .footer {
     display: flex;
     background-color: #343A3E;
-    margin: 950px 0px 0px 20px;
+    margin: 1100px 0px 0px 20px;
     padding: 0px;
     max-width: 1200px;
   }
@@ -235,7 +235,7 @@
   }
   @media screen and (max-width: 1200px) {
     .footer {
-      margin: 1000px 0px 0px 20px;
+      margin: 1150px 0px 0px 20px;
     }
     .flow{
       flex-direction:column;
@@ -253,7 +253,7 @@
   }
   @media screen and (max-width: 900px) {
     .footer {
-      margin: 1050px 0px 0px 20px;
+      margin: 1200px 0px 0px 20px;
     }
     .flow{
       flex-direction:column;
@@ -276,7 +276,7 @@
   }
   @media screen and (max-width: 700px) {
     .footer {
-      margin: 1150px 0px 0px 20px;
+      margin: 1300px 0px 0px 20px;
     }
     .flow{
       flex-direction:column;
@@ -293,7 +293,7 @@
   }
   @media screen and (max-width: 650px) {
     .footer {
-      margin: 1250px 0px 0px 20px;
+      margin: 1400px 0px 0px 20px;
     }
     .flow{
       flex-direction:column;
@@ -310,7 +310,7 @@
   }
   @media screen and (max-width: 550px) {
     .footer {
-      margin: 1350px 0px 0px 20px;
+      margin: 1500px 0px 0px 20px;
     }
     .flow{
         flex-direction:column;
@@ -327,7 +327,7 @@
   }
   @media screen and (max-width: 400px) {
     .footer {
-      margin: 1450px 0px 0px 20px;
+      margin: 1600px 0px 0px 20px;
     }
     .flow{
         flex-direction:column;
@@ -382,7 +382,13 @@
     </div>
    </div>
    <div class="timeline">
-      <div style="margin-top:0;"class="container right">
+        <div style="margin-top:0;"class="container right">
+         <div class="content">
+            <p>To begin, we'll need to open the terminal.</p>
+            <a class="button is-dark is-medium" title="Open Terminal" href="didact://?commandId=terminal-for-nodejs-container:new" >Open Terminal</a>
+         </div>
+      </div>
+      <div class="container right">
          <div class="content">
             <p>Clone the GitHub repository</p>
             <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%202$$git%20clone%20https%3A%2F%2Fgithub.com%2FIBM%2Fextract-textual-insights-from-video.git%20%26%26%20cd%20extract-textual-insights-from-video%2F%20%26%26%20pip3.8%20install%20-r%20requirements.txt" >Get Code</a>

@@ -7,7 +7,7 @@
   body {
     background-color: #1a1a1a;
     font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     outline: none;
   }
   body {
@@ -123,7 +123,7 @@
   .footer {
     display: flex;
     background-color: #343A3E;
-    margin: 900px 0px 0px 20px;
+    margin: 950px 0px 0px 20px;
     padding: 0px;
     max-width: 1200px;
   }
@@ -176,7 +176,7 @@
     padding: 5px 10px 5px 10px;
     line-height: 28px;
     font-size: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 6px;
   }
   .flow{
     background-color: white;
@@ -197,7 +197,6 @@
     flex-direction:column;
     float: left;
     color: black;
-    font-size: 14px;
     margin: 10px 0 10px 0;
   }
   .flow .content h3{
@@ -236,7 +235,7 @@
   }
   @media screen and (max-width: 1200px) {
     .footer {
-      margin: 900px 0px 0px 20px;
+      margin: 1000px 0px 0px 20px;
     }
     .flow{
       flex-direction:column;
@@ -252,25 +251,9 @@
       overflow:auto;
     }
   }
-  @media screen and (max-width: 1000px) {
-    .footer {
-      margin: 950px 0px 0px 20px;
-    }
-    .flow{
-      flex-direction:column;
-    }
-    .flow .content ol{
-    justify-content: space-between;
-    align-items: center;
-    margin-top:80px;
-    }
-    .flow-image-div{
-      overflow:auto;
-    }
-  }
   @media screen and (max-width: 900px) {
     .footer {
-      margin: 1000px 0px 0px 20px;
+      margin: 1050px 0px 0px 20px;
     }
     .flow{
       flex-direction:column;
@@ -293,7 +276,7 @@
   }
   @media screen and (max-width: 700px) {
     .footer {
-      margin: 1050px 0px 0px 20px;
+      margin: 1150px 0px 0px 20px;
     }
     .flow{
       flex-direction:column;
@@ -310,7 +293,7 @@
   }
   @media screen and (max-width: 650px) {
     .footer {
-      margin: 1100px 0px 0px 20px;
+      margin: 1250px 0px 0px 20px;
     }
     .flow{
       flex-direction:column;
@@ -327,7 +310,7 @@
   }
   @media screen and (max-width: 550px) {
     .footer {
-      margin: 1250px 0px 0px 20px;
+      margin: 1350px 0px 0px 20px;
     }
     .flow{
         flex-direction:column;
@@ -344,7 +327,7 @@
   }
   @media screen and (max-width: 400px) {
     .footer {
-      margin: 1350px 0px 0px 20px;
+      margin: 1450px 0px 0px 20px;
     }
     .flow{
         flex-direction:column;
@@ -365,7 +348,7 @@
 <body>
   <div style="margin-top:20px;margin-left: 40px;margin-bottom:40px;">
     <h2>Code Pattern: Extract insights from videos</h2>
-    <div style="margin-left:5px;">
+    <div style="margin-left:5px;font-size:14px;">
       <div>
        In this code pattern, learn how to extract speaker diarized notes and meaningful insights reports using IBM® Watson™ Speech To Text, Watson Natural Language Processing, anWatson Tone Analysis when given any video.
       </div>
@@ -399,7 +382,7 @@
     </div>
    </div>
    <div class="timeline">
-      <div class="container right">
+      <div style="margin-top:0;"class="container right">
          <div class="content">
             <p>Clone the GitHub repository</p>
             <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%202$$git%20clone%20https%3A%2F%2Fgithub.com%2FIBM%2Fextract-textual-insights-from-video.git%20%26%26%20cd%20extract-textual-insights-from-video%2F%20%26%26%20pip3.8%20install%20-r%20requirements.txt" >Get Code</a>
@@ -441,16 +424,14 @@
          <a class="button is-dark is-medium" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=nodejs%20terminal%202">Stop Running Application</a>
          <p style="margin-top:10px;">Completed the code pattern? Click on <bold>Clean up</bold> to delete the IBM Cloud services that were created.</p>
          <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%202$$chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean up</a>
-         <p style="margin-top:10px;">You can also manage the services in <a href="">IBM Cloud Dashboard</a>.</p>
+         <p style="margin-top:10px;">You can also manage the services in <a href="https://cloud.ibm.com/resources">IBM Cloud Dashboard</a>.</p>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
-            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a>Github Repository</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/extract-textual-insights-from-video">Github Repository</a></span>
          </p>
          <div class="image-btn">
-            <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cview-product-details%7Chttps://developer.here.com/documentation/public-transit/dev_guide/index.html" target="_blank">View Product Details <span>&#8594;</span></a>
-            <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cbuy-this-product%7Chttps://developer.here.com/pricing" target="_blank">Buy this API <span>&#8594;</span></a>
-            <a class="image-link" style="margin-bottom:0px;" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cget-trial-subscription%7Chttps://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account" target="_blank">Get Trial Subcription <span>&#8594;</span></a>
+            <a class="image-link" href="https://developer.ibm.com/patterns/extract-textual-insights-from-a-given-video/" target="_blank">View Product Details <span>&#8594;</span></a>
          </div>
       </div>
    </div>

@@ -7,17 +7,11 @@
   body {
     background-color: #1a1a1a;
     font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     outline: none;
   }
   body {
     font-family: Helvetica, sans-serif;
-  }
-  a{
-    color:#78A9FF;
-  }
-  a:visited{
-    color: #8C43FC;
   }
   /* The actual timeline (the vertical ruler) */
   .timeline {
@@ -123,9 +117,17 @@
   .footer {
     display: flex;
     background-color: #343A3E;
-    margin: 1100px 0px 0px 20px;
+    margin: 1050px 0px 0px 20px;
     padding: 0px;
     max-width: 1200px;
+  }
+  .github-icon {
+    min-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+    object-position: 250% 100px;
+    opacity: 15%;
+    bottom: 15px;
   }
   .image-content {
     padding: 5px 10px;
@@ -139,7 +141,7 @@
     background-color: white;
     min-width: 50%;
     background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url("https://github.com/bodarajeshkumar/Developer-Playground/blob/master/didact/images/git.svg?raw=true");
-    background-position: -30% 50px;
+    background-position: -50% 60px;
     background-repeat: no-repeat;
     padding-top: 20px;
     padding-left: 20px;
@@ -157,7 +159,7 @@
   {
     float: right;
     font-size: 32px;
-    margin-right:5px;
+    padding-right: 20px;
   }
   .image-btn .image-link:hover
   {   
@@ -176,50 +178,52 @@
     padding: 5px 10px 5px 10px;
     line-height: 28px;
     font-size: 16px;
-    margin-bottom: 6px;
   }
-  .flow{
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-    max-width: 1200px;
+  .header
+  {
+    background-image: url('https://github.com/IBM/Developer-Playground/blob/development/didact/images/data-quality.png?raw=true');
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+    display: inline-block;
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
+    background-size: contain;
+    max-width: 1200px;
   }
-  .flow .content ol{
-    justify-content: space-between;
-    align-items: center;
-    min-width: 40%;
+  .header .right-content
+  {
+    float: right;
+    width: 45%;
+    background-color:#2a67f5;
+    min-height:400px;
+    padding:20px;
+    font-size: 14px;
   }
-  .flow .content li{ 
-    background-color: white;
-    flex-direction:column;
-    float: left;
-    color: black;
-    margin: 10px 0 10px 0;
+  .header .right-content h4
+  {
+    background: none;
+    color: white;
+    padding-left: 25px;
+    padding-right: 25px;
   }
-  .flow .content h3{
-    background-color: white;
-    float: left;
-    color: black;
-    margin: 30px 0 20px 20px;
+  .header .right-content div
+  {
+    background: none;
+    color: white;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 14px;
+    margin-bottom: 10px;
   }
-  .flow-image-div{
-    background-color: white;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .flow-image{
-    background-color: transparent;
-    height: auto;
-    width: auto;
-    max-width: 900px;
-    margin-top: 30px;
-    margin-bottom:30px;
-    margin-left: -70px;
-    margin-right: -60px;
+  .header .right-content ul
+  {
+    margin: 0px;
+    margin-left: 25px;
+    margin-bottom: 10px;
+    line-height: 16px;
   }
   .container a
   {
@@ -233,220 +237,149 @@
     background-color: transparent;
     text-decoration: none;
   }
-  @media screen and (max-width: 1200px) {
-    .footer {
-      margin: 1150px 0px 0px 20px;
-    }
-    .flow{
-      flex-direction:column;
-    }
-    .flow .content ol{
-        align-items: left;
-        margin-top:80px;
-    }
-    .flow .content li{ 
-        margin-right:200px
-    }
-    .flow-image-div{
-      overflow:auto;
+  @media only screen and (max-width: 1200px) {
+    .header
+    {
+      background-size: cover;
     }
   }
-  @media screen and (max-width: 900px) {
+  @media only screen and (max-width: 800px) {
+    .footer {
+      margin: 1100px 0px 0px 20px;
+    }
+    .header
+    {
+      background-size: cover;
+    }
+  }
+  @media only screen and (max-width: 700px) {
     .footer {
       margin: 1200px 0px 0px 20px;
     }
-    .flow{
-      flex-direction:column;
-    }
-    .flow .content ol{
-    justify-content: space-between;
-    align-items: center;
-    min-width: 40%;
-    margin-top:80px;
-    }
-    .flow .content li{ 
-        margin-right:50px
-    }
-    .flow-image-div{
-      overflow:auto;
-    }
-    .flow-image{
-      margin-left:30px;
+  }
+  @media only screen and (max-width: 600px) {
+    .footer {
+      margin: 1250px 0px 0px 20px;
     }
   }
-  @media screen and (max-width: 700px) {
+  @media only screen and (max-width: 500px) {
     .footer {
       margin: 1300px 0px 0px 20px;
     }
-    .flow{
-      flex-direction:column;
-    }
-    .flow-image-div{
-      overflow:auto;
-    }
-    .flow .content li{ 
-        margin-right:50px
-    }
-    .flow-image{
-      margin-left:150px;
-    }
   }
-  @media screen and (max-width: 650px) {
+  @media only screen and (max-width: 400px) {
     .footer {
-      margin: 1400px 0px 0px 20px;
-    }
-    .flow{
-      flex-direction:column;
-    }
-    .flow-image-div{
-      overflow:auto;
-    }
-    .flow .content li{ 
-        margin-right:50px
-    }
-    .flow-image{
-      margin-left:300px;
-    }
-  }
-  @media screen and (max-width: 550px) {
-    .footer {
-      margin: 1500px 0px 0px 20px;
-    }
-    .flow{
-        flex-direction:column;
-    }
-    .flow-image-div{
-      overflow:auto;
-    }
-    .flow .content li{ 
-        margin-right:50px
-    }
-    .flow-image{
-      margin-left:400px;
-    }
-  }
-  @media screen and (max-width: 400px) {
-    .footer {
-      margin: 1600px 0px 0px 20px;
-    }
-    .flow{
-        flex-direction:column;
-    }
-    .flow-image-div{
-      overflow:auto;
-    }
-    .flow .content li{ 
-        margin-right:50px
-    }
-    .flow-image{
-      margin-left:450px;
+      margin: 1350px 0px 0px 20px;
     }
   }
 }
 </style>
 </head>
 <body>
-   <div style="margin-top:20px;margin-left: 40px;margin-bottom:40px;">
-      <h2>Code Pattern: Extract insights from videos</h2>
-      <div style="margin-left:5px;font-size:14px;">
+   <div class="header">
+      <div class="right-content">
+         <h4>Data Quality API Sample Application</h4>
          <div>
-            In this code pattern, learn how to extract speaker diarized notes and meaningful insights reports using IBM® Watson™ Speech To Text, Watson Natural Language Processing, anWatson Tone Analysis when given any video.
+            The Secret Ingredient behind any crackerjack model of any AI or Data-driven Application is- DATA, no it's actually a Good Quality DATA. Insights are only as good as the data that informs them. The Statistics and the expert estimates shows that the Data Practitioners spend their 50% to 80%  of their time in Data Wrangling to be analysed. Data wrangling or data munging is the process of taking disorganised or incomplete raw data and standardising it so that you can easily access, consolidate, and analyse it. It is often a tedious task when done manually. 
          </div>
-         </br>
          <div>
-            After completing the code pattern, you understand how to:
+            Introducing  `DATA Quality For AI`- The Data quality for AI is an integrated toolkit that provides various data profiling and quality estimation metrics that assess the quality of ingested data in a systematic and objective manner.
          </div>
-         <ul style="margin-left:-2px;">
-            <li>Use the Watson Speech to Text service to convert the human voice into the written word.</li>
-            <li>Use advanced natural language processing to analyze text and extract metadata from content such as concepts, entities, keywords, categories, sentiment, and emotion.</li>
-            <li>Leverage Watson Tone Analyzer cognitive linguistic analysis to identify a variety of tones at both the sentence and document level.</li>
-         </ul>
-      </div>
-   </div>
-   <div class="flow">
-      <div class="content">
-         <h3>Flow</h3>
-         <ol>
-            <li> User uploads recorded video file of the virtual meeting or a virtual classroom in the application.</li>
-            <li>FFMPG Library extracts audio from the video file.</li>
-            <li>Watson Speech To Text transcribes the audio to give a diarized textual output.</li>
-            <li>Watson Language Translator (Optionally) translates other languages into English transcript.</li>
-            <li>Watson Tone Analyzer analyses the transcript and picks up top positive statements form the transcript.</li>
-            <li>Watson Natural Language Understanding reads the transcript to identify key pointers from the transcript and get the sentiments and emotions.</li>
-            <li>The key pointers and summary of the video is then presented to the user in the application.</li>
-            <li>The user can then download the textual insights.</li>
-         </ol>
-      </div>
-      <div class="flow-image-div">
-         <img class="flow-image" src="https://developer.ibm.com/developer/default/patterns/extract-textual-insights-from-a-given-video/images/extract-textual-insights-from-a-given-video-flow.png">
+         <div>
+            Wait, Is it too much information to process?
+         </div>
+         <div>
+            We got you! Let's wrangle, the above information with DATA Quality For AI in this sample application.
+         </div>
       </div>
    </div>
    <div class="timeline">
-      <div style="margin-top:0;"class="container right">
+      <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
-            <p>To begin, we'll need to open the terminal.</p>
-            <a class="button is-dark is-medium" title="Open Terminal" href="didact://?commandId=terminal-for-nodejs-container:new">Open Terminal</a>
+            <p>To begin, we'll need the application's source code. Let's get that down!</p>
+            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cget-code%7Cdata-quality|git%20clone%20-b%20DART%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/data-quality/">Get the Code</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Clone the GitHub repository</p>
-            <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$git%20clone%20https%3A%2F%2Fgithub.com%2FIBM%2Fextract-textual-insights-from-video.git%20%26%26%20cd%20extract-textual-insights-from-video%2F%20%26%26%20pip3.8%20install%20-r%20requirements.txt" >Get Code</a>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>Create and Configure IBM Watson Services</p>
-            <p>You need to be logged in to your IBM Cloud account in the Developer Playground to create and configure services.</p>
-            <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$ibmcloud%20login%20--sso%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">Login to IBM Cloud</a>
-            <p style="margin-top:10px;">Do not have an IBM Cloud Account?<a href="https://cloud.ibm.com/registration">click here</a> to create one for free.</p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>This code pattern uses the following IBM Watson Services:</p>
-            <p><a href="https://cloud.ibm.com/catalog/services/natural-language-understanding">Natural Language Understanding</a>: Use advanced NLP to analyze text and extract meta-data from content such as concepts, entities, keywords, categories, sentiment, emotion, relations, and semantic roles.</p>
-            <p><a href="https://cloud.ibm.com/catalog/services/tone-analyzer">Tone Analyzer</a>: Tone Analyzer leverages cognitive linguistic analysis to identify a variety of tones at both the sentence and document level.</p>
-            <p><a href="https://cloud.ibm.com/catalog/services/speech-to-text">Speech to Text</a>: The Speech to Text service converts the human voice into the written word.</p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>Create these services and configure the credentials in the code pattern with just a click of button.</p>
-            <a class="button is-dark is-medium" title="Create IBM Watson Services" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh" >Create IBM Watson Services</a>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>Build and Run the Application</p>
-            <p>
-               You can build and run the Application within the Developer Playground, click on 
-               <bold>Build and Run</bold>
-               to start the application.
+            <p>Awesome! We've got the code! To see it in action, we've to build it first!
             </p>
-            <a class="button is-dark is-medium" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$python3.8%20app.py">Build and Run</a>
+            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cbuild-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install">Build the Application</a>
+            <p class="afterbutton">
+               Halt! Identify yourself! Take the following steps to obtain your credentials and configure the application
+            </p>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>Head over to <a title= "IBM API Hub" href="https://developer.ibm.com/apis/">IBM API Hub</a> and sign in with your IBM ID
+            </p>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>Subscribe to the <a title= "Data Quality" href="https://developer.ibm.com/apis/catalog/dataquality4ai--data-quality-for-ai/Introduction">Data Quality for AI Product</a>
+            </p>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>Now check out <a title= "My Subscriptions" href="https://developer.ibm.com/profile/myapis">API Subscriptions</a>
+            </p>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>You should see a subscription for Data Quality for AI, select that and proceed
+            </p>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>You can obtain your Client ID/Secret from here. If you don't see any, you can "Generate API Key"
+            </p>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>Let's get the credentials by configuring the application</p>
+            </p>
+            <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/.env">Configure the Application</a>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>You're all set to get started! </p>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Claunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20start">Launch the Application</a>
          </div>
       </div>
    </div>
    <div class="footer">
       <div class="content" style="padding:30px;padding-left:60px;padding-bottom: 0px;">
          <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
-         <a class="button is-dark is-medium" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=nodejs%20terminal">Stop Running Application</a>
-         <p style="margin-top:10px;">
-            Completed the code pattern? Click on 
-            <bold>Clean up</bold>
-            to delete the IBM Cloud services that were created.
-         </p>
-         <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean up</a>
-         <p style="margin-top:10px;">You can also manage the services in <a href="https://cloud.ibm.com/resources">IBM Cloud Dashboard</a>.</p>
+         <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=data-quality" >Stop Application</a>
+         <p class="afterbutton">The stage is yours!</p>
+         <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/services/service.js">Explore the Code</a>
+         <p class="afterbutton ">To view the changes you've made, re-launch the application</p>
+         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Crelaunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20start">Re-Launch the Application</a>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
-            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/extract-textual-insights-from-video">Github Repository</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a>Github Repository</a></span>
          </p>
          <div class="image-btn">
-            <a class="image-link" href="https://developer.ibm.com/patterns/extract-textual-insights-from-a-given-video/" target="_blank">
+            <a class="image-link" href="didact://?commandId=extension.openURL&text=data-quality%7Cview-product-details%7Chttps://www.ibm.com/products/dqaiapi
+               " target="_blank">
                View Product Details 
+               <span>
+                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                     <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
+                     <title>Arrow right</title>
+                  </svg>
+               </span>
+            </a>
+            <a class="image-link" href="didact://?commandId=extension.openURL&text=data-quality%7Cget-trial-subscription%7Chttps://www.ibm.com/account/reg/us-en/signup?formid=urx-50307" target="_blank">
+               Get Trial Subcription 
                <span>
                   <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
                      <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>

@@ -33,8 +33,8 @@
     position: absolute;
     width: 1px;
     background-color: white;
-    top: 0;
-    bottom: 0;
+    top: 15px;
+    bottom: 80px;
     left: 18px;
     margin-left: -2px;
   }
@@ -366,7 +366,7 @@
             <a class="image-link" href="didact://?commandId=extension.openURL&text=AsperaonCloud%7Cview-product-details%7Chttps://www.ibm.com/cloud/aspera" target="_blank">
                View Product Details 
                <span>
-                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                  <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
                      <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
                      <title>Arrow right</title>
                   </svg>
@@ -375,7 +375,7 @@
             <a class="image-link" href="didact://?commandId=extension.openURL&text=AsperaonCloud%7Cbuy-this-product%7Chttps://www.ibm.com/cloud/aspera/pricing" target="_blank">
                Buy this API 
                <span>
-                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                  <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
                      <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
                      <title>Arrow right</title>
                   </svg>
@@ -384,7 +384,7 @@
             <a class="image-link" href="didact://?commandId=extension.openURL&text=AsperaonCloud%7Cget-trial-subscription%7Chttps://www.ibm.com/account/reg/us-en/signup?formid=urx-30538" target="_blank">
                Get Trial Subcription 
                <span>
-                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                  <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
                      <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
                      <title>Arrow right</title>
                   </svg>

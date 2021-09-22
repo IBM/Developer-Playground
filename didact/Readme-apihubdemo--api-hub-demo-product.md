@@ -33,8 +33,8 @@
     position: absolute;
     width: 1px;
     background-color: white;
-    top: 0;
-    bottom: 0;
+    top: 15px;
+    bottom: 80px;
     left: 18px;
     margin-left: -2px;
   }
@@ -153,19 +153,13 @@
     background-color: #0062FF;
     width: 300px;
     padding: 0px;
-    padding-bottom: 20px;
+    padding-bottom: 25px;
   }
   .image-link span 
   {
     float: right;
     font-size: 32px;
     padding-right: 20px;
-  }
-  .image-btn .image-link:hover
-  {   
-    text-decoration: none;
-    color: white;
-    background-color: #0353E9;
   }
   .image-btn  a:hover
   {
@@ -326,17 +320,20 @@
          <p class="image-content">Want to explore this project more?
             <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/ssm">Github Repository</a></span>
          </p>
+         <a class="image-link" href="" target="_blank">
          <div class="image-btn">
-            <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cview-product-details%7Chttps://developer.ibm.com/apis/catalog/scx--sbs_orgaccess/Introduction" target="_blank">
-               View Product Details
+               <p class="image-link">View Product Details</p>
+               <p class="image-link"></p>
+               <p class="image-link">
                <span>
-                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                  <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
                      <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
                      <title>Arrow right</title>
                   </svg>
                </span>
-            </a>
+               </p>
          </div>
+         </a>
       </div>
    </div>
    <br><br>

@@ -33,8 +33,8 @@
     position: absolute;
     width: 1px;
     background-color: white;
-    top: 0;
-    bottom: 0;
+    top: 15px;
+    bottom: 80px;
     left: 18px;
     margin-left: -2px;
   }
@@ -238,6 +238,14 @@
     background-color: transparent;
     text-decoration: none;
   }
+  .apptitle
+  {
+    margin-left: 25px;
+    margin-top: 25px;
+    margin-bottom: 0px;
+    font-size: 20px;
+    color: white;
+  }
   @media only screen and (max-width: 800px) {
     .footer {
       margin: 1000px 0px 0px 20px;
@@ -267,12 +275,14 @@
 </style>
 </head>
 <body>
+  <div class="apptitle"> 
+    HERE Technologies Sample Application
+  </div>
    <div class="header">
       <div class="right-content">
-         <h4>HERE Technologies Sample Application</h4>
-         <div> Where are you from?, Answer this question! Your thoughts won't just stop at the location. It will also bring a lot about that place- the culture, the food and a lot more about people's preferences. A Location carry tons of demographic information than just an address, which can help perform specific market/region data analysis to make sound business decisions. Geocoding can be handy in answering when, where and what the customers are likely to purchase and planning advertising campaigns accordingly.  </div>
-         <div> But, What is Geocoding? It is the process of converting addresses (like "Taj Mahal in Agra, Uttar Pradesh, India") into geographic spatial coordinates (like latitude 27.1751° N and longitude 78.0421° E), which you can use to place markers on a map or position the map. Reverse geocoding is the process of converting geographic coordinates into a human-readable postal address. </div>
-         <div> Want to know where you are? Head straight to the sample application developed using Here Geocoding and Search API, try it out yourself.  </div>
+         <div> Here - What is Geocoding?
+          It is the process of converting addresses (like "Taj Mahal in Agra, Uttar Pradesh, India") into geographic spatial coordinates (like latitude 27.1751° N and longitude 78.0421° E), which you can use to place markers on a map or position the map. Reverse geocoding is the process of converting geographic coordinates into a human-readable postal address.</div>
+         <div> Want to know where you are? Head straight to the sample application developed using Here Geocoding and Search API, try it out yourself.</div>
          <div> With the HERE Geocoding and Search API, users will be able to search for  </div>
          <ul>
             <li>points of interest with 400+ categories and address objects at different levels(house number, street, city, state, postal code, ...)</li>
@@ -339,7 +349,7 @@
             <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREGeocodingandSearch%7Cview-product-details%7Chttps://developer.here.com/documentation/geocoding-search-api/dev_guide/index.html" target="_blank">
                View Product Details 
                <span>
-                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                  <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
                      <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
                      <title>Arrow right</title>
                   </svg>
@@ -348,7 +358,7 @@
             <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREGeocodingandSearch%7Cbuy-this-product%7Chttps://developer.here.com/pricing" target="_blank">
                Buy this API 
                <span>
-                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                  <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
                      <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
                      <title>Arrow right</title>
                   </svg>
@@ -357,7 +367,7 @@
             <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREGeocodingandSearch%7Cget-trial-subscription%7Chttps://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account" target="_blank">
                Get Trial Subcription 
                <span>
-                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                  <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
                      <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
                      <title>Arrow right</title>
                   </svg>

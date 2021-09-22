@@ -236,25 +236,31 @@
   .footer {
     margin: 1150px 0px 0px 20px;
   }
+  }
   @media only screen and (max-width: 800px) {
-  .footer {
-    margin: 1200px 0px 0px 20px;
+    .footer {
+      margin: 1200px 0px 0px 20px;
+    }
   }
   @media only screen and (max-width: 700px) {
-  .footer {
-    margin: 1300px 0px 0px 20px;
+    .footer {
+      margin: 1300px 0px 0px 20px;
+    }
   }
   @media only screen and (max-width: 600px) {
-  .footer {
-    margin: 1400px 0px 0px 20px;
+    .footer {
+      margin: 1400px 0px 0px 20px;
+    }
   }
   @media only screen and (max-width: 500px) {
-  .footer {
-    margin: 1500px 0px 0px 20px;
+    .footer {
+      margin: 1500px 0px 0px 20px;
+  }
   }
   @media only screen and (max-width: 400px) {
-  .footer {
-    margin: 1600px 0px 0px 20px;
+    .footer {
+      margin: 1600px 0px 0px 20px;
+    }
   }
 }
 </style>
@@ -338,6 +344,16 @@
          <p class="image-content">Want to explore this project more?
             <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/ssm">Github Repository</a></span>
          </p>
+          <div class="image-btn">
+            <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cview-product-details%7Chttps://developer.ibm.com/apis/catalog/scx--sbs_orgaccess/Introduction" target="_blank">View Product Details
+            <span>
+                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                     <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
+                     <title>Arrow right</title>
+                  </svg>
+               </span>
+            </a>
+         </div>
       </div>
    </div>
    <br><br>

@@ -151,6 +151,8 @@
     right: 0;
     bottom: 0%;
     background-color: #0062FF;
+    max-width: 300px;
+    min-width: 100px;
     width: 300px;
     padding: 0px;
     padding-bottom: 20px;
@@ -239,24 +241,29 @@
     text-decoration: none;
   }
   @media only screen and (max-width: 800px) {
-  .footer {
-    margin: 1000px 0px 0px 20px;
+    .footer {
+      margin: 1000px 0px 0px 20px;
+    }
   }
   @media only screen and (max-width: 700px) {
-  .footer {
-    margin: 1100px 0px 0px 20px;
+    .footer {
+      margin: 1100px 0px 0px 20px;
+    }
   }
   @media only screen and (max-width: 600px) {
-  .footer {
-    margin: 1150px 0px 0px 20px;
+    .footer {
+      margin: 1150px 0px 0px 20px;
+    }
   }
   @media only screen and (max-width: 500px) {
-  .footer {
-    margin: 1200px 0px 0px 20px;
+    .footer {
+      margin: 1200px 0px 0px 20px;
+    }
   }
   @media only screen and (max-width: 400px) {
-  .footer {
-    margin: 1300px 0px 0px 20px;
+    .footer {
+      margin: 1300px 0px 0px 20px;
+    }
   }
 }
 </style>
@@ -348,9 +355,33 @@
             <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/HERE/HEREPublicTransit">Github Repository</a></span>
          </p>
          <div class="image-btn">
-            <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cview-product-details%7Chttps://developer.here.com/documentation/public-transit/dev_guide/index.html" target="_blank">View Product Details <span>&#8594;</span></a>
-            <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cbuy-this-product%7Chttps://developer.here.com/pricing" target="_blank">Buy this API <span>&#8594;</span></a>
-            <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cget-trial-subscription%7Chttps://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account" target="_blank">Get Trial Subcription <span>&#8594;</span></a>
+            <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cview-product-details%7Chttps://developer.here.com/documentation/public-transit/dev_guide/index.html" target="_blank">
+               View Product Details 
+               <span>
+                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                     <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
+                     <title>Arrow right</title>
+                  </svg>
+               </span>
+            </a>
+            <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cbuy-this-product%7Chttps://developer.here.com/pricing" target="_blank">
+               Buy this API 
+               <span>
+                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                     <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
+                     <title>Arrow right</title>
+                  </svg>
+               </span>
+            </a>
+            <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cget-trial-subscription%7Chttps://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account" target="_blank">
+               Get Trial Subcription 
+               <span>
+                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                     <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
+                     <title>Arrow right</title>
+                  </svg>
+               </span>
+            </a>
          </div>
       </div>
    </div>

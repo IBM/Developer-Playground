@@ -346,43 +346,43 @@
 </style>
 </head>
 <body>
-  <div style="margin-top:20px;margin-left: 40px;margin-bottom:40px;">
-    <h2>Code Pattern: Extract insights from videos</h2>
-    <div style="margin-left:5px;font-size:14px;">
-      <div>
-       In this code pattern, learn how to extract speaker diarized notes and meaningful insights reports using IBM® Watson™ Speech To Text, Watson Natural Language Processing, anWatson Tone Analysis when given any video.
+   <div style="margin-top:20px;margin-left: 40px;margin-bottom:40px;">
+      <h2>Code Pattern: Extract insights from videos</h2>
+      <div style="margin-left:5px;font-size:14px;">
+         <div>
+            In this code pattern, learn how to extract speaker diarized notes and meaningful insights reports using IBM® Watson™ Speech To Text, Watson Natural Language Processing, anWatson Tone Analysis when given any video.
+         </div>
+         </br>
+         <div>
+            After completing the code pattern, you understand how to:
+         </div>
+         <ul style="margin-left:-2px;">
+            <li>Use the Watson Speech to Text service to convert the human voice into the written word.</li>
+            <li>Use advanced natural language processing to analyze text and extract metadata from content such as concepts, entities, keywords, categories, sentiment, and emotion.</li>
+            <li>Leverage Watson Tone Analyzer cognitive linguistic analysis to identify a variety of tones at both the sentence and document level.</li>
+         </ul>
       </div>
-      </br>
-      <div>
-        After completing the code pattern, you understand how to:
-      </div>
-      <ul style="margin-left:-2px;">
-        <li>Use the Watson Speech to Text service to convert the human voice into the written word.</li>
-        <li>Use advanced natural language processing to analyze text and extract metadata from content such as concepts, entities, keywords, categories, sentiment, and emotion.</li>
-        <li>Leverage Watson Tone Analyzer cognitive linguistic analysis to identify a variety of tones at both the sentence and document level.</li>
-      </ul>  
-  </div>
-  </div>
+   </div>
    <div class="flow">
-    <div class="content">
-       <h3>Flow</h3>
-       <ol>
-        <li> User uploads recorded video file of the virtual meeting or a virtual classroom in the application.</li>
-        <li>FFMPG Library extracts audio from the video file.</li>
-        <li>Watson Speech To Text transcribes the audio to give a diarized textual output.</li>
-        <li>Watson Language Translator (Optionally) translates other languages into English transcript.</li>
-        <li>Watson Tone Analyzer analyses the transcript and picks up top positive statements form the transcript.</li>
-        <li>Watson Natural Language Understanding reads the transcript to identify key pointers from the transcript and get the sentiments and emotions.</li>
-        <li>The key pointers and summary of the video is then presented to the user in the application.</li>
-        <li>The user can then download the textual insights.</li>
-      </ol>
-    </div>
-    <div class="flow-image-div">
-      <img class="flow-image" src="https://developer.ibm.com/developer/default/patterns/extract-textual-insights-from-a-given-video/images/extract-textual-insights-from-a-given-video-flow.png">
-    </div>
+      <div class="content">
+         <h3>Flow</h3>
+         <ol>
+            <li> User uploads recorded video file of the virtual meeting or a virtual classroom in the application.</li>
+            <li>FFMPG Library extracts audio from the video file.</li>
+            <li>Watson Speech To Text transcribes the audio to give a diarized textual output.</li>
+            <li>Watson Language Translator (Optionally) translates other languages into English transcript.</li>
+            <li>Watson Tone Analyzer analyses the transcript and picks up top positive statements form the transcript.</li>
+            <li>Watson Natural Language Understanding reads the transcript to identify key pointers from the transcript and get the sentiments and emotions.</li>
+            <li>The key pointers and summary of the video is then presented to the user in the application.</li>
+            <li>The user can then download the textual insights.</li>
+         </ol>
+      </div>
+      <div class="flow-image-div">
+         <img class="flow-image" src="https://developer.ibm.com/developer/default/patterns/extract-textual-insights-from-a-given-video/images/extract-textual-insights-from-a-given-video-flow.png">
+      </div>
    </div>
    <div class="timeline">
-        <div style="margin-top:0;"class="container right">
+      <div style="margin-top:0;"class="container right">
          <div class="content">
             <p>To begin, we'll need to open the terminal.</p>
             <a class="button is-dark is-medium" title="Open Terminal" href="didact://?commandId=terminal-for-nodejs-container:new">Open Terminal</a>
@@ -419,8 +419,12 @@
       <div class="container right">
          <div class="content">
             <p>Build and Run the Application</p>
-            <p>You can build and run the Application within the Developer Playground, click on <bold>Build and Run</bold> to start the application.</p>
-            <a class="button is-dark is-medium" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$python3%20app.py">Build and Run</a>
+            <p>
+               You can build and run the Application within the Developer Playground, click on 
+               <bold>Build and Run</bold>
+               to start the application.
+            </p>
+            <a class="button is-dark is-medium" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$python3.8%20app.py">Build and Run</a>
          </div>
       </div>
    </div>
@@ -428,7 +432,11 @@
       <div class="content" style="padding:30px;padding-left:60px;padding-bottom: 0px;">
          <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
          <a class="button is-dark is-medium" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=nodejs%20terminal">Stop Running Application</a>
-         <p style="margin-top:10px;">Completed the code pattern? Click on <bold>Clean up</bold> to delete the IBM Cloud services that were created.</p>
+         <p style="margin-top:10px;">
+            Completed the code pattern? Click on 
+            <bold>Clean up</bold>
+            to delete the IBM Cloud services that were created.
+         </p>
          <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean up</a>
          <p style="margin-top:10px;">You can also manage the services in <a href="https://cloud.ibm.com/resources">IBM Cloud Dashboard</a>.</p>
       </div>
@@ -437,7 +445,15 @@
             <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/extract-textual-insights-from-video">Github Repository</a></span>
          </p>
          <div class="image-btn">
-            <a class="image-link" href="https://developer.ibm.com/patterns/extract-textual-insights-from-a-given-video/" target="_blank">View Product Details <span>&#8594;</span></a>
+            <a class="image-link" href="https://developer.ibm.com/patterns/extract-textual-insights-from-a-given-video/" target="_blank">
+               View Product Details 
+               <span>
+                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                     <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
+                     <title>Arrow right</title>
+                  </svg>
+               </span>
+            </a>
          </div>
       </div>
    </div>

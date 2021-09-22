@@ -237,25 +237,40 @@
     background-color: transparent;
     text-decoration: none;
   }
+  @media only screen and (max-width: 1200px) {
+    .header
+    {
+      background-size: cover;
+    }
+  }
   @media only screen and (max-width: 800px) {
-  .footer {
-    margin: 1100px 0px 0px 20px;
+    .footer {
+      margin: 1100px 0px 0px 20px;
+    }
+    .header
+    {
+      background-size: cover;
+    }
   }
   @media only screen and (max-width: 700px) {
-  .footer {
-    margin: 1200px 0px 0px 20px;
+    .footer {
+      margin: 1200px 0px 0px 20px;
+    }
   }
   @media only screen and (max-width: 600px) {
-  .footer {
-    margin: 1250px 0px 0px 20px;
+    .footer {
+      margin: 1250px 0px 0px 20px;
+    }
   }
   @media only screen and (max-width: 500px) {
-  .footer {
-    margin: 1300px 0px 0px 20px;
+    .footer {
+      margin: 1300px 0px 0px 20px;
+    }
   }
   @media only screen and (max-width: 400px) {
-  .footer {
-    margin: 1350px 0px 0px 20px;
+    .footer {
+      margin: 1350px 0px 0px 20px;
+    }
   }
 }
 </style>
@@ -354,8 +369,24 @@
          </p>
          <div class="image-btn">
             <a class="image-link" href="didact://?commandId=extension.openURL&text=data-quality%7Cview-product-details%7Chttps://www.ibm.com/products/dqaiapi
-               " target="_blank">View Product Details <span>&#8594;</span></a>
-            <a class="image-link" href="didact://?commandId=extension.openURL&text=data-quality%7Cget-trial-subscription%7Chttps://www.ibm.com/account/reg/us-en/signup?formid=urx-50307" target="_blank">Get Trial Subcription <span>&#8594;</span></a>
+               " target="_blank">
+               View Product Details 
+               <span>
+                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                     <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
+                     <title>Arrow right</title>
+                  </svg>
+               </span>
+            </a>
+            <a class="image-link" href="didact://?commandId=extension.openURL&text=data-quality%7Cget-trial-subscription%7Chttps://www.ibm.com/account/reg/us-en/signup?formid=urx-50307" target="_blank">
+               Get Trial Subcription 
+               <span>
+                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                     <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
+                     <title>Arrow right</title>
+                  </svg>
+               </span>
+            </a>
          </div>
       </div>
    </div>

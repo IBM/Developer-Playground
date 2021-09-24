@@ -33,8 +33,8 @@
     position: absolute;
     width: 1px;
     background-color: white;
-    top: 0;
-    bottom: 0;
+    top: 15px;
+    bottom: 80px;
     left: 18px;
     margin-left: -2px;
   }
@@ -153,19 +153,13 @@
     background-color: #0062FF;
     width: 300px;
     padding: 0px;
-    padding-bottom: 20px;
+    padding-bottom: 25px;
   }
   .image-link span 
   {
     float: right;
     font-size: 32px;
     padding-right: 20px;
-  }
-  .image-btn .image-link:hover
-  {   
-    text-decoration: none;
-    color: white;
-    background-color: #0353E9;
   }
   .image-btn  a:hover
   {
@@ -218,7 +212,7 @@
   }
   .container a
   {
-    color: #0072C3;
+    color: #78A9FF;
     background-color: transparent;
     text-decoration: none;
   }
@@ -273,23 +267,17 @@
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
-            <p>To begin, we'll need the application's source code. Let's get that down!</p>
+            <p>To begin, you will need the application's source code. Click `Get the code` to clone the code to your playground session.</p>
             <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=SSM%7Cget-code%7CSSM|git%20clone%20-b%20ssm%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/sbs-orgaccess/">Get the Code</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Awesome! We've got the code! To see it in action, we've to build it first!
+            <p>You've successfully cloned the code, so click `Build the application` to start the build process.
             </p>
             <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=SSM%7Cbuild-application%7CSSM|cd%20${CHE_PROJECTS_ROOT}/sbs-orgaccess/SSMSampleApp%20%26%26%20npm%20install">Build the Application</a>
             <p class="afterbutton">
-               Halt! Identify yourself! Take the following steps to obtain your credentials and configure the application
-            </p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>Head over to <a title= "IBM API Hub" href="https://developer.ibm.com/apis/">IBM API Hub</a> and sign in with your IBM ID
+                To obtain credentials and configure the application, complete the following steps
             </p>
          </div>
       </div>
@@ -344,16 +332,20 @@
          <p class="image-content">Want to explore this project more?
             <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/ssm">Github Repository</a></span>
          </p>
-          <div class="image-btn">
-            <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cview-product-details%7Chttps://developer.ibm.com/apis/catalog/scx--sbs_orgaccess/Introduction" target="_blank">View Product Details
-            <span>
-                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+          <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cview-product-details%7Chttps://developer.ibm.com/apis/catalog/scx--sbs_orgaccess/Introduction" target="_blank">
+         <div class="image-btn">
+               <p class="image-link">View Product Details</p>
+               <p class="image-link"></p>
+               <p class="image-link">
+               <span>
+                  <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
                      <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
                      <title>Arrow right</title>
                   </svg>
                </span>
-            </a>
+               </p>
          </div>
+         </a>
       </div>
    </div>
    <br><br>

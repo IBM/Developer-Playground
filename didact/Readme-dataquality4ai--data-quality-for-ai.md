@@ -117,7 +117,7 @@
   .footer {
     display: flex;
     background-color: #343A3E;
-    margin: 1050px 0px 0px 20px;
+    margin: 950px 0px 0px 20px;
     padding: 0px;
     max-width: 1200px;
   }
@@ -198,8 +198,9 @@
     float: right;
     width: 45%;
     background-color:#2a67f5;
-    min-height:400px;
-    padding:20px;
+    min-height: 300px;
+    padding: 20px;
+    padding-top: 7.5%;
     font-size: 14px;
   }
   .header .right-content h4
@@ -213,7 +214,7 @@
   {
     background: none;
     color: white;
-    padding-left: 25px;
+    padding-left: 15px;
     padding-right: 25px;
     font-size: 14px;
     margin-bottom: 10px;
@@ -227,7 +228,7 @@
   }
   .container a
   {
-    color: #0072C3;
+     color: #78A9FF;
     background-color: transparent;
     text-decoration: none;
   }
@@ -245,7 +246,7 @@
     font-size: 20px;
     color: white;
   }
-  @media only screen and (max-width: 1200px) {
+  @media only screen and (max-width: 1000px) {
     .header
     {
       background-size: cover;
@@ -253,7 +254,7 @@
   }
   @media only screen and (max-width: 800px) {
     .footer {
-      margin: 1100px 0px 0px 20px;
+      margin: 1050px 0px 0px 20px;
     }
     .header
     {
@@ -264,20 +265,37 @@
     .footer {
       margin: 1200px 0px 0px 20px;
     }
+    .header
+    {
+      background-size: cover;
+      background-position: 0px 0px;
+    }
   }
   @media only screen and (max-width: 600px) {
     .footer {
-      margin: 1250px 0px 0px 20px;
+      margin: 1350px 0px 0px 20px;
+    }
+    .header
+    {
+      background-size: cover;
     }
   }
   @media only screen and (max-width: 500px) {
     .footer {
-      margin: 1300px 0px 0px 20px;
+      margin: 1350px 0px 0px 20px;
+    }
+    .header
+    {
+      background-size: cover;
     }
   }
   @media only screen and (max-width: 400px) {
     .footer {
-      margin: 1350px 0px 0px 20px;
+      margin: 1450px 0px 0px 20px;
+    }
+    .header
+    {
+      background-size: cover;
     }
   }
 }
@@ -289,37 +307,25 @@
   </div>
    <div class="header">
       <div class="right-content">
-         <div>
-            Introducing  `DATA Quality For AI`- The Data quality for AI is an integrated toolkit that provides various data profiling and quality estimation metrics that assess the quality of ingested data in a systematic and objective manner.
-         </div>
-         <div>
-            Wait, Is it too much information to process?
-         </div>
-         <div>
-            We got you! Let's wrangle, the above information with DATA Quality For AI in this sample application.
-         </div>
+          <div>
+            The Data Quality for AI is an integrated toolkit that provides various data profiling and quality estimation metrics to assess the quality of ingested data in a systematic and objective manner. You will learn how this API can be leveraged in the real world with this interactive tutorial  and sample application... where you will build, configure, and explore ... with a sample application
+          </div>
       </div>
    </div>
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
-            <p>To begin, we'll need the application's source code. Let's get that down!</p>
+            <p>To begin, you will need the application's source code. Click `Get the code` to clone the code to your playground session.</p>
             <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cget-code%7Cdata-quality|git%20clone%20-b%20DART%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/data-quality/">Get the Code</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Awesome! We've got the code! To see it in action, we've to build it first!
+            <p>You've successfully cloned the code, so click `Build the application` to start the build process.
             </p>
             <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cbuild-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install">Build the Application</a>
             <p class="afterbutton">
-               Halt! Identify yourself! Take the following steps to obtain your credentials and configure the application
-            </p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>Head over to <a title= "IBM API Hub" href="https://developer.ibm.com/apis/">IBM API Hub</a> and sign in with your IBM ID
+               To obtain credentials and configure the application, complete the following steps
             </p>
          </div>
       </div>

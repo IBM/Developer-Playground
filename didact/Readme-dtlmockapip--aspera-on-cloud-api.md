@@ -117,7 +117,7 @@
   .footer {
     display: flex;
     background-color: #343A3E;
-    margin: 1450px 0px 0px 20px;
+    margin: 1350px 0px 0px 20px;
     padding: 0px;
     max-width: 1200px;
   }
@@ -218,7 +218,7 @@
   }
   .container a
   {
-    color: #0072C3;
+    color: #78A9FF;
     background-color: transparent;
     text-decoration: none;
   }
@@ -239,30 +239,30 @@
   }
   @media only screen and (max-width: 900px) {
     .footer {
-      margin: 1800px 0px 0px 20px;
+      margin: 1700px 0px 0px 20px;
     }
   }
   @media only screen and (max-width: 700px) {
     .footer {
-      margin: 2000px 0px 0px 20px;
+      margin: 1900px 0px 0px 20px;
       height: 650px;
     }
   }
   @media only screen and (max-width: 600px) {
     .footer {
-      margin: 2200px 0px 0px 20px;
+      margin: 2100px 0px 0px 20px;
       height: 650px;
     }
   }
   @media only screen and (max-width: 500px) {
     .footer {
-      margin: 2200px 0px 0px 20px;
+      margin: 2100px 0px 0px 20px;
       height: 650px;
     }
   }
   @media only screen and (max-width: 400px) {
     .footer {
-      margin: 2500px 0px 0px 20px;
+      margin: 2400px 0px 0px 20px;
       height: 750px;
     }
   }
@@ -277,20 +277,15 @@
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
-            <p>To begin, we'll need the application's source code. Let's get that down!</p>
+            <p>To begin, you will need the application's source code. Click `Get the code` to clone the code to your playground session.</p>
             <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=AsperaonCloud%7Cget-code%7CAsperaonCloud|git%20clone%20-b%20aspera%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/aspera-on-cloud/">Get the Code</a> 
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Awesome! We've got the code! To see it in action, we've to build it first! </p>
+            <p>You've successfully cloned the code, so click `Build the application` to start the build process.</p>
             <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=AsperaonCloud%7Cbuild-application%7CAsperaonCloud|cd%20${CHE_PROJECTS_ROOT}/aspera-on-cloud/AoCSampleApp%20%26%26%20npm%20install">Build the Application</a>
-            <p class="afterbutton"> Halt! Identify yourself! Take the following steps to obtain your credentials and configure the application </p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>Head over to <a title="IBM API Hub" href="https://developer.ibm.com/apis/">IBM API Hub</a> and sign in with your IBM ID </p>
+            <p class="afterbutton"> To obtain credentials and configure the application, complete the following steps</p>
          </div>
       </div>
       <div class="container right">

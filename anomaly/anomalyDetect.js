@@ -1,9 +1,8 @@
 const promiseRequest = require('./promiseRequest');
-const dotenv = require('dotenv');
 const fs = require('fs');
+const getResult = require("./getResult")
 const strftime = require('strftime');
 
-dotenv.config({path: './.env'})
 
 let apiEndpoints = ["https://api.ibm.com/ai4industry/run/anomaly-detection/timeseries/univariate/batch", "https://api.ibm.com/ai4industry/run/anomaly-detection/timeseries/multivariate/batch"]
 
@@ -33,7 +32,7 @@ const anomalyDetect = async ({
     let filepath = "./data/sample.json"
     let apiEndpoint = apiEndpoints[0]
     if(dataset_type === 'customdt')
-        filepath = "./data/data.json"
+        filepath = "./data/customfile.json"
     else{
         time_column = "time"
         target_column = "num"
@@ -86,11 +85,11 @@ const anomalyDetect = async ({
         },
         formData
     };
-    console.log(options)
     try {
         const response = await promiseRequest(options)
         console.log(response)
         let jobId = JSON.parse(response).jobId
+        await getResult(jobId)
         return jobId
     } catch (err) {
         console.log('Error' ,err)

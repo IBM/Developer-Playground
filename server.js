@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const getResult = require('./anomaly/getResult');
 const dotenv = require('dotenv');
 
-dotenv.config({path: './.env'})
+dotenv.config({ path: './.env' })
 
 
 const app = express();
@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use(express.static( "./data"));
+app.use(express.static("./data"));
 
 
 app.get("/sampledata", async (req, res) => {
@@ -26,8 +26,13 @@ app.get("/sampledata", async (req, res) => {
 })
 
 app.post("/detect", async (req, res) => {
-  const jsonArray = await anomalyDetect(req.body)
-  res.status(200).json(jsonArray)
+  try {
+    const jsonArray = await anomalyDetect(req.body)
+    res.status(200).json(jsonArray)
+  } catch(e) {
+    console.log(e)
+    res.status(500)
+  }
 })
 
 var storage = multer.diskStorage({
@@ -35,13 +40,20 @@ var storage = multer.diskStorage({
     cb(null, "data");
   },
   filename: function (req, file, cb) {
-    cb(null, `data.${file.mimetype.split("/")[1]}`);
+    cb(null, `customfile.${file.mimetype.split("/")[1]}`);
   },
 });
 
-var upload = multer({
+const upload = multer({
   storage: storage,
-  limits: { fileSize: 10000000 },
+  limits: {
+    fileSize: (req, file, cb) => {
+      if (file.mimetype === "application/json")
+        return 10000000
+      else
+        return 5000000
+    }
+  },
   fileFilter: (req, file, cb) => {
     if (file.mimetype === "text/csv" || file.mimetype === "application/json") {
       cb(null, true);
@@ -63,34 +75,42 @@ app.post("/upload", async (req, res) => {
       return res.status(500).json(err);
     }
     let jsonArray = {}
+    console.log(req.file)
+    console.log(req.name)
+    let filepath = `./data/customfile`
     if (req.file.mimetype === "text/csv") {
-      jsonArray = await csvtojson().fromFile("./data/data.csv");
-      fs.writeFileSync("./data/data.json", JSON.stringify(jsonArray))
-      fs.rmSync("./data/data.csv")
+      jsonArray = await csvtojson().fromFile(`${filepath}.csv`);
+      fs.writeFileSync(`${filepath}.json`, JSON.stringify(jsonArray))
+      fs.rmSync(`${filepath}.csv`)
     } else {
-      jsonArray = JSON.parse(fs.readFileSync("./data/data.json"))
+      jsonArray = JSON.parse(fs.readFileSync(`${filepath}.json`))
     }
     res.status(200).json(jsonArray);
   });
 });
 
 app.get("/result?:jobid", async (req, res) => {
-  let result = await getResult(req.query.jobid)
-  console.log(req.query.jobid)
-  console.log(`${__dirname}/data/result.json`)
-  res.download(`${__dirname}/data/result.json`,`${req.query.jobid}.json`)
-  /*console.log(JSON.stringify(result))
-  let jsonArray = JSON.parse(fs.readFileSync(filepath))
-  result.summary.result.forEach((res, index) => {
-    jsonArray[index].anomaly_score = res.value.anomaly_score[0]
-    if (res.value.anomaly_label[0] !== 1)
-      jsonArray[index].anomaly = true;
-    else
-      jsonArray[index].anomaly = false;
-  })
-  res.status(200).json(jsonArray)*/
+  let filepath = `./data/${req.query.jobid}`
+  try {
+    const jsonArray = JSON.parse(fs.readFileSync(`${filepath}-data.json`))
+    res.status(200).json(jsonArray)
+  }
+  catch(e){
+    //let result = await getResult(req.query.jobid)
+    console.log(e)
+  }
+})
+
+app.get("/downlod?:jobid", async (req, res) => {
+  let filepath = `/data/${req.query.jobid}`
+  try {
+    res.download(`${__dirname}${filepath}-result.json`, `${req.query.jobid}.json`)
+  }
+  catch {
+    await getResult(req.query.jobid)
+    res.download(`${__dirname}${filepath}-result.json`, `${req.query.jobid}.json`)
+  }
 })
 
 
-
-app.listen(4000,console.log("Server started on 4000"))
+app.listen(4000, console.log("Server started on 4000"))

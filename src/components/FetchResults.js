@@ -1,10 +1,14 @@
-import { TextInput, Button, Form, Loading } from 'carbon-components-react';
+import { TextInput, Button, Form, Loading, ButtonSet } from 'carbon-components-react';
 import axios from 'axios';
 import { useState } from "react"
+import "../App.css"
 
-const FetchResults = ({ jobId }) => {
+const FetchResults = ({ jobId, getChartResults }) => {
   const [loading, setLoading] = useState(false)
   const [invalid, setInvalid] = useState({ state: false, text: "" })
+  const [showButton, setButton] = useState(false)
+  const [currentJobId, setJobId] = useState("")
+  
   const getResults = async (e) => {
     e.preventDefault();
     if (e.target.job_text.value.trim() === "") {
@@ -14,10 +18,17 @@ const FetchResults = ({ jobId }) => {
       })
     } else {
       setLoading(true)
-      //let res = await axios.get(`/result?jobid=${e.target.job_text.value}`)
-      window.open(`http://localhost:4000/result?jobid=${e.target.job_text.value}`)
+      let res = await axios.get(`http://localhost:4000/result?jobid=${e.target.job_text.value}`)
+      setButton(true)
+      setJobId(e.target.job_text.value)
+      getChartResults(res.data)
       setLoading(false)
     }
+  }
+
+  const download = (e) => {
+    e.preventDefault();
+    window.open(`http://localhost:4000/download?jobid=${currentJobId}`)
   }
   return (<Form className="fetch-results"onSubmit={getResults}>
     <h3>Fetch Processed Results </h3>
@@ -32,15 +43,19 @@ const FetchResults = ({ jobId }) => {
       invalid={invalid.state}
       invalidText={invalid.text}
       defaultValue={jobId}
-      onChange={() => setInvalid({ state: false, text: "" })}
+      onChange={() => {setInvalid({ state: false, text: "" });setButton(false)}}
     />
     <br />
+    <ButtonSet >
     <Button
       kind="tertiary"
       type="submit"
     >
       Fetch Results
     </Button>
+    {showButton ? 
+    <Button type="submit" style={{marginLeft: "14px"}} onClick={download}> Download Results </Button>:null}
+    </ButtonSet>
     <Loading active={loading} overlay={true} />
   </Form>)
 }

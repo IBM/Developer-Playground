@@ -5,26 +5,34 @@ function uid(prefix = "id") {
     lastId++;
     return `${prefix}${lastId}`;
 }
+let valid = true
 const FileUpload = ({ accept, sendDataToParent }) => {
-    const [selectedFile, setselectedFile] = useState({});
-    const [loaded, setloaded] = useState(1);
     const [files, setFiles] = useState([]);
 
-
+    const validSize = name => {
+        console.log(name)
+        let fileNameSplit = name.split('.')
+        let fileType = fileNameSplit[fileNameSplit.length - 1]
+        if(fileType === "csv")
+            return 5000000
+        else
+            return 10000000
+    }
 
     const uploadFile = async (fileToUpload) => {
         // file size validation
-
-        if (fileToUpload.filesize <= 150000000000000) {
-            
+        console.log("file to upload: " + JSON.stringify(fileToUpload))
+        if (fileToUpload.filesize <= validSize(fileToUpload.name)) {
+            valid = true;
         } else {
+            valid = false;
             const updatedFile = {
                 ...fileToUpload,
                 status: "edit",
                 iconDescription: "Delete file",
                 invalid: true,
                 errorSubject: "File size exceeds limit",
-                errorBody: "Max file size is 15MB. Select a new file and try again.",
+                errorBody: `Max file size is ${fileToUpload.name.split(".")[fileToUpload.name.split(".").length - 1] === "csv"?5:10}MB. Select a new file and try again.`,
             };
             setFiles((files) =>
                 files.map((file) =>
@@ -36,6 +44,7 @@ const FileUpload = ({ accept, sendDataToParent }) => {
         console.log(fileToUpload);
         // file type validation
         if (fileToUpload.invalidFileType) {
+            valid = false;
             const updatedFile = {
                 ...fileToUpload,
                 status: "edit",
@@ -50,6 +59,8 @@ const FileUpload = ({ accept, sendDataToParent }) => {
                 )
             );
             return;
+        } else {
+            valid = true;
         }
         try {
             const response = await fetch(
@@ -88,6 +99,7 @@ const FileUpload = ({ accept, sendDataToParent }) => {
                 );
             }, 1000);
         } catch (error) {
+            valid = false;
             const updatedFile = {
                 ...fileToUpload,
                 status: "edit",
@@ -103,8 +115,7 @@ const FileUpload = ({ accept, sendDataToParent }) => {
         }
     };
 
-    const onAddFiles = useCallback((evt, { addedFiles }) => {
-        console.log(addedFiles[0])
+    const onAddFiles = (evt, { addedFiles }) => {
         evt.stopPropagation();
         const newFiles = addedFiles.map((file) => ({
             uuid: uid(),
@@ -114,18 +125,17 @@ const FileUpload = ({ accept, sendDataToParent }) => {
             iconDescription: "Uploading",
         }));
         if (addedFiles[0]) {
-            setloaded(0);
             setFiles([newFiles[0]]);
             uploadFile(newFiles[0]);
-            setselectedFile(addedFiles[0]);
-            console.log('tets', selectedFile);
-            const data = new FormData()
-            data.append('file', addedFiles[0])
-            sendDataToParent(data)
+            if(valid){
+                const data = new FormData()
+                data.append('file', addedFiles[0])
+                sendDataToParent(data)
+            }
         } else {
             //console.log("No file uploaded");
         }
-    });
+    };
 
     const handleFileUploaderItemClick = useCallback(
         (_, { uuid: clickedUuid }) =>

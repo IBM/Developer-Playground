@@ -1,4 +1,4 @@
-import { MultiSelect, RadioButton, RadioButtonGroup, FormGroup, Dropdown, TextInput, Button, Loading, CodeSnippetSkeleton } from 'carbon-components-react';
+import { MultiSelect, RadioButton, RadioButtonGroup, FormGroup, Dropdown, TextInput, Button, Loading} from 'carbon-components-react';
 import Chart from './components/Chart'
 import { Header, HeaderName } from "carbon-components-react/lib/components/UIShell";
 import { useState } from 'react'
@@ -36,6 +36,7 @@ function App() {
   const [LWInvalid, setLWInvalid] = useState({ state: false, text: "" })
   const [OWInvalid, setOWInvalid] = useState({ state: false, text: "" })
   const [LTInvalid, setLTInvalid] = useState({ state: false, text: "" })
+  const [fileName, setFileName] = useState("")
 
 
   const resetStates = () => {
@@ -44,11 +45,16 @@ function App() {
     setOWInvalid({ state:false, text: "" })
     setLTInvalid({state: false, text: "" })
     setTimeColumnOptions([])
+    setChart(false)
+    setTimeColumn(false)
+    setLines([])
   }
 
   const sendDataToParent = async (data) => {
     resetStates()
-    const res = await axios.post("/upload", data, {})
+    data.append('name',Math.random().toString(36).substring(2,13))
+    console.log(data.entries())
+    const res = await axios.post("http://localhost:4000/upload", data, {})
     setData(res.data)
     setTimeColumn(true)
     setTimeColumnOptions(Object.keys(res.data[0]))
@@ -57,13 +63,13 @@ function App() {
 
   const getSample = async (e) => {
     resetStates()
-    let res = await axios.get('/sampledata')
+    let res = await axios.get('http://localhost:4000/sampledata')
     setData(res.data)
     setChart(true)
     setTimeColumn(false)
     let lines = Object.keys(res.data[0]).slice(1)
     let lineData = []
-    lines.map(line => {
+    lines.forEach(line => {
       lineData.push({
         line,
         color: `#${Math.floor(Math.random() * 16777215).toString(16)}`
@@ -182,7 +188,7 @@ function App() {
     console.log(valid)
     if (valid) {
       setLoading(true)
-      let res = await axios.post('/detect', JSON.stringify(formData), {
+      let res = await axios.post('http://localhost:4000/detect', JSON.stringify(formData), {
         "headers": {
           "content-type": "application/json",
         }
@@ -208,6 +214,23 @@ function App() {
         setAnomalyEstimatorOptions(false)
       }
     }, 1)
+  }
+
+  const getChartResults = (data) => {
+    setData(data)
+    let lines = Object.keys(data[0]).slice(1)
+    let lineData = []
+    lines.forEach(line => {
+      if(line !== "anomaly")
+        lineData.push({
+          line,
+          color: `#${Math.floor(Math.random() * 16777215).toString(16)}`
+        })
+    })
+    setLines(lineData)
+    setAnomaly(true)
+    setChart(true)
+    setForm(false)
   }
   return (
     <div className="app">
@@ -352,8 +375,8 @@ function App() {
             </div>
           </FormGroup> : null}
       </form>
-      <hr />
-      <FetchResults jobId={jobId} />
+      <br />
+      <FetchResults jobId={jobId} getChartResults = {getChartResults}/>
     </div>
   );
 }

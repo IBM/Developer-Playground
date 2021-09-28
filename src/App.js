@@ -54,7 +54,7 @@ function App() {
     resetStates()
     data.append('name',Math.random().toString(36).substring(2,13))
     console.log(data.entries())
-    const res = await axios.post("http://localhost:4000/upload", data, {})
+    const res = await axios.post("/upload", data, {})
     setData(res.data)
     setTimeColumn(true)
     setTimeColumnOptions(Object.keys(res.data[0]))
@@ -63,7 +63,7 @@ function App() {
 
   const getSample = async (e) => {
     resetStates()
-    let res = await axios.get('http://localhost:4000/sampledata')
+    let res = await axios.get('/sampledata')
     setData(res.data)
     setChart(true)
     setTimeColumn(false)
@@ -188,7 +188,7 @@ function App() {
     console.log(valid)
     if (valid) {
       setLoading(true)
-      let res = await axios.post('http://localhost:4000/detect', JSON.stringify(formData), {
+      let res = await axios.post('/detect', JSON.stringify(formData), {
         "headers": {
           "content-type": "application/json",
         }

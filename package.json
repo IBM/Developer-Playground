@@ -1,6 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "proxy": "http://localhost:4000",
   "private": true,
   "dependencies": {
     "@carbon/icons-react": "10.22.0",
@@ -28,10 +29,10 @@
   },
   "scripts": {
     "react": "react-scripts start",
-    "server": "nodemon server.js 4000",
+    "server": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "start": "npm run react",
+    "start": "concurrently \"npm run server \" \"npm run react\" ",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

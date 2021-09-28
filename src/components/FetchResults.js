@@ -18,7 +18,7 @@ const FetchResults = ({ jobId, getChartResults }) => {
       })
     } else {
       setLoading(true)
-      let res = await axios.get(`http://localhost:4000/result?jobid=${e.target.job_text.value}`)
+      let res = await axios.get(`/result?jobid=${e.target.job_text.value}`)
       setButton(true)
       setJobId(e.target.job_text.value)
       getChartResults(res.data)
@@ -28,7 +28,7 @@ const FetchResults = ({ jobId, getChartResults }) => {
 
   const download = (e) => {
     e.preventDefault();
-    window.open(`http://localhost:4000/download?jobid=${currentJobId}`)
+    window.open(`/download?jobid=${currentJobId}`)
   }
   return (<Form className="fetch-results"onSubmit={getResults}>
     <h3>Fetch Processed Results </h3>

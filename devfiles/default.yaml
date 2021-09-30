@@ -16,4 +16,6 @@ components:
     type: chePlugin
   - id: ibm-playground/api-hub/latest
     type: chePlugin
-
+  - id: eclipse/che-theia/latest
+    memoryLimit: 4Gi
+    type: cheEditor

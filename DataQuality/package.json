@@ -2,7 +2,7 @@
   "name": "data-quality-ai-app",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
+  "devDependencies": {
     "@carbon/icons-react": "^10.37.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -31,6 +31,14 @@
     "react-scripts": "4.0.3",
     "request": "^2.88.2",
     "web-vitals": "^1.1.2"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "multer": "^1.4.3",
+    "portfinder": "^1.0.28",
+    "request": "^2.88.2"
   },
   "scripts": {
     "react": "react-scripts start",

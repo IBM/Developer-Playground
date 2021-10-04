@@ -8,6 +8,7 @@ import FileUpload from './components/FileUpload';
 import FetchResults from './components/FetchResults';
 
 
+
 const anaomalyEstimator = {
   WindowAD: ['IsolationForest', 'NearestNeighbor', 'SyntheticRandomForestTrainer', 'MinCovDet', 'AnomalyEnsembler'],
   ReconstructAD: ['Covariance', 'GMM_L0', 'GMM_L1', 'MachineTranslation'],
@@ -36,7 +37,6 @@ function App() {
   const [LWInvalid, setLWInvalid] = useState({ state: false, text: "" })
   const [OWInvalid, setOWInvalid] = useState({ state: false, text: "" })
   const [LTInvalid, setLTInvalid] = useState({ state: false, text: "" })
-  const [fileName, setFileName] = useState("")
 
 
   const resetStates = () => {

@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use(express.static("./data"));
+app.use(express.static("./build"));
 
 
 app.get("/sampledata", async (req, res) => {

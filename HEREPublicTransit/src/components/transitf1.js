@@ -32,8 +32,6 @@ function Transit1() {
         try{
 
          if(process.env.REACT_APP_mode === "dev"){
-
-            console.log("Mode is : DEV");
             const authtoken = raw('./auth.txt');
             let headers = {'Authorization' : authtoken}
             let response = await fetch(`https://transit.hereapi.com/v8/stations?in=${locationstr}`,{ headers})
@@ -46,9 +44,7 @@ function Transit1() {
              setGeocodeobj({});
           }
          }
-         else{
-            
-            console.log("not dev mode");
+         else{            
             let response = await fetch(`/getstations?location=${locationstr}`);
             let result = await response.json();
 

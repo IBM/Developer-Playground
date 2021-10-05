@@ -33,8 +33,6 @@ function Search1(){
         try{
         
           if(process.env.REACT_APP_mode === "dev"){
-            console.log("Mode is : DEV");
-
             const authtoken = raw('./auth.txt');
             let headers = {'Authorization' : authtoken}
             let response = await fetch(`https://geocode.search.hereapi.com/v1/geocode?q=${searchstr}`,{ headers})
@@ -50,7 +48,6 @@ function Search1(){
         }
         else{
           
-          console.log("not dev mode");
           let response = await fetch(`/liststores?query=${searchstr}`);
           let result = await response.json();
           

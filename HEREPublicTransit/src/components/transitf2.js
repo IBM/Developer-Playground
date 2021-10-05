@@ -45,8 +45,6 @@ function Transit2(){
         try{
 
            if(process.env.REACT_APP_mode === "dev"){
-
-            console.log("Mode is : DEV");
             const authtoken = raw('./auth.txt');
             let headers = {'Authorization' : authtoken}
             let response = await fetch(`https://geocode.search.hereapi.com/v1/geocode?q=${location}`,{ headers})
@@ -69,10 +67,7 @@ function Transit2(){
             }
 
           }
-          else{
-            
-            console.log("not dev mode");
-    
+          else{    
             let response = await fetch(`/addrgeocode?queryst=${location}`);
             let result = await response.json();
 

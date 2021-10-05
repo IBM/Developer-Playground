@@ -26,10 +26,7 @@ function Alertw() {
         try{
         
            if(process.env.REACT_APP_mode === "dev"){
-
-            console.log("Mode is : DEV");
             const authtoken = raw('./auth.txt');
-
             let headers = {'Authorization' : authtoken}
             let response = await fetch(`https://weather.cc.api.here.com/weather/1.0/report.json?product=alerts&name=${location}`,{ headers})
             let result = await response.json();
@@ -46,7 +43,6 @@ function Alertw() {
           }
 
           else{     
-            console.log("not dev mode");
             let response = await fetch(`/getalerts?city=${location}`);
             let result = await response.json();
 

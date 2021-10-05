@@ -36,7 +36,6 @@ function Search2() {
         try{
         
           if(process.env.REACT_APP_mode === "dev"){
-            console.log("Mode is : DEV");
           const authtoken = raw('./auth.txt');
           let headers = {'Authorization' : authtoken}
           let response = await fetch(`https://discover.search.hereapi.com/v1/discover?q=${areaquery}&at=${locationstr}`,{ headers})
@@ -51,8 +50,6 @@ function Search2() {
           }
         }
         else{
-          
-          console.log("not dev mode");
           let response = await fetch(`/categorychain?location=${locationstr}&query=${areaquery}`);
           let result = await response.json();
 

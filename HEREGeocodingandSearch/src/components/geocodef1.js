@@ -25,8 +25,6 @@ function Geocode() {
         try{
 
               if(process.env.REACT_APP_mode === "dev"){
-                
-                  console.log("Mode is : DEV");
                   const authtoken = raw('./auth.txt');
                   
                   let headers = {'Authorization' : authtoken}
@@ -43,7 +41,7 @@ function Geocode() {
                 }
               
                 else{
-                  console.log("not dev mode");
+                  
                   let response = await fetch(`/addrgeocode?queryst=${location}`);
                   let result = await response.json();
 

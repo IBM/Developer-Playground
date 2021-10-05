@@ -41,8 +41,6 @@ function Geocode2() {
         try{
         
            if(process.env.REACT_APP_mode === "dev"){
-
-            console.log("Mode is : DEV");
             const authtoken = raw('./auth.txt');
             let headers = {'Authorization' : authtoken}
             let response = await fetch(`https://revgeocode.search.hereapi.com/v1/revgeocode?at=${locationstr}`,{ headers})
@@ -59,7 +57,6 @@ function Geocode2() {
         }
 
         else{
-
           let response = await fetch(`/revaddrgeocode?location=${locationstr}`);
           let result = await response.json();
           

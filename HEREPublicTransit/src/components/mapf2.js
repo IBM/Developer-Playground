@@ -67,8 +67,6 @@ function Mapf2(){
             tresult = await tresponse.json();
             to = [tresult.items[0]["position"]["lat"].toString(), tresult.items[0]["position"]["lng"].toString()].toString();
           
-            console.log("Dev mode: ", apikey,from,to);
-
            if(modequery === "pubtransport"){
 
             function calculateRouteFromAtoB (platform) {

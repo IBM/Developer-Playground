@@ -30,10 +30,9 @@ function Weather2() {
         try{
         
           if(process.env.REACT_APP_mode === "dev"){
-            console.log("Mode is : DEV");
-          const authtoken = raw('./auth.txt');
-            
-          let headers = {'Authorization' : authtoken}
+
+            const authtoken = raw('./auth.txt');
+            let headers = {'Authorization' : authtoken}
             let response = await fetch(`https://weather.cc.api.here.com/weather/1.0/report.json?product=forecast_7days_simple&latitude=${latitude}&longitude=${longitude}`,{ headers})
             let result = await response.json();
             
@@ -47,7 +46,6 @@ function Weather2() {
         }
 
         else{
-
             let response = await fetch(`/getweeklyforecast?lat=${latitude}&long=${longitude}`);
             let result = await response.json();
 

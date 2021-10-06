@@ -1,8 +1,11 @@
 var express = require('express');
+var portfinder = require("portfinder");
 require('dotenv').config()
 const {addrgeocode,revaddrgeocode,getstations,getdepartures} = require('./services.js')
 
 var app = express();
+portfinder.basePort = 3100;
+portfinder.highestPort = 9999;
 app.use(express.static('build'));
 
 app.get("/addrgeocode", function (request, response) {
@@ -62,8 +65,9 @@ app.get("/getapikey", function(request,response) {
   
 })
 
-app.listen(5000, function() {
-
-    console.log('App running on port 5000');
-
-});
+portfinder.getPort((err, port) => {
+      if (err) throw err;
+      app.listen(port, () =>
+        console.log(`App listening on port: ${port}`)
+      );
+    })

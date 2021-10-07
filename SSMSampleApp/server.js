@@ -1,7 +1,11 @@
 const express = require('express');
 const { getmysubscriptions, getsubscribers, inviteuser, revokesubscription, getcustomerdetails } = require('./services.js')
+var portfinder = require("portfinder");
 
 var app = express();
+portfinder.basePort = 3100;
+portfinder.highestPort = 9999;
+
 app.use(express.static('build'));
 
 app.get("/getmysubscriptions", function (request, response) {
@@ -23,14 +27,6 @@ app.get("/getcustomerdetails", function (request, response) {
       })
     });
 
-app.get("/getmysubscriptions", function (request, response) {
-
-      getmysubscriptions().then((mysubsp_list) => {
-        response.json(mysubsp_list);
-      }).catch((e) => {
-        response.end({result: "fail"})
-      })
-    });
 
 app.get("/getSubscribers", function (request, response) {
       var id = request.query.id;
@@ -73,6 +69,9 @@ app.get("/revokesubscription", function (request, response) {
 
     });
 
-app.listen(8000, function() {
-    console.log('App running on port 8000');
-});
+ portfinder.getPort((err, port) => {
+      if (err) throw err;
+      app.listen(port, () =>
+        console.log(`App listening on port: ${port}`)
+      );
+    })

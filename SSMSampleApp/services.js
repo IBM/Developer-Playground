@@ -4,8 +4,8 @@ require('dotenv/config');
 var array = fs.readFileSync('src/components/auth.txt').toString().split("\n");
 var authtoken = array[0];
 
-//var env_var = JSON.stringify(process.env.PLAYGROUND_ENVIRONMENT);
-var env_var = "product"
+var env_var = JSON.stringify(process.env.PLAYGROUND_ENVIRONMENT);
+env_var = env_var.substring(1,8);
 
 
 var clientid = process.env.REACT_APP_CLIENT_ID;

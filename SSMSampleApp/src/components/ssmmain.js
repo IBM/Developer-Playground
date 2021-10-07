@@ -17,6 +17,7 @@ function SSMMain() {
   const [fname, setfname] = useState('');
   const [email, setemail] = useState('');
   const [inviteid, setinviteid] = useState('');
+  const [custdetail, setcustdetail] = useState('');
 
   const [custobj, setCustobj] = useState({});
   const [subsobj, setSubsobj] = useState({});
@@ -38,6 +39,8 @@ function SSMMain() {
   const [erremtext, seterremtext] = useState('A valid email is required');
   const [buttonstate, setbuttonstate] = useState(false);
 
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -57,6 +60,12 @@ function SSMMain() {
               let result = await response.json();
 
               let cust_id = JSON.parse(result["List"][0]["Id"]);
+
+              let cname = result["List"][0]["Organization"]["OrgName"];
+              let cid = result["List"][0]["Owner"];
+              
+              let custstr  = cname + " : " + cid;
+              setcustdetail(custstr);
               
               response = await fetch(`https://api.ibm.com/scx/run/sbs_orgaccess/subscription?_namedQuery=getSubscriptionByCustomer&customerId=${cust_id}`, { headers})
               result = await response.json();
@@ -67,6 +76,16 @@ function SSMMain() {
             }
 
             else{
+
+              let resp1 = await fetch('/getcustomerdetails');
+              let res1 = await resp1.json();
+              
+              let cname = res1["List"][0]["Organization"]["OrgName"];
+              let cid = res1["List"][0]["Owner"];
+              
+              let custstr  = cname + " : " + cid;
+              setcustdetail(custstr);
+
               let response = await fetch('/getmysubscriptions')
               let result = await response.json();
 
@@ -436,6 +455,13 @@ const validEmail = (e) => {
       </div>
       
     </Form>
+
+     {custdetail && <h2>{custdetail}</h2>}
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
 
       <Loading active = {isLoading} description="Active loading indicator" withOverlay={true}/>
 

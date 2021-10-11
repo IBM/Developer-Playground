@@ -6,7 +6,7 @@ const promiseRequest = (options) => {
         if (!error && res.statusCode == 200) {
           resolve(body);
         } else {
-          reject(error);
+          reject(res);
         }
       });
     });

@@ -1,5 +1,7 @@
-import { FileUploaderItem, FileUploaderDropContainer} from "carbon-components-react"
-import React, { useState, useCallback} from "react";
+import { FileUploaderItem, FileUploaderDropContainer, ToastNotification } from "carbon-components-react"
+import React, { useState, useCallback } from "react";
+import axios from "axios";
+
 let lastId = 0;
 function uid(prefix = "id") {
     lastId++;
@@ -8,12 +10,19 @@ function uid(prefix = "id") {
 let valid = true
 const FileUpload = ({ accept, sendDataToParent }) => {
     const [files, setFiles] = useState([]);
+    const [showNotif, setNotification] = useState(false)
+    const [notifData, setNotifData] = useState({
+        kind: "",
+        subtitle: "",
+        title: ""
+
+    })
 
     const validSize = name => {
         console.log(name)
         let fileNameSplit = name.split('.')
         let fileType = fileNameSplit[fileNameSplit.length - 1]
-        if(fileType === "csv")
+        if (fileType === "csv")
             return 5000000
         else
             return 10000000
@@ -32,7 +41,7 @@ const FileUpload = ({ accept, sendDataToParent }) => {
                 iconDescription: "Delete file",
                 invalid: true,
                 errorSubject: "File size exceeds limit",
-                errorBody: `Max file size is ${fileToUpload.name.split(".")[fileToUpload.name.split(".").length - 1] === "csv"?5:10}MB. Select a new file and try again.`,
+                errorBody: `Max file size is ${fileToUpload.name.split(".")[fileToUpload.name.split(".").length - 1] === "csv" ? 5 : 10}MB. Select a new file and try again.`,
             };
             setFiles((files) =>
                 files.map((file) =>
@@ -74,16 +83,7 @@ const FileUpload = ({ accept, sendDataToParent }) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
-            const updatedFile = {
-                ...fileToUpload,
-                status: "complete",
-                iconDescription: "Upload complete",
-            };
-            setFiles((files) =>
-                files.map((file) =>
-                    file.uuid === fileToUpload.uuid ? updatedFile : file
-                )
-            );
+            
 
             // show x icon after 1 second
             setTimeout(() => {
@@ -115,7 +115,7 @@ const FileUpload = ({ accept, sendDataToParent }) => {
         }
     };
 
-    const onAddFiles = (evt, { addedFiles }) => {
+    const onAddFiles = async (evt, { addedFiles }) => {
         evt.stopPropagation();
         const newFiles = addedFiles.map((file) => ({
             uuid: uid(),
@@ -127,10 +127,44 @@ const FileUpload = ({ accept, sendDataToParent }) => {
         if (addedFiles[0]) {
             setFiles([newFiles[0]]);
             uploadFile(newFiles[0]);
-            if(valid){
+            if (valid) {
                 const data = new FormData()
                 data.append('file', addedFiles[0])
-                sendDataToParent(data)
+                let updatedFile;
+                try {
+                    const res = await axios.post("/upload", data, {})
+                    sendDataToParent(res)
+                    updatedFile = {
+                        ...newFiles[0],
+                        status: "complete",
+                        iconDescription: "Upload complete",
+                    };
+                    setNotifData({
+                        kind: "success",
+                        subtitle: "File uploaded successfully",
+                        title: "Success"
+                    })
+                    setNotification(true)
+                } catch(err) {
+                    setNotifData({
+                        kind: "error",
+                        subtitle: err.response.data.msg,
+                        title: "Error"
+                    })
+                    setNotification(true)
+                    updatedFile = {
+                        ...newFiles[0],
+                        status: "edit",
+                        iconDescription: "Upload failed",
+                        invalid: true,
+                    };
+                } finally {
+                    setFiles((files) =>
+                        files.map((file) =>
+                            file.uuid === newFiles[0].uuid ? updatedFile : file
+                        )
+                    );
+                }
             }
         } else {
             //console.log("No file uploaded");
@@ -176,6 +210,16 @@ const FileUpload = ({ accept, sendDataToParent }) => {
                             {...rest}
                         />))}
             </div>
+            {showNotif ?
+                <ToastNotification
+                    kind={notifData.kind}
+                    iconDescription="Close notification"
+                    subtitle={<span>{notifData.subtitle}</span>}
+                    timeout={3000}
+                    onCloseButtonClick={() => setNotification(false)}
+                    title={notifData.title}
+                    caption=""
+                /> : null}
         </div>
     )
 }

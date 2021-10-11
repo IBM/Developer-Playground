@@ -1,10 +1,11 @@
-import { MultiSelect, RadioButton, RadioButtonGroup, FormGroup, Dropdown, TextInput, Button, Loading} from 'carbon-components-react';
+import { MultiSelect, RadioButton, RadioButtonGroup, FormGroup, Dropdown, TextInput, Button, Loading, ToastNotification } from 'carbon-components-react';
 import Chart from './components/Chart'
 import { Header, HeaderName } from "carbon-components-react/lib/components/UIShell";
 import { useState } from 'react'
 import axios from 'axios'
 import './App.css'
 import FileUpload from './components/FileUpload';
+import JobStatus from './components/JobStatus'
 import FetchResults from './components/FetchResults';
 
 
@@ -37,62 +38,91 @@ function App() {
   const [LWInvalid, setLWInvalid] = useState({ state: false, text: "" })
   const [OWInvalid, setOWInvalid] = useState({ state: false, text: "" })
   const [LTInvalid, setLTInvalid] = useState({ state: false, text: "" })
+  const [showJob, setShowJob] = useState(false)
+  const [showNotif, setNotification] = useState(false)
+  const [notifData, setNotifData] = useState({
+    kind: "",
+    subtitle: "",
+    title: ""
+
+  })
 
 
   const resetStates = () => {
-    setTargetInvalid({state: false, text: "" })
-    setLWInvalid({state: false, text: "" })
-    setOWInvalid({ state:false, text: "" })
-    setLTInvalid({state: false, text: "" })
+    setTargetInvalid({ state: false, text: "" })
+    setLWInvalid({ state: false, text: "" })
+    setOWInvalid({ state: false, text: "" })
+    setLTInvalid({ state: false, text: "" })
     setTimeColumnOptions([])
     setChart(false)
     setTimeColumn(false)
     setLines([])
   }
 
-  const sendDataToParent = async (data) => {
+  const sendDataToParent = async (res) => {
     resetStates()
-    data.append('name',Math.random().toString(36).substring(2,13))
-    console.log(data.entries())
-    const res = await axios.post("/upload", data, {})
-    setData(res.data)
-    setTimeColumn(true)
-    setTimeColumnOptions(Object.keys(res.data[0]))
-    setForm(false)
+    try {
+      setLoading(true)
+      setData(res.data)
+      setTimeColumn(true)
+      setTimeColumnOptions(Object.keys(res.data[0]))
+      setForm(false)
+    } catch(err) {
+      setNotifData({
+        kind: "error",
+        subtitle: err.response.data.msg,
+        title: "Error"
+      })
+      setNotification(true)
+    } finally {
+      setLoading(false)
+    }
   }
 
   const getSample = async (e) => {
     resetStates()
-    let res = await axios.get('/sampledata')
-    setData(res.data)
-    setChart(true)
-    setTimeColumn(false)
-    let lines = Object.keys(res.data[0]).slice(1)
-    let lineData = []
-    lines.forEach(line => {
-      lineData.push({
-        line,
-        color: `#${Math.floor(Math.random() * 16777215).toString(16)}`
+    try {
+      setLoading(true)
+      let res = await axios.get('/sampledata')
+      setData(res.data)
+      setChart(true)
+      setTimeColumn(false)
+      let lines = Object.keys(res.data[0]).slice(1)
+      let lineData = []
+      lines.forEach(line => {
+        lineData.push({
+          line,
+          color: `#${Math.floor(Math.random() * 16777215).toString(16)}`
+        })
       })
-    })
-    setLines(lineData)
-    setFileUploader(false)
-    let columnNames = Object.keys(res.data[0]).slice(1)
-    console.log(columnNames, Object.keys(res.data[0]))
-    let columns = []
-    columnNames.forEach(column => {
-      columns.push({
-        name: column
+      setLines(lineData)
+      setFileUploader(false)
+      let columnNames = Object.keys(res.data[0]).slice(1)
+      console.log(columnNames, Object.keys(res.data[0]))
+      let columns = []
+      columnNames.forEach(column => {
+        columns.push({
+          name: column
+        })
       })
-    })
-    setColumns(columns)
-    setForm(true)
-    if (columns.length === 1) {
-      setTarget(false)
-    } else {
-      setTarget(true)
+      setColumns(columns)
+      setForm(true)
+      if (columns.length === 1) {
+        setTarget(false)
+      } else {
+        setTarget(true)
+      }
+      setAnomaly(false)
+    } catch (err) {
+      setNotifData({
+        kind: "error",
+        subtitle: err.response.data.msg,
+        title: "Error"
+      })
+      setNotification(true)
+    } finally {
+      setLoading(false)
     }
-    setAnomaly(false)
   }
 
   const showDragDrop = () => {
@@ -168,39 +198,49 @@ function App() {
     formData.time_column = time
     //formData.recent_data = parseInt(e.target.recent_data.value)
     console.log(formData)
+    
     let valid = true
-    if (typeof(formData.target_column) ===Array && formData.target_column.length === 0) {
+    if (typeof (formData.target_column) === "object" && formData.target_column.length === 0) {
       setTargetInvalid({ state: true, text: "Please select some options" })
+      document.getElementById("target_columns").scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
       valid = false
     }
     if (formData.lookback_window !== 'auto' && (isNaN(formData.lookback_window) || formData.lookback_window > 50 || formData.lookback_window < 1 || !Number.isInteger(formData.lookback_window))) {
       setLWInvalid({ state: true, text: "Please enter an integer between 1 and 50" })
+      document.getElementById("lookback_window_custom_value").scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
       valid = false
     }
-    if(isNaN(formData.observation_window) || formData.observation_window < 1 || !Number.isInteger(formData.observation_window)){
+    if (isNaN(formData.observation_window) || formData.observation_window < 1 || !Number.isInteger(formData.observation_window)) {
       setOWInvalid({ state: true, text: "Please enter an integer > 0" })
+      document.getElementById("observation_window").scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
       valid = false
     }
-    if(isNaN(formData.labeling_threshold) || formData.labeling_threshold < 1 || !Number.isInteger(formData.labeling_threshold)){
+    if (isNaN(formData.labeling_threshold) || formData.labeling_threshold < 1 || !Number.isInteger(formData.labeling_threshold)) {
       setLTInvalid({ state: true, text: "Please enter an integer > 0" })
+      document.getElementById("labeling_threshold").scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
       valid = false
     }
     console.log(valid)
     if (valid) {
-      setLoading(true)
-      let res = await axios.post('/detect', JSON.stringify(formData), {
-        "headers": {
-          "content-type": "application/json",
-        }
-      })
-      setLoading(false)
-      setJobId(res.data)
-      /*setData(res.data)
-      setLines([...lines, {
-        line: "anomaly_score",
-        color: "#000000"
-      }])
-      setAnomaly(true)*/
+      try {
+        setLoading(true)
+        let res = await axios.post('/detect', JSON.stringify(formData), {
+          "headers": {
+            "content-type": "application/json",
+          }
+        })
+        setJobId(res.data.jobId)
+        setShowJob(true)
+      } catch (err) {
+        setNotifData({
+          kind: "error",
+          subtitle: err.response.data.msg,
+          title: "Error"
+        })
+        setNotification(true)
+      } finally {
+        setLoading(false)
+      }
     }
   }
 
@@ -221,7 +261,7 @@ function App() {
     let lines = Object.keys(data[0]).slice(1)
     let lineData = []
     lines.forEach(line => {
-      if(line !== "anomaly")
+      if (line !== "anomaly")
         lineData.push({
           line,
           color: `#${Math.floor(Math.random() * 16777215).toString(16)}`
@@ -304,7 +344,7 @@ function App() {
               titleText="Select Value"
               label="Choose an Option"
               initialSelectedItem="Entire"
-              items={["Enitre", "Recent"]} />
+              items={["Entire", "Recent"]} />
             <p className="others">Algorithm Type</p>
             <Dropdown
               id="algorithm_type"
@@ -335,6 +375,7 @@ function App() {
               <div className="hidden-options">
                 <TextInput
                   name="lookback_window_custom_value"
+                  id="lookback_window_custom_value"
                   type="number" labelText="Add Value"
                   helperText="Add numbers (Max.50)"
                   defaultValue="10"
@@ -345,6 +386,7 @@ function App() {
             <p className="others">Observation Window</p>
             <TextInput
               name="observation_window"
+              id="observation_window"
               type="number"
               labelText="Add Value"
               helperText="Add numbers (10% of data-size)"
@@ -363,6 +405,7 @@ function App() {
             <p className="others">Labelling Threshold</p>
             <TextInput
               name="labeling_threshold"
+              id="labeling_threshold"
               type="number" labelText="Add Value"
               helperText="Add numbers"
               defaultValue="10"
@@ -371,12 +414,23 @@ function App() {
               onChange={() => setLTInvalid({ state: false, text: "" })} />
             <div className="hidden-options">
               <Button type="submit">Submit</Button>
-              <Loading active={loading} overlay={true} />
             </div>
           </FormGroup> : null}
       </form>
       <br />
-      <FetchResults jobId={jobId} getChartResults = {getChartResults}/>
+      {showJob ? <JobStatus jobId={jobId} msg={"submitted"} /> : null}
+      <FetchResults jobId={jobId} getChartResults={getChartResults} />
+      {showNotif ?
+        <ToastNotification
+          kind={notifData.kind}
+          iconDescription="Close notification"
+          subtitle={<span>{notifData.subtitle}</span>}
+          timeout={3000}
+          onCloseButtonClick={() => setNotification(false)}
+          title={notifData.title}
+          caption=""
+        /> : null}
+      <Loading active={loading} overlay={true} />
     </div>
   );
 }

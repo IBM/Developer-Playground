@@ -2,6 +2,7 @@ const promiseRequest = require("./promiseRequest");
 const storeResult = require("./storeResult")
 
 const getStatus = async (jobId) => {
+    return new Promise(async function(resolve, reject) {
     const options = {
         method: 'GET',
         url: `https://api.ibm.com/ai4industry/run/result/${jobId}`,
@@ -16,14 +17,16 @@ const getStatus = async (jobId) => {
         let response = await promiseRequest(options)
         let result = JSON.parse(response.replace(/\bNaN\b/g, "null"));
         let status = result.status
+        if(status ==="done" && result.summary.error)
+            reject(result.summary.error)
         if(status === "done")
             storeResult(jobId,result)
         console.log(status,result)
-        return [status, result]
-
+        resolve([status, result])
     } catch (err) {
-        return err
+        reject(JSON.parse(err.body).error)
     }
+})
 }
 
 

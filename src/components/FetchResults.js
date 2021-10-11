@@ -28,9 +28,13 @@ const FetchResults = ({ jobId, getChartResults }) => {
       try {
         let res = await axios.get(`/result?jobid=${e.target.job_text.value}`)
         setButton(true)
+        console.log(res.data.length)
         setJobId(e.target.job_text.value)
-        getChartResults(res.data)
+        if(res.data.length!==0)
+          getChartResults(res.data)
+
       } catch(err){
+        console.log(err)
         setNotifData({
           kind: "error",
           subtitle: err.response.data.msg,
@@ -43,7 +47,7 @@ const FetchResults = ({ jobId, getChartResults }) => {
     }
   }
 
-  const download = (e) => {
+  const download = async(e) => {
     e.preventDefault();
     window.open(`/download?jobid=${currentJobId}`)
   }

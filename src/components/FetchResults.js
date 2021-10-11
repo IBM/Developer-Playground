@@ -1,4 +1,4 @@
-import { TextInput, Button, Form, Loading, ButtonSet } from 'carbon-components-react';
+import { TextInput, Button, Form, Loading, ButtonSet, ToastNotification } from 'carbon-components-react';
 import axios from 'axios';
 import { useState } from "react"
 import "../App.css"
@@ -8,7 +8,14 @@ const FetchResults = ({ jobId, getChartResults }) => {
   const [invalid, setInvalid] = useState({ state: false, text: "" })
   const [showButton, setButton] = useState(false)
   const [currentJobId, setJobId] = useState("")
-  
+  const [showNotif, setNotification] = useState(false)
+  const [notifData, setNotifData] = useState({
+    kind: "",
+    subtitle: "",
+    title: ""
+
+  })
+
   const getResults = async (e) => {
     e.preventDefault();
     if (e.target.job_text.value.trim() === "") {
@@ -18,11 +25,21 @@ const FetchResults = ({ jobId, getChartResults }) => {
       })
     } else {
       setLoading(true)
-      let res = await axios.get(`/result?jobid=${e.target.job_text.value}`)
-      setButton(true)
-      setJobId(e.target.job_text.value)
-      getChartResults(res.data)
-      setLoading(false)
+      try {
+        let res = await axios.get(`/result?jobid=${e.target.job_text.value}`)
+        setButton(true)
+        setJobId(e.target.job_text.value)
+        getChartResults(res.data)
+      } catch(err){
+        setNotifData({
+          kind: "error",
+          subtitle: err.response.data.msg,
+          title: "Error"
+        })
+        setNotification(true)
+      }finally {
+        setLoading(false)
+      }
     }
   }
 
@@ -30,7 +47,7 @@ const FetchResults = ({ jobId, getChartResults }) => {
     e.preventDefault();
     window.open(`/download?jobid=${currentJobId}`)
   }
-  return (<Form className="fetch-results"onSubmit={getResults}>
+  return (<Form className="fetch-results" onSubmit={getResults}>
     <h3>Fetch Processed Results </h3>
     <br />
     <br />
@@ -43,20 +60,30 @@ const FetchResults = ({ jobId, getChartResults }) => {
       invalid={invalid.state}
       invalidText={invalid.text}
       defaultValue={jobId}
-      onChange={() => {setInvalid({ state: false, text: "" });setButton(false)}}
+      onChange={() => { setInvalid({ state: false, text: "" }); setButton(false) }}
     />
     <br />
     <ButtonSet >
-    <Button
-      kind="tertiary"
-      type="submit"
-    >
-      Fetch Results
-    </Button>
-    {showButton ? 
-    <Button type="submit" style={{marginLeft: "14px"}} onClick={download}> Download Results </Button>:null}
+      <Button
+        kind="tertiary"
+        type="submit"
+      >
+        Fetch Results
+      </Button>
+      {showButton ?
+        <Button type="submit" style={{ marginLeft: "14px" }} onClick={download}> Download Results </Button> : null}
     </ButtonSet>
     <Loading active={loading} overlay={true} />
+    {showNotif ?
+        <ToastNotification
+          kind={notifData.kind}
+          iconDescription="Close notification"
+          subtitle={<span>{notifData.subtitle}</span>}
+          timeout={3000}
+          onCloseButtonClick={() => setNotification(false)}
+          title={notifData.title}
+          caption=""
+        /> : null}
   </Form>)
 }
 

@@ -1,6 +1,5 @@
 const promiseRequest = require('./promiseRequest');
 const fs = require('fs');
-const getResult = require("./getResult")
 const strftime = require('strftime');
 
 
@@ -56,7 +55,6 @@ const anomalyDetect = async ({
         labeling_method,
         labeling_threshold
     }
-    console.log(Object.keys(fileData[0]))
     if(Object.keys(fileData[0]).length > 2){
         apiEndpoint = apiEndpoints[1]
         target_columns = getTarget(target_column)   
@@ -74,6 +72,7 @@ const anomalyDetect = async ({
             labeling_threshold
         }
     } 
+    console.log(formData)
     const options = {
         method: 'POST',
         url: apiEndpoint,
@@ -89,8 +88,8 @@ const anomalyDetect = async ({
         const response = await promiseRequest(options)
         console.log(response)
         let jobId = JSON.parse(response).jobId
-        await getResult(jobId)
-        return jobId
+        fs.writeFileSync(`./data/${jobId}.json`, JSON.stringify(fileData))
+        return {jobId, status:"submitted"}
     } catch (err) {
         console.log('Error' ,err)
     }

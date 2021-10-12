@@ -25,7 +25,7 @@ app.get("/sampledata", async (req, res) => {
     let jsonArray = JSON.parse(fs.readFileSync("./data/sample.json"))
     res.status(200).json(jsonArray)
   } catch {
-    res.status(500).json({ "msg": "Unable to fetch data at this moment" })
+    res.status(404).json({ "msg": "Unable to fetch data at this moment" })
   }
 })
 
@@ -35,7 +35,7 @@ app.post("/detect", async (req, res) => {
     res.status(200).json(jsonArray)
   } catch (e) {
     console.log(e)
-    res.status(500).json({ "msg": e })
+    res.status(404).json({ "msg": e })
   }
 })
 
@@ -55,7 +55,7 @@ const upload = multer({
       if (file.mimetype === "application/json")
         return 10000000
       else
-        return 5000000
+        return 4040000
     }
   },
   fileFilter: (req, file, cb) => {
@@ -75,9 +75,9 @@ app.post("/upload", async (req, res) => {
         if (err.code === "LIMIT_FILE_SIZE") {
           console.log("File size greater specifiled");
         }
-        return res.status(500).json(err);
+        return res.status(404).json(err);
       } else if (err) {
-        return res.status(500).json(err);
+        return res.status(404).json(err);
       }
       let jsonArray = {}
       console.log(req.file)
@@ -93,7 +93,7 @@ app.post("/upload", async (req, res) => {
       res.status(200).json(jsonArray);
     });
   } catch {
-    res.status(500).json({ "msg": "File Upload Failed!" })
+    res.status(404).json({ "msg": "File Upload Failed!" })
   }
 });
 
@@ -102,7 +102,7 @@ app.get("/result?:jobid", async (req, res) => {
   try {
     let [status, result] = await getStatus(req.query.jobid)
     if (status !== "done")
-      return res.status(500).json({ "msg": "Results are not ready yet" })
+      return res.status(404).json({ "msg": "Results are not ready yet" })
     try {
       const jsonArray = JSON.parse(fs.readFileSync(`${filepath}-data.json`))
       res.status(200).json(jsonArray)
@@ -121,10 +121,17 @@ app.get("/status?:jobid", async (req, res) => {
     res.status(200).json({ status })
   }
   catch (err) {
-    res.status(500).json({ "msg": err })
+    res.status(404).json({ "msg": err })
   }
 })
-
+app.get("/gotodownlod?:jobid", async (req, res) => {
+  console.log(req.query.jobid)
+  res.send(`<html>
+    <body>
+      <a href="/download?jobid=${req.query.jobid}"}>Click here to download</a>
+    </body>
+  </html>`)
+})
 app.get("/downlod?:jobid", async (req, res) => {
   let filepath = `/data/${req.query.jobid}`
   try {

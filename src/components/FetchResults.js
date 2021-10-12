@@ -49,7 +49,7 @@ const FetchResults = ({ jobId, getChartResults }) => {
 
   const download = async(e) => {
     e.preventDefault();
-    window.open(`/download?jobid=${currentJobId}`)
+    window.open(`/gotodownload?jobid=${currentJobId}`,)
   }
   return (<Form className="fetch-results" onSubmit={getResults}>
     <h3>Fetch Processed Results </h3>

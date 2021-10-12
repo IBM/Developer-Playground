@@ -24,6 +24,19 @@ const storeResult = async (jobId, result) => {
             }
             fs.writeFileSync(`./data/${jobId}-data.json`, JSON.stringify(finalResultData))
         } catch (err) {
+            let finalResultData = []
+            for (let i = 0; i < result.summary.result.length; i++) {
+                finalResultData.push({
+                    time: result.summary.result[i].timestamp,
+                    anomaly_score: result.summary.result[i].value.anomaly_score[0]
+                })
+                if (result.summary.result[i].value.anomaly_label && result.summary.result[i].value.anomaly_label[0] === -1) {
+                    finalResultData[i].anomaly = true
+                } else {
+                    finalResultData[i].anomaly = false
+                }
+            }
+            fs.writeFileSync(`./data/${jobId}-data.json`, JSON.stringify(finalResultData))
         }
 }
 /*getResult('e03c6962-cd75-4b18-ba05-fd5550e4e59b').then(async(result) => {

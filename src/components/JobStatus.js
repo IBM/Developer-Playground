@@ -12,7 +12,7 @@ import {
     ToastNotification
 } from 'carbon-components-react';
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { CopyFile24, Renew32 } from '@carbon/icons-react';
+import { CopyFile24, Renew24 } from '@carbon/icons-react';
 import axios from 'axios'
 import { useState } from 'react'
 
@@ -69,7 +69,7 @@ const JobStatus = ({ jobId, msg }) => {
             copyfunc: <CopyToClipboard text={jobId}>
                 <CodeSnippet type="inline" feedback="Copied to clipboard" ><CopyFile24 Style="width: 24px ; height: 24px" /></CodeSnippet>
             </CopyToClipboard>,
-            refresh: <Renew32 Style="width: 24px ; height: 24px" onClick={updateJobStatus} />
+            refresh: <Renew24 onClick={updateJobStatus} />
 
         }]
     return (

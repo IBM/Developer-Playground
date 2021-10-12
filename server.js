@@ -128,7 +128,7 @@ app.get("/gotodownlod?:jobid", async (req, res) => {
   console.log(req.query.jobid)
   res.send(`<html>
     <body>
-      <a href="/download?jobid=${req.query.jobid}"}>Click here to download</a>
+      <a href="/download?jobid=${req.query.jobid}" target="_blank" onclick="window.close();">Click here to download</a>
     </body>
   </html>`)
 })

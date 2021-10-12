@@ -22,7 +22,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-.env
+.env.env
 !data
 data/*
 !data/sample.json
+
+/src/index.scss

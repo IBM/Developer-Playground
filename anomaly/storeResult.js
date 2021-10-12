@@ -1,8 +1,6 @@
-const promiseRequest = require("./promiseRequest");
 const fs = require("fs");
 
 const storeResult = async (jobId, result) => {
-    return new Promise((resolve, reject) => {
         try {
             fs.writeFileSync(`./data/${jobId}-result.json`, JSON.stringify(result))
             let jsonData = JSON.parse(fs.readFileSync(`./data/${jobId}.json`))
@@ -25,11 +23,8 @@ const storeResult = async (jobId, result) => {
                 finalResultData[i].anomaly_score = result.summary.result[i].value.anomaly_score[0]
             }
             fs.writeFileSync(`./data/${jobId}-data.json`, JSON.stringify(finalResultData))
-            resolve(result)
         } catch (err) {
-            reject(err)
         }
-    })
 }
 /*getResult('e03c6962-cd75-4b18-ba05-fd5550e4e59b').then(async(result) => {
    

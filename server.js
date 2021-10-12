@@ -5,7 +5,6 @@ const multer = require("multer");
 const anomalyDetect = require('./anomaly/anomalyDetect');
 const fs = require('fs');
 const bodyParser = require('body-parser');
-const getResult = require('./anomaly/storeResult');
 const getStatus = require('./anomaly/getStatus');
 const dotenv = require('dotenv');
 
@@ -35,7 +34,8 @@ app.post("/detect", async (req, res) => {
     const jsonArray = await anomalyDetect(req.body)
     res.status(200).json(jsonArray)
   } catch (e) {
-    res.status(500).json({ "msg": "Job Failed" })
+    console.log(e)
+    res.status(500).json({ "msg": e })
   }
 })
 
@@ -101,25 +101,27 @@ app.get("/result?:jobid", async (req, res) => {
   let filepath = `./data/${req.query.jobid}`
   try {
     let [status, result] = await getStatus(req.query.jobid)
-    if(status !== "done")
-      res.status(500).json({"msg": "Results are not ready yet"})
-    const jsonArray = JSON.parse(fs.readFileSync(`${filepath}-data.json`))
-    res.status(200).json(jsonArray)
+    if (status !== "done")
+      return res.status(500).json({ "msg": "Results are not ready yet" })
+    try {
+      const jsonArray = JSON.parse(fs.readFileSync(`${filepath}-data.json`))
+      res.status(200).json(jsonArray)
+    } catch {
+      res.status(200).json([])
+    }
   }
-  catch (e) {
-    console.log(e)
-    res.status(404).json({ "msg": "The Dataset is missing. Please reupload the dataset" })
+  catch (err) {
+    res.status(404).json({ "msg": err })
   }
 })
 
 app.get("/status?:jobid", async (req, res) => {
   try {
-    conskd
     let [status, result] = await getStatus(req.query.jobid)
     res.status(200).json({ status })
   }
-  catch {
-    res.status(500).json({"msg":"Something went wrong"})
+  catch (err) {
+    res.status(500).json({ "msg": err })
   }
 })
 

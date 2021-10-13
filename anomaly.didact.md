@@ -309,14 +309,14 @@
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
             <p>To begin, you will need the application's source code. Click `Get the code` to clone the code to your playground session.</p>
-            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=backend$$git%20clone%20-b%20anomaly%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/anomaly">Get the Code</a>
+            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=anomaly$$git%20clone%20-b%20anomaly%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/anomaly">Get the Code</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
             <p>You've successfully cloned the code, so click `Build the application` to start the build process.
             </p>
-            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=backend$$cd%20${CHE_PROJECTS_ROOT}/anomaly%20%26%26%20npm%20install">Build the Application</a>
+            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=anomaly$$cd%20${CHE_PROJECTS_ROOT}/anomaly%20%26%26%20npm%20install%20--production">Build the Application</a>
             <p class="afterbutton">
                To obtain credentials and configure the application, complete the following steps
             </p>
@@ -350,29 +350,31 @@
          <div class="content">
             <p>Let's get the credentials by configuring the application</p>
             </p>
-            <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=backend%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/anomaly/.env">Configure the Application</a>
+            <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=anomaly%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/anomaly/.env">Configure the Application</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
             <p>You're all set to get started! </p>
-            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=backend$$cd%20${CHE_PROJECTS_ROOT}/anomaly/%20%26%26%20npm%20run%20server">Launch the Application</a>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=anomaly$$cd%20${CHE_PROJECTS_ROOT}/anomaly/%20%26%26%20npm%20run%20server">Launch the Application</a>
          </div>
       </div>
    </div>
    <div class="footer">
       <div class="content" style="padding:30px;padding-left:60px;padding-bottom:0px;">
+         <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
+         <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=anomaly">Stop Application</a>
          <p class="afterbutton">The stage is yours!</p>
-         <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=backend%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/anomaly/src/App.js">Explore the Code</a>
+         <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=anomal%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/anomaly/src/App.js">Explore the Code</a>
          <p class="afterbutton ">To view the changes you've made, re-launch the application</p>
-         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=frontend$$cd%20${CHE_PROJECTS_ROOT}/anomaly%20%26%26%20npm%20start">Re-Launch the Application</a>
+         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=anomaly$$cd%20${CHE_PROJECTS_ROOT}/anomaly%20%26%26%20npm%20install%20--only=dev%20%26%26%20rm%20-rf%20build%20%26%26%20npm%20run%20build%20%26%26%20npm%20run%20server">Re-Launch the Application</a>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
             <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/anomaly" target="_blank">Github Repository</a></span>
          </p>
          <div class="image-btn">
-            <a class="image-link" href="didact://?commandId=extension.openURL&text=data-quality%7Cview-product-details%7Chttps://www.ibm.com/products/dqaiapi
+            <a class="image-link" href="didact://?commandId=extension.openURL&text=anomaly%7Cview-product-details%7Chttps://www.ibm.com/products
                " target="_blank">
                View Product Details 
                <span>
@@ -382,7 +384,7 @@
                   </svg>
                </span>
             </a>
-            <a class="image-link" href="didact://?commandId=extension.openURL&text=data-quality%7Cget-trial-subscription%7Chttps://www.ibm.com/account/reg/us-en/signup?formid=urx-50307" target="_blank">
+            <a class="image-link" href="didact://?commandId=extension.openURL&text=anomaly%7Cget-trial-subscription%7Chttps://www.ibm.com/account/reg/us-en/signup?formid=urx-51009" target="_blank">
                Get Trial Subcription 
                <span>
                   <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">

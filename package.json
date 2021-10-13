@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
+  "devDependencies": {
     "@carbon/icons-react": "10.22.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -11,23 +11,24 @@
     "carbon-components": "10.25.0",
     "carbon-components-react": "7.25.0",
     "carbon-icons": "7.0.7",
-    "cors": "^2.8.5",
-    "csvtojson": "^2.0.10",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
     "http-proxy-middleware": "^2.0.1",
-    "multer": "^1.4.3",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-copy-to-clipboard": "^5.0.4",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "recharts": "^2.1.2",
-    "request": "^2.88.2",
     "sass": "^1.29.0",
-    "serve": "^12.0.1",
-    "strftime": "^0.10.0",
     "web-vitals": "^1.0.1"
+  },
+  "dependencies": {
+    "strftime": "^0.10.0",
+    "cors": "^2.8.5",
+    "csvtojson": "^2.0.10",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "multer": "^1.4.3",
+    "request": "^2.88.2"
   },
   "scripts": {
     "react": "react-scripts start",
@@ -54,6 +55,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {}
+  }
 }

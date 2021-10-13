@@ -363,11 +363,11 @@
    <div class="footer">
       <div class="content" style="padding:30px;padding-left:60px;padding-bottom:0px;">
          <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
-         <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=anomal">Stop Application</a>
+         <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=anomaly">Stop Application</a>
          <p class="afterbutton">The stage is yours!</p>
          <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=anomal%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/anomaly/src/App.js">Explore the Code</a>
          <p class="afterbutton ">To view the changes you've made, re-launch the application</p>
-         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=anomal$$cd%20${CHE_PROJECTS_ROOT}/anomaly%20%26%26%20npm%20install%20--only=dev%20%26%26%20rm%20-rf%20build%20%26%26%20npm%20run%20build%20%26%26%20npm%20run%20server">Re-Launch the Application</a>
+         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=anomaly$$cd%20${CHE_PROJECTS_ROOT}/anomaly%20%26%26%20npm%20install%20--only=dev%20%26%26%20rm%20-rf%20build%20%26%26%20npm%20run%20build%20%26%26%20npm%20run%20server">Re-Launch the Application</a>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?

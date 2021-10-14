@@ -86,7 +86,7 @@ app.post("/upload", async (req, res) => {
       if (req.file.mimetype === "text/csv") {
         jsonArray = await csvtojson().fromFile(`${filepath}.csv`);
         fs.writeFileSync(`${filepath}.json`, JSON.stringify(jsonArray))
-        fs.rmSync(`${filepath}.csv`)
+        //fs.rmSync(`${filepath}.csv`)
       } else {
         jsonArray = JSON.parse(fs.readFileSync(`${filepath}.json`))
       }

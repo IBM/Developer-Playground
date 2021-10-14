@@ -71,19 +71,6 @@ function App() {
 
           </Tab>
         </Tabs> 
-
-        
-
-
-      {/* <Sdataset setSelectedcsv = {setSelectedcsv} setLabelInput = {setLabelInput}/> */}
-      {/* <Coverlap ufilepath = {ufilepath} ufilename = {ufilename} filepath = {filepath} filename = {filename} Selectedcsv = {Selectedcsv} LabelInput = {LabelInput} /> */}
-      {/* <FileTest setuLabelInput = {setuLabelInput} setufilepath = {setufilepath} setufilename = {setufilename} /> */}
-      {/* <Sdataset setLabelInput = {setLabelInput} setfilepath = {setfilepath} setfilename = {setfilename} labelerr = {labelerr} dataseterr = {dataseterr} /> */}
-      {/* <Coverlap ufilepath = {ufilepath} ufilename = {ufilename} filepath = {filepath} filename = {filename} LabelInput = {LabelInput} uLabelInput = {uLabelInput} /> */}
-      {/* <Classoverlap buttonstate = {buttonstate} choice = {choice} setlabelerr = {setlabelerr} setulabelerr = {setulabelerr} setdataseterr = {setdataseterr} filepath = {filepath} filename = {filename} ufilepath = {ufilepath} ufilename = {ufilename} LabelInput = {LabelInput} uLabelInput = {uLabelInput} />  */}
-      {/* <Demo/> */ }
-
-
       <Results />
 
       </div>

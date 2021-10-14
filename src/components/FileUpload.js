@@ -180,7 +180,7 @@ const FileUpload = ({ accept, sendDataToParent }) => {
     return (
         <div class="bx--form-item">
             <strong class="bx--file--label">Upload File</strong>
-            <p class="bx--label-description">Max file size is 10MB for .json and 5MB for .csv. Supported file types are .json and .csv.</p>
+            <p class="bx--label-description">Supported file types are .json and .csv. Max file size is 10MB for .json and 5MB for .csv.</p>
             <FileUploaderDropContainer
                 labelText="Drag and drop here or click to upload"
                 onAddFiles={onAddFiles}

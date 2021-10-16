@@ -83,7 +83,7 @@ const FileUpload = ({ accept, sendDataToParent }) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
-            
+
 
             // show x icon after 1 second
             setTimeout(() => {
@@ -133,7 +133,10 @@ const FileUpload = ({ accept, sendDataToParent }) => {
                 let updatedFile;
                 try {
                     const res = await axios.post("/upload", data, {})
-                    sendDataToParent(res)
+                    let result = await sendDataToParent(res)
+                    if(!result){
+                        throw new Error({response:{data:{msg:"Only timeseries dataset are valid"}}})
+                    }
                     updatedFile = {
                         ...newFiles[0],
                         status: "complete",
@@ -145,10 +148,18 @@ const FileUpload = ({ accept, sendDataToParent }) => {
                         title: "Success"
                     })
                     setNotification(true)
-                } catch(err) {
+                    console.log(result)
+                } catch (err) {
+                    console.log(err)
+                    let errMsg;
+                    try {
+                        errMsg = err.response.data.msg
+                    } catch {
+                        errMsg = "Something went wrong"
+                    }
                     setNotifData({
                         kind: "error",
-                        subtitle: err.response.data.msg,
+                        subtitle: errMsg,
                         title: "Error"
                     })
                     setNotification(true)

@@ -1,10 +1,11 @@
 const promiseRequest = require('./promiseRequest');
 const fs = require('fs');
 const strftime = require('strftime');
-
-
-let apiEndpoints = ["https://api.ibm.com/ai4industry/run/anomaly-detection/timeseries/univariate/batch", "https://api.ibm.com/ai4industry/run/anomaly-detection/timeseries/multivariate/batch"]
-
+let apiEndpoints;
+if(process.env.PLAYGROUND_ENV === 'production')
+    apiEndpoints = ["https://api.ibm.com/ai4industry/run/anomaly-detection/timeseries/univariate/batch", "https://api.ibm.com/ai4industry/run/anomaly-detection/timeseries/multivariate/batch"]
+else 
+    apiEndpoints = ["https://dev.api.ibm.com/ai4industry/test/anomaly-detection/timeseries/univariate/batch", "https://dev.api.ibm.com/ai4industry/test/anomaly-detection/timeseries/multivariate/batch"]
 const getTarget = (data) => {
     let targetData = '['
     data.forEach(({ name }) => {

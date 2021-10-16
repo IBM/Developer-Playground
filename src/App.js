@@ -61,22 +61,33 @@ function App() {
 
   const sendDataToParent = async (res) => {
     resetStates()
+    let result = true
     try {
       setLoading(true)
       setData(res.data)
-      setTimeColumn(true)
       setTimeColumnOptions(Object.keys(res.data[0]))
+      setTimeColumn(true)
       setForm(false)
+      result = true
     } catch(err) {
+      console.log(err)
+      let errMsg;
+      try{
+        errMsg = err.response.data.msg
+      } catch {
+        errMsg = "Something went wrong"
+      }
       setNotifData({
         kind: "error",
-        subtitle: err.response.data.msg,
+        subtitle: errMsg,
         title: "Error"
       })
       setNotification(true)
+      result = false
     } finally {
       setLoading(false)
     }
+    return result
   }
 
   const getSample = async (e) => {
@@ -85,38 +96,21 @@ function App() {
       setLoading(true)
       let res = await axios.get('/sampledata')
       setData(res.data)
-      setChart(true)
-      setTimeColumn(false)
-      let lines = Object.keys(res.data[0]).slice(1)
-      let lineData = []
-      lines.forEach(line => {
-        lineData.push({
-          line,
-          color: `#${Math.floor(Math.random() * 16777215).toString(16)}`
-        })
-      })
-      setLines(lineData)
+      setChart(false)
+      setTimeColumn(true)
+      setTimeColumnOptions(Object.keys(res.data[0]))
+      setForm(false)
       setFileUploader(false)
-      let columnNames = Object.keys(res.data[0]).slice(1)
-      console.log(columnNames, Object.keys(res.data[0]))
-      let columns = []
-      columnNames.forEach(column => {
-        columns.push({
-          name: column
-        })
-      })
-      setColumns(columns)
-      setForm(true)
-      if (columns.length === 1) {
-        setTarget(false)
-      } else {
-        setTarget(true)
-      }
-      setAnomaly(false)
     } catch (err) {
+      let errMsg;
+      try{
+        errMsg = err.response.data.msg
+      } catch {
+        errMsg = "Something went wrong"
+      }
       setNotifData({
         kind: "error",
-        subtitle: err.response.data.msg,
+        subtitle: errMsg,
         title: "Error"
       })
       setNotification(true)
@@ -130,7 +124,7 @@ function App() {
     setChart(false)
     setForm(false)
     //setTargetParams([])
-    //setTimeColumnOptions([])
+    setTimeColumn(false)
   }
 
   const showTextInput = ({ selectedItem }) => {
@@ -232,9 +226,15 @@ function App() {
         setJobId(res.data.jobId)
         setShowJob(true)
       } catch (err) {
+        let errMsg;
+      try{
+        errMsg = err.response.data.msg
+      } catch {
+        errMsg = "Something went wrong"
+      }
         setNotifData({
           kind: "error",
-          subtitle: err.response.data.msg,
+          subtitle: errMsg,
           title: "Error"
         })
         setNotification(true)

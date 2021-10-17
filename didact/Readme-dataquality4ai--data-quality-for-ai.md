@@ -33,8 +33,8 @@
     position: absolute;
     width: 1px;
     background-color: white;
-    top: 0;
-    bottom: 0;
+    top: 15px;
+    bottom: 80px;
     left: 18px;
     margin-left: -2px;
   }
@@ -117,7 +117,7 @@
   .footer {
     display: flex;
     background-color: #343A3E;
-    margin: 1050px 0px 0px 20px;
+    margin: 950px 0px 0px 20px;
     padding: 0px;
     max-width: 1200px;
   }
@@ -140,7 +140,7 @@
     position: relative;
     background-color: white;
     min-width: 50%;
-    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url("https://github.com/bodarajeshkumar/Developer-Playground/blob/master/didact/images/git.svg?raw=true");
+    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/github.svg");
     background-position: -50% 60px;
     background-repeat: no-repeat;
     padding-top: 20px;
@@ -181,7 +181,7 @@
   }
   .header
   {
-    background-image: url('https://github.com/IBM/Developer-Playground/blob/development/didact/images/data-quality.png?raw=true');
+    background-image: url('https://github.com/IBM/Developer-Playground/blob/master/didact/images/data-quality.png?raw=true');
     width: 100%;
     height: auto;
     min-height: 300px;
@@ -198,8 +198,9 @@
     float: right;
     width: 45%;
     background-color:#2a67f5;
-    min-height:400px;
-    padding:20px;
+    min-height: 300px;
+    padding: 20px;
+    padding-top: 7.5%;
     font-size: 14px;
   }
   .header .right-content h4
@@ -213,7 +214,7 @@
   {
     background: none;
     color: white;
-    padding-left: 25px;
+    padding-left: 15px;
     padding-right: 25px;
     font-size: 14px;
     margin-bottom: 10px;
@@ -227,7 +228,7 @@
   }
   .container a
   {
-    color: #0072C3;
+     color: #78A9FF;
     background-color: transparent;
     text-decoration: none;
   }
@@ -237,7 +238,15 @@
     background-color: transparent;
     text-decoration: none;
   }
-  @media only screen and (max-width: 1200px) {
+  .apptitle
+  {
+    margin-left: 25px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    font-size: 20px;
+    color: white;
+  }
+  @media only screen and (max-width: 1000px) {
     .header
     {
       background-size: cover;
@@ -245,7 +254,7 @@
   }
   @media only screen and (max-width: 800px) {
     .footer {
-      margin: 1100px 0px 0px 20px;
+      margin: 1050px 0px 0px 20px;
     }
     .header
     {
@@ -256,63 +265,67 @@
     .footer {
       margin: 1200px 0px 0px 20px;
     }
+    .header
+    {
+      background-size: cover;
+      background-position: 0px 0px;
+    }
   }
   @media only screen and (max-width: 600px) {
     .footer {
-      margin: 1250px 0px 0px 20px;
+      margin: 1350px 0px 0px 20px;
+    }
+    .header
+    {
+      background-size: cover;
     }
   }
   @media only screen and (max-width: 500px) {
     .footer {
-      margin: 1300px 0px 0px 20px;
+      margin: 1350px 0px 0px 20px;
+    }
+    .header
+    {
+      background-size: cover;
     }
   }
   @media only screen and (max-width: 400px) {
     .footer {
-      margin: 1350px 0px 0px 20px;
+      margin: 1450px 0px 0px 20px;
+    }
+    .header
+    {
+      background-size: cover;
     }
   }
 }
 </style>
 </head>
 <body>
+  <div class="apptitle"> 
+    Data Quality API Sample Application
+  </div>
    <div class="header">
       <div class="right-content">
-         <h4>Data Quality API Sample Application</h4>
-         <div>
-            The Secret Ingredient behind any crackerjack model of any AI or Data-driven Application is- DATA, no it's actually a Good Quality DATA. Insights are only as good as the data that informs them. The Statistics and the expert estimates shows that the Data Practitioners spend their 50% to 80%  of their time in Data Wrangling to be analysed. Data wrangling or data munging is the process of taking disorganised or incomplete raw data and standardising it so that you can easily access, consolidate, and analyse it. It is often a tedious task when done manually. 
-         </div>
-         <div>
-            Introducing  `DATA Quality For AI`- The Data quality for AI is an integrated toolkit that provides various data profiling and quality estimation metrics that assess the quality of ingested data in a systematic and objective manner.
-         </div>
-         <div>
-            Wait, Is it too much information to process?
-         </div>
-         <div>
-            We got you! Let's wrangle, the above information with DATA Quality For AI in this sample application.
-         </div>
+          <div>
+            The Data Quality for AI is an integrated toolkit that provides various data profiling and quality estimation metrics to assess the quality of ingested data in a systematic and objective manner. You will learn how this API can be leveraged in the real world with this interactive tutorial  and sample application... where you will build, configure, and explore ... with a sample application
+          </div>
       </div>
    </div>
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
-            <p>To begin, we'll need the application's source code. Let's get that down!</p>
+            <p>To begin, you will need the application's source code. Click `Get the code` to clone the code to your playground session.</p>
             <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cget-code%7Cdata-quality|git%20clone%20-b%20DART%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/data-quality/">Get the Code</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Awesome! We've got the code! To see it in action, we've to build it first!
+            <p>You've successfully cloned the code, so click `Build the application` to start the build process.
             </p>
-            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cbuild-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install">Build the Application</a>
+            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cbuild-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install%20--production">Build the Application</a>
             <p class="afterbutton">
-               Halt! Identify yourself! Take the following steps to obtain your credentials and configure the application
-            </p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>Head over to <a title= "IBM API Hub" href="https://developer.ibm.com/apis/">IBM API Hub</a> and sign in with your IBM ID
+               To obtain credentials and configure the application, complete the following steps
             </p>
          </div>
       </div>
@@ -350,29 +363,29 @@
       <div class="container right">
          <div class="content">
             <p>You're all set to get started! </p>
-            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Claunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20start">Launch the Application</a>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Claunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20node%20server.js">Launch the Application</a>
          </div>
       </div>
    </div>
    <div class="footer">
-      <div class="content" style="padding:30px;padding-left:60px;padding-bottom: 0px;">
+      <div class="content" style="padding:30px;padding-left:60px;padding-bottom:0px;">
          <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
          <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=data-quality" >Stop Application</a>
          <p class="afterbutton">The stage is yours!</p>
-         <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/services/service.js">Explore the Code</a>
+         <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/src/App.js">Explore the Code</a>
          <p class="afterbutton ">To view the changes you've made, re-launch the application</p>
-         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Crelaunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20start">Re-Launch the Application</a>
+         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Crelaunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install%20--only=dev%20%26%26%20rm%20-rf%20build%20%26%26%20npm%20run%20build%20%26%26%20node%20server.js">Re-Launch the Application</a>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
-            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a>Github Repository</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/DART" target="_blank">Github Repository</a></span>
          </p>
          <div class="image-btn">
             <a class="image-link" href="didact://?commandId=extension.openURL&text=data-quality%7Cview-product-details%7Chttps://www.ibm.com/products/dqaiapi
                " target="_blank">
                View Product Details 
                <span>
-                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                  <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
                      <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
                      <title>Arrow right</title>
                   </svg>
@@ -381,7 +394,7 @@
             <a class="image-link" href="didact://?commandId=extension.openURL&text=data-quality%7Cget-trial-subscription%7Chttps://www.ibm.com/account/reg/us-en/signup?formid=urx-50307" target="_blank">
                Get Trial Subcription 
                <span>
-                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                  <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
                      <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
                      <title>Arrow right</title>
                   </svg>

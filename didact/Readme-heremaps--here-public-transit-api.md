@@ -1,3 +1,4 @@
+
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,8 +34,8 @@
     position: absolute;
     width: 1px;
     background-color: white;
-    top: 0;
-    bottom: 0;
+    top: 15px;
+    bottom: 80px;
     left: 18px;
     margin-left: -2px;
   }
@@ -117,7 +118,7 @@
   .footer {
     display: flex;
     background-color: #343A3E;
-    margin: 900px 0px 0px 20px;
+    margin: 800px 0px 0px 20px;
     padding: 0px;
     max-width: 1200px;
   }
@@ -140,7 +141,7 @@
     position: relative;
     background-color: white;
     min-width: 50%;
-    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url("https://github.com/bodarajeshkumar/Developer-Playground/blob/master/didact/images/git.svg?raw=true");
+    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/github.svg");
     background-position: -50% 60px;
     background-repeat: no-repeat;
     padding-top: 20px;
@@ -161,7 +162,7 @@
   {
     float: right;
     font-size: 32px;
-    padding-right: 20px;
+    padding-right: 10px;
   }
   .image-btn .image-link:hover
   {   
@@ -183,7 +184,7 @@
   }
   .header
   {
-    background-image: url('https://github.com/IBM/Developer-Playground/blob/development/didact/images/banner-image.jpg?raw=true');
+    background-image: url('https://github.com/IBM/Developer-Playground/blob/master/didact/images/banner-image.jpg?raw=true');
     width: 100%;
     height: fixed;
     min-height: 300px;
@@ -230,7 +231,7 @@
   }
   .container a
   {
-    color: #0072C3;
+    color: #78A9FF;
     background-color: transparent;
     text-decoration: none;
   }
@@ -240,38 +241,48 @@
     background-color: transparent;
     text-decoration: none;
   }
+  .apptitle
+  {
+    margin-left: 25px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    font-size: 25px;
+    color: white;
+  }
   @media only screen and (max-width: 800px) {
     .footer {
-      margin: 1000px 0px 0px 20px;
+      margin: 950px 0px 0px 20px;
     }
   }
   @media only screen and (max-width: 700px) {
     .footer {
-      margin: 1100px 0px 0px 20px;
+      margin: 1050px 0px 0px 20px;
     }
   }
   @media only screen and (max-width: 600px) {
     .footer {
-      margin: 1150px 0px 0px 20px;
+      margin: 1050px 0px 0px 20px;
     }
   }
   @media only screen and (max-width: 500px) {
     .footer {
-      margin: 1200px 0px 0px 20px;
+      margin: 1100px 0px 0px 20px;
     }
   }
   @media only screen and (max-width: 400px) {
     .footer {
-      margin: 1300px 0px 0px 20px;
+      margin: 1200px 0px 0px 20px;
     }
   }
 }
 </style>
 </head>
 <body>
+  <div class="apptitle"> 
+    HERE Technologies Sample Application
+  </div>
    <div class="header">
       <div class="right-content">
-         <h4>HERE Technologies Sample Application</h4>
          <div>
             Here Maps is one-stop solution to most of the problems in this domain. HERE Technologies provide comprehensive mapping content, an integrated suite of solutions, services and development tools and a marketplace for data to solve your complex location-based problems.
          </div>
@@ -295,23 +306,17 @@
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
-            <p>To begin, we'll need the application's source code. Let's get that down!</p>
+            <p>To begin, you will need the application's source code. Click `Get the code` to clone the code to your playground session.</p>
             <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Cget-code%7CHEREPublicTransit|git%20clone%20-b%20HERE%20--sparse%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/here-public-transit/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/here-public-transit/%20%26%26%20git%20sparse-checkout%20init%20--cone%20%26%26%20git%20sparse-checkout%20add%20HEREPublicTransit">Get the Code</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Awesome! We've got the code! To see it in action, we've to build it first!
+            <p>You've successfully cloned the code, so click `Build the application` to start the build process.
             </p>
-            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Cbuild-application%7CHEREPublicTransit%7Ccd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20install">Build Application</a>
+            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Cbuild-application%7CHEREPublicTransit%7Ccd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20config%20set%20@here:registry%20https://repo.platform.here.com/artifactory/api/npm/maps-api-for-javascript/%20%26%26%20npm%20install%20--production">Build Application</a>
             <p class="afterbutton">
-               Halt! Identify yourself! Take the following steps to obtain your credentials and configure the application
-            </p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>Head over to <a title= "IBM API Hub" href="https://developer.ibm.com/apis/">IBM API Hub</a> and sign in with your IBM ID
+               To obtain credentials and configure the application, complete the following steps
             </p>
          </div>
       </div>
@@ -337,7 +342,7 @@
       <div class="container right">
          <div class="content">
             <p>You're all set to get started! </p>
-            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Claunch-application%7CHEREPublicTransit|cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20start">Launch Application</a>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Claunch-application%7CHEREPublicTransit|cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20node%20token.js%20%26%26%20node%20server.js">Launch Application</a>
          </div>
       </div>
    </div>
@@ -346,9 +351,9 @@
          <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
          <a class="button is-dark is-medium afterbutton" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=HEREPublicTransit" >Stop Application</a>
          <p class="afterbutton">The stage is yours!</p>
-         <a class="button is-dark is-medium afterbutton" title="Explore the Code" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit/services/service.js">Explore Code</a>
+         <a class="button is-dark is-medium afterbutton" title="Explore the Code" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit/src/App.js">Explore Code</a>
          <p class="afterbutton ">To view the changes you've made, re-launch the application</p>
-         <a class="button is-dark is-medium afterbutton" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Crelaunch-application%7CHEREPublicTransit|cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20start">Re-Launch Application</a>
+         <a class="button is-dark is-medium afterbutton" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Crelaunch-application%7CHEREPublicTransit|cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20install%20%26%26%20export%20REACT_APP_mode=dev%20%26%26%20npm%20start">Re-Launch Application</a>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
@@ -358,7 +363,7 @@
             <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cview-product-details%7Chttps://developer.here.com/documentation/public-transit/dev_guide/index.html" target="_blank">
                View Product Details 
                <span>
-                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                  <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
                      <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
                      <title>Arrow right</title>
                   </svg>
@@ -367,7 +372,7 @@
             <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cbuy-this-product%7Chttps://developer.here.com/pricing" target="_blank">
                Buy this API 
                <span>
-                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                  <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
                      <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
                      <title>Arrow right</title>
                   </svg>
@@ -376,7 +381,7 @@
             <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cget-trial-subscription%7Chttps://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account" target="_blank">
                Get Trial Subcription 
                <span>
-                  <svg style="position: absolute; right: 1rem;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                  <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
                      <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
                      <title>Arrow right</title>
                   </svg>

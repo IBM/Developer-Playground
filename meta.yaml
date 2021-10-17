@@ -56,6 +56,18 @@ spec:
       attributes:
         protocol: http
         discoverable: false
+   -  name: "theia-redirect-4"
+      public: true
+      targetPort: 13134
+      attributes:
+        protocol: http
+        discoverable: false
+   -  name: "theia-redirect-5"
+      public: true
+      targetPort: 13135
+      attributes:
+        protocol: http
+        discoverable: false
   containers:
    - name: theia-ide
      image: "quay.io/devplayground/playground-editor:20210602-022816"
@@ -78,6 +90,8 @@ spec:
          - exposedPort: 13131
          - exposedPort: 13132
          - exposedPort: 13133
+         - exposedPort: 13134
+         - exposedPort: 13135
      memoryLimit: "3Gi"
   initContainers:
   - name: remote-runtime-injector

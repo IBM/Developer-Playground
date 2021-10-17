@@ -4,10 +4,11 @@ const storeResult = require("./storeResult")
 const getStatus = async (jobId) => {
     return new Promise(async function (resolve, reject) {
         let apiEndpoint;
-        if (process.env.PLAYGROUND_ENVIRONMENT === 'production')
-            apiEndpoint = `https://api.ibm.com/ai4industry/run/result/${jobId}`
-        else
+        if (process.env.PLAYGROUND_ENVIRONMENT !== 'production')
             apiEndpoint = `https://dev.api.ibm.com/ai4industry/test/result/${jobId}`
+        else
+            apiEndpoint = `https://api.ibm.com/ai4industry/run/result/${jobId}`
+
         const options = {
             method: 'GET',
             url: apiEndpoint,

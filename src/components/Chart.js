@@ -16,13 +16,13 @@ const Chart = ({ data, lines, showAnomaly, time }) => {
   return (
     <div>
       <h2 className="chart-result">Results</h2>
-      <ResponsiveContainer className="chart-area"width={"100%"} height={400}>
+      <ResponsiveContainer className="chart-area" width={"100%"} height={400} style={{marginLeft:"50px"}}>
         <LineChart
           data={data}
           margin={{
             top: 5,
             right: 30,
-            left: 20,
+            left: 100,
             bottom: 5,
           }}
         >

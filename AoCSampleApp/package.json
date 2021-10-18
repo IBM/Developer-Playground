@@ -30,6 +30,7 @@
         "https": "^1.0.0",
         "njwt": "^1.1.0",
         "node-cache": "^5.1.2",
+        "portfinder": "^1.0.28",
         "request": "^2.88.2",
         "express": "^4.17.1"
     },

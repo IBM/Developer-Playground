@@ -4,7 +4,7 @@ let time = Date.now();
 
 let data = []
 let numEntries = 100
-let numVariables = 3
+let numVariables = 1
 let maxLimit = 50
 for (let i = 0; i < numEntries; i++) {
     let entry = {}

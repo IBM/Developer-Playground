@@ -1,8 +1,11 @@
 const express = require('express');
+var portfinder = require("portfinder");
 const {addworkspace,adduser,addmember,sendpackages,deluser,getfiles,getworkspace,getusers,getpackages} = require('./services.js')
 
 
 var app = express();
+portfinder.basePort = 3100;
+portfinder.highestPort = 9999;
 
 app.use(express.static('build'));
 
@@ -121,10 +124,9 @@ app.use(express.static('build'));
   });
 
 
-  app.listen(8000, (err) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("App is listening on port  : ", 8000)
-    }
-  });
+ portfinder.getPort((err, port) => {
+      if (err) throw err;
+      app.listen(port, () =>
+        console.log(`App listening on port: ${port}`)
+      );
+    })

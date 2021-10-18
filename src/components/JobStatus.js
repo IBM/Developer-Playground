@@ -31,13 +31,19 @@ const JobStatus = ({ jobId, msg }) => {
             setLoading(true)
             let res = await axios.get(`/status?jobid=${jobId}`)
             setStatus(res.data.status)
-        } catch(err) {
+        } catch (err) {
+            let errMsg;
+            try {
+                errMsg = err.response.data.msg
+            } catch {
+                errMsg = "Something went wrong"
+            }
             setNotifData({
                 kind: "error",
-                subtitle: err.response.data.msg,
+                subtitle: errMsg,
                 title: "Error"
-              })
-              setNotification(true)
+            })
+            setNotification(true)
         } finally {
             setLoading(false)
         }

@@ -5,10 +5,6 @@ var adminauthtoken = fs.readFileSync('src/auth/adminauth.txt').toString().split(
 var userauthtoken = fs.readFileSync('src/auth/userauth.txt').toString().split("\n")[0];
 var nuserauthtoken = fs.readFileSync('src/auth/nodeauth.txt').toString().split("\n")[0];
 
-// console.log("adminauth: ", adminauthtoken);
-// console.log("userauth: ", userauthtoken);
-// console.log("nuserauth: ", nuserauthtoken);
-
 exports.addworkspace = function (name = "", desc = "") {
 
   return new Promise((resolve, reject) => {
@@ -25,7 +21,6 @@ exports.addworkspace = function (name = "", desc = "") {
       request(defnode_options, function (error, response) {
         if (error) throw new Error(error);
         const jsonbody = JSON.parse(response.body)
-        // Default Workspace's Node ID
         var def_wksp_node = jsonbody[0]["id"]
 
         var reqbody = { "name": name, "description": desc, "node_id": def_wksp_node }
@@ -45,7 +40,6 @@ exports.addworkspace = function (name = "", desc = "") {
 
         request(options, function (error, res, body) {
           if (error) reject(error);
-        //   console.log(body);
           resolve(body)
 
         });
@@ -74,7 +68,6 @@ exports.adduser = function (useremail = "") {
 
       request(options, function (error, res, body) {
         if (error) reject(error);
-        console.log(body);
         resolve(body);
       });
   });
@@ -99,7 +92,6 @@ exports.deluser = function (userid = "") {
 
       request(options, function (error, res, body) {
         if (error) reject(error);
-        //console.log(body);
         resolve(body);
       });
   });
@@ -184,10 +176,7 @@ exports.sendpackages = function (pkgname = "", filepkg = "", userid = "") {
 
           request(options, function (error, res, body) {
             if (error) throw reject(error);
-            console.log("Body: ", body);
-            
             pid = body["id"];
-
             var fullUrl = 'https://api.ibmaspera.com/api/v1/packages/'.concat(pid);
 
             var reqbody1 = {
@@ -211,7 +200,6 @@ exports.sendpackages = function (pkgname = "", filepkg = "", userid = "") {
 
             request(opts, function (error, res, body) {
               if (error) throw reject(error);
-              console.log(body);
               resolve(body)
 
             });
@@ -299,7 +287,6 @@ exports.getworkspace = function () {
   return new Promise((resolve, reject) => {
 
     let workspace_arr = [{id:"",value:"Choose Workspace"}];
-    // workspace id and name
       let options =
       {
         method: 'GET',
@@ -328,7 +315,6 @@ exports.getworkspace = function () {
 exports.getusers = function () {
   return new Promise((resolve, reject) => {
     let user_arr = [{id:"",value:"Choose User"}];
-    // user id and email 
       let options =
       {
         method: 'GET',
@@ -349,7 +335,6 @@ exports.getusers = function () {
           user_idemail["value"] = jsonform[i]["email"]
           user_arr.push(user_idemail)
         }
-        //console.log(user_idemail);
         resolve(user_arr);
       });
   });

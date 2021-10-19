@@ -17,12 +17,23 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use(express.static("./data"));
+app.use(express.static("./sample-datasets"));
 app.use(express.static("./build"));
 
 
-app.get("/sampledata", async (req, res) => {
+app.get("/availabledatasets", async (req, res) => {
   try {
-    let jsonArray = JSON.parse(fs.readFileSync("./data/sample.json"))
+    let jsonArray = fs.readdirSync("./sample-datasets")
+    res.status(200).json(jsonArray)
+  } catch {
+    res.status(404).json({ "msg": "Unable to fetch data at this moment" })
+  }
+})
+
+app.get("/sampledata?:dataset", async (req, res) => {
+  try {
+    console.log(req.query.dataset)
+    let jsonArray = JSON.parse(fs.readFileSync(`./sample-datasets/${req.query.dataset}`))
     res.status(200).json(jsonArray)
   } catch {
     res.status(404).json({ "msg": "Unable to fetch data at this moment" })
@@ -70,6 +81,11 @@ const upload = multer({
 
 app.post("/upload", async (req, res) => {
   try {
+    try{
+      fs.mkdirSync("./data")
+    } catch{
+      
+    }
     upload(req, res, async (err) => {
       if (err instanceof multer.MulterError) {
         if (err.code === "LIMIT_FILE_SIZE") {

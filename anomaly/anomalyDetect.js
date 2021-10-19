@@ -14,6 +14,7 @@ const getTarget = (data) => {
 
 const anomalyDetect = async ({
     dataset_type,
+    filename,
     target_column,
     prediction_type,
     algorithm_type,
@@ -26,18 +27,16 @@ const anomalyDetect = async ({
 }) => {
     return new Promise(async function (resolve, reject) {
         let apiEndpoints;
-        console.log(process.env.PLAYGROUND_ENVIRONMENT)
-        if (process.env.PLAYGROUND_ENVIRONMENT !== 'production')
+        if (process.env.PLAYGROUND_ENVIRONMENT.trim() !== 'production')
             apiEndpoints = ["https://dev.api.ibm.com/ai4industry/test/anomaly-detection/timeseries/univariate/batch", "https://dev.api.ibm.com/ai4industry/test/anomaly-detection/timeseries/multivariate/batch"]
         else
             apiEndpoints = ["https://api.ibm.com/ai4industry/run/anomaly-detection/timeseries/univariate/batch", "https://api.ibm.com/ai4industry/run/anomaly-detection/timeseries/multivariate/batch"]
-        let filepath = "./data/sample.json"
+        let filepath = ""
         let apiEndpoint = apiEndpoints[0]
         if (dataset_type === 'customdt')
             filepath = "./data/customfile.json"
         else {
-            time_column = "time"
-            target_column = "num"
+            filepath = `./sample-datasets/${filename}`
         }
         let fileData = JSON.parse(fs.readFileSync(filepath))
 

@@ -1,7 +1,7 @@
 const { clientId, clientSecret } = require("./credentials.js")
 const promiseRequest = require("./promiseRequest")
 let apiEndpoint;
-if (process.env.PLAYGROUND_ENVIRONMENT !== 'production')
+if (process.env.PLAYGROUND_ENVIRONMENT.trim() !== 'production')
   apiEndpoint = `https://dev.api.ibm.com/ai4industry/test/connection-check`
 else
   apiEndpoint = 'https://api.ibm.com/ai4industry/run/connection-check'

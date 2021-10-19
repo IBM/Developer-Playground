@@ -44,8 +44,9 @@ function App() {
     kind: "",
     subtitle: "",
     title: ""
-
   })
+  const [showSample, setSample] = useState(false)
+  const [sampledata, setSampledata] = useState([])
 
 
   const resetStates = () => {
@@ -69,10 +70,10 @@ function App() {
       setTimeColumn(true)
       setForm(false)
       result = true
-    } catch(err) {
+    } catch (err) {
       console.log(err)
       let errMsg;
-      try{
+      try {
         errMsg = err.response.data.msg
       } catch {
         errMsg = "Something went wrong"
@@ -90,11 +91,12 @@ function App() {
     return result
   }
 
-  const getSample = async (e) => {
+  const getSampleDataset = async (e) => {
     resetStates()
     try {
+      getSample()
       setLoading(true)
-      let res = await axios.get('/sampledata')
+      let res = await axios.get(`/sampledata?dataset=${e.selectedItem}`)
       setData(res.data)
       setChart(false)
       setTimeColumn(true)
@@ -103,7 +105,36 @@ function App() {
       setFileUploader(false)
     } catch (err) {
       let errMsg;
-      try{
+      try {
+        errMsg = err.response.data.msg
+      } catch {
+        errMsg = "Something went wrong"
+      }
+      setNotifData({
+        kind: "error",
+        subtitle: errMsg,
+        title: "Error"
+      })
+      setNotification(true)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+
+  const getSample = async (e) => {
+    resetStates()
+    try {
+      setLoading(true)
+      let res = await axios.get('/availabledatasets')
+      console.log(res)
+      setSample(true)
+      setSampledata(res.data)
+      setForm(false)
+      setFileUploader(false)
+    } catch (err) {
+      let errMsg;
+      try {
         errMsg = err.response.data.msg
       } catch {
         errMsg = "Something went wrong"
@@ -123,7 +154,7 @@ function App() {
     setFileUploader(true)
     setChart(false)
     setForm(false)
-    //setTargetParams([])
+    setSample(false)
     setTimeColumn(false)
   }
 
@@ -168,9 +199,10 @@ function App() {
 
   const uploadData = async (e) => {
     e.preventDefault()
-    console.log(e)
     let formData = {}
     formData.dataset_type = e.target.dataset_type.value
+    if(formData.dataset_type === "sampledt")
+      formData.filename = document.getElementById("sample_data").innerText
     if (columns.length === 1) {
       formData.target_column = columns[0].name
     } else {
@@ -192,26 +224,26 @@ function App() {
     formData.time_column = time
     //formData.recent_data = parseInt(e.target.recent_data.value)
     console.log(formData)
-    
+
     let valid = true
     if (typeof (formData.target_column) === "object" && formData.target_column.length === 0) {
       setTargetInvalid({ state: true, text: "Please select some options" })
-      document.getElementById("target_columns").scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+      document.getElementById("target_columns").scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
       valid = false
     }
     if (formData.lookback_window !== 'auto' && (isNaN(formData.lookback_window) || formData.lookback_window > 50 || formData.lookback_window < 1 || !Number.isInteger(formData.lookback_window))) {
       setLWInvalid({ state: true, text: "Please enter an integer between 1 and 50" })
-      document.getElementById("lookback_window_custom_value").scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+      document.getElementById("lookback_window_custom_value").scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
       valid = false
     }
     if (isNaN(formData.observation_window) || formData.observation_window < 1 || !Number.isInteger(formData.observation_window)) {
       setOWInvalid({ state: true, text: "Please enter an integer > 0" })
-      document.getElementById("observation_window").scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+      document.getElementById("observation_window").scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
       valid = false
     }
     if (isNaN(formData.labeling_threshold) || formData.labeling_threshold < 1 || !Number.isInteger(formData.labeling_threshold)) {
       setLTInvalid({ state: true, text: "Please enter an integer > 0" })
-      document.getElementById("labeling_threshold").scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+      document.getElementById("labeling_threshold").scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
       valid = false
     }
     console.log(valid)
@@ -227,11 +259,11 @@ function App() {
         setShowJob(true)
       } catch (err) {
         let errMsg;
-      try{
-        errMsg = err.response.data.msg
-      } catch {
-        errMsg = "Something went wrong"
-      }
+        try {
+          errMsg = err.response.data.msg
+        } catch {
+          errMsg = "Something went wrong"
+        }
         setNotifData({
           kind: "error",
           subtitle: errMsg,
@@ -307,7 +339,14 @@ function App() {
         {showFileUploader ?
           <FileUpload accept=".json, .csv" sendDataToParent={sendDataToParent} />
           : null}
-
+        {showSample ? <Dropdown
+          id="sample_data"
+          titleText="Select Value"
+          label="Choose a Dataset"
+          items={sampledata}
+          onChange={getSampleDataset}
+          onClick={getSample}
+        />: null}
         {showTimeColumn ? <div>
           <p className="others">Time Column</p>
           <Dropdown

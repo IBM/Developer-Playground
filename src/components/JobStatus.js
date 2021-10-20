@@ -17,8 +17,8 @@ import axios from 'axios'
 import { useState } from 'react'
 
 
-const JobStatus = ({ jobId, msg }) => {
-    const [status, setStatus] = useState(msg)
+const JobStatus = ({jobId}) => {
+    const [status, setStatus] = useState("submitted")
     const [loading, setLoading] = useState(false)
     const [showNotif, setNotification] = useState(false)
     const [notifData, setNotifData] = useState({

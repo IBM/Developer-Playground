@@ -22,13 +22,13 @@
     "web-vitals": "^1.0.1"
   },
   "dependencies": {
-    "strftime": "^0.10.0",
     "cors": "^2.8.5",
     "csvtojson": "^2.0.10",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "multer": "^1.4.3",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "strftime": "^0.10.0"
   },
   "scripts": {
     "react": "react-scripts start",

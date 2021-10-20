@@ -26,6 +26,11 @@ const anomalyDetect = async ({
     time_column,
 }) => {
     return new Promise(async function (resolve, reject) {
+        try {
+            fs.mkdirSync("./data")
+        } catch {
+
+        }
         let apiEndpoints;
         if (process.env.PLAYGROUND_ENVIRONMENT.trim() !== 'production')
             apiEndpoints = ["https://dev.api.ibm.com/ai4industry/test/anomaly-detection/timeseries/univariate/batch", "https://dev.api.ibm.com/ai4industry/test/anomaly-detection/timeseries/multivariate/batch"]

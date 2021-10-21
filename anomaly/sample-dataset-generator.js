@@ -3,8 +3,11 @@ const fs = require('fs');
 let time = Date.now();
 
 let data = []
+//TOTAL ENTRIES/ROWS IN DATASET
 let numEntries = 100
+//NUMBER OF VARIABLES
 let numVariables = 5
+//MAX VALUE OF VARIABLE
 let maxLimit = 20
 for (let i = 0; i < numEntries; i++) {
     let entry = {}
@@ -25,6 +28,7 @@ while(true){
         i += 1
     else{
     fs.writeFileSync(`../sample-datasets/sample-${i}.json`, JSON.stringify(data))
+    console.log(`Dataset sample-${i}.json stored at /sample-datasets/sample-${i}.json`)
     break
     }
 }

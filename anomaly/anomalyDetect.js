@@ -31,11 +31,7 @@ const anomalyDetect = async ({
         } catch {
 
         }
-        let apiEndpoints;
-        if (process.env.PLAYGROUND_ENVIRONMENT.trim() !== 'production')
-            apiEndpoints = ["https://dev.api.ibm.com/ai4industry/test/anomaly-detection/timeseries/univariate/batch", "https://dev.api.ibm.com/ai4industry/test/anomaly-detection/timeseries/multivariate/batch"]
-        else
-            apiEndpoints = ["https://api.ibm.com/ai4industry/run/anomaly-detection/timeseries/univariate/batch", "https://api.ibm.com/ai4industry/run/anomaly-detection/timeseries/multivariate/batch"]
+        let apiEndpoints = ["https://api.ibm.com/ai4industry/run/anomaly-detection/timeseries/univariate/batch", "https://api.ibm.com/ai4industry/run/anomaly-detection/timeseries/multivariate/batch"]
         let filepath = ""
         let apiEndpoint = apiEndpoints[0]
         if (dataset_type === 'customdt')

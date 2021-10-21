@@ -48,7 +48,6 @@ function App() {
   const [showSample, setSample] = useState(false)
   const [sampledata, setSampledata] = useState([])
 
-
   const resetStates = () => {
     setTargetInvalid({ state: false, text: "" })
     setLWInvalid({ state: false, text: "" })

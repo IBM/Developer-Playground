@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import FileTest from './Filetest';
+import Fileupload from './Fileupload';
 import Sdataset from './Sdataset';
 
 import { RadioButtonGroup, RadioButton  } from 'carbon-components-react';
@@ -39,7 +39,7 @@ const [displaySOption, setdisplaySOption] = useState('');
 
     {displayCOption &&    
     <div id="custom-dataset">
-      <FileTest ulabelerr = {ulabelerr} setuLabelInput = {setuLabelInput} setufilepath = {setufilepath} setufilename = {setufilename} />
+      <Fileupload ulabelerr = {ulabelerr} setuLabelInput = {setuLabelInput} setufilepath = {setufilepath} setufilename = {setufilename} />
     </div>}
 
     {displaySOption &&  

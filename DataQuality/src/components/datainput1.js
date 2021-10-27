@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import FileTest1 from './Filetest1';
+import Fileupload1 from './Fileupload1';
 import Sdataset1 from './Sdataset1';
 
 import { RadioButtonGroup, RadioButton  } from 'carbon-components-react';
@@ -38,7 +38,7 @@ const [displaySOption1, setdisplaySOption1] = useState('');
 
     {displayCOption1 &&    
     <div id="custom-dataset1">
-      <FileTest1 setufilepath = {setufilepath} setufilename = {setufilename} />
+      <Fileupload1 setufilepath = {setufilepath} setufilename = {setufilename} />
     </div>}
 
     {displaySOption1 &&  
@@ -47,7 +47,6 @@ const [displaySOption1, setdisplaySOption1] = useState('');
     </div>}
     
        <br/>        
-      {/* <br/> */}
     </>
   );
 };

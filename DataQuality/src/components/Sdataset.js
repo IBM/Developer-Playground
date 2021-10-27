@@ -3,8 +3,6 @@ import React, { useState} from 'react';
 
 function Sdataset({setfilepath, setfilename, setLabelInput, labelerr, dataseterr}) {
    
-//const [sdataseterr, setsdataseterr] = useState('');
-
   const dataset = [
   
     {
@@ -89,20 +87,6 @@ const handledatasetChange = (event) =>
     
 
     }, 100);
-
-    // if(event.target.options[event.target.options.selectedIndex].text === "Select Dataset"){
-
-    //   setsdataseterr(true);
-    // }
-    // else{
-    //   setsdataseterr(false);
-    // }
-    console.log("(On dataset change): Sample file chosen: ", event.target.options[event.target.options.selectedIndex].text);
-    // console.log("(On dataset change): F1 Index value: ", event.target.options.selectedIndex);
-
-
-    // console.log("TESTING (On dataset change): Label applied for Metric: ", LabelInput);
-
  
   };
 

@@ -29,7 +29,7 @@ const [displaySOption, setdisplaySOption] = useState('');
     <>
     
     <RadioButtonGroup legendText="Choose the type of Dataset" name="radio-button-group" >
-      <RadioButton labelText="Upload your Dataset ( < 15 MB )" value="customdt" id="customdt" onClick={showCustomOption} />
+      <RadioButton labelText="Upload your Dataset" value="customdt" id="customdt" onClick={showCustomOption} />
       <RadioButton labelText="Use Sample Datasets" value="sampledt" id="sampledt" onClick={showSampleOption} />
     </RadioButtonGroup>
 

@@ -212,7 +212,7 @@ const onAddFiles = async (evt, { addedFiles }) => {
 
    <div class="bx--form-item">
             <strong class="bx--file--label">Upload File</strong>
-            <p class="bx--label-description">Max file size of 15MB allowed</p>
+            <p class="bx--label-description">Max file size is 15 MB. Supported file type is .csv</p>
             <FileUploaderDropContainer
                 labelText="Drag and drop here or click to upload"
                 onAddFiles={onAddFiles}
@@ -262,6 +262,8 @@ const onAddFiles = async (evt, { addedFiles }) => {
         title="Error Notification"
       />
       }
+  
+  <br/>
   <br/>
   </div>
 

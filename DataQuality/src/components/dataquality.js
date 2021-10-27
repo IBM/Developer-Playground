@@ -17,23 +17,17 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
   const [jobid , setjobid] = useState('');
   const [msg , setmsg] = useState('');
   const [isLoading,setLoading] = useState(false);
-  const [buttonstate, setbuttonstate] = useState(false);
   const [err1status, seterr1status] = useState(false);
 
   const onLPClickHandler = (e) => {
 
     setLoading(true);
     if(choice === "upload"){
-
-       console.log("TESTING (API End): Upload file chosen: ", ufilename);
-       console.log("TESTING (API End): Upload Label applied for Metric: ", uLabelInput);
        
        if(ufilename === ""){
           console.log('No file uploaded');
-          //alert("No File uploaded");
           seterr1status(true);
           setLoading(false);
-          //setbuttonstate(true)
         }
 
         else{
@@ -46,8 +40,6 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
             setulabelerr(false);
             callLabelpurity()
               .then((resp) => {
-                // console.log("RES: ", resp["JobID"])
-                // console.log("RES MSG: ", resp["message"])
                 setjobid(resp["JobID"]);
                 setmsg(resp["message"]);
                 setLoading(false);
@@ -62,15 +54,9 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
 
     if(choice === "sample"){
 
-      console.log("TESTING (API End): Sample file chosen: ", filename);
-      console.log("TESTING (API End): Label applied for Metric: ", LabelInput);
-      
       if((filename === "Select Dataset" || filename === "")){
-          console.log('select dataset chosen');
           setdataseterr(true);
-          setLoading(false);
-          //setbuttonstate(true);
-        
+          setLoading(false);        
         }
       
       else{
@@ -78,15 +64,13 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
         setdataseterr(false);
         if((LabelInput === "Select Column" || LabelInput === "")){
           setlabelerr(true);
-          // seterr2status(true);
           setLoading(false);
         }
         else{
           setlabelerr(false);
           callLabelpurity()
               .then((resp) => {
-                // console.log("RES: ", resp["JobID"])
-                // console.log("RES MSG: ", resp["message"])
+
                 setjobid(resp["JobID"]);
                 setmsg(resp["message"]);
                 setLoading(false);
@@ -108,15 +92,10 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
     setLoading(true);
     if(choice === "upload"){
 
-       console.log("TESTING (API End): Upload file chosen: ", ufilename);
-       console.log("TESTING (API End): Upload Label applied for Metric: ", uLabelInput);
-       
        if(ufilename === ""){
           console.log('No file uploaded');
-          //alert("No File uploaded");
           seterr1status(true);
           setLoading(false);
-          //setbuttonstate(true)
         }
     
         else{
@@ -129,8 +108,6 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
             setulabelerr(false);
              callOutlierdetection()
               .then((resp) => {
-                // console.log("RES: ", resp["JobID"])
-                // console.log("RES MSG: ", resp["message"])
                 setjobid(resp["JobID"]);
                 setmsg(resp["message"]);
                 setLoading(false);
@@ -145,12 +122,8 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
 
     if(choice === "sample"){
 
-      console.log("TESTING (API End): Sample file chosen: ", filename);
-      console.log("TESTING (API End): Label applied for Metric: ", LabelInput);
-      
       if((filename === "Select Dataset" || filename === "")){
           setdataseterr(true);
-          // setbuttonstate(true)
           setLoading(false);
         }
        else{
@@ -158,15 +131,12 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
         setdataseterr(false);
         if((LabelInput === "Select Column" || LabelInput === "")){
           setlabelerr(true);
-          // seterr2status(true);
           setLoading(false);
         }
         else{
           setlabelerr(false);
              callOutlierdetection()
               .then((resp) => {
-                // console.log("RES: ", resp["JobID"])
-                // console.log("RES MSG: ", resp["message"])
                 setjobid(resp["JobID"]);
                 setmsg(resp["message"]);
                 setLoading(false);
@@ -184,15 +154,10 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
     setLoading(true);
     if(choice === "upload"){
 
-       console.log("TESTING (API End): Upload file chosen: ", ufilename);
-       console.log("TESTING (API End): Upload Label applied for Metric: ", uLabelInput);
-       
        if(ufilename === ""){
           console.log('No file uploaded');
-          //alert("No File uploaded");
           seterr1status(true);
           setLoading(false);
-          //setbuttonstate(true)
         }
       
           else{
@@ -205,8 +170,6 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
             setulabelerr(false);
               callClassparity()
                 .then((resp) => {
-                  // console.log("RES: ", resp["JobID"])
-                  // console.log("RES MSG: ", resp["message"])
                   setjobid(resp["JobID"]);
                   setmsg(resp["message"]);
                   setLoading(false);
@@ -221,13 +184,9 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
     }
 
     if(choice === "sample"){
-
-      console.log("TESTING (API End): Sample file chosen: ", filename);
-      console.log("TESTING (API End): Label applied for Metric: ", LabelInput);
       
         if((filename === "Select Dataset" || filename === "")){
           setdataseterr(true);
-          // setbuttonstate(true)
           setLoading(false);
         }
 
@@ -236,15 +195,12 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
         setdataseterr(false);
         if((LabelInput === "Select Column" || LabelInput === "")){
           setlabelerr(true);
-          // seterr2status(true);
           setLoading(false);
         }
         else{
           setlabelerr(false);
             callClassparity()
                 .then((resp) => {
-                  // console.log("RES: ", resp["JobID"])
-                  // console.log("RES MSG: ", resp["message"])
                   setjobid(resp["JobID"]);
                   setmsg(resp["message"]);
                   setLoading(false);
@@ -264,15 +220,10 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
     setLoading(true);
     if(choice === "upload"){
 
-       console.log("TESTING (API End): Upload file chosen: ", ufilename);
-       console.log("TESTING (API End): Upload Label applied for Metric: ", uLabelInput);
-       
        if(ufilename === ""){
           console.log('No file uploaded');
-          //alert("No File uploaded");
           seterr1status(true);
           setLoading(false);
-          //setbuttonstate(true)
         }
        else{
 
@@ -284,8 +235,6 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
             setulabelerr(false);
              callClassoverlap()
               .then((resp) => {
-                // console.log("RES: ", resp["JobID"])
-                // console.log("RES MSG: ", resp["message"])
                 setjobid(resp["JobID"]);
                 setmsg(resp["message"]);
                 setLoading(false);
@@ -299,13 +248,9 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
     }
 
     if(choice === "sample"){
-
-      console.log("TESTING (API End): Sample file chosen: ", filename);
-      console.log("TESTING (API End): Label applied for Metric: ", LabelInput);
       
       if((filename === "Select Dataset" || filename === "")){
           setdataseterr(true);
-          // setbuttonstate(true)
           setLoading(false);
         }
       
@@ -314,15 +259,12 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
         setdataseterr(false);
         if((LabelInput === "Select Column" || LabelInput === "")){
           setlabelerr(true);
-          // seterr2status(true);
           setLoading(false);
         }
         else{
           setlabelerr(false);
              callClassoverlap()
               .then((resp) => {
-                // console.log("RES: ", resp["JobID"])
-                // console.log("RES MSG: ", resp["message"])
                 setjobid(resp["JobID"]);
                 setmsg(resp["message"]);
                 setLoading(false);
@@ -343,7 +285,6 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
 
     if(choice === "upload"){
       let response = await fetch('/classparity?label=' + uLabelInput + '&fpath=' + ufilepath + '&fname=' + ufilename);
-      console.log("upload req api:  ", response["url"]);
       let body = await response.json();
     
       if (response.status !== 200) {
@@ -356,7 +297,6 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
     if(choice === "sample"){
 
       let response = await fetch('/classparity?label=' + LabelInput + '&fpath=' + filepath + '&fname=' + filename);
-      console.log("sample req api:  ", response["url"]);
       let body = await response.json();
     
       if (response.status !== 200) {
@@ -373,7 +313,6 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
 
     if(choice === "upload"){
       let response = await fetch('/labelpurity?label=' + uLabelInput + '&fpath=' + ufilepath + '&fname=' + ufilename);
-      console.log("upload req api:  ", response["url"]);
       let body = await response.json();
     
       if (response.status !== 200) {
@@ -386,7 +325,6 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
     if(choice === "sample"){
 
       let response = await fetch('/labelpurity?label=' + LabelInput + '&fpath=' + filepath + '&fname=' + filename);
-      console.log("sample req api:  ", response["url"]);
       let body = await response.json();
     
       if (response.status !== 200) {
@@ -402,7 +340,6 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
   const callClassoverlap = async () => {
     if(choice === "upload"){
       let response = await fetch('/classoverlap?label=' + uLabelInput + '&fpath=' + ufilepath + '&fname=' + ufilename);
-      console.log("upload req api:  ", response["url"]);
       let body = await response.json();
     
       if (response.status !== 200) {
@@ -415,11 +352,8 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
     if(choice === "sample"){
 
       let response = await fetch('/classoverlap?label=' + LabelInput + '&fpath=' + filepath + '&fname=' + filename);
-      console.log("sample req api:  ", response["url"]);
       let body = await response.json();
     
-      console.log("sample response:  ", body);
-
       if (response.status !== 200) {
         throw Error(body.message) 
       }
@@ -433,7 +367,6 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
   const callOutlierdetection= async () => {
     if(choice === "upload"){
       let response = await fetch('/outlierdetection?label=' + uLabelInput + '&fpath=' + ufilepath + '&fname=' + ufilename);
-      console.log("upload req api:  ", response["url"]);
       let body = await response.json();
     
       if (response.status !== 200) {
@@ -446,7 +379,6 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
     if(choice === "sample"){
 
       let response = await fetch('/outlierdetection?label=' + LabelInput + '&fpath=' + filepath + '&fname=' + filename);
-      console.log("sample req api:  ", response["url"]);
       let body = await response.json();
     
       if (response.status !== 200) {
@@ -495,14 +427,11 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
            <Button className = "parameterbutton" kind="tertiary" type="submit" onClick={onLPClickHandler} > Get Label Purity </Button>
            <Button className = "parameterbutton" kind="tertiary" type="submit" onClick={onODClickHandler} > Detect Outliers </Button>
            <Button className = "parameterbutton" kind="tertiary" type="submit" onClick={onCPClickHandler} > Get Class Parity </Button>
-            
-            {/* <Button className = "parameterbutton" disabled = {buttonstate} kind="tertiary" type="submit" onClick={onCPClickHandler} > Get Class Parity </Button> */}
-
+  
          </div>
 
   {err1status && 
     <ToastNotification
-        // caption="00:00:00 AM"
         iconDescription="Close notification"
         subtitle={<span>No File uploaded</span>}
         timeout={3000}

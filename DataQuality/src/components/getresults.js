@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { Button, Loading, Form, TextInput} from 'carbon-components-react';
+import { Button, Loading, Form, TextInput, ToastNotification} from 'carbon-components-react';
 import {
   DataTable,
   Table,
@@ -21,7 +21,7 @@ function  Results() {
   const [fresult , setfresult] = useState('');
   const [score , setscore] = useState('');
   const [isLoading,setLoading] = useState(false);
-
+  const [err1status, seterr1status] = useState(false); 
   const [numbercolumns, setnumbercolumns] = useState('');
   const [numbersamples, setnumbersamples] = useState('');
   const [datecolumns, setdatecolumns] = useState('');
@@ -35,7 +35,13 @@ function  Results() {
     
     callResults()
     .then((resp) => {
-      
+
+      if(JSON.stringify(resp) === JSON.stringify({})){
+        seterr1status(true);
+        setLoading(false);
+      }
+
+      else{
       console.log("RES: ", resp["Job ID"])
       console.log("RES MSG: ", resp["Message"])
       console.log("RES Metric : ", resp["String Col"])
@@ -62,7 +68,9 @@ function  Results() {
       setscore(resp["Score"]);
       setLoading(false);
       }
-      
+    
+    }
+
     })
     .catch((err) => {
       console.log(err)
@@ -188,10 +196,9 @@ function  Results() {
 ];
   
   }
-  
- 
-
-  
+function err1closef() {
+  seterr1status(false);
+}
     return (
      <div>
 
@@ -207,18 +214,10 @@ function  Results() {
       </div>
     </Form>
         
-        {/* <Button type="submit" onClick={testingHandler} > Testing for Label and Dataset </Button> */}
         <br/>
         <br/>
-        {/* <Button className = "parameterbutton" disabled = {buttonstate} kind="ghost" type="submit" onClick={onClickHandler} > Fetch Results </Button> */}
-      
-
-
 
        <Loading active = {isLoading} description="Active loading indicator" withOverlay={true}/>
-
-
-
 
          { methodology && <DataTable rows={rows} headers={headers}>
               {({ rows, headers, getTableProps, getHeaderProps, getRowProps }) => (
@@ -247,6 +246,15 @@ function  Results() {
               )}
           </DataTable>}
 
+  {err1status && 
+    <ToastNotification
+        iconDescription="Close notification"
+        subtitle={<span>Results are getting processed. Try again in a few moments</span>}
+        timeout={3000}
+        onClose = {err1closef}
+        title="Error Notification"
+      />
+      }
 
       </div>
     );
@@ -254,5 +262,3 @@ function  Results() {
 }
 
 export default Results;
-
-//a0d2ba00-ed7f-4966-b4c8-a4cb87ab42f7

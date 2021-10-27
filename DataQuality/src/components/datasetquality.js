@@ -24,22 +24,15 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
 
     setLoading(true);
     if(choice === "upload"){
-
-       console.log("TESTING (API End): Upload file chosen: ", ufilename);
        
        if(ufilename === ""){
           console.log('No file uploaded');
-          //alert("No File uploaded");
           seterr1status(true);
           setLoading(false);
-          //setbuttonstate(true)
         }
       else{
-        //console.log('file uploaded: ', ufilepath);
         callDatacompleteness()
           .then((resp) => {
-            // console.log("RES: ", resp["JobID"])
-            // console.log("RES MSG: ", resp["message"])
             setjobid(resp["JobID"]);
             setmsg(resp["message"]);
             setLoading(false);
@@ -53,14 +46,11 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
     }
 
     if(choice === "sample"){
-
-      console.log("TESTING (API End): Sample file chosen: ", filename);
       
        if(filename === "Select Dataset" || filename === ""){
           setdataseterr1(true);
           setbuttonstate(true);
           setLoading(false);
-          //console.log("DATASET NOT CHOSEN");
         }
 
       else{
@@ -69,8 +59,6 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
 
         callDatacompleteness()
           .then((resp) => {
-            // console.log("RES: ", resp["JobID"])
-            // console.log("RES MSG: ", resp["message"])
             setjobid(resp["JobID"]);
             setmsg(resp["message"]);
             setLoading(false);
@@ -89,21 +77,15 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
 
     setLoading(true);
     if(choice === "upload"){
-
-       console.log("TESTING (API End): Upload file chosen: ", ufilename);
        
        if(ufilename === ""){
           console.log('No file uploaded');
-          //alert("No File uploaded");
           seterr1status(true);
           setLoading(false);
-          //setbuttonstate(true)
         }
        else{
          callDataduplicates()
           .then((resp) => {
-            // console.log("RES: ", resp["JobID"])
-            // console.log("RES MSG: ", resp["message"])
             setjobid(resp["JobID"]);
             setmsg(resp["message"]);
             setLoading(false);
@@ -117,8 +99,6 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
     }
 
     if(choice === "sample"){
-
-      console.log("TESTING (API End): Sample file chosen: ", filename);
       
        if(filename === "Select Dataset" || filename === ""){
           setdataseterr1(true);
@@ -131,8 +111,6 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
            setbuttonstate(false)
            callDataduplicates()
               .then((resp) => {
-                // console.log("RES: ", resp["JobID"])
-                // console.log("RES MSG: ", resp["message"])
                 setjobid(resp["JobID"]);
                 setmsg(resp["message"]);
                 setLoading(false);
@@ -151,22 +129,16 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
 
     setLoading(true);
     if(choice === "upload"){
-
-       console.log("TESTING (API End): Upload file chosen: ", ufilename);       
        
        if(ufilename === ""){
           console.log('No file uploaded');
-          //alert("No File uploaded");
           seterr1status(true);
           setLoading(false);
-          //setbuttonstate(true)
         }
        
        else{
           callDatahomogeneity()
             .then((resp) => {
-              // console.log("RES: ", resp["JobID"])
-              // console.log("RES MSG: ", resp["message"])
               setjobid(resp["JobID"]);
               setmsg(resp["message"]);
               setLoading(false);
@@ -180,8 +152,6 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
     }
 
     if(choice === "sample"){
-
-      console.log("TESTING (API End): Sample file chosen: ", filename);
       
         if(filename === "Select Dataset" || filename === ""){
           setdataseterr1(true);
@@ -194,8 +164,6 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
            setbuttonstate(false);
            callDatahomogeneity()
             .then((resp) => {
-              // console.log("RES: ", resp["JobID"])
-              // console.log("RES MSG: ", resp["message"])
               setjobid(resp["JobID"]);
               setmsg(resp["message"]);
               setLoading(false);
@@ -212,23 +180,17 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
 
     setLoading(true);
     if(choice === "upload"){
-
-       console.log("TESTING (API End): Upload file chosen: ", ufilename);
        
        if(ufilename === ""){
           console.log('No file uploaded');
-          //alert("No File uploaded");
           seterr1status(true);
           setLoading(false);
-          //setbuttonstate(true)
         }
       else{
         setdataseterr1(false);
         setbuttonstate(false);
          callDataprofile()
         .then((resp) => {
-          // console.log("RES: ", resp["JobID"])
-          // console.log("RES MSG: ", resp["message"])
           setjobid(resp["JobID"]);
           setmsg(resp["message"]);
           setLoading(false);
@@ -244,8 +206,6 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
     }
 
     if(choice === "sample"){
-
-      console.log("TESTING (API End): Sample file chosen: ", filename);
       
         if(filename === "Select Dataset" || filename === ""){
           setdataseterr1(true);
@@ -259,8 +219,6 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
           setbuttonstate(false);
           callDataprofile()
         .then((resp) => {
-          // console.log("RES: ", resp["JobID"])
-          // console.log("RES MSG: ", resp["message"])
           setjobid(resp["JobID"]);
           setmsg(resp["message"]);
           setLoading(false);
@@ -281,7 +239,6 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
 
     if(choice === "upload"){
       let response = await fetch('/datacompleteness?fpath=' + ufilepath + '&fname=' + ufilename);
-      console.log("upload req api:  ", response["url"]);
       let body = await response.json();
     
       if (response.status !== 200) {
@@ -294,7 +251,6 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
     if(choice === "sample"){
 
       let response = await fetch('/datacompleteness?fpath=' + filepath + '&fname=' + filename);
-      console.log("sample req api:  ", response["url"]);
       let body = await response.json();
     
       if (response.status !== 200) {
@@ -311,7 +267,6 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
 
     if(choice === "upload"){
       let response = await fetch('/dataduplicates?fpath=' + ufilepath + '&fname=' + ufilename);
-      console.log("upload req api:  ", response["url"]);
       let body = await response.json();
     
       if (response.status !== 200) {
@@ -324,7 +279,6 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
     if(choice === "sample"){
 
       let response = await fetch('/dataduplicates?fpath=' + filepath + '&fname=' + filename);
-      console.log("sample req api:  ", response["url"]);
       let body = await response.json();
     
       if (response.status !== 200) {
@@ -340,7 +294,6 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
   const callDatahomogeneity = async () => {
     if(choice === "upload"){
       let response = await fetch('/datahomogeneity?fpath=' + ufilepath + '&fname=' + ufilename);
-      console.log("upload req api:  ", response["url"]);
       let body = await response.json();
     
       if (response.status !== 200) {
@@ -353,11 +306,7 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
     if(choice === "sample"){
 
       let response = await fetch('/datahomogeneity?fpath=' + filepath + '&fname=' + filename);
-      console.log("sample req api:  ", response["url"]);
       let body = await response.json();
-
-     console.log("BODY: ", body);
-
 
       if (response.status !== 200) {
         throw Error(body.message)
@@ -373,7 +322,6 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
   const callDataprofile = async () => {
     if(choice === "upload"){
       let response = await fetch('/dataprofile?fpath=' + ufilepath + '&fname=' + ufilename);
-      console.log("upload req api:  ", response["url"]);
       let body = await response.json();
     
       if (response.status !== 200) {
@@ -386,8 +334,6 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
     if(choice === "sample"){
 
       let response = await fetch('/dataprofile?fpath=' + filepath + '&fname=' + filename);
-      console.log("sample req api:  ", response["url"]);
-
       let body = await response.json();
     
       if (response.status !== 200) {
@@ -434,13 +380,11 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
            <Button className = "parameterbutton"  kind="tertiary" type="submit" onClick={onDDClickHandler} > Data Duplicates </Button>
            <Button className = "parameterbutton"  kind="tertiary" type="submit" onClick={onDHClickHandler} > Data Homogeneity </Button>
            <Button className = "parameterbutton"  kind="tertiary" type="submit" onClick={onDPClickHandler} > Data Profile </Button>
-          {/* <Button className = "parameterbutton" disabled = {buttonstate} kind="tertiary" type="submit" onClick={onDPClickHandler} > Data Profile </Button> */}
 
          </div>
 
   {err1status && 
     <ToastNotification
-        // caption="00:00:00 AM"
         iconDescription="Close notification"
         subtitle={<span>No File uploaded</span>}
         timeout={3000}
@@ -488,9 +432,3 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
 }
 
 export default Datasetquality;
-
-      // if((filename === "Select Dataset" || " ") || (filepath === "") || (LabelInput === "Select Column" || ""))
-      // {
-      //     setdataseterr(true);
-      //     setbuttonstate(true)
-      // }

@@ -140,7 +140,7 @@
     position: relative;
     background-color: white;
     min-width: 50%;
-    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url("https://github.com/bodarajeshkumar/Developer-Playground/blob/master/didact/images/git.svg?raw=true");
+    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/github.svg");
     background-position: -50% 60px;
     background-repeat: no-repeat;
     padding-top: 20px;
@@ -181,7 +181,7 @@
   }
   .header
   {
-    background-image: url('https://github.com/IBM/Developer-Playground/blob/development/didact/images/data-quality.png?raw=true');
+    background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/anomaly.jpeg');
     width: 100%;
     height: auto;
     min-height: 300px;
@@ -197,10 +197,10 @@
   {
     float: right;
     width: 45%;
-    background-color:#2a67f5;
+    background-color:#0072C3;
     min-height: 300px;
     padding: 20px;
-    padding-top: 7.5%;
+    padding-top: 2.5%;
     font-size: 14px;
   }
   .header .right-content h4
@@ -245,6 +245,10 @@
     margin-bottom: 0px;
     font-size: 20px;
     color: white;
+  }
+  .no-hover:hover
+  {
+    background-color: #0062FF !important;
   }
   @media only screen and (max-width: 1000px) {
     .header
@@ -305,6 +309,16 @@
   <div class="apptitle"> 
     Anomaly Detection API Sample Application
   </div>
+  <div class="header">
+      <div class="right-content">
+         <div>
+          Anomaly detection is a process in machine learning that identifies data points, events, and/or observations that deviate from a dataset’s normal behavior. To detect anomalies from unlabeled time series data is a pain point that is critical to address for industrial applications.
+        </div>
+        <div>
+          This anomaly detection API service can help users detect anomalies from the entire time series or predict anomaly status of the last data input. Currently the service supports both univariate and multivariate time series.
+        </div>
+     </div>
+   </div>
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
@@ -393,6 +407,7 @@
                   </svg>
                </span>
             </a>
+            <a class="image-link no-hover"></a>
          </div>
       </div>
    </div>

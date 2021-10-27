@@ -2,10 +2,8 @@ require('dotenv/config');
 var request = require('request');
 var fs = require('fs');
 
-// var env_var = JSON.stringify(process.env.PLAYGROUND_ENVIRONMENT);
-// env_var = env_var.substring(1,8);
-
-var env_var = "product"
+var env_var = JSON.stringify(process.env.PLAYGROUND_ENVIRONMENT);
+env_var = env_var.substring(1,8);
 
 const clientid = process.env.CLIENT_ID;
 const clientsecret = process.env.CLIENT_SECRET;

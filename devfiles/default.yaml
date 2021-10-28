@@ -14,6 +14,9 @@ components:
     alias: nodejs
   - id: redhat/vscode-didact/latest
     type: chePlugin
+    preferences:
+      didact.disableNotifications: true
+      didact.openDefaultTutorialAtStartup: false
   - id: ibm-playground/api-hub/latest
     type: chePlugin
   - id: eclipse/che-theia/latest

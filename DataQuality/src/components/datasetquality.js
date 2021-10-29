@@ -368,7 +368,7 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
     jobid: jobid,
     message: msg,
     copyfunc:  <CopyToClipboard text={jobid}>
-      <CodeSnippet type="inline" feedback="Copied to clipboard" ><CopyFile24 /></CodeSnippet>
+      <CodeSnippet type="inline" feedback="Copied" ><CopyFile24 /></CodeSnippet>
     </CopyToClipboard> 
   }
 ];

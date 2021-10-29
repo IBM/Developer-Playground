@@ -414,7 +414,7 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
     jobid: jobid,
     message: msg,
     copyfunc:  <CopyToClipboard text={jobid}>
-      <CodeSnippet type="inline" feedback="Copied to clipboard" ><CopyFile24 Style = "width: 24px ; height: 24px" /></CodeSnippet>
+      <CodeSnippet type="inline" feedback="Copied" ><CopyFile24 Style = "width: 24px ; height: 24px" /></CodeSnippet>
     </CopyToClipboard> 
 
   }

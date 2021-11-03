@@ -1,8 +1,3 @@
-// .parameterbutton {
-//   height: 48px;
-//   width: 158px;
-// }
-
 .bx--tab-content {
   padding-top: 54px;
   padding-left: 2px;
@@ -33,6 +28,30 @@ header.bx--header {
 h2 {
   font-family: "IBM Plex Sans", sans-serif;
   font-size: 24px;
+}
+
+.bx--snippet--inline .bx--copy-btn__feedback {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 6px;
+    z-index: 1;
+    width: max-content;
+    min-width: 1.5rem;
+    max-width: 13rem;
+    height: auto;
+    background-color: rgb(57, 57, 57);
+    color: rgb(255, 255, 255);
+    text-align: left;
+    transform: translateX(-50%);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.28572;
+    letter-spacing: 0.16px;
+    display: none;
+    box-sizing: content-box;
+    clip: auto;
+    padding: 0.1875rem 1rem;
+    border-radius: 0.125rem;
+    overflow: visible;
+    margin: auto;
 }
 
 div.bx--toast-notification.bx--toast-notification--error {

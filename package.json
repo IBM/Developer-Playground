@@ -22,8 +22,10 @@
     "web-vitals": "^1.0.1"
   },
   "dependencies": {
+    "@carbon/charts-react": "^0.51.0",
     "cors": "^2.8.5",
     "csvtojson": "^2.0.10",
+    "d3": "^7.1.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "multer": "^1.4.3",

@@ -1,5 +1,6 @@
 const promiseRequest = require("./promiseRequest");
 const storeResult = require("./storeResult")
+const storeResultCarbon = require("./storeResultCarbon");
 
 const getStatus = async (jobId) => {
     return new Promise(async function (resolve, reject) {
@@ -22,7 +23,7 @@ const getStatus = async (jobId) => {
             if (status === "done" && result.summary.error)
                 reject(result.summary.error)
             if (status === "done")
-                storeResult(jobId, result)
+                storeResultCarbon(jobId, result)
             console.log(status, result)
             resolve([status, result])
         } catch (err) {

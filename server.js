@@ -3,6 +3,7 @@ const cors = require('cors')
 const csvtojson = require('csvtojson');
 const multer = require("multer");
 const anomalyDetect = require('./anomaly/anomalyDetect');
+const getDataCarbonCharts = require('./anomaly/getDataCarbonCharts');
 const fs = require('fs');
 const bodyParser = require('body-parser');
 const getStatus = require('./anomaly/getStatus');
@@ -30,12 +31,29 @@ app.get("/availabledatasets", async (req, res) => {
   }
 })
 
-app.get("/sampledata?:dataset", async (req, res) => {
+app.get("/data/:dataset/:time", async (req, res) => {
   try {
-    console.log(req.query.dataset)
-    let jsonArray = JSON.parse(fs.readFileSync(`./sample-datasets/${req.query.dataset}`))
-    res.status(200).json(jsonArray)
+    let jsonArray
+    if(req.params.dataset.startsWith("sample"))
+      jsonArray = JSON.parse(fs.readFileSync(`./sample-datasets/${req.params.dataset}`))
+    else
+      jsonArray = JSON.parse(fs.readFileSync(`./data/customfile.json`))
+    let data = getDataCarbonCharts(jsonArray,req.params.time)
+    res.status(200).json(data)
   } catch {
+    res.status(404).json({ "msg": "Unable to fetch data at this moment" })
+  }
+})
+
+app.get(`/columns/:dataset`, async (req, res) => {
+  try {
+    let jsonArray
+    if(req.params.dataset.startsWith("sample"))
+      jsonArray = JSON.parse(fs.readFileSync(`./sample-datasets/${req.params.dataset}`))
+    else
+      jsonArray = JSON.parse(fs.readFileSync(`./data/customfile.json`))
+    res.status(200).json(Object.keys(jsonArray[0]))
+  } catch{
     res.status(404).json({ "msg": "Unable to fetch data at this moment" })
   }
 })
@@ -45,7 +63,7 @@ app.post("/detect", async (req, res) => {
     const jsonArray = await anomalyDetect(req.body)
     res.status(200).json(jsonArray)
   } catch (e) {
-    console.log(e)
+    //console.log(e)
     res.status(404).json({ "msg": e })
   }
 })
@@ -106,7 +124,7 @@ app.post("/upload", async (req, res) => {
       } else {
         jsonArray = JSON.parse(fs.readFileSync(`${filepath}.json`))
       }
-      res.status(200).json(jsonArray);
+      res.status(200).json(Object.keys(jsonArray[0]));
     });
   } catch {
     res.status(404).json({ "msg": "File Upload Failed!" })

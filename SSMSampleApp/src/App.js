@@ -2,14 +2,7 @@ import React from 'react'
 import './App.css';
 import SSMMain from './components/ssmmain.js';
 
-
-// import { Tabs, Tab, Loading } from 'carbon-components-react';
-
 import {Header,HeaderName} from "carbon-components-react/lib/components/UIShell";
-
-
-//import { HeaderContainer, Modal } from 'carbon-components-react';
-//import {Header} from 'carbon-components-react';
 
 function App() {
   

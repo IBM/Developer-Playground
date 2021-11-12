@@ -1,0 +1,247 @@
+<div class="wrapper">
+	<div id="page_header" class="page-header header-filter clear-filter" data-parallax="true" >
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 ml-auto mr-auto">
+					<div class="brand text-center">
+						<h1>Application Configurations</h1>
+						<!-- <h2>IBM Watson Conversation Demo</h2> -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="main main-raised">
+
+					<div class="section section-comments">
+							<div class="container">
+								<form class="form"  method="" action="" *ngIf="appConfig">
+									<div class="row">
+										<div class="col-lg-10 ml-auto mr-auto text-center">
+												<ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+														<li class="nav-item">
+																<a class="nav-link active" href="#assistantConf" role="tab" data-toggle="tab">
+																		<i class="material-icons">chat</i> Assistant
+																</a>
+														</li>
+														<li class="nav-item">
+																<a class="nav-link" href="#discoveryConf" role="tab" data-toggle="tab">
+																		<i class="material-icons">search</i> Discovery
+																</a>
+														</li>
+														<li class="nav-item">
+																<a class="nav-link" href="#STTConf" role="tab" data-toggle="tab">
+																		<i class="material-icons">record_voice_over</i> Speech
+																</a>
+														</li>
+												</ul>
+												<div class="tab-content tab-space">
+														<div class="tab-pane active" id="assistantConf">
+
+                                  <h3 class="text-center">
+                                      <small>- Watson Assistant Details -</small>
+                                  </h3>
+                                  <div class="space-20"></div>
+
+                                  <div class="row" >
+                                    <div class="col-lg-10 ml-auto mr-auto text-center">
+                                      <div class="row" >
+                                        <div class="col-sm-4">
+                                          <div class="form-group bmd-form-group">
+                                            <h5>API Key</h5>
+                                          </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                          <div class="form-group bmd-form-group">
+                                            <input type="text" class="form-control"	#assistantAPIKey="ngModel" name="assistantAPIKey" [(ngModel)]="appConfig.output.WATSON_ASSISTANT.API_KEY" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="space-20"></div>
+
+                                  <div class="row" *ngIf="!showAddEditAssistant">
+                                    <div class="col-md-12">
+                                        <h4>Assistants in use</h4>
+                                        <!-- <button type="button" (click)="addAssistant()" rel="tooltip" class="btn btn-success btn-just-icon btn-sm">
+                                          <i class="material-icons">edit</i>
+                                        </button> -->
+                                    </div>
+
+                                    <div class="table-responsive">
+                                      <table class="table table-striped">
+                                          <thead>
+                                            <tr>
+                                                <th class="text-center">AssistantId</th>
+                                                <th>Name</th>
+                                                <th>IsDefault</th>
+                                                <th class="text-right">Actions</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr *ngFor="let ASSISTANT of appConfig.output.WATSON_ASSISTANT.ASSISTANTS">
+                                              <td class="text-center">{{ASSISTANT.id}}</td>
+                                              <td>{{ASSISTANT.name}}</td>
+																							<td class="text-center">
+																									<div class="form-check">
+																											<label class="form-check-label">
+																													<input class="form-check-input" type="checkbox" [disabled]="ASSISTANT.default" [checked]="ASSISTANT.default" (change)="makeAssistantDefaut(ASSISTANT)">
+																													<span class="form-check-sign">
+																															<span class="check"></span>
+																													</span>
+																											</label>
+																									</div>
+                                              </td>
+                                              <td class="td-actions text-right">
+                                                <button type="button" (click)="editAssistant(ASSISTANT)" rel="tooltip" class="btn btn-success btn-just-icon btn-sm">
+                                                    <i class="material-icons">edit</i>
+                                                </button>
+                                                <button type="button" (click)="removeAssistant(ASSISTANT)" rel="tooltip" class="btn btn-danger btn-just-icon btn-sm">
+                                                    <i class="material-icons">close</i>
+                                                </button>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4" class="text-right">
+                                                    <button type="button" class="btn btn-info btn-round" (click)="addAssistant()">Add Assistant</button>
+                                                </td>
+                                            </tr>
+                                          </tbody>
+                                      </table>
+                                    </div>
+
+                                  </div>
+
+                                  <div class="row" *ngIf="showAddEditAssistant">
+                                    <div class="col-md-12">
+                                      <div class="row">
+                                        <div class="col-md-10">
+                                            <h4 *ngIf="selectedAssistant.id">Edit Assistant</h4>
+                                            <h4 *ngIf="!selectedAssistant.id">Add Assistant</h4>
+                                            <div class="form-group bmd-form-group">
+                                              <label class="bmd-label-static">Assistant Id</label>
+                                              <input type="text" class="form-control"	#assistantId="ngModel" name="assistantId" [(ngModel)]="selectedAssistant.id" />
+                                            </div>
+                                            <div class="form-group bmd-form-group">
+                                              <label class="bmd-label-static">Name</label>
+                                              <input type="text" class="form-control"	#assistantName="ngModel" name="assistantName" [(ngModel)]="selectedAssistant.name" />
+                                            </div>
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-md-10 text-right">
+                                          <button type="button" class="btn btn-info btn-round" (click)="saveAssistantDetails()">Save</button>
+                                          <button type="button" class="btn btn-info btn-round" (click)="cancelSaveAssistant()">Cancel</button>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                  </div>
+
+
+														</div>
+
+														<div class="tab-pane" id="discoveryConf">
+															<h3 class="text-center">
+																	<small>- Watson Discovery Details -</small>
+															</h3>
+															<div class="space-20"></div>
+															<div class="row">
+																<div class="col-sm-6 ml-auto mr-auto text-center">
+																	<div class="form-group label-floating">
+																			<label class="control-label">Enable Discovery &nbsp;&nbsp;&nbsp;</label>
+																			<div class="form-check form-check-radio form-check-inline">
+																				<label class="form-check-label">
+																						<input class="form-check-input" type="radio" #ENABLE_DISCOVERY="ngModel" name="ENABLE_DISCOVERY" id="true" [value]="true" [(ngModel)]="appConfig.output.WATSON_DISCOVERY.ENABLE" > True &nbsp;&nbsp;&nbsp;&nbsp;
+																						<span class="circle">
+																								<span class="check"></span>
+																						</span>
+																				</label>
+
+																				<label class="form-check-label">
+																						<input class="form-check-input" type="radio" #ENABLE_DISCOVERY="ngModel" name="ENABLE_DISCOVERY" id="false" [value]="false" [(ngModel)]="appConfig.output.WATSON_DISCOVERY.ENABLE" > False &nbsp;&nbsp;&nbsp;&nbsp;
+																						<span class="circle">
+																								<span class="check"></span>
+																						</span>
+																				</label>
+																			</div>
+																	</div>
+																</div>
+															</div>
+
+															<div *ngIf="appConfig.output.WATSON_DISCOVERY.ENABLE">
+																	<div class="space-20"></div>
+																	<div class="row">
+																		<div class="col-sm-4">
+																			 <div class="form-group bmd-form-group">
+																				 <label class="bmd-label-static">Discovery API Key</label>
+																				 <input type="text" class="form-control"	#discoveryAPIKey="ngModel" name="discoveryAPIKey" [(ngModel)]="appConfig.output.WATSON_DISCOVERY.API_KEY" />
+																			 </div>
+																		</div>
+																	</div>
+
+																	<div class="row" >
+																		<div class="col-sm-4">
+																			 <div class="form-group bmd-form-group">
+																				 <label class="bmd-label-static">Discovery EnvironmentId</label>
+																				 <input type="text" class="form-control"	#discoveryEnvId="ngModel" name="discoveryEnvId" [(ngModel)]="appConfig.output.WATSON_DISCOVERY.ENVIRONMENT_ID" />
+																			 </div>
+																		</div>
+																		<div class="col-sm-4">
+																			 <div class="form-group bmd-form-group">
+																				 <label class="bmd-label-static">Discovery ConfigurationId</label>
+																				 <input type="text" class="form-control"	#discoveryConfId="ngModel" name="discoveryConfId" [(ngModel)]="appConfig.output.WATSON_DISCOVERY.CONFIGURATION_ID" />
+																			 </div>
+																		</div>
+																		<div class="col-sm-4">
+																			 <div class="form-group bmd-form-group">
+																				 <label class="bmd-label-static">Discovery CollectionId</label>
+																				 <input type="text" class="form-control"	#discoveryCollectionId="ngModel" name="discoveryCollectionId" [(ngModel)]="appConfig.output.WATSON_DISCOVERY.COLLECTION_ID" />
+																			 </div>
+																		</div>
+																	</div>
+																</div>
+														</div>
+
+														<div class="tab-pane" id="STTConf">
+															<h3 class="text-center">
+																	<small>- Watson Speech To Text -</small>
+															</h3>
+															<div class="space-20"></div>
+
+															<div class="row" >
+																<div class="col-sm-4">
+																	 <div class="form-group bmd-form-group">
+																		 <label class="bmd-label-static">STT API Key</label>
+																		 <input type="text" class="form-control"	#sttAPIKey="ngModel" name="sttAPIKey" [(ngModel)]="appConfig.output.WATSON_STT_API_KEY" />
+																	 </div>
+																</div>
+															</div>
+														</div>
+												</div>
+										</div>
+
+									</div>
+
+									<div class="space-20"></div>
+
+										<div class="row">
+											<div class="col-sm-12 ml-auto mr-auto text-center">
+													<button type="submit" class="btn btn-primary btn-round" *ngIf="!appConfig.id" (click)="saveAppConfig();" >Submit</button>
+													<button type="submit" class="btn btn-primary btn-round" *ngIf="appConfig.id" (click)="saveAppConfig();" >Update</button>
+													<!-- <button type="button" class="btn btn-primary btn-round" (click)="formReset();">Reset</button> -->
+													<!-- <button type="button" class="btn btn-primary btn-round" (click)="cancelRequest();">Cancel</button> -->
+											</div>
+										</div>
+
+								</form>
+
+					    </div>
+		     </div>
+
+	</div>
+</div>

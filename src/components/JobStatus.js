@@ -14,7 +14,7 @@ import {
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { CopyFile24, Renew24 } from '@carbon/icons-react';
 import axios from 'axios'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 
 const JobStatus = ({jobId}) => {
@@ -26,7 +26,6 @@ const JobStatus = ({jobId}) => {
         subtitle: "",
         title: ""
     })
-    useEffect(() => setStatus("submitted"), [jobId]);
     const updateJobStatus = async () => {
         try {
             setLoading(true)

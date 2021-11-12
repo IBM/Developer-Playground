@@ -95,10 +95,7 @@ const anomalyDetect = async ({
             fs.writeFileSync(`./data/${jobId}.json`, JSON.stringify(getDataCarbonCharts(fileData,time_column)))
             resolve({ jobId, status: "submitted" })
         } catch (err) {
-            if(err.body)
-                reject(JSON.parse(err.body).moreInformation)
-            else
-                reject("Something went wrong")
+            reject(JSON.parse(err.body).moreInformation)
         }
     })
 }

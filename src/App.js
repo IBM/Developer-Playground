@@ -1,4 +1,4 @@
-import { MultiSelect, RadioButton, RadioButtonGroup, FormGroup, Dropdown,TextInput, Button, Loading, ToastNotification} from 'carbon-components-react';
+import { MultiSelect, RadioButton, RadioButtonGroup, FormGroup, Dropdown, TextInput, Button, Loading, ToastNotification } from 'carbon-components-react';
 import { Header, HeaderName } from "carbon-components-react/lib/components/UIShell";
 import { useState } from 'react'
 import axios from 'axios'
@@ -7,6 +7,7 @@ import FileUpload from './components/FileUpload';
 import JobStatus from './components/JobStatus'
 import FetchResults from './components/FetchResults';
 import CarbonChart from './components/CarbonChart'
+
 
 
 const anaomalyEstimator = {
@@ -276,9 +277,7 @@ function App() {
   }
 
   const getChartResults = (data) => {
-    setData([])
     setData(data)
-    setChart(false)
     setChart(true)
     setForm(false)
   }
@@ -342,8 +341,7 @@ function App() {
               id="sampledt"
               onClick={getSample}
             />
-          </RadioButtonGroup>
-      </div>
+          </RadioButtonGroup></div>
         {showFileUploader ?
           <FileUpload accept=".json, .csv" sendDataToParent={sendDataToParent} />
           : null}

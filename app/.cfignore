@@ -1,8 +1,0 @@
-node_modules
-client/node_modules
-dist
-client/dist
-data/botkit
-training/conversation
-training/discovery
-*.history

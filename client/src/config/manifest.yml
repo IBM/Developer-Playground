@@ -1,6 +1,0 @@
----
-applications:
-- name:      my-watson-assistant
-  host:      my-watson-assistant
-  memory:    128M
-  buildpack: staticfile_buildpack

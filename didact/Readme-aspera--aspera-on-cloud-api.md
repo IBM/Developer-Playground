@@ -140,7 +140,7 @@
     position: relative;
     background-color: white;
     min-width: 50%;
-    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url("https://github.com/bodarajeshkumar/Developer-Playground/blob/master/didact/images/git.svg?raw=true");
+    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/github.svg");
     background-position: -50% 60px;
     background-repeat: no-repeat;
     padding-top: 20px;
@@ -284,7 +284,7 @@
       <div class="container right">
          <div class="content">
             <p>You've successfully cloned the code, so click `Build the application` to start the build process.</p>
-            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=AsperaonCloud%7Cbuild-application%7CAsperaonCloud|cd%20${CHE_PROJECTS_ROOT}/aspera-on-cloud/AoCSampleApp%20%26%26%20npm%20install">Build the Application</a>
+            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=AsperaonCloud%7Cbuild-application%7CAsperaonCloud|cd%20${CHE_PROJECTS_ROOT}/aspera-on-cloud/AoCSampleApp%20%26%26%20npm%20install%20--production">Build the Application</a>
             <p class="afterbutton"> To obtain credentials and configure the application, complete the following steps</p>
          </div>
       </div>
@@ -342,7 +342,7 @@
       <div class="container right">
          <div class="content">
             <p>You're all set to get started! </p>
-            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=AsperaonCloud%7Claunch-application%7CAsperaonCloud|cd%20${CHE_PROJECTS_ROOT}/aspera-on-cloud/AoCSampleApp%20%26%26%20npm%20start">Launch the Application</a> 
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=AsperaonCloud%7Claunch-application%7CAsperaonCloud|cd%20${CHE_PROJECTS_ROOT}/aspera-on-cloud/AoCSampleApp%20%26%26%20node%20token.js%20%26%26%20node%20server.js">Launch the Application</a> 
          </div>
       </div>
    </div>
@@ -351,9 +351,9 @@
          <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
          <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=AsperaonCloud">Stop Application</a>
          <p class="afterbutton">The stage is yours!</p>
-         <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/aspera-on-cloud/AoCSampleApp/services/service.js">Explore the Code</a>
+         <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/aspera-on-cloud/AoCSampleApp/src/App.js">Explore the Code</a>
          <p class="afterbutton ">To view the changes you've made, re-launch the application</p>
-         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=AsperaonCloud%7Crelaunch-application%7CAsperaonCloud|cd%20${CHE_PROJECTS_ROOT}/aspera-on-cloud/AoCSampleApp%20%26%26%20npm%20start">Re-Launch the Application</a> 
+         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=AsperaonCloud%7Crelaunch-application%7CAsperaonCloud|cd%20${CHE_PROJECTS_ROOT}/aspera-on-cloud/AoCSampleApp%20%26%26%20npm%20install%20--only=dev%20%26%26%20export%20REACT_APP_mode=dev%20%26%26%20npm%20start">Re-Launch the Application</a> 
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more? <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/aspera">Github Repository</a></span> </p>

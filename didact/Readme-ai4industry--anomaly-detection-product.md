@@ -1,4 +1,3 @@
-
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -118,7 +117,7 @@
   .footer {
     display: flex;
     background-color: #343A3E;
-    margin: 800px 0px 0px 20px;
+    margin: 1050px 0px 0px 20px;
     padding: 0px;
     max-width: 1200px;
   }
@@ -152,8 +151,6 @@
     right: 0;
     bottom: 0%;
     background-color: #0062FF;
-    max-width: 300px;
-    min-width: 100px;
     width: 300px;
     padding: 0px;
     padding-bottom: 20px;
@@ -162,7 +159,7 @@
   {
     float: right;
     font-size: 32px;
-    padding-right: 10px;
+    padding-right: 20px;
   }
   .image-btn .image-link:hover
   {   
@@ -184,9 +181,9 @@
   }
   .header
   {
-    background-image: url('https://github.com/IBM/Developer-Playground/blob/master/didact/images/banner-image.jpg?raw=true');
+    background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/anomaly.jpeg');
     width: 100%;
-    height: fixed;
+    height: auto;
     min-height: 300px;
     display: inline-block;
     margin-top: 20px;
@@ -195,15 +192,15 @@
     margin-right: 30px;
     background-size: contain;
     max-width: 1200px;
-    background-size: cover;
   }
   .header .right-content
   {
     float: right;
     width: 45%;
-    background-color:#2a67f5;
-    min-height:400px;
-    padding:20px;
+    background-color:#0072C3;
+    min-height: 300px;
+    padding: 20px;
+    padding-top: 2.5%;
     font-size: 14px;
   }
   .header .right-content h4
@@ -217,7 +214,7 @@
   {
     background: none;
     color: white;
-    padding-left: 25px;
+    padding-left: 15px;
     padding-right: 25px;
     font-size: 14px;
     margin-bottom: 10px;
@@ -231,7 +228,7 @@
   }
   .container a
   {
-    color: #78A9FF;
+     color: #78A9FF;
     background-color: transparent;
     text-decoration: none;
   }
@@ -246,32 +243,63 @@
     margin-left: 25px;
     margin-top: 20px;
     margin-bottom: 0px;
-    font-size: 25px;
+    font-size: 20px;
     color: white;
+  }
+  .no-hover:hover
+  {
+    background-color: #0062FF !important;
+  }
+  @media only screen and (max-width: 1000px) {
+    .header
+    {
+      background-size: cover;
+    }
   }
   @media only screen and (max-width: 800px) {
     .footer {
-      margin: 950px 0px 0px 20px;
+      margin: 1050px 0px 0px 20px;
+    }
+    .header
+    {
+      background-size: cover;
     }
   }
   @media only screen and (max-width: 700px) {
     .footer {
-      margin: 1050px 0px 0px 20px;
+      margin: 1200px 0px 0px 20px;
+    }
+    .header
+    {
+      background-size: cover;
+      background-position: 0px 0px;
     }
   }
   @media only screen and (max-width: 600px) {
     .footer {
-      margin: 1050px 0px 0px 20px;
+      margin: 1350px 0px 0px 20px;
+    }
+    .header
+    {
+      background-size: cover;
     }
   }
   @media only screen and (max-width: 500px) {
     .footer {
-      margin: 1100px 0px 0px 20px;
+      margin: 1350px 0px 0px 20px;
+    }
+    .header
+    {
+      background-size: cover;
     }
   }
   @media only screen and (max-width: 400px) {
     .footer {
-      margin: 1200px 0px 0px 20px;
+      margin: 1450px 0px 0px 20px;
+    }
+    .header
+    {
+      background-size: cover;
     }
   }
 }
@@ -279,42 +307,30 @@
 </head>
 <body>
   <div class="apptitle"> 
-    HERE Technologies Sample Application
+    Anomaly Detection API Sample Application
   </div>
-   <div class="header">
+  <div class="header">
       <div class="right-content">
          <div>
-            Here Maps is one-stop solution to most of the problems in this domain. HERE Technologies provide comprehensive mapping content, an integrated suite of solutions, services and development tools and a marketplace for data to solve your complex location-based problems.
-         </div>
-         <div>
-            Showcasing a sample application using `Here Public Transit API` by Here Maps:
-         </div>
-         <div>
-            Are you at the crossroads trying to decide 
-         </div>
-         <ul>
-            <li>Walking directions to stops.</li>
-            <li>Pedestrian access points.</li>
-            <li>Station locations.</li>
-            <li>Transfer locations.</li>
-         </ul>
-         <div>
-            Don't worry, you don't have to code to figure it out. It's just a few clicks away
-         </div>
-      </div>
+          Anomaly detection is a process in machine learning that identifies data points, events, and/or observations that deviate from a dataset’s normal behavior. To detect anomalies from unlabeled time series data is a pain point that is critical to address for industrial applications.
+        </div>
+        <div>
+          This anomaly detection API service can help users detect anomalies from the entire time series or predict anomaly status of the last data input. Currently the service supports both univariate and multivariate time series.
+        </div>
+     </div>
    </div>
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
             <p>To begin, you will need the application's source code. Click `Get the code` to clone the code to your playground session.</p>
-            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Cget-code%7CHEREPublicTransit|git%20clone%20-b%20HERE%20--sparse%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/here-public-transit/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/here-public-transit/%20%26%26%20git%20sparse-checkout%20init%20--cone%20%26%26%20git%20sparse-checkout%20add%20HEREPublicTransit">Get the Code</a>
+            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=anomaly$$git%20clone%20-b%20anomaly%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/anomaly">Get the Code</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
             <p>You've successfully cloned the code, so click `Build the application` to start the build process.
             </p>
-            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Cbuild-application%7CHEREPublicTransit%7Ccd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20config%20set%20@here:registry%20https://repo.platform.here.com/artifactory/api/npm/maps-api-for-javascript/%20%26%26%20npm%20install%20--production">Build Application</a>
+            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=anomaly$$cd%20${CHE_PROJECTS_ROOT}/anomaly%20%26%26%20npm%20install%20--production">Build the Application</a>
             <p class="afterbutton">
                To obtain credentials and configure the application, complete the following steps
             </p>
@@ -322,13 +338,25 @@
       </div>
       <div class="container right">
          <div class="content">
-            <p>Subscribe to the <a title= "HEREPublictransit" href="https://developer.ibm.com/apis/catalog/heremaps--here-public-transit-api/Introduction">HERE Public Transit API</a>
+            <p>Subscribe to the <a title= "Anomaly Detection" href="https://developer.ibm.com/apis/catalog/ai4industry--anomaly-detection-product/Introduction">Anomaly Detection API</a>
             </p>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Sign up for HERE Developer and follow the prompts to obtain Client ID, Client Secret and API Key
+            <p>Now check out <a title= "My Subscriptions" href="https://developer.ibm.com/profile/myapis">API Subscriptions</a>
+            </p>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>You should see a subscription for Anomaly Detection API, select that and proceed
+            </p>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>You can obtain your Client ID/Secret from here. If you don't see any, you can "Generate API Key"
             </p>
          </div>
       </div>
@@ -336,31 +364,32 @@
          <div class="content">
             <p>Let's get the credentials by configuring the application</p>
             </p>
-            <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit/.env">Configure Application</a>
+            <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=anomaly%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/anomaly/.env">Configure the Application</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
             <p>You're all set to get started! </p>
-            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Claunch-application%7CHEREPublicTransit|cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20node%20token.js%20%26%26%20node%20server.js">Launch Application</a>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=anomaly$$cd%20${CHE_PROJECTS_ROOT}/anomaly/%20%26%26%20npm%20run%20server">Launch the Application</a>
          </div>
       </div>
    </div>
    <div class="footer">
-      <div class="content" style="padding:30px;padding-left:60px;padding-bottom: 0px;">
+      <div class="content" style="padding:30px;padding-left:60px;padding-bottom:0px;">
          <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
-         <a class="button is-dark is-medium afterbutton" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=HEREPublicTransit" >Stop Application</a>
+         <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=anomaly">Stop Application</a>
          <p class="afterbutton">The stage is yours!</p>
-         <a class="button is-dark is-medium afterbutton" title="Explore the Code" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit/src/App.js">Explore Code</a>
+         <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=anomal%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/anomaly/src/App.js">Explore the Code</a>
          <p class="afterbutton ">To view the changes you've made, re-launch the application</p>
-         <a class="button is-dark is-medium afterbutton" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Crelaunch-application%7CHEREPublicTransit|cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20install%20%26%26%20export%20REACT_APP_mode=dev%20%26%26%20npm%20start">Re-Launch Application</a>
+         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=anomaly$$cd%20${CHE_PROJECTS_ROOT}/anomaly%20%26%26%20npm%20install%20--only=dev%20%26%26%20rm%20-rf%20build%20%26%26%20npm%20run%20build%20%26%26%20npm%20run%20server">Re-Launch the Application</a>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
-            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/HERE/HEREPublicTransit">Github Repository</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/anomaly" target="_blank">Github Repository</a></span>
          </p>
          <div class="image-btn">
-            <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cview-product-details%7Chttps://developer.here.com/documentation/public-transit/dev_guide/index.html" target="_blank">
+            <a class="image-link" href="didact://?commandId=extension.openURL&text=anomaly%7Cview-product-details%7Chttps://www.ibm.com/products
+               " target="_blank">
                View Product Details 
                <span>
                   <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
@@ -369,16 +398,7 @@
                   </svg>
                </span>
             </a>
-            <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cbuy-this-product%7Chttps://developer.here.com/pricing" target="_blank">
-               Buy this API 
-               <span>
-                  <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
-                     <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
-                     <title>Arrow right</title>
-                  </svg>
-               </span>
-            </a>
-            <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cget-trial-subscription%7Chttps://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account" target="_blank">
+            <a class="image-link" href="didact://?commandId=extension.openURL&text=anomaly%7Cget-trial-subscription%7Chttps://www.ibm.com/account/reg/us-en/signup?formid=urx-51009" target="_blank">
                Get Trial Subcription 
                <span>
                   <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
@@ -387,6 +407,7 @@
                   </svg>
                </span>
             </a>
+            <a class="image-link no-hover"></a>
          </div>
       </div>
    </div>

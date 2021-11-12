@@ -1,0 +1,398 @@
+<div id="page_header" class="page-header header-filter clear-filter" data-parallax="true">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 ml-auto mr-auto">
+				<div class="brand text-center">
+					<h1>Watson Assistant Demo</h1>
+					<!-- <h2>IBM Watson Conversation Demo</h2> -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="main main-raised">
+
+  <nav class="navbar navbar-default navbar-expand-lg" role="navigation-demo" *ngIf="!currentUser || !currentUser.id" >
+    <div class="container">
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <button class="btn btn-primary btn-sm float-right"
+                data-toggle="modal" data-target="#demoInfoModal">
+                Info
+              </button>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="navbar navbar-default navbar-expand-lg" role="navigation-demo" *ngIf="currentUser && currentUser.id" >
+    <div class="container">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                  <button class="btn btn-primary btn-sm float-right"
+                    data-toggle="modal" data-target="#demoInfoModal">
+                    Info
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="btn btn-primary btn-sm float-right"
+                    *ngIf="conversationObj.params.context['skills']['main skill']['user_defined']['initConversation']" (click)="refreshConversation()"
+                    data-toggle="tooltip" data-placement="top" title="Start Conversation">
+                    <i class="material-icons">chat</i> Start Chat
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="btn btn-primary btn-sm float-right"
+                    *ngIf="!conversationObj.params.context['skills']['main skill']['user_defined']['initConversation']" (click)="refreshConversation()"
+                    data-toggle="tooltip" data-placement="top" title="Refresh Conversation">
+                    <i class="material-icons">refresh</i> Refresh
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="btn btn-primary btn-sm float-right" *ngIf="conversations && conversations.length > 0"
+                    data-toggle="modal" data-target="#reqRespModal">
+                    Show Req/Resp
+                  </button>
+                </li>
+                <li class="nav-item" *ngIf="detections && detections.length > 0">
+                  <button class="btn btn-primary btn-link">Detections</button>
+                </li>
+                <li class="nav-item" *ngIf="detections && detections.length > 0">
+                  <ng-multiselect-dropdown
+                    [placeholder]="'Select Detection'"
+                    [settings]="dropdownSettings"
+                    [data]="detections"
+                    [(ngModel)]="selectedDetections"                    
+                    (onSelect)="onDetectionsSelect($event)"
+                    (onSelectAll)="onSelectAll($event)"
+                  >
+                  </ng-multiselect-dropdown>
+
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+	<div class="section section-comments">
+		<div class="container chat-container" *ngIf="currentUser && currentUser.id">
+      <!-- <div class="container chat-container" > -->
+			<!-- <form class="form" #chatForm="ngForm" method="" action=""> -->
+			<div #chatRow class="row chat-row">
+          <div class="col-md-12 ml-auto mr-auto">
+
+					<div *ngFor="let conversation of conversations" >
+						<div class="media-area">
+              <!-- REPLIES FROM BOT STARTS HERE -->
+              <div class="media" *ngFor="let dialog of conversation.replies">
+                  <a class="float-left" href="javascript:void(0);"
+                    *ngIf="dialog.input && dialog.input.text && dialog.input.text != ''">
+                    <div class="avatar">
+                      <img class="media-object" src="assets/images/avatars/profile.jpg" alt="..." />
+                    </div>
+                  </a>
+
+								 <div class="media-body">
+
+                    <div *ngIf="dialog.input && dialog.input.text">
+                      <h4 *ngIf="currentUser && currentUser.user" class="media-heading">
+                        {{currentUser.user.firstName}} <small>&middot;
+                          {{dialog.input.timestamp | amTimeAgo}}</small></h4>
+                      <h4 *ngIf="!currentUser || !currentUser.user" class="media-heading">User <small>&middot;
+                          {{dialog.input.timestamp | amTimeAgo}}</small></h4>
+                      <h6 class="text-muted"></h6>
+
+                      <p *ngIf="dialog.input && dialog.input.text">{{dialog.input.text}}</p>
+
+                    </div>
+
+                    <div class="media media-post" *ngIf="dialog.output && dialog.output.generic && dialog.output.generic.length > 0" >
+                        <a class="float-left" href="javascript:void(0);">
+                          <div class="avatar watson">
+                            <img class="media-object" src="assets/images/avatars/watson-avatar.png"
+                              alt="..." />
+                          </div>
+                        </a>
+
+                        <div class="media-body">
+                          <h4 class="media-heading">Watson <small>&middot;
+                              {{dialog.output.timestamp | amTimeAgo}}</small></h4>
+                          <h6 class="text-muted"></h6>
+
+                          <div *ngFor="let reply of dialog.output.generic">
+                            <div *ngIf="reply.response_type == 'text' && reply.text">
+                              <p *ngIf="reply.text.constructor.toString().indexOf('String') > -1">
+                                <span [innerHtml]="reply.text | linkify"></span>
+                              </p>
+                              <div *ngIf="reply.text.constructor.toString().indexOf('Array') > -1">
+                                <ul  *ngFor="let textVal of reply.text">
+                                  <li><span [innerHtml]="textVal | linkify"></span></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div *ngIf="reply.response_type == 'image' && reply.source">
+                              <img src="{{reply.source}}" class="img_fit" alt="{{reply.title}}" />
+                            </div>
+                            <div *ngIf="reply.response_type == 'option'">
+                              <p><span [innerHtml]="reply.title" *ngIf="reply.title"></span></p>
+                              <p><span [innerHtml]="reply.description" *ngIf="reply.description"></span></p>
+                              <div *ngFor="let option of reply.options">
+                                <div *ngIf="option.label == 'video' && option.value.input && option.value.input.text">
+                                  <vg-player>
+                                    <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls>
+                                        <source src="{{option.value.input.text}}" type="video/mp4">
+                                    </video>
+                                  </vg-player>
+                                </div>
+                                <div *ngIf="option.label == 'link' && option.value.input && option.value.input.text">
+                                  <a href="{{option.value.input.text}}" target="_blank">Click here for more details.</a>
+                                </div>
+                                <div *ngIf="option.label != 'video' && option.label != 'link' && option.value.input && option.value.input.text">
+                                  <button class="btn btn-primary btn-link" (click)="optionSelected(option)">{{option.label}}</button>
+                                </div>
+                              </div>
+                            </div>
+                            <div *ngIf="reply.response_type == 'search'">
+                                <h5>Here are some search results from Discovery: </h5>
+                                <div class="result"
+                                  *ngFor="let searchResult of reply.results">
+                                  <div class="result-title">
+                                    <p>{{searchResult.title}}</p>
+                                  </div>
+                                  <div class="result-preview" *ngIf="searchResult.bodySnippet">
+                                    <p>{{searchResult.bodySnippet | linkify}}</p>
+                                  </div>
+                                  <div class="result-preview" *ngIf="searchResult.body">
+                                    <p>{{searchResult.body | slice:0:550 }}</p>
+                                  </div>
+                                  <div class="result-link">
+                                    <a href="{{searchResult.url}}" target="_blank"> More details..
+                                    </a>
+                                  </div>
+                                </div>
+                            </div>
+                            <div *ngIf="reply.response_type == 'suggestion'">
+                              <p><span [innerHtml]="reply.title" *ngIf="reply.title"></span></p>
+                              <p><span [innerHtml]="reply.description" *ngIf="reply.description"></span></p>
+                              <div *ngFor="let suggestion of reply.suggestions">
+                                <div *ngIf="suggestion.label && suggestion.value.input.suggestion_id">
+                                  <button class="btn btn-primary btn-link" (click)="suggestionSelected(suggestion)">{{suggestion.label}}</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="media-footer footer-feedback"
+                            *ngIf="dialog.output.feedback && dialog.output.feedback.show">
+                            <a href="javascript:void(0);"
+                              class="btn btn-success btn-link float-right btn-feedback"
+                              data-toggle="tooltip" title="Like" data-placement="top"
+                              data-container="body">
+                              <i class="material-icons"
+                                (click)="provideFeedback(dialog, 'positive')">thumb_up</i>
+                            </a>
+                            <a href="javascript:void(0);"
+                              class="btn btn-danger btn-link float-right btn-feedback"
+                              data-toggle="tooltip" title="Dislike" data-placement="top"
+                              data-container="body">
+                              <i class="material-icons"
+                                (click)="provideFeedback(dialog, 'negative')">thumb_down</i>
+                            </a>
+                          </div>
+                        </div>
+                    </div>
+								</div>
+
+								<!-- REPLIES FROM BOT ENDS HERE -->
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-md-12 ml-auto mr-auto" *ngIf="!conversationObj.params.context['skills']['main skill']['user_defined']['initConversation']">
+					<div class="row">
+						<div class="col-md-10">
+							<div class="media media-post">
+								<a class="author float-left" href="javascript:void(0);">
+									<div class="avatar">
+										<img class="media-object" alt="64x64" src="assets/images/avatars/profile.jpg">
+									</div>
+								</a>
+								<div class="media-body">
+									<div class="form-group">
+										<div class="input-group">
+											<div class="input-group-prepend" *ngIf="hasAudioDevice && token">
+												<span class="input-group-text" *ngIf="!isStreaming">
+													<button type="button" class="btn btn-link btn-fab btn-primary"
+														(click)="startStream()">
+														<i class="material-icons">mic</i>
+													</button>
+												</span>
+												<span class="input-group-text" *ngIf="isStreaming"
+													(click)="stopStream()">
+													<button type="button" class="btn btn-link btn-fab btn-success"
+														(click)="stopStream()">
+														<i class="material-icons">mic_off</i>
+													</button>
+												</span>
+											</div>
+
+											<input class="form-control chat-input" name="userInput"
+												[(ngModel)]="userInput.label"
+												placeholder="Enter text here..."
+												(keyup.enter)="fetchConversationResponse()" />
+
+											<span class="input-group-btn">
+												<button type="button" class="btn btn-link btn-fab btn-primary"
+													(click)="fetchConversationResponse()">
+													<i class="material-icons">send</i>
+												</button>
+											</span>
+
+										</div>
+                  </div>
+                  <div class="media-footer" *ngIf="predictions">
+                      <a href="#pablo" *ngIf="predictions.skill && predictions.skill.confidence" class="btn btn-primary btn-link float-right" rel="tooltip" title="Skill Prediction with confidence">
+                          Skill: {{predictions.skill.assistantId}} ({{predictions.skill.confidence | percent: '2.1-2' }})
+                      </a>
+                      <a href="#pablo" *ngIf="predictions.language" class="btn btn-danger btn-link float-right">
+                          Language: {{predictions.language}}
+                      </a>
+                  </div>
+
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+				<!-- </form> -->
+			</div>
+
+		</div>
+
+		<div *ngIf="!currentUser || !currentUser.id">
+			<a href="#" data-toggle="modal" data-target="#loginModal">
+				<i class="material-icons">login</i> Login is required
+			</a>
+		</div>
+
+
+
+	</div>
+</div>
+
+
+<!-- Sart Modal -->
+<div class="modal fade" id="reqRespModal" tabindex="-1" role="dialog" aria-labelledby="reqRespModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Watson JSON Request and Response</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<i class="material-icons">clear</i>
+				</button>
+			</div>
+			<div class="modal-body">
+				<prettyjson [obj]="conversations[conversations.length - 1]"></prettyjson>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--  End Modal -->
+
+<!-- Sart Demo Info Modal -->
+<div class="modal fade" id="demoInfoModal" tabindex="-1" role="dialog" aria-labelledby="demoInfoModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">Running the Demo</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<i class="material-icons">clear</i>
+				</button>
+			</div>
+			<div class="modal-body">
+
+        <b>Login Credentials: guest / P@ssw0rd</b>
+
+        <h4>For Home Automation, following flows can be verified:</h4>
+
+        <b>Triggering Weather service:</b> <br />
+        <ul>
+          <li>What's the weather outside ?</li>
+          <li>How is the weather in New Delhi ?</li>
+          <li>Is it hot outside</li>
+          <li>How cold is it outside</li>
+          <li>and more</li>
+        </ul>
+
+        <b> To trigger Google Search API:</b> <br />
+        <ul>
+          <li>What is the meaning of ROFL ?</li>
+          <li>What does TOEFL sounds for ?</li>
+          <li>What's the meaning of IoT</li>
+          <li>What's the meaning of life ?</li>
+        </ul>
+
+        <b>To fetch data from News Feeds:</b> <br />
+        <ul>
+          <li>Tell me the latest news</li>
+          <li>What is the news headlines</li>
+          <li>What's the latest news ?</li>
+          <li>and more</li>
+        </ul>
+
+        <b>Some other input texts:</b> <br />
+        <ul>
+          <li>Tell me a joke (Note: this will fetch joke using Cloud Functions)</li>
+          <li>Turn on the living room fan</li>
+          <li>Switch off the light in kitchen</li>
+          <li>Tell me something about IBM Watson (This will show Video content in Chat window)</li>
+        </ul>
+
+        <h4> For COVID19, following flows can be verified:</h4>
+
+        <ul>
+          <li>How do I know that I have corona virus</li>
+          <li>whats the difference between common flu and corona virus</li>
+          <li>what are the symptoms of corona virus</li>
+        </ul>
+
+        <b>Scenario (1)</b> <br />
+
+            U: "can I send my kids to school" <br />
+            W: "can you tell me the type of school they go to" <br />
+            U: use either "college" or "high school" - the answer will change <br />
+            W: "can you tell me the zip code" <br />
+            U: use either "78708" or "78712" (Austin, TX) <br />
+            W: "colleges have been advised to conduct classes remotely online..." <br />
+
+        <b>Scenario (2) </b> <br />
+            U: "when can my kids go back to college" <br />
+            W: "can you tell me the zipcode" <br />
+            U: use either "78708" or "78712" or other Ohio zip codes <br />
+            W: "colleges have been advised to conduct classes remotely online..." <br />
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--  End Modal -->

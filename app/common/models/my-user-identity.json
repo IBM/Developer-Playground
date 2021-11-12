@@ -1,0 +1,16 @@
+{
+  "name": "MyUserIdentity",
+  "base": "UserIdentity",
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "login"
+    }
+  ],
+  "methods": {}
+}

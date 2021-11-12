@@ -17,6 +17,20 @@ const CarbonChart = ({data}) => {
                 "scaleType": "linear"
             }
         },
+        "toolbar": {
+            "enabled": true,
+            "controls": [
+              {
+                "type": "Zoom in"
+              },
+              {
+                "type": "Zoom out"
+              },
+              {
+                "type": "Reset zoom"
+              }
+            ]
+          },
         "zoomBar": {
             "top": {
               "enabled": true
@@ -27,7 +41,7 @@ const CarbonChart = ({data}) => {
                 return "red"
         },
         "curve": "curveMonotoneX",
-        "height": "400px"
+        "height": "400px",
     }
 return (
     <LineChart

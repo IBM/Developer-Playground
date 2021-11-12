@@ -1,0 +1,2632 @@
+{
+  "intents": [
+    {
+      "intent": "watson",
+      "examples": [
+        {
+          "text": "Can you tell me how watson operates or learns"
+        },
+        {
+          "text": "show me how watson works"
+        },
+        {
+          "text": "Tell me something about IBM Watson"
+        },
+        {
+          "text": "Tell me more in details about Watson"
+        },
+        {
+          "text": "How does machine learning happens in IBM Watson ?"
+        },
+        {
+          "text": "How does watson understands and how does it responds ?"
+        },
+        {
+          "text": "I need some information on IBM Watson learning"
+        },
+        {
+          "text": "I want to know more about IBM Watson"
+        },
+        {
+          "text": "how do you train IBM Watson ?"
+        },
+        {
+          "text": "show me a video of watson's working"
+        }
+      ],
+      "description": "About Watson as video content in response - demo"
+    },
+    {
+      "intent": "General_Human_or_Bot",
+      "examples": [
+        {
+          "text": "Is this a computer?"
+        },
+        {
+          "text": "Am I talking to Watson?"
+        },
+        {
+          "text": "Tell me, are you a human or no?"
+        },
+        {
+          "text": "Am I talking to a Bot?"
+        },
+        {
+          "text": "Am I talking to a person or am I talking to an AI?"
+        },
+        {
+          "text": "Am I chatting with a human?"
+        },
+        {
+          "text": "Are you a human or a bot?"
+        },
+        {
+          "text": "Are you a robot?"
+        },
+        {
+          "text": "Are you even real?"
+        },
+        {
+          "text": "Are you human?"
+        },
+        {
+          "text": "Are you real?"
+        },
+        {
+          "text": "How can you prove you are a human?"
+        }
+      ],
+      "description": "Ask if speaking to a human or a bot."
+    },
+    {
+      "intent": "date_time",
+      "examples": [
+        {
+          "text": "What's the day today ?"
+        },
+        {
+          "text": "What's the date today ?"
+        },
+        {
+          "text": "Please tell me the date and time ?"
+        },
+        {
+          "text": "tell me the date and time now"
+        },
+        {
+          "text": "Is it Moday today ?"
+        },
+        {
+          "text": "Is it Tuesday or Wednesday today ?"
+        },
+        {
+          "text": "Is it already 5pm ?"
+        },
+        {
+          "text": "is it 2 pm ?"
+        },
+        {
+          "text": "what's the day tomorrow ?"
+        },
+        {
+          "text": "what's the date tomorrow ?"
+        },
+        {
+          "text": "What is the time now ?"
+        },
+        {
+          "text": "What's the time ?"
+        },
+        {
+          "text": "Can you tell me the time please ?"
+        },
+        {
+          "text": "What is the date today ?"
+        }
+      ]
+    },
+    {
+      "intent": "latest_news",
+      "examples": [
+        {
+          "text": "Please tell me the latest news"
+        },
+        {
+          "text": "Can you tell me the news headlines ?"
+        },
+        {
+          "text": "please tell me the current news headlines"
+        },
+        {
+          "text": "What is in the news headlines ?"
+        },
+        {
+          "text": "tell me the news headlines"
+        },
+        {
+          "text": "search for the latest news"
+        },
+        {
+          "text": "what's going on in the news ?"
+        },
+        {
+          "text": "tell me the latest news"
+        },
+        {
+          "text": "what's the latest news"
+        }
+      ]
+    },
+    {
+      "intent": "Utilities_Report_Outage",
+      "examples": [
+        {
+          "text": "Please schedule a crew to fix the utility pole"
+        },
+        {
+          "text": "The electricity might be out around me"
+        },
+        {
+          "text": "What on earth is happening with the electical supply, nothing is functioning?"
+        },
+        {
+          "text": "I believe one of the electricity cables has been taken out."
+        },
+        {
+          "text": "I am smelling gas throughout my house I need assistance"
+        },
+        {
+          "text": "I don't have power in my neighborhood"
+        },
+        {
+          "text": "Everything indicates that the gas is escaping"
+        },
+        {
+          "text": "Can I got you help for a street light?"
+        },
+        {
+          "text": "Can a service person check on a fallen power line?"
+        },
+        {
+          "text": "A light on my road does not appear to be working"
+        },
+        {
+          "text": "Accidentally left the range on and I am away from the dwelling for the day"
+        },
+        {
+          "text": "How do I report a dangling cable?"
+        },
+        {
+          "text": "I need anybody to help me to fix the hole impregnate gas in my house"
+        },
+        {
+          "text": "I need help. I guess there is gas over the apartment. can someone come over to take care of it?"
+        },
+        {
+          "text": "I think our street lamp's bulb needs to be changed"
+        },
+        {
+          "text": "My electricity cable has become unusable is broken"
+        },
+        {
+          "text": "My street's cable line is down. when will it be repaired?"
+        },
+        {
+          "text": "My tv just turned off and there's no power"
+        },
+        {
+          "text": "One of the lamp posts blew out"
+        },
+        {
+          "text": "One of the lights on our street isn't working properly"
+        }
+      ],
+      "description": "Report a disruption of a utility service."
+    },
+    {
+      "intent": "General_About_You",
+      "examples": [
+        {
+          "text": "Why are you here?"
+        },
+        {
+          "text": "About you"
+        },
+        {
+          "text": "Can I use another language?"
+        },
+        {
+          "text": "Describe your self"
+        },
+        {
+          "text": "Do you have a name?"
+        },
+        {
+          "text": "Who are you?"
+        },
+        {
+          "text": "Where were you born?"
+        },
+        {
+          "text": "Where are you from?"
+        },
+        {
+          "text": "What's your name?"
+        },
+        {
+          "text": "What should I know about you?"
+        },
+        {
+          "text": "What languages do you speak?"
+        },
+        {
+          "text": "Tell me something about yourself"
+        },
+        {
+          "text": "Tell me about your life"
+        },
+        {
+          "text": "Let us talk about you"
+        },
+        {
+          "text": "Introduce your self"
+        },
+        {
+          "text": "I want to set up the chat bot for my shop"
+        },
+        {
+          "text": "How old are you?"
+        },
+        {
+          "text": "How do you function?"
+        },
+        {
+          "text": "How can I configure you?"
+        },
+        {
+          "text": "Do you know who you are?"
+        }
+      ],
+      "description": "Request generic personal attributes."
+    },
+    {
+      "intent": "General_Negative_Feedback",
+      "examples": [
+        {
+          "text": "I hate this!"
+        },
+        {
+          "text": "I do not like you"
+        },
+        {
+          "text": "Hate you"
+        },
+        {
+          "text": "Everyone hates you"
+        },
+        {
+          "text": "Do not like you?"
+        },
+        {
+          "text": "You're too stupid"
+        },
+        {
+          "text": "You're really irritating"
+        },
+        {
+          "text": "You're really frustrating"
+        },
+        {
+          "text": "You do not seem smart"
+        },
+        {
+          "text": "You are very frustrating"
+        },
+        {
+          "text": "You are on my nerves"
+        },
+        {
+          "text": "You are having delusions"
+        },
+        {
+          "text": "Why are you stupid?"
+        },
+        {
+          "text": "Why are you so annoying?"
+        },
+        {
+          "text": "Stupid"
+        },
+        {
+          "text": "Robots are stupid"
+        },
+        {
+          "text": "Robots are boring"
+        },
+        {
+          "text": "Quit annoying me"
+        },
+        {
+          "text": "It is annoying"
+        },
+        {
+          "text": "I hate you"
+        }
+      ],
+      "description": "Express unfavorable feedback."
+    },
+    {
+      "intent": "weather",
+      "examples": [
+        {
+          "text": "How hot it is outside ?"
+        },
+        {
+          "text": "Please tell me the weather outside."
+        },
+        {
+          "text": "How is the weather in New Delhi ?"
+        },
+        {
+          "text": "How is the weather in London ?"
+        },
+        {
+          "text": "What are the weather conditions in Chandigarh ?"
+        },
+        {
+          "text": "how is the weather in New Delhi"
+        },
+        {
+          "text": "Tell me the weather conditions for today"
+        },
+        {
+          "text": "How cold is it outside ?"
+        },
+        {
+          "text": "Is it raining outside ?"
+        },
+        {
+          "text": "Is it hot outside ?"
+        },
+        {
+          "text": "How's the weather outside ?"
+        },
+        {
+          "text": "Can you tell me the status of weather outside ?"
+        },
+        {
+          "text": "Is it colde outside ?"
+        }
+      ]
+    },
+    {
+      "intent": "General_Positive_Feedback",
+      "examples": [
+        {
+          "text": "You're a genius!"
+        },
+        {
+          "text": "You the man"
+        },
+        {
+          "text": "You gave me exactly what I need!"
+        },
+        {
+          "text": "You are wonderful"
+        },
+        {
+          "text": "You are the best"
+        },
+        {
+          "text": "You are awesome"
+        },
+        {
+          "text": "You are great"
+        },
+        {
+          "text": "This is so cool"
+        },
+        {
+          "text": "This is great"
+        },
+        {
+          "text": "This is good"
+        },
+        {
+          "text": "Thank you"
+        },
+        {
+          "text": "Ok thank you"
+        },
+        {
+          "text": "Love your work"
+        },
+        {
+          "text": "I'm looking forward to working with you again! :)"
+        },
+        {
+          "text": "I like what you did there! :)"
+        },
+        {
+          "text": "How cool is this?"
+        },
+        {
+          "text": "Can't believe you are that good"
+        },
+        {
+          "text": "Brilliant!"
+        },
+        {
+          "text": "You've been so helpful :)"
+        }
+      ],
+      "description": "Express positive sentiment or gratitude."
+    },
+    {
+      "intent": "General_Agent_Capabilities",
+      "examples": [
+        {
+          "text": "Tell me about what kind of things you do?"
+        },
+        {
+          "text": "How can you help me?"
+        },
+        {
+          "text": "How can you solve my problems?"
+        },
+        {
+          "text": "Can you please give me a list of the types of things you can help me with?"
+        },
+        {
+          "text": "Where can I find the frequently asked questions?"
+        },
+        {
+          "text": "What kinds of things can you do?"
+        },
+        {
+          "text": "What is this 4?"
+        },
+        {
+          "text": "What features are in here?"
+        },
+        {
+          "text": "What else can you help me with?"
+        },
+        {
+          "text": "What do you handle?"
+        },
+        {
+          "text": "What do you do?"
+        },
+        {
+          "text": "What can I ask you to do?"
+        },
+        {
+          "text": "What are your skills?"
+        },
+        {
+          "text": "What are you used for?"
+        },
+        {
+          "text": "What are you good at?"
+        },
+        {
+          "text": "What are you capable of?"
+        },
+        {
+          "text": "What are you able to understand?"
+        },
+        {
+          "text": "What are you able to deal with?"
+        },
+        {
+          "text": "What are my options?"
+        },
+        {
+          "text": "What are my options that you can help with?"
+        },
+        {
+          "text": "Tell me something"
+        },
+        {
+          "text": "Is there anything you can help me with?"
+        },
+        {
+          "text": "I'd like to know what type of questions you can answer for me."
+        },
+        {
+          "text": "I do not know what to ask"
+        },
+        {
+          "text": "How do I use you?"
+        },
+        {
+          "text": "Can you tell me what services you are able to help me with?"
+        },
+        {
+          "text": "Do you have a list of things I can talk to you about?"
+        },
+        {
+          "text": "Help now"
+        },
+        {
+          "text": "Hi, what do you do?"
+        },
+        {
+          "text": "How can I use you?"
+        }
+      ],
+      "description": "Request capabilities of the bot."
+    },
+    {
+      "intent": "Utilities_Start_Service",
+      "examples": [
+        {
+          "text": "How can I turn on the gas?"
+        },
+        {
+          "text": "How can I start electricity?"
+        },
+        {
+          "text": "Would you please fix electricity connection?"
+        },
+        {
+          "text": "Who do I need to contact in order to get a gas supply to my location?"
+        },
+        {
+          "text": "What is the process for starting this service?"
+        },
+        {
+          "text": "We completed the required building inspection so please connect the gas."
+        },
+        {
+          "text": "The house is backed up please check if the gas is working and begin the supply of gas to the house"
+        },
+        {
+          "text": "Start utilities."
+        },
+        {
+          "text": "I wish to start an electrical supply what are the steps to achieving this?"
+        },
+        {
+          "text": "I want a reconnection of my gas service"
+        },
+        {
+          "text": "I need information on requesting service."
+        },
+        {
+          "text": "I'd like to get electricity in my house"
+        },
+        {
+          "text": "How to reactivate my gas service?"
+        },
+        {
+          "text": "How to I get my electricity supply hooked up?"
+        },
+        {
+          "text": "Explain how to connect the electric service"
+        },
+        {
+          "text": "Add the electricity to home"
+        },
+        {
+          "text": "How to get my power supply connected?"
+        },
+        {
+          "text": "How I get power for the first time?"
+        },
+        {
+          "text": "How do I turn the lights on in my new home?"
+        },
+        {
+          "text": "How do I arrange for my service to begin?"
+        }
+      ],
+      "description": "Start a service."
+    },
+    {
+      "intent": "General_Security_Assurance",
+      "examples": [
+        {
+          "text": "Are you safe on hackers?"
+        },
+        {
+          "text": "Are you safe?"
+        },
+        {
+          "text": "Can I be sure that my stored card details are held securely?"
+        },
+        {
+          "text": "Conversation secure?"
+        },
+        {
+          "text": "Customer info secured?"
+        },
+        {
+          "text": "Do you have protection against hacks?"
+        },
+        {
+          "text": "How do I know if my card info is kept safe?"
+        },
+        {
+          "text": "How do I know this chat is not a scam?"
+        },
+        {
+          "text": "How is my credit card info secured?"
+        },
+        {
+          "text": "How safe is my data?"
+        },
+        {
+          "text": "I'd like proof of a secure chat"
+        },
+        {
+          "text": "In what way can I tell if my plastic is safe?"
+        },
+        {
+          "text": "Is my card info secure?"
+        },
+        {
+          "text": "Is my payment information secure?"
+        },
+        {
+          "text": "Is there a reason to distrust this chat?"
+        },
+        {
+          "text": "Is this a trusted chat site?"
+        },
+        {
+          "text": "Is this an official chat?"
+        },
+        {
+          "text": "Is this conversation secure?"
+        },
+        {
+          "text": "Precautions hackers?"
+        },
+        {
+          "text": "Protection hacks?"
+        },
+        {
+          "text": "Secure conversation?"
+        },
+        {
+          "text": "What guards do you have in place to protect your customer's data?"
+        },
+        {
+          "text": "What makes this chat trustworthy?"
+        },
+        {
+          "text": "What safety measures are used to ensure that chat is secure?"
+        },
+        {
+          "text": "Why would I trust this chat?"
+        },
+        {
+          "text": "Will my conversation remain secured?"
+        }
+      ],
+      "description": "Express concerns about the security of the bot."
+    },
+    {
+      "intent": "search",
+      "examples": [
+        {
+          "text": "Search for game rules"
+        },
+        {
+          "text": "Search on Google for serendipity meaning"
+        },
+        {
+          "text": "Search on Google for prepositions"
+        },
+        {
+          "text": "what is the full form of SNOW ?"
+        },
+        {
+          "text": "what is the full form of ROFL ?"
+        },
+        {
+          "text": "what does TOEFL sounds for ?"
+        },
+        {
+          "text": "what do you mean by ILETS"
+        },
+        {
+          "text": "what do you mean by ecstacy ?"
+        },
+        {
+          "text": "tell me the meaning of FIFO"
+        },
+        {
+          "text": "what does LOL sounds for ?"
+        },
+        {
+          "text": "what's the meaing of IoT ?"
+        },
+        {
+          "text": "what's the meaning of God ?"
+        },
+        {
+          "text": "What's the meaning of life ?"
+        },
+        {
+          "text": "Can you help me understand science"
+        },
+        {
+          "text": "How does plants grow"
+        },
+        {
+          "text": "search for Newton's first law"
+        }
+      ]
+    },
+    {
+      "intent": "General_Ending",
+      "examples": [
+        {
+          "text": "Im done"
+        },
+        {
+          "text": "Bye bye"
+        },
+        {
+          "text": "Bye now"
+        },
+        {
+          "text": "Catch you later"
+        },
+        {
+          "text": "Cya later"
+        },
+        {
+          "text": "End trial"
+        },
+        {
+          "text": "Ending this session"
+        },
+        {
+          "text": "Finished now, good bye"
+        },
+        {
+          "text": "Get lost"
+        },
+        {
+          "text": "Go away"
+        },
+        {
+          "text": "Go off"
+        },
+        {
+          "text": "Going now"
+        },
+        {
+          "text": "Good. bye."
+        },
+        {
+          "text": "Goodbye"
+        },
+        {
+          "text": "Have a nice day?"
+        },
+        {
+          "text": "Hey bot go away"
+        },
+        {
+          "text": "I am leaving"
+        },
+        {
+          "text": "I am out of here"
+        },
+        {
+          "text": "Time to go"
+        },
+        {
+          "text": "That's everything"
+        },
+        {
+          "text": "That is all"
+        },
+        {
+          "text": "Thanks very much, bye!"
+        },
+        {
+          "text": "Thanks, bye!"
+        },
+        {
+          "text": "Thank you for your time"
+        },
+        {
+          "text": "Stop talking to me"
+        },
+        {
+          "text": "Stop doing this"
+        },
+        {
+          "text": "Shut up"
+        },
+        {
+          "text": "See you"
+        },
+        {
+          "text": "See you later"
+        },
+        {
+          "text": "Ok goodbye"
+        },
+        {
+          "text": "It was nice chatting with you"
+        },
+        {
+          "text": "I'm leaving now"
+        },
+        {
+          "text": "I d like to stop doing this"
+        },
+        {
+          "text": "I have got to go"
+        },
+        {
+          "text": "I want to quit"
+        },
+        {
+          "text": "I'm done"
+        },
+        {
+          "text": "Im good thank you"
+        }
+      ],
+      "description": "End the conversation."
+    },
+    {
+      "intent": "appliance_action",
+      "examples": [
+        {
+          "text": "turn it on"
+        },
+        {
+          "text": "turn on"
+        },
+        {
+          "text": "turn on the *"
+        },
+        {
+          "text": "Switch it on"
+        },
+        {
+          "text": "Switch on the light"
+        },
+        {
+          "text": "can you please switch on the fan"
+        },
+        {
+          "text": "please turn on the TV"
+        },
+        {
+          "text": "It is so dark in the room"
+        },
+        {
+          "text": "Nothing is visible in the kitchen"
+        },
+        {
+          "text": "Nothing is visible in the hall"
+        },
+        {
+          "text": "There's no light in the bedroom"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Utilities_Stop_Service",
+      "examples": [
+        {
+          "text": "Take down the utility"
+        },
+        {
+          "text": "Turn off my service."
+        },
+        {
+          "text": "We no longer wish to be connected to the grid"
+        },
+        {
+          "text": "We will not be for a few months. can you cut off energy during the holidays?"
+        },
+        {
+          "text": "Discontinue gas."
+        },
+        {
+          "text": "Disconnect form the electric power"
+        },
+        {
+          "text": "Could you please turn off my lights?"
+        },
+        {
+          "text": "Can you suspend my electric supply for a while as I am going on an extended vacation?"
+        },
+        {
+          "text": "Can you disconnect me from the service?"
+        },
+        {
+          "text": "Turn off my electricity supply."
+        },
+        {
+          "text": "How do I shut off the gas and electricity?"
+        },
+        {
+          "text": "I am finished with the solar panel service."
+        },
+        {
+          "text": "I'd like to cancel the service for my gas."
+        },
+        {
+          "text": "I don't need a power supply any longer."
+        },
+        {
+          "text": "I'm at the end of my tether with your company."
+        },
+        {
+          "text": "I'm done with this service"
+        },
+        {
+          "text": "I'm leaving this solar panel provider for another one."
+        },
+        {
+          "text": "I'm not interested in your service"
+        },
+        {
+          "text": "I would like to discontinue the services."
+        },
+        {
+          "text": "Remove us from the power grid"
+        }
+      ],
+      "description": "Stop a service."
+    },
+    {
+      "intent": "General_Jokes",
+      "examples": [
+        {
+          "text": "I want a joke"
+        },
+        {
+          "text": "I'm bored"
+        },
+        {
+          "text": "One more joke"
+        },
+        {
+          "text": "Surprise me with something hilarious"
+        },
+        {
+          "text": "Tell me a joke"
+        },
+        {
+          "text": "Tell me something funny"
+        },
+        {
+          "text": "What do you do for fun?"
+        },
+        {
+          "text": "What is your favorite joke?"
+        },
+        {
+          "text": "make me happy"
+        },
+        {
+          "text": "I need a smile on my face"
+        },
+        {
+          "text": "tell me a Chuk Norris joke"
+        },
+        {
+          "text": "how can you make me laugh"
+        },
+        {
+          "text": "Please tell me a joke"
+        },
+        {
+          "text": "how can you make me smile ?"
+        },
+        {
+          "text": "tell me santa banta joke"
+        },
+        {
+          "text": "say me a joke"
+        },
+        {
+          "text": "Make me laugh"
+        },
+        {
+          "text": "Entertain me"
+        },
+        {
+          "text": "I want to hear a joke"
+        },
+        {
+          "text": "I am getting bored"
+        },
+        {
+          "text": "Do you like humor?"
+        },
+        {
+          "text": "Do you like fun?"
+        },
+        {
+          "text": "Do you have humor?"
+        },
+        {
+          "text": "Do you have a joke?"
+        },
+        {
+          "text": "Can you tell me a joke?"
+        },
+        {
+          "text": "Can you tell a joke?"
+        },
+        {
+          "text": "Are there jokes?"
+        },
+        {
+          "text": "Another joke"
+        }
+      ],
+      "description": "Request a joke."
+    },
+    {
+      "intent": "General_Greetings",
+      "examples": [
+        {
+          "text": "How have you been?"
+        },
+        {
+          "text": "You there"
+        },
+        {
+          "text": "Who is this?"
+        },
+        {
+          "text": "What's up?"
+        },
+        {
+          "text": "What's new?"
+        },
+        {
+          "text": "Ok take me back"
+        },
+        {
+          "text": "Looking good eve"
+        },
+        {
+          "text": "How r u?"
+        },
+        {
+          "text": "How is it going?"
+        },
+        {
+          "text": "How are you today?"
+        },
+        {
+          "text": "How are things going?"
+        },
+        {
+          "text": "Hi there"
+        },
+        {
+          "text": "Hi advisor"
+        },
+        {
+          "text": "Hey you"
+        },
+        {
+          "text": "Hey twin"
+        },
+        {
+          "text": "Hey there"
+        },
+        {
+          "text": "Hey there all"
+        },
+        {
+          "text": "Hey how are you doing"
+        },
+        {
+          "text": "Hello"
+        },
+        {
+          "text": "Hello I am looking for some help here"
+        },
+        {
+          "text": "Hello Agent"
+        },
+        {
+          "text": "Have you been well?"
+        },
+        {
+          "text": "Greetings"
+        },
+        {
+          "text": "Good to see you"
+        },
+        {
+          "text": "Good morning"
+        },
+        {
+          "text": "Good evening"
+        },
+        {
+          "text": "Good day"
+        }
+      ],
+      "description": "Greet the bot."
+    },
+    {
+      "intent": "Utilities_Outage_Status",
+      "examples": [
+        {
+          "text": "What happened to the electricity?"
+        },
+        {
+          "text": "What areas are affected by the black out?"
+        },
+        {
+          "text": "Power has just returned at my house"
+        },
+        {
+          "text": "It's thundering out, will I lose power?"
+        },
+        {
+          "text": "Is there a power outage in my city?"
+        },
+        {
+          "text": "Is there an status update on the outage in fountain valley?"
+        },
+        {
+          "text": "Is there an electric failure?"
+        },
+        {
+          "text": "Is the power out locally?"
+        },
+        {
+          "text": "Are you able to repair my blackout asap?"
+        },
+        {
+          "text": "Can you tell me when the service is going to return?"
+        },
+        {
+          "text": "Do you have a timeframe for service resume?"
+        },
+        {
+          "text": "Has the company estimated how long this will take?"
+        },
+        {
+          "text": "I need you to tell me how long it takes to fix the blackout?"
+        },
+        {
+          "text": "Is the power out in my area?"
+        },
+        {
+          "text": "Which locations don't have any power?"
+        },
+        {
+          "text": "Where is the service interrupted?"
+        },
+        {
+          "text": "Where can I search areas for outages?"
+        },
+        {
+          "text": "When will this outage be over?"
+        },
+        {
+          "text": "When will the fuel system be back on?"
+        },
+        {
+          "text": "What is time frame for lights back on?"
+        }
+      ],
+      "description": "Request current information on a disruption of service."
+    },
+    {
+      "intent": "General_Connect_to_Agent",
+      "examples": [
+        {
+          "text": "Please assist me to get to an agent"
+        },
+        {
+          "text": "Can I speak with somebody?"
+        },
+        {
+          "text": "Can I talk to someone?"
+        },
+        {
+          "text": "Can you assist me to connect to an agent?"
+        },
+        {
+          "text": "Can you connect me with a real person?"
+        },
+        {
+          "text": "Connect me to a live operator please."
+        },
+        {
+          "text": "Contact person"
+        },
+        {
+          "text": "Could you please transfer me to your master?"
+        },
+        {
+          "text": "Customer service representative please."
+        },
+        {
+          "text": "Do not want a robot?"
+        },
+        {
+          "text": "Hi can you transfer me"
+        },
+        {
+          "text": "Yes, take me to a real person"
+        },
+        {
+          "text": "How can I skip the recorded menu and go straight to a live person?"
+        },
+        {
+          "text": "I don't want to talk to a bot."
+        },
+        {
+          "text": "I don't want to talk to you"
+        },
+        {
+          "text": "I need to speak to a representative. How would I go about doing so?"
+        },
+        {
+          "text": "I want a manager"
+        },
+        {
+          "text": "I want agent"
+        },
+        {
+          "text": "I want an agent to help me"
+        },
+        {
+          "text": "I want to talk to a person"
+        },
+        {
+          "text": "I would like to speak to a human"
+        },
+        {
+          "text": "I would like to speak to someone"
+        },
+        {
+          "text": "Is there anyone there I can actually talk to for real?"
+        },
+        {
+          "text": "Need help from human"
+        },
+        {
+          "text": "Operator please"
+        },
+        {
+          "text": "Can I speak to an advisor?"
+        },
+        {
+          "text": "Please connect me to a live agent"
+        },
+        {
+          "text": "Please let me talk to a human being."
+        },
+        {
+          "text": "Pls connect"
+        },
+        {
+          "text": "Put me through to someone"
+        },
+        {
+          "text": "Send me to an agent"
+        },
+        {
+          "text": "Where is the closest agent?"
+        },
+        {
+          "text": "A real agent, please."
+        },
+        {
+          "text": "Agent help"
+        },
+        {
+          "text": "Call agent"
+        },
+        {
+          "text": "Can I connect to an agent?"
+        },
+        {
+          "text": "Can I speak to a human please?"
+        },
+        {
+          "text": "Can I speak to a live person?"
+        }
+      ],
+      "description": "Request a human agent."
+    },
+    {
+      "intent": "Utilities_Report_Usage",
+      "examples": [
+        {
+          "text": "I would like to report my usage"
+        },
+        {
+          "text": "I can tell you my electric meter reading"
+        },
+        {
+          "text": "How do I file information on electricity usage?"
+        },
+        {
+          "text": "Enter in my meter reads"
+        },
+        {
+          "text": "Enter in meter data"
+        },
+        {
+          "text": "Can I submit my meter numbers to you?"
+        },
+        {
+          "text": "Can I submit my meter data?"
+        },
+        {
+          "text": "Can I report what my meter says?"
+        },
+        {
+          "text": "Can I report the number on my meter for this month?"
+        },
+        {
+          "text": "Can I report my kwh data online?"
+        },
+        {
+          "text": "Submit energy consumption"
+        },
+        {
+          "text": "Submit electric usage"
+        },
+        {
+          "text": "Submit electrical meter reading"
+        },
+        {
+          "text": "Report usage registered on power meter"
+        },
+        {
+          "text": "Report usage numbers"
+        },
+        {
+          "text": "Report the electricity meter reading"
+        },
+        {
+          "text": "Report reading from my meter"
+        },
+        {
+          "text": "Report data on usage"
+        },
+        {
+          "text": "Record my electrical usage"
+        },
+        {
+          "text": "Record meter readings"
+        }
+      ],
+      "description": "Report usage registered on a meter."
+    },
+    {
+      "intent": "Utilities_View_Usage",
+      "examples": [
+        {
+          "text": "Information on utility usage for a specific time"
+        },
+        {
+          "text": "Did my usage increase"
+        },
+        {
+          "text": "Is there a statement for used power?"
+        },
+        {
+          "text": "May I see the electric meter readings"
+        },
+        {
+          "text": "What are my energy stats?"
+        },
+        {
+          "text": "What is my meter usage?"
+        },
+        {
+          "text": "What is my spent electricity amount for previous month?"
+        },
+        {
+          "text": "What was my electric usage this past month?"
+        },
+        {
+          "text": "Where can I see my utilities usage?"
+        },
+        {
+          "text": "Where do I find the relevant info concerning my power consumption?"
+        },
+        {
+          "text": "Can you show me power consumption?"
+        },
+        {
+          "text": "Can you tell the quantity of energy use?"
+        },
+        {
+          "text": "Did my usage go up"
+        },
+        {
+          "text": "How do I determine my electricity consumption?"
+        },
+        {
+          "text": "How do I get energy use reports?"
+        },
+        {
+          "text": "How much electricity did I utilize in the past week or so?"
+        },
+        {
+          "text": "How much electricity have I been consuming of late?"
+        },
+        {
+          "text": "How much electricity I am using?"
+        },
+        {
+          "text": "How much energy have I used in the past couple weeks?"
+        },
+        {
+          "text": "I'd like to view my home's power use"
+        }
+      ],
+      "description": "Request details on energy use."
+    }
+  ],
+  "entities": [
+    {
+      "entity": "actions",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "play",
+          "synonyms": [
+            "start"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "SwitchOn",
+          "synonyms": [
+            "switch it on",
+            "turn it on",
+            "turn on",
+            "switch on"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "SwitchOff",
+          "synonyms": [
+            "switch it off",
+            "turn it off",
+            "turn off",
+            "switch off"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "area",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "store",
+          "synonyms": [
+            "store room"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "balcony",
+          "synonyms": [
+            "Balcony"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "bedroom",
+          "synonyms": [
+            "Bed Room",
+            "Bedroom"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "gallery",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "kitchen",
+          "synonyms": [
+            "rasoi",
+            "Kitchen"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "livingroom",
+          "synonyms": [
+            "Drawing room",
+            "Diningroom",
+            "Dining Room",
+            "Hall",
+            "Livingroom",
+            "Living Room"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "parking",
+          "synonyms": [
+            "parking"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "bathroom",
+          "synonyms": [
+            "bath room",
+            "Bathroom"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-date",
+      "values": []
+    },
+    {
+      "entity": "DateAndTime",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "time",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "date",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "day",
+          "synonyms": [
+            "sunday",
+            "saturday",
+            "friday",
+            "thursday",
+            "wednesday",
+            "tuesday",
+            "monday"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "sys-number",
+      "values": []
+    },
+    {
+      "entity": "sys-location",
+      "values": []
+    },
+    {
+      "entity": "appliance",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "cooler",
+          "synonyms": [
+            "Cooler"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "motor",
+          "synonyms": [
+            "Water Tank",
+            "Water Motor",
+            "Water Pump"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "speakers",
+          "synonyms": [
+            "ble speaker",
+            "bluetooth speakers",
+            "speaker"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "light",
+          "synonyms": [
+            "Tubelight",
+            "Bulb",
+            "CFL",
+            "Lamp",
+            "LED",
+            "Tube Light"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "geiser",
+          "synonyms": [
+            "Hot Water",
+            "Geiser"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "camera",
+          "synonyms": [
+            "Camera"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "socket",
+          "synonyms": [
+            "Socket"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "tv",
+          "synonyms": [
+            "TV",
+            "Tele Vision",
+            "Television"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "fan",
+          "synonyms": [
+            "Fan",
+            "Ceiling Fan"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "ac",
+          "synonyms": [
+            "Air Conditioner",
+            "Air Condition",
+            "AC"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "door",
+          "synonyms": [
+            "Main Gate",
+            "Gate"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "refridgerator",
+          "synonyms": [
+            "freezer",
+            "Fridge"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "greetings",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "bye",
+          "synonyms": [
+            "take care",
+            "bye"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "hello",
+          "synonyms": [
+            "hi ya",
+            "hello",
+            "Hey Buddy",
+            "Hey",
+            "Hi"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "goodAfternoon",
+          "synonyms": [
+            "Good Afternoon"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "goodNight",
+          "synonyms": [
+            "Sleep Well",
+            "Good Night"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "goodMorning",
+          "synonyms": [
+            "Good Morning"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-time",
+      "values": []
+    },
+    {
+      "entity": "sys-person",
+      "values": []
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    },
+    "from-sample": true
+  },
+  "webhooks": [
+    {
+      "url": "https://us-south.functions.cloud.ibm.com/api/v1/namespaces/gurvsin3%40in.ibm.com_learn/actions/joke?blocking=true",
+      "name": "main_webhook",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Basic YjkxOTc2YmQtMjJlOC00ZjhmLWFjZDEtODk5ZmM3NjIwNTk2Omp2VXZZUnNGSG8zSGo4MFpzUEtENkhWRE1KSEE1NXZLZDJmY01HclIzRmhlVVowSjRwQzdRQ3RtN0QwM0RWS1I="
+        }
+      ]
+    }
+  ],
+  "dialog_nodes": [
+    {
+      "type": "response_condition",
+      "title": "response_4_1567525336267",
+      "output": {
+        "text": {
+          "values": [
+            "I'm not in a mood to tell a joke."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "Jokes",
+      "conditions": "anything_else",
+      "dialog_node": "response_4_1567525336267",
+      "previous_sibling": "response_8_1567525334546"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_8_1567525334546",
+      "output": {
+        "text": {
+          "values": [
+            "$webhook_result_1.response.result.message"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "Jokes",
+      "actions": [
+        {
+          "name": "gurvsin3@in.ibm.com_learn/joke",
+          "type": "server",
+          "parameters": {
+            "location": "@sys-location"
+          },
+          "credentials": "$private.CLOUD_FUNCTIONS_CREDENTIALS",
+          "result_variable": "context.joke"
+        }
+      ],
+      "conditions": "$webhook_result_1",
+      "dialog_node": "response_8_1567525334546"
+    },
+    {
+      "type": "standard",
+      "title": "NoApplianceMentioned",
+      "output": {},
+      "parent": "ApplianceActions",
+      "conditions": "!@appliance",
+      "dialog_node": "NoApplianceMentioned",
+      "previous_sibling": "ApplianceActionNode"
+    },
+    {
+      "type": "standard",
+      "title": "ApplianceActionNode",
+      "output": {},
+      "parent": "ApplianceActions",
+      "conditions": "@appliance",
+      "dialog_node": "ApplianceActionNode"
+    },
+    {
+      "type": "response_condition",
+      "output": {},
+      "parent": "DateNTime",
+      "context": {
+        "show": [
+          "time"
+        ],
+        "next_action": "date_time"
+      },
+      "conditions": " @DateAndTime:time",
+      "dialog_node": "node_5_1483634630866",
+      "previous_sibling": "node_4_1483634605393"
+    },
+    {
+      "type": "response_condition",
+      "output": {},
+      "parent": "DateNTime",
+      "context": {
+        "show": [
+          "day"
+        ],
+        "next_action": "date_time"
+      },
+      "dialog_node": "node_7_1483634750198",
+      "previous_sibling": "node_6_1483634668882"
+    },
+    {
+      "type": "response_condition",
+      "output": {},
+      "parent": "DateNTime",
+      "context": {
+        "show": [
+          "day"
+        ],
+        "next_action": "date_time"
+      },
+      "conditions": "@DateAndTime:day",
+      "dialog_node": "node_6_1483634668882",
+      "previous_sibling": "node_5_1483634630866"
+    },
+    {
+      "type": "response_condition",
+      "output": {},
+      "parent": "DateNTime",
+      "context": {
+        "show": [
+          "date"
+        ],
+        "next_action": "date_time"
+      },
+      "conditions": " @DateAndTime:date",
+      "dialog_node": "node_4_1483634605393",
+      "previous_sibling": "node_3_1483633808747"
+    },
+    {
+      "type": "response_condition",
+      "output": {},
+      "parent": "DateNTime",
+      "context": {
+        "show": [
+          "date",
+          "time"
+        ],
+        "next_action": "date_time"
+      },
+      "conditions": " @DateAndTime:date && @DateAndTime:time",
+      "dialog_node": "node_3_1483633808747"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Please tell me the location for which you want to know the weather details about."
+          ]
+        }
+      },
+      "parent": "Weather",
+      "metadata": {},
+      "conditions": "!@sys-location && !$location",
+      "dialog_node": "node_9_1522056051336",
+      "previous_sibling": "node_8_1522056001406"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "I'm searching for weather details in $location"
+          ],
+          "selection_policy": "sequential"
+        },
+        "type": "CLOUDANT_MAPPING",
+        "mappings": [
+          "KEY_SEARCHING_WEATHER"
+        ]
+      },
+      "parent": "Weather",
+      "context": {
+        "next_action": {
+          "action": "external_call",
+          "service": "weather_service"
+        }
+      },
+      "metadata": {},
+      "conditions": "$location",
+      "dialog_node": "node_8_1522056001406",
+      "previous_sibling": "node_7_1522055950684"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "I'm searching for weather details in $location"
+          ],
+          "selection_policy": "sequential"
+        },
+        "type": "CLOUDANT_MAPPING",
+        "mappings": [
+          "KEY_SEARCHING_WEATHER"
+        ]
+      },
+      "parent": "Weather",
+      "context": {
+        "location": "@sys-location",
+        "next_action": {
+          "action": "external_call",
+          "service": "weather_service"
+        }
+      },
+      "metadata": {},
+      "conditions": "@sys-location",
+      "dialog_node": "node_7_1522055950684",
+      "previous_sibling": "Location provided"
+    },
+    {
+      "type": "standard",
+      "title": "Location provided",
+      "output": {
+        "text": {
+          "values": [
+            "I'm searching for weather details in $location"
+          ],
+          "selection_policy": "sequential"
+        },
+        "type": "CLOUDANT_MAPPING",
+        "mappings": [
+          "KEY_SEARCHING_WEATHER"
+        ]
+      },
+      "parent": "Weather",
+      "context": {
+        "location": "@sys-location",
+        "next_action": {
+          "action": "external_call",
+          "service": "weather_service"
+        }
+      },
+      "metadata": {},
+      "conditions": "@sys-location",
+      "dialog_node": "Location provided",
+      "previous_sibling": "slot_1_1502978044079"
+    },
+    {
+      "type": "slot",
+      "title": "slot_1_1502978044079",
+      "output": {},
+      "parent": "Weather",
+      "metadata": {
+        "_customization": {}
+      },
+      "variable": "$location",
+      "conditions": "true",
+      "dialog_node": "slot_1_1502978044079"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Sorry ! I cannot help you with this.  Is there anything else you want me to do ?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "AnythingElse",
+      "dialog_node": "node_3_1504633720524",
+      "previous_sibling": "node_2_1504633447061"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Hi, I'm your buddy.  How can I help you ?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "AnythingElse",
+      "conditions": "$conversation_start == \"true\"",
+      "dialog_node": "node_2_1504633447061"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Good evening.  I'm your buddy, what can I do for you ?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "Greetings",
+      "conditions": "now().after('17:00:00')",
+      "dialog_node": "response_2_1586347391516",
+      "previous_sibling": "response_6_1586347346485"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "A very good morning.  I'm your buddy, how can I help you ?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "Greetings",
+      "conditions": " @greetings:goodMorning",
+      "dialog_node": "node_3_1503912652228",
+      "previous_sibling": "node_2_1503912615391"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Good afternoon.  I'm your buddy, what can I do for you ?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "Greetings",
+      "conditions": "now().after('12:00:00') && now().before('16:59:59')",
+      "dialog_node": "response_6_1586347346485",
+      "previous_sibling": "response_1_1586347262656"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Good morning.  I'm your buddy, what can I do for you ?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "Greetings",
+      "conditions": "now().after('04:00:00') && now().before('11:59:59')",
+      "dialog_node": "response_1_1586347262656",
+      "previous_sibling": "node_4_1503912707326"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Hi, I'm your buddy.  How can I help you ?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "Greetings",
+      "dialog_node": "response_8_1586347416843",
+      "previous_sibling": "response_2_1586347391516"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Good afternoon.  I'm your buddy, what can I do for you ?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "Greetings",
+      "conditions": " @greetings:goodAfternoon",
+      "dialog_node": "node_4_1503912707326",
+      "previous_sibling": "node_3_1503912652228"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Hi, I'm your buddy.  How can I help you ?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "Greetings",
+      "conditions": "@greetings:hello",
+      "dialog_node": "node_2_1503912615391"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Hi, I'm your smart home buddy.  How can I help you ?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_1_1521788289342",
+      "context": {
+        "save_in_db": false
+      },
+      "metadata": {},
+      "conditions": "anything_else",
+      "dialog_node": "node_2_1562045076606",
+      "previous_sibling": "node_1_1562045032109"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "You can call us on <speak version='1.0'><prosody rate='slow'><say-as interpret-as='number' format='telephone'>123-456-9876</say-as></prosody>, or email us on <prosody rate='slow'><say-as interpret-as='letters'><? $emailId.replace('@', ' @') ?></say-as></prosody></speak>"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_1_1521788289342",
+      "context": {
+        "save_in_db": false
+      },
+      "metadata": {},
+      "conditions": "$channel == \"VOICE\"",
+      "dialog_node": "node_1_1562045032109"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "I've switched off the <? entities.area.literal ?> <? entities.appliance.literal ?> for you",
+            "Ok, turning off the <? entities.area.literal ?> <? entities.appliance.literal ?>"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "parent": "ApplianceActionNode",
+      "context": {
+        "next_action": {
+          "action": "external_call",
+          "service": "device_action"
+        }
+      },
+      "metadata": {},
+      "conditions": " @area && @actions:SwitchOff",
+      "dialog_node": "node_8_1483554859070",
+      "previous_sibling": "node_4_1483552825825"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "I've switched off the @appliance.literal",
+            "Ok, turning off the @appliance.literal"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "parent": "ApplianceActionNode",
+      "context": {
+        "next_action": {
+          "action": "external_call",
+          "service": "device_action"
+        }
+      },
+      "metadata": {},
+      "conditions": " @actions:SwitchOff",
+      "dialog_node": "node_9_1483554939649",
+      "previous_sibling": "node_7_1483553937230"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "I've switched on the @appliance.literal",
+            "Ok, turning on the @appliance.literal"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "parent": "ApplianceActionNode",
+      "context": {
+        "next_action": {
+          "action": "external_call",
+          "service": "device_action"
+        }
+      },
+      "metadata": {},
+      "conditions": " @actions:SwitchOn",
+      "dialog_node": "node_7_1483553937230",
+      "previous_sibling": "node_8_1483554859070"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "I've switched on the <? entities.area.literal ?> <? entities.appliance.literal ?> for you",
+            "Ok, turning on the <? entities.area.literal ?> <? entities.appliance.literal ?>"
+          ],
+          "selection_policy": "random"
+        },
+        "feedback": {
+          "show": true
+        }
+      },
+      "parent": "ApplianceActionNode",
+      "context": {
+        "save_in_db": true,
+        "next_action": {
+          "action": "external_call",
+          "service": "device_action"
+        }
+      },
+      "metadata": {},
+      "conditions": "@area && @actions:SwitchOn",
+      "dialog_node": "node_4_1483552825825"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Please confirm which appliance shall I turn on or turn off."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "NoApplianceMentioned",
+      "dialog_node": "node_8_1492353066295",
+      "previous_sibling": "node_7_1492353011371"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Please confirm which apliance you want me to turn off.",
+            "Which appliance shall I switch off ?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "NoApplianceMentioned",
+      "conditions": " @actions:SwitchOff",
+      "dialog_node": "node_7_1492353011371",
+      "previous_sibling": "node_6_1492352953473"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Please confirm which apliance you want me to turn on.",
+            "Which appliance shall I switch on ?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "NoApplianceMentioned",
+      "conditions": " @actions:SwitchOn",
+      "dialog_node": "node_6_1492352953473"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_6_1502978530332",
+      "output": {
+        "text": {
+          "values": [
+            "I'm sorry I still don't get the location for finding weather details."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_1_1502978044079",
+      "context": {
+        "next_action": "continue"
+      },
+      "metadata": {},
+      "event_name": "nomatch",
+      "dialog_node": "handler_6_1502978530332",
+      "previous_sibling": "handler_5_1502978506371"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_2_1502978044079",
+      "output": {},
+      "parent": "slot_1_1502978044079",
+      "context": {
+        "location": "@sys-location"
+      },
+      "metadata": {},
+      "conditions": "@sys-location",
+      "event_name": "input",
+      "dialog_node": "handler_2_1502978044079",
+      "previous_sibling": "handler_3_1502978044079"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_5_1502978506371",
+      "output": {
+        "text": {
+          "values": [],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_1_1502978044079",
+      "context": {
+        "location": "@sys-location",
+        "next_action": "weather_service"
+      },
+      "metadata": {},
+      "conditions": "true",
+      "event_name": "filled",
+      "dialog_node": "handler_5_1502978506371",
+      "previous_sibling": "handler_2_1502978044079"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_3_1502978044079",
+      "output": {
+        "text": "Please tell me the location for which you want to know the weather conditions"
+      },
+      "parent": "slot_1_1502978044079",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_3_1502978044079"
+    },
+    {
+      "type": "standard",
+      "title": "WatsonInfo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thanks for your interest in IBM Watson."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "title": "Here is a video on IBM Watson, about its learning, training and working.",
+            "options": [
+              {
+                "label": "video",
+                "value": {
+                  "input": {
+                    "text": "http://s3.ap.cloud-object-storage.appdomain.cloud/demo-public-assets/IBMWatsonHowItWorks.mp4"
+                  }
+                }
+              },
+              {
+                "label": "link",
+                "value": {
+                  "input": {
+                    "text": "https://www.ibm.com/watson"
+                  }
+                }
+              }
+            ],
+            "description": "Show a video with a link to documentation",
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "#watson",
+      "dialog_node": "node_3_1568351953370",
+      "previous_sibling": "Jokes"
+    },
+    {
+      "type": "standard",
+      "title": "ApplianceActions",
+      "output": {
+        "text": {
+          "values": [],
+          "selection_policy": "sequential"
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "ApplianceActionNode"
+      },
+      "conditions": "#appliance_action",
+      "dialog_node": "ApplianceActions",
+      "previous_sibling": "Search"
+    },
+    {
+      "type": "standard",
+      "title": "DateNTime",
+      "output": {},
+      "conditions": "#date_time",
+      "dialog_node": "DateNTime",
+      "previous_sibling": "ApplianceActions"
+    },
+    {
+      "type": "standard",
+      "title": "AboutMe",
+      "output": {
+        "text": {
+          "values": [
+            "I'm your buddy, hidden inside this box.  I'm not a human but a machine.  I'm learning to know humans better.",
+            "I'm your assistant inside this box.  I'm just like any human, but a machine.  Gurvinder created me."
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "context": {
+        "next_action": "completed"
+      },
+      "metadata": {},
+      "conditions": "#General_Human_or_Bot || #General_About_You",
+      "dialog_node": "AboutMe",
+      "previous_sibling": "DateNTime"
+    },
+    {
+      "type": "standard",
+      "title": "Search",
+      "output": {
+        "text": {
+          "values": [
+            "I am searching for it.  Please wait for some time."
+          ]
+        }
+      },
+      "context": {
+        "next_action": {
+          "action": "external_call",
+          "service": "google_search"
+        }
+      },
+      "metadata": {},
+      "conditions": "#search",
+      "dialog_node": "Search",
+      "previous_sibling": "News"
+    },
+    {
+      "type": "standard",
+      "title": "News",
+      "output": {
+        "text": {
+          "values": [
+            "I am searching for the latest news.  Please wait for some time."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "context": {
+        "next_action": {
+          "action": "external_call",
+          "service": "news_service"
+        }
+      },
+      "metadata": {},
+      "conditions": "#latest_news",
+      "dialog_node": "News",
+      "previous_sibling": "Weather"
+    },
+    {
+      "type": "standard",
+      "title": "Jokes",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "": ""
+          },
+          "result_variable": "webhook_result_1"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#General_Jokes",
+      "dialog_node": "Jokes",
+      "previous_sibling": "AboutMe"
+    },
+    {
+      "type": "standard",
+      "title": "Weather",
+      "output": {},
+      "metadata": {
+        "fallback": "leave",
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#weather",
+      "digress_in": "does_not_return",
+      "dialog_node": "Weather",
+      "digress_out": "allow_all",
+      "previous_sibling": "Greetings"
+    },
+    {
+      "type": "standard",
+      "title": "AnythingElse",
+      "output": {},
+      "conditions": "anything_else",
+      "dialog_node": "AnythingElse",
+      "previous_sibling": "node_3_1568351953370"
+    },
+    {
+      "type": "standard",
+      "title": "Greetings",
+      "output": {},
+      "conditions": "@greetings || #General_Greetings",
+      "dialog_node": "Greetings",
+      "previous_sibling": "node_1_1521788289342"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {},
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "welcome",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_1_1521788289342",
+      "digress_out": "allow_all"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "enabled": true,
+      "randomize": true
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "home-automation",
+  "language": "en",
+  "description": "Workspace for Home Automation"
+}

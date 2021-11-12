@@ -1,0 +1,43 @@
+version: '2'
+services:
+  my-watson-assistant-backend:
+    image: my-watson-assistant-backend:latest
+    env_file:
+     - ./app/.env 
+    volumes:
+      - ./app:/usr/src/app
+    working_dir: /usr/src/app
+    command: npm start
+    ports:
+      - "3000:3000"
+    links:
+      - cloudant
+    network_mode: bridge
+    hostname: my-watson-assistant-backend
+  cloudant:
+    image: ibmcom/cloudant-developer:latest
+    ports:
+      - "8888:80"
+    expose:
+      - "80"
+    volumes:
+      - cloudant:/srv
+    mem_limit: 256M
+    restart: always
+    hostname: cloudant
+    #privileged: true
+    network_mode: bridge
+  client:
+    image: my-watson-assistant-client:latest
+    env_file:
+     - ./client/.env   
+    volumes:
+      - ./client:/usr/src/app
+    working_dir: /usr/src/app
+    ports:
+      - "80:80"
+    links:
+      - my-watson-assistant-backend
+    network_mode: bridge
+volumes:
+  cloudant:

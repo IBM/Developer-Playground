@@ -1,9 +1,0 @@
-@import "~@ng-select/ng-select/themes/default.theme.css";
-
-.logo-container .brand{
-    font-weight: bold;
-}
-
-.card-description, .description, .footer-big p {
-    color: #383333;
-}

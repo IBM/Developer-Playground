@@ -1,5 +1,4 @@
 import { MultiSelect, RadioButton, RadioButtonGroup, FormGroup, Dropdown, TextInput, Button, Loading, ToastNotification } from 'carbon-components-react';
-import Chart from './components/Chart'
 import { Header, HeaderName } from "carbon-components-react/lib/components/UIShell";
 import { useState } from 'react'
 import axios from 'axios'
@@ -7,6 +6,7 @@ import './App.css'
 import FileUpload from './components/FileUpload';
 import JobStatus from './components/JobStatus'
 import FetchResults from './components/FetchResults';
+import CarbonChart from './components/CarbonChart'
 
 
 
@@ -18,8 +18,6 @@ const anaomalyEstimator = {
 
 function App() {
   const [data, setData] = useState([])
-  const [lines, setLines] = useState([])
-  const [showAnomaly, setAnomaly] = useState(false)
   const [showChart, setChart] = useState(false)
   const [showFileUploader, setFileUploader] = useState(false)
   const [columns, setColumns] = useState([])
@@ -47,6 +45,7 @@ function App() {
   })
   const [showSample, setSample] = useState(false)
   const [sampledata, setSampledata] = useState([])
+  const [datasetName, setDatasetName] = useState("")
 
   const resetStates = () => {
     setTargetInvalid({ state: false, text: "" })
@@ -56,7 +55,6 @@ function App() {
     setTimeColumnOptions([])
     setChart(false)
     setTimeColumn(false)
-    setLines([])
   }
 
   const sendDataToParent = async (res) => {
@@ -64,8 +62,9 @@ function App() {
     let result = true
     try {
       setLoading(true)
-      setData(res.data)
-      setTimeColumnOptions(Object.keys(res.data[0]))
+      //setData(res.data)
+      setDatasetName("customfile.json")
+      setTimeColumnOptions(res.data)
       setTimeColumn(true)
       setForm(false)
       result = true
@@ -88,36 +87,6 @@ function App() {
       setLoading(false)
     }
     return result
-  }
-
-  const getSampleDataset = async (e) => {
-    resetStates()
-    try {
-      getSample()
-      setLoading(true)
-      let res = await axios.get(`/sampledata?dataset=${e.selectedItem}`)
-      setData(res.data)
-      setChart(false)
-      setTimeColumn(true)
-      setTimeColumnOptions(Object.keys(res.data[0]))
-      setForm(false)
-      setFileUploader(false)
-    } catch (err) {
-      let errMsg;
-      try {
-        errMsg = err.response.data.msg
-      } catch {
-        errMsg = "Something went wrong"
-      }
-      setNotifData({
-        kind: "error",
-        subtitle: errMsg,
-        title: "Error"
-      })
-      setNotification(true)
-    } finally {
-      setLoading(false)
-    }
   }
 
 
@@ -165,39 +134,59 @@ function App() {
 
   }
 
-  const setTargetParameters = ({ selectedItem }) => {
+  const setTargetParameters = async ({ selectedItem }) => {
+    try {
     const index = timeColumnOptions.indexOf(selectedItem)
     let columns = []
-    let lines = []
     timeColumnOptions.forEach((column, idx) => {
       if (idx !== index) {
         columns.push({
           name: column
         })
-        let color = `#${Math.floor(Math.random() * 16777215).toString(16)}`
-        while (color === "#ffffff")
-          color = `#${Math.floor(Math.random() * 16777215).toString(16)}`
-        lines.push({
-          line: column,
-          color
-        })
       }
     })
+    setLoading(true)
     setColumns(columns)
+    let res = await axios.get(`/data/${datasetName}/${selectedItem}`)
+    setData(res.data)
     setChart(true)
-    setLines(lines)
+    //setLines(lines)
     setForm(true)
     if (timeColumnOptions.length === 2) {
       setTarget(false)
     } else {
       setTarget(true)
     }
-    setAnomaly(false)
     setTime(selectedItem)
+  } catch (err) {
+    let errMsg;
+    try {
+      errMsg = err.response.data.msg
+    } catch {
+      errMsg = "Something went wrong"
+    }
+    setNotifData({
+      kind: "error",
+      subtitle: errMsg,
+      title: "Error"
+    })
+    setNotification(true)
+  } finally {
+    setLoading(false)
   }
+
+  }
+  
 
   const uploadData = async (e) => {
     e.preventDefault()
+    try{
+    if(document.getElementById("submit-btn").name !== "btn-clicked")
+      return
+    document.getElementById("submit-btn").setAttribute("name","btn")
+    } catch{
+      return
+    }
     let formData = {}
     formData.dataset_type = e.target.dataset_type.value
     if(formData.dataset_type === "sampledt")
@@ -288,20 +277,40 @@ function App() {
   }
 
   const getChartResults = (data) => {
+    setData([])
     setData(data)
-    let lines = Object.keys(data[0]).slice(1)
-    let lineData = []
-    lines.forEach(line => {
-      if (line !== "anomaly")
-        lineData.push({
-          line,
-          color: `#${Math.floor(Math.random() * 16777215).toString(16)}`
-        })
-    })
-    setLines(lineData)
-    setAnomaly(true)
+    setChart(false)
     setChart(true)
     setForm(false)
+  }
+
+  const getTimeColumns = async (e) => {
+    try {
+      getSample()
+      setLoading(true)
+      setDatasetName(e.selectedItem)
+      let res = await axios.get(`/columns/${e.selectedItem}`)
+      setChart(false)
+      setTimeColumn(true)
+      setTimeColumnOptions(res.data)
+      setForm(false)
+      setFileUploader(false)
+    } catch (err) {
+      let errMsg;
+      try {
+        errMsg = err.response.data.msg
+      } catch {
+        errMsg = "Something went wrong"
+      }
+      setNotifData({
+        kind: "error",
+        subtitle: errMsg,
+        title: "Error"
+      })
+      setNotification(true)
+    } finally {
+      setLoading(false)
+    }
   }
   return (
     <div className="app">
@@ -343,7 +352,7 @@ function App() {
           titleText="Select Value"
           label="Choose a Dataset"
           items={sampledata}
-          onChange={getSampleDataset}
+          onChange={getTimeColumns}
           onClick={getSample}
         />: null}
         {showTimeColumn ? <div>
@@ -355,7 +364,8 @@ function App() {
             items={timeColumnOptions}
             onChange={setTargetParameters} /> </div> : null}
         {showChart ?
-          <Chart data={data} lines={lines} showAnomaly={showAnomaly} time={time} />
+          //<Chart data={data} lines={lines} showAnomaly={showAnomaly} time={time} />
+          <CarbonChart data={data} />
           : null}
         {showForm ?
           <FormGroup>
@@ -451,7 +461,7 @@ function App() {
               invalidText={LTInvalid.text}
               onChange={() => setLTInvalid({ state: false, text: "" })} />
             <div className="hidden-options">
-              <Button type="submit">Submit</Button>
+              <Button id="submit-btn" name="btn" onClick={e=>document.getElementById("submit-btn").setAttribute("name","btn-clicked")} type="submit">Submit</Button>
             </div>
           </FormGroup> : null}
       </form>

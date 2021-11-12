@@ -1,6 +1,7 @@
 const promiseRequest = require('./promiseRequest');
 const fs = require('fs');
 const strftime = require('strftime');
+const getDataCarbonCharts = require("./getDataCarbonCharts")
 
 const getTarget = (data) => {
     let targetData = '['
@@ -91,7 +92,7 @@ const anomalyDetect = async ({
             const response = await promiseRequest(options)
             console.log(response)
             let jobId = JSON.parse(response).jobId
-            fs.writeFileSync(`./data/${jobId}.json`, JSON.stringify(fileData))
+            fs.writeFileSync(`./data/${jobId}.json`, JSON.stringify(getDataCarbonCharts(fileData,time_column)))
             resolve({ jobId, status: "submitted" })
         } catch (err) {
             reject(JSON.parse(err.body).moreInformation)

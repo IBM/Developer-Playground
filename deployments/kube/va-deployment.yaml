@@ -1,0 +1,57 @@
+
+# Copyright 2020 IBM.
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: virtual-agant-svc
+  labels:
+    app: virtual-agant
+    tier: va
+spec:
+  type: NodePort
+  ports:
+  - port:  3000
+    nodePort: 30001
+  selector:
+   app: virtual-agant
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: virtual-agant
+  labels:
+    app: virtual-agant
+    tier: va
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: virtual-agant
+  template:
+    metadata:
+      labels:
+        app: virtual-agant
+    spec:
+      containers:
+      - name: virtual-agant
+        image: us.icr.io/smartthings/my-watson-assistant-backend:latest
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - configMapRef:
+            name: app-config
+        env:
+          - name: CLOUDANT_URL
+            valueFrom:
+              secretKeyRef:
+                name: va-secrets
+                key: CLOUDANT_URL
+          - name: PORT
+            value: "3000"
+        ports:
+        - name: http
+          containerPort: 3000
+      restartPolicy: Always
+

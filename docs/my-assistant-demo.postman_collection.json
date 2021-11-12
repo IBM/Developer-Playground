@@ -1,0 +1,746 @@
+{
+	"info": {
+		"_postman_id": "ca924553-d436-40bd-8298-06af607578db",
+		"name": "my-assistant-demo",
+		"description": "My Watson Assistant Demo APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-IBM-client-Id",
+						"value": "default",
+						"type": "text"
+					},
+					{
+						"key": "X-IBM-client-Secret",
+						"value": "SECRET",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\": \"gurvinder.singh\", \"password\": \"1SatnamW\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server_url}}/api/MyUsers/login?include=[\"user\"]",
+					"host": [
+						"{{server_url}}"
+					],
+					"path": [
+						"api",
+						"MyUsers",
+						"login"
+					],
+					"query": [
+						{
+							"key": "include",
+							"value": "[\"user\"]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FetchAllMappings",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-IBM-client-Id",
+						"value": "default",
+						"type": "text"
+					},
+					{
+						"key": "X-IBM-client-Secret",
+						"value": "SECRET",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{server_url}}/api/Mappings?filter={\"where\":{\"key\":\"APP_CONFIG\"}}",
+					"host": [
+						"{{server_url}}"
+					],
+					"path": [
+						"api",
+						"Mappings"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "{\"where\":{\"key\":\"APP_CONFIG\"}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SaveMappings",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-IBM-client-Id",
+						"value": "default",
+						"type": "text"
+					},
+					{
+						"key": "X-IBM-client-Secret",
+						"value": "SECRET",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"key\": \"CYBER_SECURITY_APP_CONFIG\",\n        \"output\": {\n            \"WATSON_ASSISTANT_ASSISTANT_ID\": \"REPLACE_WITH_WATSON_ASSISTANT_ID\",\n            \"WATSON_ASSISTANT_API_KEY\": \"REPLACE_WITH_WATSON_ASSISTANT_API_KEY\",\n            \"ENABLE_DISCOVERY\": true,\n            \"WATSON_DISCOVERY_API_KEY\": \"REPLACE_WITH_WATSON_DISCOVERY_API_KEY\",\n            \"WATSON_DISCOVERY_ENVIRONMENT_ID\": \"REPLACE_WITH_WATSON_DISCOVERY_ENVIRONMENT_ID\",\n            \"WATSON_DISCOVERY_CONFIGURATION_ID\": \"REPLACE_WITH_WATSON_DISCOVERY_CONFIGURATION_ID\",\n            \"WATSON_DISCOVERY_COLLECTION_ID\": \"REPLACE_WITH_WATSON_DISCOVERY_COLLECTION_ID\",\n            \"WATSON_STT_API_KEY\": \"REPLACE_WITH_WATSON_STT_API_KEY\",\n            \"WEATHER_USERNAME\": \"REPLACE_WITH_WEATHER_USERNAME\",\n            \"WEATHER_PASSWORD\": \"REPLACE_WITH_WEATHER_PASSWORD\",\n            \"WEATHER_URL\": \"REPLACE_WITH_WEATHER_URL\",\n            \"GOOGLE_API_KEY\": \"REPLACE_WITH_GOOGLE_API_KEY\",\n            \"GOOGLE_LOGIN_CLIENT_ID\": \"REPLACE_WITH_GOOGLE_LOGIN_CLIENT_ID\",\n            \"GOOGLE_LOGIN_CLIENT_SECRET\": \"REPLACE_WITH_GOOGLE_LOGIN_CLIENT_SECRET\",\n            \"CLOUD_FUNCTIONS_CREDENTIALS\": \"REPLACE_WITH_CLOUD_FUNCTIONS_CREDENTIALS\",\n            \"ENABLE_SLACK\": true,\n            \"SLACK_BOT_USER_TOKEN\": \"REPLACE_WITH_SLACK_BOT_USER_TOKEN\",\n            \"SLACK_SIGNIN_SECRET\": \"REPLACE_WITH_SLACK_SIGNIN_SECRET\",\n            \"ENABLE_MS_BOT\": false,\n            \"MS_BOT_APP_ID\": \"REPLACE_WITH_MS_BOT_APP_ID\",\n            \"MS_BOT_APP_PASSWORD\": \"REPLACE_WITH_MS_BOT_APP_PASSWORD\",\n            \"MQTT_HOST_URL\": \"https://rqeofj.messaging.internetofthings.ibmcloud.com\",\n            \"MQTT_CLIENT_ID\": \"REPLACE_WITH_MQTT_CLIENT_ID\",\n            \"MQTT_USER\": \"REPLACE_WITH_MQTT_USER\",\n            \"MQTT_PASSWORD\": \"REPLACE_WITH_MQTT_PASSWORD\"\n        }\n    }"
+				},
+				"url": {
+					"raw": "{{server_url}}/api/Mappings",
+					"host": [
+						"{{server_url}}"
+					],
+					"path": [
+						"api",
+						"Mappings"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "SaveMappings",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-IBM-client-Id",
+								"value": "default",
+								"type": "text"
+							},
+							{
+								"key": "X-IBM-client-Secret",
+								"value": "SECRET",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"key\": \"APP_CONFIG\",\n        \"output\": {\n            \"WATSON_ASSISTANT\": {\n                \"API_KEY\": \"REPLACE_WITH_WATSON_API_KEY\",\n                \"URL\": \"REPLACE\",\n                \"ASSISTANTS\": [\n                    {\n                        \"name\": \"Covid19VA\",\n                        \"id\": \"0bb0ace2-e073-4a74-bf81-813148b3cbf9\",\n                        \"default\": false\n                    },\n                    {\n                        \"name\": \"HomeAutomationVA\",\n                        \"id\": \"fd0ac5f5-d10c-4214-8673-b0777cce5dbf\",\n                        \"default\": true\n                    }\n                ]\n            },\n            \"WATSON_DISCOVERY\": {\n                \"ENABLE\": true,\n                \"API_KEY\": \"REPLACE\",\n                \"ENVIRONMENT_ID\": \"REPLACE\",\n                \"CONFIGURATION_ID\": \"REPLACE\",\n                \"COLLECTION_ID\": \"REPLACE\"\n            },\n            \"WATSON_STT_API_KEY\": \"REPLACE\",\n            \"WEATHER_USERNAME\": \"REPLACE\",\n            \"WEATHER_PASSWORD\": \"REPLACE\",\n            \"WEATHER_URL\": \"REPLACE\",\n            \"GOOGLE_API_KEY\": \"REPLACEE\",\n            \"GOOGLE_LOGIN_CLIENT_ID\": \"REPLACE\",\n            \"GOOGLE_LOGIN_CLIENT_SECRET\": \"REPLACE\",\n            \"CLOUD_FUNCTIONS_CREDENTIALS\": \"REPLACE\",\n            \"ENABLE_SLACK\": true,\n            \"SLACK_BOT_USER_TOKEN\": \"REPLACE\",\n            \"SLACK_SIGNIN_SECRET\": \"REPLACE\",\n            \"ENABLE_MS_BOT\": false,\n            \"MS_BOT_APP_ID\": \"REPLACE\",\n            \"MS_BOT_APP_PASSWORD\": \"REPLACE\",\n            \"MQTT_HOST_URL\": \"https://rqeofj.messaging.internetofthings.ibmcloud.com\",\n            \"MQTT_CLIENT_ID\": \"REPLACE\",\n            \"MQTT_USER\": \"REPLACE\",\n            \"MQTT_PASSWORD\": \"REPLACE\"\n        }\n    }"
+						},
+						"url": {
+							"raw": "{{server_url}}/api/Mappings",
+							"host": [
+								"{{server_url}}"
+							],
+							"path": [
+								"api",
+								"Mappings"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "UpdateMappings",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-IBM-client-Id",
+						"value": "default",
+						"type": "text"
+					},
+					{
+						"key": "X-IBM-client-Secret",
+						"value": "SECRET",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"key\": \"APP_CONFIG\",\n    \"output\": {\n        \"WATSON_ASSISTANT\": {\n            \"API_KEY\": \"REPLACE_WITH_WATSON_ASSISTANT_API_KEY\",\n            \"URL\": \"REPLACE_WITH_WA_ENDPOINT_URL\",\n            \"ASSISTANTS\": [\n                {\n                    \"name\": \"REPLACE_WITH_WATSON_ASSISTANT_NAME\",\n                    \"id\": \"REPLACE_WITH_WATSON_ASSISTANT_ID\",\n                    \"default\": true\n                }\n            ]\n        },\n        \"WATSON_DISCOVERY\": {\n            \"ENABLE\": true,\n            \"API_KEY\": \"REPLACE_WITH_WATSON_DISCOVERY_API_KEY\",\n            \"ENVIRONMENT_ID\": \"REPLACE_WITH_WATSON_DISCOVERY_ENVIRONMENT_ID\",\n            \"CONFIGURATION_ID\": \"REPLACE_WITH_WATSON_DISCOVERY_CONFIGURATION_ID\",\n            \"COLLECTION_ID\": \"REPLACE_WITH_WATSON_DISCOVERY_COLLECTION_ID\"\n        },\n        \"WATSON_STT_API_KEY\": \"REPLACE_WITH_WATSON_STT_API_KEY\",\n        \"ENABLE_SLACK\": true,\n        \"SLACK_BOT_USER_TOKEN\": \"REPLACE_WITH_SLACK_BOT_USER_TOKEN\",\n        \"SLACK_SIGNIN_SECRET\": \"REPLACE_WITH_SLACK_SIGNIN_SECRET\",\n        \"ENABLE_MS_BOT\": false,\n        \"MS_BOT_APP_ID\": \"REPLACE_WITH_MS_BOT_APP_ID\",\n        \"MS_BOT_APP_PASSWORD\": \"REPLACE_WITH_MS_BOT_APP_ID\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{server_url}}/api/Mappings",
+					"host": [
+						"{{server_url}}"
+					],
+					"path": [
+						"api",
+						"Mappings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Session",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "2b5ffe54-d3a5-4a30-8973-595202037da2",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "ADmPMlSq0mIr",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://gateway.watsonplatform.net/conversation/api/v2/assistants/{{assistant_id}}/sessions?version=2019-02-28",
+					"protocol": "https",
+					"host": [
+						"gateway",
+						"watsonplatform",
+						"net"
+					],
+					"path": [
+						"conversation",
+						"api",
+						"v2",
+						"assistants",
+						"{{assistant_id}}",
+						"sessions"
+					],
+					"query": [
+						{
+							"key": "version",
+							"value": "2019-02-28"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CallAssistant",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "2b5ffe54-d3a5-4a30-8973-595202037da2",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "ADmPMlSq0mIr",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\n\t\"params\": {\n\t\t\"input\": {\n\t\t\t\"text\": \"Hi Watson\"\n\t\t}\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{server_url}}/api/Conversations/converse",
+					"host": [
+						"{{server_url}}"
+					],
+					"path": [
+						"api",
+						"Conversations",
+						"converse"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Assistant Logs",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-IBM-client-Id",
+						"value": "default",
+						"type": "text"
+					},
+					{
+						"key": "X-IBM-client-Secret",
+						"value": "SECRET",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"workspaceId\": \"{{workspace_id}}\",\n\t\"sort\": \"-request_timestamp\",\n\t\"pageLimit\": 20\n}"
+				},
+				"url": {
+					"raw": "{{server_url}}/api/Conversations/logs?sort=request_timestamp",
+					"host": [
+						"{{server_url}}"
+					],
+					"path": [
+						"api",
+						"Conversations",
+						"logs"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "request_timestamp"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Conversations",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-IBM-client-Id",
+						"value": "default",
+						"type": "text"
+					},
+					{
+						"key": "X-IBM-client-Secret",
+						"value": "SECRET",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{server_url}}/api/Conversations?filter={\"limit\": 10, \"skip\": 0, \"order\": [\"datetime DESC\"], \"where\": {\"and\": [{\"context.system.dialog_turn_counter\": {\"gt\": 15}}, {\"context.system.branch_exited\": true}]}}",
+					"host": [
+						"{{server_url}}"
+					],
+					"path": [
+						"api",
+						"Conversations"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "{\"limit\": 10, \"skip\": 0, \"order\": [\"datetime DESC\"], \"where\": {\"and\": [{\"context.system.dialog_turn_counter\": {\"gt\": 15}}, {\"context.system.branch_exited\": true}]}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Dialog nodes",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "W32NjuY3hFOQseUTGDxCjVGmq3m3OEOZ2Frk3AZkLhyu",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "apikey",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{watson_assistant_url}}/v1/workspaces/{{workspace_id}}/dialog_nodes?version=2019-02-28",
+					"host": [
+						"{{watson_assistant_url}}"
+					],
+					"path": [
+						"v1",
+						"workspaces",
+						"{{workspace_id}}",
+						"dialog_nodes"
+					],
+					"query": [
+						{
+							"key": "version",
+							"value": "2019-02-28"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LanguageDetection",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"message\": \"ਤੁਸੀ ਕਿਵੇਂ ਹੋ ?\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://lang-detect.mybluemix.net/detect",
+					"protocol": "https",
+					"host": [
+						"lang-detect",
+						"mybluemix",
+						"net"
+					],
+					"path": [
+						"detect"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Workspaces",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "W32NjuY3hFOQseUTGDxCjVGmq3m3OEOZ2Frk3AZkLhyu",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "apikey",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gateway.watsonplatform.net/assistant/api/v1/workspaces?version=2020-02-05",
+					"protocol": "https",
+					"host": [
+						"gateway",
+						"watsonplatform",
+						"net"
+					],
+					"path": [
+						"assistant",
+						"api",
+						"v1",
+						"workspaces"
+					],
+					"query": [
+						{
+							"key": "version",
+							"value": "2020-02-05"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Intents of Workspace",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "W32NjuY3hFOQseUTGDxCjVGmq3m3OEOZ2Frk3AZkLhyu",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "apikey",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gateway.watsonplatform.net/assistant/api/v1/workspaces/35869f26-cbc2-4b13-abc6-24c23d2a97c6/intents?version=2020-02-05",
+					"protocol": "https",
+					"host": [
+						"gateway",
+						"watsonplatform",
+						"net"
+					],
+					"path": [
+						"assistant",
+						"api",
+						"v1",
+						"workspaces",
+						"35869f26-cbc2-4b13-abc6-24c23d2a97c6",
+						"intents"
+					],
+					"query": [
+						{
+							"key": "version",
+							"value": "2020-02-05"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Details",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server_url}}/api/MyUsers/{{user_id}}?access_token={{access_token}}",
+					"host": [
+						"{{server_url}}"
+					],
+					"path": [
+						"api",
+						"MyUsers",
+						"{{user_id}}"
+					],
+					"query": [
+						{
+							"key": "access_token",
+							"value": "{{access_token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Image Classification",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Tyos7qoDqbN9qkF4QV76Sa9-0uzJ_vP_y1v9gRXI_Zc3",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "apikey",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gateway.watsonplatform.net/visual-recognition/api/v3/classify?url=https://images.squarespace-cdn.com/content/v1/533b7f46e4b0a32f08f9f8fe/1536643734530-N5XIZB2QPWZQ8US30ENT/ke17ZwdGBToddI8pDm48kCPztTQZpDiZMOuuCfUxiyx7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UYlQ-m0oNUh_9buvyC-f1CSdhG_dNlqULB2ZTz-ses64A-QPhXXvNcU0N8wN7BGx0g/gouged+out+bumper.JPG?format=1000w&version=2018-03-19&classifier_ids=Car_Damages_1133063074",
+					"protocol": "https",
+					"host": [
+						"gateway",
+						"watsonplatform",
+						"net"
+					],
+					"path": [
+						"visual-recognition",
+						"api",
+						"v3",
+						"classify"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "https://images.squarespace-cdn.com/content/v1/533b7f46e4b0a32f08f9f8fe/1536643734530-N5XIZB2QPWZQ8US30ENT/ke17ZwdGBToddI8pDm48kCPztTQZpDiZMOuuCfUxiyx7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UYlQ-m0oNUh_9buvyC-f1CSdhG_dNlqULB2ZTz-ses64A-QPhXXvNcU0N8wN7BGx0g/gouged+out+bumper.JPG?format=1000w"
+						},
+						{
+							"key": "version",
+							"value": "2018-03-19"
+						},
+						{
+							"key": "classifier_ids",
+							"value": "Car_Damages_1133063074"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OutgoingVoiceCall",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"from\": \"sip:{{agent_phone_number}}@gurvsin3.pstn.twilio.com\",\n    \"to\": \"tel:+919643989377\",\n    \"statusWebhook\": \"https://my-watson-assistant.loca.lt/api/Conversations/converse\",\n    \"tenantConfig\": { \n    \"config\" : {\n            \"outboundCalls\": {  \n                \"sipAuth\": {  \"username\": \"sinny777\", \"password\": \"#1SatnamWaheguruJi\" }\n            }\n        }\n    }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://apikey:{{voice_agent_api_key}}@gateway.voiceagent.cloud.ibm.com:443/vgw/outboundCalls/{{agent_phone_number}}/startOutboundCall",
+					"protocol": "https",
+					"auth": {
+						"user": "apikey",
+						"password": "{{voice_agent_api_key}}"
+					},
+					"host": [
+						"gateway",
+						"voiceagent",
+						"cloud",
+						"ibm",
+						"com"
+					],
+					"port": "443",
+					"path": [
+						"vgw",
+						"outboundCalls",
+						"{{agent_phone_number}}",
+						"startOutboundCall"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

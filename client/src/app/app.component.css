@@ -1,0 +1,75 @@
+
+a {
+  color: #fff
+}
+
+.footer a {
+  color: #000
+}
+
+.navbar-nav .dropdown {
+  padding-right: 20px
+}
+
+.navbar.navbar-transparent{
+  padding-top: 2px;
+}
+
+.navbar .navbar-brand {
+    padding: 1px;
+}
+
+.logo-container .brand{
+  padding-top: 10px;
+}
+
+.dropdown-menu{
+  min-width: 13rem;
+}
+
+.alert {
+    background: #f2edda;
+    padding: 7px;
+    font-size: .9em;
+    margin-bottom: 20px;
+    display: inline-block;
+    animation: 2s alertAnim forwards;
+}
+
+.register-text{
+  padding: 3px !important;
+}
+
+.login-btn{
+  padding: 1px !important;
+}
+
+.modal{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.overlay-content {
+  height: 100%;
+  overflow: scroll;
+}
+
+.input-group {
+    padding-bottom: 7px;
+    margin: 27px 0 0 0 !important;
+}
+
+@keyframes alertAnim {
+    from {
+        opacity:0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity:1;
+        transform: translateY(0);
+    }
+}

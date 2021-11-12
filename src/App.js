@@ -277,7 +277,9 @@ function App() {
   }
 
   const getChartResults = (data) => {
+    setData([])
     setData(data)
+    setChart(false)
     setChart(true)
     setForm(false)
   }

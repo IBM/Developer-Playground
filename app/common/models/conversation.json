@@ -1,0 +1,90 @@
+{
+  "name": "Conversation",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "SetupRemoteMethods": {
+      "disableAllExcept": [
+        "doconversation",
+        "publishToSocket",
+        "getLogs",
+        "getSTTToken",
+        "find"
+      ],
+      "addFromFile": {
+        "filename": "./common/models/conversation.js",
+        "methods": [
+          "doconversation",
+          "publishToSocket",
+          "getSTTToken",
+          "getLogs"
+        ]
+      }
+    }
+  },
+  "properties": {
+    "context": {
+      "type": "object",
+      "required": false
+    },
+    "input": {
+      "type": "object",
+      "required": false
+    },
+    "output": {
+      "type": "object",
+      "required": false
+    },
+    "timestamp": {
+      "type": "date",
+      "required": false,
+      "index": true
+    },
+    "intents": {
+      "type": "object",
+      "required": false
+    },
+    "entities": {
+      "type": "object",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "doconversation"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "publishToSocket"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "getLogs"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "getSTTToken"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "find"
+    }
+  ],
+  "methods": {}
+}

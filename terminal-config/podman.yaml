@@ -1,8 +1,11 @@
 apiVersion: v1
 kind: Pod
+metadata:
+  - name: podman
 spec:
  containers:
-   - image: quay.io/devplayground/developer-container-utilities:latest
+   - name: container
+     image: quay.io/devplayground/developer-container-utilities:latest
      args:
        - sleep
        - "infinity"

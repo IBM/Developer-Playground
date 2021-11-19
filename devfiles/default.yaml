@@ -6,7 +6,7 @@ attributes:
 components:
   - mountSources: true
     type: kubernetes
-    reference: 'https://raw.github.ibm.com/ibm-api-marketplace/playground-resources/master/development/yaml/podmanconfig.yaml?token=AAB3L5TQXMXF2JJRAJW7LI3BS55TQ'
+    reference: 'https://raw.githubusercontent.com/IBM/Developer-Playground/master/terminal-config/podman.yaml'
     alias: podman
   - mountSources: true
     endpoints:

@@ -298,20 +298,20 @@
       <div style="margin-top:0;"class="container right">
         <div class="content">
           <p>To begin, we'll need to open a terminal</p>
-          <a class="button is-dark is-medium" title="Open Terminal" href="didact://?commandId=terminal-for-nodejs-container:new">Open Terminal</a><br>
+          <a class="button is-dark is-medium" title="Open Terminal" href="didact://?commandId=extension.terminal-for-nodejs-container:new">Open Terminal</a><br>
         </div>
       </div>
       <div class="container right">
         <div class="content">
           <p>Next clone the GitHub repository</p>
-          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$git%20clone%20https://github.com/IBM/Developer-Playground/tree/virtualagent" >Get Code</a>
+          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendNamedTerminalAString&text=nodejs%20terminal$$git%20clone%20https://github.com/IBM/Developer-Playground/tree/virtualagent" >Get Code</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
           <p>Create and Configure IBM Services</p>
           <p>You need to be logged in to your IBM Cloud account in the Developer Playground to create and configure services.</p>
-          <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$ibmcloud%20login%20--sso%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">Login to IBM Cloud</a>
+          <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendNamedTerminalAString&text=nodejs%20terminal$$ibmcloud%20login%20--sso%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">Login to IBM Cloud</a>
           <p style="margin-top:10px;">Do not have an IBM Cloud Account?<a href="https://cloud.ibm.com/registration">click here</a> to create one for free.</p>
         </div>
       </div>
@@ -326,7 +326,7 @@
       <div class="container right">
         <div class="content">
           <p>Create these services and configure the credentials in the code pattern with just a click of button.</p>
-          <a class="button is-dark is-medium" title="Create IBM Watson Services" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$cd%20virtualagent;chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh">Create IBM Watson Services</a>
+          <a class="button is-dark is-medium" title="Create IBM Watson Services" href="didact://?commandId=extension.sendNamedTerminalAString&text=nodejs%20terminal$$cd%20virtualagent;chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh">Create IBM Watson Services</a>
         </div>
       </div>
       <div class="container right">
@@ -353,26 +353,26 @@
       <div class="container right">
         <div class="content">
           <p>Add the Assistant ID and Name to mapping.js</p>
-           <a class="button is-dark is-medium" title="Open File" href="didact://?commandId=vscode.open&projectFilePath=virtualagent/mapping.js">Open File</a>
+           <a class="button is-dark is-medium" title="Open File" href="didact://?commandId=extension.openFile&text=virtualagent/mapping.js">Open File</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
           <p>Start service from server side</p>
-          <a class="button is-dark is-medium" title="Start Server" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd%20virtualagent/app;npm%20install;npm%20start">Start Server</a>
+          <a class="button is-dark is-medium" title="Start Server" href="didact://?commandId=extension.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd%20virtualagent/app;npm%20install;npm%20start">Start Server</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
           <p>Copy the URL generated</p>
           <p>Add the URL to previewurl.json </p>
-           <a class="button is-dark is-medium" title="Open File" href="didact://?commandId=vscode.open&projectFilePath=virtualagent/previewurl.json">Open File</a>
+           <a class="button is-dark is-medium" title="Open File" href="didact://?commandId=extension.openFile&text=virtualagent/previewurl.json">Open File</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
           <p>Send the Watson service credentials to your cloudantDB</p>
-          <a class="button is-dark is-medium" title="Send Mapping" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%202$$cd%20virtualagent;npm%20install%20axios;node%20mapping.js;cd client;alias%20ng=/projects/virtualagent/client/node_modules/@angular/cli/bin/ng;">Send Mapping</a>
+          <a class="button is-dark is-medium" title="Send Mapping" href="didact://?commandId=extension.sendNamedTerminalAString&text=nodejs%20terminal%202$$cd%20virtualagent;npm%20install%20axios;node%20mapping.js;cd client;alias%20ng=/projects/virtualagent/client/node_modules/@angular/cli/bin/ng;">Send Mapping</a>
         </div>
       </div>
       <div class="container right">
@@ -381,7 +381,7 @@
           <p>You can build and run the Application within the Developer Playground, click on
             <bold> Build and Run</bold> to start the application.
           </p>
-          <a class="button is-dark is-medium" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%202$$npm%20install;ng%20build%20--configuration=production;ng%20serve%20--host%200.0.0.0%20--disableHostCheck">Build and Run</a>
+          <a class="button is-dark is-medium" title="Build and Run" href="didact://?commandId=extension.sendNamedTerminalAString&text=nodejs%20terminal%202$$npm%20install;ng%20build%20--configuration=production;ng%20serve%20--host%200.0.0.0%20--disableHostCheck">Build and Run</a>
         </div>
       </div>
       <div class="container right">
@@ -393,12 +393,12 @@
     <div class="footer">
       <div class="content" style="padding:30px;padding-left:60px;padding-bottom: 0px;">
         <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
-        <a class="button is-dark is-medium" title="Stop Running Server" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=nodejs%20terminal%201">Stop Running Server</a>
-        <a class="button is-dark is-medium" title="Stop Running Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=nodejs%20terminal%202">Stop Running Application</a>
+        <a class="button is-dark is-medium" title="Stop Running Server" href="didact://?commandId=extension.sendNamedTerminalCtrlC&text=nodejs%20terminal%201">Stop Running Server</a>
+        <a class="button is-dark is-medium" title="Stop Running Application" href="didact://?commandId=extension.sendNamedTerminalCtrlC&text=nodejs%20terminal%202">Stop Running Application</a>
         <p style="margin-top:10px;"> Completed the code pattern? Click on
           <bold>Clean up</bold> to delete the IBM Cloud services that were created.
         </p>
-        <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd%20..;chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean up</a>
+        <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=extension.sendNamedTerminalAString&text=nodejs%20terminal%201$$cd%20..;chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean up</a>
         <p style="margin-top:10px;">You can also manage the services in
           <a href="https://cloud.ibm.com/resources">IBM Cloud Dashboard</a>.
         </p>

@@ -304,7 +304,7 @@
       <div class="container right">
         <div class="content">
           <p>Next clone the GitHub repository</p>
-          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$git%20clone%20https://github.ibm.com/pgirish/virtualagent" >Get Code</a>
+          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$git%20clone%20https://github.com/IBM/Developer-Playground/tree/virtualagent" >Get Code</a>
         </div>
       </div>
       <div class="container right">
@@ -406,10 +406,10 @@
       <div class="image-div">
         <p class="image-content">Want to explore this project more?
           <span style="font-size:15px;margin-top:0px;display:block;">Head over to the
-            <a href="https://github.ibm.com/Nupur-Negi2/virtualagent">Github Repository</a>
+            <a href="https://github.com/IBM/Developer-Playground/tree/virtualagent">Github Repository</a>
           </span>
         </p>
-        <a class="image-link" href="https://github.ibm.com/Nupur-Negi2/virtualagent" target="_blank">
+        <a class="image-link" href="https://github.com/IBM/Developer-Playground/tree/virtualagent" target="_blank">
           <div class="image-btn">
             <p class="image-link">View Product Details</p>
             <p class="image-link"></p>

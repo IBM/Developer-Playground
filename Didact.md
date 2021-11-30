@@ -310,7 +310,7 @@ color: white;
         <div class="container right">
             <div class="content">
                 <p>Need we need to install all the requirements</p>
-                <a class="button is-dark is-medium" title="Install requirements" href="didact://?commandId=extensions.sendToTerminal&text=PardataCSVViewer%7Cinstall-requirememnts%7CPardataCSVViewer|cd%20pardata/examples/csv-viewer;pip%20install%20-r%20requirements.txt">Install requirements</a>
+                <a class="button is-dark is-medium" title="Install requirements" href="didact://?commandId=extension.sendToTerminal&text=PardataCSVViewer%7Cinstall-requirememnts%7CPardataCSVViewer|cd%20pardata/examples/csv-viewer;pip%20install%20-r%20requirements.txt">Install requirements</a>
             </div>
         </div>
         <div class="container right">

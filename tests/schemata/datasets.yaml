@@ -1,0 +1,107 @@
+#
+# Copyright 2020--2021 IBM Corp. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+api_name: com.ibm.pardata.v1
+name: 'dax'
+last_updated: 2020-10-08
+datasets:
+  gmb:
+    "1.0.2":
+      name: Groningen Meaning Bank Modified
+      published: 2019-12-19
+      homepage: https://developer.ibm.com/exchanges/data/all/groningen-meaning-bank/
+      download_url: https://dax-cdn.cdn.appdomain.cloud/dax-groningen-meaning-bank-modified/1.0.2/groningen-meaning-bank-modified.tar.gz
+      sha512sum: 4b0e6c445bf5be0573ae411f8e0ba307b884300ab6b5473ea0d455dd82b8cf4dc06fb77a9a606850f3b283357f22fd516e91850cea7e45de19ce5625fda2c001
+      license: cdla_sharing
+      estimated_size: 10M
+      description: "A dataset of multi-sentence texts, together with annotations for parts-of-speech, named entities, lexical categories and other natural language structural phenomena."
+      subdatasets:
+        gmb_subset_full:
+          name: GMB Subset Full
+          description: A full version of the raw dataset. Used to train MAX model – Named Entity Tagger.
+          format: text/plain
+          path: groningen_meaning_bank_modified/gmb_subset_full.txt
+  wikitext103:
+    "1.0.1":
+      name: WikiText-103
+      published: 2020-03-17
+      homepage: https://developer.ibm.com/exchanges/data/all/wikitext-103/
+      download_url: https://dax-cdn.cdn.appdomain.cloud/dax-wikitext-103/1.0.1/wikitext-103.tar.gz
+      sha512sum: c8186919aa1840af6b734ea41abc580574ea8efe2fafda220f5d01002464d17566d84be5199b875136c9593f0e0678fb5d7c84bb2231de8b4151cb9c83fa2109
+      license: cc_by_30
+      estimated_size: 181M
+      description: "The WikiText-103 dataset is a collection of over 100 million tokens extracted from the set of verified ‘Good’ and ‘Featured’ articles on Wikipedia."
+      subdatasets:
+        train:
+          name: Train Tokens
+          description: Tokens in the training subset
+          format: text/plain
+          path: wikitext-103/wiki.train.tokens
+        valid:
+          name: Validation Tokens
+          description: Tokens in the validation subset
+          format: text/plain
+          path: wikitext-103/wiki.valid.tokens
+        test:
+          name: Test Tokens
+          description: Tokens in the testing subset
+          format: text/plain
+          path: wikitext-103/wiki.test.tokens
+  noaa_jfk:
+    "1.1.4":
+      name: NOAA Weather Data – JFK Airport
+      published: 2019-09-12
+      homepage: https://developer.ibm.com/exchanges/data/all/jfk-weather-data/
+      download_url: https://dax-cdn.cdn.appdomain.cloud/dax-noaa-weather-data-jfk-airport/1.1.4/noaa-weather-data-jfk-airport.tar.gz
+      sha512sum: e3f27a8fcc0db5289df356e3f48aef6df56236798d5b3ae3889d358489ec6609d2d797e4c4932b86016d2ce4a379ac0a0749b6fb2c293ebae4e585ea1c8422ac
+      license: CDLA-Sharing-1.0
+      estimated_size: 3.2M
+      description: "The NOAA JFK dataset contains 114,546 hourly observations of various local climatological variables (including visibility, temperature, wind speed and direction, humidity, dew point, and pressure). The data was collected by a NOAA weather station located at the John F. Kennedy International Airport in Queens, New York."
+      subdatasets:
+        jfk_weather_cleaned:
+          name: Cleaned JFK Weather Data
+          description: Cleaned version of the JFK weather data.
+          format:
+            id: table/csv
+            options:
+              encoding: 'UTF-8'
+              delimiter: ','
+              columns:
+                DATE: 'datetime'
+                # Would have been int in pandas if unspecified. Put this here to have some dtype processing code ran more frequently in test code
+                HOURLYPressureTendencyCons: 'float'
+          path: noaa-weather-data-jfk-airport/jfk_weather_cleaned.csv
+
+  tensorflow_speech_commands:
+    "1.0.1":
+      name: TensorFlow Speech Commands
+      published: 2020-03-17
+      homepage: https://developer.ibm.com/exchanges/data/all/speech-commands/
+      # The following URL is a sample dataset for testing purpose only
+      download_url: https://github.com/CODAIT/pardata/raw/test-data/tensorflow-speech-commands.tar.xz
+      sha512sum: c96487b79d65fdf9068163e8b6a02511f08252f96600997072cc0a541a05aeefb8124cb8813f6d736d8d979cc5ad47757ed588598c0252e178d5f0cf25ca70c8
+      license: cc_by_40
+      estimated_size: 33M
+      description: "TensorFlow Speech Command dataset is a set of one-second .wav audio files, each containing a single spoken English word. These words are from a small set of commands, and are spoken by a variety of different speakers. 20 of the words are core words, while 10 words are auxiliary words that could act as tests for algorithms in ignoring speeches that do not contain triggers. Included along with the 30 words is a collection of background noise audio files. The dataset was originally designed for limited vocabulary speech recognition tasks. The audio clips were originally collected by Google, and recorded by volunteers in uncontrolled locations around the world."
+      subdatasets:
+        house:
+          name: house
+          description: house folder
+          format:
+            id: audio/wav
+          path:
+            type: regex
+            value: "TensorFlow-Speech-Commands/house/.*\\.wav"

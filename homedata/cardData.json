@@ -17,7 +17,7 @@
         "cardTitle": "GSI Chatbot using IBM Watson Discovery",
         "cardDate": "February 11, 2021",
         "cardExcerpt": "",
-        "productId": "/#/paext/chatbot",
+        "productId": "chatbot",
         "titleCss": "ibmcode_patterns",
         "cardBGColor": "dark",
         "imageUrl": "https://developer.ibm.com/developer/default/patterns/build-a-real-time-translation-service-with-watson-api-kit/card.jpg"
@@ -41,7 +41,7 @@
         "cardTitle": "Extract Insights from Videos",
         "cardDate": "February 15, 2021",
         "cardExcerpt": "",
-        "productId": "/#/cpext/extract-insights-from-videos",
+        "productId": "extract-insights-from-videos",
         "titleCss": "",
         "imageUrl": "https://developer.ibm.com/developer/default/patterns/improve-discovery-results-using-programmatic-relevancy-training/card.jpg",
         "cardCategory": ""
@@ -52,7 +52,7 @@
         "cardTitle": "IBM Partner Marketplace APIs",
         "cardDate": "By IBM",
         "cardExcerpt": "This APIs expose various capabilities to interact with the IBM Marketplace including the product catalog, orders and subscription and subscriber management.",
-        "productId": "/#/apiext/marketplace--ibm-marketplace",
+        "productId": "marketplace--ibm-marketplace",
         "titleCss": "ibmcode_series",
         "backgroundCss": "dark",
         "productLogoUrl": "https://dw1.s81c.com/caas-storage/ofBBSvwX/PRODUCT--aspera--aspera-automation-api--1.0.5/en/_images/product.jpg",
@@ -64,7 +64,7 @@
         "cardTitle": "OTP Based Authentication for Chatbot",
         "cardDate": "February 12, 2021",
         "cardExcerpt": "",
-        "productId": "/#/cpext/authenticate-users-on-chatbot-with-sms-otp",
+        "productId": "authenticate-users-on-chatbot-with-sms-otp",
         "titleCss": "",
         "imageUrl": "https://developer.ibm.com/developer/default/patterns/build-a-real-time-translation-service-with-watson-api-kit/card.jpg",
         "cardCategory": ""
@@ -215,38 +215,12 @@
         "titleBGColor": ""
     },
     {
-        "cardType": "Featured | ebook",
-        "cardCategory": "Featured",
-        "cardTitle": "O Reilly ebook: Getting Started with Artificial Intelligence",
-        "cardDate": "DEC 11, 2021",
-        "cardExcerpt": "Download the ebook to start your journey into enterprise AI",
-        "productId": "marketplace--ibm-marketplace---",
-        "titleCss": "ibmcode_tutorials",
-        "cardBGColor": "",
-        "imageUrl": "https:\/\/developer.ibm.com/developer/default/linkcards/getting-started-with-ai-ebook/highlight.jpg",
-        "cardSize": "8",
-        "titleBGColor": ""
-    },
-    {
-        "cardType": "Featured | ebook",
-        "cardCategory": "Live",
-        "cardTitle": "O Reilly ebook: Getting Started with Artificial Intelligence",
-        "cardDate": "DEC 11, 2021",
-        "cardExcerpt": "Download the ebook to start your journey into enterprise AI",
-        "productId": "marketplace--ibm-marketplace---",
-        "titleCss": "ibmcode_tutorials",
-        "cardBGColor": "",
-        "imageUrl": "https:\/\/developer.ibm.com/developer/default/linkcards/getting-started-with-ai-ebook/highlight.jpg",
-        "cardSize": "4",
-        "titleBGColor": ""
-    },
-    {
         "cardType": "API",
         "cardCategory": "Live",
         "cardTitle": "Cloud Functions",
         "cardDate": "By IBM",
         "cardExcerpt": "",
-        "productId": "/#/apiext/cloudfunctions--cloud-functions",
+        "productId": "cloudfunctions--cloud-functions",
         "titleCss": "ibmcode_series",
         "backgroundCss": "dark",
         "productLogoUrl": "https:\/\/dw1.s81c.com/caas-storage/ofBBSvwX/PRODUCT--aspera--aspera-automation-api--1.0.5/en/_images/product.jpg"
@@ -257,7 +231,7 @@
         "cardTitle": "IBM SaaS User and Subscription Management",
         "cardDate": "By IBM",
         "cardExcerpt": "",
-        "productId": "/#/apiext/scx--sbs_orgaccess",
+        "productId": "scx--sbs_orgaccess",
         "titleCss": "ibmcode_series",
         "backgroundCss": "dark",
         "productLogoUrl": "https:\/\/dw1.s81c.com/caas-storage/ofBBSvwX/PRODUCT--aspera--aspera-automation-api--1.0.5/en/_images/product.jpg"
@@ -268,7 +242,7 @@
         "cardTitle": "Alert Notification",
         "cardDate": "By IBM",
         "cardExcerpt": "",
-        "productId": "/#/apiext/alertnotif--alert-notification---",
+        "productId": "alertnotif--alert-notification---",
         "titleCss": "ibmcode_series",
         "backgroundCss": "dark",
         "productLogoUrl": "https:\/\/s3.us.cloud-object-storage.appdomain.cloud/ibmdevwp/icons/small/technologies/api-icon.svg"

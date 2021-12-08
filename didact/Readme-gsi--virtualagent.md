@@ -283,7 +283,7 @@
     <div class="header">
       <div class="right-content">
         <div>
-          This sample app can help you quickly getting started with IBM Watson services like Watson Assistant, Watson Discovery, Speech To Text and also CloudantDB.
+          This sample application can help you quickly getting started with IBM Watson services like Watson Assistant, Watson Discovery, Speech To Text and also CloudantDB.
         </div>
         <div>
           Front-end (Angular based), which is simply static assets.
@@ -311,7 +311,7 @@
       </div>
       <div class="container right">
         <div class="content">
-          <p>This sample app uses the following IBM Services:</p>
+          <p>This sample application uses the following IBM Services:</p>
           <p><a href="https://cloud.ibm.com/catalog/services/cloudant">Cloudant DB</a>: IBM Cloud provides you the option of creating a fully-managed Cloudant Instance on IBM Cloud.</p>
           <p><a href="https://cloud.ibm.com/catalog/services/watson-assistant">Watson Assistant</a>: Watson Assistant lets you build conversational interfaces into any application, device, or channel.</p>
         </div>

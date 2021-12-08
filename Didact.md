@@ -311,9 +311,8 @@
       </div>
       <div class="container right">
         <div class="content">
-          <p>This code pattern uses the following IBM Watson Services:</p>
+          <p>This sample app uses the following IBM Services:</p>
           <p><a href="https://cloud.ibm.com/catalog/services/cloudant">Cloudant DB</a>: IBM Cloud provides you the option of creating a fully-managed Cloudant Instance on IBM Cloud.</p>
-          <p><a href="https://cloud.ibm.com/catalog/services/speech-to-text">Speech to Text</a>: The Speech to Text service converts the human voice into the written word.</p>
           <p><a href="https://cloud.ibm.com/catalog/services/watson-assistant">Watson Assistant</a>: Watson Assistant lets you build conversational interfaces into any application, device, or channel.</p>
         </div>
       </div>
@@ -380,7 +379,7 @@
       </div>
       <div class="container right">
         <div class="content">
-          <p>Lastly just refresh the preview window to see your application running.</p>
+          <p>Lastly refresh the preview window, login with Username: john.smith / Password: P@ssw0rd and to see your application running.</p>
         </div>
       </div>
     </div>

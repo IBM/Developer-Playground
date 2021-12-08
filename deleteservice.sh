@@ -1,8 +1,8 @@
-servicename="cp-stt"
-ibmcloud resource service-key-delete "$servicename-creds" -f
-ibmcloud resource service-instance-delete $servicename -f
-rm speechtotext.json
-rm cp-stt.txt
+# servicename="cp-stt"
+# ibmcloud resource service-key-delete "$servicename-creds" -f
+# ibmcloud resource service-instance-delete $servicename -f
+# rm speechtotext.json
+# rm cp-stt.txt
 
 servicename="cp-wa"
 ibmcloud resource service-key-delete "$servicename-creds" -f

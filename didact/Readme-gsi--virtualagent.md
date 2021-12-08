@@ -324,7 +324,7 @@
       </div>
       <div class="container right">
         <div class="content">
-          <p>Watson Assistant: Copy the URL from the terminal to launch Watson Assistant in your Browser</p>
+          <p>Watson Assistant: Copy the URL from the terminal to launch Watson Assistant in your Browser.</p>
           <p>Step 1 : Click <b>Create Assistant</b></p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/VirtualAgent_1.png" width = "750" height= "750">
           <p>Step 2 : Name the assistant & click <b>Create assistant</b></p>
@@ -373,7 +373,8 @@
       </div>
       <div class="container right">
         <div class="content">
-          <p>Lastly refresh the preview window, login with Username: john.smith / Password: P@ssw0rd and to see your application running.</p>
+          <p>Lastly refresh the preview window and login as one of the users given in the below file.</p>
+           <a class="button is-dark is-medium" title="Open File" href="didact://?commandId=extension.openFile&text=WATSONVirtualAgent%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/virtualagent/app/server/boot/02-load-users.js">Open File</a>
         </div>
       </div>
     </div>

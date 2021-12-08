@@ -72,6 +72,6 @@ export home="https://$region.assistant.watson.cloud.ibm.com/$link%3A"
 
 echo
 echo "#################### Configure Assistant ####################"
-echo "Copy the URL to launch Assistant in your Browser: $home/skills"
+echo "Copy the URL to launch Assistant in your Browser: $home"
 
 ############# Done #############

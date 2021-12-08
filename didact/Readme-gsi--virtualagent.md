@@ -326,15 +326,15 @@
         <div class="content">
           <p>Watson Assistant: Copy the URL from the terminal to launch Watson Assistant in your Browser</p>
           <p>Step 1 : Click <b>Create Assistant</b></p>
-          <img src = "https://raw.githubusercontent.com/nupurnegi/IBM-ChatBot/main/pics2/1.png" width = "750" height= "750">
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/VirtualAgent_1.png" width = "750" height= "750">
           <p>Step 2 : Name the assistant & click <b>Create assistant</b></p>
-          <img src = "https://raw.githubusercontent.com/nupurnegi/IBM-ChatBot/main/pics2/2.png" width = "750" height= "750">
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/VirtualAgent_2.png" width = "750" height= "750">
           <p>Step 3 : Click <b>Add an action or dialog skill</b></p>
-          <img src = "https://raw.githubusercontent.com/nupurnegi/IBM-ChatBot/main/pics2/3.png" width = "750" height= "750">
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/VirtualAgent_3.png" width = "750" height= "750">
           <p>Step 4 : Switch to <b>Use Sample Skill</b> & select a skill</p>
-          <img src = "https://raw.githubusercontent.com/nupurnegi/IBM-ChatBot/main/pics2/4.png" width = "750" height= "750">
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/VirtualAgent_4.png" width = "750" height= "750">
           <p>Step 5 : Goto <b>Assistant settings</b> to fetch assistant name and id </p>
-          <img src = "https://raw.githubusercontent.com/nupurnegi/IBM-ChatBot/main/pics2/5.png" width = "750" height= "750">
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/VirtualAgent_5.png" width = "750" height= "750">
         </div>
       </div>
       <div class="container right">

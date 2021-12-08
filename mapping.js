@@ -22,9 +22,7 @@ var data = JSON.stringify({
     "WATSON_DISCOVERY": {
       "ENABLE": false
     },
-    "WATSON_STT_API_KEY": {
-      "ENABLE": false
-    },
+    // "WATSON_STT_API_KEY": stt.apikey ,
     "ENABLE_SLACK": true,
     "ENABLE_MS_BOT": false
   }

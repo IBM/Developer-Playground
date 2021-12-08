@@ -1,5 +1,5 @@
 
-const stt = require('./speechtotext.json');
+// const stt = require('./speechtotext.json');
 const wa = require('./watsonassistant.json');
 const preurl = require('./previewurl.json');
 // const wd = require('./watsondiscovery.json');
@@ -22,7 +22,7 @@ var data = JSON.stringify({
     "WATSON_DISCOVERY": {
       "ENABLE": false
     },
-    "WATSON_STT_API_KEY": stt.apikey ,
+    // "WATSON_STT_API_KEY": stt.apikey ,
     "ENABLE_SLACK": true,
     "ENABLE_MS_BOT": false
   }

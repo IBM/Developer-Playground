@@ -311,9 +311,8 @@
       </div>
       <div class="container right">
         <div class="content">
-          <p>This code pattern uses the following IBM Watson Services:</p>
+          <p>This sample app uses the following IBM Services:</p>
           <p><a href="https://cloud.ibm.com/catalog/services/cloudant">Cloudant DB</a>: IBM Cloud provides you the option of creating a fully-managed Cloudant Instance on IBM Cloud.</p>
-          <p><a href="https://cloud.ibm.com/catalog/services/speech-to-text">Speech to Text</a>: The Speech to Text service converts the human voice into the written word.</p>
           <p><a href="https://cloud.ibm.com/catalog/services/watson-assistant">Watson Assistant</a>: Watson Assistant lets you build conversational interfaces into any application, device, or channel.</p>
         </div>
       </div>
@@ -326,22 +325,16 @@
       <div class="container right">
         <div class="content">
           <p>Watson Assistant: Copy the URL from the terminal to launch Watson Assistant in your Browser</p>
-          <p>Step 1 : Click <b>Create Skill</b></p>
-          <img src = "https://raw.githubusercontent.com/nupurnegi/IBM-ChatBot/main/pics/1.png" width = "750" height= "750">
-          <p>Step 2 : Select <b>Action Skill</b> & click <b>Next</b></p>
-          <img src = "https://raw.githubusercontent.com/nupurnegi/IBM-ChatBot/main/pics/2.png" width = "750" height= "750">
-          <p>Step 3 : Switch to <b>Use Sample Skill</b> & select <b>Customer Care Sample Skill</b></p>
-          <img src = "https://raw.githubusercontent.com/nupurnegi/IBM-ChatBot/main/pics/3.png" width = "750" height= "750">
-          <p>Step 4 : Goto <b>Assistants</b> & click <b>Create assistant</b></p>
-          <img src = "https://raw.githubusercontent.com/nupurnegi/IBM-ChatBot/main/pics/4.png" width = "750" height= "750">
-          <p>Step 5 : Name the assistant & click <b>Create assistant</b></p>
-          <img src = "https://raw.githubusercontent.com/nupurnegi/IBM-ChatBot/main/pics/5.png" width = "750" height= "750">
-          <p>Step 6 : Click <b>Add an action or dialog skill</b></p>
-          <img src = "https://raw.githubusercontent.com/nupurnegi/IBM-ChatBot/main/pics/6.png" width = "750" height= "750">
-          <p>Step 7 : Select the skill <b>Customer Care Sample Skill</b> </p>
-          <img src = "https://raw.githubusercontent.com/nupurnegi/IBM-ChatBot/main/pics/7.png" width = "750" height= "750">
-          <p>Step 8 : Goto <b>Assistant settings</b> to fetch assistant name and id </p>
-          <img src = "https://raw.githubusercontent.com/nupurnegi/IBM-ChatBot/main/pics/8.png" width = "750" height= "750">
+          <p>Step 1 : Click <b>Create Assistant</b></p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/VirtualAgent_1.png" width = "750" height= "750">
+          <p>Step 2 : Name the assistant & click <b>Create assistant</b></p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/VirtualAgent_2.png" width = "750" height= "750">
+          <p>Step 3 : Click <b>Add an action or dialog skill</b></p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/VirtualAgent_3.png" width = "750" height= "750">
+          <p>Step 4 : Switch to <b>Use Sample Skill</b> & select a skill</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/VirtualAgent_4.png" width = "750" height= "750">
+          <p>Step 5 : Goto <b>Assistant settings</b> to fetch assistant name and id </p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/VirtualAgent_5.png" width = "750" height= "750">
         </div>
       </div>
       <div class="container right">
@@ -353,7 +346,7 @@
       <div class="container right">
         <div class="content">
           <p>Start service from server side</p>
-          <a class="button is-dark is-medium" title="Start Server" href="didact://?commandId=extension.sendToTerminal&text=WATSONVirtualAgent%7Cstart-server%7CWATSONVirtualAgent|cd%20virtualagent/app;npm%20install;npm%20start">Start Server</a>
+          <a class="button is-dark is-medium" title="Start Server" href="didact://?commandId=extension.sendToTerminal&text=WATSONVirtualAgent%7Cstart-server%7CWATSONVirtualAgent|cd%20app;npm%20install;npm%20start">Start Server</a>
         </div>
       </div>
       <div class="container right">
@@ -380,7 +373,7 @@
       </div>
       <div class="container right">
         <div class="content">
-          <p>Lastly just refresh the preview window to see your application running.</p>
+          <p>Lastly refresh the preview window, login with Username: john.smith / Password: P@ssw0rd and to see your application running.</p>
         </div>
       </div>
     </div>

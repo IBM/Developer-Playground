@@ -24,14 +24,14 @@
     },
     {
         "cardSection": "Banner",
-        "cardType": "ebook",
+        "cardType": "",
         "cardTitle": "Developer Playground",
-        "cardDate": "November 26, 2021",
+        "cardDate": "",
         "cardExcerpt": "",
         "productId": "pdf",
         "titleCss": "ibmcode_marketing",
         "backgroundCss": "dark",
-        "imageUrl": "https://developer.ibm.com/developer/default/linkcards/getting-started-with-ai-ebook/highlight.jpg",
+        "imageUrl": "../AdobeStock_232925481.jpeg",
         "cardCategory": "",
         "cardSize": "8"
     },
@@ -72,7 +72,7 @@
     {
         "cardSection": "Banner",
         "cardType": "Featured | Video",
-        "cardTitle": "Get started with natural language processing",
+        "cardTitle": "Developer Playground : What`s in it for you ?",
         "cardDate": "November 26, 2021",
         "cardExcerpt": "HERE Matrix Routing service calculates the travel duration and/or distances among multiple origins and destinations through both synchronous and asynchrono",
         "productId": "video",

@@ -1,0 +1,11 @@
+{
+  "products": [
+		{
+			"productId": "alertnotif--alert-notification"
+		},
+		{
+			"productId": "extract-insights-from-videos",
+			"assetType": "code pattern"
+		}
+	]
+}

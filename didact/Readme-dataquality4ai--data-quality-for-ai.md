@@ -303,7 +303,7 @@
 </head>
 <body>
   <div class="apptitle"> 
-    Data Quality API Sample Application
+    Data Quality for AI API Sample Application
   </div>
    <div class="header">
       <div class="right-content">

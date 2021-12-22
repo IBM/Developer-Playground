@@ -12,8 +12,8 @@ import CarbonChart from './components/CarbonChart'
 
 const anaomalyEstimator = {
   WindowAD: ['IsolationForest', 'NearestNeighbor', 'SyntheticRandomForestTrainer', 'MinCovDet', 'AnomalyEnsembler'],
-  ReconstructAD: ['Covariance', 'GMM_L0', 'GMM_L1', 'MachineTranslation'],
-  RelationshipAD: ['IDD_AutoEncoder', 'Seq2seq_AutoEncoder', 'CNNAutoEncoder', 'GAN']
+  ReconstructAD: ['DNN_AutoEncoder', 'Seq2seq_AutoEncoder', 'CNN_AutoEncoder', 'DNN_VariationalAutoEncoder'],
+  RelationshipAD: ['Covariance', 'GMM_L0', 'GMM_L1', 'MachineTranslation']
 }
 
 function App() {
@@ -55,6 +55,8 @@ function App() {
     setTimeColumnOptions([])
     setChart(false)
     setTimeColumn(false)
+    setAnomalyEstimatorOptions(false)
+    setTextField(false)
   }
 
   const sendDataToParent = async (res) => {
@@ -411,7 +413,7 @@ function App() {
                   items={anomalyEstimatorOptions}
                 /></div>
               : null}
-            <p className="others">Loopback Window</p>
+            <p className="others">Lookback Window</p>
             <Dropdown
               id="lookback_window"
               titleText="Select Value"
@@ -450,7 +452,7 @@ function App() {
               items={['Chi-Square', 'IID', 'Q-Score', 'Sliding-Window', 'Adaptive-Sliding-Window', 'Contextual-Anomaly']}
               initialSelectedItem="IID"
             />
-            <p className="others">Labelling Threshold</p>
+            <p className="others">Labeling Threshold</p>
             <TextInput
               name="labeling_threshold"
               id="labeling_threshold"

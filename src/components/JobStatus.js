@@ -84,7 +84,7 @@ const JobStatus = ({jobId}) => {
             <DataTable rows={rows} headers={headers}>
                 {({ rows, headers, getTableProps, getHeaderProps, getRowProps }) =>
                 (
-                    <TableContainer title="Parameter Job">
+                    <TableContainer title="Anomaly Job">
                         <Table {...getTableProps()}>
                             <TableHead>
                                 <TableRow>

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import axios from 'axios';
 import { TextInput, FileUploaderItem,FileUploaderDropContainer, ToastNotification } from 'carbon-components-react';
 import React, { useState, useCallback, useEffect} from 'react';
@@ -28,14 +29,14 @@ function Fileupload({setuLabelInput, setufilepath, setufilename, ulabelerr}) {
 
   const handleDrop = (e) => {
     e.preventDefault();
-     e.stopPropagation();
-     console.log(e);
+    e.stopPropagation();
+     //console.log(e);
   };
 
   const handleDragover = (e) => {
     e.preventDefault();
-     e.stopPropagation();
-     console.log(e);
+    e.stopPropagation();
+     //console.log(e);
      
   };
   
@@ -154,7 +155,6 @@ const onAddFiles = async (evt, { addedFiles }) => {
       }));
 
       if (addedFiles[0]) {
-        console.log("addedFiles[0]:", addedFiles[0]);
 
         setFiles([newFiles[0]]);
         uploadFile(newFiles[0]);

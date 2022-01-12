@@ -1,7 +1,7 @@
 var express = require('express');
 var multer = require('multer')
 var portfinder = require("portfinder");
-const {getresults, getclassoverlap, getclassparity, getlabelpurity, getoutlierdetection, chkdatacompleteness, chkdataduplicates, chkdatahomogeneity, chkdataprofile} = require('./services.js');
+const {getresults, getclassoverlap, getclassparity, getlabelpurity, getoutlierdetection, chkdatacompleteness, chkdataduplicates, chkdatahomogeneity, chkdataprofile, chkconn} = require('./services.js');
 
 var app = express();
 portfinder.basePort = 3100;
@@ -217,8 +217,17 @@ app.get('/results', (req, res) => {
 
      
     });
+ 
+app.get('/conncheck', (req, res) => {
 
-
+     chkconn()
+            .then((response) => {
+                res.send({result: response});
+          })
+            .catch((err) => {
+                res.end({ result: "fail" })
+            })     
+    });    
 
    
 portfinder.getPort((err, port) => {

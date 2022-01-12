@@ -18,6 +18,9 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
   const [msg , setmsg] = useState('');
   const [isLoading,setLoading] = useState(false);
   const [err1status, seterr1status] = useState(false);
+  const [err2status, seterr2status] = useState(false);
+  const [err3status, seterr3status] = useState(false);
+
 
   const onLPClickHandler = (e) => {
 
@@ -45,8 +48,9 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
                 setLoading(false);
               })
               .catch((err) => {
-                console.log(err)
+                //console.log(err)
                 setLoading(false);
+                seterr3status(true);
               });
           }
         }
@@ -76,8 +80,9 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
                 setLoading(false);
               })
               .catch((err) => {
-                console.log(err)
+                //console.log(err)
                 setLoading(false);
+                seterr3status(true);
               });
         }
       }
@@ -113,8 +118,9 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
                 setLoading(false);
               })
               .catch((err) => {
-                console.log(err)
+                //console.log(err)
                 setLoading(false);
+                seterr3status(true);
               });
             }
     }
@@ -142,8 +148,9 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
                 setLoading(false);
               })
               .catch((err) => {
-                console.log(err)
+                //console.log(err)
                 setLoading(false);
+                seterr3status(true);
               });
         }
       }
@@ -175,8 +182,9 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
                   setLoading(false);
                 })
                 .catch((err) => {
-                  console.log(err)
+                  //console.log(err)
                   setLoading(false);
+                  seterr3status(true); 
                 });
             }
         }
@@ -206,8 +214,9 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
                   setLoading(false);
                 })
                 .catch((err) => {
-                  console.log(err)
+                  //console.log(err)
                   setLoading(false);
+                  seterr3status(true); 
                 });
         }
       }
@@ -240,8 +249,9 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
                 setLoading(false);
               })
               .catch((err) => {
-                console.log(err)
+                //console.log(err)
                 setLoading(false);
+                seterr3status(true); 
               });
             }
       }  
@@ -270,8 +280,9 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
                 setLoading(false);
               })
               .catch((err) => {
-                console.log(err)
+                //console.log(err)
                 setLoading(false);
+                seterr3status(true); 
               });
         }
       }
@@ -282,6 +293,17 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
     
  
   const callClassparity = async () => {
+
+     let resp = await fetch('/conncheck');
+    let res = await resp.json();
+    
+      if (res['result'] === '{"message": "Welcome to Data Quality for AI"}') {
+        //console.log("Valid Credentials in use");
+      }
+      else{
+         seterr2status(true); 
+      }
+
 
     if(choice === "upload"){
       let response = await fetch('/classparity?label=' + uLabelInput + '&fpath=' + ufilepath + '&fname=' + ufilename);
@@ -311,6 +333,16 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
 
   const callLabelpurity= async () => {
 
+     let resp = await fetch('/conncheck');
+    let res = await resp.json();
+    
+      if (res['result'] === '{"message": "Welcome to Data Quality for AI"}') {
+        //console.log("Valid Credentials in use");
+      }
+      else{
+         seterr2status(true); 
+      }
+
     if(choice === "upload"){
       let response = await fetch('/labelpurity?label=' + uLabelInput + '&fpath=' + ufilepath + '&fname=' + ufilename);
       let body = await response.json();
@@ -338,6 +370,17 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
   };
 
   const callClassoverlap = async () => {
+
+     let resp = await fetch('/conncheck');
+    let res = await resp.json();
+    
+      if (res['result'] === '{"message": "Welcome to Data Quality for AI"}') {
+        //console.log("Valid Credentials in use");
+      }
+      else{
+         seterr2status(true); 
+      }
+
     if(choice === "upload"){
       let response = await fetch('/classoverlap?label=' + uLabelInput + '&fpath=' + ufilepath + '&fname=' + ufilename);
       let body = await response.json();
@@ -365,6 +408,17 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
   };
 
   const callOutlierdetection= async () => {
+
+     let resp = await fetch('/conncheck');
+    let res = await resp.json();
+    
+      if (res['result'] === '{"message": "Welcome to Data Quality for AI"}') {
+        //console.log("Valid Credentials in use");
+      }
+      else{
+         seterr2status(true); 
+      }
+
     if(choice === "upload"){
       let response = await fetch('/outlierdetection?label=' + uLabelInput + '&fpath=' + ufilepath + '&fname=' + ufilename);
       let body = await response.json();
@@ -391,6 +445,14 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
 
   function err1closef() {
     seterr1status(false);
+  }
+  
+  function err2closef() {
+    seterr2status(false);
+  }
+
+  function err3closef() {
+    seterr3status(false); // For invalid results/undefined jobs
   }
   
   const headers = [
@@ -436,6 +498,26 @@ function Dataquality({ choice, LabelInput, uLabelInput, filepath, filename, ufil
         subtitle={<span>No File uploaded</span>}
         timeout={3000}
         onClose = {err1closef}
+        title="Error Notification"
+      />
+      }
+
+    {err2status && 
+    <ToastNotification
+        iconDescription="Close notification"
+        subtitle={<span>Invalid Client ID or Secret. Stop the application before updating your credentials</span>}
+        timeout={4000}
+        onClose = {err2closef}
+        title="Error Notification"
+      />
+      }
+
+    {err3status && 
+    <ToastNotification
+        iconDescription="Close notification"
+        subtitle={<span>Invalid Results</span>}
+        timeout={3000}
+        onClose = {err3closef}
         title="Error Notification"
       />
       }

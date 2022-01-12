@@ -1,3 +1,4 @@
+/* eslint-disable */
 import axios from 'axios';
 import { FileUploaderItem,FileUploaderDropContainer,ToastNotification } from 'carbon-components-react';
 import React, { useState, useCallback, useEffect} from 'react';
@@ -21,13 +22,13 @@ function Fileupload1({setufilepath, setufilename}) {
   const handleDrop = (e) => {
     e.preventDefault();
      e.stopPropagation();
-     console.log(e);
+     //console.log(e);
   };
 
   const handleDragover = (e) => {
     e.preventDefault();
      e.stopPropagation();
-     console.log(e);
+     //console.log(e);
      
   };
   
@@ -147,7 +148,6 @@ const onAddFiles = async (evt, { addedFiles }) => {
       }));
 
       if (addedFiles[0]) {
-        console.log("addedFiles[0]:", addedFiles[0]);
 
         setFiles([newFiles[0]]);
         uploadFile(newFiles[0]);
@@ -168,10 +168,10 @@ const onAddFiles = async (evt, { addedFiles }) => {
                 setnotifystatus(true);
                 setufilepath(global_filename);
                 setufilename('data.csv');
-                console.log("file uploaded"); 
+                //console.log("file uploaded"); 
             }
             else{
-                  console.log("file not uploaded");
+                  //console.log("file not uploaded");
                   seterr1status(true);
               } 
 
@@ -183,14 +183,14 @@ const onAddFiles = async (evt, { addedFiles }) => {
                         iconDescription: "Upload failed",
                         invalid: true,
                     };
-            console.log("Issue with uploaded file");
+            //console.log("Issue with uploaded file");
             seterr1status(true);
           }
              
           }
         }
       else{
-        console.log("Issue with uploaded file");
+        //console.log("Issue with uploaded file");
         seterr1status(true);
       }
     };

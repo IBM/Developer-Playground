@@ -5,7 +5,7 @@ import Sdataset1 from './Sdataset1';
 import { RadioButtonGroup, RadioButton  } from 'carbon-components-react';
 
 
-function Datainput1({ setbuttonstate, setchoice, setfilepath, setfilename,  setufilepath, setufilename, ulabelerr, labelerr, dataseterr1}) {
+function Datainput1({ setbuttonstate, setchoice, setfilepath, setfilename,  setufilepath, setufilename, dataseterr1}) {
 
 const [displayCOption1, setdisplayCOption1] = useState('');
 const [displaySOption1, setdisplaySOption1] = useState('');

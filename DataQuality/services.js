@@ -60,7 +60,7 @@ var options = {
       }
 
       catch(err){
-        console.log("error in inputs provided");
+        //console.log("error in inputs provided");
       }
     
     });
@@ -122,7 +122,7 @@ exports.getclassparity = function (label = '', fpath = '', fname='') {
       resolve(c_parity);
     }
      catch(err){
-        console.log("error in inputs provided");
+        //console.log("error in inputs provided");
       }
 
     });
@@ -182,7 +182,7 @@ exports.getlabelpurity = function (label = "",fpath = "", fname="") {
       }
       
       catch(err){
-        console.log("error in inputs provided");
+        //console.log("error in inputs provided");
       }
      
 
@@ -243,7 +243,7 @@ exports.getoutlierdetection = function (label = "",fpath = "", fname="") {
       }
       
       catch(err){
-        console.log("error in inputs provided");
+        //console.log("error in inputs provided");
       }
 
     });
@@ -300,7 +300,7 @@ exports.chkdatacompleteness = function (fpath = "", fname = "") {
       resolve(d_complete);
       }
        catch(err){
-        console.log("error in inputs provided");
+        //console.log("error in inputs provided");
       }
 
     });
@@ -356,7 +356,7 @@ exports.chkdataduplicates = function (fpath = "", fname="") {
       resolve(d_duplicate);
       }
        catch(err){
-        console.log("error in inputs provided");
+        //console.log("error in inputs provided");
       }
     });
     
@@ -410,7 +410,7 @@ exports.chkdatahomogeneity = function (fpath = "", fname="") {
       resolve(d_homogen);
       }
        catch(err){
-        console.log("error in inputs provided");
+        //console.log("error in inputs provided");
       }
 
     });
@@ -465,7 +465,7 @@ exports.chkdataprofile = function (fpath = "", fname="") {
       resolve(d_profile);
       }
        catch(err){
-        console.log("error in inputs provided");
+        //console.log("error in inputs provided");
       }
 
     });
@@ -473,7 +473,6 @@ exports.chkdataprofile = function (fpath = "", fname="") {
   })
   .catch(() => {});
 }
-
 
 exports.getresults = function (jobid = "") {
 
@@ -551,16 +550,45 @@ exports.getresults = function (jobid = "") {
       }
     }
     
+    else if(jsondata1["message"] == "Job ID doesn't exist"){
+      finalresult = {result:"Invalid"}
+      resolve(finalresult);
+    }
     else{
         finalresult = {};
         resolve(finalresult);
       }
     }
      catch(err){
-        console.log("error in inputs provided");
+        //console.log("error in inputs provided");
       }
 });
 
   })
   .catch(() => {});
+}
+
+
+exports.chkconn = function(){
+
+    return new Promise((resolve, reject) => {
+  
+    var options = {
+      'method': 'GET',
+      'url': process.env[env_var.concat("_").concat("check")],
+      'headers': {
+        'X-IBM-Client-Id': clientid,
+        'X-IBM-Client-Secret': clientsecret,
+        'accept': 'application/json',
+      }
+    };
+    request(options, function (error, response) {
+      if (error) {reject(error)}
+
+      resolve(response.body);
+    });
+
+})
+  .catch(() => {});
+
 }

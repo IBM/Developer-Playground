@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState} from 'react';
 import { Button, Loading, TableContainer, CodeSnippet, ToastNotification} from 'carbon-components-react';
 import {
@@ -19,6 +20,8 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
   const [isLoading,setLoading] = useState(false);
   const [buttonstate, setbuttonstate] = useState(false);
   const [err1status, seterr1status] = useState(false);
+  const [err2status, seterr2status] = useState(false);
+  const [err3status, seterr3status] = useState(false);
 
   const onDCClickHandler = (e) => {
 
@@ -38,8 +41,9 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
             setLoading(false);
           })
           .catch((err) => {
-            console.log(err)
+            //console.log(err)
             setLoading(false);
+            seterr3status(true);
           });
       }
     
@@ -64,8 +68,9 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
             setLoading(false);
           })
           .catch((err) => {
-            console.log(err)
+            //console.log(err)
             setLoading(false);
+            seterr3status(true);
           });
       }
 
@@ -91,8 +96,9 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
             setLoading(false);
           })
           .catch((err) => {
-            console.log(err)
+            //console.log(err)
             setLoading(false);
+            seterr3status(true);
           });
        }
   
@@ -116,8 +122,9 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
                 setLoading(false);
               })
               .catch((err) => {
-                console.log(err)
+                //console.log(err)
                 setLoading(false);
+                seterr3status(true);
               });
       }
 
@@ -144,8 +151,9 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
               setLoading(false);
             })
             .catch((err) => {
-              console.log(err)
+              //console.log(err)
               setLoading(false);
+              seterr3status(true);
             });
         }
     
@@ -169,8 +177,9 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
               setLoading(false);
             })
             .catch((err) => {
-              console.log(err)
+              //console.log(err)
               setLoading(false);
+              seterr3status(true);
             });
         }
     }
@@ -196,8 +205,9 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
           setLoading(false);
         })
         .catch((err) => {
-          console.log(err)
+          //console.log(err)
           setLoading(false);
+          seterr3status(true);
         });
 
       }
@@ -224,8 +234,9 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
           setLoading(false);
         })
         .catch((err) => {
-          console.log(err)
+          //console.log(err)
           setLoading(false);
+          seterr3status(true);
         });
 
         }
@@ -236,6 +247,16 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
     
  
   const callDatacompleteness = async () => {
+
+    let resp = await fetch('/conncheck');
+    let res = await resp.json();
+    
+      if (res['result'] === '{"message": "Welcome to Data Quality for AI"}') {
+        //console.log("Valid Credentials in use");
+      }
+      else{
+         seterr2status(true); 
+      }
 
     if(choice === "upload"){
       let response = await fetch('/datacompleteness?fpath=' + ufilepath + '&fname=' + ufilename);
@@ -265,6 +286,16 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
 
   const callDataduplicates = async () => {
 
+    let resp = await fetch('/conncheck');
+    let res = await resp.json();
+    
+      if (res['result'] === '{"message": "Welcome to Data Quality for AI"}') {
+        //console.log("Valid Credentials in use");
+      }
+      else{
+         seterr2status(true); 
+      }
+
     if(choice === "upload"){
       let response = await fetch('/dataduplicates?fpath=' + ufilepath + '&fname=' + ufilename);
       let body = await response.json();
@@ -292,6 +323,17 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
   };
 
   const callDatahomogeneity = async () => {
+
+    let resp = await fetch('/conncheck');
+    let res = await resp.json();
+    
+      if (res['result'] === '{"message": "Welcome to Data Quality for AI"}') {
+        //console.log("Valid Credentials in use");
+      }
+      else{
+         seterr2status(true); 
+      }
+
     if(choice === "upload"){
       let response = await fetch('/datahomogeneity?fpath=' + ufilepath + '&fname=' + ufilename);
       let body = await response.json();
@@ -320,6 +362,17 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
   };
 
   const callDataprofile = async () => {
+
+    let resp = await fetch('/conncheck');
+    let res = await resp.json();
+    
+      if (res['result'] === '{"message": "Welcome to Data Quality for AI"}') {
+        //console.log("Valid Credentials in use");
+      }
+      else{
+         seterr2status(true); 
+      }
+
     if(choice === "upload"){
       let response = await fetch('/dataprofile?fpath=' + ufilepath + '&fname=' + ufilename);
       let body = await response.json();
@@ -348,6 +401,12 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
     seterr1status(false);
   }
 
+    function err2closef() {
+    seterr2status(false);
+  }
+    function err3closef() {
+    seterr3status(false); // For invalid results/undefined jobs
+  }
   const headers = [
   {
     key: 'jobid',
@@ -389,6 +448,26 @@ function Datasetquality({ choice, filepath, filename, ufilepath, ufilename, setd
         subtitle={<span>No File uploaded</span>}
         timeout={3000}
         onClose = {err1closef}
+        title="Error Notification"
+      />
+      }
+
+    {err2status && 
+    <ToastNotification
+        iconDescription="Close notification"
+        subtitle={<span>Invalid Client ID or Secret. Stop the application before updating your credentials</span>}
+        timeout={4000}
+        onClose = {err2closef}
+        title="Error Notification"
+      />
+      }
+
+    {err3status && 
+    <ToastNotification
+        iconDescription="Close notification"
+        subtitle={<span>Invalid Results</span>}
+        timeout={3000}
+        onClose = {err3closef}
         title="Error Notification"
       />
       }

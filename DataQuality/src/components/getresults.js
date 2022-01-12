@@ -22,6 +22,8 @@ function  Results() {
   const [score , setscore] = useState('');
   const [isLoading,setLoading] = useState(false);
   const [err1status, seterr1status] = useState(false); 
+  const [err2status, seterr2status] = useState(false);
+  const [err3status, seterr3status] = useState(false);
   const [numbercolumns, setnumbercolumns] = useState('');
   const [numbersamples, setnumbersamples] = useState('');
   const [datecolumns, setdatecolumns] = useState('');
@@ -32,7 +34,10 @@ function  Results() {
   const onSubmit = (e) => {
      setLoading(true);
      e.preventDefault();
+
+     if(jobid && jobid.trim()){
     
+      try{
     callResults()
     .then((resp) => {
 
@@ -41,10 +46,12 @@ function  Results() {
         setLoading(false);
       }
 
+      else if(JSON.stringify(resp) === '{"result":"Invalid"}'){
+        setLoading(false);
+        seterr3status(true);
+      }
+
       else{
-      console.log("RES: ", resp["Job ID"])
-      console.log("RES MSG: ", resp["Message"])
-      console.log("RES Metric : ", resp["String Col"])
 
       if(resp["Metric"] === "Data Profiler"){
         setjobid(resp["Job ID"]);
@@ -72,14 +79,30 @@ function  Results() {
     }
 
     })
-    .catch((err) => {
-      console.log(err)
+  }
+  catch(err){
+    setLoading(false);
+    seterr3status(true);
+  }
+  }
+    else{
       setLoading(false);
-    });
+      seterr3status(true);
+    }
      
   }
   
    const callResults = async () => {
+
+    let resp = await fetch('/conncheck');
+    let res = await resp.json();
+    
+      if (res['result'] === '{"message": "Welcome to Data Quality for AI"}') {
+        //console.log("Valid Credentials in use");
+      }
+      else{
+         seterr2status(true); 
+      }
 
       let response = await fetch('/results?jobid=' + jobid);
       let body = await response.json();
@@ -154,6 +177,8 @@ function  Results() {
   }
 
   else{
+
+    try{
     
   headers = [
   {
@@ -194,12 +219,25 @@ function  Results() {
     score: score
   }
 ];
-  
-  }
-function err1closef() {
-  seterr1status(false);
 }
-    return (
+catch(err){
+  seterr3status(true);
+}
+  }
+
+  function err1closef() {
+    seterr1status(false);
+  }
+  
+  function err2closef() {
+    seterr2status(false);
+  }
+  
+  function err3closef() {
+    seterr3status(false);
+  }
+
+return (
      <div>
 
       <Form autoComplete="off" onSubmit={onSubmit}>
@@ -252,6 +290,25 @@ function err1closef() {
         subtitle={<span>Results are getting processed. Try again in a few moments</span>}
         timeout={3000}
         onClose = {err1closef}
+        title="Error Notification"
+      />
+      }
+        {err2status && 
+    <ToastNotification
+        iconDescription="Close notification"
+        subtitle={<span>Invalid Client ID or Secret. Stop the application before updating your credentials</span>}
+        timeout={4000}
+        onClose = {err2closef}
+        title="Error Notification"
+      />
+      }
+    
+    {err3status && 
+    <ToastNotification
+        iconDescription="Close notification"
+        subtitle={<span>Invalid Job ID</span>}
+        timeout={3000}
+        onClose = {err3closef}
         title="Error Notification"
       />
       }

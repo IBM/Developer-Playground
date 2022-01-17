@@ -43,6 +43,9 @@ function generateToken() {
                 if (err) return console.log(err);
                 });              
           }
+          else{
+              console.log("Error with credentials or token");
+          }
       }
   );
 

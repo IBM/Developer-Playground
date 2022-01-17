@@ -17,7 +17,7 @@ app.use(express.static('build'));
         response.json(res);
       }).catch((e) => {
         response.end({result: "fail"})
-        console.log("Error : ",e)
+        //console.log("Error : ",e)
       })
 
     });
@@ -30,7 +30,7 @@ app.use(express.static('build'));
         response.json(res);
       }).catch((e) => {
         response.end({result: "fail"})
-        console.log("Error : ",e)
+        //console.log("Error : ",e)
       })
 
     });
@@ -43,7 +43,7 @@ app.use(express.static('build'));
         response.json(res);
       }).catch((e) => {
         response.end({result: "fail"})
-        console.log("Error : ",e)
+        //console.log("Error : ",e)
       })
 
     });
@@ -68,7 +68,7 @@ app.use(express.static('build'));
       addrgeocode(queryst).then((res)=>{
         response.json(res);
       }).catch((e) => {
-        console.log("Error : ",e)
+        //console.log("Error : ",e)
       })
 
     });
@@ -81,7 +81,7 @@ app.use(express.static('build'));
         response.json(res);
       }).catch((e) => {
         response.end({result: "fail"})
-        console.log("Error : ",e)
+        //console.log("Error : ",e)
       })
 
     });
@@ -89,14 +89,11 @@ app.use(express.static('build'));
     app.get("/revaddrgeocode", function (request, response) {
       
       let location = request.query.location;
-
-      // console.log("location api end: ",location);
-
       revaddrgeocode(location).then((res)=>{
         response.json(res);
       }).catch((e) => {
         response.end({result: "fail"})
-        console.log("Error : ",e)
+        //console.log("Error : ",e)
       })
 
     });

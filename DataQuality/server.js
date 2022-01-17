@@ -40,14 +40,8 @@ app.post('/upload',function(req, res) {
                if(err.code === "LIMIT_FILE_SIZE"){
                    console.log('File size greater than 15MB');
                }
-                // res.send({result:"File is too large"});
-              // console.log("ERR1: ", err);
-               return res.status(500).json(err)
-               //return("File size greater than 3MB");
-              
-               //return(err); 
+               return res.status(500).json(err)              
            } else if (err) {
-               //console.log("ERR2: ", err);
                return res.status(500).json(err)
            }
       return res.status(200).send(req.file)

@@ -41,7 +41,7 @@ function Search2() {
           let response = await fetch(`https://discover.search.hereapi.com/v1/discover?q=${areaquery}&at=${locationstr}`,{ headers})
           let result = await response.json();
 
-           setGeocodeobj({...result});
+          setGeocodeobj({...result});
           setLoading(false);
           
           if(JSON.stringify(result.items) === '[]'){

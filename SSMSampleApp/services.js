@@ -7,7 +7,6 @@ var authtoken = array[0];
 var env_var = JSON.stringify(process.env.PLAYGROUND_ENVIRONMENT);
 env_var = env_var.substring(1,8);
 
-
 var clientid = process.env.REACT_APP_CLIENT_ID;
 var clientsecret = process.env.REACT_APP_CLIENT_SECRET;
 

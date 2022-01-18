@@ -1,4 +1,3 @@
-// const request = require('request');
 const fs = require('fs');
 const https = require('https');
 const jwt = require('njwt');
@@ -11,7 +10,7 @@ function authService() {
 
     let successtoken;
     let value = myCache.get("AuthKey");
-    console.log("Start: Cache Value:", value);
+    console.log("Cache Value:", value);
 
     if (value === undefined) {
 
@@ -56,8 +55,7 @@ function authService() {
       const req = https.request(options, res => {
         res.on('data', data => {
 
-          console.log("cache status: ", value);
-          console.log("******");
+          console.log("Cache status: ", value);
           console.log("Auth Request commenced");
           try{
 
@@ -85,8 +83,8 @@ function authService() {
 
         }
           catch(err){
-            console.log("caught token err");
-            console.log("Make Auth Call NOW");
+            console.log("Error with Token generation");
+            console.log("Attempting token generation again");
             authService();
           }
 
@@ -126,7 +124,7 @@ function user_authService() {
     
     let successtoken1;
     let value1 = myCache.get("AuthKey1");
-    console.log("Start: Cache Value:", value1);
+    console.log("Cache Value:", value1);
 
     if (value1 === undefined) {
     const clientData = {
@@ -171,7 +169,6 @@ function user_authService() {
       res.on('data', data => {
           
           console.log("user cache status: ", value1);
-          console.log("******");
           console.log("user Auth Request commenced");
 try{
 
@@ -200,8 +197,8 @@ try{
           }
            }
           catch(err){
-            console.log("caught user auth token err");
-            console.log("Make user Auth Call NOW");
+            console.log("Error with Token generation");
+            console.log("Attempting token generation again");
             user_authService();
           }
       });
@@ -234,7 +231,7 @@ function nuser_authService() {
 
     let successtoken2;
     let value2 = myCache.get("AuthKey2");
-    console.log("Start: Cache Value:", value2);
+    console.log("Cache Value:", value2);
 
     if (value2 === undefined) {
     const clientData = {
@@ -279,7 +276,6 @@ function nuser_authService() {
       res.on('data', data => {
 
         console.log("node user cache status: ", value2);
-        console.log("******");
         console.log("node user Auth Request commenced");
 
 try{
@@ -308,8 +304,8 @@ try{
           }
           }
           catch(err){
-            console.log("caught node user auth token err");
-            console.log("Make node user Auth Call NOW");
+            console.log("Caught Node user auth token err");
+            console.log("Attempting token generation again");
             nuser_authService();
           }
       });
@@ -324,7 +320,7 @@ try{
 } 
   else {
 
-      console.log("Cache node User auth Value: ", value2);
+      console.log("Cache Node user auth Value: ", value2);
       resolve(value2);
 
 

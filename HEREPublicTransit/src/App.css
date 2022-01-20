@@ -93,7 +93,7 @@ h2 {
   /* height: 400px; */
 }
 
-.directions li span.arrow {
+span.arrow {
   display: inline-block;
   min-width: 28px;
   min-height: 28px;
@@ -102,15 +102,15 @@ h2 {
   position: relative;
   top: 8px;
 }
-.directions li span.depart {
+span.depart {
   background-position: -28px;
 }
-.directions li span.rightturn {
+span.rightturn {
   background-position: -224px;
 }
-.directions li span.leftturn {
+span.leftturn {
   background-position: -252px;
 }
-.directions li span.arrive {
+span.arrive {
   background-position: -1288px;
 }

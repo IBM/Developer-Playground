@@ -140,7 +140,7 @@
     position: relative;
     background-color: white;
     min-width: 50%;
-    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url("https://github.com/bodarajeshkumar/Developer-Playground/blob/master/didact/images/git.svg?raw=true");
+    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/github.svg");
     background-position: -50% 60px;
     background-repeat: no-repeat;
     padding-top: 20px;
@@ -181,7 +181,7 @@
   }
   .header
   {
-    background-image: url('https://github.com/IBM/Developer-Playground/blob/development/didact/images/data-quality.png?raw=true');
+    background-image: url('https://github.com/IBM/Developer-Playground/blob/master/didact/images/data-quality.png?raw=true');
     width: 100%;
     height: auto;
     min-height: 300px;
@@ -246,6 +246,13 @@
     font-size: 20px;
     color: white;
   }
+  .assetdetails{
+    background:none;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-left: 50px;
+    padding-bottom: 24px;
+}
   @media only screen and (max-width: 1000px) {
     .header
     {
@@ -303,7 +310,7 @@
 </head>
 <body>
   <div class="apptitle"> 
-    Data Quality API Sample Application
+    Data Quality for AI Asset
   </div>
    <div class="header">
       <div class="right-content">
@@ -312,6 +319,32 @@
           </div>
       </div>
    </div>
+        <br>
+        <br>
+        <div class="assetdetails">
+            <p style="font-size: 20px;"><b>Learning Resources</b></p>
+            <ul>
+            <li>Get started with Data Quality for AI API with this <a href="https://developer.ibm.com/learningpaths/data-quality-ai-toolkit/">Learning path</a></li>
+            </ul>
+            <br>
+            <p style="font-size: 20px;"><b>Included components</b></p>
+            <ul>
+            <li><a href="https://developer.ibm.com/apis/catalog/dataquality4ai--data-quality-for-ai/Introduction">Data Quality for AI API</a></li>
+            </ul>
+            <br>
+            <p style="font-size: 20px;"><b>Prerequisites</b></p>
+            <p>To run this application you will need to execute the following steps:</p>
+            <p>Obtain API credentials</p>
+            <ul>
+            <li>Subscribe to the <a title= "Data Quality" href="https://developer.ibm.com/apis/catalog/dataquality4ai--data-quality-for-ai/Introduction">Data Quality for AI Product</a></li>
+            <li>Now check out <a title= "My Subscriptions" href="https://developer.ibm.com/profile/myapis">API Subscriptions</a></li>
+            <li>You should see a subscription for Data Quality for AI, select that and proceed</li>
+            <li>You can obtain your Client ID/Secret from here. If you don't see any, you can "Generate API Key"</li>
+            </ul>
+            <br>
+            <p style="font-size: 20px;"><b>Instructions</b></p>
+        </div>
+
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
@@ -323,47 +356,22 @@
          <div class="content">
             <p>You've successfully cloned the code, so click `Build the application` to start the build process.
             </p>
-            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cbuild-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install">Build the Application</a>
+            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cbuild-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install%20--production">Build the Application</a>
             <p class="afterbutton">
-               To obtain credentials and configure the application, complete the following steps
+               To obtain credentials and configure the application, complete the prerequisites
             </p>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Subscribe to the <a title= "Data Quality" href="https://developer.ibm.com/apis/catalog/dataquality4ai--data-quality-for-ai/Introduction">Data Quality for AI Product</a>
-            </p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>Now check out <a title= "My Subscriptions" href="https://developer.ibm.com/profile/myapis">API Subscriptions</a>
-            </p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>You should see a subscription for Data Quality for AI, select that and proceed
-            </p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>You can obtain your Client ID/Secret from here. If you don't see any, you can "Generate API Key"
-            </p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>Let's get the credentials by configuring the application</p>
-            </p>
+            <p>Let's configure the application with our credentials </p>
             <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/.env">Configure the Application</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
             <p>You're all set to get started! </p>
-            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Claunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20start">Launch the Application</a>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Claunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20node%20server.js">Launch the Application</a>
          </div>
       </div>
    </div>
@@ -372,9 +380,9 @@
          <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
          <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=data-quality" >Stop Application</a>
          <p class="afterbutton">The stage is yours!</p>
-         <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/services/service.js">Explore the Code</a>
+         <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/src/App.js">Explore the Code</a>
          <p class="afterbutton ">To view the changes you've made, re-launch the application</p>
-         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Crelaunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20start">Re-Launch the Application</a>
+         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Crelaunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install%20--only=dev%20%26%26%20rm%20-rf%20build%20%26%26%20npm%20run%20build%20%26%26%20node%20server.js">Re-Launch the Application</a>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?

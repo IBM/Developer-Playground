@@ -317,7 +317,7 @@
     <div class="section">
     <p style="font-size:20px">Learning Resources</p>
         <div class="content-">
-        <a href="https://developer.ibm.com/patterns/extract-textual-insights-from-a-given-video/">Understanding the <b>Extract insights from videos</b> Asset.</a>
+        <a href="https://developer.ibm.com/articles/text-mining-and-analysis-from-webex-recordings/">Understanding the <b>Extract insights from videos</b> Asset.</a>
         </div>
    </div>
    <div class="section">

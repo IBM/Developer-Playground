@@ -1,6 +1,15 @@
 /* eslint-disable */
 import React, { useState} from 'react';
 import { Button,TextInput, Form, Select, SelectItem, Loading, ToastNotification } from 'carbon-components-react';
+ import {
+  DataTable,
+  Table,
+  TableHead,
+  TableRow,
+  TableHeader,
+  TableBody,
+  TableCell
+} from 'carbon-components-react';
 import H from "@here/maps-api-for-javascript";
 import 'here-js-api/styles/mapsjs-ui.css';
 
@@ -17,6 +26,9 @@ function Mapf1(){
   const [err1status, seterr1status] = useState(false);
   const [err2status, seterr2status] = useState(false);
   const [err3status, seterr3status] = useState(false);
+
+  const [routeaxnobj, setrouteaxnobj] = useState({});
+  const [routesummary, setroutesummary] = useState('');
 
   const modes = [
   {
@@ -40,6 +52,10 @@ function Mapf1(){
  const handleModeChange = (event) => {
     setmodequery(event.target.value);
   }
+
+    function toMMSS(duration) {
+        return Math.floor(duration / 60) + ' minutes ' + (duration % 60) + ' seconds.';
+     }
 
    const handleSubmit = (e) => {
       e.preventDefault(); 
@@ -93,15 +109,14 @@ function Mapf1(){
 
           function onError(error) {
             document.getElementById('map').innerHTML = "";
-            document.getElementById('panel').innerHTML = "";
+            setrouteaxnobj({});
             seterr3status(true); 
           }
 
           document.getElementById('map').innerHTML = "";
-          document.getElementById('panel').innerHTML = "";
+          setrouteaxnobj({});
 
           var mapContainer = document.getElementById('map');
-          var routeInstructionsContainer = document.getElementById('panel');
 
           var platform = new H.service.Platform({
             apikey: apikey
@@ -160,6 +175,7 @@ function Mapf1(){
             }
           catch(err){
             document.getElementById('map').innerHTML = "";
+            setrouteaxnobj({});
             seterr2status(true);
           }
           }
@@ -202,73 +218,40 @@ function Mapf1(){
               }
           catch(err){
             document.getElementById('map').innerHTML = "";
-            document.getElementById('panel').innerHTML = "";
-            
+            setrouteaxnobj({});
           }
           }
 
 
-          function addSummaryToPanel(route){
-            try{
-            let duration = 0,
-                distance = 0;
+         function addSummaryToPanel(route) {
 
-            route.sections.forEach((section) => {
-              distance += section.travelSummary.length;
-              duration += section.travelSummary.duration;
-            });
-
-            var summaryDiv = document.createElement('div'),
-            content = '';
-            content += '<b>Total distance</b>: ' + distance  + 'm. <br/>';
-            content += '<b>Travel Time</b>: ' + duration.toMMSS();
-
-
-            summaryDiv.style.fontSize = 'small';
-            summaryDiv.style.marginLeft ='5%';
-            summaryDiv.style.marginRight ='5%';
-            summaryDiv.innerHTML = content;
-            routeInstructionsContainer.appendChild(summaryDiv);
-          }
-          catch(err){
-            document.getElementById('panel').innerHTML = "";
-          }
-          }
-
-          function addManueversToPanel(route){
-            try{
-            var nodeOL = document.createElement('ol');
-
-            nodeOL.style.fontSize = 'small';
-            nodeOL.style.marginLeft ='5%';
-            nodeOL.style.marginRight ='5%';
-            nodeOL.className = 'directions';
-
-            route.sections.forEach((section) => {
-              if (section.actions) {
-                section.actions.forEach((action, idx) => {
-                  var li = document.createElement('li'),
-                      spanArrow = document.createElement('span'),
-                      spanInstruction = document.createElement('span');
-
-                  spanArrow.className = 'arrow ' + (action.direction || '') + action.action;
-                  spanInstruction.innerHTML = section.actions[idx].instruction;
-                  li.appendChild(spanArrow);
-                  li.appendChild(spanInstruction);
-
-                  nodeOL.appendChild(li);
-                });
-              }
-            });
-            routeInstructionsContainer.appendChild(nodeOL);
-          }
-          catch(err){
-            document.getElementById('panel').innerHTML = "";
-          }
-          }
-            Number.prototype.toMMSS = function () {
-              return  Math.floor(this / 60)  +' minutes '+ (this % 60)  + ' seconds.';
+                try{
+                    let distance = route.sections[0].travelSummary.length.toString();
+                    let duration = toMMSS(route.sections[0].travelSummary.duration).toString();
+                    let str = "Route Distance and Duration: " + distance + ' m,  ' + duration
+                    setroutesummary(str)
+                }
+                
+                catch(err){
+                  //console.log(err);
+                  document.getElementById('map').innerHTML = "";
+                  setrouteaxnobj({});
+                }
             }
+
+            function addManueversToPanel(route) {
+                try{
+                    setrouteaxnobj(route.sections[0]);
+                }
+
+                catch(err){
+                    document.getElementById('map').innerHTML = "";
+                    setrouteaxnobj({});
+                    //console.log("Results unavailable");
+                    }
+            }
+          
+           
 
           setTimeout(() => setLoading(false),5000);
           calculateRouteFromAtoB (platform);
@@ -299,7 +282,6 @@ function Mapf1(){
 
               addRouteShapeToMap(route);
               addManueversToMap(route);
-              addWaypointsToPanel(route);
               addManueversToPanel(route);
               addSummaryToPanel(route);
             }
@@ -308,16 +290,14 @@ function Mapf1(){
             function onError(error) {
               
               document.getElementById('map').innerHTML = "";
-              document.getElementById('panel').innerHTML = "";
+              setrouteaxnobj({});
               seterr3status(true); 
             }
 
             document.getElementById('map').innerHTML = "";
-            document.getElementById('panel').innerHTML = "";
+            setrouteaxnobj({});
 
             var mapContainer = document.getElementById('map')
-            var routeInstructionsContainer = document.getElementById('panel');
-
 
             var platform = new H.service.Platform({
               apikey: apikey
@@ -374,7 +354,7 @@ function Mapf1(){
               catch(err){
                 seterr2status(true);
                 document.getElementById('map').innerHTML = "";
-                document.getElementById('panel').innerHTML = "";
+                setrouteaxnobj({});
               }
             }
 
@@ -416,97 +396,38 @@ function Mapf1(){
             }
             catch(err){
               document.getElementById('map').innerHTML = "";
-              document.getElementById('panel').innerHTML = "";
+              setrouteaxnobj({});
             }
             }
 
-
-            function addWaypointsToPanel(route) {
-
-              try{
-              var nodeH3 = document.createElement('h3'),
-                labels = [];
-
-              route.sections.forEach((section) => {
-                labels.push(
-                  section.turnByTurnActions[0].nextRoad.name[0].value)
-                labels.push(
-                  section.turnByTurnActions[section.turnByTurnActions.length - 1].currentRoad.name[0].value)
-              });
-
-              nodeH3.textContent = labels.join(' - ');
-              routeInstructionsContainer.innerHTML = '';
-              routeInstructionsContainer.appendChild(nodeH3);
-              }
-            catch(err){
-              document.getElementById('panel').innerHTML = "";
-            }
-            }
-
+            
             function addSummaryToPanel(route) {
 
-              let duration = 0,
-                distance = 0;
-
-              try{
-              route.sections.forEach((section) => {
-                distance += section.travelSummary.length;
-                duration += section.travelSummary.duration;
-              });
-
-              var summaryDiv = document.createElement('div'),
-                content = '<b>Total distance</b>: ' + distance + 'm. <br />' +
-                  '<b>Travel Time</b>: ' + toMMSS(duration) + ' (in current traffic)';
-
-              summaryDiv.style.fontSize = 'small';
-              summaryDiv.style.marginLeft = '5%';
-              summaryDiv.style.marginRight = '5%';
-              summaryDiv.innerHTML = content;
-              routeInstructionsContainer.appendChild(summaryDiv);
-              }
-
+                try{
+                    let distance = route.sections[0].travelSummary.length.toString();
+                    let duration = toMMSS(route.sections[0].travelSummary.duration).toString();
+                    let str = "Route Distance and Duration: " + distance + ' m,  ' + duration
+                    setroutesummary(str)
+                }
+                
                 catch(err){
+                  //console.log(err);
                   document.getElementById('map').innerHTML = "";
-                  document.getElementById('panel').innerHTML = "";
+                  setrouteaxnobj({});
                 }
             }
 
 
             function addManueversToPanel(route) {
-              var nodeOL = document.createElement('ol');
+                try{
+                    setrouteaxnobj(route.sections[0]);
+                }
 
-              nodeOL.style.fontSize = 'small';
-              nodeOL.style.marginLeft ='5%';
-              nodeOL.style.marginRight ='5%';
-              nodeOL.className = 'directions';
-
-              try{
-              route.sections.forEach((section) => {
-                section.actions.forEach((action, idx) => {
-                  var li = document.createElement('li'),
-                    spanArrow = document.createElement('span'),
-                    spanInstruction = document.createElement('span');
-
-                  spanArrow.className = 'arrow ' + (action.direction || '') + action.action;
-                  spanInstruction.innerHTML = section.actions[idx].instruction;
-                  li.appendChild(spanArrow);
-                  li.appendChild(spanInstruction);
-
-                  nodeOL.appendChild(li);
-                });
-              });
-
-              routeInstructionsContainer.appendChild(nodeOL);
-            }
-            catch(err){
-              document.getElementById('map').innerHTML = "";
-              document.getElementById('panel').innerHTML = "";
-              console.log("Results unavailable");
-            }
-            }
-
-            function toMMSS(duration) {
-              return Math.floor(duration / 60) + ' minutes ' + (duration % 60) + ' seconds.';
+                catch(err){
+                    document.getElementById('map').innerHTML = "";
+                    setrouteaxnobj({});
+                    //console.log("Results unavailable");
+                    }
             }
             
             setTimeout(() => setLoading(false),5000);
@@ -575,6 +496,14 @@ const validtCoordf = (e) => {
   function err3closef() {
     seterr3status(false);
   }
+
+    const headers = [
+  {
+    key: 'routesummary',
+    header: routesummary,
+  }
+];
+
   return(
     <>    
         <Form onSubmit={handleSubmit}>
@@ -637,9 +566,49 @@ const validtCoordf = (e) => {
                 <br/>
                   <div id = 'map' ></div>
                     <br/>
-                <div id = 'panel' ></div>
                 </div>
-              }        
+              }  
+            <br/>
+            <br/>
+            <br/>
+      {routeaxnobj.actions && 
+         <div className = "TableDisplay">
+
+
+              {routeaxnobj.actions &&
+          
+          <DataTable rows={routeaxnobj.actions} headers={headers}>
+              {({ rows, headers, getHeaderProps}) => 
+            (
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      {headers.map((header) => (
+                        <TableHeader {...getHeaderProps({ header })}>
+                          {header.header}
+                        </TableHeader>
+                      ))}
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {routeaxnobj.actions && routeaxnobj.actions.map((row, index) => {
+
+                        var direction = 'arrow ' + (row.direction || '') + row.action;
+                return (
+
+                      <TableRow key={index} >
+                        <TableCell><span className={direction}></span> {row.instruction}</TableCell>
+                      </TableRow>
+
+                );
+            })}
+                  </TableBody>
+                </Table>
+            )
+                }
+          </DataTable>}
+
+        </div>}      
             </>
             );
 };

@@ -355,7 +355,7 @@
       </div>
       <div class="container right">
          <div class="content">
-            <p>You need to be logged in to your IBM Cloud account in the Developer Playground to create and configure services.</p>
+            <p>You need to be logged in to your IBM Cloud account in the IBM Developer Technology Sandbox to create and configure services.</p>
             <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$ibmcloud%20login%20--sso%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">Login to IBM Cloud</a>
       </div>
       </div>

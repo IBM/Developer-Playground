@@ -325,9 +325,9 @@
       <div >
          <div class="content">
             <p>This Asset uses the following IBM Watson Services:</p>
-            <p><a href="https://cloud.ibm.com/catalog/services/natural-language-understanding">Natural Language Understanding</a>: Use advanced NLP to analyze text and extract meta-data from content such as concepts, entities, keywords, categories, sentiment, emotion, relations, and semantic roles.</p>
-            <p><a href="https://cloud.ibm.com/catalog/services/tone-analyzer">Tone Analyzer</a>: Tone Analyzer leverages cognitive linguistic analysis to identify a variety of tones at both the sentence and document level.</p>
-            <p><a href="https://cloud.ibm.com/catalog/services/speech-to-text">Speech to Text</a>: The Speech to Text service converts the human voice into the written word.</p>
+            <p><a href="https://cloud.ibm.com/catalog/services/natural-language-understanding">Watson Natural Language Understanding</a>: Use advanced NLP to analyze text and extract meta-data from content such as concepts, entities, keywords, categories, sentiment, emotion, relations, and semantic roles.</p>
+            <p><a href="https://cloud.ibm.com/catalog/services/tone-analyzer">Watson Tone Analyzer</a>: Tone Analyzer leverages cognitive linguistic analysis to identify a variety of tones at both the sentence and document level.</p>
+            <p><a href="https://cloud.ibm.com/catalog/services/speech-to-text">Watson Speech to Text</a>: The Speech to Text service converts the human voice into the written word.</p>
          </div>
       </div>
    </div>

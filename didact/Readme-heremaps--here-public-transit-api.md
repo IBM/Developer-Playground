@@ -324,7 +324,12 @@
             <li>To run this application you will need to execute the following steps:</li><br>
             <p>Obtain API credentials</p>
             <li>Subscribe to the <a title="HEREPublicTransit" href="https://developer.ibm.com/apis/catalog/heremaps--here-public-transit-api/Introduction">HERE Public Transit API</a></li>
-            <li>Sign up for HERE Developer and follow the prompts to obtain Client ID, Client Secret and API Key </li>
+            <li>Sign up for HERE Developer </li>
+            <li>Once you're logged into your HERE account. Go to 'Projects' </li>
+            <li>Proceed to the 'REST' section </li>
+            <li>Click 'Generate App'. Under 'OAuth2.0' -> click 'Create credentials' </li>
+            <li>'Access Key ID' and 'Access Key Secret' would be your Client ID and Secret </li>
+            <li>Proceed to the 'API Keys' section and create your API Key </li>
             <br>
             <br>
             <p style="font-size: 20px;"><b>Instructions</b></p>

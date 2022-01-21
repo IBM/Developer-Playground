@@ -304,11 +304,11 @@
      </div>
    </div>
    <div class="section">
-    <p style="font-size:20px">Architecture Diagram</p>
+    <p style="font-size:24px">Architecture Diagram</p>
          <img class="flow-image" src="https://developer.ibm.com/developer/default/patterns/extract-textual-insights-from-a-given-video/images/extract-textual-insights-from-a-given-video-flow.png">
    </div>
     <div class="section">
-    <p style="font-size:20px">Execution Flow</p>
+    <p style="font-size:24px">Execution Flow</p>
         <ol>
         <li> User uploads recorded video file of the virtual meeting or a virtual classroom in the application.</li>
         <li>FFMPG Library extracts audio from the video file.</li>

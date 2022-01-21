@@ -312,7 +312,11 @@
             <li>To run this application you will need to execute the following steps:</li><br>
             <p>Obtain API credentials</p>
             <li>Subscribe to the <a title="HEREGeocoding" href="https://developer.ibm.com/apis/catalog/heremaps--geocoding-and-search-api-v7/Introduction">HERE Geocoding and Services API</a></li>
-            <li>Sign up for HERE Developer and follow the prompts to obtain Client ID, Client Secret and API Key </li>
+            <li>Sign up for HERE Developer </li>
+            <li>Once you're logged into your HERE account. Go to 'Projects' </li>
+            <li>Proceed to the 'REST' section </li>
+            <li>Click 'Generate App'. Under 'OAuth2.0' -> click 'Create credentials' </li>
+            <li>'Access Key ID' and 'Access Key Secret' would be your Client ID and Secret </li>
             <br>
             <br>
             <p style="font-size: 20px;"><b>Instructions</b></p>

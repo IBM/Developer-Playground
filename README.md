@@ -1,77 +1,52 @@
-<!-- This should be the location of the title of the repository, normally the short name -->
-# repo-template
+# Create a web based intelligent bank loan application for a loan agent
 
-<!-- Build Status, is a great thing to have at the top of your repository, it shows that you take your CI/CD as first class citizens -->
-<!-- [![Build Status](https://travis-ci.org/jjasghar/ibm-cloud-cli.svg?branch=master)](https://travis-ci.org/jjasghar/ibm-cloud-cli) -->
+In this code pattern we will create a web based bank loan application. In a typical bank loan department,  the loan agent will recieve an application from a customer. This loan agent will then consider several factors in order to come to a conclusion of whether loan can be approved or rejected. To ease this decision making process, we build a web based application that the loan agent can use to make these decisions.  This will enable the loan agent to analyze the risk involved while trying to approve loan. The web application is built using Python Flask.
 
-<!-- Not always needed, but a scope helps the user understand in a short sentance like below, why this repo exists -->
-## Scope
+When the reader has completed this code pattern they will understand how to:
 
-The purpose of this project is to provide a template for new open source repositories.
+* Deploy a Python based web application
+* Make a Watson Machine Learning REST API call through web application
+* Send and receive messages to a machine learning model deployed using Watson Machine Learning using REST APIs
+* Integrate Cloud Pak For Data's Watson Machine Learning services in a web app
 
-<!-- A more detailed Usage or detailed explaination of the repository here -->
-## Usage
+![architecture](doc/source/images/architecture.png)
 
-This repository contains some example best practices for open source repositories:
+## Flow
 
-* [LICENSE](LICENSE)
-* [README.md](README.md)
-* [CONTRIBUTING.md](CONTRIBUTING.md)
-* [MAINTAINERS.md](MAINTAINERS.md)
-<!-- A Changelog allows you to track major changes and things that happen, https://github.com/github-changelog-generator/github-changelog-generator can help automate the process -->
-* [CHANGELOG.md](CHANGELOG.md)
+1. Application developer builds a python based app and deploys it.  
+2. Loan Customer approaches the loan agent for a loan through the bank.
+3. Loan agent submits loan details through the web based application and gets back risk analysis.
+4. Based on the risk analysis results, the loan agent makes a decision about loan application.
+5. This result is relayed back to the customer by the loan agent.
 
-> These are optional
+## Included components
 
-<!-- The following are OPTIONAL, but strongly suggested to have in your repository. -->
-* [dco.yml](.github/dco.yml) - This enables DCO bot for you, please take a look https://github.com/probot/dco for more details.
-* [travis.yml](.travis.yml) - This is a example `.travis.yml`, please take a look https://docs.travis-ci.com/user/tutorial/ for more details.
+* [Cloud Pak for Data](https://www.ibm.com/products/cloud-pak-for-data/): A fully-integrated data and AI platform that modernizes how businesses collect, organize and analyze data to infuse AI throughout their organizations.
+* [Watson Machine Learning](https://www.ibm.com/cloud/machine-learning/): Deploy models built with IBM Watson Studio and open source tools.
 
-These may be copied into a new or existing project to make it easier for developers not on a project team to collaborate.
+## Featured technologies
 
-<!-- A notes section is useful for anything that isn't covered in the Usage or Scope. Like what we have below. -->
-## Notes
+* [Flask](http://flask.pocoo.org/): Python is a programming language that lets you work more quickly and integrate your systems more effectively.
 
-**NOTE: While this boilerplate project uses the Apache 2.0 license, when
-establishing a new repo using this template, please use the
-license that was approved for your project.**
+## Intelligent loan agent application
 
-**NOTE: This repository has been configured with the [DCO bot](https://github.com/probot/dco).
-When you set up a new repository that uses the Apache license, you should
-use the DCO to manage contributions. The DCO bot will help enforce that.
-Please contact one of the IBM GH Org stewards.**
+This app internally makes REST API calls to the model deployed using *Watson Machine Learning*. [This](https://developer.ibm.com/tutorials/infuse-a-loan-department-platform-with-ai/) tutorial shows us how Watson Studio instances on Cloud Pak for Data can be used to build a model that would predict the risk involved with a loan application. It also covers how this risk model can be deployed using Watson Machine Learning instances on Cloud Pak for Data.
 
-<!-- Questions can be useful but optional, this gives you a place to say, "This is how to contact this project maintainers or create PRs -->
-If you have any questions or issues you can create a new [issue here][issues].
+## Deployment options
 
-Pull requests are very welcome! Make sure your patches are well tested.
-Ideally create a topic branch for every separate change you make. For
-example:
+Click on one of the options below for instructions on deploying the app.
 
-1. Fork the repo
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Added some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+|   |   |   |
+| - | - | - |
+| [![openshift](https://raw.githubusercontent.com/IBM/pattern-utils/master/deploy-buttons/openshift.png)](doc/source/openshift.md) | [![public](https://raw.githubusercontent.com/IBM/pattern-utils/master/deploy-buttons/cf.png)](doc/source/cf.md) | [![local](https://raw.githubusercontent.com/IBM/pattern-utils/master/deploy-buttons/local.png)](doc/source/local.md) |
+
+## Sample Loan Submission
+
+ Once the application is deployed via one the three options discussed above and the application is launched, the loan agent can enter loan details of an applicant and review response as shown below.
+![sample output](doc/source/images/LoanApplication-demo.gif)
 
 ## License
 
-All source files must include a Copyright and License header. The SPDX license header is 
-preferred because it can be easily scanned.
+This code pattern is licensed under the Apache License, Version 2. Separate third-party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1](https://developercertificate.org/) and the [Apache License, Version 2](https://www.apache.org/licenses/LICENSE-2.0.txt).
 
-If you would like to see the detailed LICENSE click [here](LICENSE).
-
-```text
-#
-# Copyright 2020- IBM Inc. All rights reserved
-# SPDX-License-Identifier: Apache2.0
-#
-```
-## Authors
-
-Optionally, you may include a list of authors, though this is redundant with the built-in
-GitHub list of contributors.
-
-- Author: New OpenSource IBMer <new-opensource-ibmer@ibm.com>
-
-[issues]: https://github.com/IBM/repo-template/issues/new
+[Apache License FAQ](https://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)

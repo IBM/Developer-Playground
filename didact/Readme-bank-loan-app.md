@@ -212,7 +212,7 @@
     padding-left: 25px;
     padding-right: 25px;
   }
-  .header .right-content div
+  .header .right-content div p
   {
     background: none;
     color: white;

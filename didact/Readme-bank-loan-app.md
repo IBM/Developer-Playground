@@ -2,7 +2,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
- html,
+  html,
   div,
   body {
     background-color: #1a1a1a;
@@ -90,7 +90,6 @@
     padding: 5px 10px;
     color: white;
     background: transparent;
-    font-size: 16px;
   }
   .button.is-dark.is-medium {
     font-family: 'IBM Plex Sans', sans-serif;
@@ -212,14 +211,13 @@
     padding-left: 25px;
     padding-right: 25px;
   }
-  .header .right-content div p
+  .header .right-content div
   {
     background: none;
     color: white;
     padding-left: 15px;
     padding-right: 25px;
-    padding-top: 30px;
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 10px;
   }
   .header .right-content ul
@@ -265,20 +263,6 @@
     margin-top: 5px;
     margin-bottom:-50px;
   }
-  a:hover {
-  color: #0062FF;
-  }
-  a:visited {
-  color: #8C43FC;
-  }
-  summary{
-    float:left;
-  }
-  .dropdown-icon{
-    position:relative;
-    left:50px; 
-    top:4px;
-  }
 }
 </style>
 </head>
@@ -298,13 +282,13 @@
     </div>
    <div class="section">
     <p style="font-size:24px">Learning Resources</p>
-    <div class="content-">
+    <div class="right-content">
       <a href="https://developer.ibm.com/learningpaths/learning-path-machine-learning-for-developers/">Get Started with Machine Learning</a></br>
     </div>
    </div>
    <div class="section">
       <p style="font-size:24px">Included Components</p>
-        <div class="content">
+        <div class="right-content">
           <p>This sample application uses the following IBM Services:</p>
           <p><a href="https://cloud.ibm.com/objectstorage">Cloud Object Storage</a>: IBM Cloud Object Storage is a highly scalable cloud storage service, designed for high durability, resiliency and security.</p>
           <p><a href="https://cloud.ibm.com/catalog/services/machine-learning">Watson Machine Learning</a>: Deploy, manage and integrate machine learning models into your applications and services in as little as one click.</p>
@@ -312,7 +296,7 @@
    </div>
    <div class="section">
    <p style="font-size:24px">Pre-requisites</p>
-    <div class="content-">
+    <div class="right-content">
     <p>IBM Cloud Account -  Do not have an IBM Cloud Account?<a href="https://cloud.ibm.com/registration"> click here</a> to create one for free.</p>
     </div>
    </div>

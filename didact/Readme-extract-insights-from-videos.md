@@ -288,7 +288,7 @@
 </head>
 <body>
    <div class="apptitle"> 
-      Extract insights from videos
+      Video Analysis Application
     </div>
     <div class="subheading">
             Use speech-to-text, advanced natural language processing, and tone analysis to extract insights from video files.

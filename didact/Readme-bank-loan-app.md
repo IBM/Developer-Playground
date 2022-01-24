@@ -274,7 +274,7 @@
     Build a web application using Python Flask to analyze risks involved when trying to approve loans.
   </div>
     <div class="header">
-      <div class="right-content">
+      <div class="right-content" style="padding-top:35px;text-align: justify;">
         <div>
             In a typical bank loan department, the loan agent receives an application from a customer. The agent then considers several factors to decide whether the loan can be approved or should be rejected. </br></br>To help ease this decision-making process, this solution explains how to build a web-based application using Python Flask, that the loan agent can use to make these decisions. This will enable the loan agent to analyze the risk involved while trying to approve the loan.
         </div>
@@ -313,7 +313,7 @@
       <div class="container right">
         <div class="content">
           <p>Clone the GitHub repository</p>
-          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cget-code%7Cnodejs%20terminal|git%20clone%20-b%20bank-loan%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/bank-loan/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/bank-loan/%20%26%26%20git%20sparse-checkout%20init%20--cone%20%26%26%20git%20sparse-checkout%20add%20DeployModel%20didact%20docs%20templates">Get Code</a>
+          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cget-code%7Cnodejs%20terminal|git%20clone%20-b%20bank-loan%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/bank-loan/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/bank-loan/">Get Code</a>
         </div>
       </div>
       <div class="container right">
@@ -354,7 +354,7 @@
           <p>Step 7 : Go to assets and select the model.</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/bank-loan5.png" width = "750" height= "750"></br></br></br>
           <p>Step 8 : Open the information tab as shown below and copy the Model ID. </p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/bank-loan6.png" width = "750" height= "750"></br></br></br>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/bank-loan6.png" width = "750" height= "750"></br></br>
         </div>
       </div>
       <div class="container right">

@@ -16,3 +16,5 @@ ibmcloud resource service-instance-delete $servicename -f
 # ibmcloud resource service-instance-delete $servicename -f
 # rm watsonstudio.json
 # rm cp-wstudio.txt
+
+python3.8 DeleteDeployment.py

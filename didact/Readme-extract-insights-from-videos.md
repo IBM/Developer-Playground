@@ -288,7 +288,7 @@
 </head>
 <body>
    <div class="apptitle"> 
-      Extract insights from videos
+      Video Analysis Application
     </div>
     <div class="subheading">
             Use speech-to-text, advanced natural language processing, and tone analysis to extract insights from video files.
@@ -356,13 +356,13 @@
       <div class="container right">
          <div class="content">
             <p>Clone the GitHub repository</p>
-            <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$git%20clone%20https%3A%2F%2Fgithub.com%2FIBM%2Fextract-textual-insights-from-video.git%20%26%26%20cd%20extract-textual-insights-from-video%2F%20%26%26%20pip3.8%20install%20-r%20requirements.txt" >Get Code</a>
+            <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$git%20clone%20-b%20video-insights%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground.git%20%26%26%20cd%20Developer-Playground%2F%20%26%26%20pip3.8%20install%20-r%20requirements.txt" >Get Code</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
             <p>You need to be logged in to your IBM Cloud account in the IBM Developer Technology Sandbox to create and configure services.</p>
-            <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$ibmcloud%20login%20--sso%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">Login to IBM Cloud</a>
+            <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$ibmcloud%20config%20--check-version=false%20%26%26%20ibmcloud%20login%20--sso%20-r%20us-south%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">Login to IBM Cloud</a>
       </div>
       </div>
       <div class="container right">

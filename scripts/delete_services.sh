@@ -9,3 +9,5 @@ ibmcloud resource service-instance-delete $servicename -f --recursive
 
 servicename="cp-wassistant"
 ibmcloud resource service-instance-delete $servicename -f --recursive
+
+python3.8 delete_space.py

@@ -49,12 +49,11 @@ client.import_assets.start(space_id=space_id,
                            file_path=assets_file_location)
 
 
-i=0
-while i<20:
+details = client.import_assets.get_details(space_id=space_id)
+print("Waiting for import to finsh...")
+while details["resources"][0]["entity"]["status"]["state"] != "completed" and details["resources"][0]["entity"]["status"]["state"] != "failed":
     details = client.import_assets.get_details(space_id=space_id)
-    print(details)
-    i += 1
-
+print("finished")
 
 asset_details = client.repository.get_details()
 for resource in asset_details["models"]["resources"] :
@@ -63,4 +62,3 @@ for resource in asset_details["models"]["resources"] :
             f.write("\nMODEL_ID="+resource["metadata"]["id"])
 
 print("Deployment Space with ID " + space_id + " containing model " + model_name + " is created successfully.")
-

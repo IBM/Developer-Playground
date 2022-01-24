@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: Helvetica Neue for IBM, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: IBM Plex Sans, Helvetica Neue for IBM, Helvetica Neue, Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -81,8 +81,10 @@ div {
   text-align: left;
   max-width: 25rem;
   min-width: 9.375rem;
+  margin-top: 70px;
+  border:0.75px solid lightgray;
+  padding:10px;
 }
-
 .user-typing {
   flex: 0;
   border: none;
@@ -270,7 +272,7 @@ input:-moz-placeholder {
   background-color: #23292A;
   color: #fff;
   overflow-x: auto;
-
+  margin-top:60px;
   width: 45%;
   max-width: 32.0625rem;
   min-width: 29.6875rem;
@@ -470,10 +472,12 @@ html{
   border-color: #0f62fe;
   background-color: transparent;
   color: #0f62fe;
-  margin: 0.5rem 0 0 0;
   padding: 0.25rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.25rem;
+  width: 200px;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom:2rem;
 }
 
 .restart-icon{
@@ -481,7 +485,23 @@ html{
   margin-right: 0.5rem;
 }
 
+.restart-text{
+  display: flex;
+  margin: 0 auto;
+}
+
 .restart-button:hover{
   background-color: #0f62fe;;
   color: white;
 }
+
+.app-header{
+  background-color: black;
+  font-size: 24px;
+  color: white;
+  height: 60px;
+  width:100%;
+  padding: 20px;
+  position:fixed;
+}
+

@@ -2,7 +2,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
- html,
+  html,
   div,
   body {
     background-color: #1a1a1a;
@@ -90,7 +90,6 @@
     padding: 5px 10px;
     color: white;
     background: transparent;
-    font-size: 16px;
   }
   .button.is-dark.is-medium {
     font-family: 'IBM Plex Sans', sans-serif;
@@ -212,14 +211,13 @@
     padding-left: 25px;
     padding-right: 25px;
   }
-  .header .right-content div p
+  .header .right-content div
   {
     background: none;
     color: white;
     padding-left: 15px;
     padding-right: 25px;
-    padding-top: 30px;
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 10px;
   }
   .header .right-content ul
@@ -265,7 +263,7 @@
     margin-top: 5px;
     margin-bottom:-50px;
   }
-  a:hover {
+    a:hover {
   color: #0062FF;
   }
   a:visited {
@@ -290,7 +288,7 @@
     Build a web application using Python Flask to analyze risks involved when trying to approve loans.
   </div>
     <div class="header">
-      <div class="right-content">
+      <div class="right-content" style="padding-top:35px;text-align: justify;">
         <div>
             In a typical bank loan department, the loan agent receives an application from a customer. The agent then considers several factors to decide whether the loan can be approved or should be rejected. </br></br>To help ease this decision-making process, this solution explains how to build a web-based application using Python Flask, that the loan agent can use to make these decisions. This will enable the loan agent to analyze the risk involved while trying to approve the loan.
         </div>
@@ -298,13 +296,13 @@
     </div>
    <div class="section">
     <p style="font-size:24px">Learning Resources</p>
-    <div class="content-">
+    <div class="right-content">
       <a href="https://developer.ibm.com/learningpaths/learning-path-machine-learning-for-developers/">Get Started with Machine Learning</a></br>
     </div>
    </div>
    <div class="section">
       <p style="font-size:24px">Included Components</p>
-        <div class="content">
+        <div class="right-content">
           <p>This sample application uses the following IBM Services:</p>
           <p><a href="https://cloud.ibm.com/objectstorage">Cloud Object Storage</a>: IBM Cloud Object Storage is a highly scalable cloud storage service, designed for high durability, resiliency and security.</p>
           <p><a href="https://cloud.ibm.com/catalog/services/machine-learning">Watson Machine Learning</a>: Deploy, manage and integrate machine learning models into your applications and services in as little as one click.</p>
@@ -312,7 +310,7 @@
    </div>
    <div class="section">
    <p style="font-size:24px">Pre-requisites</p>
-    <div class="content-">
+    <div class="right-content">
     <p>IBM Cloud Account -  Do not have an IBM Cloud Account?<a href="https://cloud.ibm.com/registration"> click here</a> to create one for free.</p>
     </div>
    </div>
@@ -329,7 +327,7 @@
       <div class="container right">
         <div class="content">
           <p>Clone the GitHub repository</p>
-          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cget-code%7Cnodejs%20terminal|git%20clone%20-b%20bank-loan%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/bank-loan/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/bank-loan/%20%26%26%20git%20sparse-checkout%20init%20--cone%20%26%26%20git%20sparse-checkout%20add%20DeployModel%20didact%20docs%20templates">Get Code</a>
+          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cget-code%7Cnodejs%20terminal|git%20clone%20-b%20bank-loan%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/bank-loan/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/bank-loan/">Get Code</a>
         </div>
       </div>
       <div class="container right">
@@ -370,7 +368,7 @@
           <p>Step 7 : Go to assets and select the model.</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/bank-loan5.png" width = "750" height= "750"></br></br></br>
           <p>Step 8 : Open the information tab as shown below and copy the Model ID. </p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/bank-loan6.png" width = "750" height= "750"></br></br></br>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/bank-loan6.png" width = "750" height= "750"></br></br>
         </div>
       </div>
       <div class="container right">

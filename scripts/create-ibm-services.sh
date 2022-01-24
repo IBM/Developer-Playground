@@ -1,8 +1,7 @@
 servicename="cp-cos"
 service="cloud-object-storage"
 region="global"
-ibmcloud resource service-instance-create $servicename $service lite $region
-#sed -i 's,ADD_COS_CRN_HERE,'$url',g' .env
+ibmcloud resource service-instance-create $servicename $service lite $region | tee -a /projects/cp4d-smart-virtual-assistant/services-data.txt
 
 servicename="cp-wmachinelearning"
 service="pm-20"

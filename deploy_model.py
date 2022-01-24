@@ -54,6 +54,5 @@ with open("./scripts/add_model_url.sh", "r") as f :
 
 filedata = filedata.replace('ADD_YOUR_MODEL_URL', modelurl)
 
-with open('./scripts/add_model_url.sh', 'w') as fe:
+with open('./scripts/add_model_url.sh', 'w') as f:
   f.write(filedata)
-

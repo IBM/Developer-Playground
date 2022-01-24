@@ -180,7 +180,7 @@
   }
   .header
   {
-    background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/anomaly.jpeg');
+    background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/agro-chatbot.jpeg');
     width: 100%;
     height: auto;
     min-height: 350px;
@@ -278,6 +278,12 @@
   details{
       margin-bottom: 20px;
   }
+  a:hover {
+  color: #0062FF;
+  }
+  a:visited {
+color: #8C43FC;
+}
 </style>
 </head>
 <body>
@@ -320,7 +326,7 @@
    </div>
     <div class="section">
    <p style="font-size:20px">Instructions</p>
-   <p>Follow all the below steps in proper sequence to avoid failure.</p>
+   <p>Please follow all the below steps in proper sequence to avoid failure.</p>
    </div>
    <div class="timeline">
    <div style="margin-top:0;"class="container right">
@@ -329,7 +335,7 @@
                 <a class="button is-dark is-medium" title="Open Terminal" href="didact://?commandId=terminal-for-nodejs-container:new">Open Terminal</a><br>
             </div>
         </div>
-      <div class="container right" style="margin-top:0px;padding-top:0px;">
+      <div class="container right">
          <div class="content">
             <p>Click `Get the code` to clone the code to your playground session as application's source code is needed.</p>
             <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cclone-repo%7Cnodejs%20terminal|git%20clone%20-b%20agro-chatbot%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant">Get the Code</a>
@@ -359,7 +365,7 @@
          <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create a New Deployment Space</summary></br></br>
           <div class="step">
             <p>Step 1 : Download the deployment zip file.</p>
-            <a class="button is-dark is-medium" href="https://github.com/IBM/Developer-Playground/blob/agro-chatbot/crop-recommendation-space.zip">Download</a>
+            <a class="button is-dark is-medium" href="https://github.com/IBM/Developer-Playground/blob/agro-chatbot/crop-recommendation-space.zip?raw=true">Download</a>
           </div>
           <div class="step">
             <p>Step 2 : Go to the hamburger (☰) menu and click Deployment > View all spaces as shown in the figure below.</p></p>
@@ -443,7 +449,7 @@
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_4.1_assistant.png" width = "750" height= "750">
           </div>
           <div class="step">
-          <p>Step 2 : If this screen is visible, click on the profile icon and click on "Switch to classic experience".</p>
+          <p>Step 2 : If the below screen is displayed, click on the profile icon and select "Switch to classic experience".</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_4.2_assistant.png" width = "750" height= "750">
           </div>
           <div class="step">

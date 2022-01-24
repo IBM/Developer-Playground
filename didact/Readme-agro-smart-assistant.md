@@ -7,7 +7,7 @@
   body {
     background-color: #1a1a1a;
     font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     outline: none;
   }
   body {
@@ -189,8 +189,9 @@
     margin-bottom: 20px;
     margin-left: 30px;
     margin-right: 30px;
-    background-size: contain;
+    background-size: 620px;
     max-width: 1200px;
+    background-repeat: no-repeat;
   }
   .header .right-content
   {
@@ -243,7 +244,7 @@
     margin-left: 25px;
     margin-top: 20px;
     margin-bottom: 0px;
-    font-size: 20px;
+    font-size: 28px;
     color: white;
   }
   .subheading
@@ -251,7 +252,7 @@
     margin-left: 25px;
     margin-top: 0px;
     margin-bottom: 0px;
-    font-size: 16px;
+    font-size: 24px;
     color: grey;
   }
   .no-hover:hover
@@ -304,13 +305,13 @@ color: #8C43FC;
      </div>
    </div>
    <div class="section">
-    <p style="font-size:20px">Learning Resources</p>
+    <p style="font-size:24px">Learning Resources</p>
     <div class="content-">
       <a href="https://developer.ibm.com/learningpaths/learning-path-machine-learning-for-developers/">Get Started with Machine Learning</a></br>
     </div>
    </div>
    <div class="section">
-      <p style="font-size:20px">Included Components</p>
+      <p style="font-size:24px">Included Components</p>
       <div class="content-">
           <p>This sample application uses the following IBM Services:</p>
           <p><a href="https://cloud.ibm.com/objectstorage">Cloud Object Storage</a>: IBM Cloud Object Storage is a highly scalable cloud storage service, designed for high durability, resiliency and security.</p>
@@ -319,14 +320,14 @@ color: #8C43FC;
       </div>
    </div>
    <div class="section">
-   <p style="font-size:20px">Pre-requisites</p>
+   <p style="font-size:24px">Pre-requisites</p>
     <div class="content-">
     <p>IBM Cloud Account -  Do not have an IBM Cloud Account?<a href="https://cloud.ibm.com/registration"> click here</a> to create one for free.</p>
     </div>
    </div>
     <div class="section">
-   <p style="font-size:20px">Instructions</p>
-   <p>Please follow all the below steps in proper sequence to avoid failure.</p>
+   <p style="font-size:24px">Instructions</p>
+   <p style="margin-bottom:10px;">Please follow all the below steps in proper sequence to avoid failure.</p>
    </div>
    <div class="timeline">
    <div style="margin-top:0;"class="container right">

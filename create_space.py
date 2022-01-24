@@ -1,16 +1,66 @@
 from ibm_watson_machine_learning import APIClient
 import json, os
 from dotenv import dotenv_values
+from ibm_watson_machine_learning.deployment import WebService
+import string
+import random
+  
 
-#get connected to watson ML
+deployment_space_name = ''.join(random.choices(string.ascii_uppercase +
+                             string.digits, k = 15))
+f = open("key_file", "r")
+obj=json.loads(f.read())
+apikey=obj["apikey"]
+
+#add the apikey to .env file
+with open(".env", "a") as f:
+    f.write("\nAPI_KEY="+apikey)
+with open(".env", "a") as f:
+    f.write("\nDEPLOYMENT_SPACE_NAME="+deployment_space_name)
+
+config = dotenv_values(".env") 
+model_name = config["MODEL_NAME"]
+cos_crn = config["COS_CRN"]
+wml_crn = config["WML_CRN"]
+assets_file_location = config["ASSETS_FILE_LOCATION"]
+
 wml_credentials = {
-  "apikey": "Yio3m3EgaKWCPhkj7QUeeZ2y5yJNS9-YW65K5RzAoupA",
-  "url": "https://us-south.ml.cloud.ibm.com"
+  "url": "https://us-south.ml.cloud.ibm.com",
+ "apikey": apikey
 }
 client = APIClient(wml_credentials)
-client.spaces.ConfigurationMetaNames.get()
 metadata = {
- client.spaces.ConfigurationMetaNames.NAME: 'crop-recommendation-space',
+ client.spaces.ConfigurationMetaNames.NAME: deployment_space_name,
  client.spaces.ConfigurationMetaNames.DESCRIPTION: 'spaces',
+ client.spaces.ConfigurationMetaNames.STORAGE: {"resource_crn": cos_crn},
+ client.spaces.ConfigurationMetaNames.COMPUTE: {"name": "cp-wmachinelearning",
+                                                "crn": wml_crn}
 }
-spaces_details = client.spaces.store(meta_props=metadata)
+spaces_details = client.spaces.store(meta_props=metadata,background_mode=False)
+space_id = client.spaces.get_id(spaces_details)
+
+with open(".env", "a") as f:
+    f.write("\nSPACE_ID="+space_id)
+
+client.set.default_space(space_id)
+i=0
+
+client.import_assets.start(space_id=space_id,
+                           file_path=assets_file_location)
+
+
+i=0
+while i<20:
+    details = client.import_assets.get_details(space_id=space_id)
+    print(details)
+    i += 1
+
+
+asset_details = client.repository.get_details()
+for resource in asset_details["models"]["resources"] :
+    if(resource["metadata"]["name"] == model_name):
+        with open(".env", "a") as f:
+            f.write("\nMODEL_ID="+resource["metadata"]["id"])
+
+print("Deployment Space with ID " + space_id + " containing model " + model_name + " is created successfully.")
+

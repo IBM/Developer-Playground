@@ -6,7 +6,8 @@ from dotenv import dotenv_values
 config = dotenv_values(".env") 
 apikey=config["API_Key"]
 published_model_id=config["MODEL_ID"]
-deployment_space_name=config["DEPLOYMENT_SPACE"]
+deployment_space_name=config["DEPLOYMENT_SPACE_NAME"]
+model_name = config["MODEL_NAME"]
 
 #get connected to watson ML
 wml_credentials = {
@@ -15,7 +16,7 @@ wml_credentials = {
 }
 client = APIClient(wml_credentials)
 
-MODEL_NAME = "crop-pred - P7 Extra Trees Classifier"
+MODEL_NAME = model_name
 DEPLOYMENT_SPACE_NAME = deployment_space_name
 
 #pick up the space id using the deployment space name

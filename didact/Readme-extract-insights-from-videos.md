@@ -243,7 +243,7 @@
     margin-left: 25px;
     margin-top: 20px;
     margin-bottom: 0px;
-    font-size: 20px;
+    font-size: 28px;
     color: white;
   }
   .subheading
@@ -261,6 +261,12 @@
   .section{
     margin-top: 5px;
     margin-bottom:-50px;
+  }
+  a:hover {
+  color: #0062FF;
+  }
+  a:visited {
+  color: #8C43FC;
   }
   summary{
     float:left;
@@ -282,7 +288,7 @@
 </head>
 <body>
    <div class="apptitle"> 
-      Extract insights from videos
+      Video Analysis Application
     </div>
     <div class="subheading">
             Use speech-to-text, advanced natural language processing, and tone analysis to extract insights from video files.
@@ -298,11 +304,11 @@
      </div>
    </div>
    <div class="section">
-    <p style="font-size:20px">Architecture Diagram</p>
+    <p style="font-size:24px">Architecture Diagram</p>
          <img class="flow-image" src="https://developer.ibm.com/developer/default/patterns/extract-textual-insights-from-a-given-video/images/extract-textual-insights-from-a-given-video-flow.png">
    </div>
     <div class="section">
-    <p style="font-size:20px">Execution Flow</p>
+    <p style="font-size:24px">Execution Flow</p>
         <ol>
         <li> User uploads recorded video file of the virtual meeting or a virtual classroom in the application.</li>
         <li>FFMPG Library extracts audio from the video file.</li>
@@ -315,13 +321,13 @@
         </ol>
     </div>
     <div class="section">
-    <p style="font-size:20px">Learning Resources</p>
+    <p style="font-size:24px">Learning Resources</p>
         <div class="content-">
         <a href="https://developer.ibm.com/articles/text-mining-and-analysis-from-webex-recordings/">Understanding the <b>Extract insights from videos</b> Asset.</a>
         </div>
    </div>
    <div class="section">
-    <p style="font-size:20px">Included Components</p>
+    <p style="font-size:24px">Included Components</p>
       <div >
          <div class="content">
             <p>This Asset uses the following IBM Watson Services:</p>
@@ -332,31 +338,31 @@
       </div>
    </div>
     <div class="section">
-    <p style="font-size:20px">Pre-requisites</p>
+    <p style="font-size:24px">Pre-requisites</p>
     <div class="content-">
     <p>IBM Cloud Account -  Do not have an IBM Cloud Account?<a href="https://cloud.ibm.com/registration"> click here</a> to create one for free.</p>
    </div>
    </div>
     <div class="section">
-    <p style="font-size:20px">Instructions</p>
+    <p style="font-size:24px">Instructions</p>
    </div>   
    <div class="timeline">
-      <div style="margin-top:0;"class="container right">
+      <div style="margin-top:0px; padding-top:0px;"class="container right">
          <div class="content">
             <p>To begin, we'll need to open the terminal.</p>
             <a class="button is-dark is-medium" title="Open Terminal" href="didact://?commandId=terminal-for-nodejs-container:new">Open Terminal</a>
          </div>
       </div>
-      <div class="container right" style="margin-top:0px;padding-top:0px;">
+      <div class="container right">
          <div class="content">
             <p>Clone the GitHub repository</p>
-            <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$git%20clone%20https%3A%2F%2Fgithub.com%2FIBM%2Fextract-textual-insights-from-video.git%20%26%26%20cd%20extract-textual-insights-from-video%2F%20%26%26%20pip3.8%20install%20-r%20requirements.txt" >Get Code</a>
+            <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$git%20clone%20-b%20video-insights%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground.git%20%26%26%20cd%20Developer-Playground%2F%20%26%26%20pip3.8%20install%20-r%20requirements.txt" >Get Code</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
             <p>You need to be logged in to your IBM Cloud account in the IBM Developer Technology Sandbox to create and configure services.</p>
-            <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$ibmcloud%20login%20--sso%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">Login to IBM Cloud</a>
+            <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$ibmcloud%20config%20--check-version=false%20%26%26%20ibmcloud%20login%20--sso%20-r%20us-south%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">Login to IBM Cloud</a>
       </div>
       </div>
       <div class="container right">

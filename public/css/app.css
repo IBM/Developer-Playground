@@ -83,6 +83,7 @@ div {
   min-width: 9.375rem;
   margin-top: 70px;
   border:0.75px solid lightgray;
+  padding:10px;
 }
 .user-typing {
   flex: 0;
@@ -475,7 +476,8 @@ html{
   width: 200px;
   display: flex;
   margin: 0 auto;
-  margin-top: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom:2rem;
 }
 
 .restart-icon{

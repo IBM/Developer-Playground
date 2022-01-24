@@ -263,6 +263,20 @@
     margin-top: 5px;
     margin-bottom:-50px;
   }
+    a:hover {
+  color: #0062FF;
+  }
+  a:visited {
+  color: #8C43FC;
+  }
+  summary{
+    float:left;
+  }
+  .dropdown-icon{
+    position:relative;
+    left:50px; 
+    top:4px;
+  }
 }
 </style>
 </head>

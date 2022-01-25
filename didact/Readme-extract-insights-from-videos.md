@@ -263,10 +263,10 @@
     margin-bottom:-50px;
   }
   a:hover {
-  color: #0062FF;
+  color: #A6C8FF;
   }
   a:visited {
-  color: #8C43FC;
+  color: #BE95FF;
   }
   summary{
     float:left;

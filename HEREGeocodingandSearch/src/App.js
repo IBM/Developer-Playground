@@ -20,7 +20,7 @@ function App() {
       <Header aria-label="IBM">
         <HeaderName href="#" prefix="">
           <div Style="white-space: nowrap;">
-            HERE Geocoding Sample Application
+            HERE Geocoding Application
           </div>
         </HeaderName>
       </Header>

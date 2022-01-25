@@ -200,7 +200,7 @@ const validRadf = (e) => {
       </div>
 
        <div className="ButtonArea">
-          <Button type="submit" disabled = {buttonstate}> Get Transit stops </Button>
+          <Button type="submit" disabled = {buttonstate}> Get Transit Stations </Button>
       </div>
       </Form>
 

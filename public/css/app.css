@@ -84,6 +84,8 @@ div {
   margin-top: 70px;
   border:0.75px solid lightgray;
   padding:10px;
+  border-top-color: #9855D4;
+  border-top-width:40px;
 }
 .user-typing {
   flex: 0;
@@ -128,6 +130,7 @@ div {
 
 .from-user {
   text-align: right;
+  margin-right:16px;
 }
 
 .from-user .message-inner {

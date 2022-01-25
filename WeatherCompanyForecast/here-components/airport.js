@@ -12,8 +12,6 @@ function AirportSearch({maplat, maplong}) {
   const [isLoading,setLoading] = useState(false);
   const [lterrstate, setlterrstate] = useState(false);
   const [lngerrstate, setlngerrstate] = useState(false);
-  // const [arerrstate, setarerrstate] = useState(false);
-  // const [arerrtext, setarerrtext] = useState('A valid value is required');
   const [lterrtext, setlterrtext] = useState('A valid value is required');
   const [lnerrtext, setlnerrtext] = useState('A valid value is required');
   const [buttonstate, setbuttonstate] = useState(false);
@@ -22,7 +20,7 @@ function AirportSearch({maplat, maplong}) {
   const [err2status, seterr2status] = useState(false);
   const [err3status, seterr3status] = useState(false);
 
-      useEffect(() => {
+  useEffect(() => {
 
     function autofill() {
       setlatitude(maplat);
@@ -96,20 +94,6 @@ const headers = [
   },
 ];
 
-// const validArea = (e) => {
-
-//       if(!e.target.value.match(/^[a-zA-Z]+$/)){
-//               setarerrstate(true)
-//               setarerrtext("Only letters allowed. No special characters or numbers");
-//               setbuttonstate(true)
-//            }
-//       else{
-//             setarerrstate(false)
-//             setbuttonstate(false)
-//         }        
-//         setareaquery(e.target.value);
-// }
-
 const validLatf = (e) => {
 
       if(!e.target.value.match(/^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?){2}$/)){
@@ -166,12 +150,8 @@ const validLongf = (e) => {
     <div className="TextArea" > 
       <TextInput id={'longitude'} labelText = {'Longitude*'} size = 'lg' invalid = {lngerrstate} invalidText = {lnerrtext}  helperText="Add valid co-ordinates." placeholder = {'Longitude'} value={longitude} onChange={validLongf} /><br/>
     </div>
-    {/* <div className="TextArea" >  
-      <TextInput id={'area-query'} labelText = {'Area*'} size = 'lg' invalid = {arerrstate} invalidText = {arerrtext} helperText="Input values only in alphabets - Public places/Hotels/Restaurants." placeholder = {'Query: Area/Address'} value={areaquery} onChange={validArea} />
-    </div>   */}
-      <br/>
       <div className="CButtonArea">
-        <Button type="submit" disabled = {buttonstate} > Nearest Airport to you </Button>
+        <Button type="submit" disabled = {buttonstate} > Nearest Airports </Button>
       </div>
 
       </Form>

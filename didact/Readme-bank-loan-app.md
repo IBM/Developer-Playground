@@ -113,6 +113,7 @@
     background-color: #2a67f5;
     border-color: white;
     color: #fff;
+    text-decoration: none;
   }
   .footer {
     display: flex;
@@ -182,9 +183,10 @@
   .header
   {
     background-image: url('https://s3.us.cloud-object-storage.appdomain.cloud/developer/default/patterns/create-a-web-based-intelligent-bank-loan-application-for-a-loan-agent/header.jpg');
+    background-position: right;
     width: 100%;
     height: fixed;
-    min-height: 300px;
+    min-height: 320px;
     display: inline-block;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -192,17 +194,17 @@
     margin-right: 30px;
     max-width: 1200px;
     background-repeat: no-repeat;
-    background-size: 600px 500px;
+    background-size: 700px 500px;
   }
   .header .right-content
   {
     float: right;
-    width: 50%;
-    background-color:#0072C3;
-    min-height: 300px;
+    width: 45%;
+    background-color:#525252;
+    min-height: 320px;
     padding: 20px;
     padding-top: 2.5%;
-    font-size: 14px;
+    font-size: 16px;
   }
   .header .right-content h4
   {
@@ -214,7 +216,7 @@
   .header .right-content div
   {
     background: none;
-    color: white;
+    color: #c1c7cd;
     padding-left: 15px;
     padding-right: 25px;
     font-size: 16px;
@@ -229,7 +231,7 @@
   }
   .container a
   {
-     color: #78A9FF;
+    color: #78A9FF;
     background-color: transparent;
     text-decoration: none;
   }
@@ -253,30 +255,24 @@
     margin-top: 0px;
     margin-bottom: 0px;
     font-size: 16px;
-    color: grey;
+    color: #c1c7cd;
   }
   .no-hover:hover
   {
-    background-color: #0062FF !important;
+    color: #A6C8FF;
   }
   .section{
     margin-top: 5px;
     margin-bottom:-50px;
   }
-    a:hover {
-  color: #0062FF;
+  a:hover{
+      color: #A6C8FF;
+      text-decoration: underline;
   }
-  a:visited {
-  color: #8C43FC;
+  a:visited{
+      color: #BE95FF;
   }
-  summary{
-    float:left;
-  }
-  .dropdown-icon{
-    position:relative;
-    left:50px; 
-    top:4px;
-  }
+
 }
 </style>
 </head>
@@ -288,7 +284,7 @@
     Build a web application using Python Flask to analyze risks involved when trying to approve loans.
   </div>
     <div class="header">
-      <div class="right-content" style="padding-top:35px;text-align: justify;">
+      <div class="right-content" style="float: left; padding-top:40px;">
         <div>
             In a typical bank loan department, the loan agent receives an application from a customer. The agent then considers several factors to decide whether the loan can be approved or should be rejected. </br></br>To help ease this decision-making process, this solution explains how to build a web-based application using Python Flask, that the loan agent can use to make these decisions. This will enable the loan agent to analyze the risk involved while trying to approve the loan.
         </div>
@@ -391,8 +387,8 @@
       </div>
       <div class="container right">
         <div class="content">
-          <p>Start the Application</p>
-          <a class="button is-dark is-medium" title="Start Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cstart-app%7Cnodejs%20terminal|python3.8%20app.py">Start Application</a>
+          <p>Launch Application</p>
+          <a class="button is-dark is-medium" title="Launch Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cstart-app%7Cnodejs%20terminal|python3.8%20app.py">Launch Application</a>
         </div>
       </div>
     </div>
@@ -421,17 +417,18 @@
         <a class="image-link" href="https://developer.ibm.com/patterns/create-a-web-based-intelligent-bank-loan-application-for-a-loan-agent/" target="_blank">
           <div class="image-btn">
             <p class="image-link">View Product Details
-              <span>
-                <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
-                <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
-                <title>Arrow right</title>
-              </svg>
-              </span>
-              </p>
-            </p>
-          </div>
-        </a>
+            <p style="padding-top: 14px"></p>
+               <span>
+                  <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                     <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
+                     <title>Arrow right</title>
+                  </svg>
+               </span>
+            </a>
+         </div>
       </div>
-    </div>
-  </body>
+   </div>
+   <br>
+   <br> 
+</body>
 </html>

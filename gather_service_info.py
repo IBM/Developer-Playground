@@ -24,8 +24,8 @@ if(len(data.split("\n"))<3):
                 name="%20".join(resource[0:i+1])
                 result.append(name)
                 break
+        break
     choice = 0
-    print(result)
     while (choice!=1 and choice!=2) :
         os.system("echo Creating "+service+" Service Failed as you already have an instance. Please select an option:")
         os.system("echo 1. Delete the existing instance and create new instance.")

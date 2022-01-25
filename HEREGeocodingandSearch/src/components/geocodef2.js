@@ -153,7 +153,7 @@ function err3closef() {
       </div>
       
       <div className="CButtonArea" >
-        <Button type="submit" disabled = {buttonstate}> Get Places Near You </Button>
+        <Button type="submit" disabled = {buttonstate}> Get Address </Button>
       </div>
 
       </Form>

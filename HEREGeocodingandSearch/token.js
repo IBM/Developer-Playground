@@ -35,17 +35,24 @@ function generateToken() {
       },
       function (error, response, body) {
 
+ try{
+            
           if (response.statusCode === 200) {
             let result = JSON.parse(response.body);
             let auth = 'Bearer '.concat(result["access_token"].toString());
 
             fs.writeFile('src/components/auth.txt', auth, function (err) {
                 if (err) return console.log(err);
+                // console.log('written to file');
                 });              
           }
           else{
               console.log("Error with credentials or token");
           }
+        }
+        catch(err){
+            console.log("Error with credentials or token");
+        }
       }
   );
 

@@ -164,7 +164,7 @@ const validLongf = (e) => {
       <TextInput id={'longitude'} labelText = {'Longitude*'} invalid = {lngerrstate} invalidText = {errtext} helperText="Add valid co-ordinates." placeholder = {'Longitude'} size = 'lg' value={longitude} onChange={validLongf} />
       </div>
       <div className="ButtonArea" >
-        <Button type="submit" disabled = {buttonstate}> Get Places Near You </Button>
+        <Button type="submit" disabled = {buttonstate}> Get Address</Button>
       </div>
       </Form>
 

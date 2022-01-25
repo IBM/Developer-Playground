@@ -1,13 +1,9 @@
 ibmcloud fn action delete ml
 ibmcloud fn namespace delete smart-assistant
 
-servicename="cp-cos"
-ibmcloud resource service-instance-delete $servicename -f --recursive
+python3.8 delete_services.py
 
-servicename="cp-wmachinelearning"
-ibmcloud resource service-instance-delete $servicename -f --recursive
-
-servicename="cp-wassistant"
-ibmcloud resource service-instance-delete $servicename -f --recursive
+ibmcloud iam api-key-delete ApiKey-SVA -f
+rm ${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/key_file
 
 python3.8 delete_space.py

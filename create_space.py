@@ -20,12 +20,14 @@ with open(".env", "a") as f:
 
 config = dotenv_values(".env") 
 model_name = config["MODEL_NAME"]
-cos_crn = config["COS_CRN"]
-wml_crn = config["WML_CRN"]
+cos_crn = config["CLOUD-OBJECT-STORAGE_CRN"]
+wml_crn = config["PM-20_CRN"]
+wml_name = config["PM-20_NAME"]
+loc = config["PM-20_LOC"]
 assets_file_location = config["ASSETS_FILE_LOCATION"]
 
 wml_credentials = {
-  "url": "https://us-south.ml.cloud.ibm.com",
+  "url": "https://"+loc+".ml.cloud.ibm.com",
  "apikey": apikey
 }
 client = APIClient(wml_credentials)
@@ -33,7 +35,7 @@ metadata = {
  client.spaces.ConfigurationMetaNames.NAME: deployment_space_name,
  client.spaces.ConfigurationMetaNames.DESCRIPTION: 'spaces',
  client.spaces.ConfigurationMetaNames.STORAGE: {"resource_crn": cos_crn},
- client.spaces.ConfigurationMetaNames.COMPUTE: {"name": "cp-wmachinelearning",
+ client.spaces.ConfigurationMetaNames.COMPUTE: {"name": wml_name,
                                                 "crn": wml_crn}
 }
 spaces_details = client.spaces.store(meta_props=metadata,background_mode=False)

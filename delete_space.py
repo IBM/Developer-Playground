@@ -8,11 +8,12 @@ apikey=config["API_KEY"]
 published_model_id=config["MODEL_ID"]
 deployment_space_name=config["DEPLOYMENT_SPACE_NAME"]
 model_name = config["MODEL_NAME"]
+loc = config["PM-20_LOC"]
 
 #get connected to watson ML
 wml_credentials = {
   "apikey": apikey,
-  "url": "https://us-south.ml.cloud.ibm.com"
+  "url": "https://"+loc+".ml.cloud.ibm.com"
 }
 client = APIClient(wml_credentials)
 

@@ -1,0 +1,4 @@
+{
+	"alertnotif--alert-notification":["marketplace--ibm-marketplace"],
+	"marketplace--ibm-marketplace":["dtlmockapip--aspera-on-cloud-api"]
+}

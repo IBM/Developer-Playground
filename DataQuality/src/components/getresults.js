@@ -15,7 +15,6 @@ import parse from 'html-react-parser';
 function  Results() {
 
   const [jobid , setjobid] = useState('');
-  const [msg , setmsg] = useState('');
   const [metric , setmetric] = useState('');
   const [methodology , setmethodology] = useState('');
   const [fresult , setfresult] = useState('');
@@ -55,7 +54,6 @@ function  Results() {
 
       if(resp["Metric"] === "Data Profiler"){
         setjobid(resp["Job ID"]);
-        setmsg(resp["Message"]);
         setmetric(resp["Metric"]);
         setmethodology(resp["Methodology"]);
         setnumbercolumns(resp["Number of Columns"]);
@@ -68,7 +66,6 @@ function  Results() {
 
       else{
       setjobid(resp["Job ID"]);
-      setmsg(resp["Message"]);
       setmetric(resp["Metric"]);
       setmethodology(resp["Methodology"]);
       setfresult(resp["Result"]);
@@ -98,7 +95,6 @@ function  Results() {
     let res = await resp.json();
     
       if (res['result'] === '{"message": "Welcome to Data Quality for AI"}') {
-        //console.log("Valid Credentials in use");
       }
       else{
          seterr2status(true); 
@@ -119,14 +115,6 @@ function  Results() {
 
   if(metric === "Data Profiler"){
     headers = [
-  {
-    key: 'jobid',
-    header: 'Job ID',
-  },
-  {
-    key: 'message',
-    header: 'Message',
-  },
   {
     key: 'metric',
     header: 'Metric',
@@ -162,8 +150,6 @@ function  Results() {
  rows = [
   {
     id: 'a',
-    jobid: jobid,
-    message: msg,
     metric: metric,
     methodology: methodology,
     numbercolumns: numbercolumns,
@@ -181,14 +167,6 @@ function  Results() {
     try{
     
   headers = [
-  {
-    key: 'jobid',
-    header: 'Job ID',
-  },
-  {
-    key: 'message',
-    header: 'Message',
-  },
   {
     key: 'metric',
     header: 'Metric',
@@ -211,8 +189,6 @@ function  Results() {
  rows = [
   {
     id: 'a',
-    jobid: jobid,
-    message: msg,
     metric: metric,
     methodology: methodology,
     result: parse(fresult),
@@ -259,7 +235,7 @@ return (
 
          { methodology && <DataTable rows={rows} headers={headers}>
               {({ rows, headers, getTableProps, getHeaderProps, getRowProps }) => (
-                <TableContainer title="Results Analysis">
+                <TableContainer title="Analysis">
                 <Table {...getTableProps()}>
                   <TableHead>
                     <TableRow>

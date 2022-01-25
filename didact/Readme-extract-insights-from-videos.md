@@ -182,6 +182,7 @@
   .header
   {
     background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/video_insights.jpeg');
+    background-position: right;
     width: 100%;
     height: auto;
     min-height: 300px;

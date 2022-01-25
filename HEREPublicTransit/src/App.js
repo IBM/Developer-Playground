@@ -20,7 +20,7 @@ function App() {
       <Header aria-label="IBM">
         <HeaderName prefix = "" href="#">
           <div Style="white-space: nowrap;">
-            HERE Public Transit Sample Application
+            HERE Public Transit Application
             </div>
           </HeaderName>
         </Header> 

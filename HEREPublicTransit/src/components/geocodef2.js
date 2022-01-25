@@ -108,13 +108,6 @@ const [lterrstate, setlterrstate] = useState(false);
 const [lngerrstate, setlngerrstate] = useState(false);
 
 const validLatf = (e) => {
-    //  if(!fields["name"]){
-    //            formIsValid = false;
-    //            errors["name"] = "Cannot be empty";
-    //         }
-      
-    // if(typeof e.target.value !== "undefined"){ ^[0-9]*$  (e) => setlongitude(e.target.value)
-
 
          if(!e.target.value.match(/^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?){2}$/)){
               setlterrstate(true)
@@ -125,7 +118,7 @@ const validLatf = (e) => {
             setlterrstate(false)
             setbuttonstate(false)
         }        
-       //}
+       
     
         
         setlatitude(e.target.value)
@@ -133,13 +126,6 @@ const validLatf = (e) => {
     
 }
 const validLongf = (e) => {
-    //  if(!fields["name"]){
-    //            formIsValid = false;
-    //            errors["name"] = "Cannot be empty";
-    //         }
-      
-    // if(typeof e.target.value !== "undefined"){ ^[0-9]*$
-
 
          if(!e.target.value.match(/^\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?){2}$/)){
               setlngerrstate(true)
@@ -150,8 +136,6 @@ const validLongf = (e) => {
             setlngerrstate(false)
             setbuttonstate(false)
         }        
-       //}
-    
         
         setlongitude(e.target.value)
     
@@ -182,13 +166,10 @@ const validLongf = (e) => {
       <div className="ButtonArea" >
         <Button type="submit" disabled = {buttonstate}> Get Places Near You </Button>
       </div>
-      {/* <Button type="submit" onClick={buttonSubmit} > Get Places Near You </Button> */}
-
       </Form>
 
   {err1status && 
     <ToastNotification
-        // caption="00:00:00 AM"
         iconDescription="Close notification"
         subtitle={<span>Latitude, Longitude values cannot be empty</span>}
         timeout={3000}
@@ -199,7 +180,6 @@ const validLongf = (e) => {
 
   {err2status && 
     <ToastNotification
-        // caption="00:00:00 AM"
         iconDescription="Close notification"
         subtitle={<span>Server cannot be reached</span>}
         timeout={3000}
@@ -210,7 +190,6 @@ const validLongf = (e) => {
   
   {err3status && 
     <ToastNotification
-        // caption="00:00:00 AM"
         iconDescription="Close notification"
         subtitle={<span>No results available</span>}
         timeout={3000}
@@ -223,8 +202,6 @@ const validLongf = (e) => {
 
       {geocodeobj.items && 
          <div className = "TableDisplay">
-
-          {/* <p>{JSON.stringify(geocodeobj)}</p> */}
 
               {geocodeobj.items && 
           

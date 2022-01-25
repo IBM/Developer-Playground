@@ -84,14 +84,16 @@ function App() {
           </Tab>
     </Tabs>
     
-      {/* Progressive Part */}
-
     <h2>Map View </h2>
     <br/>
     <br/>
       <Localweather setmaplat={setmaplat} setmaplong={setmaplong}/>
 
-        <h2>Transportation</h2>
+      <br/>
+      <br/>
+      <br/>
+
+    <h2>Transportation</h2>
       <br/>
       <br/>
 

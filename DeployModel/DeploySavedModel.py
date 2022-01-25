@@ -2,28 +2,23 @@ from ibm_watson_machine_learning import APIClient
 import json, os
 from dotenv import dotenv_values
 
-#Bring the apikey from key_file
-f = open("key_file", "r")
-obj=json.loads(f.read())
-apikey=obj["apikey"]
-
-#add the apikey to .env file
-with open(".env", "a") as f:
-    f.write("\n#Api key\nAPI_Key=\""+apikey+"\"\n")
 
 #bring model id and deployment space name from .env file
 config = dotenv_values(".env") 
 published_model_id=config["MODEL_ID"]
-deployment_space_name=config["DEPLOYMENT_SPACE"]
+deployment_space_name=config["DEPLOYMENT_SPACE_NAME"]
+apikey=config["API_KEY"]
+model_name = config["MODEL_NAME"]
+loc = config["PM-20_LOC"]
 
 #get connected to watson ML
 wml_credentials = {
   "apikey": apikey,
-  "url": "https://us-south.ml.cloud.ibm.com"
+  "url": "https://"+loc+".ml.cloud.ibm.com"
 }
 client = APIClient(wml_credentials)
 
-MODEL_NAME = "Personal Loan Prediction model"
+MODEL_NAME = model_name
 DEPLOYMENT_SPACE_NAME = deployment_space_name
 
 #pick up the space id using the deployment space name

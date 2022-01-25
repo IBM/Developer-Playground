@@ -391,19 +391,15 @@ const stmonthset = [
 ];
 
 const handleunitchoice = (event) => {
-      //console.log(event.target.value);
       setunit(event.target.value);
 }
 const handledaychoice = (event) => {
-      //console.log(event.target.value);
       setday(event.target.value);
 }
 const handlestdaychoice = (event) => {
-      //console.log(event.target.value);
       setstday(event.target.value);
 }
 const handlestmonthchoice = (event) => {
-      //console.log(event.target.value);
       setstmonth(event.target.value);
 }
   return (
@@ -489,9 +485,6 @@ const handlestmonthchoice = (event) => {
       }
 
       <Loading active = {isLoading} description="Active loading indicator" withOverlay={true}/>
-
-
-      {/* {JSON.stringify(geocodeobj)} */}
 
      {geocodeobj.items && 
          <div className = "TableDisplay">

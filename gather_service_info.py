@@ -68,4 +68,6 @@ else:
         f.write("\n"+service.upper()+"_LOC="+region)
     with open(".env", "a") as f:
         f.write("\n"+service.upper()+"_UPDATED=True")
+print("###########################################################")        
 os.system("echo Updated "+service+" instance details successfuly")
+print("###########################################################")       

@@ -164,7 +164,7 @@ const validLocf = (e) => {
           <DataTable rows={geocodeobj.alerts.alerts} headers={headers}>
               {({ rows, headers, getHeaderProps}) => 
             (
-              <TableContainer title="Alerts Result">
+              <TableContainer title="Alert Results">
                 <Table>
                   <TableHead>
                     <TableRow>

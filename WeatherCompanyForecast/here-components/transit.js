@@ -61,10 +61,7 @@ function TransitSearch({maplat, maplong}){
 
             const authtoken = raw('./auth.txt');
             let headers = {'Authorization' : authtoken}
-            //let response = await fetch(`https://geocode.search.hereapi.com/v1/geocode?q=${location}`,{ headers})
-            //let result = await response.json();
-            //let locstr = [result.items[0]["position"]["lat"].toString(),result.items[0]["position"]["lng"].toString()].toString().concat(";r=").concat(radius);
-            
+                        
             const locstr= latitude.concat(',').concat(longitude).concat(";r=").concat(radius);
             let response = await fetch(`https://transit.hereapi.com/v8/departures?in=${locstr}`,{ headers})
             let result = await response.json();
@@ -216,7 +213,7 @@ const validRadf = (e) => {
       </div>
 
        <div className="ButtonArea">
-          <Button type="submit" disabled = {buttonstate}> Get Transits Near You </Button>
+          <Button type="submit" disabled = {buttonstate}> Get Transit stops </Button>
       </div>
       </Form>
 

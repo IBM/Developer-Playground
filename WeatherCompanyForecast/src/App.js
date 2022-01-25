@@ -24,7 +24,7 @@ function App() {
       <Header aria-label="IBM">
         <HeaderName prefix = "" href="#">
           <div Style="white-space: nowrap;">
-            Weather Company Data Sample Application
+            Weather Company Data Application
             </div>
           </HeaderName>
         </Header> 

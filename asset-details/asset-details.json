@@ -6,9 +6,9 @@
 		"description": "this is authenticate-users-on-chatbot-with-sms-otp"
 	},
 	{
-		"id": "video-analysis-application",
-		"name": "Video Analysis Application",
-		"title": "video-analysis-application",
+		"id": "video-analysis",
+		"name": "Video Analysis",
+		"title": "video-analysis",
 		"description": "Use speech-to-text, advanced natural language processing, and tone analysis to extract insights from video files."
 	},
 	{
@@ -18,9 +18,9 @@
 		"description": "Use speech-to-text, advanced natural language processing, and tone analysis to extract insights from video files."
 	},
 	{
-		"id": "bank-loan-app",
+		"id": "bank-loan-application",
 		"name": "Bank Loan Application",
-		"title": "bank-loan-app",
+		"title": "bank-loan-application",
 		"description": "Analyse and Predict risks involved when trying to approve loans."
 	},
 	{
@@ -34,5 +34,11 @@
 		"name": "Customer Churn Prediction",
 		"title": "customer-churn-prediction",
 		"description": "Use IBM Watson ML to solve a business problem and predict customer churn using a Telco customer churn data set"
+	},
+	{
+		"id": "weather-data-assistant-travel",
+		"name": "Weather Data Assistant for Travel",
+		"title": "weather-data-assistant-travel",
+		"description": "Get to know weather trends of a location from a set of GIS information"
 	}
 ]

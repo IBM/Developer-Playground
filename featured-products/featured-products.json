@@ -1,11 +1,11 @@
 {
   "products": [
 		{
-			"productId": "video-analysis-application",
+			"productId": "video-analysis",
 			"assetType": "code pattern"
 		},
 		{
-			"productId": "bank-loan-app",
+			"productId": "bank-loan-application",
 			"assetType": "code pattern"
 		},
 		{

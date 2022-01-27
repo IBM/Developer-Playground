@@ -1,10 +1,19 @@
 {
   "products": [
 		{
-			"productId": "alertnotif--alert-notification"
+			"productId": "video-analytics-application",
+			"assetType": "code pattern"
 		},
 		{
-			"productId": "extract-insights-from-videos",
+			"productId": "bank-loan-app",
+			"assetType": "code pattern"
+		},
+		{
+			"productId": "agro-smart-assistant",
+			"assetType": "code pattern"
+		},
+		{
+			"productId": "customer-churn-prediction",
 			"assetType": "code pattern"
 		}
 	]

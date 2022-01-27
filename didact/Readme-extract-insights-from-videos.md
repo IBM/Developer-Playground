@@ -113,6 +113,7 @@
     background-color: #2a67f5;
     border-color: white;
     color: #fff;
+    text-decoration: none;
   }
   .footer {
     display: flex;
@@ -265,6 +266,7 @@
   }
   a:hover {
   color: #A6C8FF;
+  text-decoration: underline;
   }
   a:visited {
   color: #BE95FF;

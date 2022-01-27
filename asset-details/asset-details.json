@@ -6,9 +6,9 @@
 		"description": "this is authenticate-users-on-chatbot-with-sms-otp"
 	},
 	{
-		"id": "video-analytics-application",
-		"name": "Video Analytics Application",
-		"title": "video-analytics-application",
+		"id": "video-analysis-application",
+		"name": "Video Analysis Application",
+		"title": "video-analysis-application",
 		"description": "Use speech-to-text, advanced natural language processing, and tone analysis to extract insights from video files."
 	},
 	{

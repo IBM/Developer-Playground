@@ -1,7 +1,7 @@
 {
   "products": [
 		{
-			"productId": "video-analytics-application",
+			"productId": "video-analysis-application",
 			"assetType": "code pattern"
 		},
 		{

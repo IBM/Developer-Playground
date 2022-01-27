@@ -170,7 +170,7 @@
   }
   .image-btn  a:hover
   {
-    text-decoration: underline;
+    text-decoration: none;
     color: white;
   }
   .image-link {

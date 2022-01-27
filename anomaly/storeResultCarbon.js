@@ -8,7 +8,7 @@ const storeResultCarbon = async (jobId, result) => {
                 jsonData.push({
                     group: "Anomaly Score",
                     time: result.summary.result[i].timestamp,
-                    value: result.summary.result[i].value.anomaly_score[0]
+                    anomaly_score: result.summary.result[i].value.anomaly_score[0]
                 })
                 if (result.summary.result[i].value.anomaly_label && result.summary.result[i].value.anomaly_label[0] === -1) {
                     jsonData[jsonData.length -1].anomaly = true
@@ -26,7 +26,7 @@ const storeResultCarbon = async (jobId, result) => {
                 finalResultData.push({
                     group: "Anomaly Score",
                     time: result.summary.result[i].timestamp,
-                    value: result.summary.result[i].value.anomaly_score[0]
+                    anomaly_score: result.summary.result[i].value.anomaly_score[0]
                 })
                 if (result.summary.result[i].value.anomaly_label && result.summary.result[i].value.anomaly_label[0] === -1) {
                     finalResultData[i].anomaly = true

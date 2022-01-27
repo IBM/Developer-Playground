@@ -12,6 +12,12 @@
 		"description": "Use speech-to-text, advanced natural language processing, and tone analysis to extract insights from video files."
 	},
 	{
+		"id": "extract-insights-from-videos",
+		"name": "Extract Insights from Videos",
+		"title": "extract-insights-from-videos",
+		"description": "Use speech-to-text, advanced natural language processing, and tone analysis to extract insights from video files."
+	},
+	{
 		"id": "bank-loan-app",
 		"name": "Bank Loan Application",
 		"title": "bank-loan-app",

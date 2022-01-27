@@ -15,7 +15,7 @@
   }
   /* The actual timeline (the vertical ruler) */
   .timeline {
-    position: absolute;
+    position: relative;
     max-width: 1200px;
     margin: 0 auto;
     margin-left: 50px;
@@ -113,11 +113,12 @@
     background-color: #2a67f5;
     border-color: white;
     color: #fff;
+    text-decoration: none;
   }
   .footer {
     display: flex;
     background-color: #343A3E;
-    margin: 950px 0px 0px 20px;
+    margin-top: 20px;
     padding: 0px;
     max-width: 1200px;
   }
@@ -140,7 +141,7 @@
     position: relative;
     background-color: white;
     min-width: 50%;
-    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url("https://github.com/bodarajeshkumar/Developer-Playground/blob/master/didact/images/git.svg?raw=true");
+    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/github.svg");
     background-position: -50% 60px;
     background-repeat: no-repeat;
     padding-top: 20px;
@@ -181,45 +182,49 @@
   }
   .header
   {
-    background-image: url('https://github.com/IBM/Developer-Playground/blob/development/didact/images/data-quality.png?raw=true');
+    background-image: url('https://github.com/IBM/Developer-Playground/blob/master/didact/images/data-quality.png?raw=true');
+    background-position: right;
     width: 100%;
     height: auto;
-    min-height: 300px;
+    min-height: 320px;
     display: inline-block;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 30px;
     margin-right: 30px;
-    background-size: contain;
     max-width: 1200px;
+    background-size: contain;
+    background-repeat: no-repeat;
   }
-  .header .right-content
+  .header .left-content
   {
-    float: right;
+    float: left;
     width: 45%;
+    padding-top:40px;
     background-color:#2a67f5;
-    min-height: 300px;
+    min-height: 320px;
     padding: 20px;
-    padding-top: 7.5%;
-    font-size: 14px;
+    padding-top: 2.5%;
+    font-size: 16px;
   }
-  .header .right-content h4
+  .header .left-content h4
   {
     background: none;
     color: white;
     padding-left: 25px;
     padding-right: 25px;
   }
-  .header .right-content div
+  .header .left-content div
   {
     background: none;
     color: white;
     padding-left: 15px;
     padding-right: 25px;
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 10px;
+    margin-top:10px;
   }
-  .header .right-content ul
+  .header .left-content ul
   {
     margin: 0px;
     margin-left: 25px;
@@ -228,7 +233,7 @@
   }
   .container a
   {
-     color: #78A9FF;
+    color: #78A9FF;
     background-color: transparent;
     text-decoration: none;
   }
@@ -243,75 +248,70 @@
     margin-left: 25px;
     margin-top: 20px;
     margin-bottom: 0px;
-    font-size: 20px;
+    font-size: 28px;
     color: white;
   }
-  @media only screen and (max-width: 1000px) {
-    .header
-    {
-      background-size: cover;
-    }
+  .subheading
+  {
+    margin-left: 25px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 16px;
+    color: #c1c7cd;
   }
-  @media only screen and (max-width: 800px) {
-    .footer {
-      margin: 1050px 0px 0px 20px;
-    }
-    .header
-    {
-      background-size: cover;
-    }
-  }
-  @media only screen and (max-width: 700px) {
-    .footer {
-      margin: 1200px 0px 0px 20px;
-    }
-    .header
-    {
-      background-size: cover;
-      background-position: 0px 0px;
-    }
-  }
-  @media only screen and (max-width: 600px) {
-    .footer {
-      margin: 1350px 0px 0px 20px;
-    }
-    .header
-    {
-      background-size: cover;
-    }
-  }
-  @media only screen and (max-width: 500px) {
-    .footer {
-      margin: 1350px 0px 0px 20px;
-    }
-    .header
-    {
-      background-size: cover;
-    }
-  }
-  @media only screen and (max-width: 400px) {
-    .footer {
-      margin: 1450px 0px 0px 20px;
-    }
-    .header
-    {
-      background-size: cover;
-    }
-  }
+  .assetdetails{
+    margin-left: 30px;
+    padding-bottom: 20px;
+    margin-top: 16px;
 }
+  a:hover{
+      color: #A6C8FF;
+      text-decoration: underline;
+  }
+  a:visited{
+      color: #BE95FF;
+  }
+
 </style>
 </head>
 <body>
   <div class="apptitle"> 
-    Data Quality API Sample Application
+    Data Quality for AI Asset
+  </div>
+    <div class="subheading">
+    DQAI APIs
   </div>
    <div class="header">
-      <div class="right-content">
+      <div class="left-content">
           <div>
-            The Data Quality for AI is an integrated toolkit that provides various data profiling and quality estimation metrics to assess the quality of ingested data in a systematic and objective manner. You will learn how this API can be leveraged in the real world with this interactive tutorial  and sample application... where you will build, configure, and explore ... with a sample application
+            The Data Quality for AI is an integrated toolkit that provides various data profiling and quality estimation metrics to assess the quality of ingested data in a systematic and objective manner. You will learn how this API can be leveraged in the real world with this interactive tutorial and sample application... where you will build, configure, and explore ... with a sample application
           </div>
       </div>
    </div>
+        <div class="assetdetails">
+            <p style="font-size:24px">Learning Resources</p>
+            <ul>
+            <li>Get started with Data Quality for AI API with this <a href="https://developer.ibm.com/learningpaths/data-quality-ai-toolkit/">Learning path</a></li>
+            </ul>
+            <br>
+            <p style="font-size: 24px;">Included components</p>
+            <ul>
+            <li><a href="https://developer.ibm.com/apis/catalog/dataquality4ai--data-quality-for-ai/Introduction">Data Quality for AI API</a></li>
+            </ul>
+            <br>
+            <p style="font-size: 24px;">Pre-requisites</p>
+            <p>To run this application you will need to execute the following steps:</p>
+            <p>Obtain API credentials</p>
+            <ul>
+            <li>Subscribe to the <a title= "Data Quality" href="https://developer.ibm.com/apis/catalog/dataquality4ai--data-quality-for-ai/Introduction">Data Quality for AI Product</a></li>
+            <li>Now check out <a title= "My Subscriptions" href="https://developer.ibm.com/profile/myapis">API Subscriptions</a></li>
+            <li>You should see a subscription for Data Quality for AI, select that and proceed</li>
+            <li>You can obtain your Client ID/Secret from here. If you don't see any, you can "Generate API Key"</li>
+            </ul>
+            <br>
+            <p style="font-size: 24px;">Instructions</p>
+        </div>
+
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
@@ -323,47 +323,22 @@
          <div class="content">
             <p>You've successfully cloned the code, so click `Build the application` to start the build process.
             </p>
-            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cbuild-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install">Build the Application</a>
+            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cbuild-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install%20--production">Build the Application</a>
             <p class="afterbutton">
-               To obtain credentials and configure the application, complete the following steps
+               To obtain credentials and configure the application, complete the prerequisites
             </p>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Subscribe to the <a title= "Data Quality" href="https://developer.ibm.com/apis/catalog/dataquality4ai--data-quality-for-ai/Introduction">Data Quality for AI Product</a>
-            </p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>Now check out <a title= "My Subscriptions" href="https://developer.ibm.com/profile/myapis">API Subscriptions</a>
-            </p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>You should see a subscription for Data Quality for AI, select that and proceed
-            </p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>You can obtain your Client ID/Secret from here. If you don't see any, you can "Generate API Key"
-            </p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>Let's get the credentials by configuring the application</p>
-            </p>
+            <p>Let's configure the application with our credentials </p>
             <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/.env">Configure the Application</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
             <p>You're all set to get started! </p>
-            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Claunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20start">Launch the Application</a>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Claunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20node%20server.js">Launch the Application</a>
          </div>
       </div>
    </div>
@@ -372,9 +347,9 @@
          <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
          <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=data-quality" >Stop Application</a>
          <p class="afterbutton">The stage is yours!</p>
-         <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/services/service.js">Explore the Code</a>
+         <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/src/App.js">Explore the Code</a>
          <p class="afterbutton ">To view the changes you've made, re-launch the application</p>
-         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Crelaunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20start">Re-Launch the Application</a>
+         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Crelaunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install%20--only=dev%20%26%26%20rm%20-rf%20build%20%26%26%20npm%20run%20build%20%26%26%20node%20server.js">Re-Launch the Application</a>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
@@ -392,7 +367,7 @@
                </span>
             </a>
             <a class="image-link" href="didact://?commandId=extension.openURL&text=data-quality%7Cget-trial-subscription%7Chttps://www.ibm.com/account/reg/us-en/signup?formid=urx-50307" target="_blank">
-               Get Trial Subcription 
+               Get Trial Subscription 
                <span>
                   <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
                      <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>

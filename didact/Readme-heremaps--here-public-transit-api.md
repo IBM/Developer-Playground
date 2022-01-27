@@ -16,7 +16,7 @@
   }
   /* The actual timeline (the vertical ruler) */
   .timeline {
-    position: absolute;
+    position: relative;
     max-width: 1200px;
     margin: 0 auto;
     margin-left: 50px;
@@ -114,11 +114,12 @@
     background-color: #2a67f5;
     border-color: white;
     color: #fff;
+    text-decoration: none;
   }
   .footer {
     display: flex;
     background-color: #343A3E;
-    margin: 800px 0px 0px 20px;
+    margin-top: 20px;
     padding: 0px;
     max-width: 1200px;
   }
@@ -152,8 +153,6 @@
     right: 0;
     bottom: 0%;
     background-color: #0062FF;
-    max-width: 300px;
-    min-width: 100px;
     width: 300px;
     padding: 0px;
     padding-bottom: 20px;
@@ -162,7 +161,7 @@
   {
     float: right;
     font-size: 32px;
-    padding-right: 10px;
+    padding-right: 20px;
   }
   .image-btn .image-link:hover
   {   
@@ -185,44 +184,48 @@
   .header
   {
     background-image: url('https://github.com/IBM/Developer-Playground/blob/master/didact/images/banner-image.jpg?raw=true');
+    background-position: right;
     width: 100%;
-    height: fixed;
-    min-height: 300px;
+    height: auto;
+    min-height: 320px;
     display: inline-block;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 30px;
     margin-right: 30px;
-    background-size: contain;
     max-width: 1200px;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
   }
-  .header .right-content
+  .header .left-content
   {
-    float: right;
+    float: left;
     width: 45%;
+    padding-top:40px;
     background-color:#2a67f5;
-    min-height:400px;
-    padding:20px;
-    font-size: 14px;
+    min-height: 320px;
+    padding: 20px;
+    padding-top: 2.5%;
+    font-size: 16px;
   }
-  .header .right-content h4
+  .header .left-content h4
   {
     background: none;
     color: white;
     padding-left: 25px;
     padding-right: 25px;
   }
-  .header .right-content div
+  .header .left-content div
   {
     background: none;
     color: white;
-    padding-left: 25px;
+    padding-left: 15px;
     padding-right: 25px;
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 10px;
+    margin-top:10px;
   }
-  .header .right-content ul
+  .header .left-content ul
   {
     margin: 0px;
     margin-left: 25px;
@@ -246,50 +249,41 @@
     margin-left: 25px;
     margin-top: 20px;
     margin-bottom: 0px;
-    font-size: 25px;
+    font-size: 28px;
     color: white;
   }
-.assetdetails{
-    background:none;
-    max-width: 1200px;
-    margin: 0 auto;
-    margin-left: 50px;
-    padding-bottom: 24px;
+  .subheading
+  {
+    margin-left: 25px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 16px;
+    color: #c1c7cd;
+  }
+  .assetdetails{
+    margin-left: 30px;
+    padding-bottom: 20px;
+    margin-top: 16px;
 }
-  @media only screen and (max-width: 800px) {
-    .footer {
-      margin: 950px 0px 0px 20px;
-    }
+  a:hover{
+      color: #A6C8FF;
+      text-decoration: underline;
   }
-  @media only screen and (max-width: 700px) {
-    .footer {
-      margin: 1050px 0px 0px 20px;
-    }
+  a:visited{
+      color: #BE95FF;
   }
-  @media only screen and (max-width: 600px) {
-    .footer {
-      margin: 1050px 0px 0px 20px;
-    }
-  }
-  @media only screen and (max-width: 500px) {
-    .footer {
-      margin: 1100px 0px 0px 20px;
-    }
-  }
-  @media only screen and (max-width: 400px) {
-    .footer {
-      margin: 1200px 0px 0px 20px;
-    }
-  }
-}
+
 </style>
 </head>
 <body>
   <div class="apptitle"> 
-    HERE Technologies Asset - Public Transit
+    HERE Technologies - Public Transit
+  </div>
+    <div class="subheading">
+    HERE Public Transit APIs
   </div>
    <div class="header">
-      <div class="right-content">
+      <div class="left-content">
          <div>
             Here Maps is one-stop solution to most of the problems in this domain. HERE Technologies provide comprehensive mapping content, an integrated suite of solutions, services and development tools and a marketplace for data to solve your complex location-based problems.
          </div>
@@ -313,14 +307,14 @@
    <br>
    <br>
     <div class="assetdetails">
-            <p style="font-size: 20px;"><b>Learning Resources</b></p>
+            <p style="font-size: 24px;">Learning Resources</p>
             <li>Get started with HERE Public Transit API <a href="https://developer.ibm.com/apis/catalog/heremaps--here-public-transit-api/Introduction">here</a></li>
         <br>
-            <p style="font-size: 20px;"><b>Included components</b></p>
+            <p style="font-size: 24px;">Included components</p>
             <li><a href="https://developer.ibm.com/apis/catalog/heremaps--geocoding-and-search-api-v7/Introduction">HERE Geocoding and Search API</a></li>
             <li><a href="https://developer.ibm.com/apis/catalog/heremaps--here-public-transit-api/Introduction">HERE Public Transit API</a></li>
             <br>
-            <p style="font-size: 20px;"><b>Prerequisites</b></p>
+            <p style="font-size: 24px;">Prerequisites</p>
             <li>To run this application you will need to execute the following steps:</li><br>
             <p>Obtain API credentials</p>
             <li>Subscribe to the <a title="HEREPublicTransit" href="https://developer.ibm.com/apis/catalog/heremaps--here-public-transit-api/Introduction">HERE Public Transit API</a></li>
@@ -332,7 +326,7 @@
             <li>Proceed to the 'API Keys' section and create your API Key </li>
             <br>
             <br>
-            <p style="font-size: 20px;"><b>Instructions</b></p>
+            <p style="font-size: 24px;">Instructions</p>
         </div>
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
@@ -397,7 +391,7 @@
                </span>
             </a>
             <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cget-trial-subscription%7Chttps://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account" target="_blank">
-               Get Trial Subcription 
+               Get Trial Subscription 
                <span>
                   <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
                      <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>

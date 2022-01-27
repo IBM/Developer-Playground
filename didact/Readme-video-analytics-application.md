@@ -1,0 +1,414 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  html,
+  div,
+  body {
+    background-color: #1a1a1a;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 18px;
+    outline: none;
+  }
+  body {
+    font-family: Helvetica, sans-serif;
+  }
+  /* The actual timeline (the vertical ruler) */
+  .timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-left: 50px;
+  }
+  .content p {
+    margin: 0px;
+  }
+  .content .afterbutton
+  {
+    padding-top: 16px;
+  }
+  /* The actual timeline (the vertical ruler) */
+  .timeline::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    background-color: white;
+    top: 15px;
+    bottom: 80px;
+    left: 18px;
+    margin-left: -2px;
+  }
+  /* Container around content */
+  .container {
+    padding: 0px 0px;
+    width: 70%;
+    align-content: left;
+    margin: 0px 0px 0px 0px;
+    margin-left: 25px;
+    margin-top: 32px;
+  }
+  /* The circles on the timeline */
+  .container::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    right: -6px;
+    background-color: white;
+    border: 0px solid #FF9F55;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+    margin: 0px 0px 0px 0px;
+  }
+  /* Place the container to the left */
+  .left {
+    left: 0px;
+  }
+  /* Place the container to the right */
+  .right {
+    left: 0px;
+  }
+  /* Add arrows to the left container (pointing right) */
+  .left::before {
+    content: " ";
+    height: 0;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    right: 30px;
+    border: medium solid white;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent white;
+  }
+  /* Fix the circle for containers on the right side */
+  .right::after {
+    left: -13px;
+  }
+  /* The actual content */
+  .content {
+    padding: 5px 10px;
+    color: white;
+    background: transparent;
+  }
+  .button.is-dark.is-medium {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: transparent;
+    border-color: white;
+    color: #fff;
+    border: 1px solid white;
+    padding: 10px;
+    padding-left: 20px;
+    margin-bottom: 13px;
+    border-radius: 0px;
+    min-width: 180px;
+    font-size: 14px;
+    text-align: left;
+    min-height: 48px;
+    margin: 0px;
+    justify-content:left;
+  }
+  .button.is-dark.is-medium:hover {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background-color: #2a67f5;
+    border-color: white;
+    color: #fff;
+  }
+  .footer {
+    display: flex;
+    background-color: #343A3E;
+    margin-top: 20px;
+    padding: 0px;
+    max-width: 1200px;
+  }
+  .github-icon {
+    min-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+    object-position: 250% 100px;
+    opacity: 15%;
+    bottom: 15px;
+  }
+  .image-content {
+    padding: 5px 10px;
+    background: transparent;
+    color: black;
+    position: absolute;
+    font-size: 27px;
+  }
+  .image-div {
+    position: relative;
+    background-color: white;
+    min-width: 50%;
+    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/github.svg");
+    background-position: -50% 60px;
+    background-repeat: no-repeat;
+    padding-top: 20px;
+    padding-left: 20px;
+  }
+  .image-btn {
+    position: absolute;
+    right: 0;
+    bottom: 0%;
+    background-color: #0062FF;
+    width: 300px;
+    padding: 0px;
+    padding-bottom: 20px;
+  }
+  .image-link span 
+  {
+    float: right;
+    font-size: 32px;
+    padding-right: 20px;
+  }
+  .image-btn .image-link:hover
+  {   
+    text-decoration: none;
+    color: white;
+    background-color: #0353E9;
+  }
+  .image-btn  a:hover
+  {
+    text-decoration: none;
+    color: white;
+  }
+  .image-link {
+    color: white;
+    display: block;
+    padding: 5px 10px 5px 10px;
+    line-height: 28px;
+    font-size: 16px;
+  }
+  .header
+  {
+    background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/video_insights.jpeg');
+    background-position: right;
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
+    background-size: contain;
+    max-width: 1200px;
+  }
+  .header .right-content
+  {
+    float: right;
+    width: 45%;
+    background-color:#0072C3;
+    min-height: 300px;
+    padding: 20px;
+    padding-top: 2.5%;
+    font-size: 14px;
+  }
+  .header .right-content h4
+  {
+    background: none;
+    color: white;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .header .right-content div
+  {
+    background: none;
+    color: white;
+    padding-left: 15px;
+    padding-right: 25px;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .header .right-content ul
+  {
+    margin: 0px;
+    margin-left: 25px;
+    margin-bottom: 10px;
+    line-height: 16px;
+  }
+  .container a
+  {
+     color: #78A9FF;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  .container a:visited
+  {
+    color: #8C43FC;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  .apptitle
+  {
+    margin-left: 25px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    font-size: 28px;
+    color: white;
+  }
+  .subheading
+  {
+    margin-left: 25px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 16px;
+    color: grey;
+  }
+  .no-hover:hover
+  {
+    background-color: #0062FF !important;
+  }
+  .section{
+    margin-top: 5px;
+    margin-bottom:-50px;
+  }
+  a:hover {
+  color: #A6C8FF;
+  }
+  a:visited {
+  color: #BE95FF;
+  }
+  summary{
+    float:left;
+  }
+  details > summary {
+    list-style-image: url("https://raw.githubusercontent.com/SuyashGupte/Loan-Chat-Bot/main/32-up.svg");
+    direction:rtl;
+  }
+  .dropdown-icon{
+    position:relative;
+    left:50px; 
+    top:4px;
+  }
+  details[open] > summary {
+      list-style-image: url("https://raw.githubusercontent.com/SuyashGupte/Loan-Chat-Bot/main/32-down.svg");
+  }
+}
+</style>
+</head>
+<body>
+   <div class="apptitle"> 
+      Video Analysis Application
+    </div>
+    <div class="subheading">
+            Use speech-to-text, advanced natural language processing, and tone analysis to extract insights from video files.
+    </div>
+    <div class="header">
+      <div class="right-content">
+         <div>
+          In a virtually connected world, staying focused on work or education is very important. Studies suggest that many people lose their focus in live virtual meetings or virtual classroom sessions after approximately 20 minutes. Therefore, many meetings and virtual classrooms are recorded so that an individual can watch it later.
+        </div>
+        <div>
+          It might help if these recordings could be analyzed, and a detailed report of the meeting or class is generated by using artificial intelligence (AI).
+        </div>
+     </div>
+   </div>
+   <div class="section">
+    <p style="font-size:24px">Architecture Diagram</p>
+         <img class="flow-image" src="https://developer.ibm.com/developer/default/patterns/extract-textual-insights-from-a-given-video/images/extract-textual-insights-from-a-given-video-flow.png">
+   </div>
+    <div class="section">
+    <p style="font-size:24px">Execution Flow</p>
+        <ol>
+        <li> User uploads recorded video file of the virtual meeting or a virtual classroom in the application.</li>
+        <li>FFMPG Library extracts audio from the video file.</li>
+        <li>Watson Speech To Text transcribes the audio to give a diarized textual output.</li>
+        <li>Watson Language Translator (Optionally) translates other languages into English transcript.</li>
+        <li>Watson Tone Analyzer analyses the transcript and picks up top positive statements form the transcript.</li>
+        <li>Watson Natural Language Understanding reads the transcript to identify key pointers from the transcript and get the sentiments and emotions.</li>
+        <li>The key pointers and summary of the video is then presented to the user in the application.</li>
+        <li>The user can then download the textual insights.</li>
+        </ol>
+    </div>
+    <div class="section">
+    <p style="font-size:24px">Learning Resources</p>
+        <div class="content-">
+        <a href="https://developer.ibm.com/articles/text-mining-and-analysis-from-webex-recordings/">Understanding the <b>Extract insights from videos</b> Asset.</a>
+        </div>
+   </div>
+   <div class="section">
+    <p style="font-size:24px">Included Components</p>
+      <div >
+         <div class="content">
+            <p>This Asset uses the following IBM Watson Services:</p>
+            <p><a href="https://cloud.ibm.com/catalog/services/natural-language-understanding">Watson Natural Language Understanding</a>: Use advanced NLP to analyze text and extract meta-data from content such as concepts, entities, keywords, categories, sentiment, emotion, relations, and semantic roles.</p>
+            <p><a href="https://cloud.ibm.com/catalog/services/tone-analyzer">Watson Tone Analyzer</a>: Tone Analyzer leverages cognitive linguistic analysis to identify a variety of tones at both the sentence and document level.</p>
+            <p><a href="https://cloud.ibm.com/catalog/services/speech-to-text">Watson Speech to Text</a>: The Speech to Text service converts the human voice into the written word.</p>
+         </div>
+      </div>
+   </div>
+    <div class="section">
+    <p style="font-size:24px">Pre-requisites</p>
+    <div class="content-">
+    <p>IBM Cloud Account -  Do not have an IBM Cloud Account?<a href="https://cloud.ibm.com/registration"> click here</a> to create one for free.</p>
+   </div>
+   </div>
+    <div class="section">
+    <p style="font-size:24px">Instructions</p>
+   </div>   
+   <div class="timeline">
+      <div style="margin-top:0px; padding-top:0px;"class="container right">
+         <div class="content">
+            <p>To begin, we'll need to open the terminal.</p>
+            <a class="button is-dark is-medium" title="Open Terminal" href="didact://?commandId=terminal-for-nodejs-container:new">Open Terminal</a>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>Clone the GitHub repository</p>
+            <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$git%20clone%20-b%20video-insights%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground.git%20%26%26%20cd%20Developer-Playground%2F%20%26%26%20pip3.8%20install%20-r%20requirements.txt" >Get Code</a>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>You need to be logged in to your IBM Cloud account in the IBM Developer Technology Sandbox to create and configure services.</p>
+            <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$ibmcloud%20config%20--check-version=false%20%26%26%20ibmcloud%20login%20--sso%20-r%20us-south%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">Login to IBM Cloud</a>
+      </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>Create these IBM Watson Services and configure the credentials in the Asset with just a click of button.</p>
+            <a class="button is-dark is-medium" title="Create IBM Watson Services" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh" >Create IBM Watson Services</a>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>Start the Application</p>
+            <a class="button is-dark is-medium" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$python3.8%20app.py">Build and Run</a>
+         </div>
+      </div>
+   </div>
+   <div class="footer">
+      <div class="content" style="padding:30px;padding-left:60px;padding-bottom: 0px;">
+         <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
+         <a class="button is-dark is-medium" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=nodejs%20terminal">Stop Application</a>
+         <p style="margin-top:10px;">
+            Completed the Asset? Click on <bold>Clean up</bold> to delete the IBM Cloud services that were created.
+         </p>
+         <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean up</a>
+         <p style="margin-top:10px;">You can also manage the services in <a href="https://cloud.ibm.com/resources">IBM Cloud Dashboard</a>.</p>
+      </div>
+      <div class="image-div">
+         <p class="image-content">Want to explore this project more?
+            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/extract-textual-insights-from-video">Github Repository</a></span>
+         </p>
+         <a class="image-link" href="https://developer.ibm.com/patterns/extract-textual-insights-from-a-given-video/" target="_blank">
+         <div class="image-btn">
+               <p class="image-link">View Product Details</p>
+               <p class="image-link">   </p>
+               <p class="image-link">
+               <span>
+                  <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
+                     <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
+                     <title>Arrow right</title>
+                  </svg>
+               </span>
+               </p>
+         </div>
+         </a>
+      </div>
+   </div>
+   <br><br>
+</body>
+</html>

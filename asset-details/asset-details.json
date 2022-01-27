@@ -1,26 +1,32 @@
 [
-	{
-		"id": "authenticate-users-on-chatbot-with-sms-otp",
-		"name": "OTP Based Authentication for Chatbot",
-		"title": "authenticate-users-on-chatbot-with-sms-otp",
-		"description": "this is authenticate-users-on-chatbot-with-sms-otp"
-	},
-	{
-		"id": "extract-insights-from-videos",
-		"name": "Extract Insights from Videos",
-		"title": "extract-insights-from-videos",
-		"description": "this is extract-insights-from-videos"
-	},
-	{
-		"id": "bank-loan-app",
-		"name": "Bank Loan Application",
-		"title": "bank-loan-app",
-		"description": "Analyse and Predict risks involved when trying to approve loans."
-	},
-	{
-		"id": "agro-smart-assistant",
-		"name": "Agro Smart Assistant",
-		"title": "agro-smart-assistant",
-		"description": "Use Machine Learning in Virtual Assistants to automate crop recommendation."
-	}
+    {
+        "id": "authenticate-users-on-chatbot-with-sms-otp",
+        "name": "OTP Based Authentication for Chatbot",
+        "title": "authenticate-users-on-chatbot-with-sms-otp",
+        "description": "this is authenticate-users-on-chatbot-with-sms-otp"
+    },
+    {
+        "id": "video-analytics-application",
+        "name": "Video Analytics Application",
+        "title": "video-analytics-application",
+        "description": "Use speech-to-text, advanced natural language processing, and tone analysis to extract insights from video files."
+    },
+    {
+        "id": "bank-loan-app",
+        "name": "Bank Loan Application",
+        "title": "bank-loan-app",
+        "description": "Analyse and Predict risks involved when trying to approve loans."
+    },
+    {
+        "id": "agro-smart-assistant",
+        "name": "Agro Smart Assistant",
+        "title": "agro-smart-assistant",
+        "description": "Use Machine Learning in Virtual Assistants to automate crop recommendation."
+    },
+    {
+        "id": "customer-churn-prediction",
+        "name": "Customer Churn Prediction",
+        "title": "customer-churn-prediction",
+        "description": "Use IBM Watson ML to solve a business problem and predict customer churn using a Telco customer churn data set"
+    }
 ]

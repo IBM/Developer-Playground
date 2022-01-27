@@ -185,7 +185,7 @@
     background-image: url('https://github.com/IBM/Developer-Playground/blob/master/didact/images/data-quality.png?raw=true');
     background-position: right;
     width: 100%;
-    height: auto;
+    height: fixed;
     min-height: 320px;
     display: inline-block;
     margin-top: 20px;
@@ -193,18 +193,16 @@
     margin-left: 30px;
     margin-right: 30px;
     max-width: 1200px;
-    background-size: contain;
     background-repeat: no-repeat;
+    background-size: 700px 500px;
   }
   .header .left-content
   {
-    float: left;
     width: 45%;
-    padding-top:40px;
     background-color:#2a67f5;
     min-height: 320px;
     padding: 20px;
-    padding-top: 2.5%;
+    /* padding-top: 2.5%; */
     font-size: 16px;
   }
   .header .left-content h4
@@ -279,19 +277,21 @@
     Data Quality for AI Asset
   </div>
     <div class="subheading">
-    DQAI APIs
+    A systematic way to assess and remediate data with well-specified APIs
   </div>
    <div class="header">
-      <div class="left-content">
-          <div>
-            The Data Quality for AI is an integrated toolkit that provides various data profiling and quality estimation metrics to assess the quality of ingested data in a systematic and objective manner. You will learn how this API can be leveraged in the real world with this interactive tutorial and sample application... where you will build, configure, and explore ... with a sample application
-          </div>
+      <div class="left-content" style="float: left">
+      <div>
+        Quality data can significantly reduce model building time, streamline data preparation efforts and improve the overall reliability of the AI pipeline.
+      </div>
+       <div>
+            The Data Quality for AI is an integrated toolkit that provides various data profiling and quality estimation metrics to assess the quality of ingested data in a systematic and objective manner. The pre-build application will help you to understand and leveraged API usage in the real world - build, configure, and explore an application in an interactive mode.          </div>
       </div>
    </div>
         <div class="assetdetails">
             <p style="font-size:24px">Learning Resources</p>
             <ul>
-            <li>Get started with Data Quality for AI API with this <a href="https://developer.ibm.com/learningpaths/data-quality-ai-toolkit/">Learning path</a></li>
+            <li><a href="https://developer.ibm.com/learningpaths/data-quality-ai-toolkit/">Get started with Data Quality for AI API with this learning path</a></li>
             </ul>
             <br>
             <p style="font-size: 24px;">Included components</p>
@@ -300,13 +300,12 @@
             </ul>
             <br>
             <p style="font-size: 24px;">Pre-requisites</p>
-            <p>To run this application you will need to execute the following steps:</p>
-            <p>Obtain API credentials</p>
+            <p>Obtain API credentials,</p>
             <ul>
             <li>Subscribe to the <a title= "Data Quality" href="https://developer.ibm.com/apis/catalog/dataquality4ai--data-quality-for-ai/Introduction">Data Quality for AI Product</a></li>
-            <li>Now check out <a title= "My Subscriptions" href="https://developer.ibm.com/profile/myapis">API Subscriptions</a></li>
-            <li>You should see a subscription for Data Quality for AI, select that and proceed</li>
-            <li>You can obtain your Client ID/Secret from here. If you don't see any, you can "Generate API Key"</li>
+            <li>Check out <a title= "My Subscriptions" href="https://developer.ibm.com/profile/myapis">API Subscriptions</a></li>
+            <li>Select Data Quality for AI to proceed</li>
+            <li>You can obtain your Client ID/Secret, if not, Generate an API Key</li>
             </ul>
             <br>
             <p style="font-size: 24px;">Instructions</p>
@@ -315,40 +314,42 @@
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
-            <p>To begin, you will need the application's source code. Click `Get the code` to clone the code to your playground session.</p>
+            <p>Clone the code to the Technology Sandbox session</p>
             <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cget-code%7Cdata-quality|git%20clone%20-b%20DART%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/data-quality/">Get the Code</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>You've successfully cloned the code, so click `Build the application` to start the build process.
-            </p>
+            <p>Build the application</p>
             <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cbuild-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install%20--production">Build the Application</a>
-            <p class="afterbutton">
-               To obtain credentials and configure the application, complete the prerequisites
-            </p>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Let's configure the application with our credentials </p>
+            <p>Configure the application. See prerequisites </p>
             <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/.env">Configure the Application</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>You're all set to get started! </p>
+            <p>Launch the application</p>
             <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Claunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20node%20server.js">Launch the Application</a>
          </div>
       </div>
    </div>
+   <br>
+   <div class="assetdetails">
+    <p style="font-size: 24px;">Explore the APIs</p>
+    <p>Once you are done or would like to edit or explore the application, make sure to stop the services</p>
+   </div>
+
    <div class="footer">
       <div class="content" style="padding:30px;padding-left:60px;padding-bottom:0px;">
-         <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
+         <p>Stop the services</p>
          <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=data-quality" >Stop Application</a>
-         <p class="afterbutton">The stage is yours!</p>
+         <p class="afterbutton">Explore and update the code as per your requirement</p>
          <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/src/App.js">Explore the Code</a>
-         <p class="afterbutton ">To view the changes you've made, re-launch the application</p>
+         <p class="afterbutton ">Re-launch the application to experience the code changes you have made</p>
          <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Crelaunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install%20--only=dev%20%26%26%20rm%20-rf%20build%20%26%26%20npm%20run%20build%20%26%26%20node%20server.js">Re-Launch the Application</a>
       </div>
       <div class="image-div">

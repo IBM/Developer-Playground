@@ -1,14 +1,25 @@
 servicename="cp-cos"
 service="cloud-object-storage"
 region="global"
-ibmcloud resource service-instance-create $servicename $service lite $region
+plan="lite"
+python3.8 gather_service_info.py $service $servicename $region $plan
+
 
 servicename="cp-wmachinelearning"
 service="pm-20"
 region="us-south"
-ibmcloud resource service-instance-create $servicename $service lite $region
+plan="lite"
+python3.8 gather_service_info.py $service $servicename $region $plan
+
 
 servicename="cp-wassistant"
 service="conversation"
 region="us-south"
-ibmcloud resource service-instance-create $servicename $service free $region
+plan="free"
+python3.8 gather_service_info.py $service $servicename $region $plan
+
+servicename="cp-wstudio"
+service="data-science-experience"
+region="us-south"
+plan="free-v1"
+python3.8 gather_service_info.py $service $servicename $region $plan

@@ -52,7 +52,7 @@ client.import_assets.start(space_id=space_id,
 
 
 details = client.import_assets.get_details(space_id=space_id)
-print("Waiting for import to finsh...")
+print("Waiting for import to finish...")
 while details["resources"][0]["entity"]["status"]["state"] != "completed" and details["resources"][0]["entity"]["status"]["state"] != "failed":
     details = client.import_assets.get_details(space_id=space_id)
 
@@ -74,5 +74,5 @@ except:
     print("##########################")
     print("Model Import Failed!!!.")
     print("##########################\n\n")
-    print("Deployment Space Name: "+deployment_space_name+"\nPlease follow the steps given in the error dropdown!")
+    print("Deployment Space Name: "+deployment_space_name+"\nPlease follow the steps given in the error dropdown!\n")
 

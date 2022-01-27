@@ -50,6 +50,8 @@ function App() {
   const [settings, setSettings] = useState({})
   const [labelingMethods, setLabelingMethods] = useState(['Chi-Square', 'IID', 'Q-Score', 'Sliding-Window', 'Adaptive-Sliding-Window', 'Contextual-Anomaly'])
   const [showRecentData, setRecentData] = useState(false)
+  const [anomalyEstimatorValue, setAnomalyEstimatorValue] = useState("IID")
+  const [showLabelingMethods, setLabelingMethodsOptions] = useState(true)
 
   const resetStates = () => {
     setTargetInvalid({ state: false, text: "" })
@@ -280,6 +282,7 @@ function App() {
 
   const changeAnomalyEstimatorOptions = ({ selectedItem }) => {
     setAnomalyEstimatorOptions(false)
+    setAnomalyEstimatorValue(selectedItem)
     setTimeout(() => {
       if (selectedItem !== `DeepAD` && selectedItem !== `PredAD`) {
         setAnomalyEstimator(anaomalyEstimator[selectedItem])
@@ -287,11 +290,13 @@ function App() {
       } else {
         setAnomalyEstimatorOptions(false)
       }
-      if (selectedItem === 'RelationshipAD')
+      if (selectedItem === 'RelationshipAD'){
+        setLabelingMethodsOptions(false)
         setLabelingMethods(['IID'])
+      }
       else
         setLabelingMethods(['Chi-Square', 'IID', 'Q-Score', 'Sliding-Window', 'Adaptive-Sliding-Window', 'Contextual-Anomaly'])
-
+      setLabelingMethodsOptions(true)
     }, 1)
   }
 
@@ -345,6 +350,7 @@ function App() {
       setTargetParams(settings.data.target_columns)
       setTargetInvalid({ state: false, text: "" })
       await changeAnomalyEstimatorOptions({ selectedItem: settings.data.algorithm_type })
+      setAnomalyEstimatorValue(settings.data.algorithm_type)
       showTextInput({ selectedItem: settings.data.lookback_window })
       setTimeColumn(true)
       setChart(true)
@@ -486,7 +492,7 @@ function App() {
                   id="anomaly_estimator"
                   titleText="Select Value"
                   label="Select Options"
-                  initialSelectedItem={settings.anomaly_estimator || anomalyEstimatorOptions[0]}
+                  initialSelectedItem={settings.anomaly_estimator || anomalyEstimatorOptions[0] }
                   items={anomalyEstimatorOptions}
                 /></div>
               : null}
@@ -521,14 +527,15 @@ function App() {
               invalid={OWInvalid.state}
               invalidText={OWInvalid.text}
               onChange={() => setOWInvalid({ state: false, text: "" })} />
+              {showLabelingMethods ? <div>
             <p className="others">Labeling Method</p>
             <Dropdown
               id="labeling_method"
               titleText="Select Value"
               label="Select Options"
               items={labelingMethods}
-              initialSelectedItem={settings.labeling_method || "IID"}
-            />
+              initialSelectedItem={anomalyEstimatorValue !=="RelationshipAD" ? (settings.labeling_method || "IID") : "IID"}
+            /></div> : null }
             <p className="others">Labeling Threshold</p>
             <TextInput
               name="labeling_threshold"

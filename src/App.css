@@ -14,22 +14,22 @@
 }
 .target{
     margin-top: 72px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     font-weight: bold;
 }
 .others{
     margin-top: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     font-weight: bold;
 }
 .hidden-options{
-    margin-top: 24px;
+    margin-top: 20px;
 }
 .chart-area{
     margin-left: -50px
 }
 #time_column{
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 .fetch-results{
     margin-top: 30px;

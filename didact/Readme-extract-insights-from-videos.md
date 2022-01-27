@@ -182,6 +182,7 @@
   .header
   {
     background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/video_insights.jpeg');
+    background-position: right;
     width: 100%;
     height: auto;
     min-height: 300px;
@@ -294,7 +295,7 @@
             Use speech-to-text, advanced natural language processing, and tone analysis to extract insights from video files.
     </div>
     <div class="header">
-      <div class="right-content">
+      <div class="right-content" style="float: left;">
          <div>
           In a virtually connected world, staying focused on work or education is very important. Studies suggest that many people lose their focus in live virtual meetings or virtual classroom sessions after approximately 20 minutes. Therefore, many meetings and virtual classrooms are recorded so that an individual can watch it later.
         </div>

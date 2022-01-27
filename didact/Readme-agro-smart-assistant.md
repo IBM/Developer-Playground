@@ -110,6 +110,7 @@
     background-color: #2a67f5;
     border-color: white;
     color: #fff;
+    text-decoration: none;
   }
   .footer {
     display: flex;
@@ -189,35 +190,35 @@
     margin-bottom: 20px;
     margin-left: 30px;
     margin-right: 30px;
-    background-size: 620px;
+    background-size: contain;
+    background-position-x:80%;
+    background-repeat:no-repeat;
     max-width: 1200px;
-    background-repeat: no-repeat;
   }
   .header .right-content
   {
     float: right;
     width: 45%;
-    background-color:#0072C3;
+    background-color:#525252;
     min-height: 350px;
     padding: 20px;
-    padding-top: 5%;
-    font-size: 14px;
-    justify-content:center;
+    padding-top: 8%;
+    font-size: 16px;
   }
   .header .right-content h4
   {
     background: none;
-    color: white;
+    color: #C1C7CD;
     padding-left: 25px;
     padding-right: 25px;
   }
   .header .right-content div
   {
     background: none;
-    color: white;
+    color: #C1C7CD;
     padding-left: 15px;
     padding-right: 25px;
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 10px;
   }
   .header .right-content ul
@@ -235,7 +236,7 @@
   }
   .container a:visited
   {
-    color: #8C43FC;
+    color: #BE95FF;
     background-color: transparent;
     text-decoration: none;
   }
@@ -252,12 +253,12 @@
     margin-left: 25px;
     margin-top: 0px;
     margin-bottom: 0px;
-    font-size: 24px;
-    color: grey;
+    font-size: 16px;
+    color: #c1c7cd;
   }
   .no-hover:hover
   {
-    background-color: #0062FF !important;
+    background-color: #A6C8FF !important;
   }
   .section{
     margin-top: 5px;
@@ -279,12 +280,14 @@
   details{
       margin-bottom: 20px;
   }
-  a:hover {
-  color: #0062FF;
+  a:hover{
+      color: #A6C8FF;
+      text-decoration: underline;
   }
-  a:visited {
-color: #8C43FC;
-}
+  a:visited{
+      color: #BE95FF;
+  }
+
 </style>
 </head>
 <body>
@@ -295,7 +298,7 @@ color: #8C43FC;
     Use Machine Learning in Virtual Assistants to automate crop recommendation.
   </div>
   <div class="header">
-      <div class="right-content">
+      <div class="right-content" style="float: left; padding-top:40px;">
          <div>
           Precision agriculture is in trend nowadays. It helps the farmers to get informed decision about the farming strategy. Precision agriculture is a modern farming technique that uses research data of soil characteristics, soil types, crop yield data collection and suggests the farmers the right crop based on their site-specific parameters. This reduces the wrong choice on a crop and increase in productivity.
         </div>
@@ -316,6 +319,7 @@ color: #8C43FC;
           <p>This sample application uses the following IBM Services:</p>
           <p><a href="https://cloud.ibm.com/objectstorage">Cloud Object Storage</a>: IBM Cloud Object Storage is a highly scalable cloud storage service, designed for high durability, resiliency and security.</p>
           <p><a href="https://cloud.ibm.com/catalog/services/watson-assistant">Watson Assistant</a>: Watson Assistant lets you build conversational interfaces into any application, device, or channel.</p>
+          <p><a href="https://cloud.ibm.com/catalog/services/watson-studio">Watson Studio</a>: Develop sophisticated machine learning models using Notebooks and code-free tools to infuse AI throughout your business.</p>
           <p><a href="https://cloud.ibm.com/catalog/services/machine-learning">Watson Machine Learning</a>: Deploy, manage and integrate machine learning models into your applications and services in as little as one click.</p>
       </div>
    </div>
@@ -339,9 +343,16 @@ color: #8C43FC;
       <div class="container right">
          <div class="content">
             <p>Click `Get the code` to clone the code to your playground session as application's source code is needed.</p>
-            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cclone-repo%7Cnodejs%20terminal|git%20clone%20-b%20agro-chatbot%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant">Get the Code</a>
+            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cclone-repo%7Cnodejs%20terminal|git%20clone%20-b%20agro-chatbot%20https://github.com/SuyashGupte/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant">Get the Code</a>
          </div>
       </div>
+      <div class="container right">
+        <div class="content">
+           <p>You've successfully cloned the code, so click `Build the application` to start the build process.
+           </p>
+           <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cbuild%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20npm%20install%26%26pip3.8%20install%20-r%20requirements.txt">Build the Application</a>
+        </div>
+     </div>
       <div class="container right">
         <div class="content">
           <p>Create and Configure IBM Services</p>
@@ -353,69 +364,64 @@ color: #8C43FC;
         <div class="content">
           <p>Create these services with just a click of button.</p>
           <a class="button is-dark is-medium" title="Create IBM Watson Services" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-services%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fcreate-ibm-services.sh%20%26%26%20.%2Fscripts%2Fcreate-ibm-services.sh">Create IBM Watson Services</a>
-        </div>
-      </div>
-      <div class="container right">
-        <div class="content">
-          <p>Go to <a href="https://dataplatform.cloud.ibm.com/">IBM CloudPak for Data</a> and login with your IBM id. </p> Once you login follow the below steps to create a new project.
+          <p style="margin-top:50px">Follow the below steps to configure the asset.</p>
         </div>
       </div>
       <div class="container right">
         <div class="content">
         <details>
-         <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create a New Deployment Space</summary></br></br>
-          <div class="step">
-            <p>Step 1 : Download the deployment zip file.</p>
-            <a class="button is-dark is-medium" href="https://github.com/IBM/Developer-Playground/blob/agro-chatbot/crop-recommendation-space.zip?raw=true">Download</a>
-          </div>
-          <div class="step">
-            <p>Step 2 : Go to the hamburger (☰) menu and click Deployment > View all spaces as shown in the figure below.</p></p>
-            <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_1.1_create_space.png" width = "250" height= "250">
-          </div>
-          <div class="step">
-          <p>Step 3 : Click on "New Deployment space".</p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_1.2_create_space.png" width = "750" height= "750">
-         </div>
-          <div class="step">
-         <p>Step 4 : Upload the zip file that was just downloaded in Step 1, select the storage and machine learning service instances, click on "Create" button.</p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_1.3_create_space.png" width = "750" height= "750">
-          </div>
-          <div class="step">
-          <p>Step 5 : After the space is created, click on "View new space".</p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_1.4_create_space.png" width = "750" height= "750">
-          </div>
-        </details>
+         <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create a New Deployment Space and Deploy the Model</summary></br></br>
+         <div class="step">
+          <p>Step 1 : Generate an API Key in the IBM account.</p>
+          <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cgenerate-api-token%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant;ibmcloud%20iam%20api-key-create%20ApiKey-SVA%20-d%20'this is API key for Smart Virtual Assitant'%20--file%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/key_file">Generate API key</a></br>
         </div>
-      </div>
-      <div class="container right">
-        <div class="content">
-          <details>
-         <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deploy Model and Get URL</summary></br></br>
           <div class="step">
-          <p>Step 1 : Once the Deployment Space is created click on "Assets" Tab and in the "Models" section click on Deploy icon.</p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_2.1_deploy.png" width = "750" height= "750">
+            <p>Step 2 : Create a new deployment space with the pre-loaded model.</p>
+            <a class="button is-dark is-medium" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cstart%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20python3.8%20create_space.py">Create Deployment Space</a>
+          <details style="margin-top:5px;">
+         <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Incase your model import failed, do the following steps</summary></br></br>
+          <div class="step">
+           <p>Step 1 : Download the project zip file.</p>
+          <a class="button is-dark is-medium" href="https://github.com/IBM/Developer-Playground/raw/agro-chatbot/crop-recommendation.zip">Download</a>
+           </div>
+           <div class="step">
+           <p>Step 2 : Go to your <a href="https://dataplatform.cloud.ibm.com/">CloudPak for Data</a> account. Click on "Create a Project".</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_1.png" width = "750" height= "750">
+           </div>
+           <div class="step">
+           <p>Step 3 : Click on "Create a project from sample or file".</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_2.png" width = "750" height= "750">
+           </div>
+           <div class="step">
+           <p>Step 4 : Upload the zip file that was just downloaded, give your project a name and click on "Create" button.</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_3.png" width = "750" height= "750">
+           </div>
+           <div class="step">
+           <p>Step 5 : After the project is created, click on "View new project".</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_4.png" width = "750" height= "750">
+           </div>
+           <div class="step">
+           <p>Step 6 : Click on the assets tab.</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_5.png" width = "750" height= "750">
+           </div>
+           <div class="step">
+           <p>Step 7 : Click on the (⋮) on right hand side of the Model and Click on "Promote" button.</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_6.png" width = "750" height= "750">
+           </div><div class="step">
+           <p>Step 8 : Select the deployment space which was created earlier, check the console of the workspace for deployment space name and click on "Promote".</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_7.png" width = "750" height= "750">
+           </div>
+           </details>
+           </div>
+          <div class="step">
+            <p>Step 3 : Deploy the model.</p>
+            <a class="button is-dark is-medium" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cstart%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20python3.8%20deploy_model.py">Deploy</a>
           </div>
           <div class="step">
-          <p>Step 2 : Select "Online", give the deployment a name and click on "Create" button. This may take a while. </p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_2.2_deploy.png" width = "550" height= "550">
-          </div>
-          <div class="step">
-          <p>Step 3 : Click on "Deployments" tab, once the deployment is created open it.</p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_2.3_deploy.png" width = "750" height= "750">
-          </div>
-          <div class="step">
-          <p>Step 4 : Copy the Model endpoint URL.</p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_2.4_deploy.png" width = "750" height= "750">
-          </div>
-          <div class="step">
-          <p>Step 5 : Paste the URL in the following script file.</p>
-          <a class="button is-dark is-medium" href="didact://?commandId=extension.openFile&text=loan%7Capi-key%7C${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/scripts/add_model_url.sh">Open file</a>
-          </div>
-          <div class="step">
-          <p>Step 6 : Run the script to update the code file.</p>
-          <a class="button is-dark is-medium" title="Update Model URL" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-services%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fadd_model_url.sh%20%26%26%20.%2Fscripts%2Fadd_model_url.sh">Update Model URL</a>
-          </div>
-          </details>
+            <p>Step 4 : Run the script to update the code file with Model URL.</p>
+            <a class="button is-dark is-medium" title="Update Model URL" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-services%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fadd_model_url.sh%20%26%26%20.%2Fscripts%2Fadd_model_url.sh">Update Model URL</a>
+            </div>
+        </details>
         </div>
       </div>
       <div class="container right">
@@ -427,15 +433,11 @@ color: #8C43FC;
            <a class="button is-dark is-medium" title="Create Action" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-action%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fcreate_action.sh%20%26%26%20.%2Fscripts%2Fcreate_action.sh">Create Action</a>
            </div>
           <div class="step">
-           <p>Step 2: Generate an API Key in the IBM account by clicking this button.</p>
-           <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cgenerate-api-token%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant;ibmcloud%20iam%20api-key-create%20ApiKey-SVA%20-d%20'this is API key for Smart Virtual Assitant'%20--file%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/key_file">Generate API key</a><br> 
-           </div>
-          <div class="step">
-           <p>Step 3 : Run the script to add api_key parameter in the Action.</p>
+           <p>Step 2 : Run the script to add api_key parameter in the Action.</p>
            <a class="button is-dark is-medium" title="Create Parameter" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-services%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fadd_parameter.sh%20%26%26%20.%2Fscripts%2Fadd_parameter.sh">Add Paramter</a>
            </div>
           <div class="step">
-           <p>Step 4 : Run the script to update Dialog skill file with the webhook URL that was just created.</p>
+           <p>Step 3 : Run the script to update Dialog skill file with the webhook URL that was just created.</p>
            <a class="button is-dark is-medium" title="Update" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-services%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fupdate_dialog.sh%20%26%26%20.%2Fscripts%2Fupdate_dialog.sh">Update Dialog Skill</a>
           </div>
           </details>
@@ -446,7 +448,7 @@ color: #8C43FC;
           <details>
          <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integrate the Machine Learning Model with Watson Assistant</summary></br></br>
           <div class="step">
-          <p>Step 1 : Go to <a href="https://cloud.ibm.com">your IBM Cloud Account</a>. From the "Resources" tab on the left, select "Services and software" and click on your Watson Assistant service.Click on "Launch Watson Assistant" button.</p>
+          <p>Step 1 : Go to your <a href="https://cloud.ibm.com">IBM Cloud Account</a>. From the "Resources" tab on the left, select "Services and software" and click on your Watson Assistant service.Click on "Launch Watson Assistant" button.</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_4.1_assistant.png" width = "750" height= "750">
           </div>
           <div class="step">
@@ -501,13 +503,6 @@ color: #8C43FC;
       </div>
       <div class="container right">
          <div class="content">
-            <p>You've successfully cloned the code, so click `Build the application` to start the build process.
-            </p>
-            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cbuild%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20npm%20install">Build the Application</a>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
             <p>You're all set to get started! </p>
             <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cstart%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20npm%20start">Launch the Application</a>
          </div>
@@ -532,6 +527,7 @@ color: #8C43FC;
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
             <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/Anam-Mahmood/Unlock-the-Power-of-Machine-Learning-in-Virtual-Assistants-to-automate-Loan-Applications" target="_blank">Github Repository</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">Need Help? Contact<a href="https://github.com/IBM/Developer-Playground-Support/issues/new/choose" target="_blank">Help & Support</a></span>
          </p>
       </div>
    </div>

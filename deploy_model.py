@@ -5,7 +5,6 @@ from dotenv import dotenv_values
 
 #bring model id and deployment space name from .env file
 config = dotenv_values(".env") 
-published_model_id=config["MODEL_ID"]
 deployment_space_name=config["DEPLOYMENT_SPACE_NAME"]
 apikey=config["API_KEY"]
 model_name = config["MODEL_NAME"]
@@ -34,7 +33,13 @@ if space_id is None:
     print("WARNING: Your space does not exist. Create a deployment space before proceeding to the next cell.")
 
 client.set.default_space(space_id)
-
+asset_details = client.repository.get_details()
+for resource in asset_details["models"]["resources"] :
+    if(resource["metadata"]["name"] == model_name):
+        with open(".env", "a") as f:
+            f.write("\nMODEL_ID="+resource["metadata"]["id"])
+config = dotenv_values(".env") 
+published_model_id=config["MODEL_ID"]
 #deployment of the model
 deploy_meta = {
      client.deployments.ConfigurationMetaNames.NAME: 'Deployment of '+ MODEL_NAME,

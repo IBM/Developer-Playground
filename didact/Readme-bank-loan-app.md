@@ -348,35 +348,14 @@
       </div>
       <div class="container right">
         <div class="content">
-          <p>Go to <a href="https://dataplatform.cloud.ibm.com/home2?context=cpdaas">IBM CloudPak for data</a> and login with your IBM ID in <b>Dallas</b> region. </p> After login follow the below steps to create a new deployment space to deploy a machine learning model.
-          <p>Step 1 : Go to the hamburger (☰) menu and click Deployment <b>View all spaces</b> as shown in the figure below.</p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/bank-loan1.png" width = "750" height= "750"></br></br></br>
-          <p>Step 2 : Next click on <b>New deployment space +</b> button as shown in the figure below.</p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/bank-loan2.png" width = "750" height= "750"></br></br></br>
-          <p>Step 3 : If prompted with the below screen, click on <b>Create a space from a file</b>.</p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/bank-loan3.png" width = "750" height= "750"></br></br></br>
-          <p>Step 4 : Download the Personal Loan Prediction Model as a zip file. This model will be deployed in the deployment space.</p>
-          <a class="button is-dark is-medium" href="https://raw.githubusercontent.com/IBM/Developer-Playground/bank-loan/PersonalLoanPredictionModel.zip">Download</a></br></br></br>
-          <p>Step 5 : Give your deployment space a name and remember the name for later use. Select the storage and machine learning service. <b>Browse locally</b> to add the model zip file downloaded in the previous step and Click <b>Create</b></p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/bank-loan4.png" width = "750" height= "750"></br></br></br>
-          <p>Step 6 : Click on <b>View new space</b> to open up the deployment space.</p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/bank-loan7.png" width = "750" height= "750"></br></br></br>
-          <p>Step 7 : Go to assets and select the model.</p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/bank-loan5.png" width = "750" height= "750"></br></br></br>
-          <p>Step 8 : Open the information tab as shown below and copy the Model ID. </p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/bank-loan6.png" width = "750" height= "750"></br></br>
-        </div>
-      </div>
-      <div class="container right">
-        <div class="content">
-          <p>Paste the Model ID and add the Deployment Space Name to the .env file.</p>
-           <a class="button is-dark is-medium" title="Open File" href="didact://?commandId=extension.openFile&text=nodejs%20terminal%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/bank-loan/.env">Open File</a>
-        </div>
-      </div>
-      <div class="container right">
-        <div class="content">
           <p>Install requirements</p>
-          <a class="button is-dark is-medium" title="Install requirements" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cinstall-requirements%7Cnodejs%20terminal|cd%20bank-loan;pip3.8%20install%20-r%20requirements.txt">Install requirements</a>
+          <a class="button is-dark is-medium" title="Install Requirements" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cinstall-requirements%7Cnodejs%20terminal|cd%20bank-loan;pip3.8%20install%20-r%20requirements.txt">Install Requirements</a>
+        </div>
+      </div>
+      <div class="container right">
+        <div class="content">
+          <p>Create a Deployment Space on Cloud pak for Data</p>
+          <a class="button is-dark is-medium" title="Create Deployment Space" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-deployment-space%7Cnodejs%20terminal|cd%20bank-loan;python3.8%20create_space.py">Create Deployment Space</a>
         </div>
       </div>
       <div class="container right">

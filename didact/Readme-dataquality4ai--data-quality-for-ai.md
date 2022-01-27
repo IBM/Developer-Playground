@@ -292,7 +292,7 @@
             <p style="font-size:24px">Learning Resources</p>
             <p><a href="https://developer.ibm.com/learningpaths/data-quality-ai-toolkit/">Get started with Data Quality for AI API with this learning path</a></p>
             <br>
-            <p style="font-size: 24px;">Included components</p>
+            <p style="font-size: 24px;">Included Components</p>
             <p><a href="https://developer.ibm.com/apis/catalog/dataquality4ai--data-quality-for-ai/Introduction">Data Quality for AI API</a></p>
             <br>
             <p style="font-size: 24px;">Prerequisites</p>

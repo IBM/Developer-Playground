@@ -61,6 +61,18 @@ for resource in asset_details["models"]["resources"] :
     if(resource["metadata"]["name"] == model_name):
         with open(".env", "a") as f:
             f.write("\nMODEL_ID="+resource["metadata"]["id"])
-        print("Deployment Space with ID " + space_id + " containing model " + model_name + " is created successfully.")
+        print("Deployment Space with ID " + space_id + " and name"+ deployment_space_name +" containing model " + model_name + " is created successfully.")
     else:
         print("Model Import Failed!!!.")
+
+
+config = dotenv_values(".env") 
+try:
+    published_model_id=config["MODEL_ID"]
+except:
+    "Deployment Space with ID " + space_id + " and name"+ deployment_space_name +"is created successfully."
+    print("##########################")
+    print("Model Import Failed!!!.")
+    print("##########################\n\n")
+    print("Deployment Space Name: "+deployment_space_name+"\nPlease follow the steps given in the error dropdown!")
+

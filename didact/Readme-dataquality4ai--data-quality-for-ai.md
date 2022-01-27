@@ -323,7 +323,7 @@
       <div class="container right">
          <div class="content">
             <p>Configure the application. See prerequisites </p>
-            <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/.env">Configure the Application</a>
+            <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=data-quality%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/.env">Configure the Application</a>
          </div>
       </div>
       <div class="container right">
@@ -344,7 +344,7 @@
          <p>Stop the services</p>
          <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=data-quality" >Stop Application</a>
          <p class="afterbutton">Explore and update the code as per your requirement</p>
-         <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=AsperaonCloud%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/src/App.js">Explore the Code</a>
+         <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=data-quality%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/src/App.js">Explore the Code</a>
          <p class="afterbutton ">Re-launch the application to experience the code changes you have made</p>
          <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Crelaunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install%20--only=dev%20%26%26%20rm%20-rf%20build%20%26%26%20npm%20run%20build%20%26%26%20node%20server.js">Re-Launch the Application</a>
       </div>

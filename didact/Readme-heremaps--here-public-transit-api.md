@@ -16,7 +16,7 @@
   }
   /* The actual timeline (the vertical ruler) */
   .timeline {
-    position: absolute;
+    position: relative;
     max-width: 1200px;
     margin: 0 auto;
     margin-left: 50px;
@@ -141,7 +141,7 @@
     position: relative;
     background-color: white;
     min-width: 50%;
-    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url("https://github.com/bodarajeshkumar/Developer-Playground/blob/master/didact/images/git.svg?raw=true");
+    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/github.svg");
     background-position: -50% 60px;
     background-repeat: no-repeat;
     padding-top: 20px;
@@ -184,7 +184,7 @@
   }
   .header
   {
-    background-image: url('https://github.com/IBM/Developer-Playground/blob/development/didact/images/banner-image.jpg?raw=true');
+    background-image: url('https://github.com/IBM/Developer-Playground/blob/master/didact/images/banner-image.jpg?raw=true');
     width: 100%;
     height: fixed;
     min-height: 300px;
@@ -249,6 +249,13 @@
     font-size: 25px;
     color: white;
   }
+.assetdetails{
+    background:none;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-left: 50px;
+    padding-bottom: 24px;
+}
   @media only screen and (max-width: 800px) {
     .footer {
       margin: 950px 0px 0px 20px;
@@ -279,7 +286,7 @@
 </head>
 <body>
   <div class="apptitle"> 
-    HERE Technologies Sample Application
+    HERE Technologies - Public Transit
   </div>
    <div class="header">
       <div class="right-content">
@@ -303,6 +310,30 @@
          </div>
       </div>
    </div>
+   <br>
+   <br>
+    <div class="assetdetails">
+            <p style="font-size: 20px;"><b>Learning Resources</b></p>
+            <li>Get started with HERE Public Transit API <a href="https://developer.ibm.com/apis/catalog/heremaps--here-public-transit-api/Introduction">here</a></li>
+        <br>
+            <p style="font-size: 20px;"><b>Included components</b></p>
+            <li><a href="https://developer.ibm.com/apis/catalog/heremaps--geocoding-and-search-api-v7/Introduction">HERE Geocoding and Search API</a></li>
+            <li><a href="https://developer.ibm.com/apis/catalog/heremaps--here-public-transit-api/Introduction">HERE Public Transit API</a></li>
+            <br>
+            <p style="font-size: 20px;"><b>Prerequisites</b></p>
+            <li>To run this application you will need to execute the following steps:</li><br>
+            <p>Obtain API credentials</p>
+            <li>Subscribe to the <a title="HEREPublicTransit" href="https://developer.ibm.com/apis/catalog/heremaps--here-public-transit-api/Introduction">HERE Public Transit API</a></li>
+            <li>Sign up for HERE Developer </li>
+            <li>Once you're logged into your HERE account. Go to 'Projects' </li>
+            <li>Proceed to the 'REST' section </li>
+            <li>Click 'Generate App'. Under 'OAuth2.0' -> click 'Create credentials' </li>
+            <li>'Access Key ID' and 'Access Key Secret' would be your Client ID and Secret </li>
+            <li>Proceed to the 'API Keys' section and create your API Key </li>
+            <br>
+            <br>
+            <p style="font-size: 20px;"><b>Instructions</b></p>
+        </div>
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
@@ -314,35 +345,22 @@
          <div class="content">
             <p>You've successfully cloned the code, so click `Build the application` to start the build process.
             </p>
-            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Cbuild-application%7CHEREPublicTransit%7Ccd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20install">Build Application</a>
+            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Cbuild-application%7CHEREPublicTransit%7Ccd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20config%20set%20@here:registry%20https://repo.platform.here.com/artifactory/api/npm/maps-api-for-javascript/%20%26%26%20npm%20install%20--production">Build Application</a>
             <p class="afterbutton">
-               To obtain credentials and configure the application, complete the following steps
+               To obtain credentials and configure the application, complete the prerequisites
             </p>
          </div>
-      </div>
+      </div>     
       <div class="container right">
          <div class="content">
-            <p>Subscribe to the <a title= "HEREPublictransit" href="https://developer.ibm.com/apis/catalog/heremaps--here-public-transit-api/Introduction">HERE Public Transit API</a>
-            </p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>Sign up for HERE Developer and follow the prompts to obtain Client ID, Client Secret and API Key
-            </p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>Let's get the credentials by configuring the application</p>
-            </p>
+            <p>Let's configure the application with our credentials</p>
             <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit/.env">Configure Application</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
             <p>You're all set to get started! </p>
-            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Claunch-application%7CHEREPublicTransit|cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20start">Launch Application</a>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Claunch-application%7CHEREPublicTransit|cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20node%20token.js%20%26%26%20node%20server.js">Launch Application</a>
          </div>
       </div>
    </div>
@@ -351,9 +369,9 @@
          <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
          <a class="button is-dark is-medium afterbutton" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=HEREPublicTransit" >Stop Application</a>
          <p class="afterbutton">The stage is yours!</p>
-         <a class="button is-dark is-medium afterbutton" title="Explore the Code" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit/services/service.js">Explore Code</a>
+         <a class="button is-dark is-medium afterbutton" title="Explore the Code" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit/src/App.js">Explore Code</a>
          <p class="afterbutton ">To view the changes you've made, re-launch the application</p>
-         <a class="button is-dark is-medium afterbutton" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Crelaunch-application%7CHEREPublicTransit|cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20start">Re-Launch Application</a>
+         <a class="button is-dark is-medium afterbutton" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Crelaunch-application%7CHEREPublicTransit|cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20install%20%26%26%20export%20REACT_APP_mode=dev%20%26%26%20npm%20start">Re-Launch Application</a>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?

@@ -290,20 +290,16 @@
    </div>
         <div class="assetdetails">
             <p style="font-size:24px">Learning Resources</p>
-            <ul>
-            <li><a href="https://developer.ibm.com/learningpaths/data-quality-ai-toolkit/">Get started with Data Quality for AI API with this learning path</a></li>
-            </ul>
+            <p><a href="https://developer.ibm.com/learningpaths/data-quality-ai-toolkit/">Get started with Data Quality for AI API with this learning path</a></p>
             <br>
             <p style="font-size: 24px;">Included components</p>
-            <ul>
-            <li><a href="https://developer.ibm.com/apis/catalog/dataquality4ai--data-quality-for-ai/Introduction">Data Quality for AI API</a></li>
-            </ul>
+            <p><a href="https://developer.ibm.com/apis/catalog/dataquality4ai--data-quality-for-ai/Introduction">Data Quality for AI API</a></p>
             <br>
-            <p style="font-size: 24px;">Pre-requisites</p>
+            <p style="font-size: 24px;">Prerequisites</p>
             <p>Obtain API credentials,</p>
             <ul>
-            <li>Subscribe to the <a title= "Data Quality" href="https://developer.ibm.com/apis/catalog/dataquality4ai--data-quality-for-ai/Introduction">Data Quality for AI Product</a></li>
-            <li>Check out <a title= "My Subscriptions" href="https://developer.ibm.com/profile/myapis">API Subscriptions</a></li>
+            <li>Subscribe to the Data Quality for AI Product</a></li>
+            <li>Check out API Subscriptions</a></li>
             <li>Select Data Quality for AI to proceed</li>
             <li>You can obtain your Client ID/Secret, if not, Generate an API Key</li>
             </ul>

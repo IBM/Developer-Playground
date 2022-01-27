@@ -198,7 +198,7 @@
   {
     float: right;
     width: 45%;
-    background-color:#0072C3;
+    background-color:#525252;
     min-height: 300px;
     padding: 20px;
     padding-top: 2.5%;

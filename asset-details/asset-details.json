@@ -18,9 +18,9 @@
 		"description": "Use speech-to-text, advanced natural language processing, and tone analysis to extract insights from video files."
 	},
 	{
-		"id": "bank-loan-application",
-		"name": "Bank Loan Application",
-		"title": "bank-loan-application",
+		"id": "risk-prediction-for-bank-loans",
+		"name": "Risk Prediction for Bank Loans",
+		"title": "risk-prediction-for-bank-loans",
 		"description": "Analyse and Predict risks involved when trying to approve loans."
 	},
 	{
@@ -36,9 +36,9 @@
 		"description": "Use IBM Watson ML to solve a business problem and predict customer churn using a Telco customer churn data set"
 	},
 	{
-		"id": "weather-data-assistant-travel",
+		"id": "weather-data-assistant-for-travel",
 		"name": "Weather Data Assistant for Travel",
-		"title": "weather-data-assistant-travel",
+		"title": "weather-data-assistant-for-travel",
 		"description": "Get to know weather trends of a location from a set of GIS information"
 	}
 ]

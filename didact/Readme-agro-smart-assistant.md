@@ -343,7 +343,7 @@
       <div class="container right">
          <div class="content">
             <p>Click `Get the code` to clone the code to your playground session as application's source code is needed.</p>
-            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cclone-repo%7Cnodejs%20terminal|git%20clone%20-b%20agro-chatbot%20https://github.com/SuyashGupte/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant">Get the Code</a>
+            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cclone-repo%7Cnodejs%20terminal|git%20clone%20-b%20agro-chatbot%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant">Get the Code</a>
          </div>
       </div>
       <div class="container right">

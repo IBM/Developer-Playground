@@ -25,6 +25,7 @@ const anomalyDetect = async ({
     labeling_method,
     labeling_threshold,
     time_column,
+    recent_data
 }) => {
     return new Promise(async function (resolve, reject) {
         try {
@@ -76,6 +77,8 @@ const anomalyDetect = async ({
                 labeling_threshold
             }
         }
+        if(prediction_type === "recent")
+            formData.recent_data = recent_data
         console.log(formData)
         const options = {
             method: 'POST',

@@ -1,3 +1,4 @@
+
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -182,7 +183,7 @@
   }
   .header
   {
-    background-image: url('https://github.com/IBM/Developer-Playground/blob/master/didact/images/data-quality.png?raw=true');
+   background-image: url('https://github.com/IBM/Developer-Playground/blob/development/didact/images/weather.png?raw=true');
     background-position: right;
     width: 100%;
     height: fixed;
@@ -274,87 +275,111 @@
 </head>
 <body>
   <div class="apptitle"> 
-    Data Quality for AI Asset
+    Weather Data Assistant for Travel
   </div>
     <div class="subheading">
-    A systematic way to assess and remediate data with well-specified APIs
+    Get to know weather trends of a location from a set of GIS information
   </div>
    <div class="header">
-      <div class="left-content" style="float: left">
-      <div>
-        Quality data can significantly reduce model building time, streamline data preparation efforts and improve the overall reliability of the AI pipeline.
-      </div>
-       <div>
-            The Data Quality for AI is an integrated toolkit that provides various data profiling and quality estimation metrics to assess the quality of ingested data in a systematic and objective manner. The pre-build application will help you to understand and leveraged API usage in the real world - build, configure, and explore an application in an interactive mode.          </div>
-      </div>
+       <div class="left-content">
+            <div>
+              Choosing a travel destination is by far one of the most exciting parts of trip planning. However, understanding weather trends and conditions of the location helps to make informed decisions to plan a visit. Explore the weather forecast on a daily, hourly, and intraday basis. The weather application allows you to understand the weather's impact on your travel itinerary.
+         </div>
+         <div>
+            Showcasing an application to understand the best of Weather conditions using weather Forecast & Historical data by using APIs by Here Maps.
+         </div>
+      </div> 
    </div>
-        <div class="assetdetails">
-            <p style="font-size:24px">Learning Resources</p>
-            <p><a href="https://developer.ibm.com/learningpaths/data-quality-ai-toolkit/">Get started with Data Quality for AI API with this learning path</a></p>
+   <br>
+   <br>
+    <div class="assetdetails">
+            <p style="font-size: 24px;">Learning Resources</p>
+            <ul>
+            <li><a href="https://developer.ibm.com/apis/catalog/weather--weather-forecast-apis/Weather%20Company%20Data%20-%20API%20Common%20Usage%20Guide">Weather Forecast APIs</a></li>
+            <li><a href="https://developer.ibm.com/apis/catalog/weather--environmental-intelligence-suite_historical-apis/Weather%20Company%20Data%20-%20API%20Common%20Usage%20Guide">Historical APIs</a></li>
+            </ul>
             <br>
-            <p style="font-size: 24px;">Included Components</p>
-            <p><a href="https://developer.ibm.com/apis/catalog/dataquality4ai--data-quality-for-ai/Introduction">Data Quality for AI API</a></p>
+            <p style="font-size: 24px;">API components</p>
+            <ul>
+            <li><a href="https://developer.ibm.com/apis/catalog/weather--weather-forecast-apis/Introduction">Weather Forecast APIs</a></li>
+            <li><a href="https://developer.ibm.com/apis/catalog/weather--environmental-intelligence-suite_historical-apis/Introduction">Historical APIs</a></li>
+            <li><a href="https://developer.ibm.com/apis/catalog/heremaps--geocoding-and-search-api-v7/Introduction">HERE Geocoding and Search API</a></li>
+            <li><a href="https://developer.ibm.com/apis/catalog/heremaps--here-public-transit-api/Introduction">HERE Public Transit API</a></li>
+            <li><a href="https://developer.here.com/documentation/map-tile/dev_guide/topics/quick-start.html">HERE Maps API</a></li>
+            </ul>
             <br>
             <p style="font-size: 24px;">Prerequisites</p>
-            <p>Obtain API credentials,</p>
-            <ul>
-            <li>Subscribe to the Data Quality for AI Product</a></li>
-            <li>Check out API Subscriptions</a></li>
-            <li>Select Data Quality for AI to proceed</li>
-            <li>You can obtain your Client ID/Secret, if not, Generate an API Key</li>
-            </ul>
+            <p>Sign up for a Weather Company Data trial </p>
+            <p style="margin-top:-16px;">(It might take up to 48 hours to get the API provisioned)</p>
+            <p>Subscribe to the HERE Public Transit API</p>
+            <ol>
+            <li>Sign up as HERE Developer</li>
+            <li>Login to your HERE account, navigate to Projects > REST </li>
+            <li>Go to OAuth2.0 > Generate App and click 'Create credentials' </li>
+            <li>'Access Key ID' and 'Access Key Secret' is your Client ID and Secret</li>
+            <li>Proceed to the 'API Keys' section and create your API Key</li>
+            </ol>
             <br>
             <p style="font-size: 24px;">Instructions</p>
         </div>
-
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
-            <p>Clone the code to the Technology Sandbox session</p>
-            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cget-code%7Cdata-quality|git%20clone%20-b%20DART%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/data-quality/">Get the Code</a>
+            <p>Clone the application source code</p>
+            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=weather%7Cget-code%7Cweather|git%20clone%20-b%20weather%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/weather/">Get the Code</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Build the application</p>
-            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cbuild-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install%20--production">Build the Application</a>
+            <p>Start to build the application</p>
+            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=weather%7Cbuild-application%7Cweather%7Ccd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20npm%20config%20set%20@here:registry%20https://repo.platform.here.com/artifactory/api/npm/maps-api-for-javascript/%20%26%26%20npm%20install%20--production">Build Application</a>
          </div>
-      </div>
+      </div>     
       <div class="container right">
          <div class="content">
-            <p>Configure the application. See prerequisites </p>
-            <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=data-quality%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/.env">Configure the Application</a>
+            <p>Configure the application. See prerequisites</p>
+            <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=weather%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant/.env">Configure Application</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
             <p>Launch the application</p>
-            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Claunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20node%20server.js">Launch the Application</a>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=weather%7Claunch-application%7Cweather|cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20node%20token.js%20%26%26%20node%20server.js">Launch the Application</a>
+         </div>
+      </div>
+        <div class="container right">
+         <div class="content">
+            <p>Integrating ‘HERE Geocoding and Maps’ to get weather data</p>
+            <a class="button is-dark is-medium" title="Install HERE Features" href="didact://?commandId=extension.sendToTerminal&text=weather%7Claunch-application%7Cweather|cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20mv%20here-components/airport.js%20here-components/hotels.js%20here-components/transit.js%20here-components/progcomp.js%20src/components%20%26%26%20cp%20here-components/App.js%20src/App.js">Integrate Features</a>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>Launch the updated application </p>
+            <a class="button is-dark is-medium" title="Launch" href="didact://?commandId=extension.sendToTerminal&text=weather%7Crelaunch-application%7Cweather|cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20npm%20install%20%26%26%20export%20REACT_APP_mode=dev%20%26%26%20npm%20start">Launch the Application</a>
          </div>
       </div>
    </div>
    <br>
-   <div class="assetdetails">
-    <p style="font-size: 24px;">Explore the APIs</p>
+      <div class="assetdetails">
+    <p style="font-size: 24px;">Stop and cleanup services</p>
     <p>Once you are done or would like to edit or explore the application, make sure to stop the services</p>
    </div>
-
    <div class="footer">
-      <div class="content" style="padding:30px;padding-left:60px;padding-bottom:0px;">
+<div class="content" style="padding:30px;padding-left:60px;margin-right:80px;padding-bottom:0px;">
          <p>Stop the services</p>
-         <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=data-quality" >Stop Application</a>
+<a class="button is-dark is-medium afterbutton" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=weather" >Stop Application</a>
          <p class="afterbutton">Explore and update the code as per your requirement</p>
-         <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=data-quality%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/src/App.js">Explore the Code</a>
-         <p class="afterbutton ">Re-launch the application to experience the code changes you have made</p>
-         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Crelaunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install%20--only=dev%20%26%26%20rm%20-rf%20build%20%26%26%20npm%20run%20build%20%26%26%20node%20server.js">Re-Launch the Application</a>
+         <a class="button is-dark is-medium afterbutton" title="Explore the Code" href="didact://?commandId=extension.openFile&text=weather%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant/src/App.js">Explore Code</a>
+         <p class="afterbutton ">Re-launch the application with the updated code</p>
+         <a class="button is-dark is-medium afterbutton" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=weather%7Crelaunch-application%7Cweather|cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20npm%20install%20%26%26%20export%20REACT_APP_mode=dev%20%26%26%20npm%20start">Re-Launch Application</a>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
-            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/DART" target="_blank">Github Repository</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/weather/WeatherDataAssistant">Github Repository</a></span>
          </p>
          <div class="image-btn">
-            <a class="image-link" href="didact://?commandId=extension.openURL&text=data-quality%7Cview-product-details%7Chttps://www.ibm.com/products/dqaiapi
-               " target="_blank">
+<a class="image-link" href="didact://?commandId=extension.openURL&text=weather%7Cview-product-details%7Chttps://docs.google.com/document/d/15Ru_3wdMgpbM4aOCm-4qNAnRfjx2w-Ruw3lnr8Hnodk/edit" target="_blank">
                View Product Details 
                <span>
                   <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">
@@ -363,7 +388,7 @@
                   </svg>
                </span>
             </a>
-            <a class="image-link" href="didact://?commandId=extension.openURL&text=data-quality%7Cget-trial-subscription%7Chttps://www.ibm.com/account/reg/us-en/signup?formid=urx-50307" target="_blank">
+  <a class="image-link" href="didact://?commandId=extension.openURL&text=weather%7Cget-trial-subscription%7Chttps://epwt-www.mybluemix.net/software/support/trial/cst/welcomepage.wss?siteId=1525&tabId=4159&w=1&_ga=2.232934494.1143069578.1643043347-1238955782.1642421092" target="_blank">
                Get Trial Subscription 
                <span>
                   <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25" viewBox="0 0 32 32" aria-hidden="true">

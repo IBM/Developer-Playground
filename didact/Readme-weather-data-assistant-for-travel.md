@@ -183,11 +183,10 @@
   }
   .header
   {
-   background-image: url('https://github.com/IBM/Developer-Playground/blob/development/didact/images/weather.png?raw=true');
+    background-image: url('https://github.com/IBM/Developer-Playground/blob/development/didact/images/weather.png?raw=true');
     background-position: right;
-    width: 100%;
-    height: fixed;
-    min-height: 320px;
+    width: 95%;
+    min-height: 70px;
     display: inline-block;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -199,11 +198,10 @@
   }
   .header .left-content
   {
-    width: 45%;
-    background-color:#2a67f5;
-    min-height: 320px;
-    padding: 20px;
-    /* padding-top: 2.5%; */
+   float: left;
+    width: 50%;
+    background-color: #525252;
+    min-height: 270px;
     font-size: 16px;
   }
   .header .left-content h4
@@ -270,26 +268,34 @@
   a:visited{
       color: #BE95FF;
   }
-
+  .description{
+    margin-left: 30px;
+    margin-top: 16px;
+  }
 </style>
 </head>
 <body>
-  <div class="apptitle"> 
-    Weather Data Assistant for Travel
-  </div>
-    <div class="subheading">
-    Get to know weather trends of a location from a set of GIS information
-  </div>
    <div class="header">
-       <div class="left-content">
+        <div class="left-content">
+            <div class="apptitle" style="font-size: 28px; color: white; padding-top:35px;">
+            Weather Data Assistant for Travel
+            </div>
+            <div class="subheading">
+            Get to know weather trends of a location from a set of GIS information
+            </div>
+        </div>
+    </div>
+   <br>
+   <br>
+    <div class="description">
             <div>
               Choosing a travel destination is by far one of the most exciting parts of trip planning. However, understanding weather trends and conditions of the location helps to make informed decisions to plan a visit. Explore the weather forecast on a daily, hourly, and intraday basis. The weather application allows you to understand the weather's impact on your travel itinerary.
-         </div>
-         <div>
+            </div>
+            <br>
+            <div>
             Showcasing an application to understand the best of Weather conditions using weather Forecast & Historical data by using APIs by Here Maps.
-         </div>
-      </div> 
-   </div>
+            </div>
+    </div>
    <br>
    <br>
     <div class="assetdetails">

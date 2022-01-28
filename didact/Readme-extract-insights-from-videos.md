@@ -197,7 +197,7 @@
   }
   .header .right-content
   {
-    float: right;
+    float: left;
     width: 45%;
     background-color:#525252;
     min-height: 300px;
@@ -254,7 +254,7 @@
     margin-top: 0px;
     margin-bottom: 0px;
     font-size: 16px;
-    color: grey;
+    color: #c1c7cd;;
   }
   .no-hover:hover
   {
@@ -294,7 +294,7 @@
       Video Analysis Application
     </div>
     <div class="subheading">
-            Use speech-to-text, advanced natural language processing, and tone analysis to extract insights from video files.
+            Use speech-to-text, advanced natural language processing, and tone analysis to extract meaningful insights from video files.
     </div>
     <div class="header">
       <div class="right-content" style="float: left;">
@@ -313,14 +313,14 @@
     <div class="section">
     <p style="font-size:24px">Execution Flow</p>
         <ol>
-        <li> User uploads recorded video file of the virtual meeting or a virtual classroom in the application.</li>
-        <li>FFMPG Library extracts audio from the video file.</li>
-        <li>Watson Speech To Text transcribes the audio to give a diarized textual output.</li>
+        <li> Upload a video to the application.</li>
+        <li>FFMPG Library extracts audio from the uploaded video file.</li>
+        <li>Watson Speech To Text transcribes the audio to get a diarized textual output.</li>
         <li>Watson Language Translator (Optionally) translates other languages into English transcript.</li>
-        <li>Watson Tone Analyzer analyses the transcript and picks up top positive statements form the transcript.</li>
+        <li>Watson Tone Analyzer analyses the transcript and picks up the top positive statements from the transcript.</li>
         <li>Watson Natural Language Understanding reads the transcript to identify key pointers from the transcript and get the sentiments and emotions.</li>
-        <li>The key pointers and summary of the video is then presented to the user in the application.</li>
-        <li>The user can then download the textual insights.</li>
+        <li>The key pointers and summary of the video are presented in a consolidated report.</li>
+        <li>Download the textual insights as a document (PDF).</li>
         </ol>
     </div>
     <div class="section">
@@ -347,12 +347,13 @@
    </div>
    </div>
     <div class="section">
-    <p style="font-size:24px">Instructions</p>
+    <p style="font-size:24px">Instructions.</p>
+    <p style="font-size:16px">Click each button, observe the commands being executed before moving out to the next instruction.</p>
    </div>   
    <div class="timeline">
       <div style="margin-top:0px; padding-top:0px;"class="container right">
          <div class="content">
-            <p>To begin, we'll need to open the terminal.</p>
+            <p>Launch a terminal to start building the application</p>
             <a class="button is-dark is-medium" title="Open Terminal" href="didact://?commandId=terminal-for-nodejs-container:new">Open Terminal</a>
          </div>
       </div>
@@ -370,14 +371,15 @@
       </div>
       <div class="container right">
          <div class="content">
-            <p>Create these IBM Watson Services and configure the credentials in the Asset with just a click of button.</p>
+            <p>Create and Configure IBM Watson Services</p>
+            <p>(Make sure to follow the Prerequisite and watch out for the terminal messages, if any)</p>
             <a class="button is-dark is-medium" title="Create IBM Watson Services" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh" >Create IBM Watson Services</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Start the Application</p>
-            <a class="button is-dark is-medium" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$python3.8%20app.py">Build and Run</a>
+            <p>Start the Application. View the result in the preview window</p>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$python3.8%20app.py">Launch the Application</a>
          </div>
       </div>
    </div>

@@ -52,15 +52,27 @@ client.import_assets.start(space_id=space_id,
 
 
 details = client.import_assets.get_details(space_id=space_id)
-print("Waiting for import to finsh...")
+print("Waiting for import to finish...")
 while details["resources"][0]["entity"]["status"]["state"] != "completed" and details["resources"][0]["entity"]["status"]["state"] != "failed":
     details = client.import_assets.get_details(space_id=space_id)
-print("finished")
 
 asset_details = client.repository.get_details()
 for resource in asset_details["models"]["resources"] :
     if(resource["metadata"]["name"] == model_name):
         with open(".env", "a") as f:
             f.write("\nMODEL_ID="+resource["metadata"]["id"])
+        print("Deployment Space with ID " + space_id + " and name"+ deployment_space_name +" containing model " + model_name + " is created successfully.")
+    else:
+        print("Model Import Failed!!!.")
 
-print("Deployment Space with ID " + space_id + " containing model " + model_name + " is created successfully.")
+
+config = dotenv_values(".env") 
+try:
+    published_model_id=config["MODEL_ID"]
+except:
+    "Deployment Space with ID " + space_id + " and name"+ deployment_space_name +"is created successfully."
+    print("##########################")
+    print("Model Import Failed!!!.")
+    print("##########################\n\n")
+    print("Deployment Space Name: "+deployment_space_name+"\nPlease follow the steps given in the error dropdown!\n")
+

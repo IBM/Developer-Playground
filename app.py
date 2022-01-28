@@ -233,8 +233,7 @@ class riskForm():
             result_vals = result["predictions"][0]["values"]
 
             result_dict = dict(zip(result_keys, result_vals[0]))
-
-            loan_risk = result_dict["predictedLabel"].lower()
+            loan_risk = result_dict["prediction"]
             no_percent = result_dict["probability"][0] * 100
             yes_percent = result_dict["probability"][1] * 100
             flash('Percentage of this loan representing risk is: %.0f%%'

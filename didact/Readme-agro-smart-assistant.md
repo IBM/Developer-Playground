@@ -182,27 +182,24 @@
   .header
   {
     background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/agro-chatbot.jpeg');
-    width: 100%;
-    height: auto;
-    min-height: 350px;
+    background-position: right;
+    width: 95%;
+    min-height: 70px;
     display: inline-block;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 30px;
     margin-right: 30px;
-    background-size: contain;
-    background-position-x:80%;
-    background-repeat:no-repeat;
     max-width: 1200px;
+    background-repeat: no-repeat;
+    background-size: 700px 500px;
   }
   .header .right-content
   {
-    float: right;
-    width: 45%;
-    background-color:#525252;
-    min-height: 350px;
-    padding: 20px;
-    padding-top: 8%;
+    float: left;
+    width: 50%;
+    background-color: #525252;
+    min-height: 270px;
     font-size: 16px;
   }
   .header .right-content h4
@@ -291,21 +288,23 @@
 </style>
 </head>
 <body>
-  <div class="apptitle"> 
+  <div class="header">
+      <div class="right-content" style="padding-top:40px;">
+      <div class="apptitle" style="font-size: 28px; color: white;"> 
     Agro Smart Assistant
   </div>
   <div class="subheading">
     Use Machine Learning in Virtual Assistants to automate crop recommendation.
   </div>
-  <div class="header">
-      <div class="right-content" style="float: left; padding-top:40px;">
-         <div>
-          Precision agriculture is in trend nowadays. It helps the farmers to get informed decision about the farming strategy. Precision agriculture is a modern farming technique that uses research data of soil characteristics, soil types, crop yield data collection and suggests the farmers the right crop based on their site-specific parameters. This reduces the wrong choice on a crop and increase in productivity.
-        </div>
-        <div>
-          Now a days businesses also use chatbots to increase productivity and provide a better customer experience. This demo aims to automate the crop selection process using Watson Machine Learning and Cloud functions.
-        </div>
      </div>
+   </div>
+   <div class="section" style="font-size:16px; margin-top:-20px">
+  <p>
+          Precision agriculture is in trend nowadays. It helps the farmers to get informed decision about the farming strategy. Precision agriculture is a modern farming technique that uses research data of soil characteristics, soil types, crop yield data collection and suggests the farmers the right crop based on their site-specific parameters. This reduces the wrong choice on a crop and increase in productivity.
+        </p>
+        <p>
+          Now a days businesses also use chatbots to increase productivity and provide a better customer experience. This demo aims to automate the crop selection process using Watson Machine Learning and Cloud functions.
+        </p>
    </div>
    <div class="section">
     <p style="font-size:24px">Learning Resources</p>
@@ -527,7 +526,7 @@
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
             <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/Anam-Mahmood/Unlock-the-Power-of-Machine-Learning-in-Virtual-Assistants-to-automate-Loan-Applications" target="_blank">Github Repository</a></span>
-            <span style="font-size:15px;margin-top:0px;display:block;">Need Help? Contact<a href="https://github.com/IBM/Developer-Playground-Support/issues/new/choose" target="_blank">Help & Support</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">Need Help? Contact <a href="https://github.com/IBM/Developer-Playground-Support/issues/new/choose" target="_blank">Help & Support</a></span>
          </p>
       </div>
    </div>

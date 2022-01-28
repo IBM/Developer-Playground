@@ -184,9 +184,8 @@
   {
     background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/churn-prediction/didact/unnamed.jpg');
     background-position: right;
-    width: 100%;
-    height: fixed;
-    min-height: 320px;
+    width: 95%;
+    min-height: 70px;
     display: inline-block;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -198,12 +197,10 @@
   }
   .header .right-content
   {
-    float: right;
-    width: 45%;
-    background-color:#525252;
-    min-height: 320px;
-    padding: 20px;
-    padding-top: 2.5%;
+    float: left;
+    width: 50%;
+    background-color: #525252;
+    min-height: 270px;
     font-size: 16px;
   }
   .header .right-content h4
@@ -276,25 +273,21 @@
 </style>
 </head>
 <body>
-    <div class="apptitle">
+    <div class="header">
+        <div class="right-content" style="padding-top:40px;">
+        <div class="apptitle" style="font-size: 28px; color: white;">
       Customer Churn Prediction Application
     </div>
   <div class="subheading">
     Use IBM Watson ML to solve a business problem and predict customer churn using a Telco customer churn data set
   </div>
-    <div class="header">
-        <div class="right-content" style="float: left; padding-top:30px;">
-            <div>
-            Customer churn, when a customer ends their relationship with a business, is one of the most basic factors in determining the revenue of a business. 
-            </div>
-            <div>
-            You need to know which of your customers are loyal and which are at risk of churning, and you need to know the factors that affect these decisions from a customer perspective. 
-            </div>
-            <div>
-            This application explains how to deploy a machine learning model and use it to predict whether a customer is at risk of churning. 
-            </div>
         </div>
     </div>
+    <div class="section" style="font-size:16px; margin-top:-20px">
+  <p>Customer churn, when a customer ends their relationship with a business, is one of the most basic factors in determining the revenue of a business. </p>
+  <p>You need to know which of your customers are loyal and which are at risk of churning, and you need to know the factors that affect these decisions from a customer perspective. </p>
+  <p>This application explains how to deploy a machine learning model and use it to predict whether a customer is at risk of churning. </p>
+  </div>
    <div class="section">
     <p style="font-size:24px">Learning Resources</p>
     <div class="right-content">

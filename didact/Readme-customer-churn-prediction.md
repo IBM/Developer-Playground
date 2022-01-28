@@ -182,7 +182,7 @@
   }
   .header
   {
-    background-image: url('https://s3.us.cloud-object-storage.appdomain.cloud/developer/default/patterns/create-a-web-based-intelligent-bank-loan-application-for-a-loan-agent/header.jpg');
+    background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/churn-prediction/didact/unnamed.jpg');
     background-position: right;
     width: 100%;
     height: fixed;
@@ -272,23 +272,28 @@
   a:visited{
       color: #BE95FF;
   }
-
 }
 </style>
 </head>
-  <body>
+<body>
     <div class="apptitle">
-      Risk Prediction for Bank Loans application
+      Customer Churn Prediction Application
     </div>
   <div class="subheading">
-    Build a web application using Python Flask to analyze risks involved when trying to approve loans.
+    Use IBM Watson ML to solve a business problem and predict customer churn using a Telco customer churn data set
   </div>
     <div class="header">
-      <div class="right-content" style="float: left; padding-top:40px;">
-        <div>
-            In a typical bank loan department, the loan agent receives an application from a customer. The agent then considers several factors to decide whether the loan can be approved or should be rejected. </br></br>To help ease this decision-making process, this solution explains how to build a web-based application using Python Flask, that the loan agent can use to make these decisions. This will enable the loan agent to analyze the risk involved while trying to approve the loan.
+        <div class="right-content" style="float: left; padding-top:30px;">
+            <div>
+            Customer churn, when a customer ends their relationship with a business, is one of the most basic factors in determining the revenue of a business. 
+            </div>
+            <div>
+            You need to know which of your customers are loyal and which are at risk of churning, and you need to know the factors that affect these decisions from a customer perspective. 
+            </div>
+            <div>
+            This application explains how to deploy a machine learning model and use it to predict whether a customer is at risk of churning. 
+            </div>
         </div>
-      </div>
     </div>
    <div class="section">
     <p style="font-size:24px">Learning Resources</p>
@@ -323,14 +328,14 @@
       <div class="container right">
         <div class="content">
           <p>Clone the GitHub repository</p>
-          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cget-code%7Cnodejs%20terminal|git%20clone%20-b%20bank-loan%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/bank-loan/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/bank-loan/">Get Code</a>
+          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cget-code%7Cnodejs%20terminal|git%20clone%20-b%20churn-prediction%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/churn-prediction/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/churn-prediction/">Get Code</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
           <p>Create IBM Services</p>
           <p>Login to your IBM Cloud account to create services.</p>
-          <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cibm-login%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan%20%26%26%20chmod%20%2Bx%20.%2Flogin.sh%20%26%26%20.%2Flogin.sh">Login to IBM Cloud</a>        
+          <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cibm-login%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction%20%26%26%20chmod%20%2Bx%20.%2Flogin.sh%20%26%26%20.%2Flogin.sh">Login to IBM Cloud</a>        
         </div>
       </div>
       <div class="container right">
@@ -343,42 +348,42 @@
         <div class="content">
             <p>IBM Cloud API key is required to deploy the model in the deployment space.</p>
             <p>Click the below button to generate API key via IBM Cloud CLI commands which will be saved in a key_file.</p>
-            <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cgenerate-api-token%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan;ibmcloud%20iam%20api-key-create%20ApiKey-bankLoan%20-d%20'this is API key for bankLoan'%20--file%20${CHE_PROJECTS_ROOT}/bank-loan/key_file">Generate API key</a>
+            <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cgenerate-api-token%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;ibmcloud%20iam%20api-key-create%20ApiKey-churnPred%20-d%20'this is API key for churnPred'%20--file%20${CHE_PROJECTS_ROOT}/churn-prediction/key_file">Generate API key</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
           <p>Install requirements</p>
-          <a class="button is-dark is-medium" title="Install Requirements" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cinstall-requirements%7Cnodejs%20terminal|cd%20bank-loan;pip3.8%20install%20-r%20requirements.txt">Install Requirements</a>
+          <a class="button is-dark is-medium" title="Install requirements" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cinstall-requirements%7Cnodejs%20terminal|cd%20churn-prediction;pip3.8%20install%20-r%20requirements.txt">Install requirements</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
           <p>Create a Deployment Space on Cloud pak for Data</p>
-          <a class="button is-dark is-medium" title="Create Deployment Space" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-deployment-space%7Cnodejs%20terminal|cd%20bank-loan;python3.8%20create_space.py">Create Deployment Space</a>
+          <a class="button is-dark is-medium" title="Create Deployment Space" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-deployment-space%7Cnodejs%20terminal|cd%20churn-prediction;python3.8%20create_space.py">Create Deployment Space</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
-          <p>Click on the below button to deploy the model to the deployment space.</p>
-           <a class="button is-dark is-medium" title="Open File" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cdeploy-model%7Cnodejs%20terminal|python3.8%20DeployModel/DeploySavedModel.py">Deploy Model</a>
+          <p>Click on the below button to train and deploy the model to the deployment space.</p>
+           <a class="button is-dark is-medium" title="Deploy Model" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cdeploy-model%7Cnodejs%20terminal|python3.8%20DeployModel/DeployMLModel.py">Deploy Model</a>
         </div>
       </div>
-      <div class="container right">
-        <div class="content">
-          <p>Launch Application</p>
-          <a class="button is-dark is-medium" title="Launch Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cstart-app%7Cnodejs%20terminal|python3.8%20app.py">Launch Application</a>
+        <div class="container right">
+            <div class="content">
+                <p>Start Application</p>
+                <a class="button is-dark is-medium" title="Start Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cstart-app%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;npm%20install;npm%20start">Start Application</a><br>
+            </div>
         </div>
-      </div>
     </div>
     <div class="footer">
       <div class="content" style="padding:30px;padding-left:60px;padding-bottom: 0px;">
         <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
         <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=nodejs%20terminal">Stop Application</a>
         <p class="afterbutton">The stage is yours!</p>
-        <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=nodejs%20terminal%7Copen-file%7C${CHE_PROJECTS_ROOT}/bank-loan/templates/input.html">Explore the Code</a>
+        <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=nodejs%20terminal%7Copen-file%7C${CHE_PROJECTS_ROOT}/churn-prediction/client/src/App.js">Explore the Code</a>
         <p class="afterbutton ">To view the changes you've made, re-launch the application</p>
-        <a class="button is-dark is-medium" title="Re-Launch Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Crestart-app%7Cnodejs%20terminal|python3.8%20app.py">Re-Launch Application</a>
+        <a class="button is-dark is-medium" title="Re-Launch Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Crestart-app%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;npm%20start">Re-Launch Application</a>
         <p style="margin-top:10px;"> Click on
           <bold>Clean up</bold> to delete the IBM Cloud services that were created.
         </p>
@@ -390,7 +395,7 @@
       <div class="image-div">
         <p class="image-content">Want to explore this project more?
           <span style="font-size:15px;margin-top:0px;display:block;">Head over to the
-            <a href="https://github.com/IBM/Developer-Playground/tree/bank-loan">Github Repository</a>
+            <a href="https://github.com/IBM/Developer-Playground/tree/churn-prediction">Github Repository</a>
           </span>
         </p>
         <a class="image-link" href="https://developer.ibm.com/patterns/create-a-web-based-intelligent-bank-loan-application-for-a-loan-agent/" target="_blank">

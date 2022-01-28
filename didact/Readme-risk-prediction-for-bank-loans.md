@@ -278,7 +278,7 @@
 </head>
   <body>
     <div class="apptitle">
-      Intelligent Bank Loan application
+      Risk Prediction for Bank Loans application
     </div>
   <div class="subheading">
     Build a web application using Python Flask to analyze risks involved when trying to approve loans.

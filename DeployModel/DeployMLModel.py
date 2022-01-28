@@ -303,14 +303,7 @@ print('Average precision-recall score: {0:0.2f}'.format(
 # plt.legend(loc=0)
 
 #bring model id and deployment space name from .env file
-f = open("key_file", "r")
-obj=json.loads(f.read())
-apikey=obj["apikey"]
-with open(".env", "a") as f:
-    f.write("\n#API key\API_KEY=\""+apikey+"\"\n")
-
 config = dotenv_values(".env") 
-published_model_id=config["MODEL_ID"]
 deployment_space_name=config["DEPLOYMENT_SPACE_NAME"]
 apikey=config["API_KEY"]
 model_name = config["MODEL_NAME"]

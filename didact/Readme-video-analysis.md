@@ -197,7 +197,7 @@
   }
   .header .right-content
   {
-    float: right;
+    float: left;
     width: 45%;
     background-color:#525252;
     min-height: 300px;
@@ -254,7 +254,7 @@
     margin-top: 0px;
     margin-bottom: 0px;
     font-size: 16px;
-    color: grey;
+    color: #c1c7cd;;
   }
   .no-hover:hover
   {
@@ -382,6 +382,7 @@
             <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$python3.8%20app.py">Launch the Application</a>
          </div>
       </div>
+   </div>
    <div class="footer">
       <div class="content" style="padding:30px;padding-left:60px;padding-bottom: 0px;">
          <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>

@@ -182,7 +182,7 @@
   }
   .header
   {
-    background-image: url('https://raw.githubusercontent.com/nupurnegi/didact/master/Didact/unnamed.jpg');
+    background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/master/Didact/unnamed.jpg');
     background-position: right;
     width: 100%;
     height: fixed;
@@ -328,14 +328,14 @@
       <div class="container right">
         <div class="content">
           <p>Clone the GitHub repository</p>
-          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cget-code%7Cnodejs%20terminal|git%20clone%20https://github.ibm.com/Nupur-Negi2/Churn-Prediction.git">Get Code</a>
+          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cget-code%7Cnodejs%20terminal|git%20clone%20-b%20churn-prediction%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/churn-prediction/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/churn-prediction/">Get Code</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
           <p>Create IBM Services</p>
           <p>Login to your IBM Cloud account to create services.</p>
-          <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cibm-login%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/Churn-Prediction%20%26%26%20chmod%20%2Bx%20.%2Flogin.sh%20%26%26%20.%2Flogin.sh">Login to IBM Cloud</a>        
+          <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cibm-login%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction%20%26%26%20chmod%20%2Bx%20.%2Flogin.sh%20%26%26%20.%2Flogin.sh">Login to IBM Cloud</a>        
         </div>
       </div>
       <div class="container right">
@@ -348,19 +348,19 @@
         <div class="content">
             <p>IBM Cloud API key is required to deploy the model in the deployment space.</p>
             <p>Click the below button to generate API key via IBM Cloud CLI commands which will be saved in a key_file.</p>
-            <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cgenerate-api-token%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/Churn-Prediction;ibmcloud%20iam%20api-key-create%20ApiKey-churnPred%20-d%20'this is API key for churnPred'%20--file%20${CHE_PROJECTS_ROOT}/Churn-Prediction/key_file">Generate API key</a>
+            <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cgenerate-api-token%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;ibmcloud%20iam%20api-key-create%20ApiKey-churnPred%20-d%20'this is API key for churnPred'%20--file%20${CHE_PROJECTS_ROOT}/churn-prediction/key_file">Generate API key</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
           <p>Install requirements</p>
-          <a class="button is-dark is-medium" title="Install requirements" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cinstall-requirements%7Cnodejs%20terminal|cd%20Churn-Prediction;pip3.8%20install%20-r%20requirements.txt">Install requirements</a>
+          <a class="button is-dark is-medium" title="Install requirements" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cinstall-requirements%7Cnodejs%20terminal|cd%20churn-prediction;pip3.8%20install%20-r%20requirements.txt">Install requirements</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
           <p>Create a Deployment Space on Cloud pak for Data</p>
-          <a class="button is-dark is-medium" title="Create Deployment Space" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-deployment-space%7Cnodejs%20terminal|cd%20Churn-Prediction;python3.8%20create_space.py">Create Deployment Space</a>
+          <a class="button is-dark is-medium" title="Create Deployment Space" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-deployment-space%7Cnodejs%20terminal|cd%20churn-prediction;python3.8%20create_space.py">Create Deployment Space</a>
         </div>
       </div>
       <div class="container right">
@@ -372,7 +372,7 @@
         <div class="container right">
             <div class="content">
                 <p>Start Application</p>
-                <a class="button is-dark is-medium" title="Start Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cstart-app%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/Churn-Prediction;npm%20install;npm%20start">Start Application</a><br>
+                <a class="button is-dark is-medium" title="Start Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cstart-app%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;npm%20install;npm%20start">Start Application</a><br>
             </div>
         </div>
     </div>
@@ -381,9 +381,9 @@
         <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
         <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=nodejs%20terminal">Stop Application</a>
         <p class="afterbutton">The stage is yours!</p>
-        <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=nodejs%20terminal%7Copen-file%7C${CHE_PROJECTS_ROOT}/Churn-Prediction/client/src/App.js">Explore the Code</a>
+        <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=nodejs%20terminal%7Copen-file%7C${CHE_PROJECTS_ROOT}/churn-prediction/client/src/App.js">Explore the Code</a>
         <p class="afterbutton ">To view the changes you've made, re-launch the application</p>
-        <a class="button is-dark is-medium" title="Re-Launch Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Crestart-app%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/Churn-Prediction;npm%20start">Re-Launch Application</a>
+        <a class="button is-dark is-medium" title="Re-Launch Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Crestart-app%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;npm%20start">Re-Launch Application</a>
         <p style="margin-top:10px;"> Click on
           <bold>Clean up</bold> to delete the IBM Cloud services that were created.
         </p>
@@ -395,7 +395,7 @@
       <div class="image-div">
         <p class="image-content">Want to explore this project more?
           <span style="font-size:15px;margin-top:0px;display:block;">Head over to the
-            <a href="https://github.ibm.com/Nupur-Negi2/Churn-Prediction.git">Github Repository</a>
+            <a href="https://github.com/IBM/Developer-Playground/tree/churn-prediction">Github Repository</a>
           </span>
         </p>
         <a class="image-link" href="https://developer.ibm.com/patterns/create-a-web-based-intelligent-bank-loan-application-for-a-loan-agent/" target="_blank">

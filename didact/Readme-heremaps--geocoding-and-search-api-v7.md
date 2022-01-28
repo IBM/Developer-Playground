@@ -184,27 +184,23 @@
   {
     background-image: url('https://github.com/IBM/Developer-Playground/blob/master/didact/images/banner-image.jpg?raw=true');
     background-position: right;
-    width: 100%;
-    height: auto;
-    min-height: 320px;
+    width: 95%;
+    min-height: 70px;
     display: inline-block;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 30px;
     margin-right: 30px;
     max-width: 1200px;
-    background-size: contain;
     background-repeat: no-repeat;
+    background-size: 700px 500px;
   }
   .header .left-content
   {
-    float: left;
-    width: 45%;
-    padding-top:40px;
-    background-color:#2a67f5;
-    min-height: 320px;
-    padding: 20px;
-    padding-top: 2.5%;
+   float: left;
+    width: 50%;
+    background-color: #525252;
+    min-height: 270px;
     font-size: 16px;
   }
   .header .left-content h4
@@ -271,49 +267,58 @@
   a:visited{
       color: #BE95FF;
   }
-
+  .description{
+    margin-left: 30px;
+    margin-top: 16px;
+  }
 </style>
 </head>
 <body>
-  <div class="apptitle"> 
-    HERE Technologies - Geocoding & Search
-  </div>
-  <div class="subheading">
-    HERE Geocoding and Search APIs
-  </div>
-   <div class="header">
+<div class="header">
       <div class="left-content">
-         <div> Here - What is Geocoding?
-          It is the process of converting addresses (like "Taj Mahal in Agra, Uttar Pradesh, India") into geographic spatial coordinates (like latitude 27.1751° N and longitude 78.0421° E), which you can use to place markers on a map or position the map. Reverse geocoding is the process of converting geographic coordinates into a human-readable postal address.</div>
-         <div> Want to know where you are? Head straight to the sample application developed using Here Geocoding and Search API, try it out yourself.</div>
-         <div> With the HERE Geocoding and Search API, users will be able to search for  </div>
-         <ul>
-            <li>points of interest with 400+ categories and address objects at different levels(house number, street, city, state, postal code, ...)</li>
-            <li>forward and reverse geocode address </li>
-            <li>geo-positions from the HERE map, and </li>
-            <li>access and analyse with Bring Your Own Data (BYOD)</li>
-         </ul>
+          <div class="apptitle" style="font-size: 28px; color: white; padding-top:35px;"> 
+             HERE APIs - Geocoding & Search
+          </div>
+          <div class="subheading">
+            API’s to create location-enabled applications
+          </div>
       </div>
-   </div>
-   <br/>
-   <br/>
+      </div>
+   <br>
+   <br>
+      <div class="description">
+          <div>
+            Geocoding is the process of transforming addresses (like "Taj Mahal in Agra, Uttar Pradesh, India") into geographic spatial coordinates (like latitude 27.1751° N and longitude 78.0421° E), where you can place markers on a map or position the map. Reverse geocoding is the process of converting geographic coordinates into a human-readable postal address.
+          </div>
+          <br>
+          <div>
+            With the HERE Geocoding and Search API, you can search for,
+          </div>
+          <ul>
+            <li>points of interest with 400+ categories and address objects at different levels(house number, street, city, state, postal code, ...)</li>
+            <li>forward and reverse geocode address</li>
+            <li>geo-positions from the HERE map</li>
+            <li>access and analyse with Bring Your Own Data (BYOD)</li>
+          </ul>
+      </div> 
+   <br>
+   <br>
     <div class="assetdetails">
             <p style="font-size: 24px;">Learning Resources</p>
-            <li>Get started with HERE Geocoding and Search API <a href="https://developer.ibm.com/apis/catalog/heremaps--geocoding-and-search-api-v7/Introduction">here</a></li>
+            <p><a href="https://developer.ibm.com/apis/catalog/heremaps--geocoding-and-search-api-v7/Introduction">Get started with HERE Geocoding and Search API</a></p>
         <br>
             <p style="font-size: 24px;">Included components</p>
-            <li><a href="https://developer.ibm.com/apis/catalog/heremaps--geocoding-and-search-api-v7/Introduction">HERE Geocoding and Search API</a></li>
+            <p><a href="https://developer.ibm.com/apis/catalog/heremaps--geocoding-and-search-api-v7/Introduction">HERE Geocoding and Search API</a></p>
             <br>
-            <p style="font-size: 24px;">Prerequisites</p>
-            <li>To run this application you will need to execute the following steps:</li><br>
-            <p>Obtain API credentials</p>
-            <li>Subscribe to the <a title="HEREGeocoding" href="https://developer.ibm.com/apis/catalog/heremaps--geocoding-and-search-api-v7/Introduction">HERE Geocoding and Services API</a></li>
-            <li>Sign up for HERE Developer </li>
-            <li>Once you're logged into your HERE account. Go to 'Projects' </li>
-            <li>Proceed to the 'REST' section </li>
-            <li>Click 'Generate App'. Under 'OAuth2.0' -> click 'Create credentials' </li>
-            <li>'Access Key ID' and 'Access Key Secret' would be your Client ID and Secret </li>
-            <br>
+           <p style="font-size: 24px;">Prerequisites</p>
+             <p>Subscribe to the HERE Geocoding</p>
+            <ol>
+            <li>Sign up as HERE Developer</li>
+            <li>Login to your HERE account, navigate to Projects > REST </li>
+            <li>Go to OAuth2.0 > Generate App and click 'Create credentials' </li>
+            <li>'Access Key ID' and 'Access Key Secret' is your Client ID and Secret</li>
+            <li>Proceed to the 'API Keys' section and create your API Key</li>
+            </ol>
             <br>
             <p style="font-size: 24px;">Instructions</p>
         </div>
@@ -321,37 +326,41 @@
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
-            <p>To begin, you will need the application's source code. Click `Get the code` to clone the code to your playground session.</p>
+            <p>Clone the application source code</p>
             <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=HEREGeocodingandSearch%7Cget-code%7CHEREGeocodingandSearch|git%20clone%20-b%20HERE%20--sparse%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/here-geocoding/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/here-geocoding/%20%26%26%20git%20sparse-checkout%20init%20--cone%20%26%26%20git%20sparse-checkout%20add%20HEREGeocodingandSearch">Get the Code</a> 
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>You've successfully cloned the code, so click `Build the application` to start the build process.</p>
+            <p>Start to build the application</p>
             <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREGeocodingandSearch%7CBUILD-APPLICATION%7CHEREGeocodingandSearch|cd%20${CHE_PROJECTS_ROOT}/here-geocoding/HEREGeocodingandSearch%20%26%26%20npm%20install%20--production">Build the Application</a>
-            <p class="afterbutton">  To obtain credentials and configure the application, complete the prerequisites</p>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Let's configure the application with our credentials</p>
+            <p>Configure the application. See prerequisites</p>
             <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=HEREGeocodingandSearch%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/here-geocoding/HEREGeocodingandSearch/.env">Configure the Application</a> 
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>You're all set to get started! </p>
+            <p>Launch the application </p>
             <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREGeocodingandSearch%7Claunch-application%7CHEREGeocodingandSearch|cd%20${CHE_PROJECTS_ROOT}/here-geocoding/HEREGeocodingandSearch%20%26%26%20node%20token.js%20%26%26%20node%20server.js">Launch the Application</a> 
          </div>
       </div>
    </div>
+   <br>
+   <div class="assetdetails">
+    <p>View the application in the preview window</p>
+    <p>Once you are done or would like to edit or explore the application, make sure to stop the services</p>
+   </div>
    <div class="footer">
       <div class="content" style="padding:30px;padding-left:60px;padding-bottom: 0px;">
-         <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
+         <p>Stop the services</p>
          <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=HEREGeocodingandSearch">Stop Application</a>
-         <p class="afterbutton">The stage is yours!</p>
+         <p class="afterbutton">Explore and update the code as per your requirement</p>
          <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=HEREGeocodingandSearch%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/here-geocoding/HEREGeocodingandSearch/src/App.js">Explore the Code</a>
-         <p class="afterbutton ">To view the changes you've made, re-launch the application</p>
+         <p class="afterbutton ">Re-launch the application to experience the application with the updated code</p>
          <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREGeocodingandSearch%7Crelaunch-application%7CHEREGeocodingandSearch|cd%20${CHE_PROJECTS_ROOT}/here-geocoding/HEREGeocodingandSearch%20%26%26%20npm%20install%20%26%26%20export%20REACT_APP_mode=dev%20%26%26%20npm%20start">Re-Launch the Application</a> 
       </div>
       <div class="image-div">

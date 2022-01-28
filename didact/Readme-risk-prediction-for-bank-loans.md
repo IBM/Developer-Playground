@@ -7,7 +7,7 @@
   body {
     background-color: #1a1a1a;
     font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     outline: none;
   }
   body {
@@ -97,9 +97,6 @@
     border-color: white;
     color: #fff;
     border: 1px solid white;
-    padding: 10px;
-    padding-left: 20px;
-    margin-bottom: 13px;
     border-radius: 0px;
     min-width: 180px;
     font-size: 14px;
@@ -121,12 +118,14 @@
     margin-top: 20px;
     padding: 0px;
     max-width: 1200px;
+    margin-left: 30px;
+    margin-right: 30px;
   }
   .github-icon {
     min-height: 100%;
     min-width: 100%;
     object-fit: cover;
-    object-position: 250% 100px;
+    object-position: 2500% 1000px;
     opacity: 15%;
     bottom: 15px;
   }
@@ -142,7 +141,7 @@
     background-color: white;
     min-width: 50%;
     background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/github.svg");
-    background-position: -50% 60px;
+    background-position: -100px 120px;
     background-repeat: no-repeat;
     padding-top: 20px;
     padding-left: 20px;
@@ -184,9 +183,8 @@
   {
     background-image: url('https://s3.us.cloud-object-storage.appdomain.cloud/developer/default/patterns/create-a-web-based-intelligent-bank-loan-application-for-a-loan-agent/header.jpg');
     background-position: right;
-    width: 100%;
-    height: fixed;
-    min-height: 320px;
+    width: 95%;
+    min-height: 70px;
     display: inline-block;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -198,25 +196,23 @@
   }
   .header .right-content
   {
-    float: right;
-    width: 45%;
-    background-color:#525252;
-    min-height: 320px;
-    padding: 20px;
-    padding-top: 2.5%;
+    float: left;
+    width: 50%;
+    background-color: #525252;
+    min-height: 270px;
     font-size: 16px;
   }
   .header .right-content h4
   {
     background: none;
-    color: white;
+    color: #C1C7CD;
     padding-left: 25px;
     padding-right: 25px;
   }
   .header .right-content div
   {
     background: none;
-    color: #c1c7cd;
+    color: #C1C7CD;
     padding-left: 15px;
     padding-right: 25px;
     font-size: 16px;
@@ -237,7 +233,7 @@
   }
   .container a:visited
   {
-    color: #8C43FC;
+    color: #BE95FF;
     background-color: transparent;
     text-decoration: none;
   }
@@ -259,11 +255,27 @@
   }
   .no-hover:hover
   {
-    color: #A6C8FF;
+    background-color: #A6C8FF !important;
   }
   .section{
     margin-top: 5px;
     margin-bottom:-50px;
+  }
+  summary{
+    float:left;
+  }
+  details > summary { 
+    list-style-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/arrow-right.svg");
+    direction:rtl;
+  }
+  details[open] > summary {
+      list-style-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/arrow-down.svg");
+  }
+  .step{
+      margin-bottom: 50px;
+  }
+  details{
+      margin-bottom: 20px;
   }
   a:hover{
       color: #A6C8FF;
@@ -272,24 +284,22 @@
   a:visited{
       color: #BE95FF;
   }
-
-}
 </style>
 </head>
-  <body>
-    <div class="apptitle">
-      Risk Prediction for Bank Loans application
-    </div>
-  <div class="subheading">
-    Build a web application using Python Flask to analyze risks involved when trying to approve loans.
-  </div>
+<body>
     <div class="header">
-      <div class="right-content" style="float: left; padding-top:40px;">
-        <div>
-            In a typical bank loan department, the loan agent receives an application from a customer. The agent then considers several factors to decide whether the loan can be approved or should be rejected. </br></br>To help ease this decision-making process, this solution explains how to build a web-based application using Python Flask, that the loan agent can use to make these decisions. This will enable the loan agent to analyze the risk involved while trying to approve the loan.
+      <div class="right-content" style="padding-top:35px;">
+        <div class="apptitle" style="font-size: 28px; color: white; padding-top: 5px">
+          Intelligent Bank Loan Application
+        </div>
+        <div class="subheading">
+        Build a web application using Python Flask to analyze risks involved when trying to approve loans.
         </div>
       </div>
     </div>
+      <div class="section" style="font-size: 16px ; margin-top: -20px">
+        In a typical bank loan department, the loan agent receives an application from a customer.<br>The agent then considers several factors to decide whether the loan can be approved or should be rejected. <br>To help ease this decision-making process, this solution explains how to build a web-based application using Python Flask, that the loan agent can use to make these decisions. This will enable the loan agent to analyze the risk involved while trying to approve the loan.
+      </div>
    <div class="section">
     <p style="font-size:24px">Learning Resources</p>
     <div class="right-content">
@@ -298,11 +308,12 @@
    </div>
    <div class="section">
       <p style="font-size:24px">Included Components</p>
-        <div class="right-content">
+      <div class="right-content">
           <p>This sample application uses the following IBM Services:</p>
           <p><a href="https://cloud.ibm.com/objectstorage">Cloud Object Storage</a>: IBM Cloud Object Storage is a highly scalable cloud storage service, designed for high durability, resiliency and security.</p>
+          <p><a href="https://cloud.ibm.com/catalog/services/watson-assistant">Watson Assistant</a>: Watson Assistant lets you build conversational interfaces into any application, device, or channel.</p>
           <p><a href="https://cloud.ibm.com/catalog/services/machine-learning">Watson Machine Learning</a>: Deploy, manage and integrate machine learning models into your applications and services in as little as one click.</p>
-        </div>
+      </div>
    </div>
    <div class="section">
    <p style="font-size:24px">Pre-requisites</p>
@@ -313,24 +324,24 @@
     <div class="section">
    <p style="font-size:24px">Instructions: Please follow all the below steps in proper sequence.</p>
    </div>
-    <div class="timeline">
-        <div style="margin-top:0px;padding-top:0px;" class="container right">
+   <div class="timeline">
+   <div style="margin-top:0px;padding-top:0px;"class="container right">
             <div class="content">
                 <p>Begin with opening the custom terminal</p>
                 <a class="button is-dark is-medium" title="Open Terminal" href="didact://?commandId=terminal-for-nodejs-container:new">Open Terminal</a><br>
             </div>
         </div>
       <div class="container right">
-        <div class="content">
-          <p>Clone the GitHub repository</p>
+         <div class="content">
+            <p>Clone the GitHub repository</p>
           <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cget-code%7Cnodejs%20terminal|git%20clone%20-b%20bank-loan%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/bank-loan/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/bank-loan/">Get Code</a>
-        </div>
+         </div>
       </div>
       <div class="container right">
         <div class="content">
           <p>Create IBM Services</p>
           <p>Login to your IBM Cloud account to create services.</p>
-          <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cibm-login%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan%20%26%26%20chmod%20%2Bx%20.%2Flogin.sh%20%26%26%20.%2Flogin.sh">Login to IBM Cloud</a>        
+          <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cibm-login%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan%20%26%26%20chmod%20%2Bx%20.%2Flogin.sh%20%26%26%20.%2Flogin.sh">Login to IBM Cloud</a>  
         </div>
       </div>
       <div class="container right">
@@ -341,37 +352,75 @@
       </div>
       <div class="container right">
         <div class="content">
-            <p>IBM Cloud API key is required to deploy the model in the deployment space.</p>
+          <p>Install requirements</p>
+          <a class="button is-dark is-medium" title="Install Requirements" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cinstall-requirements%7Cnodejs%20terminal|cd%20bank-loan;pip3.8%20install%20-r%20requirements.txt">Install Requirements</a>
+          <p style="margin-top:50px">Follow the below steps to configure the asset.</p>
+        </div>
+     </div>
+      <div class="container right">
+        <div class="content">
+        <details>
+         <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create a New Deployment Space and Deploy the Model</summary></br></br>
+         <div class="step">
+            <p>Step 1 : IBM Cloud API key is required to deploy the model in the deployment space.</p>
             <p>Click the below button to generate API key via IBM Cloud CLI commands which will be saved in a key_file.</p>
             <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cgenerate-api-token%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan;ibmcloud%20iam%20api-key-create%20ApiKey-bankLoan%20-d%20'this is API key for bankLoan'%20--file%20${CHE_PROJECTS_ROOT}/bank-loan/key_file">Generate API key</a>
         </div>
-      </div>
-      <div class="container right">
-        <div class="content">
-          <p>Install requirements</p>
-          <a class="button is-dark is-medium" title="Install Requirements" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cinstall-requirements%7Cnodejs%20terminal|cd%20bank-loan;pip3.8%20install%20-r%20requirements.txt">Install Requirements</a>
-        </div>
-      </div>
-      <div class="container right">
-        <div class="content">
-          <p>Create a Deployment Space on Cloud pak for Data</p>
-          <a class="button is-dark is-medium" title="Create Deployment Space" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-deployment-space%7Cnodejs%20terminal|cd%20bank-loan;python3.8%20create_space.py">Create Deployment Space</a>
-        </div>
-      </div>
+          <div class="step">
+            <p>Step 2 : Create a new deployment space with the pre-loaded model.</p>
+            <a class="button is-dark is-medium" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cstart%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan%20%26%26%20python3.8%20create_space.py">Create Deployment Space</a>
+            </div>
+          <details style="margin-top:5px;">
+         <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Incase your importing model fails, do the following steps</summary></br></br>
+          <div class="step">
+           <p>Step 1 : Download the project zip file.</p>
+          <a class="button is-dark is-medium" href="https://github.com/IBM/Developer-Playground/raw/bank-loan/bankLoan.zip">Download</a>
+           </div>
+           <div class="step">
+           <p>Step 2 : Go to your <a href="https://dataplatform.cloud.ibm.com/">CloudPak for Data</a> account. Click on "Create a Project".</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_1.png" width = "750" height= "750">
+           </div>
+           <div class="step">
+           <p>Step 3 : Click on "Create a project from sample or file".</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_2.png" width = "750" height= "750">
+           </div>
+           <div class="step">
+           <p>Step 4 : Upload the zip file that was just downloaded, give your project a name and click on "Create" button.</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_3.png" width = "750" height= "750">
+           </div>
+           <div class="step">
+           <p>Step 5 : After the project is created, click on "View new project".</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_4.png" width = "750" height= "750">
+           </div>
+           <div class="step">
+           <p>Step 6 : Click on the assets tab.</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_5.png" width = "750" height= "750">
+           </div>
+           <div class="step">
+           <p>Step 7 : Click on the (⋮) on right hand side of the Model and Click on "Promote" button.</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_6.png" width = "750" height= "750">
+           </div>
+           <div class="step">
+           <p>Step 8 : Select the deployment space which was created earlier, check the console of the workspace for deployment space name and click on "Promote".</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_7.png" width = "750" height= "750">
+           </div>
+           </details>
+           </details>
+           </div></div>
       <div class="container right">
         <div class="content">
           <p>Click on the below button to deploy the model to the deployment space.</p>
            <a class="button is-dark is-medium" title="Open File" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cdeploy-model%7Cnodejs%20terminal|python3.8%20DeployModel/DeploySavedModel.py">Deploy Model</a>
         </div>
-      </div>
+      </div>  
       <div class="container right">
-        <div class="content">
+         <div class="content">
           <p>Launch Application</p>
           <a class="button is-dark is-medium" title="Launch Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cstart-app%7Cnodejs%20terminal|python3.8%20app.py">Launch Application</a>
-        </div>
+         </div>
       </div>
-    </div>
-    <div class="footer">
+   </div>
+   <div class="footer">
       <div class="content" style="padding:30px;padding-left:60px;padding-bottom: 0px;">
         <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
         <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=nodejs%20terminal">Stop Application</a>
@@ -392,6 +441,7 @@
           <span style="font-size:15px;margin-top:0px;display:block;">Head over to the
             <a href="https://github.com/IBM/Developer-Playground/tree/bank-loan">Github Repository</a>
           </span>
+          <span style="font-size:15px;margin-top:0px;display:block;">Need Help? Contact <a href="https://github.com/IBM/Developer-Playground-Support/issues/new/choose" target="_blank"> Help & Support</a></span>
         </p>
         <a class="image-link" href="https://developer.ibm.com/patterns/create-a-web-based-intelligent-bank-loan-application-for-a-loan-agent/" target="_blank">
           <div class="image-btn">

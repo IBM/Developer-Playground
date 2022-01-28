@@ -1,0 +1,3 @@
+scikit-learn
+ibm_watson_machine_learning
+python-dotenv

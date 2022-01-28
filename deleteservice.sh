@@ -1,4 +1,4 @@
-python3.8 DeleteDeployment.py
+python3.8 DeleteDeploy.py
 python3.8 delete_services.py
 
 # delete APIKEY using it's id to avoid incorrect APIkey deletion 

@@ -185,25 +185,24 @@
   .header
   {
     background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/anomaly.jpeg');
-    width: 100%;
-    height: auto;
-    min-height: 300px;
+    background-position: right;
+    width: 95%;
+    min-height: 70px;
     display: inline-block;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 30px;
     margin-right: 30px;
-    background-size: contain;
-    max-width: 1100px;
+    max-width: 1200px;
+    background-repeat: no-repeat;
+    background-size: 700px 500px;
   }
   .header .right-content
   {
-    float: right;
-    width: 45%;
-    background-color:#525252;
-    min-height: 300px;
-    padding: 20px;
-    padding-top: 8%;
+    float: left;
+    width: 50%;
+    background-color: #525252;
+    min-height: 270px;
     font-size: 16px;
   }
   .header .right-content h4
@@ -275,22 +274,20 @@
 </style>
 </head>
 <body>
-   <div class="apptitle"> 
+  <div class="header">
+      <div class="right-content" style="padding-top:35px;">
+        <div class="apptitle" style="font-size: 28px; color: white;"> 
     Detect Data Anomaly
   </div>
   <div class="subheading">
     Perform anomaly detection on timeseries data in your Industry 4.0 applications.
   </div>
-  <div class="header">
-      <div class="right-content" style="float: left; padding-top:40px;">
-         <div>
-          Anomaly detection is a process in machine learning that identifies data points, events, and/or observations that deviate from a dataset’s normal behavior. To detect anomalies from unlabeled time series data is a pain point that is critical to address for industrial applications.
-        </div>
-        <div>
-          This anomaly detection API service can help users detect anomalies from the entire time series or predict anomaly status of the last data input. Currently the service supports both univariate and multivariate time series.
-        </div>
      </div>
    </div>
+    <div class="section" style="font-size:16px; margin-top:-20px">
+  <p>Anomaly detection is a process in machine learning that identifies data points, events, and/or observations that deviate from a dataset’s normal behavior. To detect anomalies from unlabeled time series data is a pain point that is critical to address for industrial applications.</p>
+  <p>This anomaly detection API service can help users detect anomalies from the entire time series or predict anomaly status of the last data input. Currently the service supports both univariate and multivariate time series.</p>
+  </div>
    <div class="section">
     <p style="font-size:24px">Learning Resources</p>
     <div class="content-">
@@ -363,6 +360,7 @@
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
             <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/anomaly" target="_blank">Github Repository</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">Need Help? Contact <a href="https://github.com/IBM/Developer-Playground-Support/issues/new/choose" target="_blank">Help & Support</a></span>
          </p>
          <div class="image-btn">
             <a class="image-link" href="didact://?commandId=extension.openURL&text=anomaly%7Cview-product-details%7Chttps://www.ibm.com/products

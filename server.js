@@ -177,5 +177,13 @@ app.get("/downlod?:jobid", async (req, res) => {
   }
 })
 
+app.get("/settings/:dataset", async (req, res) => {
+  try {
+    let settings = JSON.parse(fs.readFileSync(`./recommended-settings/${req.params.dataset}`))
+    res.status(200).json(settings)
+  } catch {
+    res.status(404).json({ "msg": "Unable to fetch data at this moment" })
+  }
+})
 
 app.listen(4000, console.log("Server started on 4000"))

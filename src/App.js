@@ -36,6 +36,7 @@ function App() {
   const [LWInvalid, setLWInvalid] = useState({ state: false, text: "" })
   const [OWInvalid, setOWInvalid] = useState({ state: false, text: "" })
   const [LTInvalid, setLTInvalid] = useState({ state: false, text: "" })
+  const [PTInvalid, setPTInvalid] = useState({ state: false, text: "" })
   const [showJob, setShowJob] = useState(false)
   const [showNotif, setNotification] = useState(false)
   const [notifData, setNotifData] = useState({
@@ -46,8 +47,14 @@ function App() {
   const [showSample, setSample] = useState(false)
   const [sampledata, setSampledata] = useState([])
   const [datasetName, setDatasetName] = useState("")
+  const [settings, setSettings] = useState({})
+  const [labelingMethods, setLabelingMethods] = useState(['Chi-Square', 'IID', 'Q-Score', 'Sliding-Window', 'Adaptive-Sliding-Window', 'Contextual-Anomaly'])
+  const [showRecentData, setRecentData] = useState(false)
+  const [anomalyEstimatorValue, setAnomalyEstimatorValue] = useState("IID")
+  const [showLabelingMethods, setLabelingMethodsOptions] = useState(true)
 
   const resetStates = () => {
+    setSettings({})
     setTargetInvalid({ state: false, text: "" })
     setLWInvalid({ state: false, text: "" })
     setOWInvalid({ state: false, text: "" })
@@ -138,60 +145,60 @@ function App() {
 
   const setTargetParameters = async ({ selectedItem }) => {
     try {
-    const index = timeColumnOptions.indexOf(selectedItem)
-    let columns = []
-    timeColumnOptions.forEach((column, idx) => {
-      if (idx !== index) {
-        columns.push({
-          name: column
-        })
+      const index = timeColumnOptions.indexOf(selectedItem)
+      let columns = []
+      timeColumnOptions.forEach((column, idx) => {
+        if (idx !== index) {
+          columns.push({
+            name: column
+          })
+        }
+      })
+      setLoading(true)
+      setColumns(columns)
+      let res = await axios.get(`/data/${datasetName}/${selectedItem}`)
+      setData(res.data)
+      setChart(true)
+      //setLines(lines)
+      setForm(true)
+      if (timeColumnOptions.length === 2) {
+        setTarget(false)
+      } else {
+        setTarget(true)
       }
-    })
-    setLoading(true)
-    setColumns(columns)
-    let res = await axios.get(`/data/${datasetName}/${selectedItem}`)
-    setData(res.data)
-    setChart(true)
-    //setLines(lines)
-    setForm(true)
-    if (timeColumnOptions.length === 2) {
-      setTarget(false)
-    } else {
-      setTarget(true)
+      setTime(selectedItem)
+    } catch (err) {
+      let errMsg;
+      try {
+        errMsg = err.response.data.msg
+      } catch {
+        errMsg = "Something went wrong"
+      }
+      setNotifData({
+        kind: "error",
+        subtitle: errMsg,
+        title: "Error"
+      })
+      setNotification(true)
+    } finally {
+      setLoading(false)
     }
-    setTime(selectedItem)
-  } catch (err) {
-    let errMsg;
-    try {
-      errMsg = err.response.data.msg
-    } catch {
-      errMsg = "Something went wrong"
-    }
-    setNotifData({
-      kind: "error",
-      subtitle: errMsg,
-      title: "Error"
-    })
-    setNotification(true)
-  } finally {
-    setLoading(false)
-  }
 
   }
-  
+
 
   const uploadData = async (e) => {
     e.preventDefault()
-    try{
-    if(document.getElementById("submit-btn").name !== "btn-clicked")
-      return
-    document.getElementById("submit-btn").setAttribute("name","btn")
-    } catch{
+    try {
+      if (document.getElementById("submit-btn").name !== "btn-clicked")
+        return
+      document.getElementById("submit-btn").setAttribute("name", "btn")
+    } catch {
       return
     }
     let formData = {}
     formData.dataset_type = e.target.dataset_type.value
-    if(formData.dataset_type === "sampledt")
+    if (formData.dataset_type === "sampledt")
       formData.filename = document.getElementById("sample_data").innerText
     if (columns.length === 1) {
       formData.target_column = columns[0].name
@@ -199,6 +206,8 @@ function App() {
       formData.target_column = targetParams
     }
     formData.prediction_type = document.getElementById("prediction_type").innerText.toLowerCase()
+    if(formData.prediction_type === "recent")
+        formData.recent_data = parseInt(e.target.recent_data.value)
     formData.algorithm_type = document.getElementById("algorithm_type").innerText
     console.log(formData.algorithm_type === "DeepAD")
     if (formData.algorithm_type !== "DeepAD" && formData.algorithm_type !== "PredAD")
@@ -236,6 +245,11 @@ function App() {
       document.getElementById("labeling_threshold").scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
       valid = false
     }
+    if (formData.prediction_type !== 'entire' && (isNaN(formData.recent_data) || formData.recent_data < 1 || !Number.isInteger(formData.recent_data))) {
+      setPTInvalid({ state: true, text: "Please enter an integer > 0" })
+      document.getElementById("recent_data").scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+      valid = false
+    }
     console.log(valid)
     if (valid) {
       try {
@@ -247,6 +261,7 @@ function App() {
         })
         setJobId(res.data.jobId)
         setShowJob(true)
+        document.getElementById("job-status").scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
       } catch (err) {
         let errMsg;
         try {
@@ -268,6 +283,8 @@ function App() {
 
   const changeAnomalyEstimatorOptions = ({ selectedItem }) => {
     setAnomalyEstimatorOptions(false)
+    setAnomalyEstimatorValue(selectedItem)
+    setLoading(true)
     setTimeout(() => {
       if (selectedItem !== `DeepAD` && selectedItem !== `PredAD`) {
         setAnomalyEstimator(anaomalyEstimator[selectedItem])
@@ -275,6 +292,14 @@ function App() {
       } else {
         setAnomalyEstimatorOptions(false)
       }
+      if (selectedItem === 'RelationshipAD'){
+        setLabelingMethodsOptions(false)
+        setLabelingMethods(['IID'])
+      }
+      else
+        setLabelingMethods(['Chi-Square', 'IID', 'Q-Score', 'Sliding-Window', 'Adaptive-Sliding-Window', 'Contextual-Anomaly'])
+      setLabelingMethodsOptions(true)
+      setLoading(false)
     }, 1)
   }
 
@@ -283,7 +308,7 @@ function App() {
     setData(data)
     setChart(false)
     setChart(true)
-    setForm(false)
+    document.getElementById("chart").scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
   }
 
   const getTimeColumns = async (e) => {
@@ -313,6 +338,50 @@ function App() {
     } finally {
       setLoading(false)
     }
+  }
+
+  const applySettings = async (e) => {
+    try {
+      setLoading(true)
+      setChart(false)
+      setForm(false)
+      setTimeColumn(false)
+      let settings = await axios.get(`/settings/${datasetName}`)
+      console.log(settings)
+      setSettings(settings.data)
+      await setTargetParameters({ selectedItem: settings.data.time_column })
+      setTargetParams(settings.data.target_columns)
+      setTargetInvalid({ state: false, text: "" })
+      await changeAnomalyEstimatorOptions({ selectedItem: settings.data.algorithm_type })
+      setAnomalyEstimatorValue(settings.data.algorithm_type)
+      showTextInput({ selectedItem: settings.data.lookback_window })
+      setTimeColumn(true)
+      setChart(true)
+      setForm(true)
+    } catch (err) {
+      let errMsg;
+      try {
+        errMsg = err.response.data.msg
+      } catch {
+        errMsg = "Something went wrong"
+      }
+      setNotifData({
+        kind: "error",
+        subtitle: errMsg,
+        title: "Error"
+      })
+      setNotification(true)
+    } finally {
+      setLoading(false)
+      setTimeColumn(true)
+    }
+  }
+  const showRecentDataTextInput = ({ selectedItem }) => {
+    if (selectedItem === "Recent")
+      setRecentData(true)
+    else
+      setRecentData(false)
+
   }
   return (
     <div className="app">
@@ -356,7 +425,8 @@ function App() {
           items={sampledata}
           onChange={getTimeColumns}
           onClick={getSample}
-        />: null}
+        /> : null}
+        {showSample && showTimeColumn ? <Button type="submit" style={{ marginTop: "14px" }} onClick={applySettings}>Apply Recommended Settings</Button> : null}
         {showTimeColumn ? <div>
           <p className="others">Time Column</p>
           <Dropdown
@@ -364,10 +434,11 @@ function App() {
             titleText="Select Value"
             label="Choose an Option"
             items={timeColumnOptions}
+            initialSelectedItem={settings.time_column}
             onChange={setTargetParameters} /> </div> : null}
         {showChart ?
           //<Chart data={data} lines={lines} showAnomaly={showAnomaly} time={time} />
-          <CarbonChart data={data} />
+          <div id="chart"><CarbonChart data={data} /></div>
           : null}
         {showForm ?
           <FormGroup>
@@ -379,6 +450,7 @@ function App() {
                 label="Select Options"
                 items={columns}
                 itemToString={(item) => (item ? item.name : '')}
+                initialSelectedItems={settings.target_columns}
                 onChange={({ selectedItems }) => {
                   setTargetParams(selectedItems)
                   setTargetInvalid({ state: false, text: "" })
@@ -386,22 +458,36 @@ function App() {
                 invalid={targetInvalid.state}
                 invalidText={targetInvalid.text}
               /> </div> : null}
-            {/*<p className="others">Recent Data</p>
-            <TextInput name="recent_data" type="number" labelText="Add Value" helperText="Add numbers (30% of data-size)" defaultValue="1" />*/}
+
             <p className="others">Prediction Type</p>
             <Dropdown
               id="prediction_type"
               titleText="Select Value"
               label="Choose an Option"
-              initialSelectedItem="Entire"
-              items={["Entire", "Recent"]} />
+              initialSelectedItem={settings.prediction_type || "Entire"}
+              items={["Entire", "Recent"]} 
+              onChange={showRecentDataTextInput}/>
+              {showRecentData ?
+              <div id="recent_data" className="hidden-options">
+                <p className="others">Recent Data</p>
+                <TextInput 
+                  id="recent_data"
+                  name="recent_data" 
+                  type="number" 
+                  labelText="Add Value" 
+                  helperText="Add numbers (30% of data-size)" 
+                  defaultValue="1"
+                  invalid={PTInvalid.state}
+                  invalidText={PTInvalid.text}
+                  onChange={() => setPTInvalid({ state: false, text: "" })}  />
+              </div> : null}
             <p className="others">Algorithm Type</p>
             <Dropdown
               id="algorithm_type"
               titleText="Select Value"
               label="Select Options"
-              items={['DeepAD', 'WindowAD', 'PredAD', 'ReconstructAD', 'RelationshipAD']}
-              initialSelectedItem="DeepAD"
+              items={showTarget ? ['DeepAD', 'WindowAD', 'PredAD', 'ReconstructAD', 'RelationshipAD'] : ['DeepAD', 'WindowAD', 'PredAD', 'ReconstructAD']}
+              initialSelectedItem={settings.algorith_type || "DeepAD"}
               onChange={changeAnomalyEstimatorOptions} />
             {showAnomalyEstimatorOptions ?
               <div className="hidden-options">
@@ -409,7 +495,7 @@ function App() {
                   id="anomaly_estimator"
                   titleText="Select Value"
                   label="Select Options"
-                  initialSelectedItem={anomalyEstimatorOptions[0]}
+                  initialSelectedItem={settings.anomaly_estimator || anomalyEstimatorOptions[0] }
                   items={anomalyEstimatorOptions}
                 /></div>
               : null}
@@ -418,7 +504,7 @@ function App() {
               id="lookback_window"
               titleText="Select Value"
               items={['Auto', 'Custom']}
-              initialSelectedItem="Auto"
+              initialSelectedItem={settings.lookback_window || "Auto"}
               onChange={showTextInput}
             />
             {showTextField ?
@@ -440,35 +526,36 @@ function App() {
               type="number"
               labelText="Add Value"
               helperText="Add numbers (10% of data-size)"
-              defaultValue="10"
+              defaultValue={settings.observation_window || "10"}
               invalid={OWInvalid.state}
               invalidText={OWInvalid.text}
               onChange={() => setOWInvalid({ state: false, text: "" })} />
+              {showLabelingMethods ? <div>
             <p className="others">Labeling Method</p>
             <Dropdown
               id="labeling_method"
               titleText="Select Value"
               label="Select Options"
-              items={['Chi-Square', 'IID', 'Q-Score', 'Sliding-Window', 'Adaptive-Sliding-Window', 'Contextual-Anomaly']}
-              initialSelectedItem="IID"
-            />
+              items={labelingMethods}
+              initialSelectedItem={anomalyEstimatorValue !=="RelationshipAD" ? (settings.labeling_method || "IID") : "IID"}
+            /></div> : null }
             <p className="others">Labeling Threshold</p>
             <TextInput
               name="labeling_threshold"
               id="labeling_threshold"
               type="number" labelText="Add Value"
               helperText="Add numbers"
-              defaultValue="10"
+              defaultValue={settings.labeling_threshold || "10"}
               invalid={LTInvalid.state}
               invalidText={LTInvalid.text}
               onChange={() => setLTInvalid({ state: false, text: "" })} />
             <div className="hidden-options">
-              <Button id="submit-btn" name="btn" onClick={e=>document.getElementById("submit-btn").setAttribute("name","btn-clicked")} type="submit">Submit</Button>
+              <Button id="submit-btn" name="btn" onClick={e => document.getElementById("submit-btn").setAttribute("name", "btn-clicked")} type="submit">Submit</Button>
             </div>
           </FormGroup> : null}
       </form>
       <br />
-      {showJob ? <JobStatus jobId={jobId} msg={"submitted"} /> : null}
+      {showJob ? <div id="job-status"><JobStatus jobId={jobId} msg={"submitted"} /></div> : null}
       <FetchResults jobId={jobId} getChartResults={getChartResults} />
       {showNotif ?
         <ToastNotification

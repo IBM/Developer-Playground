@@ -54,6 +54,7 @@ function App() {
   const [showLabelingMethods, setLabelingMethodsOptions] = useState(true)
 
   const resetStates = () => {
+    setSettings({})
     setTargetInvalid({ state: false, text: "" })
     setLWInvalid({ state: false, text: "" })
     setOWInvalid({ state: false, text: "" })
@@ -283,6 +284,7 @@ function App() {
   const changeAnomalyEstimatorOptions = ({ selectedItem }) => {
     setAnomalyEstimatorOptions(false)
     setAnomalyEstimatorValue(selectedItem)
+    setLoading(true)
     setTimeout(() => {
       if (selectedItem !== `DeepAD` && selectedItem !== `PredAD`) {
         setAnomalyEstimator(anaomalyEstimator[selectedItem])
@@ -297,6 +299,7 @@ function App() {
       else
         setLabelingMethods(['Chi-Square', 'IID', 'Q-Score', 'Sliding-Window', 'Adaptive-Sliding-Window', 'Contextual-Anomaly'])
       setLabelingMethodsOptions(true)
+      setLoading(false)
     }, 1)
   }
 

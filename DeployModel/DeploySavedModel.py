@@ -47,7 +47,5 @@ date=now.strftime("%Y")+"-"+now.strftime("%m")+"-"+now.strftime("%d")
 modelurl = scoring_endpoint+"?version="+date
 
 with open(".env", "a") as f:
-    f.write("\n#Scoring url\nScoring_url=\""+modelurl+"\"\n")
-    f.write("\n#Deployment ID\nDeployment_ID=\""+deployment_id+"\"\n")
+    f.write("\n#MODEL URL\nMODEL_URL=\""+modelurl+"\"\n")
 print('end point url is :' + modelurl)
-print('Deployment ID is :'+ deployment_id)

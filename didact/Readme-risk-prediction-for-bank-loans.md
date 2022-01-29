@@ -319,7 +319,7 @@
    <p style="font-size:24px">Pre-requisites</p>
     <div class="right-content">
     <p>IBM Cloud Account -  Do not have an IBM Cloud Account?<a href="https://cloud.ibm.com/registration/trial"> click here</a> to create one for free.</p>
-      <p><a href="https://dataplatform.cloud.ibm.com/registration/stepone?context=cpdaas&apps=all">Click here</a> to login to your Cloud Pak for Data account. Do not have a Cloud pak for Data Account? <a href="https://dataplatform.cloud.ibm.com/home2?context=cpdaas">Click here </a> to create one</a> for free.</p>
+      <p><a href="https://dataplatform.cloud.ibm.com/registration/stepone?context=cpdaas&apps=all">Click here</a> to login to your Cloud Pak for Data account. Do not have a Cloud pak for Data Account? <a href="https://dataplatform.cloud.ibm.com/home2?context=cpdaas">Click here </a> to create one for free.</p>
     </div>
    </div>
     <div class="section">

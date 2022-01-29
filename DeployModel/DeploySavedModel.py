@@ -44,13 +44,10 @@ from datetime import datetime
 now = datetime.now() # current date and time
 date=now.strftime("%Y")+"-"+now.strftime("%m")+"-"+now.strftime("%d")
 
-
 modelurl = scoring_endpoint+"?version="+date
 
-with open("./scripts/add_model_url.sh", "r") as f :
-  filedata = f.read()
-
-filedata = filedata.replace('ADD_YOUR_MODEL_URL', modelurl)
-
-with open('./scripts/add_model_url.sh', 'w') as f:
-  f.write(filedata)
+with open(".env", "a") as f:
+    f.write("\n#Scoring url\nScoring_url=\""+modelurl+"\"\n")
+    f.write("\n#Deployment ID\nDeployment_ID=\""+deployment_id+"\"\n")
+print('end point url is :' + modelurl)
+print('Deployment ID is :'+ deployment_id)

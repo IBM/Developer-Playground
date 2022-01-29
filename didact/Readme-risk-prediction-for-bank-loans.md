@@ -338,6 +338,13 @@
           <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cget-code%7Csandbox%20terminal|git%20clone%20-b%20bank-loan%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/bank-loan/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/bank-loan/">Get Code</a>
          </div>
       </div>
+     <div class="container right">
+        <div class="content">
+          <p>Install requirements</p>
+          <a class="button is-dark is-medium" title="Install Requirements" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cinstall-requirements%7Csandbox%20terminal|cd%20bank-loan;pip3.8%20install%20-r%20requirements.txt">Install Requirements</a>
+          <p style="margin-top:50px">Follow the below steps to configure the asset.</p>
+        </div>
+     </div>
       <div class="container right">
         <div class="content">
           <p>Create IBM Services</p>
@@ -351,13 +358,6 @@
           <a class="button is-dark is-medium" title="Create IBM Services" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Ccreate-ibm-services%7Csandbox%20terminal|chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh">Create IBM Services</a>
         </div>
       </div>
-      <div class="container right">
-        <div class="content">
-          <p>Install requirements</p>
-          <a class="button is-dark is-medium" title="Install Requirements" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cinstall-requirements%7Csandbox%20terminal|cd%20bank-loan;pip3.8%20install%20-r%20requirements.txt">Install Requirements</a>
-          <p style="margin-top:50px">Follow the below steps to configure the asset.</p>
-        </div>
-     </div>
       <div class="container right">
         <div class="content">
         <details>

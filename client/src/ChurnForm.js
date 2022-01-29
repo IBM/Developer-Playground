@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import {TextInput,Row,Button,ToastNotification,Loading, RadioButtonGroup,RadioButton, FormGroup, Form, Grid, Column} from 'carbon-components-react';
+import { TextInput, Row, Button, ToastNotification, Loading, RadioButtonGroup, RadioButton, FormGroup, Form, Grid, Column } from 'carbon-components-react';
 import axios from 'axios';
 import './churnForm.scss'
-
 const initialUserState = {
   tenure: '',
   invalidTenure: false,
@@ -117,7 +116,7 @@ class ChurnForm extends Component {
 
   changeHandler = (e) => {
     this.setState({
-      [e.target.name]:e.target.value
+      [e.target.name]: e.target.value
     })
   }
   validate = () => {
@@ -181,7 +180,7 @@ class ChurnForm extends Component {
   submitHandler = (e) => {
     e.preventDefault()//to prevent page refresh
 
-    const isValid=this.validate();
+    const isValid = this.validate();
     if (isValid) {
       console.log(this.state)
       const data = {
@@ -220,56 +219,56 @@ class ChurnForm extends Component {
   }
   render() {
     return (
-      <div>
-              {
-                  (this.state.isSubmitted== 'yes' && this.state.ChrunPred=='')?
-    
-                  (
-                    <div>
+      <div className="app">
+        <div className="app-header" style={{ marginLeft: "-40px", width: "900px", height: "100px"}}>
+        <br/>
+          <h2 style={{marginTop: "5px"}}>Churn Prediction Application</h2>
+        </div>
+        {
+          (this.state.isSubmitted == 'yes' && this.state.ChrunPred == '') ?
 
-                    <ToastNotification
-                            kind='success'
-                            title='Success'
-                            caption='Form has been submitted'
-                            lowContrast='false'
-                            style={{ top:0,right:0,position:'absolute',marginTop:'4rem' }}
-                            
+            (
+              <div>
+                <ToastNotification
+                  kind='success'
+                  title='Success'
+                  caption='Form has been submitted'
+                  lowContrast='false'
+                  style={{ top: 0, right: 0, position: 'absolute', marginTop: '4rem' }}
+
+                />
+                <div className='tilePlacement'>
+                  <Grid>
+                    <Row>
+                      <Column >
+
+                        <center>
+                          <Loading
+                            description="Active loading indicator" withOverlay={false}
                           />
-                  <div className='tilePlacement'>
-                    <Grid>
-                      <Row>
-                        <Column >
-                          
-                          <center>
-                            <Loading
-                              description="Active loading indicator" withOverlay={false}
-                            />
-                            <div  style={{width:'40%',height:'4rem',marginTop:'4rem'}}> 
-                              <h4 class="alert-heading" >Wooah! Your form has been submitted &#128516;</h4>
-                              <p>Now based on the deployed watson machine learning model in cloudPak for data, predictions for the given input data will be displayed.
-                              </p>
-                              <hr></hr>
-                              <p class="mb-0">Kindly wait for the response.</p>
+                          <div style={{ width: '40%', height: '4rem', marginTop: '4rem' }}>
+                            <h4 class="alert-heading" >Wooah! Your form has been submitted &#128516;</h4>
+                            <p>Now based on the deployed watson machine learning model in cloudPak for data, predictions for the given input data will be displayed.
+                            </p>
+                            <hr></hr>
+                            <p class="mb-0">Kindly wait for the response.</p>
                           </div>
-                          </center>
-                          
-                        </Column>
-                      </Row>
-                    </Grid>
-                  </div>
-                  </div>
-                  )
-                  :
-                    ''
-              }
+                        </center>
+
+                      </Column>
+                    </Row>
+                  </Grid>
+                </div>
+              </div>
+            )
+            :
+            ''
+        }
         {
           (this.state.isSubmitted == 'no') ?
             (
               <div>
-                <div class="header">
-                  <h3 className="churn-prediction-app" style={{  width: '799px'}}>Churn Prediction Application</h3>
-                </div>
-                <Form style={{ width:'799px', marginTop: '65px' }} onSubmit={this.submitHandler}>
+                <Form style={{ width: '799px', marginTop: '65px' }} onSubmit={this.submitHandler}>
                   <Grid >
                     <Row>
                       <Column style={{ textAlign: 'left' }}>
@@ -291,7 +290,7 @@ class ChurnForm extends Component {
                       </Column>
                     </Row>
                     <Row>
-                      <Column sm={2} md={5} lg={7} style={{ marginTop: '24px' ,marginLeft: '40px'}}>
+                      <Column sm={2} md={5} lg={7} style={{ marginTop: '24px', marginLeft: '40px' }}>
                         <TextInput
                           id="charges"
                           invalidText={this.state.chargesError}
@@ -305,15 +304,15 @@ class ChurnForm extends Component {
                       </Column>
                     </Row>
                     <Row>
-                      <Column style={{ marginLeft: '40px', marginTop: '28px'}}>
+                      <Column style={{ marginLeft: '40px', marginTop: '28px' }}>
                         <FormGroup legendText="Online Security" onChange={this.onChangeSecurity} value={this.state.security} style={{ textAlign: 'left' }}>
-                          <RadioButtonGroup 
+                          <RadioButtonGroup
                             // defaultSelected="No"
                             // legend="Group Legend"
                             // name="radio-button-group"
                             labelPosition='right'
                             orientation='horizontal'
-                            // className="radio-button-group-horizontal-"
+                          // className="radio-button-group-horizontal-"
                           >
                             <RadioButton
                               id="security_1"
@@ -382,9 +381,9 @@ class ChurnForm extends Component {
                           </RadioButtonGroup>
                         </FormGroup>
                       </Column>
-                      </Row>
-                      <Row>
-                      <Column style={{ marginLeft: '40px', marginTop: '10px'}}>
+                    </Row>
+                    <Row>
+                      <Column style={{ marginLeft: '40px', marginTop: '10px' }}>
                         <FormGroup legendText="Dependents" onChange={this.onChangeDependents} value={this.state.dependents} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
                             // defaultSelected="No"
@@ -465,7 +464,7 @@ class ChurnForm extends Component {
                     </Row>
 
                     <Row>
-                    <Column style={{ marginLeft: '40px', marginTop: '10px' }}>
+                      <Column style={{ marginLeft: '40px', marginTop: '10px' }}>
                         <FormGroup legendText="Online Backup" onChange={this.onChangeBackup} value={this.state.backup} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
                             // defaultSelected="No"
@@ -518,7 +517,7 @@ class ChurnForm extends Component {
                               value="2"
                               name='internet'
                             />
-                           <RadioButton
+                            <RadioButton
                               id="internet-3"
                               labelText="No"
                               value="3"
@@ -527,7 +526,7 @@ class ChurnForm extends Component {
                           </RadioButtonGroup>
                         </FormGroup>
                       </Column>
-                    <Column sm={3} md={4} lg={4} style={{ marginLeft: '40px', marginTop: '10px' }}>
+                      <Column sm={3} md={4} lg={4} style={{ marginLeft: '40px', marginTop: '10px' }}>
                         <FormGroup legendText="Contract" onChange={this.onChangeContract} value={this.state.contract} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
                             // defaultSelected="No"
@@ -563,10 +562,10 @@ class ChurnForm extends Component {
                       <Column style={{ marginLeft: '40px', marginTop: '12px' }}>
                         <FormGroup legendText="Payment Method" onChange={this.onChangePayment} value={this.state.payment} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
-                            // defaultSelected="No"
-                            // legend="Group Legend"
-                            // name="radio-button-group"
-                            // className="radio-button-group-horizontal-"
+                          // defaultSelected="No"
+                          // legend="Group Legend"
+                          // name="radio-button-group"
+                          // className="radio-button-group-horizontal-"
                           >
                             <RadioButton
                               id="payment-1"
@@ -581,7 +580,7 @@ class ChurnForm extends Component {
                               value="2"
                               name='payment'
                             />
-                           <RadioButton
+                            <RadioButton
                               id="payment-3"
                               labelText="Electronic Check"
                               value="3"
@@ -599,7 +598,7 @@ class ChurnForm extends Component {
                     </Row>
 
                     <Row>
-                      <Column sm={1} md={1} lg={1} style={{ marginLeft: '40px', marginTop: '12px', marginBottom: '40px', textAlign: 'left'  }}>
+                      <Column sm={1} md={1} lg={1} style={{ marginLeft: '40px', marginTop: '12px', marginBottom: '40px', textAlign: 'left' }}>
                         <Button className="button-01-primary-default-01-t" kind='tertiary' type="submit" >Submit</Button>
                       </Column>
                     </Row>
@@ -607,73 +606,73 @@ class ChurnForm extends Component {
 
                 </Form>
               </div>
-          ) :
-          (
+            ) :
+            (
+              ''
+            )
+        }
+        {
+          (this.state.ChrunPred == 'churn' && this.state.isSubmitted == 'yes') ?
+            (
+              <div>
+                <div className='tilePlacement2' >
+                  <Grid>
+                    <Row>
+                      <Column>
+                        <center>
+                          <div class="alert alert-danger" role="alert" >
+                            <h4 class="alert-heading">Sorry!</h4>
+                            <p>Your customer will churn.</p>
+                            <hr></hr>
+                            <p class="mb-0">Thanking for using our site</p>
+                          </div>
+                        </center>
+
+                      </Column>
+                    </Row>
+                  </Grid>
+
+
+                </div>
+              </div>
+
+            )
+            :
             ''
-          )
-      }
-      {
-        (this.state.ChrunPred=='churn' && this.state.isSubmitted=='yes')?
-          (
-            <div>
-              <div className='tilePlacement2' >
-                <Grid>
-                  <Row>
-                    <Column>
-                      <center>
-                        <div class="alert alert-danger" role="alert" >
-                          <h4 class="alert-heading">Sorry!</h4>
-                          <p>Your customer will churn.</p>
-                          <hr></hr>
-                          <p class="mb-0">Thanking for using our site</p>
-                        </div>
-                      </center>
+        }
+        {
+          (this.state.ChrunPred == 'notchurn' && this.state.isSubmitted == 'yes') ?
+            (
+              <div>
+                <div className='tilePlacement2' >
+                  <Grid>
+                    <Row>
+                      <Column >
 
-                    </Column>
-                  </Row>
-                </Grid>
+                        <center>
+                          <div class="alert alert-success" role="alert" >
+                            <h4 class="alert-heading">Congratulations!!</h4>
+                            <p>Your customer will not churn.</p>
+                            <hr></hr>
+                            <p class="mb-0">Thanking for using our site</p>
+                          </div>
+                        </center>
+
+                      </Column>
+                    </Row>
+                  </Grid>
 
 
+                </div>
               </div>
-            </div>
 
-          )
-          :
-          ''
-      }
-      {
-        (this.state.ChrunPred=='notchurn' && this.state.isSubmitted=='yes')?
-          (
-            <div>
-              <div className='tilePlacement2' >
-                <Grid>
-                  <Row>
-                    <Column >
+            )
+            :
+            ''
 
-                      <center>
-                        <div class="alert alert-success" role="alert" >
-                          <h4 class="alert-heading">Congratulations!!</h4>
-                          <p>Your customer will not churn.</p>
-                          <hr></hr>
-                          <p class="mb-0">Thanking for using our site</p>
-                        </div>
-                      </center>
-
-                    </Column>
-                  </Row>
-                </Grid>
-
-
-              </div>
-            </div>
-
-          )
-          :
-          ''
-
-      }
-    </div>
-  )
-}
+        }
+      </div>
+    )
+  }
 }
 export default ChurnForm;

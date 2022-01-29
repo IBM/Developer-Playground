@@ -51,7 +51,7 @@ i=0
 #                            file_path=assets_file_location)
 
 # details = client.import_assets.get_details(space_id=space_id)
-# print("Waiting for import to finsh...")
+# print("Waiting for import to finish...")
 # while details["resources"][0]["entity"]["status"]["state"] != "completed" and details["resources"][0]["entity"]["status"]["state"] != "failed":
 #     details = client.import_assets.get_details(space_id=space_id)
 # print("finished")

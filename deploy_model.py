@@ -1,6 +1,7 @@
 from ibm_watson_machine_learning import APIClient
 import json, os
 from dotenv import dotenv_values
+import dotenv
 
 
 #bring model id and deployment space name from .env file
@@ -27,8 +28,7 @@ client.set.default_space(space_id)
 asset_details = client.repository.get_details()
 for resource in asset_details["models"]["resources"] :
     if(resource["metadata"]["name"] == model_name):
-        with open(".env", "a") as f:
-            f.write("\nMODEL_ID="+resource["metadata"]["id"])
+        dotenv.set_key("./.env","MODEL_ID",resource["metadata"]["id"])
 config = dotenv_values(".env") 
 published_model_id=config["MODEL_ID"]
 #deployment of the model

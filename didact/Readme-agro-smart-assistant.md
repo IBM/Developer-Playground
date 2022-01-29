@@ -324,9 +324,9 @@
    </div>
    <div class="section">
    <p style="font-size:24px">Pre-requisites</p>
-    <div class="content-">
-    <p>IBM Cloud Account -  Do not have an IBM Cloud Account?<a href="https://cloud.ibm.com/registration"> click here</a> to create one for free.</p>
-    <p>Login into your <a href="https://dataplatform.cloud.ibm.com/">CloudPak for Data</a> account, select region as "Dallas" and verify that the Dashboard is visible.</p>
+    <div class="right-content">
+    <p>IBM Cloud Account -<a href="https://cloud.ibm.com/registration/trial"> click here</a> to create one.</p>
+      <p><a href="https://dataplatform.cloud.ibm.com/registration/stepone?context=cpdaas&apps=all">Click here</a> to login to your Cloud Pak for Data account or <a href="https://dataplatform.cloud.ibm.com/home2?context=cpdaas">Click here </a> to create one for free.</p>
     </div>
    </div>
     <div class="section">
@@ -351,6 +351,12 @@
            <p>You've successfully cloned the code, so click `Build the application` to start the build process.
            </p>
            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cbuild%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20npm%20install%26%26pip3.8%20install%20-r%20requirements.txt">Build the Application</a>
+        </div>
+     </div>
+     <div class="container right">
+        <div class="content">
+           <p>Login to your IBM Cloud account to create services.</p>
+          <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cibm-login%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan%20%26%26%20chmod%20%2Bx%20.%2Flogin.sh%20%26%26%20.%2Flogin.sh">Login to IBM Cloud</a>
         </div>
      </div>
       <div class="container right">
@@ -393,7 +399,7 @@
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_2.png" width = "750" height= "750">
            </div>
            <div class="step">
-           <p>Step 4 : Upload the zip file that was just downloaded, give your project a name and click on "Create" button.</p>
+           <p>Step 4 : Upload the zip file that was downloaded in Step 1, give your project a name and click on Create button.</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_3.png" width = "750" height= "750">
            </div>
            <div class="step">
@@ -408,7 +414,8 @@
            <p>Step 7 : Click on the (⋮) on right hand side of the Model and Click on "Promote" button.</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_6.png" width = "750" height= "750">
            </div><div class="step">
-           <p>Step 8 : Select the deployment space which was created earlier, check the console of the workspace for deployment space name and click on "Promote".</p>
+           <p>Step 8 : Target Space will be the deployment space which was created earlier. To get the deployment space name check your sandbox terminal.
+Once done click on Promote.</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_7.png" width = "750" height= "750">
            </div>
            </details>
@@ -508,7 +515,7 @@
          </div>
       </div>
    </div>
-   <div class="footer">
+   <div class="footer" style="margin-left:30px;">
       <div class="content" style="padding:30px;padding-left:60px;padding-bottom:0px;">
          <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
          <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=sandbox%20terminal">Stop Application</a>
@@ -527,7 +534,7 @@
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
             <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/Anam-Mahmood/Unlock-the-Power-of-Machine-Learning-in-Virtual-Assistants-to-automate-Loan-Applications" target="_blank">Github Repository</a></span>
-            <span style="font-size:15px;margin-top:0px;display:block;">Need Help? Contact <a href="https://github.com/IBM/Developer-Playground-Support/issues/new/choose" target="_blank">Help & Support</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">For further assistance reach out to <a href="https://github.com/IBM/Technology-Sandbox-Support/issues/new/choose" target="_blank"> Help & Support</a></span>
          </p>
       </div>
    </div>

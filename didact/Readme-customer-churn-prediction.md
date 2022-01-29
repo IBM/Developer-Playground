@@ -330,6 +330,12 @@
           <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cget-code%7Csandbox%20terminal|git%20clone%20-b%20churn-prediction%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/churn-prediction/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/churn-prediction/">Get Code</a>
         </div>
       </div>
+     <div class="container right">
+        <div class="content">
+          <p>Install requirements</p>
+          <a class="button is-dark is-medium" title="Install requirements" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cinstall-requirements%7Csandbox%20terminal|cd%20churn-prediction;pip3.8%20install%20-r%20requirements.txt">Install requirements</a>
+        </div>
+      </div>
       <div class="container right">
         <div class="content">
           <p>Create IBM Services</p>
@@ -348,12 +354,6 @@
             <p>IBM Cloud API key is required to deploy the model in the deployment space.</p>
             <p>Click the below button to generate API key via IBM Cloud CLI commands which will be saved in a key_file.</p>
             <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cgenerate-api-token%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;ibmcloud%20iam%20api-key-create%20ApiKey-churnPred%20-d%20'this is API key for churnPred'%20--file%20${CHE_PROJECTS_ROOT}/churn-prediction/key_file">Generate API key</a>
-        </div>
-      </div>
-      <div class="container right">
-        <div class="content">
-          <p>Install requirements</p>
-          <a class="button is-dark is-medium" title="Install requirements" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cinstall-requirements%7Csandbox%20terminal|cd%20churn-prediction;pip3.8%20install%20-r%20requirements.txt">Install requirements</a>
         </div>
       </div>
       <div class="container right">

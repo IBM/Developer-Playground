@@ -23,3 +23,5 @@ service="data-science-experience"
 region="us-south"
 plan="free-v1"
 python3.8 gather_service_info.py $service $servicename $region $plan || exit 1
+
+python3.8 update_service_location.py

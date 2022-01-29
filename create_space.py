@@ -5,7 +5,6 @@ from ibm_watson_machine_learning.deployment import WebService
 import string
 import random
   
-
 deployment_space_name = ''.join(random.choices(string.ascii_uppercase +
                              string.digits, k = 15))
 f = open("key_file", "r")
@@ -24,7 +23,6 @@ cos_crn = config["CLOUD-OBJECT-STORAGE_CRN"]
 wml_crn = config["PM-20_CRN"]
 wml_name = config["PM-20_NAME"]
 loc = config["PM-20_LOC"]
-# assets_file_location = config["ASSETS_FILE_LOCATION"]
 
 wml_credentials = {
   "url": "https://"+loc+".ml.cloud.ibm.com",
@@ -45,16 +43,6 @@ with open(".env", "a") as f:
     f.write("\nSPACE_ID="+space_id)
 
 client.set.default_space(space_id)
-i=0
-
-# client.import_assets.start(space_id=space_id,
-#                            file_path=assets_file_location)
-
-# details = client.import_assets.get_details(space_id=space_id)
-# print("Waiting for import to finish...")
-# while details["resources"][0]["entity"]["status"]["state"] != "completed" and details["resources"][0]["entity"]["status"]["state"] != "failed":
-#     details = client.import_assets.get_details(space_id=space_id)
-# print("finished")
 
 asset_details = client.repository.get_details()
 for resource in asset_details["models"]["resources"] :

@@ -182,7 +182,7 @@
   }
   .header
   {
-    background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/churn-prediction/didact/unnamed.jpg');
+    background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/churnHeader.jpeg');
     background-position: right;
     width: 95%;
     min-height: 70px;
@@ -273,20 +273,26 @@
 </style>
 </head>
 <body>
-    <div class="header">
-        <div class="right-content" style="padding-top:40px;">
+<div class="header">
+     <div class="right-content" style="padding-top:35px;">
         <div class="apptitle" style="font-size: 28px; color: white;">
-      Customer Churn Prediction Application
-    </div>
-  <div class="subheading">
-    Use IBM Watson ML to solve a business problem and predict customer churn using a Telco customer churn data set
-  </div>
+          Customer Churn Prediction Application
         </div>
+        <div class="subheading">
+          Use IBM Watson ML to solve a business problem and predict customer churn using a Telco customer churn data set
+        </div>
+     </div>
+ </div>
+  <div class="section" style="font-size: 16px ; margin-top: -20px">
+    <div>
+      Customer churn, when a customer ends their relationship with a business, is one of the most basic factors in determining the revenue of a business. 
     </div>
-    <div class="section" style="font-size:16px; margin-top:-20px">
-  <p>Customer churn, when a customer ends their relationship with a business, is one of the most basic factors in determining the revenue of a business. </p>
-  <p>You need to know which of your customers are loyal and which are at risk of churning, and you need to know the factors that affect these decisions from a customer perspective. </p>
-  <p>This application explains how to deploy a machine learning model and use it to predict whether a customer is at risk of churning. </p>
+    <div>
+      You need to know which of your customers are loyal and which are at risk of churning, and you need to know the factors that affect these decisions from a customer perspective. 
+    </div>
+    <div>
+      This application explains how to deploy a machine learning model and use it to predict whether a customer is at risk of churning. 
+    </div>
   </div>
    <div class="section">
     <p style="font-size:24px">Learning Resources</p>
@@ -390,8 +396,9 @@
           <span style="font-size:15px;margin-top:0px;display:block;">Head over to the
             <a href="https://github.com/IBM/Developer-Playground/tree/churn-prediction">Github Repository</a>
           </span>
+          <span style="font-size:15px;margin-top:0px;display:block;">Need Help? Contact <a href="https://github.com/IBM/Developer-Playground-Support/issues/new/choose" target="_blank"> Help & Support</a></span>
         </p>
-        <a class="image-link" href="https://developer.ibm.com/patterns/create-a-web-based-intelligent-bank-loan-application-for-a-loan-agent/" target="_blank">
+        <a class="image-link" href="https://developer.ibm.com/patterns/predict-customer-churn-using-watson-studio-and-jupyter-notebooks/?mhsrc=ibmsearch_a&mhq=%20churn%20prediction" target="_blank">
           <div class="image-btn">
             <p class="image-link">View Product Details
             <p style="padding-top: 14px"></p>

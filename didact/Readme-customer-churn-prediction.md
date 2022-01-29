@@ -213,7 +213,7 @@
   .header .right-content div
   {
     background: none;
-    color: #c1c7cd;
+    color: white;
     padding-left: 15px;
     padding-right: 25px;
     font-size: 16px;

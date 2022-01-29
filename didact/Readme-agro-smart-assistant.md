@@ -356,16 +356,9 @@
      <div class="container right">
         <div class="content">
            <p>Login to your IBM Cloud account to create services.</p>
-          <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cibm-login%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan%20%26%26%20chmod%20%2Bx%20.%2Flogin.sh%20%26%26%20.%2Flogin.sh">Login to IBM Cloud</a>
-        </div>
-     </div>
-      <div class="container right">
-        <div class="content">
-          <p>Create and Configure IBM Services</p>
-          <p>You need to be logged in to your IBM Cloud account in the Developer Playground to create and configure services.</p>
           <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cibm-login%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Flogin.sh%20%26%26%20.%2Fscripts%2Flogin.sh">Login to IBM Cloud</a>
         </div>
-      </div>
+     </div>
       <div class="container right">
         <div class="content">
           <p>Create these services with just a click of button.</p>
@@ -391,7 +384,7 @@
           <a class="button is-dark is-medium" href="https://github.com/IBM/Developer-Playground/raw/agro-chatbot/crop-recommendation.zip">Download</a>
            </div>
            <div class="step">
-           <p>Step 2 : Go to your <a href="https://dataplatform.cloud.ibm.com/">CloudPak for Data</a> account. Click on "Create a Project".</p>
+           <p>Step 2 : Login to your <a href="https://dataplatform.cloud.ibm.com/">CloudPak for Data</a> account with the region given in your sandbox terminal. Click on "Create a Project".</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_1.png" width = "750" height= "750">
            </div>
            <div class="step">
@@ -455,7 +448,7 @@ Once done click on Promote.</p>
           <details>
          <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integrate the Machine Learning Model with Watson Assistant</summary></br></br>
           <div class="step">
-          <p>Step 1 : Go to your <a href="https://cloud.ibm.com">IBM Cloud Account</a>. From the "Resources" tab on the left, select "Services and software" and click on your Watson Assistant service.Click on "Launch Watson Assistant" button.</p>
+          <p>Step 1 : Go to your <a href="https://cloud.ibm.com">IBM Cloud Account</a>. From the "Resources" tab on the left, select "Services and software" and click on your Watson Assistant service. Click on "Launch Watson Assistant" button.</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_4.1_assistant.png" width = "750" height= "750">
           </div>
           <div class="step">
@@ -534,7 +527,7 @@ Once done click on Promote.</p>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
             <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/Anam-Mahmood/Unlock-the-Power-of-Machine-Learning-in-Virtual-Assistants-to-automate-Loan-Applications" target="_blank">Github Repository</a></span>
-            <span style="font-size:15px;margin-top:0px;display:block;">For further assistance reach out to <a href="https://github.com/IBM/Technology-Sandbox-Support/issues/new/choose" target="_blank"> Help & Support</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">For further assistance reach out to <a href="https://github.com/IBM/Technology-sandbox-Support/issues/new/choose" target="_blank"> Help & Support</a></span>
          </p>
       </div>
    </div>

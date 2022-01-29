@@ -277,16 +277,16 @@
   <div class="header">
       <div class="right-content" style="padding-top:35px;">
         <div class="apptitle" style="font-size: 28px; color: white;"> 
-    Detect Data Anomaly
+    Anomaly Detection 
   </div>
   <div class="subheading">
-    Perform anomaly detection on timeseries data in your Industry 4.0 applications.
+    Perform anomaly detection on a time-series dataset.
   </div>
      </div>
    </div>
     <div class="section" style="font-size:16px; margin-top:-20px">
-  <p>Anomaly detection is a process in machine learning that identifies data points, events, and/or observations that deviate from a dataset’s normal behavior. To detect anomalies from unlabeled time series data is a pain point that is critical to address for industrial applications.</p>
-  <p>This anomaly detection API service can help users detect anomalies from the entire time series or predict anomaly status of the last data input. Currently the service supports both univariate and multivariate time series.</p>
+  <p>Industrial applications need to be able to detect anomalies from unlabelled time series data which can be a painful process.  Machine learning tools use anomaly detection to identify data points, events, and observations that deviate from a dataset’s normal behavior.</p>
+  <p>This anomaly detection API service can help users detect anomalies from the entire time series or predict anomaly status of the last data input. Currently the service supports both univariate and multivariate time series.This application allows you to experiment with the Anomaly Detection API on both univariate and multivariate time series datasets. The Anomaly Detection API packages state-of-the-art techniques for doing anomaly detection for a time-series dataset along with a unified framework to access these techniques.</p>
   </div>
    <div class="section">
     <p style="font-size:24px">Learning Resources</p>
@@ -303,15 +303,14 @@
    <div class="section">
    <p style="font-size:24px">Pre-requisites</p>
     <div class="content-">
-    <p>IBM Cloud Account -  Do not have an IBM Cloud Account?<a href="https://cloud.ibm.com/registration"> click here</a> to create one for free.</p>
-    <p>To run this application you will need to execute the following steps.</p>
     <ol>
+    <li><p>IBM Account - <a href="https://ibm.com/registration"> Click here</a> to create one.</p></li>
     <li>Obtain API credentials </li>
     <ul>
-    <li>Subscribe to the <a href="https://developer.ibm.com/apis/catalog/ai4industry--anomaly-detection-product/Introduction">Anomaly Detection API</a></li>
-    <li>Check out <a href="https://developer.ibm.com/profile/myapis">API Subscriptions</a></li>
-    <li>You should see a subscription for Anomaly Detection API, select that and proceed</li>
-    <li>You can obtain your Client ID/Secret from here. If you don't see any, you can "Generate API Key".</li>
+    <li>Subscribe to the Anomaly Detection API.</li>
+    <li>Check out API Subscriptions.</li>
+    <li>Select subscription for Anomaly Detection API to proceed.</li>
+    <li>Get the Client ID/Secret, if not, Generate an API Key.</li>
     </ul>
     </ol>
     </div>
@@ -323,20 +322,20 @@
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
-            <p>To begin, you will need the application's source code. Click `Get the code` to clone the code to your playground session.</p>
-            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=anomaly$$git%20clone%20-b%20anomaly%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/anomaly">Get the Code</a>
+            <p>Clone the code to the Technology Sandbox session.</p>
+            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=anomaly%7Cclone%7Canomaly|git%20clone%20-b%20anomaly%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/anomaly">Get the Code</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
             <p>You've successfully cloned the code, so click `Build the application` to start the build process.
             </p>
-            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=anomaly$$cd%20${CHE_PROJECTS_ROOT}/anomaly%20%26%26%20npm%20install%20--production">Build the Application</a>
+            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=anomaly%7Cbuild%7Canomaly|cd%20${CHE_PROJECTS_ROOT}/anomaly%20%26%26%20npm%20install%20--production">Build the Application</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Use the credentials to configure the application</p>
+            <p>Configure the application. See prerequisites.</p>
             </p>
             <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=anomaly%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/anomaly/.env">Configure the Application</a>
          </div>
@@ -344,23 +343,23 @@
       <div class="container right">
          <div class="content">
             <p>You're all set to get started! </p>
-            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=anomaly$$cd%20${CHE_PROJECTS_ROOT}/anomaly/%20%26%26%20npm%20run%20server">Launch the Application</a>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=anomaly%7Claunch%7Canomaly|cd%20${CHE_PROJECTS_ROOT}/anomaly/%20%26%26%20npm%20run%20server">Launch the Application</a>
          </div>
       </div>
    </div>
-   <div class="footer">
+   <div class="footer" style="margin-left:30px;">
       <div class="content" style="padding:30px;padding-left:60px;padding-bottom:0px;">
          <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
          <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=anomaly">Stop Application</a>
          <p class="afterbutton">The stage is yours!</p>
          <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=anomal%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/anomaly/src/App.js">Explore the Code</a>
          <p class="afterbutton ">To view the changes you've made, re-launch the application</p>
-         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=anomaly$$cd%20${CHE_PROJECTS_ROOT}/anomaly%20%26%26%20npm%20install%20--only=dev%20%26%26%20rm%20-rf%20build%20%26%26%20npm%20run%20build%20%26%26%20npm%20run%20server">Re-Launch the Application</a>
+         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=anomaly%7Cre-launch%7Canomaly|cd%20${CHE_PROJECTS_ROOT}/anomaly%20%26%26%20npm%20install%20--only=dev%20%26%26%20rm%20-rf%20build%20%26%26%20npm%20run%20build%20%26%26%20npm%20run%20server">Re-Launch the Application</a>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
             <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/anomaly" target="_blank">Github Repository</a></span>
-            <span style="font-size:15px;margin-top:0px;display:block;">Need Help? Contact <a href="https://github.com/IBM/Developer-Playground-Support/issues/new/choose" target="_blank">Help & Support</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">For further assistance reach out to <a href="https://github.com/IBM/Technology-Sandbox-Support/issues/new/choose" target="_blank"> Help & Support</a></span>
          </p>
          <div class="image-btn">
             <a class="image-link" href="didact://?commandId=extension.openURL&text=anomaly%7Cview-product-details%7Chttps://www.ibm.com/products

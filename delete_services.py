@@ -1,7 +1,6 @@
 import os
 from dotenv import dotenv_values
 
-
 config = dotenv_values(".env") 
 updated_cos = config["CLOUD-OBJECT-STORAGE_UPDATED"]
 updated_wml = config["PM-20_UPDATED"]

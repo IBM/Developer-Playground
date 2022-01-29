@@ -279,37 +279,11 @@ average_precision_mlp = average_precision_score(y_test, y_score_mlp)
 print('Average precision-recall score: {0:0.2f}'.format(
       average_precision_mlp))
 
-#14. ROC Curve and models comparisons
-
-# # Plot SVC ROC Curve
-# plt.figure(0, figsize=(20,15)).clf()
-
-# fpr_svc_npp, tpr_svc_npp, thresh_svc_npp = metrics.roc_curve(y_test_npp, y_score_svc_npp)
-# auc_svc_npp = metrics.roc_auc_score(y_test_npp, y_score_svc_npp)
-# plt.plot(fpr_svc_npp, tpr_svc_npp, label="SVC Non-Processed, auc=" + str(auc_svc_npp))
-
-# fpr_svc, tpr_svc, thresh_svc = metrics.roc_curve(y_test, y_score_svc)
-# auc_svc = metrics.roc_auc_score(y_test, y_score_svc)
-# plt.plot(fpr_svc, tpr_svc, label="SVC Processed, auc=" + str(auc_svc))
-
-# fpr_mlp, tpr_mlp, thresh_mlp = metrics.roc_curve(y_test, y_score_mlp)
-# auc_mlp = metrics.roc_auc_score(y_test, y_score_mlp)
-# plt.plot(fpr_mlp, tpr_mlp, label="MLP, auc=" + str(auc_mlp))
-
-# fpr_lr, tpr_lr, thresh_lr = metrics.roc_curve(y_test, y_score_lr)
-# auc_lr = metrics.roc_auc_score(y_test, y_score_lr)
-# plt.plot(fpr_lr, tpr_lr, label="Logistic Regression, auc=" + str(auc_lr))
-
-# plt.legend(loc=0)
-
-#bring model id and deployment space name from .env file
 config = dotenv_values(".env") 
 deployment_space_name=config["DEPLOYMENT_SPACE_NAME"]
 apikey=config["API_KEY"]
 model_name = config["MODEL_NAME"]
 loc = config["PM-20_LOC"]
-
-
 
 wml_credentials = {
   "apikey": apikey,

@@ -277,10 +277,10 @@
 <div class="header">
       <div class="left-content">
           <div class="apptitle" style="font-size: 28px; color: white; padding-top:35px;"> 
-             HERE APIs - Geocoding & Search
+             Geocoding and Search
           </div>
           <div class="subheading">
-            API’s to create location-enabled applications
+            Create location-based applications with the HERE Geocoding and Search API
           </div>
       </div>
       </div>
@@ -288,33 +288,26 @@
    <br>
       <div class="description">
           <div>
-            Geocoding is the process of transforming addresses (like "Taj Mahal in Agra, Uttar Pradesh, India") into geographic spatial coordinates (like latitude 27.1751° N and longitude 78.0421° E), where you can place markers on a map or position the map. Reverse geocoding is the process of converting geographic coordinates into a human-readable postal address.
-          </div>
+            Geocoding is the process of transforming addresses (like "Taj Mahal in Agra, Uttar Pradesh, India") into geographic spatial coordinates (like latitude 27.1751° N and longitude 78.0421° E), which you can use to explore and position the map. Reverse geocoding is the process of converting geographic coordinates into a human-readable postal address.          </div>
           <br>
           <div>
-            With the HERE Geocoding and Search API, you can search for,
+            This application allows you to experiment with the HERE Geocoding and Search API to
           </div>
           <ul>
-            <li>points of interest with 400+ categories and address objects at different levels(house number, street, city, state, postal code, ...)</li>
-            <li>forward and reverse geocode address</li>
-            <li>geo-positions from the HERE map</li>
-            <li>access and analyse with Bring Your Own Data (BYOD)</li>
+            <li>search for points of interest with 400+ categories and address objects at different levels (street, city, state, ...)</li>
+            <li>forward and reverse geocode address and geo-positions</li>
           </ul>
       </div> 
    <br>
-   <br>
     <div class="assetdetails">
-            <p style="font-size: 24px;">Learning Resources</p>
-            <p><a href="https://developer.ibm.com/apis/catalog/heremaps--geocoding-and-search-api-v7/Introduction">Get started with HERE Geocoding and Search API</a></p>
-        <br>
             <p style="font-size: 24px;">Included components</p>
             <p><a href="https://developer.ibm.com/apis/catalog/heremaps--geocoding-and-search-api-v7/Introduction">HERE Geocoding and Search API</a></p>
             <br>
            <p style="font-size: 24px;">Prerequisites</p>
-             <p>Subscribe to the HERE Geocoding</p>
+             <p>Subscribe to the HERE Geocoding and Search API:</p>
             <ol>
-            <li>Sign up as HERE Developer</li>
-            <li>Login to your HERE account, navigate to Projects > REST </li>
+            <li>Sign up for 'HERE Developer'</li>
+            <li>Login to your HERE account, navigate to Projects > REST</li>
             <li>Go to OAuth2.0 > Generate App and click 'Create credentials' </li>
             <li>'Access Key ID' and 'Access Key Secret' is your Client ID and Secret</li>
             <li>Proceed to the 'API Keys' section and create your API Key</li>
@@ -326,13 +319,13 @@
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
-            <p>Clone the application source code</p>
+            <p>Clone the code to the Technology Sandbox session</p>
             <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=HEREGeocodingandSearch%7Cget-code%7CHEREGeocodingandSearch|git%20clone%20-b%20HERE%20--sparse%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/here-geocoding/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/here-geocoding/%20%26%26%20git%20sparse-checkout%20init%20--cone%20%26%26%20git%20sparse-checkout%20add%20HEREGeocodingandSearch">Get the Code</a> 
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Start to build the application</p>
+            <p>Build the application</p>
             <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREGeocodingandSearch%7CBUILD-APPLICATION%7CHEREGeocodingandSearch|cd%20${CHE_PROJECTS_ROOT}/here-geocoding/HEREGeocodingandSearch%20%26%26%20npm%20install%20--production">Build the Application</a>
          </div>
       </div>
@@ -351,20 +344,23 @@
    </div>
    <br>
    <div class="assetdetails">
-    <p>View the application in the preview window</p>
-    <p>Once you are done or would like to edit or explore the application, make sure to stop the services</p>
+    <p style="font-size: 24px;">Explore the APIs</p>
+    <p>If you would like to edit or explore the application, make sure to stop the application</p>
    </div>
-   <div class="footer">
-      <div class="content" style="padding:30px;padding-left:60px;padding-bottom: 0px;">
-         <p>Stop the services</p>
+  <div class="footer" style="margin-left:30px;">
+     <div class="content" style="padding:30px;padding-left:60px;margin-right:80px;padding-bottom:0px;">
+         <p>Stop the application</p>
          <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=HEREGeocodingandSearch">Stop Application</a>
          <p class="afterbutton">Explore and update the code as per your requirement</p>
          <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=HEREGeocodingandSearch%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/here-geocoding/HEREGeocodingandSearch/src/App.js">Explore the Code</a>
-         <p class="afterbutton ">Re-launch the application to experience the application with the updated code</p>
+         <p class="afterbutton ">Re-launch the application to view the changes made</p>
          <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREGeocodingandSearch%7Crelaunch-application%7CHEREGeocodingandSearch|cd%20${CHE_PROJECTS_ROOT}/here-geocoding/HEREGeocodingandSearch%20%26%26%20npm%20install%20%26%26%20export%20REACT_APP_mode=dev%20%26%26%20npm%20start">Re-Launch the Application</a> 
       </div>
       <div class="image-div">
-         <p class="image-content">Want to explore this project more? <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/HERE/HEREGeocodingandSearch">Github Repository</a></span> </p>
+         <p class="image-content">Want to explore this project more?
+            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/DART" target="_blank">Github Repository</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">For further assistance reach out to <a href="https://github.com/IBM/Technology-Sandbox-Support/issues/new/choose" target="_blank"> Help & Support</a></span>
+         </p>         
          <div class="image-btn">
             <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREGeocodingandSearch%7Cview-product-details%7Chttps://developer.here.com/documentation/geocoding-search-api/dev_guide/index.html" target="_blank">
                View Product Details 

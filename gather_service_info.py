@@ -14,38 +14,24 @@ if(len(data.split("\n"))<3):
     print(os.popen("ibmcloud resource service-instances --service-name "+service).read())
     result = [data[0]["region_id"],data[0]["name"]]
     choice = 0
-    while (choice!="1" and choice!="2") :
-        os.system("echo Creating "+service+" Service Failed as you already have an instance. Please select an option:")
-        os.system("echo 1. Delete the existing instance and create new instance.")
-        os.system("echo 2. Use the existing instance.")
-        try:
-            choice = input("Enter a Number>")
-        except:
-            pass
-    if(choice==1):
-        data = os.popen("ibmcloud resource service-instance-delete "+result[1]+" -f --recursive").read()
-        print(data)
-        data = os.popen("ibmcloud resource service-instance-create "+servicename+" "+service+" "+plan+" "+region).read()
-        print(data)
-        with open(".env", "a") as f:
-            f.write("\n"+service.upper()+"_NAME="+servicename)
-        data = os.popen("ibmcloud resource service-instance "+servicename+" --id").read()
-        with open(".env", "a") as f:
-            f.write("\n"+service.upper()+"_CRN="+data.split("\n")[-2].split(" ")[0])
-        with open(".env", "a") as f:
-            f.write("\n"+service.upper()+"_LOC="+region)
-        with open(".env", "a") as f:
-            f.write("\n"+service.upper()+"_UPDATED=True")
-    else:
-        with open(".env", "a") as f:
-            f.write("\n"+service.upper()+"_NAME="+result[1])
-        data = os.popen("ibmcloud resource service-instance "+result[1]+" --id").read()
-        with open(".env", "a") as f:
-            f.write("\n"+service.upper()+"_CRN="+data.split("\n")[-2].split(" ")[0])
-        with open(".env", "a") as f:
-            f.write("\n"+service.upper()+"_LOC="+result[0])
-        with open(".env", "a") as f:
-            f.write("\n"+service.upper()+"_UPDATED=False")
+    while (choice!="y" and choice!="Y" and choice!="n" and choice!="N") :
+        print("Creating "+service+" Service Failed as you already have an instance.")
+        choice = input("Do you want to use existing instance?(Y/N) ")
+        if(choice=="n" or choice=="N"):
+            confirm_choice = input("Are you sure? You won't be able to use the application if you proceed.(Y/N) ")
+            if(confirm_choice=="y" or confirm_choice=="Y"):
+                raise Exception("Service creation stopped.")
+            else:
+                choice=0
+    with open(".env", "a") as f:
+        f.write("\n"+service.upper()+"_NAME="+result[1])
+    data = os.popen("ibmcloud resource service-instance "+result[1]+" --id").read()
+    with open(".env", "a") as f:
+        f.write("\n"+service.upper()+"_CRN="+data.split("\n")[-2].split(" ")[0])
+    with open(".env", "a") as f:
+        f.write("\n"+service.upper()+"_LOC="+result[0])
+    with open(".env", "a") as f:
+        f.write("\n"+service.upper()+"_UPDATED=False")
 else:
     with open(".env", "a") as f:
         f.write("\n"+service.upper()+"_NAME="+servicename)

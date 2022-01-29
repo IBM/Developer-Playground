@@ -1,5 +1,6 @@
 import os
 import sys
+import json
 
 service = sys.argv[1]
 servicename=sys.argv[2]
@@ -9,29 +10,16 @@ data = os.popen("ibmcloud resource service-instance-create "+servicename+" "+ser
 print(data)
 
 if(len(data.split("\n"))<3):
-    data = os.popen("ibmcloud resource service-instances --service-name "+service).read()
-    print(data)
-    result = []
-    for services in data.split("\n")[3:]:
-        resource = services.strip().split(" ")
-        count=0
-        for i in range(len(resource)-1,-1, -1):
-            if(not resource[i]==""):
-                count = count + 1
-            if(count==4 and len(result)==0):
-                result.append(resource[i])
-            if(count==5):
-                name="%20".join(resource[0:i+1])
-                result.append(name)
-                break
-        break
+    data = json.loads(os.popen("ibmcloud resource service-instances --service-name "+service+" --output json").read())
+    print(os.popen("ibmcloud resource service-instances --service-name "+service).read())
+    result = [data[0]["region_id"],data[0]["name"]]
     choice = 0
-    while (choice!=1 and choice!=2) :
+    while (choice!="1" and choice!="2") :
         os.system("echo Creating "+service+" Service Failed as you already have an instance. Please select an option:")
         os.system("echo 1. Delete the existing instance and create new instance.")
         os.system("echo 2. Use the existing instance.")
         try:
-            choice = int(input("Enter a Number>"))
+            choice = input("Enter a Number>")
         except:
             pass
     if(choice==1):

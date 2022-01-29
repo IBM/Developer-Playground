@@ -378,7 +378,7 @@
           <a class="button is-dark is-medium" href="https://github.com/IBM/Developer-Playground/raw/bank-loan/bankLoan.zip">Download</a>
            </div>
            <div class="step">
-           <p>Step 2 : Go to your <a href="https://dataplatform.cloud.ibm.com/">CloudPak for Data</a> account. Click on <b>Create a Project</b>.</p>
+           <p>Step 2 : Login to your <a href="https://dataplatform.cloud.ibm.com/">CloudPak for Data</a> account with the <b>Region</b> given in your sandbox terminal. Click on "Create a Project".</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_1.png" width = "750" height= "750">
            </div>
            <div class="step">

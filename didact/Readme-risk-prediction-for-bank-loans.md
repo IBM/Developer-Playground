@@ -301,6 +301,7 @@
       <div class="section" style="font-size: 16px ; margin-top: -20px">
         In a typical bank loan department, the loan agent receives an application from a customer.<br>The agent then considers several factors to decide whether the loan can be approved or should be rejected. <br>To help ease this decision-making process, this solution explains how to build a web-based application using Python Flask, that the loan agent can use to make these decisions. This will enable the loan agent to analyze the risk involved while trying to approve the loan.
       </div>
+
    <div class="section">
     <p style="font-size:24px">Learning Resources</p>
     <div class="right-content">

@@ -278,7 +278,7 @@
    <div class="header">
         <div class="left-content">
             <div class="apptitle" style="font-size: 28px; color: white; padding-top:35px;">
-            Travel Assistant
+            Weather Data Assistant for Travel
             </div>
             <div class="subheading">
             Explore the weather and travel logistics with The Weather Company's APIs and HERE APIs

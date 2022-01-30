@@ -50,4 +50,4 @@ for resource in asset_details["models"]["resources"] :
         with open(".env", "a") as f:
             f.write("\nMODEL_ID="+resource["metadata"]["id"])
 
-print("Deployment Space with ID " + space_id + " containing model " + model_name + " is created successfully.")
+print("An Empty Deployment Space with ID " + space_id + " is created successfully.")

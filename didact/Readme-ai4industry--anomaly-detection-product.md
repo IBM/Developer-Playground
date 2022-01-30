@@ -7,7 +7,7 @@
   body {
     background-color: #1a1a1a;
     font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     outline: none;
   }
   body {
@@ -15,7 +15,7 @@
   }
   /* The actual timeline (the vertical ruler) */
   .timeline {
-    position: absolute;
+    position: relative;
     max-width: 1200px;
     margin: 0 auto;
     margin-left: 50px;
@@ -113,13 +113,16 @@
     background-color: #2a67f5;
     border-color: white;
     color: #fff;
+    text-decoration: none;
   }
   .footer {
     display: flex;
     background-color: #343A3E;
-    margin: 1050px 0px 0px 20px;
+    margin-top: 20px;
     padding: 0px;
     max-width: 1200px;
+    margin-left: 30px;
+    margin-right: 30px;
   }
   .github-icon {
     min-height: 100%;
@@ -182,41 +185,40 @@
   .header
   {
     background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/anomaly.jpeg');
-    width: 100%;
-    height: auto;
-    min-height: 300px;
+    background-position: right;
+    width: 95%;
+    min-height: 70px;
     display: inline-block;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 30px;
     margin-right: 30px;
-    background-size: contain;
     max-width: 1200px;
+    background-repeat: no-repeat;
+    background-size: 700px 500px;
   }
   .header .right-content
   {
-    float: right;
-    width: 45%;
-    background-color:#0072C3;
-    min-height: 300px;
-    padding: 20px;
-    padding-top: 2.5%;
-    font-size: 14px;
+    float: left;
+    width: 50%;
+    background-color: #525252;
+    min-height: 270px;
+    font-size: 16px;
   }
   .header .right-content h4
   {
     background: none;
-    color: white;
+    color:  #C1C7CD;
     padding-left: 25px;
     padding-right: 25px;
   }
   .header .right-content div
   {
     background: none;
-    color: white;
+    color:  #C1C7CD;
     padding-left: 15px;
     padding-right: 25px;
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 10px;
   }
   .header .right-content ul
@@ -228,7 +230,7 @@
   }
   .container a
   {
-     color: #78A9FF;
+     color: #BE95FF;
     background-color: transparent;
     text-decoration: none;
   }
@@ -243,126 +245,97 @@
     margin-left: 25px;
     margin-top: 20px;
     margin-bottom: 0px;
-    font-size: 20px;
+    font-size: 28px;
     color: white;
+  }
+  .subheading
+  {
+    margin-left: 25px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 16px;
+    color: #c1c7cd;
   }
   .no-hover:hover
   {
-    background-color: #0062FF !important;
+    background-color: #A6C8FF !important;
   }
-  @media only screen and (max-width: 1000px) {
-    .header
-    {
-      background-size: cover;
-    }
+  .section{
+    margin-top: 5px;
+    margin-bottom:-50px;
   }
-  @media only screen and (max-width: 800px) {
-    .footer {
-      margin: 1050px 0px 0px 20px;
-    }
-    .header
-    {
-      background-size: cover;
-    }
+  a:hover{
+      color: #A6C8FF;
+      text-decoration: underline;
   }
-  @media only screen and (max-width: 700px) {
-    .footer {
-      margin: 1200px 0px 0px 20px;
-    }
-    .header
-    {
-      background-size: cover;
-      background-position: 0px 0px;
-    }
+  a:visited{
+      color: #BE95FF;
   }
-  @media only screen and (max-width: 600px) {
-    .footer {
-      margin: 1350px 0px 0px 20px;
-    }
-    .header
-    {
-      background-size: cover;
-    }
-  }
-  @media only screen and (max-width: 500px) {
-    .footer {
-      margin: 1350px 0px 0px 20px;
-    }
-    .header
-    {
-      background-size: cover;
-    }
-  }
-  @media only screen and (max-width: 400px) {
-    .footer {
-      margin: 1450px 0px 0px 20px;
-    }
-    .header
-    {
-      background-size: cover;
-    }
-  }
-}
 </style>
 </head>
 <body>
-  <div class="apptitle"> 
-    Anomaly Detection API Sample Application
-  </div>
   <div class="header">
-      <div class="right-content">
-         <div>
-          Anomaly detection is a process in machine learning that identifies data points, events, and/or observations that deviate from a dataset’s normal behavior. To detect anomalies from unlabeled time series data is a pain point that is critical to address for industrial applications.
-        </div>
-        <div>
-          This anomaly detection API service can help users detect anomalies from the entire time series or predict anomaly status of the last data input. Currently the service supports both univariate and multivariate time series.
-        </div>
+      <div class="right-content" style="padding-top:35px;">
+        <div class="apptitle" style="font-size: 28px; color: white;"> 
+    Anomaly Detection 
+  </div>
+  <div class="subheading">
+    Perform anomaly detection on a time-series dataset.
+  </div>
      </div>
+   </div>
+    <div class="section" style="font-size:16px; margin-top:-20px">
+  <p>Industrial applications need to be able to detect anomalies from unlabelled time series data which can be a painful process.  Machine learning tools use anomaly detection to identify data points, events, and observations that deviate from a dataset’s normal behavior.</p>
+  <p>This anomaly detection API service can help users detect anomalies from the entire time series or predict anomaly status of the last data input. Currently the service supports both univariate and multivariate time series.This application allows you to experiment with the Anomaly Detection API on both univariate and multivariate time series datasets. The Anomaly Detection API packages state-of-the-art techniques for doing anomaly detection for a time-series dataset along with a unified framework to access these techniques.</p>
+  </div>
+   <div class="section">
+    <p style="font-size:24px">Learning Resources</p>
+    <div class="content-">
+      <a href="https://developer.ibm.com/learningpaths/get-started-anomaly-detection-api/">Get Started with Anomaly Detection API</a></br>
+    </div>
+   </div>
+   <div class="section">
+      <p style="font-size:24px">Included Components</p>
+      <div class="content-">
+          <p><a href="https://developer.ibm.com/apis/catalog/ai4industry--anomaly-detection-product/Introduction">Anomaly Detection API</a>: This anomaly detection API service can help users detect anomalies from the entire time series or predict anomaly status of the last data input.</p>
+      </div>
+   </div>
+   <div class="section">
+   <p style="font-size:24px">Pre-requisites</p>
+    <div class="content-">
+    <ol>
+    <li><p>IBM Account - <a href="https://ibm.com/registration"> Click here</a> to create one.</p></li>
+    <li>Obtain API credentials </li>
+    <ul>
+    <li>Subscribe to the Anomaly Detection API.</li>
+    <li>Check out API Subscriptions.</li>
+    <li>Select subscription for Anomaly Detection API to proceed.</li>
+    <li>Get the Client ID/Secret, if not, Generate an API Key.</li>
+    </ul>
+    </ol>
+    </div>
+   </div>
+    <div class="section">
+   <p style="font-size:24px">Instructions</p>
+   <p style="margin-bottom:10px;">Please follow all the below steps in proper sequence to avoid failure.</p>
    </div>
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
-            <p>To begin, you will need the application's source code. Click `Get the code` to clone the code to your playground session.</p>
-            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=anomaly$$git%20clone%20-b%20anomaly%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/anomaly">Get the Code</a>
+            <p>Clone the code to the Technology Sandbox session.</p>
+            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=anomaly%7Cclone%7Canomaly|git%20clone%20-b%20anomaly%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/anomaly">Get the Code</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
             <p>You've successfully cloned the code, so click `Build the application` to start the build process.
             </p>
-            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=anomaly$$cd%20${CHE_PROJECTS_ROOT}/anomaly%20%26%26%20npm%20install%20--production">Build the Application</a>
-            <p class="afterbutton">
-               To obtain credentials and configure the application, complete the following steps
-            </p>
+            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=anomaly%7Cbuild%7Canomaly|cd%20${CHE_PROJECTS_ROOT}/anomaly%20%26%26%20npm%20install%20--production">Build the Application</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Subscribe to the <a title= "Anomaly Detection" href="https://developer.ibm.com/apis/catalog/ai4industry--anomaly-detection-product/Introduction">Anomaly Detection API</a>
-            </p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>Now check out <a title= "My Subscriptions" href="https://developer.ibm.com/profile/myapis">API Subscriptions</a>
-            </p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>You should see a subscription for Anomaly Detection API, select that and proceed
-            </p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>You can obtain your Client ID/Secret from here. If you don't see any, you can "Generate API Key"
-            </p>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>Let's get the credentials by configuring the application</p>
+            <p>Configure the application. See prerequisites.</p>
             </p>
             <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=anomaly%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/anomaly/.env">Configure the Application</a>
          </div>
@@ -370,22 +343,23 @@
       <div class="container right">
          <div class="content">
             <p>You're all set to get started! </p>
-            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=anomaly$$cd%20${CHE_PROJECTS_ROOT}/anomaly/%20%26%26%20npm%20run%20server">Launch the Application</a>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=anomaly%7Claunch%7Canomaly|cd%20${CHE_PROJECTS_ROOT}/anomaly/%20%26%26%20npm%20run%20server">Launch the Application</a>
          </div>
       </div>
    </div>
-   <div class="footer">
+   <div class="footer" style="margin-left:30px;">
       <div class="content" style="padding:30px;padding-left:60px;padding-bottom:0px;">
          <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
          <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=anomaly">Stop Application</a>
          <p class="afterbutton">The stage is yours!</p>
          <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=anomal%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/anomaly/src/App.js">Explore the Code</a>
          <p class="afterbutton ">To view the changes you've made, re-launch the application</p>
-         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=anomaly$$cd%20${CHE_PROJECTS_ROOT}/anomaly%20%26%26%20npm%20install%20--only=dev%20%26%26%20rm%20-rf%20build%20%26%26%20npm%20run%20build%20%26%26%20npm%20run%20server">Re-Launch the Application</a>
+         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=anomaly%7Cre-launch%7Canomaly|cd%20${CHE_PROJECTS_ROOT}/anomaly%20%26%26%20npm%20install%20--only=dev%20%26%26%20rm%20-rf%20build%20%26%26%20npm%20run%20build%20%26%26%20npm%20run%20server">Re-Launch the Application</a>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
             <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/anomaly" target="_blank">Github Repository</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">For further assistance reach out to <a href="https://github.com/IBM/Technology-Sandbox-Support/issues/new/choose" target="_blank"> Help & Support</a></span>
          </p>
          <div class="image-btn">
             <a class="image-link" href="didact://?commandId=extension.openURL&text=anomaly%7Cview-product-details%7Chttps://www.ibm.com/products

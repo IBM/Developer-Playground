@@ -291,7 +291,7 @@
     <div class="header">
       <div class="right-content" style="padding-top:35px;">
         <div class="apptitle" style="font-size: 28px; color: white; padding-top: 5px">
-          Intelligent Bank Loan Application
+          Risk Prediction for Bank Loans application
         </div>
         <div class="subheading">
         Build a web application using Python Flask to analyze risks involved when trying to approve loans.

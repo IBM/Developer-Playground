@@ -352,7 +352,7 @@
       <div class="container right">
         <div class="content">
             <p>IBM Cloud API key is required to deploy the model in the deployment space.</p>
-            <p>Click the below button to generate API key via IBM Cloud CLI commands which will be saved in a key_file.</p>
+            <p>Click the below button to generate API key via IBM Cloud CLI commands which will be saved in a key_file.</p>g
             <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cgenerate-api-token%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;ibmcloud%20iam%20api-key-create%20ApiKey-churnPred%20-d%20'this is API key for churnPred'%20--file%20${CHE_PROJECTS_ROOT}/churn-prediction/key_file">Generate API key</a>
         </div>
       </div>

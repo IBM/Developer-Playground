@@ -6,4 +6,4 @@ new_filename=$(echo "$a" | sed '2!d' key_file )
 id=$(echo "$a" | cut -c 9-51 <<< $new_filename)
 #delete the API key
 ibmcloud iam api-key-delete $id -f
-rm ${CHE_PROJECTS_ROOT}/Churn-Prediction/key_file
+rm ${CHE_PROJECTS_ROOT}/churn-prediction/key_file

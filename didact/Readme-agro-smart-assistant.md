@@ -324,8 +324,9 @@
    </div>
    <div class="section">
    <p style="font-size:24px">Pre-requisites</p>
-    <div class="content-">
-    <p>IBM Cloud Account -  Do not have an IBM Cloud Account?<a href="https://cloud.ibm.com/registration"> click here</a> to create one for free.</p>
+    <div class="right-content">
+    <p>IBM Cloud Account -<a href="https://cloud.ibm.com/registration/trial"> click here</a> to create one.</p>
+      <p><a href="https://dataplatform.cloud.ibm.com/registration/stepone?context=cpdaas&apps=all">Click here</a> to login to your Cloud Pak for Data account or <a href="https://dataplatform.cloud.ibm.com/home2?context=cpdaas">Click here </a> to create one for free.</p>
     </div>
    </div>
     <div class="section">
@@ -336,33 +337,32 @@
    <div style="margin-top:0;"class="container right">
             <div class="content">
                 <p>To begin, open a pre-configured terminal.</p>
-                <a class="button is-dark is-medium" title="Open Terminal" href="didact://?commandId=terminal-for-nodejs-container:new">Open Terminal</a><br>
+                <a class="button is-dark is-medium" title="Open Terminal" href="didact://?commandId=terminal-for-sandbox-container:new">Open Terminal</a><br>
             </div>
         </div>
       <div class="container right">
          <div class="content">
             <p>Click `Get the code` to clone the code to your playground session as application's source code is needed.</p>
-            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cclone-repo%7Cnodejs%20terminal|git%20clone%20-b%20agro-chatbot%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant">Get the Code</a>
+            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cclone-repo%7Csandbox%20terminal|git%20clone%20-b%20agro-chatbot%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant">Get the Code</a>
          </div>
       </div>
       <div class="container right">
         <div class="content">
            <p>You've successfully cloned the code, so click `Build the application` to start the build process.
            </p>
-           <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cbuild%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20npm%20install%26%26pip3.8%20install%20-r%20requirements.txt">Build the Application</a>
+           <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cbuild%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20npm%20install%26%26pip3.8%20install%20-r%20requirements.txt">Build the Application</a>
+        </div>
+     </div>
+     <div class="container right">
+        <div class="content">
+           <p>Login to your IBM Cloud account to create services.</p>
+          <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cibm-login%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Flogin.sh%20%26%26%20.%2Fscripts%2Flogin.sh">Login to IBM Cloud</a>
         </div>
      </div>
       <div class="container right">
         <div class="content">
-          <p>Create and Configure IBM Services</p>
-          <p>You need to be logged in to your IBM Cloud account in the Developer Playground to create and configure services.</p>
-          <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cibm-login%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Flogin.sh%20%26%26%20.%2Fscripts%2Flogin.sh">Login to IBM Cloud</a>
-        </div>
-      </div>
-      <div class="container right">
-        <div class="content">
           <p>Create these services with just a click of button.</p>
-          <a class="button is-dark is-medium" title="Create IBM Watson Services" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-services%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fcreate-ibm-services.sh%20%26%26%20.%2Fscripts%2Fcreate-ibm-services.sh">Create IBM Watson Services</a>
+          <a class="button is-dark is-medium" title="Create IBM Watson Services" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Ccreate-services%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fcreate-ibm-services.sh%20%26%26%20.%2Fscripts%2Fcreate-ibm-services.sh">Create IBM Watson Services</a>
           <p style="margin-top:50px">Follow the below steps to configure the asset.</p>
         </div>
       </div>
@@ -372,11 +372,11 @@
          <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create a New Deployment Space and Deploy the Model</summary></br></br>
          <div class="step">
           <p>Step 1 : Generate an API Key in the IBM account.</p>
-          <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cgenerate-api-token%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant;ibmcloud%20iam%20api-key-create%20ApiKey-SVA%20-d%20'this is API key for Smart Virtual Assitant'%20--file%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/key_file">Generate API key</a></br>
+          <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cgenerate-api-token%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant;ibmcloud%20iam%20api-key-create%20ApiKey-SVA%20-d%20'this is API key for Smart Virtual Assitant'%20--file%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/key_file">Generate API key</a></br>
         </div>
           <div class="step">
             <p>Step 2 : Create a new deployment space with the pre-loaded model.</p>
-            <a class="button is-dark is-medium" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cstart%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20python3.8%20create_space.py">Create Deployment Space</a>
+            <a class="button is-dark is-medium" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cstart%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20python3.8%20create_space.py">Create Deployment Space</a>
           <details style="margin-top:5px;">
          <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Incase your model import failed, do the following steps</summary></br></br>
           <div class="step">
@@ -384,7 +384,7 @@
           <a class="button is-dark is-medium" href="https://github.com/IBM/Developer-Playground/raw/agro-chatbot/crop-recommendation.zip">Download</a>
            </div>
            <div class="step">
-           <p>Step 2 : Go to your <a href="https://dataplatform.cloud.ibm.com/">CloudPak for Data</a> account. Click on "Create a Project".</p>
+           <p>Step 2 : Login to your <a href="https://dataplatform.cloud.ibm.com/">CloudPak for Data</a> account with the region given in your sandbox terminal. Click on "Create a Project".</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_1.png" width = "750" height= "750">
            </div>
            <div class="step">
@@ -392,7 +392,7 @@
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_2.png" width = "750" height= "750">
            </div>
            <div class="step">
-           <p>Step 4 : Upload the zip file that was just downloaded, give your project a name and click on "Create" button.</p>
+           <p>Step 4 : Upload the zip file that was downloaded in Step 1, give your project a name and click on Create button.</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_3.png" width = "750" height= "750">
            </div>
            <div class="step">
@@ -407,18 +407,19 @@
            <p>Step 7 : Click on the (⋮) on right hand side of the Model and Click on "Promote" button.</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_6.png" width = "750" height= "750">
            </div><div class="step">
-           <p>Step 8 : Select the deployment space which was created earlier, check the console of the workspace for deployment space name and click on "Promote".</p>
+           <p>Step 8 : Target Space will be the deployment space which was created earlier. To get the deployment space name check your sandbox terminal.
+Once done click on Promote.</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_7.png" width = "750" height= "750">
            </div>
            </details>
            </div>
           <div class="step">
             <p>Step 3 : Deploy the model.</p>
-            <a class="button is-dark is-medium" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cstart%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20python3.8%20deploy_model.py">Deploy</a>
+            <a class="button is-dark is-medium" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cstart%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20python3.8%20deploy_model.py">Deploy</a>
           </div>
           <div class="step">
             <p>Step 4 : Run the script to update the code file with Model URL.</p>
-            <a class="button is-dark is-medium" title="Update Model URL" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-services%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fadd_model_url.sh%20%26%26%20.%2Fscripts%2Fadd_model_url.sh">Update Model URL</a>
+            <a class="button is-dark is-medium" title="Update Model URL" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Ccreate-services%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fadd_model_url.sh%20%26%26%20.%2Fscripts%2Fadd_model_url.sh">Update Model URL</a>
             </div>
         </details>
         </div>
@@ -429,15 +430,15 @@
          <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configure Cloud Functions</summary></br></br>
           <div class="step">
            <p>Step 1 : Create an Action in cloud functions with web action enabled.</p>
-           <a class="button is-dark is-medium" title="Create Action" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-action%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fcreate_action.sh%20%26%26%20.%2Fscripts%2Fcreate_action.sh">Create Action</a>
+           <a class="button is-dark is-medium" title="Create Action" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Ccreate-action%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fcreate_action.sh%20%26%26%20.%2Fscripts%2Fcreate_action.sh">Create Action</a>
            </div>
           <div class="step">
            <p>Step 2 : Run the script to add api_key parameter in the Action.</p>
-           <a class="button is-dark is-medium" title="Create Parameter" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-services%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fadd_parameter.sh%20%26%26%20.%2Fscripts%2Fadd_parameter.sh">Add Paramter</a>
+           <a class="button is-dark is-medium" title="Create Parameter" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Ccreate-services%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fadd_parameter.sh%20%26%26%20.%2Fscripts%2Fadd_parameter.sh">Add Paramter</a>
            </div>
           <div class="step">
            <p>Step 3 : Run the script to update Dialog skill file with the webhook URL that was just created.</p>
-           <a class="button is-dark is-medium" title="Update" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-services%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fupdate_dialog.sh%20%26%26%20.%2Fscripts%2Fupdate_dialog.sh">Update Dialog Skill</a>
+           <a class="button is-dark is-medium" title="Update" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Ccreate-services%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fupdate_dialog.sh%20%26%26%20.%2Fscripts%2Fupdate_dialog.sh">Update Dialog Skill</a>
           </div>
           </details>
         </div>
@@ -447,7 +448,7 @@
           <details>
          <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integrate the Machine Learning Model with Watson Assistant</summary></br></br>
           <div class="step">
-          <p>Step 1 : Go to your <a href="https://cloud.ibm.com">IBM Cloud Account</a>. From the "Resources" tab on the left, select "Services and software" and click on your Watson Assistant service.Click on "Launch Watson Assistant" button.</p>
+          <p>Step 1 : Go to your <a href="https://cloud.ibm.com">IBM Cloud Account</a>. From the "Resources" tab on the left, select "Services and software" and click on your Watson Assistant service. Click on "Launch Watson Assistant" button.</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_4.1_assistant.png" width = "750" height= "750">
           </div>
           <div class="step">
@@ -463,7 +464,7 @@
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_4.4_assistant.png" width = "550" height= "550">
           </div>
           <div class="step">
-          <p>Step 4 : Once the Assistant is created, click on "add an action or dialog skill".</p>
+          <p>Step 4 : Once the Assistant is created, click on "Add dialog skill".</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_4.5_assistant.png" width = "750" height= "750">
           </div>
           <div class="step">
@@ -503,22 +504,22 @@
       <div class="container right">
          <div class="content">
             <p>You're all set to get started! </p>
-            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cstart%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20npm%20start">Launch the Application</a>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cstart%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20npm%20start">Launch the Application</a>
          </div>
       </div>
    </div>
-   <div class="footer">
+   <div class="footer" style="margin-left:30px;">
       <div class="content" style="padding:30px;padding-left:60px;padding-bottom:0px;">
          <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
-         <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=nodejs%20terminal">Stop Application</a>
+         <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=sandbox%20terminal">Stop Application</a>
          <p class="afterbutton">The stage is yours!</p>
          <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=loan%7Copen-file%7C${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/public/index.html">Explore the Code</a>
          <p class="afterbutton ">To view the changes you've made, re-launch the application</p>
-         <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20launch%7Cbuild%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20npm%20start">Re-Launch the Application</a>
+         <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20launch%7Cbuild%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20npm%20start">Re-Launch the Application</a>
          <p style="margin-top:10px;"> Completed the tutorial? Click on
           <bold>Clean up</bold> to delete the IBM Cloud services that were created. Make sure to stop the application first!
         </p>
-        <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cdelete-services%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fdelete_services.sh%20%26%26%20.%2Fscripts%2Fdelete_services.sh">Clean up</a>
+        <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cdelete-services%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fdelete_services.sh%20%26%26%20.%2Fscripts%2Fdelete_services.sh">Clean up</a>
         <p style="margin-top:10px;">You can also manage the services in
           <a href="https://cloud.ibm.com/resources">IBM Cloud Dashboard</a>.
         </p>
@@ -526,7 +527,7 @@
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
             <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/Anam-Mahmood/Unlock-the-Power-of-Machine-Learning-in-Virtual-Assistants-to-automate-Loan-Applications" target="_blank">Github Repository</a></span>
-            <span style="font-size:15px;margin-top:0px;display:block;">Need Help? Contact <a href="https://github.com/IBM/Developer-Playground-Support/issues/new/choose" target="_blank">Help & Support</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">For further assistance reach out to <a href="https://github.com/IBM/Technology-sandbox-Support/issues/new/choose" target="_blank"> Help & Support</a></span>
          </p>
       </div>
    </div>

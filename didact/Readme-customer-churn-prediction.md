@@ -320,7 +320,7 @@
     <div class="timeline">
         <div style="margin-top:0px;padding-top:0px;"class="container right">
             <div class="content">
-                <p>Begin with opening the custom terminal</p>
+                <p>Begin with opening the Sandbox terminal</p>
                 <a class="button is-dark is-medium" title="Open Terminal" href="didact://?commandId=terminal-for-sandbox-container:new">Open Terminal</a><br>
             </div>
         </div>

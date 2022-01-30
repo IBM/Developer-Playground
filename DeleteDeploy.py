@@ -19,19 +19,7 @@ client = APIClient(wml_credentials)
 
 MODEL_NAME = model_name
 DEPLOYMENT_SPACE_NAME = deployment_space_name
-
-#pick up the space id using the deployment space name
-client.spaces.list()
-all_spaces = client.spaces.get_details()['resources']
-space_id = None
-for space in all_spaces:
-    if space['entity']['name'] == DEPLOYMENT_SPACE_NAME:
-        space_id = space["metadata"]["id"]
-        print("\nDeployment Space GUID: ", space_id)
-
-if space_id is None:
-    print("WARNING: Your space does not exist. Create a deployment space before proceeding to the next cell.")
-
+space_id=config["SPACE_ID"]
 client.set.default_space(space_id)
 
 #delete asset in deployment space

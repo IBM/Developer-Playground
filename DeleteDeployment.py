@@ -6,9 +6,8 @@ from dotenv import dotenv_values
 config = dotenv_values(".env") 
 apikey=config["API_KEY"]
 published_model_id=config["MODEL_ID"]
-deployment_space_name=config["DEPLOYMENT_SPACE_NAME"]
-model_name = config["MODEL_NAME"]
 loc = config["PM-20_LOC"]
+space_id=config["SPACE_ID"]
 
 #get connected to watson ML
 wml_credentials = {
@@ -16,21 +15,6 @@ wml_credentials = {
   "url": "https://"+loc+".ml.cloud.ibm.com"
 }
 client = APIClient(wml_credentials)
-
-MODEL_NAME = model_name
-DEPLOYMENT_SPACE_NAME = deployment_space_name
-
-#pick up the space id using the deployment space name
-client.spaces.list()
-all_spaces = client.spaces.get_details()['resources']
-space_id = None
-for space in all_spaces:
-    if space['entity']['name'] == DEPLOYMENT_SPACE_NAME:
-        space_id = space["metadata"]["id"]
-        print("\nDeployment Space GUID: ", space_id)
-
-if space_id is None:
-    print("WARNING: Your space does not exist. Create a deployment space before proceeding to the next cell.")
 
 client.set.default_space(space_id)
 

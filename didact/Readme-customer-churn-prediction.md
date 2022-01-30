@@ -7,7 +7,7 @@
   body {
     background-color: #1a1a1a;
     font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     outline: none;
   }
   body {
@@ -102,7 +102,7 @@
     margin-bottom: 13px;
     border-radius: 0px;
     min-width: 180px;
-    font-size: 14px;
+    font-size: 16px;
     text-align: left;
     min-height: 48px;
     margin: 0px;
@@ -182,7 +182,7 @@
   }
   .header
   {
-    background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/churn-prediction/didact/unnamed.jpg');
+    background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/churnHeader.jpeg');
     background-position: right;
     width: 95%;
     min-height: 70px;
@@ -213,7 +213,7 @@
   .header .right-content div
   {
     background: none;
-    color: #c1c7cd;
+    color: white;
     padding-left: 15px;
     padding-right: 25px;
     font-size: 16px;
@@ -269,24 +269,29 @@
   a:visited{
       color: #BE95FF;
   }
-}
 </style>
 </head>
 <body>
-    <div class="header">
-        <div class="right-content" style="padding-top:40px;">
+<div class="header">
+     <div class="right-content" style="padding-top:35px;">
         <div class="apptitle" style="font-size: 28px; color: white;">
-      Customer Churn Prediction Application
-    </div>
-  <div class="subheading">
-    Use IBM Watson ML to solve a business problem and predict customer churn using a Telco customer churn data set
-  </div>
+          Customer Churn Prediction Application
         </div>
+        <div class="subheading">
+          Use IBM Watson ML to solve a business problem and predict customer churn using a Telco customer churn data set
+        </div>
+     </div>
+ </div>
+  <div class="section" style="font-size: 16px; margin-top: -20px">
+    <div>
+      Customer churn, when a customer ends their relationship with a business, is one of the most basic factors in determining the revenue of a business. 
     </div>
-    <div class="section" style="font-size:16px; margin-top:-20px">
-  <p>Customer churn, when a customer ends their relationship with a business, is one of the most basic factors in determining the revenue of a business. </p>
-  <p>You need to know which of your customers are loyal and which are at risk of churning, and you need to know the factors that affect these decisions from a customer perspective. </p>
-  <p>This application explains how to deploy a machine learning model and use it to predict whether a customer is at risk of churning. </p>
+    <div>
+      You need to know which of your customers are loyal and which are at risk of churning, and you need to know the factors that affect these decisions from a customer perspective. 
+    </div>
+    <div>
+      This application explains how to deploy a machine learning model and use it to predict whether a customer is at risk of churning. 
+    </div>
   </div>
    <div class="section">
     <p style="font-size:24px">Learning Resources</p>
@@ -305,82 +310,83 @@
    <div class="section">
    <p style="font-size:24px">Pre-requisites</p>
     <div class="right-content">
-    <p>IBM Cloud Account -  Do not have an IBM Cloud Account?<a href="https://cloud.ibm.com/registration"> click here</a> to create one for free.</p>
+    <p>IBM Cloud Account -  Do not have an IBM Cloud Account?<a href="https://cloud.ibm.com/registration/trial"> click here</a> to create one for free.</p>
+      <p><a href="https://dataplatform.cloud.ibm.com/registration/stepone?context=cpdaas&apps=all">Click here</a> to login to your Cloud Pak for Data account. Do not have a Cloud pak for Data Account? <a href="https://dataplatform.cloud.ibm.com/home2?context=cpdaas">Click here </a> to create one for free.</p>
     </div>
    </div>
     <div class="section">
    <p style="font-size:24px">Instructions: Please follow all the below steps in proper sequence.</p>
    </div>
     <div class="timeline">
-        <div style="margin-top:0px;padding-top:0px;" class="container right">
+        <div style="margin-top:0px;padding-top:0px;"class="container right">
             <div class="content">
-                <p>Begin with opening the custom terminal</p>
-                <a class="button is-dark is-medium" title="Open Terminal" href="didact://?commandId=terminal-for-nodejs-container:new">Open Terminal</a><br>
+                <p>Begin with opening the Sandbox terminal</p>
+                <a class="button is-dark is-medium" title="Open Terminal" href="didact://?commandId=terminal-for-sandbox-container:new">Open Terminal</a><br>
             </div>
         </div>
       <div class="container right">
         <div class="content">
           <p>Clone the GitHub repository</p>
-          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cget-code%7Cnodejs%20terminal|git%20clone%20-b%20churn-prediction%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/churn-prediction/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/churn-prediction/">Get Code</a>
+          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cget-code%7Csandbox%20terminal|git%20clone%20-b%20churn-prediction%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/churn-prediction/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/churn-prediction/">Get Code</a>
+        </div>
+      </div>
+     <div class="container right">
+        <div class="content">
+          <p>Install requirements</p>
+          <a class="button is-dark is-medium" title="Install requirements" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cinstall-requirements%7Csandbox%20terminal|cd%20churn-prediction;pip3.8%20install%20-r%20requirements.txt">Install requirements</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
           <p>Create IBM Services</p>
           <p>Login to your IBM Cloud account to create services.</p>
-          <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cibm-login%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction%20%26%26%20chmod%20%2Bx%20.%2Flogin.sh%20%26%26%20.%2Flogin.sh">Login to IBM Cloud</a>        
+          <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cibm-login%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction%20%26%26%20chmod%20%2Bx%20.%2Flogin.sh%20%26%26%20.%2Flogin.sh">Login to IBM Cloud</a>  
         </div>
       </div>
       <div class="container right">
         <div class="content">
-          <p>Create these services with just a click of button.</p>
-          <a class="button is-dark is-medium" title="Create IBM Services" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-ibm-services%7Cnodejs%20terminal|chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh">Create IBM Services</a>
+          <p>Create these services with just the click of a button.</p>
+          <a class="button is-dark is-medium" title="Create IBM Services" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Ccreate-ibm-services%7Csandbox%20terminal|chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh">Create IBM Services</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
             <p>IBM Cloud API key is required to deploy the model in the deployment space.</p>
             <p>Click the below button to generate API key via IBM Cloud CLI commands which will be saved in a key_file.</p>
-            <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cgenerate-api-token%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;ibmcloud%20iam%20api-key-create%20ApiKey-churnPred%20-d%20'this is API key for churnPred'%20--file%20${CHE_PROJECTS_ROOT}/churn-prediction/key_file">Generate API key</a>
-        </div>
-      </div>
-      <div class="container right">
-        <div class="content">
-          <p>Install requirements</p>
-          <a class="button is-dark is-medium" title="Install requirements" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cinstall-requirements%7Cnodejs%20terminal|cd%20churn-prediction;pip3.8%20install%20-r%20requirements.txt">Install requirements</a>
+            <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cgenerate-api-token%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;ibmcloud%20iam%20api-key-create%20ApiKey-churnPred%20-d%20'this is API key for churnPred'%20--file%20${CHE_PROJECTS_ROOT}/churn-prediction/key_file">Generate API key</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
           <p>Create a Deployment Space on Cloud pak for Data</p>
-          <a class="button is-dark is-medium" title="Create Deployment Space" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-deployment-space%7Cnodejs%20terminal|cd%20churn-prediction;python3.8%20create_space.py">Create Deployment Space</a>
+          <a class="button is-dark is-medium" title="Create Deployment Space" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Ccreate-deployment-space%7Csandbox%20terminal|cd%20churn-prediction;python3.8%20create_space.py">Create Deployment Space</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
           <p>Click on the below button to train and deploy the model to the deployment space.</p>
-           <a class="button is-dark is-medium" title="Deploy Model" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cdeploy-model%7Cnodejs%20terminal|python3.8%20DeployModel/DeployMLModel.py">Deploy Model</a>
+           <a class="button is-dark is-medium" title="Deploy Model" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cdeploy-model%7Csandbox%20terminal|python3.8%20DeployModel/DeployMLModel.py">Deploy Model</a>
         </div>
       </div>
         <div class="container right">
             <div class="content">
                 <p>Start Application</p>
-                <a class="button is-dark is-medium" title="Start Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cstart-app%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;npm%20install;npm%20start">Start Application</a><br>
+                <a class="button is-dark is-medium" title="Start Application" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cstart-app%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;npm%20install;npm%20start">Start Application</a><br>
             </div>
         </div>
     </div>
-    <div class="footer">
-      <div class="content" style="padding:30px;padding-left:60px;padding-bottom: 0px;">
+    <div class="footer" style="margin-left:30px;">      
+        <div class="content" style="padding:30px;padding-left:60px;padding-bottom: 0px;">
         <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
-        <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=nodejs%20terminal">Stop Application</a>
+        <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=sandbox%20terminal">Stop Application</a>
         <p class="afterbutton">The stage is yours!</p>
-        <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=nodejs%20terminal%7Copen-file%7C${CHE_PROJECTS_ROOT}/churn-prediction/client/src/App.js">Explore the Code</a>
+        <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=sandbox%20terminal%7Copen-file%7C${CHE_PROJECTS_ROOT}/churn-prediction/client/src/App.js">Explore the Code</a>
         <p class="afterbutton ">To view the changes you've made, re-launch the application</p>
-        <a class="button is-dark is-medium" title="Re-Launch Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Crestart-app%7Cnodejs%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;npm%20start">Re-Launch Application</a>
+        <a class="button is-dark is-medium" title="Re-Launch Application" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Crestart-app%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;npm%20start">Re-Launch Application</a>
         <p style="margin-top:10px;"> Click on
           <bold>Clean up</bold> to delete the IBM Cloud services that were created.
         </p>
-        <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cget-code%7Cnodejs%20terminal|chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean up</a>
+        <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cget-code%7Csandbox%20terminal|chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean up</a>
         <p style="margin-top:10px;">You can also manage the services in
           <a href="https://cloud.ibm.com/resources">IBM Cloud Dashboard</a>.
         </p>
@@ -390,8 +396,9 @@
           <span style="font-size:15px;margin-top:0px;display:block;">Head over to the
             <a href="https://github.com/IBM/Developer-Playground/tree/churn-prediction">Github Repository</a>
           </span>
+          <span style="font-size:15px;margin-top:0px;display:block;">For further assistance reach out to <a href="https://github.com/IBM/Technology-Sandbox-Support/issues/new/choose" target="_blank"> Help & Support</a></span>
         </p>
-        <a class="image-link" href="https://developer.ibm.com/patterns/create-a-web-based-intelligent-bank-loan-application-for-a-loan-agent/" target="_blank">
+        <a class="image-link" href="https://developer.ibm.com/patterns/predict-customer-churn-using-watson-studio-and-jupyter-notebooks/?mhsrc=ibmsearch_a&mhq=%20churn%20prediction" target="_blank">
           <div class="image-btn">
             <p class="image-link">View Product Details
             <p style="padding-top: 14px"></p>

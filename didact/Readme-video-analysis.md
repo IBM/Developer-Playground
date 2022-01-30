@@ -391,9 +391,9 @@
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
-            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/extract-textual-insights-from-video">Github Repository</a></span>
-         </p>
+            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/video-insights">Github Repository</a></span>
         <span style="font-size:15px;margin-top:0px;display:block;">For further assistance reach out to <a href="https://github.com/IBM/Technology-Sandbox-Support/issues/new/choose" target="_blank"> Help & Support</a></span>
+          </p>
          <a class="image-link" href="https://developer.ibm.com/patterns/extract-textual-insights-from-a-given-video/" target="_blank">
          <div class="image-btn">
                <p class="image-link">View Product Details</p>

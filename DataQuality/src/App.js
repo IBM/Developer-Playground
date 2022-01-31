@@ -32,7 +32,7 @@ function App() {
 
     <>
      <Header aria-label="IBM">
-       <HeaderName href="#" prefix="">
+       <HeaderName prefix="">
             <div Style="white-space: nowrap;">
             Data Quality for AI Application
             </div>

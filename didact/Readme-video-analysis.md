@@ -273,7 +273,7 @@
     float:left;
   }
   details > summary {
-    list-style-image: url("https://raw.githubusercontent.com/SuyashGupte/Loan-Chat-Bot/main/32-up.svg");
+    list-style-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/arrow-right.svg");
     direction:rtl;
   }
   .dropdown-icon{
@@ -282,7 +282,7 @@
     top:4px;
   }
   details[open] > summary {
-      list-style-image: url("https://raw.githubusercontent.com/SuyashGupte/Loan-Chat-Bot/main/32-down.svg");
+      list-style-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/arrow-down.svg");
   }
 }
 </style>

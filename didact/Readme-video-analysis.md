@@ -273,7 +273,7 @@
     float:left;
   }
   details > summary {
-    list-style-image: url("https://raw.githubusercontent.com/SuyashGupte/Loan-Chat-Bot/main/32-up.svg");
+    list-style-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/staging/didact/images/arrow-right.svg");
     direction:rtl;
   }
   .dropdown-icon{
@@ -282,7 +282,7 @@
     top:4px;
   }
   details[open] > summary {
-      list-style-image: url("https://raw.githubusercontent.com/SuyashGupte/Loan-Chat-Bot/main/32-down.svg");
+      list-style-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/staging/didact/images/arrow-down.svg");
   }
 }
 </style>
@@ -356,44 +356,44 @@
       <div class="container right">
          <div class="content">
             <p>Clone the GitHub repository</p>
-            <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=sandbox%20terminal$$git%20clone%20-b%20video-insights%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground.git%20%26%26%20cd%20Developer-Playground%2F%20%26%26%20pip3.8%20install%20-r%20requirements.txt" >Get Code</a>
+            <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=video-analysis%7Cget-code%7Csandbox%20terminal%7Cgit%20clone%20-b%20video-insights%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground.git%20%26%26%20cd%20Developer-Playground%2F%20%26%26%20pip3.8%20install%20-r%20requirements.txt" >Get Code</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
             <p>You need to be logged in to your IBM Cloud account in the IBM Developer Technology Sandbox to create and configure services.</p>
-            <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=sandbox%20terminal$$ibmcloud%20config%20--check-version=false%20%26%26%20ibmcloud%20login%20--sso%20-r%20us-south%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">Login to IBM Cloud</a>
+            <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=video-analysis%7Clogin-ibm-cloud%7Csandbox%20terminal%7Cibmcloud%20config%20--check-version%3Dfalse%20%26%26%20ibmcloud%20login%20--sso%20-r%20us-south%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">Login to IBM Cloud</a>
       </div>
       </div>
       <div class="container right">
          <div class="content">
             <p>Create and Configure IBM Watson Services</p>
             <p>(Make sure to follow the Prerequisite and watch out for the terminal messages, if any)</p>
-            <a class="button is-dark is-medium" title="Create IBM Watson Services" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=sandbox%20terminal$$chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh" >Create IBM Watson Services</a>
+            <a class="button is-dark is-medium" title="Create IBM Watson Services" href="didact://?commandId=extension.sendToTerminal&text=video-analysis%7Ccreate-ibm-watson-service%7Csandbox%20terminal%7Cchmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh" >Create IBM Watson Services</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
             <p>Start the Application. View the result in the preview window</p>
-            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=sandbox%20terminal$$python3.8%20app.py">Launch the Application</a>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=video-analysis%7Claunch-application%7Csandbox%20terminal%7Cpython3.8%20app.py">Launch the Application</a>
          </div>
       </div>
    </div>
-   <div class="footer" class="footer">
+   <div class="footer" style="margin-left:30px;">
       <div class="content" style="padding:30px;padding-left:60px;padding-bottom: 0px;">
          <p>If you'd like to make changes and explore the application, make sure to stop it first!</p>
-         <a class="button is-dark is-medium" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=sandbox%20terminal">Stop Application</a>
+         <a class="button is-dark is-medium" title="stop application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=sandbox%20terminal">Stop Application</a>
          <p style="margin-top:10px;">
             Completed the Asset? Click on <bold>Clean up</bold> to delete the IBM Cloud services that were created.
          </p>
-         <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=sandbox%20terminal$$chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean up</a>
+         <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=video-analysis%7Cdelete-services%7Csandbox%20terminal%7Cchmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean up</a>
          <p style="margin-top:10px;">You can also manage the services in <a href="https://cloud.ibm.com/resources">IBM Cloud Dashboard</a>.</p>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
-            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/extract-textual-insights-from-video">Github Repository</a></span>
-         </p>
+            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/video-insights">Github Repository</a></span>
         <span style="font-size:15px;margin-top:0px;display:block;">For further assistance reach out to <a href="https://github.com/IBM/Technology-Sandbox-Support/issues/new/choose" target="_blank"> Help & Support</a></span>
+          </p>
          <a class="image-link" href="https://developer.ibm.com/patterns/extract-textual-insights-from-a-given-video/" target="_blank">
          <div class="image-btn">
                <p class="image-link">View Product Details</p>

@@ -22,7 +22,7 @@ function App() {
     <>
     
       <Header aria-label="IBM">
-        <HeaderName prefix = "" href="#">
+        <HeaderName prefix = "">
           <div Style="white-space: nowrap;">
             Weather Data Assistant for Travel
             </div>

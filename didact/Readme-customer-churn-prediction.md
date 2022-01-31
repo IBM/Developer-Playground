@@ -325,7 +325,7 @@ Customer churn is a phenomenon when a customer ends their relationship or stops 
      <div class="container right">
         <div class="content">
           <p>Install dependencies.</p>
-          <a class="button is-dark is-medium" title="Install requirements" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cinstall-requirements%7Csandbox%20terminal|cd%20churn-prediction;pip3.8%20install%20-r%20requirements.txt">Install dependencies</a>
+          <a class="button is-dark is-medium" title="Install requirements" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cinstall-requirements%7Csandbox%20terminal|cd%20churn-prediction;pip3.8%20install%20-r%20requirements.txt">Install Dependencies</a>
         </div>
       </div>
       <div class="container right">

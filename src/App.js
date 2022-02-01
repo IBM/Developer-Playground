@@ -145,6 +145,7 @@ function App() {
 
   const setTargetParameters = async ({ selectedItem }) => {
     try {
+      setTarget(false)
       const index = timeColumnOptions.indexOf(selectedItem)
       let columns = []
       timeColumnOptions.forEach((column, idx) => {
@@ -347,8 +348,8 @@ function App() {
       setForm(false)
       setTimeColumn(false)
       let settings = await axios.get(`/settings/${datasetName}`)
-      console.log(settings)
       setSettings(settings.data)
+      console.log(settings.data)
       await setTargetParameters({ selectedItem: settings.data.time_column })
       setTargetParams(settings.data.target_columns)
       setTargetInvalid({ state: false, text: "" })
@@ -376,6 +377,7 @@ function App() {
       setTimeColumn(true)
     }
   }
+
   const showRecentDataTextInput = ({ selectedItem }) => {
     if (selectedItem === "Recent")
       setRecentData(true)
@@ -383,11 +385,21 @@ function App() {
       setRecentData(false)
 
   }
+
+  const resetForm = () => {
+    setSettings({})
+    setTargetParams([])
+    setForm(false)
+    setTextField(false)
+    setAnomalyEstimatorOptions(false)
+    setRecentData(false)
+    setForm(true)
+  }
   return (
     <div className="app">
       <Header aria-label="IBM">
-        <HeaderName href="#" prefix="">
-          <div style={{ whiteSpace: "nowrap" }}>
+        <HeaderName  prefix="">
+          <div style={{ whiteSpace: "nowrap"}}>
             Anomaly Detection Sample Application
           </div>
         </HeaderName>
@@ -435,7 +447,10 @@ function App() {
             label="Choose an Option"
             items={timeColumnOptions}
             initialSelectedItem={settings.time_column}
-            onChange={setTargetParameters} /> </div> : null}
+            onChange={async({ selectedItem }) => {
+              await setTargetParameters({selectedItem})
+              resetForm()
+              }} /> </div> : null}
         {showChart ?
           //<Chart data={data} lines={lines} showAnomaly={showAnomaly} time={time} />
           <div id="chart"><CarbonChart data={data} /></div>

@@ -46,9 +46,9 @@ const anomalyDetect = async ({
         for (let i = 0; i < fileData.length; i++) {
             fileData[i][time_column] = strftime('%F %T', new Date(fileData[i][time_column]))
         }
-        fs.writeFileSync(filepath, JSON.stringify(fileData))
+        fs.writeFileSync(`${filepath.split(".json")[0]}-copy.json`, JSON.stringify(fileData))
         let formData = {
-            data_file: fs.createReadStream(filepath),
+            data_file: fs.createReadStream(`${filepath.split(".json")[0]}-copy.json`),
             time_column,
             time_format: "%Y-%m-%d %H:%M:%S",
             target_column,
@@ -64,7 +64,7 @@ const anomalyDetect = async ({
             apiEndpoint = apiEndpoints[1]
             target_columns = getTarget(target_column)
             formData = {
-                data_file: fs.createReadStream(filepath),
+                data_file: fs.createReadStream(`${filepath.split(".json")[0]}-copy.json`),
                 time_column,
                 time_format: "%Y-%m-%d %H:%M:%S",
                 target_columns,
@@ -96,6 +96,7 @@ const anomalyDetect = async ({
             console.log(response)
             let jobId = JSON.parse(response).jobId
             fs.writeFileSync(`./data/${jobId}.json`, JSON.stringify(getDataCarbonCharts(fileData,time_column)))
+            fs.unlinkSync(`${filepath.split(".json")[0]}-copy.json`);
             resolve({ jobId, status: "submitted" })
         } catch (err) {
             console.log(err.body)

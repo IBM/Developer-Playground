@@ -34,7 +34,8 @@ app.get("/availabledatasets", async (req, res) => {
 app.get("/data/:dataset/:time", async (req, res) => {
   try {
     let jsonArray
-    if(req.params.dataset.startsWith("sample"))
+    let samples = fs.readdirSync("./sample-datasets")
+    if(samples.includes(req.params.dataset))
       jsonArray = JSON.parse(fs.readFileSync(`./sample-datasets/${req.params.dataset}`))
     else
       jsonArray = JSON.parse(fs.readFileSync(`./data/customfile.json`))
@@ -47,8 +48,9 @@ app.get("/data/:dataset/:time", async (req, res) => {
 
 app.get(`/columns/:dataset`, async (req, res) => {
   try {
+    let samples = fs.readdirSync("./sample-datasets")
     let jsonArray
-    if(req.params.dataset.startsWith("sample"))
+    if(samples.includes(req.params.dataset))
       jsonArray = JSON.parse(fs.readFileSync(`./sample-datasets/${req.params.dataset}`))
     else
       jsonArray = JSON.parse(fs.readFileSync(`./data/customfile.json`))

@@ -388,6 +388,7 @@ function App() {
 
   const resetForm = () => {
     setSettings({})
+    setTargetParams([])
     setForm(false)
     setTextField(false)
     setAnomalyEstimatorOptions(false)

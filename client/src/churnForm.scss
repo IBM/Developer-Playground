@@ -18,13 +18,13 @@ hr.new4 {
   position: fixed;
   width: 200%;
   top: 40%;
-  left: 30%;
+  left: 91%;
   transform: translate(-40%, -40%);
 }
 .tilePlacement2{
   position: fixed;
-  top: 40%;
-  left: 50%;
+  top: 50%;
+  left: 45%;
   transform: translate(-40%, -40%);
 }
 .bx--side-nav__navigation{
@@ -66,6 +66,16 @@ hr.new4 {
   line-height: 32px;
   padding-bottom:32px;
 }
+.subheading{
+  padding-left: 40px;
+  height: 32px;
+  color: #000000;
+  font-family: "IBM Plex Sans";
+  font-size: 16px;
+  letter-spacing: 0.27px;
+  line-height: 32px;
+  padding-bottom:32px;
+}
 .placeholder{
   height: 18px;
   width: 431px;
@@ -97,9 +107,5 @@ h2 {
 }
 .app-header {
   background-color: black;
-  margin-top: 24px;
   color: white;
-}
-.app{
-  padding: 24px;
 }

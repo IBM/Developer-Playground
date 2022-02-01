@@ -304,13 +304,13 @@
    <br>
    <br>
     <div class="assetdetails">
-            <p style="font-size: 24px;">Included components</p>
+            <p style="font-size: 24px;">Included APIs</p>
             <ul>
             <li><a href="https://developer.ibm.com/apis/catalog/heremaps--geocoding-and-search-api-v7/Introduction">HERE Geocoding and Search API</a></li>
             <li><a href="https://developer.ibm.com/apis/catalog/heremaps--here-public-transit-api/Introduction">HERE Public Transit API</a></li>
             </ul>
             <br>
-            <p style="font-size: 24px;">Prerequisites</p>
+            <p style="font-size: 24px;">Pre-requisites</p>
              <p>Subscribe to the HERE Public Transit API:</p>
             <ol>
             <li>Sign up for 'HERE Developer'</li>
@@ -321,17 +321,18 @@
             </ol>
             <br>
             <p style="font-size: 24px;">Instructions</p>
+            <p>Please follow all the below steps in proper sequence</p>
         </div>
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
-            <p>Clone the code to the Technology Sandbox session</p>
-            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Cget-code%7CHEREPublicTransit|git%20clone%20-b%20HERE%20--sparse%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/here-public-transit/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/here-public-transit/%20%26%26%20git%20sparse-checkout%20init%20--cone%20%26%26%20git%20sparse-checkout%20add%20HEREPublicTransit">Get the Code</a>
+            <p>Clone the GitHub repository</p>
+            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Cget-code%7CHEREPublicTransit|git%20clone%20-b%20HERE%20--sparse%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/here-public-transit/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/here-public-transit/%20%26%26%20git%20sparse-checkout%20init%20--cone%20%26%26%20git%20sparse-checkout%20add%20HEREPublicTransit">Get Code</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Build the application</p>
+            <p>Install required dependencies for executing application</p>
             <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Cbuild-application%7CHEREPublicTransit%7Ccd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20config%20set%20@here:registry%20https://repo.platform.here.com/artifactory/api/npm/maps-api-for-javascript/%20%26%26%20npm%20install%20--production">Build Application</a>
          </div>
       </div>     
@@ -343,19 +344,15 @@
       </div>
       <div class="container right">
          <div class="content">
-            <p>Launch the application </p>
+            <p>Launch the application in the preview window</p>
             <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Claunch-application%7CHEREPublicTransit|cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20node%20token.js%20%26%26%20node%20server.js">Launch Application</a>
          </div>
       </div>
    </div>
    <br>
-   <div class="assetdetails">
-    <p style="font-size: 24px;">Explore the APIs</p>
-    <p>If you would like to edit or explore the application, make sure to stop the application</p>
-   </div>
    <div class="footer" style="margin-left:30px;">
       <div class="content" style="padding:30px;padding-left:60px;margin-right:80px;padding-bottom:0px;">
-         <p>Stop the application</p>
+         <p>To edit or explore the application, make sure to stop it first</p>
          <a class="button is-dark is-medium afterbutton" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=HEREPublicTransit" >Stop Application</a>
          <p class="afterbutton">Explore and update the code as per your requirement</p>
          <a class="button is-dark is-medium afterbutton" title="Explore the Code" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit/src/App.js">Explore Code</a>

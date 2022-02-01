@@ -145,6 +145,7 @@ function App() {
 
   const setTargetParameters = async ({ selectedItem }) => {
     try {
+      setTarget(false)
       const index = timeColumnOptions.indexOf(selectedItem)
       let columns = []
       timeColumnOptions.forEach((column, idx) => {
@@ -166,7 +167,7 @@ function App() {
       } else {
         setTarget(true)
       }
-      setTime(selectedItem)
+      setTime(selectedItem)``
     } catch (err) {
       let errMsg;
       try {
@@ -346,15 +347,19 @@ function App() {
       setChart(false)
       setForm(false)
       setTimeColumn(false)
+      setTarget(false)
+      setLabelingMethodsOptions(false)
       let settings = await axios.get(`/settings/${datasetName}`)
       console.log(settings)
-      setSettings(settings.data)
       await setTargetParameters({ selectedItem: settings.data.time_column })
+      setSettings(settings.data)
       setTargetParams(settings.data.target_columns)
       setTargetInvalid({ state: false, text: "" })
       await changeAnomalyEstimatorOptions({ selectedItem: settings.data.algorithm_type })
       setAnomalyEstimatorValue(settings.data.algorithm_type)
       showTextInput({ selectedItem: settings.data.lookback_window })
+      setLabelingMethodsOptions(true)
+      setTarget(true)
       setTimeColumn(true)
       setChart(true)
       setForm(true)
@@ -435,7 +440,10 @@ function App() {
             label="Choose an Option"
             items={timeColumnOptions}
             initialSelectedItem={settings.time_column}
-            onChange={setTargetParameters} /> </div> : null}
+            onChange={({ selectedItem }) => {
+              setTargetParameters({"selectedItem": selectedItem})
+              setSettings({})
+            }} /> </div> : null}
         {showChart ?
           //<Chart data={data} lines={lines} showAnomaly={showAnomaly} time={time} />
           <div id="chart"><CarbonChart data={data} /></div>

@@ -15,6 +15,9 @@
 		  {
 			  "productId": "customer-churn-prediction",
 			  "assetType": "code pattern"
+		  },
+		  {
+			"productId": " ai4industry--anomaly-detection-product"
 		  }
 	  ]
   }

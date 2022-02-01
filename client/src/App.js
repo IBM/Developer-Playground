@@ -7,7 +7,7 @@ import ChurnForm from './ChurnForm';
 function App() {
   return (
     <div className="App">
-      <NavCarbon/>
+      {/* <NavCarbon/> */}
       <ChurnForm/>
     </div>
   );

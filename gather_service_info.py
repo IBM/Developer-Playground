@@ -12,7 +12,7 @@ data = os.popen("ibmcloud resource service-instance-create "+servicename+" "+ser
 print(data)
 
 if(len(data.split("\n"))<3):
-    data = json.loads(os.popen("ibmcloud resource service-instances --service-name "+service+" --output json").read())
+    data = json.loads(os.popen("ibmcloud resource service-instances --service-name "+service+" --output json --quiet").read())
     print(os.popen("ibmcloud resource service-instances --service-name "+service).read())
     result = [data[0]["region_id"],data[0]["name"].replace(" ", "%20")]
     choice = 0
@@ -25,40 +25,37 @@ if(len(data.split("\n"))<3):
                 raise Exception("Service creation stopped.")
             else:
                 choice=0
-    dotenv.set_key("./.env",service.upper()+"_NAME",result[1])
-    dotenv.set_key("./.env",service.upper()+"_LOC",result[0])
-    data = os.popen("ibmcloud resource service-instance "+result[1]+" --id").read()
-    dotenv.set_key("./.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
-    dotenv.set_key("./.env",service.upper()+"_UPDATED","False")
     f = open(filename, "w")
-    service_id = os.popen("ibmcloud resource service-instance "+result[1]+" --id").read()
-    data = json.loads(os.popen("ibmcloud resource service-key-create "+result[1]+"-creds Manager --instance-name" +result[1]).read())
+    service_id = os.popen("ibmcloud resource service-instance "+result[1]+" --id --quiet").read()
+    service_id = service_id.split("\n")[0].split(" ")[0]
+    data = json.loads(os.popen("ibmcloud resource service-key-create "+result[1]+"-creds Manager --instance-id " +service_id+" --output json").read())
     filecontent = {
         "name": result[1],
-        "service_id":service_id.split("\n")[-2].split(" ")[0],
+        "service_id":service_id.split("\n")[0].split(" ")[0],
         "key_id":data["id"],
         "apikey":data["credentials"]["apikey"],
-        "url":data["credentials"]["url"]
+        "url":data["credentials"]["url"],
         "updated": False
     }
-    f.write(filecontent)
+    f.write(json.dumps(filecontent))
     f.close()
 else:
     f = open(filename, "w")
-    service_id = os.popen("ibmcloud resource service-instance "+servicename+" --id").read()
-    data = json.loads(os.popen("ibmcloud resource service-key-create "+servicename+"-creds Manager --instance-name" +servicename).read())
+    service_id = os.popen("ibmcloud resource service-instance "+servicename+" --id --quiet").read()
+    service_id = service_id.split("\n")[0].split(" ")[0]
+    data = json.loads(os.popen("ibmcloud resource service-key-create "+servicename+"-creds Manager --instance-id " +service_id+" --output json").read())
     filecontent = {
         "name": servicename,
-        "service_id":service_id.split("\n")[-2].split(" ")[0],
+        "service_id":service_id,
         "key_id":data["id"],
         "apikey":data["credentials"]["apikey"],
-        "url":data["credentials"]["url"]
+        "url":data["credentials"]["url"],
         "updated": True
     }
-    f.write(filecontent)
+    f.write(json.dumps(filecontent))
     f.close()
 
 
 print("###########################################################")        
 os.system("echo Updated "+service+" instance details successfuly")
-print("###########################################################")     
+print("###########################################################")      

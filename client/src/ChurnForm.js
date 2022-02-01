@@ -247,8 +247,8 @@ class ChurnForm extends Component {
                             description="Active loading indicator" withOverlay={false}
                           />
                           <div style={{ width: '40%', height: '4rem', marginTop: '4rem' }}>
-                            <h4 class="alert-heading" >Wooah! Your form has been submitted &#128516;</h4>
-                            <p>Now based on the deployed watson machine learning model in cloudPak for data, predictions for the given input data will be displayed.
+                            <h4 class="alert-heading" >Your form has been submitted</h4>
+                            <p>Now based on the deployed Watson Machine Learning model in Cloud Pak for data, predictions for the given input data will be displayed.
                             </p>
                             <hr></hr>
                             <p class="mb-0">Kindly wait for the response.</p>
@@ -624,7 +624,7 @@ class ChurnForm extends Component {
                             <h4 class="alert-heading">Sorry!</h4>
                             <p>Your customer will churn.</p>
                             <hr></hr>
-                            <p class="mb-0">Thanking for using our site</p>
+                            <p class="mb-0">Thank you for using our site</p>
                           </div>
                         </center>
 
@@ -654,7 +654,7 @@ class ChurnForm extends Component {
                             <h4 class="alert-heading">Congratulations!!</h4>
                             <p>Your customer will not churn.</p>
                             <hr></hr>
-                            <p class="mb-0">Thanking for using our site</p>
+                            <p class="mb-0">Thank you for using our site</p>
                           </div>
                         </center>
 

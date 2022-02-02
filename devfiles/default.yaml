@@ -5,10 +5,6 @@ attributes:
   persistVolumes: 'false'
 components:
   - mountSources: true
-    type: kubernetes
-    reference: 'https://raw.githubusercontent.com/IBM/Developer-Playground/master/terminal-config/podman.yaml'
-    alias: podman
-  - mountSources: true
     endpoints:
       - name: access-react-web-app
         port: 3001

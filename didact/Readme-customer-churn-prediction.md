@@ -288,7 +288,7 @@ Customer churn is a phenomenon when a customer ends their relationship or stops 
       <p style="font-size:24px">Execution Flow </p>
       <div class="right-content">
       <ol>
-        <li>Create a deployment space in Watson Machine Learning</li> 
+        <li>Create a deployment space using Watson Machine Learning in IBM Cloud Pak for Data platform</li> 
         <li>Train and deploy a machine learning model</li> 
         <li>Prompt the user for application details</li>  
         <li>Make a Watson Machine Learning REST API call to invoke the machine learning model with the specified input</li> 

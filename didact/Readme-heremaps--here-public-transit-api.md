@@ -311,7 +311,7 @@
             </ul>
             <br>
             <p style="font-size: 24px;">Pre-requisites</p>
-             <p>Subscribe to the HERE Public Transit API:</p>
+             <p><a href="https://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account">Subscribe  </a> to the HERE Public Transit API:</p>
             <ol>
             <li>Sign up for 'HERE Developer'</li>
             <li>Login to your HERE account, navigate to Projects > REST</li>

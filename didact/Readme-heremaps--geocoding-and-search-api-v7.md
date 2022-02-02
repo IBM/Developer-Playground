@@ -304,7 +304,7 @@
             <p><a href="https://developer.ibm.com/apis/catalog/heremaps--geocoding-and-search-api-v7/Introduction">HERE Geocoding and Search API</a></p>
             <br>
            <p style="font-size: 24px;">Pre-requisites</p>
-             <p>Subscribe to the HERE Geocoding and Search API:</p>
+             <p><a href="https://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account">Subscribe  </a> to the HERE Geocoding and Search API:</p>
             <ol>
             <li>Sign up for 'HERE Developer'</li>
             <li>Login to your HERE account, navigate to Projects > REST</li>

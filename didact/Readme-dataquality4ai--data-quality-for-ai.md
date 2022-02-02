@@ -304,11 +304,11 @@
             <p><a href="https://developer.ibm.com/apis/catalog/dataquality4ai--data-quality-for-ai/Introduction">Data Quality for AI API</a></p>
             <br>
             <p style="font-size: 24px;">Pre-requisites</p>
-            <p>Obtain API credentials</p>
+            <p>Obtain API credentials:</p>
             <ul>
-            <li>Subscribe to the Data Quality for AI Product</a></li>
-            <li>Check out API Subscriptions</a></li>
-            <li>Select Data Quality for AI to proceed</li>
+            <li><a href="https://www.ibm.com/account/reg/us-en/signup?formid=urx-50307">Subscribe  </a> to the Data Quality for AI </a></li>
+            <li>Check your <a href="https://developer.ibm.com/profile/myapis"> API Subscriptions </a></li>
+            <li>Select the subscription for Data Quality for AI to proceed</li>
             <li>You can obtain your Client ID/Secret from here. Else, you can "Generate API Key"</li>
             </ul>
             <br>

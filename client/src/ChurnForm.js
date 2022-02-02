@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { TextInput, Row, Button, ToastNotification, Loading, RadioButtonGroup, RadioButton, FormGroup, Form, Grid, Column } from 'carbon-components-react';
+import { Tile, TextInput, Row, Button, ToastNotification, Loading, RadioButtonGroup, RadioButton, FormGroup, Form, Grid, Column } from 'carbon-components-react';
 import axios from 'axios';
-import './churnForm.scss'
+import './churnForm.scss';
+import App from './App';
 const initialUserState = {
   tenure: '',
   invalidTenure: false,
@@ -40,7 +41,7 @@ class ChurnForm extends Component {
     this.onChangeProtection = this.onChangeProtection.bind(this);
     this.onChangePaperless = this.onChangePaperless.bind(this);
     this.submitHandler = this.submitHandler.bind(this);
-
+    this.goBack = this.goBack.bind(this);
   }
 
   onChangeTenure(event) {
@@ -217,49 +218,36 @@ class ChurnForm extends Component {
       console.log(this.state);
     }
   }
+  goBack = (e) => {
+    this.state = initialUserState;
+    this.setState({
+      isSubmitted: 'no'
+    })
+    console.log(this.state.isSubmitted)
+    console.log(this.state);
+  }
   render() {
     return (
       <div className="app">
-        <div className="app-header" style={{ marginLeft: "-40px", width: "900px", height: "100px"}}>
-        <br/>
-          <h2 style={{marginTop: "5px"}}>Churn Prediction Application</h2>
+        <div className="app-header" style={{ marginLeft: "-40px", width: "900px", height: "130px" }}>
+          <br />
+          <h2 style={{ marginTop: "20px" }}>Churn Prediction Application</h2>
         </div>
         {
           (this.state.isSubmitted == 'yes' && this.state.ChrunPred == '') ?
 
             (
-              <div>
-                <ToastNotification
+              <div className='tilePlacement'>
+               <ToastNotification
                   kind='success'
                   title='Success'
                   caption='Form has been submitted'
                   lowContrast='false'
                   style={{ top: 0, right: 0, position: 'absolute', marginTop: '4rem' }}
-
                 />
-                <div className='tilePlacement'>
-                  <Grid>
-                    <Row>
-                      <Column >
-
-                        <center>
-                          <Loading
-                            description="Active loading indicator" withOverlay={false}
-                          />
-                          <div style={{ width: '40%', height: '4rem', marginTop: '4rem' }}>
-                            <h4 class="alert-heading" >Wooah! Your form has been submitted &#128516;</h4>
-                            <p>Now based on the deployed watson machine learning model in cloudPak for data, predictions for the given input data will be displayed.
-                            </p>
-                            <hr></hr>
-                            <p class="mb-0">Kindly wait for the response.</p>
-                          </div>
-                        </center>
-
-                      </Column>
-                    </Row>
-                  </Grid>
-                </div>
-              </div>
+                <Loading description="Active loading indicator" withOverlay={false} style={{ marginLeft: "16%" }} />
+                  <p style={{ width: '40%', height: '4rem', marginTop: '4rem' }}><b>Form has been submitted.</b><br/>Now based on the deployed Watson Machine Learning model in Cloud Pak for data, predictions for the given input data will be displayed.</p>              
+                  </div>
             )
             :
             ''
@@ -272,7 +260,8 @@ class ChurnForm extends Component {
                   <Grid >
                     <Row>
                       <Column style={{ textAlign: 'left' }}>
-                        <div className="customer-details">Customer details</div>
+                        <div className="customer-details">Get the Prediction of Customer Churn Probability</div>
+                        <p className="subheading">Input the following information and click submit to make a prediction.</p>
                       </Column>
                     </Row>
                     <Row>
@@ -280,7 +269,7 @@ class ChurnForm extends Component {
                         <TextInput
                           id="tenure"
                           invalidText={this.state.tenureError}
-                          labelText="Tenure"
+                          labelText="Customer's tenure with the company:"
                           placeholder="Number of months"
                           name='tenure'
                           value={this.state.tenure}
@@ -294,8 +283,8 @@ class ChurnForm extends Component {
                         <TextInput
                           id="charges"
                           invalidText={this.state.chargesError}
-                          labelText="Monthly Charges"
-                          placeholder="Enter amount in numbers"
+                          labelText="Monthly charges paid by the customer:"
+                          placeholder="Enter amount in USD"
                           name='charges'
                           value={this.state.charges}
                           onChange={this.changeHandler}
@@ -305,7 +294,7 @@ class ChurnForm extends Component {
                     </Row>
                     <Row>
                       <Column style={{ marginLeft: '40px', marginTop: '28px' }}>
-                        <FormGroup legendText="Online Security" onChange={this.onChangeSecurity} value={this.state.security} style={{ textAlign: 'left' }}>
+                        <FormGroup legendText="Customer registered for network security?" onChange={this.onChangeSecurity} value={this.state.security} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
                             // defaultSelected="No"
                             // legend="Group Legend"
@@ -330,7 +319,7 @@ class ChurnForm extends Component {
                         </FormGroup>
                       </Column>
                       <Column sm={3} md={2} lg={3} style={{ marginLeft: '40px', marginTop: '28px' }}>
-                        <FormGroup legendText="Technical Support" onChange={this.onChangeSupport} value={this.state.support} style={{ textAlign: 'left' }}>
+                        <FormGroup legendText="Customer signed up for technical support?" onChange={this.onChangeSupport} value={this.state.support} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
                             // className="radio-button-group-horizontal-"
                             // defaultSelected="No"
@@ -355,7 +344,7 @@ class ChurnForm extends Component {
                         </FormGroup>
                       </Column>
                       <Column sm={3} md={3} lg={4} style={{ marginLeft: '40px', marginTop: '28px' }}>
-                        <FormGroup legendText="Phone Service" onChange={this.onChangePhone} value={this.state.phone} style={{ textAlign: 'left' }}>
+                        <FormGroup legendText="Customer registered for phone service?" onChange={this.onChangePhone} value={this.state.phone} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
                             // defaultSelected="No"
                             // legend="Group Legend"
@@ -384,7 +373,7 @@ class ChurnForm extends Component {
                     </Row>
                     <Row>
                       <Column style={{ marginLeft: '40px', marginTop: '10px' }}>
-                        <FormGroup legendText="Dependents" onChange={this.onChangeDependents} value={this.state.dependents} style={{ textAlign: 'left' }}>
+                        <FormGroup legendText="Customer has dependents?(eg. child, minor brother/sister, parents)" onChange={this.onChangeDependents} value={this.state.dependents} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
                             // defaultSelected="No"
                             // legend="Group Legend"
@@ -409,7 +398,7 @@ class ChurnForm extends Component {
                         </FormGroup>
                       </Column>
                       <Column sm={3} md={2} lg={3} style={{ marginLeft: '40px', marginTop: '10px' }}>
-                        <FormGroup legendText="Device Protection" onChange={this.onChangeProtection} value={this.state.protection} style={{ textAlign: 'left' }}>
+                        <FormGroup legendText="Customer registered for device protection?" onChange={this.onChangeProtection} value={this.state.protection} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
                             // defaultSelected="No"
                             // legend="Group Legend"
@@ -435,7 +424,7 @@ class ChurnForm extends Component {
                         </FormGroup>
                       </Column>
                       <Column sm={3} md={3} lg={4} style={{ marginLeft: '40px', marginTop: '10px' }}>
-                        <FormGroup legendText="Paperless Billing" onChange={this.onChangePaperless} value={this.state.paperless} style={{ textAlign: 'left' }}>
+                        <FormGroup legendText="Customer receives electronic bills?" onChange={this.onChangePaperless} value={this.state.paperless} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
                             // defaultSelected="No"
                             // legend="Group Legend"
@@ -465,7 +454,7 @@ class ChurnForm extends Component {
 
                     <Row>
                       <Column style={{ marginLeft: '40px', marginTop: '10px' }}>
-                        <FormGroup legendText="Online Backup" onChange={this.onChangeBackup} value={this.state.backup} style={{ textAlign: 'left' }}>
+                        <FormGroup legendText="Customer takes online backup?" onChange={this.onChangeBackup} value={this.state.backup} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
                             // defaultSelected="No"
                             // // legend="Group Legend"
@@ -495,7 +484,7 @@ class ChurnForm extends Component {
 
                     <Row>
                       <Column style={{ marginLeft: '40px', marginTop: '10px' }}>
-                        <FormGroup legendText="Internet Service" onChange={this.onChangeInternet} value={this.state.internet} style={{ textAlign: 'left' }}>
+                        <FormGroup legendText="Customer registered for internet services?" onChange={this.onChangeInternet} value={this.state.internet} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
                             // defaultSelected="No"
                             // legend="Group Legend"
@@ -527,7 +516,7 @@ class ChurnForm extends Component {
                         </FormGroup>
                       </Column>
                       <Column sm={3} md={4} lg={4} style={{ marginLeft: '40px', marginTop: '10px' }}>
-                        <FormGroup legendText="Contract" onChange={this.onChangeContract} value={this.state.contract} style={{ textAlign: 'left' }}>
+                        <FormGroup legendText="Customer signed the telecommunications contract?" onChange={this.onChangeContract} value={this.state.contract} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
                             // defaultSelected="No"
                             // legend="Group Legend"
@@ -560,7 +549,7 @@ class ChurnForm extends Component {
                     </Row>
                     <Row>
                       <Column style={{ marginLeft: '40px', marginTop: '12px' }}>
-                        <FormGroup legendText="Payment Method" onChange={this.onChangePayment} value={this.state.payment} style={{ textAlign: 'left' }}>
+                        <FormGroup legendText="Mode of payment used by the customer:" onChange={this.onChangePayment} value={this.state.payment} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
                           // defaultSelected="No"
                           // legend="Group Legend"
@@ -614,28 +603,17 @@ class ChurnForm extends Component {
         {
           (this.state.ChrunPred == 'churn' && this.state.isSubmitted == 'yes') ?
             (
-              <div>
-                <div className='tilePlacement2' >
-                  <Grid>
-                    <Row>
-                      <Column>
-                        <center>
-                          <div class="alert alert-danger" role="alert" >
-                            <h4 class="alert-heading">Sorry!</h4>
-                            <p>Your customer will churn.</p>
-                            <hr></hr>
-                            <p class="mb-0">Thanking for using our site</p>
-                          </div>
-                        </center>
-
-                      </Column>
-                    </Row>
-                  </Grid>
-
-
-                </div>
+              <div className='tilePlacement2' >
+                <Tile                >
+                  <h4 class="alert-heading">Sorry!</h4>
+                  <p>Your customer will churn.</p>
+                  <hr></hr>
+                  <p class="mb-0">Thank you for using our site</p>
+                  <Form style={{ width: '200px', marginTop: '85px' }} onSubmit={this.goBack}>
+                    <Button className="button-01-primary-default-01-t" kind='tertiary' type="submit" >Go Back</Button>
+                  </Form>
+                </Tile>
               </div>
-
             )
             :
             ''
@@ -643,33 +621,20 @@ class ChurnForm extends Component {
         {
           (this.state.ChrunPred == 'notchurn' && this.state.isSubmitted == 'yes') ?
             (
-              <div>
-                <div className='tilePlacement2' >
-                  <Grid>
-                    <Row>
-                      <Column >
-
-                        <center>
-                          <div class="alert alert-success" role="alert" >
-                            <h4 class="alert-heading">Congratulations!!</h4>
-                            <p>Your customer will not churn.</p>
-                            <hr></hr>
-                            <p class="mb-0">Thanking for using our site</p>
-                          </div>
-                        </center>
-
-                      </Column>
-                    </Row>
-                  </Grid>
-
-
-                </div>
+              <div className='tilePlacement2' >
+                <Tile                >
+                  <h4 class="alert-heading">Congratulations!</h4>
+                  <p>Your customer will not churn.</p>
+                  <hr></hr>
+                  <p class="mb-0">Thank you for using our site</p>
+                  <Form style={{ width: '200px', marginTop: '85px' }} onSubmit={this.goBack}>
+                    <Button className="button-01-primary-default-01-t" kind='tertiary' type="submit" >Go Back</Button>
+                  </Form>
+                </Tile>
               </div>
-
             )
             :
             ''
-
         }
       </div>
     )

@@ -314,7 +314,7 @@ metadata = {
             client.repository.ModelMetaNames.SOFTWARE_SPEC_UID: sofware_spec_uid
 }
 published_model = client.repository.store_model(model=model, meta_props=metadata, training_data=X_train, training_target=y_train)
-published_model_uid = client.repository.get_model_uid(published_model)
+published_model_uid = client.repository.get_model_id(published_model)
 # model_details = client.repository.get_details(published_model_uid)
 # print(json.dumps(model_details, indent=2))
 

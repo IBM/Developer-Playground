@@ -40,6 +40,9 @@ if(wml_loc != ws_loc):
             data = os.popen("ibmcloud resource service-instance "+servicename+" --id").read()
             dotenv.set_key("./.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
             dotenv.set_key("./.env",service.upper()+"_UPDATED","True")
+            print("##################")
+            print("Region: "+wml_loc)
+            print("##################")
         else:
             servicename = "cp-wml"
             service = "pm-20"
@@ -53,4 +56,10 @@ if(wml_loc != ws_loc):
             data = os.popen("ibmcloud resource service-instance "+servicename+" --id").read()
             dotenv.set_key("./.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
             dotenv.set_key("./.env",service.upper()+"_UPDATED","True")
-            
+            print("##################")
+            print("Region: "+ws_loc)
+            print("##################")
+else:
+    print("##################")
+    print("Region: "+ws_loc)
+    print("##################")

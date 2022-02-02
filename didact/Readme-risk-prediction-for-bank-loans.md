@@ -304,7 +304,7 @@
       <p style="font-size:24px">Execution Flow </p>
       <div class="right-content">
       <ol>
-        <li>Create a deployment space in Watson Machine Learning and deploy the pre-trained machine learning model</li> 
+        <li>Create a deployment space using Watson Machine Learning in IBM Cloud Pak for Data platform and deploy a pre-trained machine learning model</li> 
         <li>Prompt the user for application details</li>  
         <li>Make a Watson Machine Learning REST API call to invoke the machine learning model with the specified input</li> 
         <li>Return the risk associated with the loan application</li> 

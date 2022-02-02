@@ -322,7 +322,7 @@
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
-            <p>Clone the GitHub repositoryp>
+            <p>Clone the GitHub repository</p>
             <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=AnomalyDetection%7Cclone%7Canomaly|git%20clone%20-b%20anomaly%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/anomaly">Get Code</a>
          </div>
       </div>
@@ -348,7 +348,7 @@
       </div>
    </div>
    <div class="footer" style="margin-left:30px;">
-      <div class="content" style="padding:30px;padding-left:60px;padding-bottom:0px;">
+      <div class="content" style="padding:30px;padding-left:60px;margin-right:95px;padding-bottom:0px;">
          <p>To edit or explore the application, make sure to stop it first</p>
          <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=anomaly">Stop Application</a>
          <p class="afterbutton">Explore and update the code as per your requirement</p>

@@ -319,8 +319,8 @@
             <br>
             <p style="font-size: 24px;">Pre-requisites</p>
             <ul>
-            <li>Sign up for a Weather Company Data trial (It might take up to 48 hours to get an API Key provisioned)</li>
-            <li>Subscribe to the HERE APIs:</li>
+            <li><a href="https://epwt-www.mybluemix.net/software/support/trial/cst/welcomepage.wss?siteId=1525&tabId=4159&w=1&_ga=2.232934494.1143069578.1643043347-1238955782.1642421092">Sign up  </a>for a Weather Company Data trial (It might take up to 48 hours to get an API Key provisioned)</li>
+            <li><a href="https://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account">Subscribe  </a>to the HERE APIs:</li>
             <ol>
             <li>Sign up for 'HERE Developer'</li>
             <li>Login to your HERE account, navigate to Projects > REST</li>

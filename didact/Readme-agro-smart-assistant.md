@@ -386,10 +386,10 @@
          <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create a New Deployment Space and Deploy the Model</summary></br></br>
          <div class="step">
           <p>Step 1 : Generate an API Key in the IBM account</p>
-          <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Cgenerate-api-token%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant;ibmcloud%20iam%20api-key-create%20ApiKey-SVA%20-d%20"this is API key for Smart Virtual Assitant"%20--file%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/key_file">Generate API key</a></br>
+          <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cgenerate-api-token%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant;ibmcloud%20iam%20api-key-create%20ApiKey-SVA%20-d%20'this is API key for Smart Virtual Assitant'%20--file%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/key_file">Generate API key</a></br>
         </div>
           <div class="step">
-            <p>Step 2 : Create a new deployment space with the pre-loaded model. Make sure your CP4D account is active in the given region.</p>
+            <p>Step 2 : Create a new deployment space with the pre-loaded model. Make sure your CP4D account is active in the region given in sandbox terminal.</p>
             <a class="button is-dark is-medium" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Cstart%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20python3.8%20create_space.py">Create Deployment Space</a>
           <details style="margin-top:5px;">
          <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Incase your model import failed, do the following steps</summary></br></br>

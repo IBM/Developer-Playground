@@ -19,7 +19,7 @@ function App() {
     
       <Header aria-label="IBM">
         <HeaderName prefix = "">
-          <div Style="white-space: nowrap;">
+          <div style={{ whiteSpace: "nowrap"}}>
             HERE Public Transit Application
             </div>
           </HeaderName>

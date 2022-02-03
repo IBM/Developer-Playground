@@ -30,6 +30,7 @@ const progressIndicator = document.getElementById("progressIndicator");
 const tabsHere = document.getElementById("tabsHere");
 const videoHere = document.getElementById("videoHere");
 const submitButton = document.getElementById("Upload");
+const defaultVideo = document.getElementById('default');
 
 var fileN;
 
@@ -142,8 +143,7 @@ submitButton.onclick = () => {
     uploaded2.style.display = "none";
     uploading2.style.display = "block";
     progressIndicator.style.display = "block";
-
-    if (isEmpty($('#myFiles'))) {
+    if (isEmpty($('#myFiles')) && !defaultVideo.checked) {
         uploading2.style.display = "none";
         error2.style.display = "block";
     } else {
@@ -170,8 +170,10 @@ submitButton.onclick = () => {
         } else {
             entityBool = "False";
         }
-
-        var file = $('.bx--file-filename').html();
+        if(defaultVideo.checked)
+            var file = "python-learning.mp4"
+        else
+            var file = $('.bx--file-filename').html();
 
         progressMsg.className = "w3-animate-opacity";
         progressMsg.innerHTML = "uploading " + file + "...";

@@ -97,7 +97,7 @@ def generate_input_lines():
             result += f'<tr>'
         result += f'<td style="padding-bottom:24px; height: 16px; width: 288px;line-height: 16px; font-family: IBM Plex Sans;"><span style="color: #525252;">{i}</span>'
         result += f'<br><br>'
-        result += f'<input style="padding-left: 16px; color: black; margin-right:10px; border-width: 0px 0px  1px 0px;height: 48px; width: 288px; background-color: #F4F4F4;" type="number" class="form-control" min="{minn}" max="{maxx}" step="1" name="{k}" id="{k}" value="{vall}" required (this.value)">'
+        result += f'<input style="padding-left: 16px; color: black; margin-right:10px; border: 1px solid #8D8D8D; border-width: 0px 0px  1px 0px;height: 48px; width: 288px; background-color: #F4F4F4;" type="number" class="form-control" min="{minn}" max="{maxx}" step="1" name="{k}" id="{k}" value="{vall}" required (this.value)">'
         result += f'</td>'
         if (counter % 2 == 1):
             result += f'</tr>'
@@ -110,7 +110,7 @@ def generate_input_lines():
             result += f'<tr>'
         result += f'<td style="padding-bottom:24px; height: 16px; width: 288px;line-height: 16px; font-family: IBM Plex Sans;"><span style="color: #525252;">{i}</span>'
         result += f'<br><br>'
-        result += f'<input style="padding-left: 16px;  color: black; margin-right:10px; border-width: 0px 0px  1px 0px;height: 48px; width: 288px; background-color: #F4F4F4;" type="number" class="form-control" min="{minn}" max="{maxx}" step="1" name="{k}" id="{k}" value="{vall}" required (this.value)">'
+        result += f'<input style="padding-left: 16px;  color: black; margin-right:10px; border: 1px solid #8D8D8D; border-width: 0px 0px  1px 0px;height: 48px; width: 288px; background-color: #F4F4F4;" type="number" class="form-control" min="{minn}" max="{maxx}" step="1" name="{k}" id="{k}" value="{vall}" required (this.value)">'
         result += f'</td>'
         if (counter % 2 == 1):
             result += f'</tr>'
@@ -122,7 +122,7 @@ def generate_input_lines():
             result += f'<tr>'
         result += f'<td style="padding-bottom:24px; height: 16px; width: 288px;line-height: 16px; font-family: IBM Plex Sans;"><span style="color: #525252;">{i}</span>'
         result += f'<br><br>'
-        result += f'<select style="padding-left: 16px; color: black; margin-right:10px; border-width: 0px 0px  1px 0px;height: 48px; width: 288px; background-color: #F4F4F4;" class="form-control" name="{k}">'
+        result += f'<select style="padding-left: 16px; color: black; margin-right:10px; border: 1px solid #8D8D8D; border-width: 0px 0px  1px 0px;height: 48px; width: 288px; background-color: #F4F4F4;" class="form-control" name="{k}">'
         for value, j in zip(strings[k], stringstag[i]):
             result += f'<option value="{value}" selected>{j}</option>'
         result += f'</select>'

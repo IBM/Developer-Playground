@@ -1,123 +1,153 @@
-<!--
- * Licensed under the Apache License, Version 2.0 (the "License"); you may
- * not use this file except in compliance with the License. You may obtain
- * a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations
- * under the License.
- * -->
+{% extends "apply.html" %}
 
- {% extends "apply.html" %}
+{% block headextension %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script> var result_json = {{ result| tojson }}; </script>
+<script> var result_labels = {{ labels | tojson}}; </script>
+<script type="text/javascript">
 
- {% block headextension %}
-   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-   <script> var result_json = {{ result|tojson }}; </script>
-   <script> var result_labels = {{ labels | tojson}}; </script>
-   <script type="text/javascript">
- 
-     var predictions = [['Label', 'Probability']];
-     var result = result_json.result;
-     google.charts.load("current", {packages:["corechart"]});
-     google.charts.setOnLoadCallback(drawChart);
-     function drawChart() {
-       for(var i=0 ; i < result_labels.length ; i++) {
-         predictions[i+1] = [result_labels[i], result_json.probability[i] * 100];
-       }
-       var data = google.visualization.arrayToDataTable(predictions);
- 
-       var options = {
-         title: 'Probability of Risk',
-         pieHole: 0.4,
-       };
- 
-       var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-       chart.draw(data, options);
-     }
-   </script>
+  var predictions = [['Label', 'Probability']];
+  var result = result_json.result;
+  google.charts.load("current", { packages: ["corechart"] });
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    for (var i = 0; i < result_labels.length; i++) {
+      predictions[i + 1] = [result_labels[i], result_json.probability[i] * 100];
+    }
+    var data = google.visualization.arrayToDataTable(predictions);
+    var options = {
+      title: 'Risk Probability',
+      pieHole: 0,
+    };
 
-<div style="margin-top: 10%;">
-  {% if yes_percent > 25 %}
-  This customer has <strong style="color:red;">High</strong> risk. The recommended offer is <strong>lower fees for 6 months</strong>.
-  {% elif yes_percent > 15 %}
-  This customer has <strong style="color:orange;">Some</strong> risk. The recommended offer is <strong>lower fees for 3 month</strong>.
-  {% else %}
-  This customer has <strong style="color:green;">Low</strong> risk. The recommended offer is <strong>lower fees for 1 months</strong>.
-  {% endif %}
-</div>
-<div class="apply_form_area">
-  <div class="container">
-
-     
-      <div class="row " style="margin-left: 12%;">
-          <div class="col-lg-8">
-            <h3>Credit loan risk prediction</h3>
-            <div id="donutchart" style="width:100%;height: 500px;"></div>
-              
-          </div>
-          <div class="col-lg-4" style="float: right;">
-            <h3>Characteristics analyzed</h3>
-            
-              <table style="margin-top: 20%;text-align: left;">
-                <tr>
-                  <th>Attribute</th>
-                  <th>Value</th>
-                </tr>
-                {% for (k,i) in zip(request.form.keys(),keystag)  %}
-                  <tr>
-                    <td>{{i}}</td>
-                    <td>{{(((request.form[k].replace("_"," ")).replace("greater",">")).replace("less","<"))}}</td>
-                  </tr>
-                {% endfor %}
-          
-              </table>
-            
-              
-          </div>
-
-          
-      </div>
-      <div class="col-md-12">
-        <div class="submit_btn">
-          <form action="input.html" method="post">
-            <a class="boxed-btn3" style="width:50%;margin-left:50%;" href="../" type="submit">Back to application</a>
-        </form>
-            
+    var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+    chart.draw(data, options);
+  }
+</script>
+  <div>
+    <h3 style="padding-bottom: 16px">Credit loan risk prediction</h3>
+<div class="bx--grid">
+  <div class="bx--row">
+        <div class="outside" style="box-sizing: border-box;
+        height: 253px;
+        width: 310px;
+        border: 1px solid #CDCDCD;" id="donutchart">
         </div>
-      </div>
-  </div>
-
+        <div class="outside" style="height: 253px; width: 310px;
+        background-color: #313131;">
+            <br/>
+            <span style="height: 20px;
+            width: 79px;
+            color: #FFFFFF;
+            font-family: 'IBM Plex Sans';
+            font-size: 16px;
+            letter-spacing: 0.18px;
+            line-height: 20px;
+            padding-left:14px">Loan Risk<span><br/>
+            <div style="height: 109px;
+            width: 182px;
+            color: #FFFFFF;
+            font-family: IBM Plex Sans;
+            font-size: 70px;
+            letter-spacing: 0.96px;
+            line-height: 109px;
+            padding-left:10px;
+            padding-top:-34px">{{yes_percent|round(2)}}%</div>
+            {% if yes_percent > 25 %}
+            <span style="height: 20px;
+            width: 212px;
+            color: #FFFFFF;
+            font-family: IBM Plex Sans;
+            font-size: 16px;
+            letter-spacing: 0.18px;
+            line-height: 20px;
+            padding-left:14px;
+            padding-top:-34px">This customer has <strong style="color:red;">High</strong> risk.</span>
+            {% elif yes_percent > 15 %}
+            <span style="height: 20px;
+            width: 212px;
+            color: #FFFFFF;
+            font-family: IBM Plex Sans;
+            font-size: 16px;
+            letter-spacing: 0.18px;
+            line-height: 20px;
+            padding-left:14px;
+            padding-top:-34px">This customer has <strong style="color:orange;">Some</strong> risk.</span>
+            {% else %}
+            <span style="height: 20px;
+            width: 212px;
+            color: #FFFFFF;
+            font-family: IBM Plex Sans;
+            font-size: 16px;
+            letter-spacing: 0.18px;
+            line-height: 20px;
+            padding-left:14px;
+            padding-top:148px">This customer has <strong style="color:green;">Low</strong> risk.</span>
+            {% endif %}
+        </div>
+    </div>
 </div>
+    <div style="padding-top: 35px">
+      <div style="  height: 32px;
+      color: #000000;
+      font-family: IBM Plex Sans;
+      font-size: 24px;
+      letter-spacing: 0.27px;
+      line-height: 32px;">Recommended Offer</div>
+      {% if yes_percent > 25 %}
+      <span style="height: 25px;
+      width: 409px;
+      color: #697077;
+      font-family: IBM Plex Sans;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.23px;
+      line-height: 25px;">Lower fees for 6
+        months</span>.
+      {% elif yes_percent > 15 %}
+      <span style="height: 25px;
+      width: 409px;
+      color: #697077;
+      font-family: IBM Plex Sans;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.23px;
+      line-height: 25px;">Lower fees
+        for 3 months</span>.
+      {% else %}
+      <span style="height: 25px;
+      width: 409px;
+      color: #697077;
+      font-family: IBM Plex Sans;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.23px;
+      line-height: 25px;">Lower fees for
+        1 month</span>.
+      {% endif %}
+    </div>
+    
+    <div>
+      <table class="bx--data-table" style="margin-top:46px">
+        <tr>
+          <th class="bx--table-header-label" style="height: 64px;width: 292px; background-color: #E0E0E0;font-family: IBM Plex Sans;font-size: 14px;font-weight: 600;color: #161616;">Attribute</span></th>
+          <th class="bx--table-header-label" style="width: 292px; background-color: #E0E0E0;font-family: IBM Plex Sans;font-size: 14px;font-weight: 600;color: #161616;">Value</th>
+        </tr>
+        {% for (k,i) in zip(request.form.keys(),keystag) %}
+        <tr>
+          <td style="margin-right:8px; background-color: #F4F4F4;">{{i}}</td>
+          <td>{{(((request.form[k].replace("_"," ")).replace("greater",">")).replace("less",'<'))}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
 
+        <script>
+          document.write('<a class="bx--btn bx--btn--primary bx--btn--field" style="margin-left: 465px; min-height: 48px; min-width: 207px; margin-top:46px; margin-bottom:107px; text-decoration: none; color: #FFFFFF;font-family: IBM Plex Sans;font-size: 14px;letter-spacing: 0.16px;line-height: 18px;" href="' + document.referrer + '">Back to Application</a>');
+      </script> 
+{% endblock %}
 
- {% endblock %}
- 
- {% block body2 %}
- 
+{% block body2 %}
 
- <!-- 
- <div>
-   {% if yes_percent > 25 %}
-   This customer has <strong>High</strong> risk. The recommended offer is <strong>lower fees for 6 months</strong>.
-   {% elif yes_percent > 15 %}
-   This customer has <strong>Some</strong> risk. The recommended offer is <strong>lower fees for 3 month</strong>.
-   {% else %}
-   This customer has <strong>Low</strong> risk. The recommended offer is <strong>lower fees for 1 months</strong>.
-   {% endif %}
- </div>
- -->
- 
+{% endblock %}
 
- 
- 
- 
- <!-- Uncomment to debug:
-   {{ response_scoring.json()["result"] }}
- -->
- 
- {% endblock %}
- 

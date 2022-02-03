@@ -43,19 +43,19 @@ strings = {
     "OTHERSONLOAN": ["none", "co-applicant", "guarantor"]
 }
 stringstag = {
-    "Checking Status": ["no checking", "< 0", "0 to 200", "> 200"],
-    "Credit History": ["outstanding credit", "prior payments delayed", "credits paid to date", "all credits paid back", "no credits"],
-    "Employment Duration": ["unemployed", "< 1", "1 to 4", "4 to 7", "> 7"],
+    "Checking Status": ["No Checking", "< 0", "0 to 200", "> 200"],
+    "Credit History": ["Outstanding Credit", "Prior Payments Delayed", "Credits Paid to Date", "All Credits Paid Back", "No Credits"],
+    "Employment Duration": ["Unemployed", "< 1", "1 to 4", "4 to 7", "> 7"],
     "Existing Savings": ["unknown", "< 100", "100 to 500", "500 to 1000", "> 1000"],
-    "Foreign Worker": ["yes", "no"],
-    "Housing": ["own", "free", "rent"],
-    "Installment Plans": ["none", "stores", "bank"],
-    "Job": ["skilled", "management self-employed", "unemployed", "unskilled"],
-    "Owns Property": ["car", "savings insurance", "unknown", "real estate"],
-    "Sex": ["female", "male"],
-    "Telephone": ["yes", "none"],
-    "Loan Purpose": ["repairs", "appliances", "car new", "furniture", "car used", "business", "radio tv", "education", "vacation", "other", "retraining"],
-    "Others on Loan": ["none", "co-applicant", "guarantor"]
+    "Foreign Worker": ["Yes", "No"],
+    "Housing": ["Own", "free", "Rent"],
+    "Installment Plans": ["None", "Stores", "Bank"],
+    "Job": ["Skilled", "Management Self-employed", "Unemployed", "Unskilled"],
+    "Owns Property": ["Car", "Savings Insurance", "Unknown", "Real Estate"],
+    "Sex": ["Female", "Male"],
+    "Telephone": ["Yes", "None"],
+    "Loan Purpose": ["Repairs", "Appliances", "Car New", "Furniture", "Car Used", "Business", "Radio TV", "Education", "Vacation", "Other", "Retraining"],
+    "Others on Loan": ["None", "Co-applicant", "Guarantor"]
 } 
 # min, max, default value
 floats = {
@@ -95,8 +95,9 @@ def generate_input_lines():
         minn, maxx, vall = floats[k]
         if (counter % 2 == 0):
             result += f'<tr>'
-        result += f'<td>{i}'
-        result += f'<input type="number" class="form-control" min="{minn}" max="{maxx}" step="1" name="{k}" id="{k}" value="{vall}" required (this.value)">'
+        result += f'<td style="padding-bottom:24px; height: 16px; width: 288px;line-height: 16px; font-family: IBM Plex Sans;"><span style="color: #525252;">{i}</span>'
+        result += f'<br><br>'
+        result += f'<input style="padding-left: 16px; color: black; margin-right:10px; border-width: 0px 0px  1px 0px;height: 48px; width: 288px; background-color: #F4F4F4;" type="number" class="form-control" min="{minn}" max="{maxx}" step="1" name="{k}" id="{k}" value="{vall}" required (this.value)">'
         result += f'</td>'
         if (counter % 2 == 1):
             result += f'</tr>'
@@ -107,8 +108,9 @@ def generate_input_lines():
         minn, maxx, vall = ints[k]
         if (counter % 2 == 0):
             result += f'<tr>'
-        result += f'<td>{i}'
-        result += f'<input type="number" class="form-control" min="{minn}" max="{maxx}" step="1" name="{k}" id="{k}" value="{vall}" required (this.value)">'
+        result += f'<td style="padding-bottom:24px; height: 16px; width: 288px;line-height: 16px; font-family: IBM Plex Sans;"><span style="color: #525252;">{i}</span>'
+        result += f'<br><br>'
+        result += f'<input style="padding-left: 16px;  color: black; margin-right:10px; border-width: 0px 0px  1px 0px;height: 48px; width: 288px; background-color: #F4F4F4;" type="number" class="form-control" min="{minn}" max="{maxx}" step="1" name="{k}" id="{k}" value="{vall}" required (this.value)">'
         result += f'</td>'
         if (counter % 2 == 1):
             result += f'</tr>'
@@ -118,8 +120,9 @@ def generate_input_lines():
     for k, i in zip(strings.keys(), stringstag.keys()):
         if (counter % 2 == 0):
             result += f'<tr>'
-        result += f'<td>{i}'
-        result += f'<select class="form-control" name="{k}">'
+        result += f'<td style="padding-bottom:24px; height: 16px; width: 288px;line-height: 16px; font-family: IBM Plex Sans;"><span style="color: #525252;">{i}</span>'
+        result += f'<br><br>'
+        result += f'<select style="padding-left: 16px; color: black; margin-right:10px; border-width: 0px 0px  1px 0px;height: 48px; width: 288px; background-color: #F4F4F4;" class="form-control" name="{k}">'
         for value, j in zip(strings[k], stringstag[i]):
             result += f'<option value="{value}" selected>{j}</option>'
         result += f'</select>'
@@ -134,33 +137,6 @@ def generate_input_lines():
 
 
 app.jinja_env.globals.update(generate_input_lines=generate_input_lines)
-
-
-# def get_token():
-#     auth_token = os.environ.get('AUTH_TOKEN')
-#     auth_username = os.environ.get('AUTH_USERNAME')
-#     auth_password = os.environ.get('AUTH_PASSWORD')
-#     auth_url = os.environ.get('AUTH_URL')
-
-#     if (auth_token):
-#         # All three are set. bad bad!
-#         if (auth_username and auth_password):
-#             raise EnvironmentError('[ENV VARIABLES] please set either "AUTH_TOKEN" or ("AUTH_USERNAME", "AUTH_PASSWORD", and "AUTH_URL"). Not both.')
-#         # Only TOKEN is set. good.
-#         else:
-#             return auth_token
-#     else:
-#         # Nothing is set. bad!
-#         if not (auth_username and auth_password):
-#             raise EnvironmentError('[ENV VARIABLES] please set "AUTH_USERNAME", "AUTH_PASSWORD", and "AUTH_URL" as "TOKEN" is not set.')
-#         # Only USERNAME, PASSWORD are set. good.
-#         else:
-#             response_preauth = requests.get(auth_url, auth=HTTPBasicAuth(auth_username, auth_password), verify=False)
-#             if response_preauth.status_code == 200:
-#                 return json.loads(response_preauth.text)['accessToken']
-#             else:
-#                 raise Exception(f"Authentication returned {response_preauth}: {response_preauth.text}")
-
 
 class riskForm():
     @app.route('/js/<path:path>')
@@ -206,9 +182,56 @@ class riskForm():
 
             input_data = list(data.keys())
             input_values = list(data.values())
+            
+            #formatting the input data as per the AutoAI model
+            userinput=list()
+
+            userinput.append(input_data[7])
+            userinput.append(input_data[6])
+            userinput.append(input_data[8])
+            userinput.append(input_data[18])
+            userinput.append(input_data[1])
+            userinput.append(input_data[10])
+            userinput.append(input_data[9])
+            userinput.append(input_data[0])
+            userinput.append(input_data[16])
+            userinput.append(input_data[19])
+            userinput.append(input_data[4])
+            userinput.append(input_data[15])
+            userinput.append(input_data[2])
+            userinput.append(input_data[13])
+            userinput.append(input_data[12])
+            userinput.append(input_data[5])
+            userinput.append(input_data[14])
+            userinput.append(input_data[3])
+            userinput.append(input_data[17])
+            userinput.append(input_data[11])
+
+            uservalues=list()
+
+            uservalues.append(input_values[7])
+            uservalues.append(input_values[6])
+            uservalues.append(input_values[8])
+            uservalues.append(input_values[18])
+            uservalues.append(input_values[1])
+            uservalues.append(input_values[10])
+            uservalues.append(input_values[9])
+            uservalues.append(input_values[0])
+            uservalues.append(input_values[16])
+            uservalues.append(input_values[19])
+            uservalues.append(input_values[4])
+            uservalues.append(input_values[15])
+            uservalues.append(input_values[2])
+            uservalues.append(input_values[13])
+            uservalues.append(input_values[12])
+            uservalues.append(input_values[5])
+            uservalues.append(input_values[14])
+            uservalues.append(input_values[3])
+            uservalues.append(input_values[17])
+            uservalues.append(input_values[11])
 
             payload_scoring = {"input_data": [
-                {"fields": input_data, "values": [input_values]}
+                {"fields": userinput, "values": [uservalues]}
             ]}
         
             print("Payload is: ")
@@ -243,7 +266,7 @@ class riskForm():
             keystag2 = list(intstag.keys())
             keystag3 = list(stringstag.keys())
             keystag = keystag1+keystag2+keystag3
-            # print(keystag)
+            #print(keystag)
 
             return render_template(
                 'score.html',

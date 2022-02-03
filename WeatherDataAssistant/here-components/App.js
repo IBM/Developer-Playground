@@ -26,7 +26,7 @@ function App() {
     
       <Header aria-label="IBM">
         <HeaderName prefix = "">
-          <div Style="white-space: nowrap;">
+          <div style={{ whiteSpace: "nowrap"}}>
             Weather Data Assistant for Travel
             </div>
           </HeaderName>

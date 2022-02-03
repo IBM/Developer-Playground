@@ -12,41 +12,50 @@
  * under the License.
  * -->
 
- {% extends "apply.html" %}
+{% extends "apply.html" %}
 
- {% block body %}
- 
+{% block body %}
 
- 
+
+
 
 
 <form action="#" method="post" class="apply_form add-entry">
     <div class="row">
-        
-    <div class="col-lg-12">
-        <div class="apply_info_text text-center">
-           <h3>Get the Risk Index of the Loan Application</h3>
-           <p>Input the following information and click submit to make a prediction.</p>
-        </div>
-    </div>
 
-    <br>{{ generate_input_lines() | safe }}
+        <div class="col-lg-12">
+            <div class="apply_info_text text-center">
+                <h3 style="padding-left: 26px;
+                height: 32px;
+                color: #000000;
+                font-family: 'IBM Plex Sans';
+                letter-spacing: 0.18px;
+                line-height: 20px;
+                line-height: 32px;">Get the Risk Index of the Loan Application</h3>
+                <p style="padding-left: 30px;  
+                height: 20px;
+                color: #697077;
+                font-family: 'IBM Plex Sans'; font-size: 16px; letter-spacing: 0.18px; line-height: 20px;">Input the following information and click submit to make a prediction</p>
+            </div>
+        </div>
+
+        <br><div style="padding-top:32px; padding-left: 26px;">{{ generate_input_lines() | safe }}</div>
 
 
         <div class="col-md-12">
-            <div class="submit_btn">
-                <button class="boxed-btn3" type="submit">Apply Now</button>
+            <div class="submit_btn" style="margin-bottom:111px">
+                <button style="padding: 15px 66px 15px 36px; margin-top:72px; margin-left: 26px;height: 48px;width: 152px; background-color: #0F62FE; color: #FFFFFF; font-family: IBM Plex Sans; font-size: 14px; letter-spacing: 0.16px; line-height: 18px;font-family:'IBM Plex Sans'" class="bx--btn--primary" type="submit">Submit</button>
             </div>
         </div>
     </div>
 </form>
 
 
- 
 
 
 
 
 
 
- {% endblock %}
+
+{% endblock %}

@@ -28,13 +28,23 @@ if(len(data.split("\n"))<3):
     dotenv.set_key("./.env",service.upper()+"_LOC",result[0])
     data = os.popen("ibmcloud resource service-instance "+result[1]+" --id").read()
     dotenv.set_key("./.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
+    data = json.loads(os.popen("ibmcloud resource service-keys --instance-id "+data.split("\n")[-2].split(" ")[0]+" --output json").read())
+    try:
+        dotenv.set_key("./.env",service.upper()+"_API_KEY",data[0]["credentials"]["apikey"])
+    except:
+        dotenv.set_key("./.env",service.upper()+"_API_KEY","")
     dotenv.set_key("./.env",service.upper()+"_UPDATED","False")
 else:
     dotenv.set_key("./.env",service.upper()+"_NAME",servicename)
     dotenv.set_key("./.env",service.upper()+"_LOC",region)
     data = os.popen("ibmcloud resource service-instance "+servicename+" --id").read()
     dotenv.set_key("./.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
+    data = json.loads(os.popen("ibmcloud resource service-keys --instance-id "+data.split("\n")[-2].split(" ")[0]+" --output json").read())
+    try:
+        dotenv.set_key("./.env",service.upper()+"_API_KEY",data[0]["credentials"]["apikey"])
+    except:
+        dotenv.set_key("./.env",service.upper()+"_API_KEY","")
     dotenv.set_key("./.env",service.upper()+"_UPDATED","True")
-print("###########################################################")        
+print("\n###########################################################")        
 os.system("echo Updated "+service+" instance details successfuly")
-print("###########################################################")         
+print("###########################################################")           

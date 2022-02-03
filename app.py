@@ -266,7 +266,7 @@ class riskForm():
             keystag2 = list(intstag.keys())
             keystag3 = list(stringstag.keys())
             keystag = keystag1+keystag2+keystag3
-            print(keystag)
+            #print(keystag)
 
             return render_template(
                 'score.html',

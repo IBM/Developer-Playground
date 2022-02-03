@@ -33,7 +33,7 @@ function App() {
     <>
      <Header aria-label="IBM">
        <HeaderName prefix="">
-            <div Style="white-space: nowrap;">
+            <div style={{ whiteSpace: "nowrap"}}>
             Data Quality for AI Application
             </div>
       </HeaderName>

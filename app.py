@@ -284,7 +284,7 @@ class riskForm():
 
 
 load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
-port = os.environ.get('PORT', '5001')
+port = os.environ.get('PORT', '5000')
 host = os.environ.get('HOST', '0.0.0.0')
 if __name__ == "__main__":
     app.run(host=host, port=int(port))

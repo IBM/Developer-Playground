@@ -294,13 +294,13 @@
       Video Analysis Application
     </div>
     <div class="subheading">
-            Extract meaningful insights from video files using Watson Speech to Text, Natural Language Processing, and Tone Analyzer services
+            Extract meaningful insights from video files using Watson Speech to Text, Natural Language Processing, and Tone Analyzer services.
     </div>
      </div>
    </div>
    <div class="section" style="font-size:16px; margin-top:-20px">
-  <p>The benefit of a virtually connected world is that important meetings and classes can be recorded, giving attendees more opportunities to stay connected and tune into important events. But with so much content to process, listening or watching all of this recorded content can be time-consuming and tedious</p>
-  <p>This application uses IBM Watson Services to analyze a video recording and to generate a detailed report highlighting its key points</p>
+  <p>The benefit of a virtually connected world is that important meetings and classes can be recorded, giving attendees more opportunities to stay connected and tune into important events. But with so much content to process, listening or watching all of this recorded content can be time-consuming and tedious.</p>
+  <p>This application uses IBM Watson Services to analyze a video recording and to generate a detailed report highlighting its key points.</p>
   </div>
    <div class="section">
     <p style="font-size:24px">Architecture Diagram</p>
@@ -309,14 +309,14 @@
     <div class="section">
     <p style="font-size:24px">Execution Flow</p>
         <ol>
-        <li>User uploads recorded video file of the virtual meeting or a virtual classroom in the application</li>
-        <li>FFMPG Library extracts audio from the video file</li>
-        <li>Watson Speech To Text transcribes the audio to give a diarized textual output</li>
-        <li>Watson Language Translator (Optionally) translates other languages into English transcript</li>
-        <li>Watson Tone Analyzer analyses the transcript and highlights the top positive statements from the transcript</li>
-        <li>Watson Natural Language Understanding reads the transcript to identify key points and record the sentiments and emotions</li>
-        <li>The key points and a summary of the video is then presented to the user in the application</li>
-        <li>The user can then download the textual insights</li>
+        <li>User uploads recorded video file of the virtual meeting or a virtual classroom in the application.</li>
+        <li>FFMPG Library extracts audio from the video file.</li>
+        <li>Watson Speech To Text transcribes the audio to give a diarized textual output.</li>
+        <li>Watson Language Translator (Optionally) translates other languages into English transcript.</li>
+        <li>Watson Tone Analyzer analyses the transcript and highlights the top positive statements from the transcript.</li>
+        <li>Watson Natural Language Understanding reads the transcript to identify key points and record the sentiments and emotions.</li>
+        <li>The key points and a summary of the video is then presented to the user in the application.</li>
+        <li>The user can then download the textual insights.</li>
         </ol>
     </div>
     <div class="section">
@@ -330,63 +330,63 @@
       <div >
          <div class="content">
             <p>This Asset uses the following IBM Watson Services:</p>
-            <p><a href="https://cloud.ibm.com/catalog/services/natural-language-understanding">Watson Natural Language Understanding</a>: Use advanced NLP to analyze text and extract meta-data from content such as concepts, entities, keywords, categories, sentiment, emotion, relations, and semantic roles</p>
-            <p><a href="https://cloud.ibm.com/catalog/services/tone-analyzer">Watson Tone Analyzer</a>: Tone Analyzer leverages cognitive linguistic analysis to identify a variety of tones at both the sentence and document level</p>
-            <p><a href="https://cloud.ibm.com/catalog/services/speech-to-text">Watson Speech to Text</a>: The Speech to Text service converts the human voice into the written word</p>
+            <p><a href="https://cloud.ibm.com/catalog/services/natural-language-understanding">Watson Natural Language Understanding</a>: Use advanced NLP to analyze text and extract meta-data from content such as concepts, entities, keywords, categories, sentiment, emotion, relations, and semantic roles.</p>
+            <p><a href="https://cloud.ibm.com/catalog/services/tone-analyzer">Watson Tone Analyzer</a>: Tone Analyzer leverages cognitive linguistic analysis to identify a variety of tones at both the sentence and document level.</p>
+            <p><a href="https://cloud.ibm.com/catalog/services/speech-to-text">Watson Speech to Text</a>: The Speech to Text service converts the human voice into the written word.</p>
          </div>
       </div>
    </div>
     <div class="section">
     <p style="font-size:24px">Pre-requisites</p>
     <div class="content-">
-    <p>IBM Cloud Account - <a href="https://cloud.ibm.com/registration/trial?cm_sp=ibmdev--developer-sandbox--cloudreg"> Create</a>  one for free</p>
+    <p>IBM Cloud Account - <a href="https://cloud.ibm.com/registration/trial?cm_sp=ibmdev--developer-sandbox--cloudreg"> Create</a>  one for free.</p>
    </div>
    </div>
     <div class="section">
     <p style="font-size:24px">Instructions</p>
-    <p style="margin-bottom:10px;"> Please follow all the below steps in proper sequence</p>
+    <p style="margin-bottom:10px;"> Please follow all the below steps in proper sequence.</p>
    </div>   
    <div class="timeline">
       <div style="margin-top:0px; padding-top:0px;"class="container right">
          <div class="content">
-            <p>Open the sandbox terminal</p>
+            <p>Open the sandbox terminal.</p>
             <a class="button is-dark is-medium" title="Open Terminal" href="didact://?commandId=terminal-for-sandbox-container:new">Open Terminal</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Clone the GitHub repository</p>
+            <p>Clone the GitHub repository.</p>
             <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Cget-code%7Csandbox%20terminal%7Cgit%20clone%20-b%20video-insights%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground.git%20${CHE_PROJECTS_ROOT}/video-analysis%20%26%26%20cd%20video-analysis%2F%20%26%26%20pip3.8%20install%20-r%20requirements.txt" >Get Code</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Log in to your IBM Cloud account</p>
+            <p>Log in to your IBM Cloud account.</p>
             <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Clogin-ibm-cloud%7Csandbox%20terminal%7Ccd%20${CHE_PROJECTS_ROOT}/video-analysis%20%26%26%20chmod%20%2Bx%20.%2Flogin.sh%20%26%26%20.%2Flogin.sh">Login to IBM Cloud</a>
       </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Create services on IBM Cloud</p>
+            <p>Create services on IBM Cloud.</p>
             <a class="button is-dark is-medium" title="Create IBM Watson Services" href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Ccreate-ibm-watson-service%7Csandbox%20terminal%7Ccd%20${CHE_PROJECTS_ROOT}/video-analysis%20%26%26%20chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh" >Create  Services</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Launch the application in the preview window</p>
+            <p>Launch the application in the preview window.</p>
             <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Claunch-application%7Csandbox%20terminal%7Cpython3.8%20app.py">Launch Application</a>
          </div>
       </div>
    </div>
    <div class="footer" style="margin-left:30px;">
      <div class="content" style="padding:30px;padding-left:60px;margin-right:80px;padding-bottom:0px;">
-         <p>To edit or explore the application, make sure to stop it first</p>
+         <p>To edit or explore the application, make sure to stop it first.</p>
          <a class="button is-dark is-medium" title="stop application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=sandbox%20terminal">Stop Application</a>
          <p style="margin-top:10px;">
-            Click on <bold>Clean up</bold> to delete the IBM Cloud services that were created
+            Click on <bold>Clean up</bold> to delete the IBM Cloud services that were created.
          </p>
-         <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Cdelete-services%7Csandbox%20terminal%7Ccd%20${CHE_PROJECTS_ROOT}/video-analysis%20%26%26%20chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean up</a>
-         <p style="margin-top:10px;">You can also manage the services in <a href="https://cloud.ibm.com/resources">IBM Cloud Dashboard</a></p>
+         <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Cdelete-services%7Csandbox%20terminal%7Ccd%20${CHE_PROJECTS_ROOT}/video-analysis%20%26%26%20chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean Up</a>
+         <p style="margin-top:10px;">You can also manage the services in <a href="https://cloud.ibm.com/resources">IBM Cloud Dashboard</a>.</p>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?

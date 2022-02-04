@@ -1,5 +1,5 @@
 var fs = require('fs');
-var array = fs.readFileSync('key.text').toString().split("\n");
+var array = fs.readFileSync('key.txt').toString().split("\n");
 
 function getRandomItem(arr) {
 

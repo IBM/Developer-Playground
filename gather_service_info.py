@@ -29,7 +29,7 @@ if(len(data.split("\n"))<3):
     data = os.popen("ibmcloud resource service-instance "+result[1]+" --id").read()
     dotenv.set_key("./.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
     try:
-        data = json.loads(os.popen("ibmcloud resource service-key-create "+result[1]+"-creds Manager --instance-id " +data.split("\n")[-2].split(" ")[0]+" --output json").read())
+        data = json.loads(os.popen("ibmcloud resource service-key-create "+servicename+"-creds Manager --instance-id " +data.split("\n")[-2].split(" ")[0]+" --output json").read())
         dotenv.set_key("./.env",service.upper()+"_API_KEY",data["credentials"]["apikey"])
         dotenv.set_key("./.env",service.upper()+"_SERVICE_KEY",data["id"])
     except:
@@ -40,7 +40,6 @@ else:
     dotenv.set_key("./.env",service.upper()+"_NAME",servicename)
     dotenv.set_key("./.env",service.upper()+"_LOC",region)
     data = os.popen("ibmcloud resource service-instance "+servicename+" --id").read()
-    print(data)
     dotenv.set_key("./.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
     try:
         data = json.loads(os.popen("ibmcloud resource service-key-create "+servicename+"-creds Manager --instance-id " +data.split("\n")[-2].split(" ")[0]+" --output json").read())

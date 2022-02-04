@@ -312,11 +312,14 @@
    <div class="section">
     <p style="font-size:24px">Execution Flow</p>
         <ol>
-        <li>Create a deployment space using Watson Machine Learning in IBM Cloud Pak for Data platform and deploy a pre-trained machine learning model</li>
+        <li>Use the IBM Cloud CLI to login to your IBM Cloud account</li>
+        <li>Create IBM Cloud services instances for Cloud Object Storage, Watson Machine 
+Learning, Watson Assistant, and Watson Studio in IBM Cloud Pak for Data</li>
+        <li>Deploy our Crop Recommender model in Watson Studio</li>
         <li>Create a Cloud Function to get output from the model using the model URL</li>
-        <li>Create a chatbot in Watson Assistant</li>
-        <li>Integrate the chatbot with the Cloud Function</li>
-        <li>Prompt the user for soil characteristics via the chatbot and return crop recommendations</li>
+        <li>Create a chatbot in Watson Assistant and integrate with the Cloud Function</li>
+        <li>Prompt the user for soil characteristics via the chatbot</li>
+        <li>The chatbot will use the Cloud Funtion to pass user responses to the model and return crop recommendations to the user</li>
         </ol>
     </div>
    <div class="section">
@@ -329,7 +332,8 @@
    <div class="section">
       <p style="font-size:24px">Included Components</p>
       <div class="content-">
-          <p>This  application uses the following <a href=" https://www.ibm.com/products/cloud-pak-for-data">IBM Cloud Pak for Data services</a>:</p>
+          <p>This application uses the following <a href="https://cloud.ibm.com">IBM Cloud services</a>:</p>
+          <p><a href="https://www.ibm.com/products/cloud-pak-for-data">IBM Cloud Pak for Data</a>: An integrated platform for data and AI</p>
           <p><a href="https://cloud.ibm.com/objectstorage">Cloud Object Storage</a>: IBM Cloud Object Storage is a highly scalable cloud storage service, designed for high durability, resiliency and security</p>
           <p><a href="https://cloud.ibm.com/catalog/services/watson-assistant">Watson Assistant</a>: Watson Assistant lets you build conversational interfaces into any application, device, or channel</p>
           <p><a href="https://cloud.ibm.com/catalog/services/watson-studio">Watson Studio</a>: Develop sophisticated machine learning models using Notebooks and code-free tools to infuse AI throughout your business</p>
@@ -362,14 +366,15 @@
       </div>
       <div class="container right">
         <div class="content">
-           <p>Install required dependencies for executing application
+           <p>Install required dependencies for executing python scripts and the node chatbot application
            </p>
            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Cbuild%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20npm%20install%26%26pip3.8%20install%20-r%20requirements.txt">Install Dependenciess</a>
         </div>
      </div>
      <div class="container right">
         <div class="content">
-           <p>Log in to your IBM Cloud account</p>
+           <p>Log in to your IBM Cloud account. You will be provided a link to get your one-time passcode which you will need to copy 
+and paste to proceed with authorization</p>
           <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Cibm-login%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Flogin.sh%20%26%26%20.%2Fscripts%2Flogin.sh">Login to IBM Cloud</a>
         </div>
      </div>
@@ -377,19 +382,19 @@
         <div class="content">
           <p>Create services on IBM Cloud</p>
           <a class="button is-dark is-medium" title="Create IBM Watson Services" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Ccreate-services%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fcreate-ibm-services.sh%20%26%26%20.%2Fscripts%2Fcreate-ibm-services.sh">Create Services</a>
-          <p style="margin-top:50px">Follow the below steps to configure the asset</p>
+          <p style="margin-top:50px">Follow the below steps to download and deploy the Watson Machine Learning model</p>
         </div>
       </div>
       <div class="container right">
         <div class="content">
         <details>
-         <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create a New Deployment Space and Deploy the Model</summary></br></br>
+         <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create a New Deployment Space and Deploy the Model using Watson Machine Learning</summary></br></br>
          <div class="step">
-          <p>Step 1 : Generate an API Key in the IBM account</p>
+          <p>Step 1 : Generate an API Key in the IBM account. This is required to access the model for our Cloud Function</p>
           <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cgenerate-api-token%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant;ibmcloud%20iam%20api-key-create%20ApiKey-SVA%20-d%20'this is API key for Smart Virtual Assitant'%20--file%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/key_file">Generate API key</a></br>
         </div>
           <div class="step">
-            <p>Step 2 : Create a new deployment space with the pre-loaded model. Make sure your CP4D account is active in the region given in sandbox terminal.</p>
+            <p>Step 2 : Create a new deployment space with the pre-loaded model. Make sure your <a href="https://dataplatform.cloud.ibm.com?cm_sp=ibmdev--developer-sandbox--cloudreg">IBM Cloud Pak for Data</a> account is active in the region given in sandbox terminal</p>
             <a class="button is-dark is-medium" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Cstart%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20python3.8%20create_space.py">Create Deployment Space</a>
           <details style="margin-top:5px;">
          <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Incase your model import failed, do the following steps</summary></br></br>
@@ -398,7 +403,7 @@
           <a class="button is-dark is-medium" href="https://github.com/IBM/Developer-Playground/raw/agro-chatbot/crop-recommendation.zip">Download</a>
            </div>
            <div class="step">
-           <p>Step 2 : Login to your <a href="https://dataplatform.cloud.ibm.com?cm_sp=ibmdev--developer-sandbox--cloudreg">Cloud Pak for Data</a> account with the region given in your sandbox terminal. Click on "Create a Project"</p>
+           <p>Step 2 : Login to your <a href="https://dataplatform.cloud.ibm.com?cm_sp=ibmdev--developer-sandbox--cloudreg">IBM Cloud Pak for Data</a> account with the region given in your sandbox terminal. Click on "Create a Project"</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_1.png" width = "750" height= "750">
            </div>
            <div class="step">
@@ -440,17 +445,17 @@
       <div class="container right">
         <div class="content">
           <details>
-         <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configure Cloud Functions</summary></br></br>
+         <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configure Cloud Functions to access the model</summary></br></br>
           <div class="step">
            <p>Step 1 : Create an Action in cloud functions with web action enabled</p>
            <a class="button is-dark is-medium" title="Create Action" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Ccreate-action%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fcreate_action.sh%20%26%26%20.%2Fscripts%2Fcreate_action.sh">Create Action</a>
            </div>
           <div class="step">
-           <p>Step 2 : Run the script to add api_key parameter in the Action</p>
+           <p>Step 2 : Run the script to add API Key parameter to the Action</p>
            <a class="button is-dark is-medium" title="Create Parameter" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Ccreate-services%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fadd_parameter.sh%20%26%26%20.%2Fscripts%2Fadd_parameter.sh">Add Parameter</a>
            </div>
           <div class="step">
-           <p>Step 3 : Run the script to update Dialog skill file with the webhook URL</p>
+           <p>Step 3 : Run the script to update the Watson Assistant Dialog skill file with the webhook URL to access the Cloud Function</p>
            <a class="button is-dark is-medium" title="Update" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Ccreate-services%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fupdate_dialog.sh%20%26%26%20.%2Fscripts%2Fupdate_dialog.sh">Update Dialog Skill</a>
           </div>
           </details>
@@ -461,35 +466,31 @@
           <details>
          <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integrate the Machine Learning Model with Watson Assistant</summary></br></br>
           <div class="step">
-          <p>Step 1 : Navigate to your<a href="https://cloud.ibm.com">IBM Cloud Account</a>. On the left menu, select "Resource" tab > select "Services and software". Click your Watson Assistant service and then select "Launch Watson Assistant"</p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_4.1_assistant.png" width = "750" height= "750">
+          <p>Step 1 : Create the Dialog Skill</p>
+          <a class="button is-dark is-medium" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Ccreate-skill%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20python3.8%20watson-assistant.py">Create Skill</a>
           </div>
           <div class="step">
-          <p>Step 2 : If the below screen is displayed, click on the profile icon and select "Switch to classic experience"</p>
+          <p>Step 2 : Open the Assistant URL given in sandbox terminal in a new tab. Avoid using the shortcut to open the URL just copy paste the URL in new tab</p>
+          </div>
+          <div class="step">
+          <p>Step 3 : If the below screen is displayed, click on the profile icon and select "Switch to classic experience"</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_4.2_assistant.png" width = "750" height= "750">
           </div>
           <div class="step">
-          <p>Step 2 : Click on "Create assistant"</p>
+          <p>Step 4 : Click on "Create assistant"</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_4.3_assistant.png" width = "550" height= "550">
           </div>
           <div class="step">
-          <p>Step 3 : Enter the name of the assistant and click "Create assistant"</p>
+          <p>Step 5 : Enter the name of the assistant and click "Create assistant"</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_4.4_assistant.png" width = "550" height= "550">
           </div>
           <div class="step">
-          <p>Step 4 : Once the Assistant is created, click on "Add dialog skill"</p>
+          <p>Step 6 : Once the Assistant is created, click on "Add dialog skill"</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_4.5_assistant.png" width = "750" height= "750">
           </div>
           <div class="step">
-          <p>Step 5 : Load the Dialog Skill</p>
-          <a class="button is-dark is-medium" href="didact://?commandId=extension.openFile&text=AgroSmartAssistant%7Cload-skill%7C${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/Dialog-Skill.json">Load Skill</a>
-          </div>
-          <div class="step">
-          <p>Step 6 : Download the Dialog Skill</p>
-          <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=file.download">Download</a>
-          </div>
-          <div class="step">
-          <p>Step 7 : In the "Create dialog skill" window, select the "Dialog Skill" file and click "Upload"</p>
+          <p>Step 7
+           : In the "Add dialog skill" window, select the "Add Existing Skill" file and click on the "Crop Recommender" Skill</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_4.6_assistant.png" width = "750" height= "750">
           </div>
           </details>
@@ -504,7 +505,7 @@
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_5.1_chatbot.png" width = "450" height= "450">
           </div>
           <div class="step">
-          <p>Step 2 : Copy the Assistant ID, Assistant URL and API key in .env file</p>
+          <p>Step 2 : Copy the Assistant ID and Assistant URL in .env file</p>
           <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_5.2_chatbot.png" width = "750" height= "750">
           </div>
           <div class="step">
@@ -541,7 +542,7 @@
          <p class="image-content">Want to explore this project more?
             <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/Anam-Mahmood/Unlock-the-Power-of-Machine-Learning-in-Virtual-Assistants-to-automate-Loan-Applications" target="_blank">Github Repository</a></span>
             <span style="font-size:15px;margin-top:0px;display:block;">For further assistance reach out to <a href="https://github.com/IBM/Technology-sandbox-Support/issues/new/choose" target="_blank"> Help & Support</a></span>
-            <span style="font-size:15px;margin-top:0px;display:block;">Check out our <a href="https://github.com/IBM/Technology-Sandbox-Support/blob/main/technology-sandbox-faq.html" target="_blank">FAQs</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">Check out our <a href="https://ibm.github.io/Technology-Sandbox-Support/" target="_blank">FAQs</a></span>
          </p>
       </div>
    </div>

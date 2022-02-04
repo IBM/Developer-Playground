@@ -2,7 +2,12 @@ import json, os
 from dotenv import dotenv_values
 import dotenv
 
-
+regions = {
+    "eu-gb":"London",
+    "us-south":"Dallas",
+    "eu-de":"Frankfurt",
+    "jp-tok":"Tokyo"
+}
 config = dotenv_values(".env") 
 wml_loc = config["PM-20_LOC"]
 ws_loc = config["DATA-SCIENCE-EXPERIENCE_LOC"]
@@ -41,7 +46,7 @@ if(wml_loc != ws_loc):
             dotenv.set_key("./.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
             dotenv.set_key("./.env",service.upper()+"_UPDATED","True")
             print("##################")
-            print("Region: "+wml_loc)
+            print("Region: "+regions[wml_loc])
             print("##################")
         else:
             servicename = "cp-wml"
@@ -57,9 +62,9 @@ if(wml_loc != ws_loc):
             dotenv.set_key("./.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
             dotenv.set_key("./.env",service.upper()+"_UPDATED","True")
             print("##################")
-            print("Region: "+ws_loc)
+            print("Region: "+regions[ws_loc])
             print("##################")
 else:
     print("##################")
-    print("Region: "+ws_loc)
+    print("Region: "+regions[ws_loc])
     print("##################")

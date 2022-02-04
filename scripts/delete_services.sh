@@ -1,6 +1,3 @@
-ibmcloud fn action delete ml
-ibmcloud fn namespace delete smart-assistant
-
 python3.8 delete_services.py
 
 python3.8 delete_space.py

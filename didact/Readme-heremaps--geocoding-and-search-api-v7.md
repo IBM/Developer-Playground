@@ -280,7 +280,7 @@
              Geocoding and Search
           </div>
           <div class="subheading">
-            Create location-based applications with the HERE Geocoding and Search API
+            Create location-based applications with the HERE Geocoding and Search API.
           </div>
       </div>
       </div>
@@ -294,8 +294,8 @@
             This application allows you to experiment with the HERE Geocoding and Search API to:
           </div>
           <ul>
-            <li>search for points of interest with 400+ categories and address objects at different levels (street, city, state, ...)</li>
-            <li>forward and reverse geocode address and geo-positions</li>
+            <li>Search for points of interest with 400+ categories and address objects at different levels (street, city, state, ...)</li>
+            <li>Forward and reverse geocode address and geo-positions</li>
           </ul>
       </div> 
    <br>
@@ -306,39 +306,39 @@
            <p style="font-size: 24px;">Pre-requisites</p>
              <p><a href="https://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account">Subscribe  </a> to the HERE Geocoding and Search API:</p>
             <ol>
-            <li>Sign up for 'HERE Developer'</li>
-            <li>Login to your HERE account, navigate to Projects > REST</li>
-            <li>Go to OAuth2.0 > Generate App and click 'Create credentials' </li>
-            <li>'Access Key ID' and 'Access Key Secret' is your Client ID and Secret</li>
-            <li>Proceed to the 'API Keys' section and create your API Key</li>
+            <li>Sign up for 'HERE Developer'.</li>
+            <li>Login to your HERE account, navigate to Projects > REST.</li>
+            <li>Go to OAuth2.0 > Generate App and click 'Create credentials'.</li>
+            <li>'Access Key ID' and 'Access Key Secret' is your Client ID and Secret.</li>
+            <li>Proceed to the 'API Keys' section and create your API Key.</li>
             </ol>
             <br>
             <p style="font-size: 24px;">Instructions</p>
-            <p>Please follow all the below steps in proper sequence</p>
+            <p>Please follow all the below steps in proper sequence.</p>
         </div>
 
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
-            <p>Clone the GitHub repository</p>
+            <p>Clone the GitHub repository.</p>
             <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=HEREGeocodingandSearch%7Cget-code%7CHEREGeocodingandSearch|git%20clone%20-b%20HERE%20--sparse%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/here-geocoding/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/here-geocoding/%20%26%26%20git%20sparse-checkout%20init%20--cone%20%26%26%20git%20sparse-checkout%20add%20HEREGeocodingandSearch">Get Code</a> 
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Install required dependencies for executing application</p>
+            <p>Install required dependencies for executing application.</p>
             <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREGeocodingandSearch%7CBUILD-APPLICATION%7CHEREGeocodingandSearch|cd%20${CHE_PROJECTS_ROOT}/here-geocoding/HEREGeocodingandSearch%20%26%26%20npm%20install%20--production">Install Dependencies</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Configure the application. See pre-requisites</p>
+            <p>Configure the application. See pre-requisites.</p>
             <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=HEREGeocodingandSearch%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/here-geocoding/HEREGeocodingandSearch/.env">Configure Application</a> 
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Launch the application in the preview window</p>
+            <p>Launch the application in the preview window.</p>
             <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREGeocodingandSearch%7Claunch-application%7CHEREGeocodingandSearch|cd%20${CHE_PROJECTS_ROOT}/here-geocoding/HEREGeocodingandSearch%20%26%26%20node%20token.js%20%26%26%20node%20server.js">Launch Application</a> 
          </div>
       </div>
@@ -346,11 +346,11 @@
    <br>
   <div class="footer" style="margin-left:30px;">
      <div class="content" style="padding:30px;padding-left:60px;margin-right:80px;padding-bottom:0px;">
-         <p>To edit or explore the application, make sure to stop it first</p>
+         <p>To edit or explore the application, make sure to stop it first.</p>
          <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=HEREGeocodingandSearch">Stop Application</a>
-         <p class="afterbutton">Explore and update the code as per your requirement</p>
+         <p class="afterbutton">Explore and update the code as per your requirement.</p>
          <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=HEREGeocodingandSearch%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/here-geocoding/HEREGeocodingandSearch/src/App.js">Explore Code</a>
-         <p class="afterbutton ">Re-launch the application to view the changes made</p>
+         <p class="afterbutton ">Re-launch the application to view the changes made.</p>
          <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREGeocodingandSearch%7Crelaunch-application%7CHEREGeocodingandSearch|cd%20${CHE_PROJECTS_ROOT}/here-geocoding/HEREGeocodingandSearch%20%26%26%20npm%20install%20%26%26%20export%20REACT_APP_mode=dev%20%26%26%20npm%20start">Re-Launch Application</a> 
       </div>
       <div class="image-div">

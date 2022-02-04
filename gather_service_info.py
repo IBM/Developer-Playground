@@ -28,7 +28,7 @@ if(len(data.split("\n"))<3):
     f = open(filename, "w")
     service_id = os.popen("ibmcloud resource service-instance "+result[1]+" --id --quiet").read()
     service_id = service_id.split("\n")[0].split(" ")[0]
-    data = json.loads(os.popen("ibmcloud resource service-key-create "+result[1]+"-creds Manager --instance-id " +service_id+" --output json").read())
+    data = json.loads(os.popen("ibmcloud resource service-key-create "+servicename+"-creds Manager --instance-id " +service_id+" --output json").read())
     filecontent = {
         "name": result[1],
         "service_id":service_id.split("\n")[0].split(" ")[0],
@@ -58,4 +58,4 @@ else:
 
 print("###########################################################")        
 os.system("echo Updated "+service+" instance details successfuly")
-print("###########################################################")      
+print("###########################################################")   

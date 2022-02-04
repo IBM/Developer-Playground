@@ -283,7 +283,7 @@
  </div>
   <div class="section" style="font-size: 16px; margin-top: -20px">
     Customer churn is a phenomenon when a customer ends their relationship or stops doing business with a company. This basic factor helps a business determine the revenue loss for a given period. This application uses a machine learning model deployed on Cloud Pak for Data to predict whether a telecommunications customer is at risk of leaving the business.  
-  </div>
+    </div>
    <div class="section">
       <p style="font-size:24px">Execution Flow </p>
       <div class="right-content">
@@ -353,7 +353,6 @@
         <div class="content">
           <p>Create services on IBM Cloud.</p>
           <a class="button is-dark is-medium" title="Create Services" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Ccreate-ibm-services%7Csandbox%20terminal|chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh">Create Services</a>
-          <p style="margin-top:50px">Follow the below steps to download and deploy the Watson Machine Learning model.</p>
         </div>
       </div>
       <div class="container right">
@@ -364,7 +363,7 @@
       </div>
       <div class="container right">
         <div class="content">
-          <p>Create a new empty deployment space. Make sure your <a href="https://dataplatform.cloud.ibm.com?cm_sp=ibmdev--developer-sandbox--cloudreg">IBM Cloud Pak for Data</a> account is active in the <b>Region</b> given in sandbox terminal.</p>
+          <p>Create a new empty deployment space. Make sure your <a href="https://dataplatform.cloud.ibm.com?cm_sp=ibmdev--developer-sandbox--cloudreg">IBM Cloud Pak for Data</a> account is active.</p>
           <a class="button is-dark is-medium" title="Create Deployment Space" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Ccreate-deployment-space%7Csandbox%20terminal|cd%20churn-prediction;python3.8%20create_space.py">Create Deployment Space</a>
         </div>
       </div>

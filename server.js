@@ -8,6 +8,7 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 const getStatus = require('./anomaly/getStatus');
 const dotenv = require('dotenv');
+const portfinder = require("portfinder");
 
 dotenv.config({ path: './.env' })
 
@@ -21,6 +22,8 @@ app.use(express.static("./data"));
 app.use(express.static("./sample-datasets"));
 app.use(express.static("./build"));
 
+portfinder.basePort = 3100;
+portfinder.highestPort = 9999;
 
 app.get("/availabledatasets", async (req, res) => {
   try {
@@ -188,4 +191,9 @@ app.get("/settings/:dataset", async (req, res) => {
   }
 })
 
-app.listen(4000, console.log("Server started on 4000"))
+portfinder.getPort((err, port) => {
+  if (err) throw err;
+  app.listen(port, () =>
+    console.log(`App listening on port: ${port}`)
+  );
+})

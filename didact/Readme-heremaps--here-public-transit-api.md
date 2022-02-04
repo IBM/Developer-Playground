@@ -281,7 +281,7 @@
              Public Transit
           </div>
           <div class="subheading">
-            Discover public transit options with the HERE Public Transit API
+            Discover public transit options with the HERE Public Transit API.
           </div>
       </div>
       </div>
@@ -289,16 +289,16 @@
    <br>
       <div class="description">
           <div>
-            HERE is a one-stop solution to solve your complex location-based problems. HERE APIs are helpful in comprehensive mapping content. They offer an integrated suite of solutions, services, and development tools, as well as a marketplace for data
+            HERE is a one-stop solution to solve your complex location-based problems. HERE APIs are helpful in comprehensive mapping content. They offer an integrated suite of solutions, services, and development tools, as well as a marketplace for data.
           </div>
           <br>
           <div>
             This application allows you to experiment with the HERE Public Transit APIs and use data collected by HERE to discover public transit options or request public transit routes and transit-related information such as:
           </div>
           <ul>
-            <li>Stations within a certain distance from a given location</li>
-            <li>Stations details such as name, identifier, location, type, and more</li>
-            <li>Transit route plotting</li>
+            <li>Stations within a certain distance from a given location.</li>
+            <li>Stations details such as name, identifier, location, type, and more.</li>
+            <li>Transit route plotting.</li>
           </ul>
       </div> 
    <br>
@@ -311,40 +311,40 @@
             </ul>
             <br>
             <p style="font-size: 24px;">Pre-requisites</p>
-             <p>Subscribe to the HERE Public Transit API:</p>
+             <p><a href="https://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account">Subscribe  </a> to the HERE Public Transit API:</p>
             <ol>
-            <li>Sign up for 'HERE Developer'</li>
-            <li>Login to your HERE account, navigate to Projects > REST</li>
-            <li>Go to OAuth2.0 > Generate App and click 'Create credentials' </li>
-            <li>'Access Key ID' and 'Access Key Secret' is your Client ID and Secret</li>
-            <li>Proceed to the 'API Keys' section and create your API Key</li>
+            <li>Sign up for 'HERE Developer'.</li>
+            <li>Login to your HERE account, navigate to Projects > REST.</li>
+            <li>Go to OAuth2.0 > Generate App and click 'Create credentials'. </li>
+            <li>'Access Key ID' and 'Access Key Secret' is your Client ID and Secret.</li>
+            <li>Proceed to the 'API Keys' section and create your API Key.</li>
             </ol>
             <br>
             <p style="font-size: 24px;">Instructions</p>
-            <p>Please follow all the below steps in proper sequence</p>
+            <p>Please follow all the below steps in proper sequence.</p>
         </div>
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
-            <p>Clone the GitHub repository</p>
+            <p>Clone the GitHub repository.</p>
             <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Cget-code%7CHEREPublicTransit|git%20clone%20-b%20HERE%20--sparse%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/here-public-transit/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/here-public-transit/%20%26%26%20git%20sparse-checkout%20init%20--cone%20%26%26%20git%20sparse-checkout%20add%20HEREPublicTransit">Get Code</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Install required dependencies for executing application</p>
+            <p>Install required dependencies for executing application.</p>
             <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Cbuild-application%7CHEREPublicTransit%7Ccd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20config%20set%20@here:registry%20https://repo.platform.here.com/artifactory/api/npm/maps-api-for-javascript/%20%26%26%20npm%20install%20--production">Install Dependencies</a>
          </div>
       </div>     
       <div class="container right">
          <div class="content">
-            <p>Configure the application. See prerequisites</p>
+            <p>Configure the application. See pre-requisites.</p>
             <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit/.env">Configure Application</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Launch the application in the preview window</p>
+            <p>Launch the application in the preview window.</p>
             <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Claunch-application%7CHEREPublicTransit|cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20node%20token.js%20%26%26%20node%20server.js">Launch Application</a>
          </div>
       </div>
@@ -352,18 +352,18 @@
    <br>
    <div class="footer" style="margin-left:30px;">
       <div class="content" style="padding:30px;padding-left:60px;margin-right:80px;padding-bottom:0px;">
-         <p>To edit or explore the application, make sure to stop it first</p>
+         <p>To edit or explore the application, make sure to stop it first.</p>
          <a class="button is-dark is-medium afterbutton" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=HEREPublicTransit" >Stop Application</a>
-         <p class="afterbutton">Explore and update the code as per your requirement</p>
+         <p class="afterbutton">Explore and update the code as per your requirement.</p>
          <a class="button is-dark is-medium afterbutton" title="Explore the Code" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit/src/App.js">Explore Code</a>
-         <p class="afterbutton ">Re-launch the application to view the changes made</p>
+         <p class="afterbutton ">Re-launch the application to view the changes made.</p>
          <a class="button is-dark is-medium afterbutton" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=HEREPublicTransit%7Crelaunch-application%7CHEREPublicTransit|cd%20${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit%20%26%26%20npm%20install%20%26%26%20export%20REACT_APP_mode=dev%20%26%26%20npm%20start">Re-Launch Application</a>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
             <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/DART" target="_blank">Github Repository</a></span>
             <span style="font-size:15px;margin-top:0px;display:block;">For further assistance reach out to <a href="https://github.com/IBM/Technology-Sandbox-Support/issues/new/choose" target="_blank"> Help & Support</a></span>
-            <span style="font-size:15px;margin-top:0px;display:block;">Check out our <a href="https://github.com/IBM/Technology-Sandbox-Support/blob/main/technology-sandbox-faq.html" target="_blank"> FAQs</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">Check out our <a href="https://ibm.github.io/Technology-Sandbox-Support/" target="_blank"> FAQs</a></span>
          </p>
          <div class="image-btn">
             <a class="image-link" href="didact://?commandId=extension.openURL&text=HEREPublicTransit%7Cview-product-details%7Chttps://developer.here.com/documentation/public-transit/dev_guide/index.html" target="_blank">

@@ -1,20 +1,14 @@
-servicename="cp-stt"
-ibmcloud resource service-key-delete "$servicename-creds" -f
-ibmcloud resource service-instance-delete $servicename -f
+filename="speechtotext.json"
+python3.8 deleteservices.py $filename
 rm speechtotext.json
-rm cp-stt.txt
 touch speechtotext.json
 
-servicename="cp-nlu"
-ibmcloud resource service-key-delete "$servicename-creds" -f
-ibmcloud resource service-instance-delete $servicename -f
+filename="naturallanguageunderstanding.json"
+python3.8 deleteservices.py $filename
 rm naturallanguageunderstanding.json
-rm cp-nlu.txt
 touch naturallanguageunderstanding.json
 
-servicename="cp-ta"
-ibmcloud resource service-key-delete "$servicename-creds" -f
-ibmcloud resource service-instance-delete $servicename -f
+filename="toneanalyzer.json"
+python3.8 deleteservices.py $filename
 rm toneanalyzer.json
-rm cp-ta.txt
 touch toneanalyzer.json

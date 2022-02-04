@@ -319,7 +319,7 @@
             <br>
             <p style="font-size: 24px;">Pre-requisites</p>
             <ul>
-            <li><a href="https://epwt-www.mybluemix.net/software/support/trial/cst/welcomepage.wss?siteId=1525&tabId=4159&w=1&_ga=2.232934494.1143069578.1643043347-1238955782.1642421092">Sign up  </a>for The Weather Company (TWC) Data trial (It might take up to 48 hours to get an API Key provisioned)</li>
+            <li><a href="https://epwt-www.mybluemix.net/software/support/trial/cst/welcomepage.wss?siteId=1525&tabId=4159&w=1&_ga=2.232934494.1143069578.1643043347-1238955782.1642421092">Sign up  </a>for The Weather Company Data trial (It might take up to 48 hours to get an API Key provisioned)</li>
             <li><a href="https://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account">Subscribe  </a>to the HERE APIs:</li>
             <ol>
             <li>Sign up for 'HERE Developer'</li>
@@ -348,7 +348,7 @@
       </div>     
       <div class="container right">
          <div class="content">
-            <p>Configure the application with the TWC API key (see pre-requisites) or use the demo key</p>
+            <p>Configure the application with the Weather Company Data API key (see pre-requisites) or use the demo key</p>
             <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=weather%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant/.env">Use your Key</a> <p style="display:inline-block; margin-top:11px;">  or    </p>
             <a class="button is-dark is-medium" title="Use demo key" href="didact://?commandId=extension.sendToTerminal&text=weather%7Cconfigure-application%7Cweather|cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20node%20key.js>.env">Use Demo Key</a>
          </div>

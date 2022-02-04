@@ -181,7 +181,7 @@
   }
   .header
   {
-    background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/churnHeader.jpeg');
+    background-image: url('https://s3.us.cloud-object-storage.appdomain.cloud/developer/default/patterns/create-a-web-based-intelligent-bank-loan-application-for-a-loan-agent/header.jpg');
     background-position: right;
     width: 95%;
     min-height: 70px;
@@ -261,6 +261,22 @@
     margin-top: 5px;
     margin-bottom:-50px;
   }
+  summary{
+    float:left;
+  }
+  details > summary { 
+    list-style-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/arrow-right.svg");
+    direction:rtl;
+  }
+  details[open] > summary {
+      list-style-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/arrow-down.svg");
+  }
+  .step{
+      margin-bottom: 50px;
+  }
+  details{
+      margin-bottom: 20px;
+  }
   a:hover{
       color: #A6C8FF;
       text-decoration: underline;
@@ -271,44 +287,43 @@
 </style>
 </head>
 <body>
-<div class="header">
-     <div class="right-content" style="padding-top:35px;">
+    <div class="header">
+      <div class="right-content" style="padding-top:35px;">
         <div class="apptitle" style="font-size: 28px; color: white; padding-top: 5px">
-          Customer Churn Prediction        
+          Risk Prediction for Bank Loans Application
         </div>
         <div class="subheading">
-        Solve a business problem and predict customer churn using a Telco customer churn data set by using IBM Watson machine learning.    
-       </div>
-     </div>
- </div>
-  <div class="section" style="font-size: 16px; margin-top: -20px">
-    Customer churn is a phenomenon when a customer ends their relationship or stops doing business with a company. This basic factor helps a business determine the revenue loss for a given period. This application uses a machine learning model deployed on Cloud Pak for Data to predict whether a telecommunications customer is at risk of leaving the business.  
-  </div>
+        Use machine learning to predict risks involved when approving a loan application.
+        </div>
+      </div>
+    </div>
+      <div class="section" style="font-size: 16px ; margin-top: -20px">
+        In a typical bank loan department, the loan agent receives an application from a customer. The agent then considers several factors to decide whether the loan should be approved or rejected. Loan agents can use machine learning to improve the decision-making process. This bank loan application uses a machine learning model deployed on Cloud Pak for Data to predict the risk of a loan application. 
+      </div>
    <div class="section">
       <p style="font-size:24px">Execution Flow </p>
       <div class="right-content">
       <ol>
-        <li>Create a deployment space using Watson Machine Learning in IBM Cloud Pak for Data platform.</li> 
-        <li>Train and deploy a machine learning model.</li> 
+        <li>Create a deployment space using Watson Machine Learning in IBM Cloud Pak for Data platform and deploy a pre-trained machine learning model.</li> 
         <li>Prompt the user for application details.</li>  
         <li>Make a Watson Machine Learning REST API call to invoke the machine learning model with the specified input.</li> 
-        <li>Return the churn prediction associated with a customer's detail.</li> 
+        <li>Return the risk associated with the loan application.</li> 
       </ol>
       </div>
       </div>
    <div class="section">
     <p style="font-size:24px">Learning Resources</p>
     <div class="right-content">
-      <a href="https://developer.ibm.com/articles/what-is-machine-learning/">Build robust machine learning-based solutions</a></br>
+      <a href="https://developer.ibm.com/articles/modernizing-your-bank-loan-department/">Modernizing a loan bank department</a></br>
     </div>
    </div>
    <div class="section">
       <p style="font-size:24px">Included Components</p>
-        <div class="right-content">
+      <div class="right-content">
           <p>This  application uses the following <a href="https://www.ibm.com/products/cloud-pak-for-data">IBM Cloud Pak for Data services</a>:</p>
           <p><a href="https://cloud.ibm.com/objectstorage">Cloud Object Storage</a>: IBM Cloud Object Storage is a highly scalable cloud storage service, designed for high durability, resiliency and security.</p>
           <p><a href="https://cloud.ibm.com/catalog/services/machine-learning">Watson Machine Learning</a>: Deploy, manage and integrate machine learning models into your applications and services in as little as one click.</p>
-        </div>
+      </div>
    </div>
    <div class="section">
    <p style="font-size:24px">Pre-requisites</p>
@@ -326,85 +341,124 @@
    </div>
     <div class="timeline">
         <div style="margin-top:0px;padding-top:0px;"class="container right">
-                    <div class="content">
+            <div class="content">
                 <p>Open the sandbox terminal.</p>
                 <a class="button is-dark is-medium" title="Open Terminal" href="didact://?commandId=terminal-for-sandbox-container:new">Open Terminal</a><br>
             </div>
         </div>
-      <div class="container right">
-        <div class="content">
+   <div class="container right">
+         <div class="content">
             <p>Clone the GitHub repository.</p>
-          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cget-code%7Csandbox%20terminal|git%20clone%20-b%20churn-prediction%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/churn-prediction/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/churn-prediction/">Get Code</a>
-        </div>
+          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cget-code%7Csandbox%20terminal|git%20clone%20-b%20bank-loan%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/bank-loan/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/bank-loan/">Get Code</a>
+         </div>
       </div>
      <div class="container right">
         <div class="content">
-          <p>Install required dependencies for executing python scripts and the node customer churn prediction application.</p>          
-          <a class="button is-dark is-medium" title="Install Dependencies" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cinstall-requirements%7Csandbox%20terminal|cd%20churn-prediction;pip3.8%20install%20-r%20requirements.txt;npm%20install;">Install Dependencies</a>
+          <p>Install required dependencies for executing python scripts.</p>
+          <a class="button is-dark is-medium" title="Install Dependencies" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cinstall-dependencies%7Csandbox%20terminal|cd%20bank-loan;pip3.8%20install%20-r%20requirements.txt">Install Dependencies</a>
         </div>
-      </div>
+     </div>
       <div class="container right">
         <div class="content">
           <p>Log in to your IBM Cloud account. You will be provided a link to get your one-time passcode which you will need to copy and paste to proceed with authorization.</p>
-          <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cibm-login%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction%20%26%26%20chmod%20%2Bx%20.%2Flogin.sh%20%26%26%20.%2Flogin.sh">Login to IBM Cloud</a>  
+          <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cibm-login%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan%20%26%26%20chmod%20%2Bx%20.%2Flogin.sh%20%26%26%20.%2Flogin.sh">Login to IBM Cloud</a>  
         </div>
       </div>
       <div class="container right">
         <div class="content">
           <p>Create services on IBM Cloud.</p>
-          <a class="button is-dark is-medium" title="Create Services" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Ccreate-ibm-services%7Csandbox%20terminal|chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh">Create Services</a>
+          <a class="button is-dark is-medium" title="Create Services" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Ccreate-ibm-services%7Csandbox%20terminal|chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh">Create Services</a>
           <p style="margin-top:50px">Follow the below steps to download and deploy the Watson Machine Learning model.</p>
         </div>
       </div>
       <div class="container right">
         <div class="content">
             <p>Generate an API Key in the IBM account. This is required to access the model.</p>
-            <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cgenerate-api-token%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;ibmcloud%20iam%20api-key-create%20ApiKey-churnPred%20-d%20'this is API key for churnPred'%20--file%20${CHE_PROJECTS_ROOT}/churn-prediction/key_file">Generate API key</a>
+            <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cgenerate-api-token%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan;ibmcloud%20iam%20api-key-create%20ApiKey-bankLoan%20-d%20'this is API key for bankLoan'%20--file%20${CHE_PROJECTS_ROOT}/bank-loan/key_file">Generate API key</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
-          <p>Create a new empty deployment space. Make sure your <a href="https://dataplatform.cloud.ibm.com?cm_sp=ibmdev--developer-sandbox--cloudreg">IBM Cloud Pak for Data</a> account is active in the <b>Region</b> given in sandbox terminal.</p>
-          <a class="button is-dark is-medium" title="Create Deployment Space" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Ccreate-deployment-space%7Csandbox%20terminal|cd%20churn-prediction;python3.8%20create_space.py">Create Deployment Space</a>
+            <p>Create a new deployment space with the pre-loaded model. Make sure your <a href="https://dataplatform.cloud.ibm.com?cm_sp=ibmdev--developer-sandbox--cloudreg">IBM Cloud Pak for Data</a> account is active in the <b>Region</b> given in sandbox terminal.</p>
+            <a class="button is-dark is-medium" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Ccreate-deployment-space%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan%20%26%26%20python3.8%20create_space.py">Create Deployment Space</a>
         </div>
-      </div>
+       </div>
       <div class="container right">
         <div class="content">
-          <p>Train and deploy the model.</p>
-           <a class="button is-dark is-medium" title="Deploy Model" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cdeploy-model%7Csandbox%20terminal|python3.8%20DeployModel/DeployMLModel.py">Deploy Model</a>
+       <details>
+         <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Incase <b>Importing the Model Fails</b>, do the following steps</summary></br></br>
+          <div class="step">
+           <p>Step 1 : Download the project zip file.</p>
+          <a class="button is-dark is-medium" href="https://github.com/IBM/Developer-Playground/raw/bank-loan/bankLoan.zip">Download</a>
+           </div>
+           <div class="step">
+           <p>Step 2 : Login to your <a href="https://dataplatform.cloud.ibm.com?cm_sp=ibmdev--developer-sandbox--cloudreg">IBM CloudPak for Data</a> account with the <b>Region</b> given in your sandbox terminal. Click on <b>Create a Project</b>.</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_1.png" width = "750" height= "750">
+           </div>
+           <div class="step">
+           <p>Step 3 : Click on <b>Create a project from sample or file.</b></p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_2.png" width = "750" height= "750">
+           </div>
+           <div class="step">
+           <p>Step 4: Upload the zip file that was just downloaded in Step 1 > Enter a project <b>Name</b>  > click <b>Create</b>.</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_3.png" width = "750" height= "750">
+           </div>
+           <div class="step">
+           <p>Step 5 : After the project is created, click on <b>View new project</b>.</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_4.png" width = "750" height= "750">
+           </div>
+           <div class="step">
+           <p>Step 6 : Click on the <b>Assets</b> tab.</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_5.png" width = "750" height= "750">
+           </div>
+           <div class="step">
+           <p>Step 7 : Click on the <b>(⋮)</b> icon right hand side of the <b>Model</b> and Click on <b>Promote</b>.</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_6.png" width = "750" height= "750">
+           </div>
+           <div class="step">
+           <p>Step 8 : On the <b>Target Space</b> drop-down menu, select the deployment space you created (To get the deployment space name check your sandbox terminal), Once done click <b>Promote</b>.</p>
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_7.png" width = "750" height= "750">
+           </div>
+           </details>
         </div>
+       </div>
+      <div class="container right">
+        <div class="content">
+          <p>Deploy the model.</p>
+           <a class="button is-dark is-medium" title="Deploy Model" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cdeploy-model%7Csandbox%20terminal|python3.8%20DeployModel/DeploySavedModel.py">Deploy Model</a>
+        </div>
+      </div>  
+      <div class="container right">
+         <div class="content">
+          <p>Launch the application in the preview window.</p>
+          <a class="button is-dark is-medium" title="Launch Application" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cstart-app%7Csandbox%20terminal|python3.8%20app.py">Launch Application</a>
+         </div>
       </div>
-        <div class="container right">
-            <div class="content">
-                <p>Launch the application in the preview window.</p>
-                <a class="button is-dark is-medium" title="Launch Application" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cstart-app%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;npm%20start">Launch Application</a><br>
-            </div>
-        </div>
-    </div>
-    <div class="footer" style="margin-left:30px;">      
-        <div class="content" style="padding:30px;padding-left:60px;padding-bottom:0px;">
+   </div>
+   <div class="footer" style="margin-left:30px;">      
+      <div class="content" style="padding:30px;padding-left:60px;padding-bottom:0px;">
         <p>To edit or explore the application, make sure to stop it first.</p>
         <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=sandbox%20terminal">Stop Application</a>
         <p class="afterbutton">Explore and update the code as per your requirement.</p>
-        <a class="button is-dark is-medium" title="Explore Code" href="didact://?commandId=extension.openFile&text=ChurnPrediction%7Copen-file%7C${CHE_PROJECTS_ROOT}/churn-prediction/client/src/App.js">Explore Code</a>
+        <a class="button is-dark is-medium" title="Explore Code" href="didact://?commandId=extension.openFile&text=BankLoanApp%7Copen-file%7C${CHE_PROJECTS_ROOT}/bank-loan/templates/input.html">Explore Code</a>
         <p class="afterbutton ">Re-launch the application to view the changes made.</p>
-        <a class="button is-dark is-medium" title="Re-Launch Application" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Crestart-app%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;npm%20start">Re-Launch Application</a>
+        <a class="button is-dark is-medium" title="Re-Launch Application" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Crestart-app%7Csandbox%20terminal|python3.8%20app.py">Re-Launch Application</a>
         <p style="margin-top:10px;">Click on Clean up to delete the IBM Cloud services that were created. Make sure to stop the application first!
         </p>
-        <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cclean-up%7Csandbox%20terminal|chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean Up</a>
+        <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cclean-up%7Csandbox%20terminal|chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean Up</a>
         <p style="margin-top:10px;">You can also manage the services in
           <a href="https://cloud.ibm.com/resources">IBM Cloud Dashboard</a>
-        </p>
+        </p> 
       </div>
       <div class="image-div">
         <p class="image-content">Want to explore this project more?
           <span style="font-size:15px;margin-top:0px;display:block;">Head over to the
-            <a href="https://github.com/IBM/Developer-Playground/tree/churn-prediction" target="_blank">Github Repository</a>
+            <a href="https://github.com/IBM/Developer-Playground/tree/bank-loan" target="_blank">Github Repository</a>
           </span>
           <span style="font-size:15px;margin-top:0px;display:block;">For further assistance reach out to <a href="https://github.com/IBM/Technology-Sandbox-Support/issues/new/choose" target="_blank"> Help & Support</a></span>
-          <span style="font-size:15px;margin-top:0px;display:block;">Check out our <a href="https://ibm.github.io/Technology-Sandbox-Support/" target="_blank"> FAQs</a></span>
+          <span style="font-size:15px;margin-top:0px;display:block;">Check out our <a href="https://ibm.github.io/Technology-Sandbox-Support/" target="_blank">FAQs</a></span>
         </p>
-        <a class="image-link" href="https://developer.ibm.com/patterns/predict-customer-churn-using-watson-studio-and-jupyter-notebooks/?mhsrc=ibmsearch_a&mhq=%20churn%20prediction" target="_blank">
+        <a class="image-link" href="https://developer.ibm.com/patterns/create-a-web-based-intelligent-bank-loan-application-for-a-loan-agent/" target="_blank">
           <div class="image-btn">
             <p class="image-link">View Product Details
             <p style="padding-top: 14px"></p>

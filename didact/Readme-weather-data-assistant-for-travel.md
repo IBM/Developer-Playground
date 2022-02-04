@@ -183,11 +183,10 @@
   }
   .header
   {
-   background-image: url('https://github.com/IBM/Developer-Playground/blob/development/didact/images/weather.png?raw=true');
+    background-image: url('https://github.com/IBM/Developer-Playground/blob/development/didact/images/weather.png?raw=true');
     background-position: right;
-    width: 100%;
-    height: fixed;
-    min-height: 320px;
+    width: 95%;
+    min-height: 70px;
     display: inline-block;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -199,11 +198,10 @@
   }
   .header .left-content
   {
-    width: 45%;
-    background-color:#2a67f5;
-    min-height: 320px;
-    padding: 20px;
-    /* padding-top: 2.5%; */
+   float: left;
+    width: 50%;
+    background-color: #525252;
+    min-height: 270px;
     font-size: 16px;
   }
   .header .left-content h4
@@ -270,36 +268,47 @@
   a:visited{
       color: #BE95FF;
   }
-
+  .description{
+    margin-left: 30px;
+    margin-top: 16px;
+  }
 </style>
 </head>
 <body>
-  <div class="apptitle"> 
-    Weather Data Assistant for Travel
-  </div>
-    <div class="subheading">
-    Get to know weather trends of a location from a set of GIS information
-  </div>
    <div class="header">
-       <div class="left-content">
+        <div class="left-content">
+            <div class="apptitle" style="font-size: 28px; color: white; padding-top:35px;">
+            Weather Data Assistant for Travel
+            </div>
+            <div class="subheading">
+            Explore the weather and travel logistics with The Weather Company's APIs and HERE APIs.
+            </div>
+        </div>
+    </div>
+   <br>
+   <br>
+    <div class="description">
             <div>
-              Choosing a travel destination is by far one of the most exciting parts of trip planning. However, understanding weather trends and conditions of the location helps to make informed decisions to plan a visit. Explore the weather forecast on a daily, hourly, and intraday basis. The weather application allows you to understand the weather's impact on your travel itinerary.
-         </div>
-         <div>
-            Showcasing an application to understand the best of Weather conditions using weather Forecast & Historical data by using APIs by Here Maps.
-         </div>
-      </div> 
-   </div>
-   <br>
-   <br>
-    <div class="assetdetails">
-            <p style="font-size: 24px;">Learning Resources</p>
-            <ul>
-            <li><a href="https://developer.ibm.com/apis/catalog/weather--weather-forecast-apis/Weather%20Company%20Data%20-%20API%20Common%20Usage%20Guide">Weather Forecast APIs</a></li>
-            <li><a href="https://developer.ibm.com/apis/catalog/weather--environmental-intelligence-suite_historical-apis/Weather%20Company%20Data%20-%20API%20Common%20Usage%20Guide">Historical APIs</a></li>
-            </ul>
+            Choosing a travel destination is an exciting part of trip planning. Understanding weather trends and conditions of a location helps you plan the best time to visit the destination. </div>
             <br>
-            <p style="font-size: 24px;">API components</p>
+            <div>
+            This application allows you to explore The Weather Company's APIs along with the HERE APIs so you can view the forecast, historical weather data and travel logistics simultaneously to make the best travel arrangements.
+            </div>
+    </div>
+    <br>
+    <div class="assetdetails">
+            <p style="font-size: 24px;">Execution flow</p>
+            <ol>
+            <li>Explore The Weather Company's Forecast and Historical APIs of a specific location by providing latitude and longitude values.</li>
+            <li>Integrate HERE APIs into the application to:</li>
+            <ul>
+            <li> Render an interactive map of a specific location.</li>
+            <li> Interact with the map dynamically, viewing the current and weekly local weather forecast.</li>
+            <li> Explore the nearest hotels, transit stations, and airports.</li>
+            </ul>
+            </ol>
+            <br>
+            <p style="font-size: 24px;">Included APIs</p>
             <ul>
             <li><a href="https://developer.ibm.com/apis/catalog/weather--weather-forecast-apis/Introduction">Weather Forecast APIs</a></li>
             <li><a href="https://developer.ibm.com/apis/catalog/weather--environmental-intelligence-suite_historical-apis/Introduction">Historical APIs</a></li>
@@ -308,76 +317,83 @@
             <li><a href="https://developer.here.com/documentation/map-tile/dev_guide/topics/quick-start.html">HERE Maps API</a></li>
             </ul>
             <br>
-            <p style="font-size: 24px;">Prerequisites</p>
-            <p>Sign up for a Weather Company Data trial </p>
-            <p style="margin-top:-16px;">(It might take up to 48 hours to get the API provisioned)</p>
-            <p>Subscribe to the HERE Public Transit API</p>
+            <p style="font-size: 24px;">Pre-requisites</p>
+            <ul>
+            <li><a href="https://epwt-www.mybluemix.net/software/support/trial/cst/welcomepage.wss?siteId=1525&tabId=4159&w=1&_ga=2.232934494.1143069578.1643043347-1238955782.1642421092">Sign up  </a>for The Weather Company Data trial (It might take up to 48 hours to get an API Key provisioned).</li>
+            <li><a href="https://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account">Subscribe  </a>to the HERE APIs:</li>
             <ol>
-            <li>Sign up as HERE Developer</li>
-            <li>Login to your HERE account, navigate to Projects > REST </li>
-            <li>Go to OAuth2.0 > Generate App and click 'Create credentials' </li>
-            <li>'Access Key ID' and 'Access Key Secret' is your Client ID and Secret</li>
-            <li>Proceed to the 'API Keys' section and create your API Key</li>
+            <li>Sign up for 'HERE Developer'.</li>
+            <li>Login to your HERE account, navigate to Projects > REST.</li>
+            <li>Go to OAuth2.0 > Generate App and click 'Create credentials'.</li>
+            <li>'Access Key ID' and 'Access Key Secret' is your Client ID and Secret.</li>
+            <li>Proceed to the 'API Keys' section and create your API Key.</li>
             </ol>
+            </ul>
             <br>
             <p style="font-size: 24px;">Instructions</p>
+            <p>Please follow all the below steps in proper sequence.</p>
         </div>
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
-            <p>Clone the application source code</p>
-            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=weather%7Cget-code%7Cweather|git%20clone%20-b%20weather%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/weather/">Get the Code</a>
+            <p>Clone the GitHub repository.</p>
+            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=weather%7Cget-code%7Cweather|git%20clone%20-b%20weather%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/weather/">Get Code</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Start to build the application</p>
-            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=weather%7Cbuild-application%7Cweather%7Ccd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20npm%20config%20set%20@here:registry%20https://repo.platform.here.com/artifactory/api/npm/maps-api-for-javascript/%20%26%26%20npm%20install%20--production">Build Application</a>
+            <p>Install required dependencies for executing application.</p>
+            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=weather%7Cbuild-application%7Cweather%7Ccd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20npm%20config%20set%20@here:registry%20https://repo.platform.here.com/artifactory/api/npm/maps-api-for-javascript/%20%26%26%20npm%20install%20--production">Install Dependencies</a>
          </div>
       </div>     
       <div class="container right">
          <div class="content">
-            <p>Configure the application. See prerequisites</p>
+            <p>Configure the application with The Weather Company API key (see pre-requisites) or use the demo key.</p>
+            <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=weather%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant/.env">Use your Key</a> <p style="display:inline-block; margin-top:11px;">  or    </p>
+            <a class="button is-dark is-medium" title="Use demo key" href="didact://?commandId=extension.sendToTerminal&text=weather%7Cconfigure-application%7Cweather|cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20node%20key.js>.env">Use Demo Key</a>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>Launch the application in the preview window.</p>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=weather%7Claunch-application%7Cweather|cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20node%20server.js">Launch Application</a>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>Explore travel logistics by integrating HERE API features into the application.</p>
+            <a class="button is-dark is-medium" title="Install HERE Features" href="didact://?commandId=extension.sendToTerminal&text=weather%7Claunch-application%7Cweather|cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20cat%20here.txt%20>>.env%20%26%26%20mv%20here-components/airport.js%20here-components/hotels.js%20here-components/transit.js%20here-components/progcomp.js%20src/components%20%26%26%20cp%20here-components/App.js%20src/App.js">Integrate Features</a>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>Configure the application with HERE credentials. See pre-requisites.</p>
             <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=weather%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant/.env">Configure Application</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Launch the application</p>
-            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=weather%7Claunch-application%7Cweather|cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20node%20token.js%20%26%26%20node%20server.js">Launch the Application</a>
-         </div>
-      </div>
-        <div class="container right">
-         <div class="content">
-            <p>Integrating ‘HERE Geocoding and Maps’ to get weather data</p>
-            <a class="button is-dark is-medium" title="Install HERE Features" href="didact://?commandId=extension.sendToTerminal&text=weather%7Claunch-application%7Cweather|cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20mv%20here-components/airport.js%20here-components/hotels.js%20here-components/transit.js%20here-components/progcomp.js%20src/components%20%26%26%20cp%20here-components/App.js%20src/App.js">Integrate Features</a>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>Launch the updated application </p>
-            <a class="button is-dark is-medium" title="Launch" href="didact://?commandId=extension.sendToTerminal&text=weather%7Crelaunch-application%7Cweather|cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20npm%20install%20%26%26%20export%20REACT_APP_mode=dev%20%26%26%20npm%20start">Launch the Application</a>
+            <p>Launch the updated application. </p>
+            <a class="button is-dark is-medium" title="Launch" href="didact://?commandId=extension.sendToTerminal&text=weather%7Crelaunch-application%7Cweather|cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20node%20token.js%20%26%26%20npm%20install%20%26%26%20export%20REACT_APP_mode=dev%20%26%26%20npm%20start">Re-Launch Application</a>
          </div>
       </div>
    </div>
    <br>
-      <div class="assetdetails">
-    <p style="font-size: 24px;">Stop and cleanup services</p>
-    <p>Once you are done or would like to edit or explore the application, make sure to stop the services</p>
-   </div>
-   <div class="footer">
+<div class="footer" style="margin-left:30px;">
 <div class="content" style="padding:30px;padding-left:60px;margin-right:80px;padding-bottom:0px;">
-         <p>Stop the services</p>
+         <p>To edit or explore the application, make sure to stop it first.</p>
 <a class="button is-dark is-medium afterbutton" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=weather" >Stop Application</a>
-         <p class="afterbutton">Explore and update the code as per your requirement</p>
+         <p class="afterbutton">Explore and update the code as per your requirement.</p>
          <a class="button is-dark is-medium afterbutton" title="Explore the Code" href="didact://?commandId=extension.openFile&text=weather%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant/src/App.js">Explore Code</a>
-         <p class="afterbutton ">Re-launch the application with the updated code</p>
+         <p class="afterbutton ">Re-launch the application to view the changes made.</p>
          <a class="button is-dark is-medium afterbutton" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=weather%7Crelaunch-application%7Cweather|cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20npm%20install%20%26%26%20export%20REACT_APP_mode=dev%20%26%26%20npm%20start">Re-Launch Application</a>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
-            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/weather/WeatherDataAssistant">Github Repository</a></span>
-         </p>
+            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/DART" target="_blank">Github Repository</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">For further assistance reach out to <a href="https://github.com/IBM/Technology-Sandbox-Support/issues/new/choose" target="_blank"> Help & Support</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">Check out our <a href="https://ibm.github.io/Technology-Sandbox-Support/" target="_blank"> FAQs</a></span>
+        </p>
          <div class="image-btn">
 <a class="image-link" href="didact://?commandId=extension.openURL&text=weather%7Cview-product-details%7Chttps://docs.google.com/document/d/15Ru_3wdMgpbM4aOCm-4qNAnRfjx2w-Ruw3lnr8Hnodk/edit" target="_blank">
                View Product Details 

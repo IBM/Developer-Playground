@@ -1,6 +1,6 @@
 servicename="cp-stt"
 service="speech-to-text"
-region="us-south"
+region="eu-gb"
 
 cpserviceexists=$(ibmcloud resource service-instance $servicename  2>&1 | awk 'FNR == 2 {print}')
 if [ "$cpserviceexists" = "OK" ]; then
@@ -22,7 +22,7 @@ fi
 
 servicename="cp-nlu"
 service="natural-language-understanding"
-region="us-south"
+region="eu-gb"
 
 cpserviceexists=$(ibmcloud resource service-instance $servicename 2>&1 | awk 'FNR == 2 {print}') 
 if [ "$cpserviceexists" = "OK" ]; then
@@ -44,7 +44,7 @@ fi
 
 servicename="cp-ta"
 service="tone-analyzer"
-region="us-south"
+region="eu-gb"
 
 cpserviceexists=$(ibmcloud resource service-instance $servicename 2>&1 | awk 'FNR == 2 {print}')
 if [ "$cpserviceexists" = "OK" ]; then

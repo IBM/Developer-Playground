@@ -289,7 +289,7 @@
    <br>
       <div class="description">
           <div>
-            HERE is a one-stop solution to solve your complex location-based problems. HERE APIs are helpful in comprehensive mapping content. They offer an integrated suite of solutions, services, and development tools, as well as a marketplace for data
+            HERE is a one-stop solution to solve your complex location-based problems. HERE APIs are helpful in comprehensive mapping content. They offer an integrated suite of solutions, services, and development tools, as well as a marketplace for data.
           </div>
           <br>
           <div>
@@ -338,7 +338,7 @@
       </div>     
       <div class="container right">
          <div class="content">
-            <p>Configure the application. See prerequisites</p>
+            <p>Configure the application. See pre-requisites</p>
             <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=HEREPublicTransit%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/here-public-transit/HEREPublicTransit/.env">Configure Application</a>
          </div>
       </div>

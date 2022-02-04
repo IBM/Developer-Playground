@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 
 
 let authenticator = new IamAuthenticator({
-    apikey: process.env.ASSISTANT_IAM_APIKEY
+    apikey: process.env.CONVERSATION_API_KEY
 });
 
 

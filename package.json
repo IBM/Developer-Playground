@@ -30,6 +30,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "multer": "^1.4.3",
+    "portfinder": "^1.0.28",
     "request": "^2.88.2",
     "strftime": "^0.10.0"
   },

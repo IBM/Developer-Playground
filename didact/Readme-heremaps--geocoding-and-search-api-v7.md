@@ -288,10 +288,10 @@
    <br>
       <div class="description">
           <div>
-            Geocoding is the process of transforming addresses (like "Taj Mahal in Agra, Uttar Pradesh, India") into geographic spatial coordinates (like latitude 27.1751° N and longitude 78.0421° E), which you can use to explore and position the map. Reverse geocoding is the process of converting geographic coordinates into a human-readable postal address.          </div>
+            Geocoding is the process of transforming addresses (like "Taj Mahal in Agra, Uttar Pradesh, India") into geographic spatial coordinates (like latitude 27.1751° N and longitude 78.0421° E), which you can use to explore and position the map. Reverse geocoding is the process of converting geographic coordinates into a human-readable postal address. </div>
           <br>
           <div>
-            This application allows you to experiment with the HERE Geocoding and Search API to
+            This application allows you to experiment with the HERE Geocoding and Search API to:
           </div>
           <ul>
             <li>search for points of interest with 400+ categories and address objects at different levels (street, city, state, ...)</li>
@@ -332,7 +332,7 @@
       </div>
       <div class="container right">
          <div class="content">
-            <p>Configure the application. See prerequisites</p>
+            <p>Configure the application. See pre-requisites</p>
             <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=HEREGeocodingandSearch%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/here-geocoding/HEREGeocodingandSearch/.env">Configure Application</a> 
          </div>
       </div>

@@ -319,8 +319,8 @@
             <br>
             <p style="font-size: 24px;">Pre-requisites</p>
             <ul>
-            <li>Sign up for a Weather Company Data trial (It might take up to 48 hours to get an API Key provisioned)</li>
-            <li>Subscribe to the HERE APIs:</li>
+            <li><a href="https://epwt-www.mybluemix.net/software/support/trial/cst/welcomepage.wss?siteId=1525&tabId=4159&w=1&_ga=2.232934494.1143069578.1643043347-1238955782.1642421092">Sign up  </a>for a Weather Company Data trial (It might take up to 48 hours to get an API Key provisioned)</li>
+            <li><a href="https://developer.here.com/sign-up?create=Freemium-Basic&keepState=true&step=account">Subscribe  </a>to the HERE APIs:</li>
             <ol>
             <li>Sign up for 'HERE Developer'</li>
             <li>Login to your HERE account, navigate to Projects > REST</li>
@@ -348,26 +348,32 @@
       </div>     
       <div class="container right">
          <div class="content">
-            <p>Configure the application. See prerequisites</p>
+            <p>Configure the application with Weather Company credentials. See prerequisites</p>
             <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=weather%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant/.env">Configure Application</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
             <p>Launch the application in the preview window</p>
-            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=weather%7Claunch-application%7Cweather|cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20node%20token.js%20%26%26%20node%20server.js">Launch Application</a>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=weather%7Claunch-application%7Cweather|cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20node%20server.js">Launch Application</a>
          </div>
       </div>
-        <div class="container right">
+      <div class="container right">
          <div class="content">
-            <p>Integrate HERE API features into the application</p>
-            <a class="button is-dark is-medium" title="Install HERE Features" href="didact://?commandId=extension.sendToTerminal&text=weather%7Claunch-application%7Cweather|cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20mv%20here-components/airport.js%20here-components/hotels.js%20here-components/transit.js%20here-components/progcomp.js%20src/components%20%26%26%20cp%20here-components/App.js%20src/App.js">Integrate Features</a>
+            <p>Explore travel logistics by integrating HERE API features into the application</p>
+            <a class="button is-dark is-medium" title="Install HERE Features" href="didact://?commandId=extension.sendToTerminal&text=weather%7Claunch-application%7Cweather|cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20cat%20here.txt%20>>.env%20%26%26%20mv%20here-components/airport.js%20here-components/hotels.js%20here-components/transit.js%20here-components/progcomp.js%20src/components%20%26%26%20cp%20here-components/App.js%20src/App.js">Integrate Features</a>
+         </div>
+      </div>
+      <div class="container right">
+         <div class="content">
+            <p>Configure the application with HERE credentials. See prerequisites</p>
+            <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=weather%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant/.env">Configure Application</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
             <p>Launch the updated application </p>
-            <a class="button is-dark is-medium" title="Launch" href="didact://?commandId=extension.sendToTerminal&text=weather%7Crelaunch-application%7Cweather|cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20npm%20install%20%26%26%20export%20REACT_APP_mode=dev%20%26%26%20npm%20start">Re-Launch Application</a>
+            <a class="button is-dark is-medium" title="Launch" href="didact://?commandId=extension.sendToTerminal&text=weather%7Crelaunch-application%7Cweather|cd%20${CHE_PROJECTS_ROOT}/weather/WeatherDataAssistant%20%26%26%20node%20token.js%20%26%26%20npm%20install%20%26%26%20export%20REACT_APP_mode=dev%20%26%26%20npm%20start">Re-Launch Application</a>
          </div>
       </div>
    </div>
@@ -385,7 +391,7 @@
          <p class="image-content">Want to explore this project more?
             <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/DART" target="_blank">Github Repository</a></span>
             <span style="font-size:15px;margin-top:0px;display:block;">For further assistance reach out to <a href="https://github.com/IBM/Technology-Sandbox-Support/issues/new/choose" target="_blank"> Help & Support</a></span>
-            <span style="font-size:15px;margin-top:0px;display:block;">Check out our <a href="https://github.com/IBM/Technology-Sandbox-Support/blob/main/technology-sandbox-faq.html" target="_blank"> FAQs</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">Check out our <a href="https://ibm.github.io/Technology-Sandbox-Support/" target="_blank"> FAQs</a></span>
         </p>
          <div class="image-btn">
 <a class="image-link" href="didact://?commandId=extension.openURL&text=weather%7Cview-product-details%7Chttps://docs.google.com/document/d/15Ru_3wdMgpbM4aOCm-4qNAnRfjx2w-Ruw3lnr8Hnodk/edit" target="_blank">

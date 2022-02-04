@@ -304,11 +304,11 @@
             <p><a href="https://developer.ibm.com/apis/catalog/dataquality4ai--data-quality-for-ai/Introduction">Data Quality for AI API</a></p>
             <br>
             <p style="font-size: 24px;">Pre-requisites</p>
-            <p>Obtain API credentials</p>
+            <p>Obtain API credentials:</p>
             <ul>
-            <li>Subscribe to the Data Quality for AI Product</a></li>
-            <li>Check out API Subscriptions</a></li>
-            <li>Select Data Quality for AI to proceed</li>
+            <li><a href="https://www.ibm.com/account/reg/us-en/signup?formid=urx-50307">Subscribe  </a> to the Data Quality for AI </a></li>
+            <li>Check your <a href="https://developer.ibm.com/profile/myapis"> API Subscriptions </a></li>
+            <li>Select the subscription for Data Quality for AI to proceed</li>
             <li>You can obtain your Client ID/Secret from here. Else, you can "Generate API Key"</li>
             </ul>
             <br>
@@ -356,7 +356,7 @@
          <p class="image-content">Want to explore this project more?
             <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/DART" target="_blank">Github Repository</a></span>
             <span style="font-size:15px;margin-top:0px;display:block;">For further assistance reach out to <a href="https://github.com/IBM/Technology-Sandbox-Support/issues/new/choose" target="_blank"> Help & Support</a></span>
-            <span style="font-size:15px;margin-top:0px;display:block;">Check out our <a href="https://github.com/IBM/Technology-Sandbox-Support/blob/main/technology-sandbox-faq.html" target="_blank"> FAQs</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">Check out our <a href="https://ibm.github.io/Technology-Sandbox-Support/" target="_blank"> FAQs</a></span>
          </p>
          <div class="image-btn">
             <a class="image-link" href="didact://?commandId=extension.openURL&text=data-quality%7Cview-product-details%7Chttps://www.ibm.com/products/dqaiapi

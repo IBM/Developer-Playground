@@ -184,9 +184,8 @@
   {
     background-image: url('https://github.com/IBM/Developer-Playground/blob/master/didact/images/data-quality.png?raw=true');
     background-position: right;
-    width: 100%;
-    height: fixed;
-    min-height: 320px;
+    width: 95%;
+    min-height: 70px;
     display: inline-block;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -198,11 +197,10 @@
   }
   .header .left-content
   {
-    width: 45%;
-    background-color:#2a67f5;
-    min-height: 320px;
-    padding: 20px;
-    /* padding-top: 2.5%; */
+   float: left;
+    width: 50%;
+    background-color: #525252;
+    min-height: 270px;
     font-size: 16px;
   }
   .header .left-content h4
@@ -269,88 +267,96 @@
   a:visited{
       color: #BE95FF;
   }
-
+  .description{
+    margin-left: 30px;
+    margin-top: 16px;
+  }
 </style>
 </head>
 <body>
-  <div class="apptitle"> 
-    Data Quality for AI Asset
-  </div>
-    <div class="subheading">
-    A systematic way to assess and remediate data with well-specified APIs
-  </div>
-   <div class="header">
-      <div class="left-content" style="float: left">
-      <div>
-        Quality data can significantly reduce model building time, streamline data preparation efforts and improve the overall reliability of the AI pipeline.
+<div class="header">
+      <div class="left-content">
+          <div class="apptitle" style="font-size: 28px; color: white; padding-top:35px;"> 
+    Data Quality for AI
+          </div>
+          <div class="subheading">
+    Assess the quality of data sets for AI models.
+          </div>
       </div>
-       <div>
-            The Data Quality for AI is an integrated toolkit that provides various data profiling and quality estimation metrics to assess the quality of ingested data in a systematic and objective manner. The pre-build application will help you to understand and leveraged API usage in the real world - build, configure, and explore an application in an interactive mode.          </div>
       </div>
-   </div>
+   <br>
+   <br>
+   <div class="description">
+        <div>
+        Access to quality data can significantly reduce model building time, streamline data preparation efforts, and improve the overall reliability of the AI pipeline.</div>
+        <br>
+        <div>
+            The Data Quality for AI integrated toolkit provides various data profiling and quality estimation metrics to assess the quality of ingested data in a systematic and objective manner. This application allows you to experiment with the Data Quality for AI toolkit to assess the quality of your dataset.        
+        </div>
+    </div> 
+   <br>
+   <br>
         <div class="assetdetails">
             <p style="font-size:24px">Learning Resources</p>
-            <p><a href="https://developer.ibm.com/learningpaths/data-quality-ai-toolkit/">Get started with Data Quality for AI API with this learning path</a></p>
+            <p><a href="https://developer.ibm.com/learningpaths/data-quality-ai-toolkit/">Get started with Data Quality for AI</a></p>
             <br>
-            <p style="font-size: 24px;">Included Components</p>
+            <p style="font-size: 24px;">Included APIs</p>
             <p><a href="https://developer.ibm.com/apis/catalog/dataquality4ai--data-quality-for-ai/Introduction">Data Quality for AI API</a></p>
             <br>
-            <p style="font-size: 24px;">Prerequisites</p>
-            <p>Obtain API credentials,</p>
+            <p style="font-size: 24px;">Pre-requisites</p>
+            <p>Obtain API credentials:</p>
             <ul>
-            <li>Subscribe to the Data Quality for AI Product</a></li>
-            <li>Check out API Subscriptions</a></li>
-            <li>Select Data Quality for AI to proceed</li>
-            <li>You can obtain your Client ID/Secret, if not, Generate an API Key</li>
+            <li><a href="https://www.ibm.com/account/reg/us-en/signup?formid=urx-50307">Subscribe  </a> to the Data Quality for AI.</a></li>
+            <li>Check your <a href="https://developer.ibm.com/profile/myapis"> API Subscriptions</a>.</li>
+            <li>Select the subscription for Data Quality for AI to proceed.</li>
+            <li>You can obtain your Client ID/Secret from here. Else, you can "Generate API Key".</li>
             </ul>
             <br>
             <p style="font-size: 24px;">Instructions</p>
+            <p>Please follow all the below steps in proper sequence.</p>
         </div>
 
    <div class="timeline">
       <div class="container right" style="margin-top:0px;padding-top:0px;">
          <div class="content">
-            <p>Clone the code to the Technology Sandbox session</p>
-            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cget-code%7Cdata-quality|git%20clone%20-b%20DART%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/data-quality/">Get the Code</a>
+            <p>Clone the GitHub repository.</p>
+            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cget-code%7Cdata-quality|git%20clone%20-b%20DART%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/data-quality/">Get Code</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Build the application</p>
-            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cbuild-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install%20--production">Build the Application</a>
+            <p>Install required dependencies for executing application.</p>
+            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Cbuild-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install%20--production">Install Dependencies</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Configure the application. See prerequisites </p>
-            <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=data-quality%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/.env">Configure the Application</a>
+            <p>Configure the application. See pre-requisites.</p>
+            <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=data-quality%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/.env">Configure Application</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
-            <p>Launch the application</p>
-            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Claunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20node%20server.js">Launch the Application</a>
+            <p>Launch the application in the preview window.</p>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Claunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20node%20server.js">Launch Application</a>
          </div>
       </div>
    </div>
    <br>
-   <div class="assetdetails">
-    <p style="font-size: 24px;">Explore the APIs</p>
-    <p>Once you are done or would like to edit or explore the application, make sure to stop the services</p>
-   </div>
-
-   <div class="footer">
-      <div class="content" style="padding:30px;padding-left:60px;padding-bottom:0px;">
-         <p>Stop the services</p>
+   <div class="footer" style="margin-left:30px;">
+      <div class="content" style="padding:30px;padding-left:60px;margin-right:80px;padding-bottom:0px;">
+         <p>To edit or explore the application, make sure to stop it first.</p>
          <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=data-quality" >Stop Application</a>
-         <p class="afterbutton">Explore and update the code as per your requirement</p>
-         <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=data-quality%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/src/App.js">Explore the Code</a>
-         <p class="afterbutton ">Re-launch the application to experience the code changes you have made</p>
-         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Crelaunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install%20--only=dev%20%26%26%20rm%20-rf%20build%20%26%26%20npm%20run%20build%20%26%26%20node%20server.js">Re-Launch the Application</a>
+         <p class="afterbutton">Explore and update the code as per your requirement.</p>
+         <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=data-quality%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/data-quality/DataQuality/src/App.js">Explore Code</a>
+         <p class="afterbutton ">Re-launch the application to view the changes made.</p>
+         <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=data-quality%7Crelaunch-application%7Cdata-quality|cd%20${CHE_PROJECTS_ROOT}/data-quality/DataQuality%20%26%26%20npm%20install%20--only=dev%20%26%26%20rm%20-rf%20build%20%26%26%20npm%20run%20build%20%26%26%20node%20server.js">Re-Launch Application</a>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
             <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/DART" target="_blank">Github Repository</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">For further assistance reach out to <a href="https://github.com/IBM/Technology-Sandbox-Support/issues/new/choose" target="_blank"> Help & Support</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">Check out our <a href="https://ibm.github.io/Technology-Sandbox-Support/" target="_blank"> FAQs</a></span>
          </p>
          <div class="image-btn">
             <a class="image-link" href="didact://?commandId=extension.openURL&text=data-quality%7Cview-product-details%7Chttps://www.ibm.com/products/dqaiapi

@@ -379,7 +379,7 @@
       </div>
       <div class="container right">
         <div class="content">
-            <p>Create a new deployment space with the pre-loaded model. Make sure your <a href="https://dataplatform.cloud.ibm.com?cm_sp=ibmdev--developer-sandbox--cloudreg">IBM Cloud Pak for Data</a> account is active in the <b>Region</b> given in sandbox terminal.</p>
+            <p>Create a new deployment space with the pre-loaded model. Make sure your <a href="https://dataplatform.cloud.ibm.com?cm_sp=ibmdev--developer-sandbox--cloudreg">IBM Cloud Pak for Data</a> account is active.</p>
             <a class="button is-dark is-medium" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Ccreate-deployment-space%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan%20%26%26%20python3.8%20create_space.py">Create Deployment Space</a>
         </div>
        </div>

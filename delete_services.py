@@ -1,5 +1,6 @@
 import os
 from dotenv import dotenv_values
+import json
 
 
 config = dotenv_values(".env") 
@@ -43,3 +44,14 @@ if(updated_ws=="True"):
 if(ws_service_key!=""):
     data = os.popen("ibmcloud resource service-key-delete "+ws_service_key+" -f").read()
     print(data)
+try:
+    data = os.popen("ibmcloud fn action get ml").read()
+    namespace = json.loads("".join(data.split("\n")[1:]))["namespace"]
+    data = os.popen("ibmcloud fn action delete ml").read()
+    print(data)
+    data = os.popen("ibmcloud fn action list").read()
+    if(len(data.split("\n"))<=3):
+        data = os.popen("ibmcloud fn namespace delete "+namespace).read()
+        print(data)
+except:
+    pass

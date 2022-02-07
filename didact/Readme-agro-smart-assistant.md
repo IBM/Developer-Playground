@@ -391,11 +391,11 @@ and paste to proceed with authorization.</p>
          <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create a New Deployment Space and Deploy the Model using Watson Machine Learning</summary></br></br>
          <div class="step">
           <p>Step 1 : Generate an API Key in the IBM account. This is required to access the model for our Cloud Function.</p>
-          <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=sandbox%20terminal%7Cgenerate-api-token%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant;ibmcloud%20iam%20api-key-create%20ApiKey-SVA%20-d%20'this is API key for Smart Virtual Assitant'%20--file%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/key_file">Generate API key</a></br>
+          <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Cgenerate-api-token%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant;ibmcloud%20iam%20api-key-create%20ApiKey-SVA%20-d%20'this is API key for Smart Virtual Assitant'%20--file%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/key_file">Generate API key</a></br>
         </div>
           <div class="step">
             <p>Step 2 : Create a new deployment space with the pre-loaded model. Make sure your <a href="https://dataplatform.cloud.ibm.com?cm_sp=ibmdev--developer-sandbox--cloudreg">IBM Cloud Pak for Data</a> account is active in the region given in sandbox terminal.</p>
-            <a class="button is-dark is-medium" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Cstart%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20python3.8%20create_space.py">Create Deployment Space</a>
+            <a class="button is-dark is-medium" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Ccreate-space%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20python3.8%20create_space.py">Create Deployment Space</a>
           <details style="margin-top:5px;">
          <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Incase your model import failed, do the following steps</summary></br></br>
           <div class="step">
@@ -433,11 +433,11 @@ and paste to proceed with authorization.</p>
            </div>
           <div class="step">
             <p>Step 3 : Deploy the model.</p>
-            <a class="button is-dark is-medium" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Cstart%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20python3.8%20deploy_model.py">Deploy</a>
+            <a class="button is-dark is-medium" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Cdeploy-model%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20python3.8%20deploy_model.py">Deploy</a>
           </div>
           <div class="step">
             <p>Step 4 : Run the script to update the code file with Model URL.</p>
-            <a class="button is-dark is-medium" title="Update Model URL" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Ccreate-services%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fadd_model_url.sh%20%26%26%20.%2Fscripts%2Fadd_model_url.sh">Update Model URL</a>
+            <a class="button is-dark is-medium" title="Update Model URL" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Cupdate-model-url%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fadd_model_url.sh%20%26%26%20.%2Fscripts%2Fadd_model_url.sh">Update Model URL</a>
             </div>
         </details>
         </div>
@@ -452,11 +452,11 @@ and paste to proceed with authorization.</p>
            </div>
           <div class="step">
            <p>Step 2 : Run the script to add API Key parameter to the Action.</p>
-           <a class="button is-dark is-medium" title="Create Parameter" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Ccreate-services%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fadd_parameter.sh%20%26%26%20.%2Fscripts%2Fadd_parameter.sh">Add Parameter</a>
+           <a class="button is-dark is-medium" title="Create Parameter" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Cadd-parameter%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fadd_parameter.sh%20%26%26%20.%2Fscripts%2Fadd_parameter.sh">Add Parameter</a>
            </div>
           <div class="step">
            <p>Step 3 : Run the script to update the Watson Assistant Dialog skill file with the webhook URL to access the Cloud Function.</p>
-           <a class="button is-dark is-medium" title="Update" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Ccreate-services%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fupdate_dialog.sh%20%26%26%20.%2Fscripts%2Fupdate_dialog.sh">Update Dialog Skill</a>
+           <a class="button is-dark is-medium" title="Update" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Cupdate-webhook-url%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20chmod%20%2Bx%20.%2Fscripts%2Fupdate_dialog.sh%20%26%26%20.%2Fscripts%2Fupdate_dialog.sh">Update Dialog Skill</a>
           </div>
           </details>
         </div>
@@ -518,7 +518,7 @@ and paste to proceed with authorization.</p>
       <div class="container right">
          <div class="content">
             <p>Launch the application in the preview window.</p>
-            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Cstart%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20npm%20start">Launch Application</a>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Claunch%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20npm%20start">Launch Application</a>
          </div>
       </div>
    </div>
@@ -529,7 +529,7 @@ and paste to proceed with authorization.</p>
          <p class="afterbutton">Explore and update the code as per your requirement.</p>
          <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=AgroSmartAssistant%7Copen-file%7C${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/public/index.html">Explore Code</a>
          <p class="afterbutton ">Re-launch the application to view the changes made.</p>
-         <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Cbuild%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20npm%20start">Re-Launch Application</a>
+         <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Cre-launch%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20npm%20start">Re-Launch Application</a>
          <p style="margin-top:10px;">Click on
           <bold>Clean up</bold> to delete the IBM Cloud services that were created. Make sure to stop the application first.
         </p>
@@ -540,7 +540,7 @@ and paste to proceed with authorization.</p>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?
-            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/Anam-Mahmood/Unlock-the-Power-of-Machine-Learning-in-Virtual-Assistants-to-automate-Loan-Applications" target="_blank">Github Repository</a></span>
+            <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/agro-chatbot" target="_blank">Github Repository</a></span>
             <span style="font-size:15px;margin-top:0px;display:block;">For further assistance reach out to <a href="https://github.com/IBM/Technology-sandbox-Support/issues/new/choose" target="_blank"> Help & Support</a></span>
             <span style="font-size:15px;margin-top:0px;display:block;">Check out our <a href="https://ibm.github.io/Technology-Sandbox-Support/" target="_blank">FAQs</a></span>
          </p>

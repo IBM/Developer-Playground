@@ -18,30 +18,38 @@ wa_service_key = config["CONVERSATION_SERVICE_KEY"]
 ws_service_key = config["DATA-SCIENCE-EXPERIENCE_SERVICE_KEY"]
 
 if(updated_cos=="True"):
+    data = os.popen("ibmcloud resource service-key-delete "+cos_service_key+" -f").read()
+    print(data)
     data = os.popen("ibmcloud resource service-instance-delete "+cos_crn+" -f --recursive").read()
     print(data)
-if(cos_service_key!=""):
+if(updated_cos=="False" and cos_service_key!=""):
     data = os.popen("ibmcloud resource service-key-delete "+cos_service_key+" -f").read()
     print(data)
 
 if(updated_wml=="True"):
+    data = os.popen("ibmcloud resource service-key-delete "+wml_service_key+" -f").read()
+    print(data)
     data = os.popen("ibmcloud resource service-instance-delete "+wml_crn+" -f --recursive").read()
     print(data)
-if(wml_service_key!=""):
+if(updated_wml=="False" and wml_service_key!=""):
     data = os.popen("ibmcloud resource service-key-delete "+wml_service_key+" -f").read()
     print(data)
 
 if(updated_wa=="True"):
+    data = os.popen("ibmcloud resource service-key-delete "+wa_service_key+" -f").read()
+    print(data)
     data = os.popen("ibmcloud resource service-instance-delete "+wa_crn+" -f --recursive").read()
     print(data)
-if(wa_service_key!=""):
+if(updated_wa=="False" and wa_service_key!=""):
     data = os.popen("ibmcloud resource service-key-delete "+wa_service_key+" -f").read()
     print(data)
 
 if(updated_ws=="True"):
+    data = os.popen("ibmcloud resource service-key-delete "+ws_service_key+" -f").read()
+    print(data)
     data = os.popen("ibmcloud resource service-instance-delete "+ws_crn+" -f --recursive").read()
     print(data)
-if(ws_service_key!=""):
+if(updated_ws=="False" and ws_service_key!=""):
     data = os.popen("ibmcloud resource service-key-delete "+ws_service_key+" -f").read()
     print(data)
 try:

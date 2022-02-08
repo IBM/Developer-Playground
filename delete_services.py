@@ -10,7 +10,7 @@ updated_ws = config["DATA-SCIENCE-EXPERIENCE_UPDATED"]
 cos_crn = config["CLOUD-OBJECT-STORAGE_CRN"]
 wml_crn = config["PM-20_CRN"]
 ws_crn = config["DATA-SCIENCE-EXPERIENCE_CRN"]
-cos_service_key = config["CLOUD-OBJECT-STORAGE_SERVICE_KEY"]
+# cos_service_key = config["CLOUD-OBJECT-STORAGE_SERVICE_KEY"]
 # wml_service_key = config["PM-20_SERVICE_KEY"]
 # ws_service_key = config["DATA-SCIENCE-EXPERIENCE_SERVICE_KEY"]
 

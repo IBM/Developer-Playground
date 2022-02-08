@@ -15,6 +15,7 @@ cos_service_key = config["CLOUD-OBJECT-STORAGE_SERVICE_KEY"]
 # ws_service_key = config["DATA-SCIENCE-EXPERIENCE_SERVICE_KEY"]
 
 if(updated_cos=="True"):
+    data = os.popen("ibmcloud resource service-key-delete "+cos_service_key+" -f").read()
     data = os.popen("ibmcloud resource service-instance-delete "+cos_crn+" -f --recursive").read()
     print(data)
 

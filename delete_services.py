@@ -17,7 +17,8 @@ if(updated_cos=="True"):
         data = os.popen("ibmcloud resource service-instance-delete "+cos_crn+" -f --recursive").read()
         if (data.find('OK') == -1):        
             status="FAILED"
-            print("#######Restarting COS Deletion#######")
+            print("#######COS instance deletion FAILED#######\n#######Restarting COS Deletion#######")
+
             counter=counter+1
             if(counter==5):
                 status="END"
@@ -35,4 +36,3 @@ if(updated_wml=="True"):
 if(updated_ws=="True"):
     data = os.popen("ibmcloud resource service-instance-delete "+ws_crn+" -f --recursive").read()
     print(data)
- 

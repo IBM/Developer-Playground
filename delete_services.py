@@ -10,59 +10,26 @@ cos_crn = config["CLOUD-OBJECT-STORAGE_CRN"]
 wml_crn = config["PM-20_CRN"]
 ws_crn = config["DATA-SCIENCE-EXPERIENCE_CRN"]
 
-if(updated_cos=="True"):
-    status="FAILED"
-    counter=0
-    while(status=="FAILED"):
-        data = os.popen("ibmcloud resource service-instance-delete "+cos_crn+" -f --recursive").read()
-        if (data.find('OK') == -1):        
-            status="FAILED"
-            print("###########################################################\nCloud Object Storage deletion FAILED\n###########################################################\n\n###########################################################\nRestarting Cloud Object Storage deletion\n###########################################################")
-            counter=counter+1
-            if(counter==5):
-                status="END"
+def service_delete(updated, crn, name):
+    if(updated=="True"):
+        status="FAILED"
+        counter=0
+        while(status=="FAILED"):
+            data = os.popen("ibmcloud resource service-instance-delete "+crn+" -f --recursive").read()
+            if (data.find('OK') == -1):        
+                status="FAILED"
+                print("###########################################################\n"+name+" deletion FAILED\n###########################################################\n\n###########################################################\nRestarting "+name+" deletion\n###########################################################")
+                counter=counter+1
+                if(counter==5):
+                    status="END"
+            else:
+                status="OK"
+                print("###########################################################\n"+name+" deletion complete\n###########################################################")
+        if(status=="END"):
+            print("###########################################################\nSorry we couldn't delete the "+name+".\nPlease go to IBM Cloud Console to delete the "+name+".\n###########################################################")
         else:
-            status="OK"
-            print("###########################################################\nCloud Object Storage deletion complete\n###########################################################")
-    if(status=="END"):
-        print("###########################################################\nSorry we couldn't delete the Cloud Object Storage.\nPlease go to IBM Cloud Console to delete the Cloud Object Storage.\n###########################################################")
-    else:
-        print(data)
-
-if(updated_wml=="True"):
-    status="FAILED"
-    counter=0
-    while(status=="FAILED"):
-        data = os.popen("ibmcloud resource service-instance-delete "+wml_crn+" -f --recursive").read()
-        if (data.find('OK') == -1):        
-            status="FAILED"
-            print("###########################################################\nWatson ML deletion FAILED\n###########################################################\n\n###########################################################\nRestarting Watson ML deletion\n###########################################################")
-            counter=counter+1
-            if(counter==5):
-                status="END"
-        else:
-            status="OK"
-            print("###########################################################\nWatson ML deletion complete\n###########################################################")
-    if(status=="END"):
-        print("###########################################################\nSorry we couldn't delete the Watson ML service.\nPlease go to IBM Cloud Console to delete the Watson ML service.\n###########################################################")
-    else:
-        print(data)
-    
-if(updated_ws=="True"):
-    status="FAILED"
-    counter=0
-    while(status=="FAILED"):
-        data = os.popen("ibmcloud resource service-instance-delete "+ws_crn+" -f --recursive").read()
-        if (data.find('OK') == -1):        
-            status="FAILED"
-            print("###########################################################\nWatson Studio deletion FAILED\n###########################################################\n\n###########################################################\nRestarting Watson Studio deletion\n###########################################################")
-            counter=counter+1
-            if(counter==5):
-                status="END"
-        else:
-            status="OK"
-            print("###########################################################\nWatson Studio deletion complete\n###########################################################")
-    if(status=="END"):
-        print("###########################################################\nSorry we couldn't delete the Watson Studio.\nPlease go to IBM Cloud Console to delete the Watson Studio.\n###########################################################")
-    else:
-        print(data)
+            print(data)
+            
+service_delete(updated_cos, cos_crn, "Cloud Object Storage")
+service_delete(updated_wml, wml_crn, "Watson ML")
+service_delete(updated_ws, ws_crn, "Watson Studio")

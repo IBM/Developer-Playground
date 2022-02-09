@@ -17,7 +17,7 @@ if(updated_cos=="True"):
         data = os.popen("ibmcloud resource service-instance-delete "+cos_crn+" -f --recursive").read()
         if (data.find('OK') == -1):        
             status="FAILED"
-            print("###########################################################\nCloud Object Storage deletion FAILED\n###########################################################\n\n###########################################################Restarting Cloud Object Storage deletion\n###########################################################")
+            print("###########################################################\nCloud Object Storage deletion FAILED\n###########################################################\n\n###########################################################\nRestarting Cloud Object Storage deletion\n###########################################################")
             counter=counter+1
             if(counter==5):
                 status="END"

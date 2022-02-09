@@ -8,10 +8,25 @@ updated_wml = config["PM-20_UPDATED"]
 cos_crn = config["CLOUD-OBJECT-STORAGE_CRN"]
 wml_crn = config["PM-20_CRN"]
 
-if(updated_cos=="True"):
-    data = os.popen("ibmcloud resource service-instance-delete "+cos_crn+" -f --recursive").read()
-    print(data)
-
-if(updated_wml=="True"):
-    data = os.popen("ibmcloud resource service-instance-delete "+wml_crn+" -f --recursive").read()
-    print(data)
+def service_delete(updated, crn, name):
+    if(updated=="True"):
+        status="FAILED"
+        counter=0
+        while(status=="FAILED"):
+            data = os.popen("ibmcloud resource service-instance-delete "+crn+" -f --recursive").read()
+            if (data.find('OK') == -1):        
+                status="FAILED"
+                print("###########################################################\n"+name+" deletion FAILED\n###########################################################\n\n###########################################################\nRestarting "+name+" deletion\n###########################################################")
+                counter=counter+1
+                if(counter==5):
+                    status="END"
+            else:
+                status="OK"
+                print("###########################################################\n"+name+" deletion complete\n###########################################################")
+        if(status=="END"):
+            print("###########################################################\nSorry we couldn't delete the "+name+".\nPlease go to IBM Cloud Console to delete the "+name+".\n###########################################################")
+        else:
+            print(data)
+            
+service_delete(updated_cos, cos_crn, "Cloud Object Storage")
+service_delete(updated_wml, wml_crn, "Watson ML")

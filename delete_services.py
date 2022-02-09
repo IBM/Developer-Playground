@@ -18,7 +18,6 @@ if(updated_cos=="True"):
         if (data.find('OK') == -1):        
             status="FAILED"
             print("#######COS instance deletion FAILED#######\n#######Restarting COS Deletion#######")
-
             counter=counter+1
             if(counter==5):
                 status="END"

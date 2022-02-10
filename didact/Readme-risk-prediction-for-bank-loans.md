@@ -393,31 +393,31 @@
            </div>
            <div class="step">
            <p>Step 2 : Login to your <a href="https://dataplatform.cloud.ibm.com?cm_sp=ibmdev--developer-sandbox--cloudreg">IBM CloudPak for Data</a> account with the <b>Region</b> given in your sandbox terminal. Click on <b>Create a Project</b>.</p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_1.png" width = "750" height= "750">
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/bank-loan-didact1.png" width = "750" height= "750">
            </div>
            <div class="step">
            <p>Step 3 : Click on <b>Create a project from sample or file.</b></p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_2.png" width = "750" height= "750">
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/bank-loan-didact2.png" width = "750" height= "750">
            </div>
            <div class="step">
            <p>Step 4: Upload the zip file that was just downloaded in Step 1 > Enter a project <b>Name</b>  > click <b>Create</b>.</p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_3.png" width = "750" height= "750">
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/bank-loan-didact3.png" width = "750" height= "750">
            </div>
            <div class="step">
            <p>Step 5 : After the project is created, click on <b>View new project</b>.</p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_4.png" width = "750" height= "750">
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/bank-loan-didact4.png" width = "750" height= "750">
            </div>
            <div class="step">
            <p>Step 6 : Click on the <b>Assets</b> tab.</p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_5.png" width = "750" height= "750">
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/bank-loan-didact5.png" width = "750" height= "750">
            </div>
            <div class="step">
            <p>Step 7 : Click on the <b>(⋮)</b> icon right hand side of the <b>Model</b> and Click on <b>Promote</b>.</p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_6.png" width = "750" height= "750">
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/bank-loan-didact6.png" width = "750" height= "750">
            </div>
            <div class="step">
            <p>Step 8 : On the <b>Target Space</b> drop-down menu, select the deployment space you created (To get the deployment space name check your sandbox terminal), Once done click <b>Promote</b>.</p>
-          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/section_error_7.png" width = "750" height= "750">
+          <img src = "https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/bank-loan-didact7.png" width = "750" height= "750">
            </div>
            </details>
         </div>

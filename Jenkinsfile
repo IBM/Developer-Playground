@@ -33,7 +33,7 @@ pipeline {
             }
             steps {
 		sh label: 'cd', script: "ls -a "
-		sh label: 'cd', script: "cd HEREGeocodingandSearch ."
+		sh label: 'cd', script: "cd HEREGeocodingandSearch "
                 sh label: 'Build', script: "docker --config ./ build -t 'us.icr.io/apihub-cr/podman-heregc:${env.IMAGE_TAG}' ."
                 sh label: 'Push Image', script: "docker --config ./ push us.icr.io/apihub-cr/podman-heregc:${env.IMAGE_TAG}"
             }

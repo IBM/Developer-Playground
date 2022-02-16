@@ -3,3 +3,4 @@ Flask==1.1.1
 requests==2.20.0
 ibm_watson_machine_learning
 ibm_watson
+tqdm

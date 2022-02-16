@@ -1,4 +1,4 @@
-import json, os
+import os
 from dotenv import dotenv_values
 import dotenv
 
@@ -8,7 +8,7 @@ regions = {
     "eu-de":"Frankfurt",
     "jp-tok":"Tokyo"
 }
-config = dotenv_values(".env") 
+config = dotenv_values("../../.env") 
 wml_loc = config["PM-20_LOC"]
 ws_loc = config["DATA-SCIENCE-EXPERIENCE_LOC"]
 wml_name = config["PM-20_NAME"]
@@ -40,11 +40,11 @@ if(wml_loc != ws_loc):
             print(data)
             data = os.popen("ibmcloud resource service-instance-create "+servicename+" "+service+" "+plan+" "+wml_loc).read()
             print(data)
-            dotenv.set_key("./.env",service.upper()+"_NAME",servicename)
-            dotenv.set_key("./.env",service.upper()+"_LOC",wml_loc)
+            dotenv.set_key("../../.env",service.upper()+"_NAME",servicename)
+            dotenv.set_key("../../.env",service.upper()+"_LOC",wml_loc)
             data = os.popen("ibmcloud resource service-instance "+servicename+" --id").read()
-            dotenv.set_key("./.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
-            dotenv.set_key("./.env",service.upper()+"_UPDATED","True")
+            dotenv.set_key("../../.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
+            dotenv.set_key("../../.env",service.upper()+"_UPDATED","True")
             print("##################")
             print("Region: "+regions[wml_loc])
             print("##################")
@@ -52,15 +52,15 @@ if(wml_loc != ws_loc):
             servicename = "cp-wml"
             service = "pm-20"
             plan="lite"
-            data = os.popen("ibmcloud resource service-instance-delete "+ws_name+" -f --recursive").read()
+            data = os.popen("ibmcloud resource service-instance-delete "+wml_name+" -f --recursive").read()
             print(data)
             data = os.popen("ibmcloud resource service-instance-create "+servicename+" "+service+" "+plan+" "+ws_loc).read()
             print(data)
-            dotenv.set_key("./.env",service.upper()+"_NAME",servicename)
-            dotenv.set_key("./.env",service.upper()+"_LOC",ws_loc)
+            dotenv.set_key("../../.env",service.upper()+"_NAME",servicename)
+            dotenv.set_key("../../.env",service.upper()+"_LOC",ws_loc)
             data = os.popen("ibmcloud resource service-instance "+servicename+" --id").read()
-            dotenv.set_key("./.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
-            dotenv.set_key("./.env",service.upper()+"_UPDATED","True")
+            dotenv.set_key("../../.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
+            dotenv.set_key("../../.env",service.upper()+"_UPDATED","True")
             print("##################")
             print("Region: "+regions[ws_loc])
             print("##################")

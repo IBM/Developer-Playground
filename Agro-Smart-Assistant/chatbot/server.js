@@ -17,7 +17,7 @@
 
 'use strict';
 
-require('dotenv').config({silent: true});
+require('dotenv').config({path: path.resolve(__dirname, '../../.env'),silent: true});
 
 var server = require('./app');
 var port = process.env.PORT || 4000;

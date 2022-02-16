@@ -7,7 +7,7 @@ from dotenv import dotenv_values
 
 
 
-config = dotenv_values(".env") 
+config = dotenv_values("../../.env") 
 apikey = config["CONVERSATION_API_KEY"]
 loc = config["CONVERSATION_LOC"]
 crn = config["CONVERSATION_CRN"]
@@ -22,7 +22,7 @@ assistant = AssistantV1(
 assistant.set_service_url("https://api."+loc+".assistant.watson.cloud.ibm.com")
 
 
-with open("./Dialog-Skill.json", "r") as f :
+with open("../data/Dialog-Skill.json", "r") as f :
   jsondata = json.loads(f.read())
 
 

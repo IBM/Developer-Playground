@@ -35,7 +35,6 @@ if(wml_loc != ws_loc):
             servicename = "cp-wstudio"
             service = "data-science-experience"
             plan="free-v1"
-            print("ibmcloud resource service-instance-delete "+ws_name+" -f --recursive")
             data = os.popen("ibmcloud resource service-instance-delete "+ws_name+" -f --recursive").read()
             print(data)
             data = os.popen("ibmcloud resource service-instance-create "+servicename+" "+service+" "+plan+" "+wml_loc).read()

@@ -356,7 +356,7 @@
      <div class="container right">
         <div class="content">
           <p>Install required dependencies for executing python scripts.</p>
-          <a class="button is-dark is-medium" title="Install Dependencies" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cinstall-dependencies%7Csandbox%20terminal|cd%20bank-loan;pip3.8%20install%20-r%20requirements.txt">Install Dependencies</a>
+          <a class="button is-dark is-medium" title="Install Dependencies" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cinstall-dependencies%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan;pip3.8%20install%20-r%20requirements.txt">Install Dependencies</a>
         </div>
      </div>
       <div class="container right">

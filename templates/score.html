@@ -133,18 +133,24 @@
           <th class="bx--table-header-label" style="height: 64px;width: 292px; background-color: #E0E0E0;font-family: IBM Plex Sans;font-size: 14px;font-weight: 600;color: #161616;">Attribute</span></th>
           <th class="bx--table-header-label" style="width: 292px; background-color: #E0E0E0;font-family: IBM Plex Sans;font-size: 14px;font-weight: 600;color: #161616;">Value</th>
         </tr>
-        {% for (k,i) in zip(request.form.keys(),keystag) %}
+        {% for (k,i) in zip(input_values,keystag) %}
         <tr>
           <td style="margin-right:8px; background-color: #F4F4F4;">{{i}}</td>
-          <td>{{(((request.form[k].replace("_"," ")).replace("greater",">")).replace("less",'<'))}}</td>
+          <td>{{k}}</td>
         </tr>
         {% endfor %}
       </table>
     </div>
-
-        <script>
-          document.write('<a class="bx--btn bx--btn--primary bx--btn--field" style="margin-top:46px; margin-bottom:107px; text-decoration: none; color: #FFFFFF;font-family: IBM Plex Sans;font-size: 14px;" href="' + document.referrer + '">Back to Application</a>');
-      </script> 
+    <form action="/" method="get">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+      <input
+        action="action"
+        style="padding: 15px 66px 15px 36px; margin-top:72px; margin-left: 26px;height: 48px;width: 152px; background-color: #0F62FE; color: #FFFFFF; font-family: IBM Plex Sans; font-size: 14px; letter-spacing: 0.16px; line-height: 18px;font-family:'IBM Plex Sans'" 
+        class="bx--btn--primary" 
+        type="submit"
+        value="Go Back"
+      />
+    </form>
 {% endblock %}
 
 {% block body2 %}

@@ -350,37 +350,37 @@
    <div class="container right">
          <div class="content">
             <p>Clone the GitHub repository.</p>
-          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cget-code%7Csandbox%20terminal|git%20clone%20-b%20bank-loan%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/bank-loan/%20%26%26%20cd%20${CHE_PROJECTS_ROOT}/bank-loan/">Get Code</a>
+          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cget-code%7Csandbox%20terminal|git%20clone%20-b%20bank-loan%20https://github.com/IBM/Developer-Playground.git ${CHE_PROJECTS_ROOT}/bank-loan/ && cd ${CHE_PROJECTS_ROOT}/bank-loan/bankloan">Get Code</a>
          </div>
       </div>
      <div class="container right">
         <div class="content">
           <p>Install required dependencies for executing python scripts.</p>
-          <a class="button is-dark is-medium" title="Install Dependencies" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cinstall-dependencies%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan;pip3.8%20install%20-r%20requirements.txt">Install Dependencies</a>
+          <a class="button is-dark is-medium" title="Install Dependencies" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cinstall-dependencies%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan;pip3.8%20install%20-r%20requirements.txt">Install Dependencies</a>
         </div>
      </div>
       <div class="container right">
         <div class="content">
           <p>Log in to your IBM Cloud account. You will be provided a link to get your one-time passcode which you will need to copy and paste to proceed with authorization.</p>
-          <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cibm-login%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan%20%26%26%20chmod%20%2Bx%20.%2Flogin.sh%20%26%26%20.%2Flogin.sh">Login to IBM Cloud</a>  
+          <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cibm-login%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan/script%20%26%26%20chmod%20%2Bx%20.%2Flogin.sh%20%26%26%20.%2Flogin.sh">Login to IBM Cloud</a>  
         </div>
       </div>
       <div class="container right">
         <div class="content">
           <p>Create services on IBM Cloud.</p>
-          <a class="button is-dark is-medium" title="Create Services" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Ccreate-ibm-services%7Csandbox%20terminal|chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh">Create Services</a>
+          <a class="button is-dark is-medium" title="Create Services" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Ccreate-ibm-services%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan/script%20%26%26%20chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh">Create Services</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
             <p>Generate an API Key in the IBM account. This is required to access the model.</p>
-            <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cgenerate-api-token%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan;ibmcloud%20iam%20api-key-create%20ApiKey-bankLoan%20-d%20'this is API key for bankLoan'%20--file%20${CHE_PROJECTS_ROOT}/bank-loan/key_file">Generate API key</a>
+            <a class="button is-dark is-medium" title="Generate API key" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cgenerate-api-token%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan;ibmcloud%20iam%20api-key-create%20ApiKey-bankLoan%20-d%20'this is API key for bankLoan'%20--file%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan/key_file">Generate API key</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
             <p>Create a new deployment space with the pre-loaded model. Make sure your <a href="https://dataplatform.cloud.ibm.com?cm_sp=ibmdev--developer-sandbox--cloudreg">IBM Cloud Pak for Data</a> account is active.</p>
-            <a class="button is-dark is-medium" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Ccreate-deployment-space%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan%20%26%26%20python3.8%20create_space.py">Create Deployment Space</a>
+            <a class="button is-dark is-medium" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Ccreate-deployment-space%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan/deployment-files%20%26%26%20python3.8%20create_space.py">Create Deployment Space</a>
         </div>
        </div>
       <div class="container right">
@@ -389,7 +389,7 @@
          <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Incase <b>Importing the Model Fails</b>, do the following steps</summary></br></br>
           <div class="step">
            <p>Step 1 : Download the project zip file.</p>
-          <a class="button is-dark is-medium" href="https://github.com/IBM/Developer-Playground/raw/bank-loan/bankLoan.zip">Download</a>
+          <a class="button is-dark is-medium" href="https://github.com/IBM/Developer-Playground/raw/bank-loan/bankloan/data/bankLoan.zip">Download</a>
            </div>
            <div class="step">
            <p>Step 2 : Login to your <a href="https://dataplatform.cloud.ibm.com?cm_sp=ibmdev--developer-sandbox--cloudreg">IBM CloudPak for Data</a> account with the <b>Region</b> given in your sandbox terminal. Click on <b>Create a Project</b>.</p>
@@ -425,13 +425,13 @@
       <div class="container right">
         <div class="content">
           <p>Deploy the model.</p>
-           <a class="button is-dark is-medium" title="Deploy Model" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cdeploy-model%7Csandbox%20terminal|python3.8%20DeployModel/DeploySavedModel.py">Deploy Model</a>
+           <a class="button is-dark is-medium" title="Deploy Model" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cdeploy-model%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan/deployment-files%20%26%26%20python3.8%20DeploySavedModel.py">Deploy Model</a>
         </div>
       </div>  
       <div class="container right">
          <div class="content">
           <p>Launch the application in the preview window.</p>
-          <a class="button is-dark is-medium" title="Launch Application" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cstart-app%7Csandbox%20terminal|python3.8%20app.py">Launch Application</a>
+          <a class="button is-dark is-medium" title="Launch Application" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cstart-app%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan;python3.8%20app.py">Launch Application</a>
          </div>
       </div>
    </div>
@@ -445,7 +445,7 @@
         <a class="button is-dark is-medium" title="Re-Launch Application" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Crestart-app%7Csandbox%20terminal|python3.8%20app.py">Re-Launch Application</a>
         <p style="margin-top:10px;">Click on Clean up to delete the IBM Cloud services that were created. Make sure to stop the application first!
         </p>
-        <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cclean-up%7Csandbox%20terminal|chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean Up</a>
+        <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cclean-up%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan/script;chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean Up</a>
         <p style="margin-top:10px;">You can also manage the services in
           <a href="https://cloud.ibm.com/resources">IBM Cloud Dashboard</a>
         </p> 

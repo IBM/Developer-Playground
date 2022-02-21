@@ -19,12 +19,15 @@ import requests
 from dotenv import load_dotenv
 from flask import Flask, request, session, render_template, flash, send_from_directory
 from requests.auth import HTTPBasicAuth
+from flask_wtf.csrf import CSRFProtect
+from flask import make_response
 
 app = Flask(__name__)
+csrf = CSRFProtect(app)
 
 app.config.update(dict(
-    DEBUG=True,
-    SECRET_KEY=os.environ.get('SECRET_KEY', 'development key')
+    DEBUG=False,
+    SECRET_KEY=os.environ.get('SECRET_KEY', 'development key'),
 ))
 
 strings = {
@@ -158,8 +161,6 @@ class riskForm():
 
     @app.route('/', methods=['GET', 'POST'])
     def index():
-        print(request)
-
         if request.method == 'POST':
             ID = 999
 
@@ -182,6 +183,11 @@ class riskForm():
 
             input_data = list(data.keys())
             input_values = list(data.values())
+
+            csrf=input_values[0]
+            input_values.pop(0)
+            input_data.pop(0)
+            # print(csrf)
             
             #formatting the input data as per the AutoAI model
             userinput=list()
@@ -235,7 +241,7 @@ class riskForm():
             ]}
         
             print("Payload is: ")
-            print(payload_scoring)
+            # print(payload_scoring)
 
             API_KEY=os.environ.get('API_KEY')
             token_response = requests.post('https://iam.cloud.ibm.com/identity/token', data={"apikey": API_KEY, "grant_type": 'urn:ibm:params:oauth:grant-type:apikey'})
@@ -266,7 +272,8 @@ class riskForm():
             keystag2 = list(intstag.keys())
             keystag3 = list(stringstag.keys())
             keystag = keystag1+keystag2+keystag3
-            #print(keystag)
+            # print("keys tag")
+            # print(keystag)
 
             return render_template(
                 'score.html',
@@ -277,6 +284,7 @@ class riskForm():
                 response_scoring=response_scoring,
                 labels=labels,
                 keystag=keystag,
+                input_values=input_values,
                 zip=zip)
 
         else:

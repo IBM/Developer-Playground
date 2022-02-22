@@ -3,7 +3,7 @@ import json, os
 from dotenv import dotenv_values
 
 #bring apikey, model id and deployment space name from .env file
-config = dotenv_values(".env") 
+config = dotenv_values("../../.env") 
 apikey=config["API_KEY"]
 published_model_id=config["MODEL_ID"]
 deployment_space_name=config["DEPLOYMENT_SPACE_NAME"]

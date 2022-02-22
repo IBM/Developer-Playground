@@ -1,4 +1,4 @@
-FLASK==1.1.1
+Flask==2.0.3
 Flask-Cors==3.0.9
 ibm-cloud-sdk-core==3.10.0
 ibm-watson==5.1.0

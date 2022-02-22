@@ -440,9 +440,9 @@
         <p>To edit or explore the application, make sure to stop it first.</p>
         <a class="button is-dark is-medium" title="Stop Application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=sandbox%20terminal">Stop Application</a>
         <p class="afterbutton">Explore and update the code as per your requirement.</p>
-        <a class="button is-dark is-medium" title="Explore Code" href="didact://?commandId=extension.openFile&text=BankLoanApp%7Copen-file%7C${CHE_PROJECTS_ROOT}/bank-loan/templates/input.html">Explore Code</a>
+        <a class="button is-dark is-medium" title="Explore Code" href="didact://?commandId=extension.openFile&text=BankLoanApp%7Copen-file%7C${CHE_PROJECTS_ROOT}/bank-loan/bankloan/templates/input.html">Explore Code</a>
         <p class="afterbutton ">Re-launch the application to view the changes made.</p>
-        <a class="button is-dark is-medium" title="Re-Launch Application" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Crestart-app%7Csandbox%20terminal|python3.8%20app.py">Re-Launch Application</a>
+        <a class="button is-dark is-medium" title="Re-Launch Application" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Crestart-app%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan/;python3.8%20app.py">Re-Launch Application</a>
         <p style="margin-top:10px;">Click on Clean up to delete the IBM Cloud services that were created. Make sure to stop the application first!
         </p>
         <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cclean-up%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan/script;chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean Up</a>

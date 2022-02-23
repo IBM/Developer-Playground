@@ -182,7 +182,7 @@
   }
   .header
   {
-    background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/video_insights.jpeg');
+    background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/video_insights.jpeg');
     background-position: right;
     width: 95%;
     min-height: 70px;
@@ -269,21 +269,6 @@
   a:visited {
   color: #BE95FF;
   }
-  summary{
-    float:left;
-  }
-  details > summary {
-    list-style-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/arrow-right.svg");
-    direction:rtl;
-  }
-  .dropdown-icon{
-    position:relative;
-    left:50px; 
-    top:4px;
-  }
-  details[open] > summary {
-      list-style-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/arrow-down.svg");
-  }
 }
 </style>
 </head>
@@ -356,25 +341,32 @@
       <div class="container right">
          <div class="content">
             <p>Clone the GitHub repository.</p>
-            <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Cget-code%7Csandbox%20terminal%7Cgit%20clone%20-b%20video-insights%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground.git%20${CHE_PROJECTS_ROOT}/video-analysis%20%26%26%20cd%20video-analysis%2F%20%26%26%20pip3.8%20install%20-r%20requirements.txt" >Get Code</a>
+            <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Cget-code%7Csandbox%20terminal%7Cgit%20clone%20-b%20video-insights%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground.git%20${CHE_PROJECTS_ROOT}/video-analysis" >Get Code</a>
          </div>
       </div>
       <div class="container right">
+        <div class="content">
+           <p>Install required dependencies.
+           </p>
+           <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Cbuild%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/video-analysis%20%26%26%20pip3.8%20install%20-r%20requirements.txt">Install Dependencies</a>
+        </div>
+     </div>
+      <div class="container right">
          <div class="content">
             <p>Log in to your IBM Cloud account.</p>
-            <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Clogin-ibm-cloud%7Csandbox%20terminal%7Ccd%20${CHE_PROJECTS_ROOT}/video-analysis%20%26%26%20chmod%20%2Bx%20.%2Flogin.sh%20%26%26%20.%2Flogin.sh">Login to IBM Cloud</a>
+            <a class="button is-dark is-medium" title="Login to IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Clogin-ibm-cloud%7Csandbox%20terminal%7Ccd%20${CHE_PROJECTS_ROOT}/video-analysis/video-insights%20%26%26%20chmod%20%2Bx%20.%2Flogin.sh%20%26%26%20.%2Flogin.sh">Login to IBM Cloud</a>
       </div>
       </div>
       <div class="container right">
          <div class="content">
             <p>Create services on IBM Cloud.</p>
-            <a class="button is-dark is-medium" title="Create IBM Watson Services" href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Ccreate-ibm-watson-service%7Csandbox%20terminal%7Ccd%20${CHE_PROJECTS_ROOT}/video-analysis%20%26%26%20chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh" >Create  Services</a>
+            <a class="button is-dark is-medium" title="Create IBM Watson Services" href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Ccreate-ibm-watson-service%7Csandbox%20terminal%7Ccd%20${CHE_PROJECTS_ROOT}/video-analysis/video-insights%20%26%26%20chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh" >Create  Services</a>
          </div>
       </div>
       <div class="container right">
          <div class="content">
             <p>Launch the application in the preview window.</p>
-            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Claunch-application%7Csandbox%20terminal%7Cpython3.8%20app.py">Launch Application</a>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Claunch-application%7Csandbox%20terminal%7Ccd%20${CHE_PROJECTS_ROOT}/video-analysis/video-insights%20%26%26%20python3.8%20app.py">Launch Application</a>
          </div>
       </div>
    </div>
@@ -382,10 +374,14 @@
      <div class="content" style="padding:30px;padding-left:60px;margin-right:80px;padding-bottom:0px;">
          <p>To edit or explore the application, make sure to stop it first.</p>
          <a class="button is-dark is-medium" title="stop application" href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=sandbox%20terminal">Stop Application</a>
+         <p class="afterbutton">Explore and update the code as per your requirement.</p>
+         <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=VideoAnalysis%7Copen-file%7C${CHE_PROJECTS_ROOT}/video-analysis/video-insights/app.py">Explore Code</a>
+         <p class="afterbutton ">Re-launch the application to view the changes made.</p>
+         <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Cre-launch%7Csandbox%20terminal%7Ccd%20${CHE_PROJECTS_ROOT}/video-analysis/video-insights%20%26%26%20python3.8%20app.py">Re-Launch Application</a>
          <p style="margin-top:10px;">
             Click on <bold>Clean up</bold> to delete the IBM Cloud services that were created.
          </p>
-         <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Cdelete-services%7Csandbox%20terminal%7Ccd%20${CHE_PROJECTS_ROOT}/video-analysis%20%26%26%20chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean Up</a>
+         <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Cdelete-services%7Csandbox%20terminal%7Ccd%20${CHE_PROJECTS_ROOT}/video-analysis/video-insights%20%26%26%20chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean Up</a>
          <p style="margin-top:10px;">You can also manage the services in <a href="https://cloud.ibm.com/resources">IBM Cloud Dashboard</a>.</p>
       </div>
       <div class="image-div">

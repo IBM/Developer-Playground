@@ -13,6 +13,13 @@
   body {
     font-family: Helvetica, sans-serif;
   }
+  a:hover{
+      color: #A6C8FF;
+      text-decoration: underline;
+  }
+  a:visited{
+      color: #BE95FF;
+  }
   /* The actual timeline (the vertical ruler) */
   .timeline {
     position: relative;
@@ -34,7 +41,7 @@
     width: 1px;
     background-color: white;
     top: 15px;
-    bottom: 80px;
+    bottom: 90px;
     left: 18px;
     margin-left: -2px;
   }
@@ -114,6 +121,52 @@
     border-color: white;
     color: #fff;
     text-decoration: none;
+  }
+  input {
+    position: absolute;
+    display: none;
+    color: #fff !important;
+  }
+  .step2,.step3,.step4{
+    cursor:not-allowed;
+  }
+  #icon{
+    display:none;
+  }
+  .step2 a,.step3 a,.step4 a{
+    opacity:0.5;
+    pointer-events:none;
+  }
+  input:checked ~  a.button.is-dark.is-medium{
+    background-color: #2a67f5;
+  }
+  input:checked ~ a span #icon{
+    display:block;
+  }
+  .step1 input:checked ~ .step2 a#step2{
+    opacity:1;
+    pointer-events:auto;
+  }
+  .step1 input:checked ~ .step2 a#step2{
+    opacity:1;
+    pointer-events:auto;
+  }
+  .step1 input:checked ~ .step2{
+    cursor:auto;
+  }
+  .step2 input:checked ~ .step3 a#step3{
+    opacity:1;
+    pointer-events:auto;
+  }
+  .step2 input:checked ~ .step3{
+    cursor:auto;
+  }
+  .step3 input:checked ~ .step4 a#step4{
+   opacity:1;
+   pointer-events:auto;
+  }
+  .step3 input:checked ~ .step4{
+    cursor:auto;
   }
   .footer {
     display: flex;
@@ -264,13 +317,6 @@
     margin-top: 5px;
     margin-bottom:-50px;
   }
-  a:hover{
-      color: #A6C8FF;
-      text-decoration: underline;
-  }
-  a:visited{
-      color: #BE95FF;
-  }
 </style>
 </head>
 <body>
@@ -305,7 +351,7 @@
     <div class="content-">
     <ol>
     <li><p>IBM Account - <a href="https://ibm.com/registration?cm_sp=ibmdev--developer-sandbox--cloudreg">Create</a> one for free.</p></li>
-    <li>Obtain API credentials </li>
+    <li>Obtain API credentials </li>
     <ul>
     <li><a href="https://www.ibm.com/account/reg/us-en/signup?formid=urx-51009">Subscribe</a> to the Anomaly Detection API.</li>
     <li>Check out <a href="https://developer.ibm.com/profile/myapis"> API Subscriptions</a>.</li>
@@ -320,31 +366,66 @@
    <p style="margin-bottom:10px;">Please follow all the below steps in proper sequence.</p>
    </div>
    <div class="timeline">
-      <div class="container right" style="margin-top:0px;padding-top:0px;">
-         <div class="content">
+      <div class="container right content step1" style="margin-top:0px;padding-top:0px;">
             <p>Clone the GitHub repository.</p>
-            <a class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=AnomalyDetection%7Cclone%7Canomaly|git%20clone%20-b%20anomaly%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/anomaly">Get Code</a>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>Install required dependencies for executing application.
-            </p>
-            <a class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=AnomalyDetection%7Cbuild%7Canomaly|cd%20${CHE_PROJECTS_ROOT}/anomaly%20%26%26%20npm%20install%20--production">Install Dependencies</a>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>Configure the application. See prerequisites.</p>
-            </p>
-            <a class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=AnomalyDetection%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/anomaly/.env">Configure Application</a>
-         </div>
-      </div>
-      <div class="container right">
-         <div class="content">
-            <p>Launch the application in the preview window.</p>
-            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=AnomalyDetection%7Claunch%7Canomaly|cd%20${CHE_PROJECTS_ROOT}/anomaly/%20%26%26%20npm%20run%20server">Launch Application</a>
-         </div>
+            <input type="checkbox"><a id="step1" class="button is-dark is-medium" title="Get the Code" href="didact://?commandId=extension.sendToTerminal&text=AnomalyDetection%7Cclone%7Canomaly|git%20clone%20-b%20anomaly%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/anomaly" target="_blank"><span>Get Code <svg style="float:right;position:absolute;right:3px;bottom:30%;" fill="white" id="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32">
+                                                <defs>
+                                                  <style>
+                                                    .cls-1 {
+                                                      fill: none;
+                                                    }
+                                                  </style>
+                                                </defs>
+                                                <polygon points="14 21.414 9 16.413 10.413 15 14 18.586 21.585 11 23 12.415 14 21.414"/>
+                                                <path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,26A12,12,0,1,1,28,16,12,12,0,0,1,16,28Z"/>
+                                                <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="32" height="32"/>
+                                              </svg>
+                            </span></a>
+        <div class="container right content step2" style="margin-left:-10px;">
+                <p>Install required dependencies for executing application.</p>
+                <input type="checkbox"><a id="step2" class="button is-dark is-medium" title="Build the Application" href="didact://?commandId=extension.sendToTerminal&text=AnomalyDetection%7Cbuild%7Canomaly|cd%20${CHE_PROJECTS_ROOT}/anomaly%20%26%26%20npm%20install%20--production" target="_blank"><span>Install Dependencies <svg style="float:right;position:absolute;right:3px;bottom:30%;" fill="white" id="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32">
+                                                <defs>
+                                                  <style>
+                                                    .cls-1 {
+                                                      fill: none;
+                                                    }
+                                                  </style>
+                                                </defs>
+                                                <polygon points="14 21.414 9 16.413 10.413 15 14 18.586 21.585 11 23 12.415 14 21.414"/>
+                                                <path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,26A12,12,0,1,1,28,16,12,12,0,0,1,16,28Z"/>
+                                                <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="32" height="32"/>
+                                              </svg></span></a>
+            <div class="container right content step3" style="margin-left:-10px;">
+                    <p>Configure the application. See prerequisites.</p>
+                    <input type="checkbox"><a id="step3" class="button is-dark is-medium" title="Open the File" href="didact://?commandId=extension.openFile&text=AnomalyDetection%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/anomaly/.env" target="_blank"><span>Configure Application <svg style="float:right;position:absolute;right:3px;bottom:30%;"fill="white" id="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32">
+                                                <defs>
+                                                  <style>
+                                                    .cls-1 {
+                                                      fill: none;
+                                                    }
+                                                  </style>
+                                                </defs>
+                                                <polygon points="14 21.414 9 16.413 10.413 15 14 18.586 21.585 11 23 12.415 14 21.414"/>
+                                                <path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,26A12,12,0,1,1,28,16,12,12,0,0,1,16,28Z"/>
+                                                <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="32" height="32"/>
+                                              </svg></span></a>
+                <div class="container right content step4" style="margin-left:-10px;">
+                        <p style="width:200%">Launch the application in the preview window.</p>
+                        <input type="checkbox"><a id="step4" class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=AnomalyDetection%7Claunch%7Canomaly|cd%20${CHE_PROJECTS_ROOT}/anomaly/%20%26%26%20npm%20run%20server" target="_blank"><span>Launch Application <svg style="float:right;position:absolute;right:3px;bottom:30%;" fill="white" id="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32">
+                                                <defs>
+                                                  <style>
+                                                    .cls-1 {
+                                                      fill: none;
+                                                    }
+                                                  </style>
+                                                </defs>
+                                                <polygon points="14 21.414 9 16.413 10.413 15 14 18.586 21.585 11 23 12.415 14 21.414"/>
+                                                <path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,26A12,12,0,1,1,28,16,12,12,0,0,1,16,28Z"/>
+                                                <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="32" height="32"/>
+                                              </svg></span></a>
+                </div>
+            </div>
+        </div>
       </div>
    </div>
    <div class="footer" style="margin-left:30px;">

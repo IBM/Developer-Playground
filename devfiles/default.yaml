@@ -16,7 +16,7 @@ components:
     type: chePlugin
     preferences:
       didact.disableNotifications: true
-      didact.openDefaultTutorialAtStartup: false
+      didact.openDefaultTutorialAtStartup: true
   - id: ibm-playground/api-hub/latest
     type: chePlugin
   - id: eclipse/che-theia/latest

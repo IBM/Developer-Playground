@@ -41,8 +41,8 @@
     .content {
       color: white;
       background: transparent;
-      margin-top: -1rem;
-      margin-left: -0.1rem;
+      margin-top: -2.22rem;
+      margin-left: -1.5rem;
     }
     .timeline:not(.step4):before {
       content: '';

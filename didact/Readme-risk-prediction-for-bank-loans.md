@@ -350,7 +350,7 @@
    <div class="container right">
          <div class="content">
             <p>Clone the GitHub repository.</p>
-          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cget-code%7Csandbox%20terminal|git%20clone%20-b%20bank-loan%20https://github.com/IBM/Developer-Playground.git ${CHE_PROJECTS_ROOT}/bank-loan/ && cd ${CHE_PROJECTS_ROOT}/bank-loan/bankloan">Get Code</a>
+          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cget-code%7Csandbox%20terminal|git%20clone%20-b%20bank-loan%20https://github.com/nupurnegi/Developer-Playground.git ${CHE_PROJECTS_ROOT}/bank-loan/ && cd ${CHE_PROJECTS_ROOT}/bank-loan/bankloan">Get Code</a>
          </div>
       </div>
      <div class="container right">

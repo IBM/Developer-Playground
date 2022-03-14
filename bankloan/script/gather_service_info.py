@@ -81,7 +81,7 @@ def previous_instance(service,data):
                         choice=input("Do you want to delete more instances?(Y/N) ")
                         if(choice=='y' or choice=='Y'): #if user wants to delete more instances 
                             terminal_menu = TerminalMenu(options,title = "\nSelect "+service+" instance to delete\n", menu_cursor_style = ("fg_cyan", "bold"), menu_highlight_style =("bold",))
-                            menu2_entry_index = terminal_menu.show()+1 
+                            menu2_entry_index = terminal_menu.show()
                             choice=0
                 if(len(service_info)==0):
                     return 0 # if users one by one deleted all sandbox instances 
@@ -101,7 +101,7 @@ def previous_instance(service,data):
         elif(menu1_entry_index==1): #if user wants to reuse a previous sandbox created instance
             # print(service_info)
             terminal_menu = TerminalMenu(options,title = "\nSelect "+service+" instance to reuse\n", menu_cursor_style = ("fg_cyan", "bold"), menu_highlight_style =("bold",))
-            menu_entry_index = terminal_menu.show()+1
+            menu_entry_index = terminal_menu.show()
             # print(menu_entry_index)
             # print(service_info[1])
             result = service_info[menu_entry_index]

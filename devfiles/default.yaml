@@ -11,12 +11,12 @@ components:
     memoryLimit: 2Gi
     type: dockerimage
     alias: sandbox
-    image: 'quay.io/devplayground/developer-container-utilities-nodejs:latest'
+    image: 'quay.io/devplayground/developer-container-utilities:latest'
   - id: redhat/vscode-didact/latest
     type: chePlugin
     preferences:
       didact.disableNotifications: true
-      didact.openDefaultTutorialAtStartup: false
+      didact.openDefaultTutorialAtStartup: true
   - id: ibm-playground/api-hub/latest
     type: chePlugin
   - id: eclipse/che-theia/latest

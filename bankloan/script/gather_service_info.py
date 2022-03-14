@@ -43,7 +43,7 @@ def existing_instance(service):
     if(menu_entry_index != len(data)):
         return service_info[menu_entry_index]
     else:
-       return 1
+       raise Exception("Service creation stopped.")
 ###function to handle previously sandbox created instances
 def previous_instance(service,data):
     previousName="idts_"+service+"_workspace"
@@ -139,11 +139,13 @@ if(len(data)!=0):#if there are existing instances
                         raise Exception("Service creation stopped.")
                     else:
                         choice=0
-                dotenv.set_key("../.env",service.upper()+"_NAME",result[1])
-                dotenv.set_key("../.env",service.upper()+"_LOC",result[0])
-                data = os.popen("ibmcloud resource service-instance "+result[1]+" --id").read()
-                dotenv.set_key("../.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
-                dotenv.set_key("../.env",service.upper()+"_UPDATED","False")
+                else:
+                    result=existing_instance(service)
+                    dotenv.set_key("../.env",service.upper()+"_NAME",result["name"])
+                    dotenv.set_key("../.env",service.upper()+"_LOC",result["region"])
+                    data = os.popen("ibmcloud resource service-instance "+result["name"]+" --id").read()
+                    dotenv.set_key("../.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
+                    dotenv.set_key("../.env",service.upper()+"_UPDATED","False")
         else:
             print("### Created new instance for IBM "+service+" ####")
             dotenv.set_key("../.env",service.upper()+"_NAME",servicename)

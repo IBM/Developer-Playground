@@ -37,13 +37,13 @@ def existing_instance(service):
             "crn": data[i]["id"],
             "region": data[i]["region_id"]
         }
-    options.append("exit")
+    # options.append("exit")
     terminal_menu = TerminalMenu(options,title = "\nSelect "+service+" instance to reuse\n", menu_cursor_style = ("fg_cyan", "bold"), menu_highlight_style =("bold",))
     menu_entry_index = terminal_menu.show()
     if(menu_entry_index != len(data)):
         return service_info[menu_entry_index]
-    else:
-       raise Exception("Service creation stopped.")
+    # else:
+    #    raise Exception("Service creation stopped.")
 ###function to handle previously sandbox created instances
 def previous_instance(service,data):
     previousName="idts_"+service+"_workspace"
@@ -67,9 +67,10 @@ def previous_instance(service,data):
             # if(len(service_info)>1):
             #     options.append("Delete All")
             terminal_menu = TerminalMenu(options,title = "\nSelect "+service+" instance to delete\n", menu_cursor_style = ("fg_cyan", "bold"), menu_highlight_style =("bold",))
-            menu2_entry_index = terminal_menu.show()+1
+            menu2_entry_index = terminal_menu.show()
             if(menu2_entry_index <= len(options)): #delete single instance
                 choice=0
+                print(menu2_entry_index)
                 while (choice!="n" and choice!="N"): #if the user wants to delete more be in the while loop
                     # print(service_info[menu_entry_index]["crn"])
                     delete_instance(service_info[menu2_entry_index]["crn"],service_info[menu2_entry_index]["name"])
@@ -113,7 +114,38 @@ def previous_instance(service,data):
         elif(menu1_entry_index==2): #if user wants to create new instance
             return 2
     return 0 # no previous instances 
-
+def creation_check(service, servicename, region, plan):
+    data = os.popen("ibmcloud resource service-instance-create "+servicename+" "+service+" "+plan+" "+region).read()
+    if(data.find("OK")==-1):
+        data = json.loads(os.popen("ibmcloud resource service-instances --service-name "+service+" --output json").read())
+        # print(os.popen("ibmcloud resource service-instances --service-name "+service).read())
+        result = [data[0]["region_id"],data[0]["name"].replace(" ", "%20")]
+        choice = 0
+        while (choice!="y" and choice!="Y" and choice!="n" and choice!="N"):
+            print("Creating "+service+" Service Failed as you already have an instance.")
+            choice = input("Do you want to use existing IBM "+service+" instance?(Y/N) ")
+            if(choice=="n" or choice=="N"):
+                confirm_choice = input("Are you sure? You won't be able to use the application if you proceed.(Y/N) ")
+                if(confirm_choice=="y" or confirm_choice=="Y"):
+                    raise Exception("Service creation stopped.")
+                else:
+                    choice=0
+            else:
+                result = {}
+                result=existing_instance(service)
+                dotenv.set_key("../.env",service.upper()+"_NAME",result["name"])
+                dotenv.set_key("../.env",service.upper()+"_LOC",result["region"])
+                data = os.popen("ibmcloud resource service-instance "+result["name"]+" --id").read()
+                dotenv.set_key("../.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
+                dotenv.set_key("../.env",service.upper()+"_UPDATED","False")
+    else:
+        print("### Created new instance for IBM "+service+" ####")
+        print(data)
+        dotenv.set_key("../.env",service.upper()+"_NAME",servicename)
+        dotenv.set_key("../.env",service.upper()+"_LOC",region)
+        data = os.popen("ibmcloud resource service-instance "+servicename+" --id").read()
+        dotenv.set_key("../.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
+        dotenv.set_key("../.env",service.upper()+"_UPDATED","True")
 ###start###        
 service = sys.argv[1]
 servicename=sys.argv[2]
@@ -123,36 +155,24 @@ plan = sys.argv[4]
 data = json.loads(os.popen("ibmcloud resource service-instances --service-name "+service+" --output json").read())
 if(len(data)!=0):#if there are existing instances
     previous_state=previous_instance(service,data) # 0 => no previous instance # 1 => done setting the instance # 2 => create new instance if possible
-    if(previous_state==0 or previous_state==2):
-        data = os.popen("ibmcloud resource service-instance-create "+servicename+" "+service+" "+plan+" "+region).read()
-        if(data.find("OK")==-1):
-            data = json.loads(os.popen("ibmcloud resource service-instances --service-name "+service+" --output json").read())
-            print(os.popen("ibmcloud resource service-instances --service-name "+service).read())
-            result = [data[0]["region_id"],data[0]["name"].replace(" ", "%20")]
-            choice = 0
-            while (choice!="y" and choice!="Y" and choice!="n" and choice!="N") :
-                print("Creating "+service+" Service Failed as you already have an instance.")
-                choice = input("Do you want to use existing instance?(Y/N) ")
-                if(choice=="n" or choice=="N"):
-                    confirm_choice = input("Are you sure? You won't be able to use the application if you proceed.(Y/N) ")
-                    if(confirm_choice=="y" or confirm_choice=="Y"):
-                        raise Exception("Service creation stopped.")
-                    else:
-                        choice=0
-                else:
-                    result=existing_instance(service)
-                    dotenv.set_key("../.env",service.upper()+"_NAME",result["name"])
-                    dotenv.set_key("../.env",service.upper()+"_LOC",result["region"])
-                    data = os.popen("ibmcloud resource service-instance "+result["name"]+" --id").read()
-                    dotenv.set_key("../.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
-                    dotenv.set_key("../.env",service.upper()+"_UPDATED","False")
+    # result = {}
+    # result=existing_instance(service)
+    if(previous_state!=1):
+        data = json.loads(os.popen("ibmcloud resource service-instances --service-name "+service+" --output json").read()) #check if there are other instances in the account
+        if(len(data)!=0):
+            existingChoice = input("Do you want to use your existing IBM "+service+" instance?(Y/N) ")
+            if(existingChoice=="y" or existingChoice=="Y"):
+                result = {}
+                result=existing_instance(service)
+                dotenv.set_key("../.env",service.upper()+"_NAME",result["name"])
+                dotenv.set_key("../.env",service.upper()+"_LOC",result["region"])
+                data = os.popen("ibmcloud resource service-instance "+result["name"]+" --id").read()
+                dotenv.set_key("../.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
+                dotenv.set_key("../.env",service.upper()+"_UPDATED","False")
+            else:
+                creation_check(service, servicename, region, plan)
         else:
-            print("### Created new instance for IBM "+service+" ####")
-            dotenv.set_key("../.env",service.upper()+"_NAME",servicename)
-            dotenv.set_key("../.env",service.upper()+"_LOC",region)
-            data = os.popen("ibmcloud resource service-instance "+servicename+" --id").read()
-            dotenv.set_key("../.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
-            dotenv.set_key("../.env",service.upper()+"_UPDATED","True")
+            creation_check(service, servicename, region, plan)
 else: #there are no existing instances
     print("### Created new instance for IBM "+service+" ####")   
     data = os.popen("ibmcloud resource service-instance-create "+servicename+" "+service+" "+plan+" "+region).read()

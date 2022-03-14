@@ -17,6 +17,8 @@ components:
     preferences:
       didact.disableNotifications: true
       didact.openDefaultTutorialAtStartup: true
+      didact.autoAddDefaultTutorials: false
+      didact.defaultUrl: 'https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/welcome.md'
   - id: ibm-playground/api-hub/latest
     type: chePlugin
   - id: eclipse/che-theia/latest

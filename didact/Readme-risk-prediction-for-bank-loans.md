@@ -269,7 +269,7 @@
     direction:rtl;
   }
   details[open] > summary {
-      list-style-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/arrow-down.svg");
+      list-style-image: url("https://raw.githubusercontent.com/nupurnegi/Developer-Playground/development/didact/images/arrow-down.svg");
   }
   .step{
       margin-bottom: 50px;

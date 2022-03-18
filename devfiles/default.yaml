@@ -19,7 +19,6 @@ components:
       didact.openDefaultTutorialAtStartup: true
       didact.autoAddDefaultTutorials: false
       didact.defaultUrl: 'https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/welcome.md'
-    type: chePlugin
   - id: eclipse/che-theia/latest
     memoryLimit: 4Gi
     type: cheEditor

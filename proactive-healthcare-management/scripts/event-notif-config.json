@@ -1,0 +1,25 @@
+{
+    "TopicConfigurations": [
+      {
+        "Id": "string",
+        "TopicArn": "string",
+        "Events": ["s3:ObjectCreated:*"],
+        "Filter": {
+          "Key": {
+            "FilterRules": [
+              {
+                "Name": "suffix",
+                "Value": ".csv"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "LambdaFunctionConfigurations": [
+      {
+        "Id": "string",
+        "LambdaFunctionArn": "FUNCTION_ARN"
+      }
+    ]
+  }

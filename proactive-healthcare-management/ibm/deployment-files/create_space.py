@@ -64,7 +64,7 @@ while details["resources"][0]["entity"]["status"]["state"] != "completed" and de
     details = client.import_assets.get_details(space_id=space_id)
 
 asset_details = client.repository.get_details()
-print(asset_details)
+# print(asset_details)
 for resource in asset_details["models"]["resources"] :
     if(resource["metadata"]["name"] == model_name):
         dotenv.set_key("../../../.env","MODEL_ID",resource["metadata"]["id"])

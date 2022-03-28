@@ -5,7 +5,7 @@ import dotenv
 
 
 #bring model id and deployment space name from .env file
-config = dotenv_values("../.env") 
+config = dotenv_values("../../.env") 
 deployment_space_name=config["DEPLOYMENT_SPACE_NAME"]
 apikey=config["API_KEY"]
 model_name = config["MODEL_NAME"]
@@ -28,8 +28,8 @@ client.set.default_space(space_id)
 asset_details = client.repository.get_details()
 for resource in asset_details["models"]["resources"] :
     if(resource["metadata"]["name"] == model_name):
-        dotenv.set_key("../.env","MODEL_ID",resource["metadata"]["id"])
-config = dotenv_values("../.env") 
+        dotenv.set_key("../../.env","MODEL_ID",resource["metadata"]["id"])
+config = dotenv_values("../../.env") 
 published_model_id=config["MODEL_ID"]
 #deployment of the model
 deploy_meta = {

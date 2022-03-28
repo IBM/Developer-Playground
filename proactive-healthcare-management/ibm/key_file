@@ -1,0 +1,14 @@
+{
+	"id": "ApiKey-f518baf2-9964-466f-8736-1219889a6a0e",
+	"crn": "crn:v1:bluemix:public:iam-identity::a/a1bf29c46afb41c2aea9e78642e13f0dF::apikey:ApiKey-f518baf2-9964-466f-8736-1219889a6a0e",
+	"iam_id": "IBMid-661001OAKZ",
+	"account_id": "a1bf29c46afb41c2aea9e78642e13f0d",
+	"name": "ApiKey-AwsHealthcare",
+	"description": "this is API key for AwsHealthcare",
+	"apikey": "R3mDLYTrI-OMYDVlwUlswj27iTglKBOA0m2fIpZ6Dtsc",
+	"locked": false,
+	"entity_tag": "1-250d01393cac85d5fdb3d14adb1bf41c",
+	"created_at": "2022-03-28T09:24+0000",
+	"created_by": "IBMid-661001OAKZ",
+	"modified_at": "2022-03-28T09:24+0000"
+}

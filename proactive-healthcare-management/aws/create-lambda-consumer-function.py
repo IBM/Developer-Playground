@@ -17,20 +17,20 @@ print(data)
 
 string = "const https = require('https');\nconst token = '"+data["access_token"]+"';\nconst iamToken = "+" 'Bearer '"+"+ token;\nconst scoring_url = '"+endpoint_url+"'"
 
-with open("Consumer.js",'r') as contents:
+with open("Consumer/index.js",'r') as contents:
       save = contents.read()
-with open("Consumer.js",'w') as contents:
+with open("index.js",'w') as contents:
       contents.write(string)
       contents.write(save)
 
 #os.popen("aws s3 cp ../aws/Consumer.js s3://cp4dbucket --acl private")
 with zipfile.ZipFile("Consumer.zip", mode="a") as archive:
-    archive.write("Consumer.js")
-data = json.loads(os.popen("aws lambda create-function --function-name Consumer --role "+iam_arn+" --runtime nodejs14.x --zip-file fileb://Consumer.zip --handler Consumer.js").read())
-
+    archive.write("index.js")
+data = json.loads(os.popen("aws lambda create-function --function-name Consumer --role "+iam_arn+" --runtime nodejs14.x --zip-file fileb://Consumer.zip --handler index.handler").read())
+os.popen("rm -rf index.js")
 print(data)
 function_arn = data["FunctionArn"]
-dotenv.set_key("../../.env","LAMBDA_CONSUMER_ARN",data["FunctionArn"])'''
+dotenv.set_key("../../.env","LAMBDA_CONSUMER_ARN",data["FunctionArn"])
 
 data = os.popen("aws lambda create-event-source-mapping --function-name Consumer --batch-size 100 --starting-position LATEST --event-source-arn "+kinesis_ARN).read()
 print(data)

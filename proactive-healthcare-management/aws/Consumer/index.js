@@ -117,7 +117,7 @@ exports.handler = async function(event) {
     console.log('\n\n' +'---------------------------------------------------\n'
       +'IBM Cloud Pak for Data Machine Learning Predictions \n' +'---------------------------------------------------\n');
     
-    console.table(tableView);
+    console.log(tableView);
     
     return result;
 };

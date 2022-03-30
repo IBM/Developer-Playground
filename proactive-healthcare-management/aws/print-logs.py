@@ -14,6 +14,7 @@ with open('logs.json', 'w') as f:
 with open("logs.json",'r') as contents:
       logs = contents.read()
 logs = json.loads(logs)
-
 for event in logs["events"]:
-    print(event["message"])
+    with open("logs.txt",'a') as contents:
+        contents.write(event["message"])
+    #print(event["message"])

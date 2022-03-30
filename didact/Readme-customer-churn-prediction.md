@@ -390,7 +390,7 @@
         <a class="button is-dark is-medium" title="Re-Launch Application" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Crestart-app%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;cd%20client;npm%20install;npm%20run%20build;cd%20..;npm%20start">Re-Launch Application</a>
         <p style="margin-top:10px;">Click on Clean up to delete the IBM Cloud services that were created. Make sure to stop the application first!
         </p>
-        <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cclean-up%7Csandbox%20terminal|cd%20cd%20${CHE_PROJECTS_ROOT}/churn-prediction;chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean Up</a>
+        <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cclean-up%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean Up</a>
         <p style="margin-top:10px;">You can also manage the services in
           <a href="https://cloud.ibm.com/resources">IBM Cloud Dashboard</a>
         </p>

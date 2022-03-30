@@ -340,7 +340,7 @@
      <div class="container right">
         <div class="content">
           <p>Install required dependencies for executing python scripts and the node customer churn prediction application.</p>          
-          <a class="button is-dark is-medium" title="Install Dependencies" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cinstall-requirements%7Csandbox%20terminal|cd%20churn-prediction;pip3.8%20install%20-r%20requirements.txt;npm%20install;">Install Dependencies</a>
+          <a class="button is-dark is-medium" title="Install Dependencies" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cinstall-requirements%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;pip3.8%20install%20-r%20requirements.txt;npm%20install;">Install Dependencies</a>
         </div>
       </div>
       <div class="container right">
@@ -352,7 +352,7 @@
       <div class="container right">
         <div class="content">
           <p>Create services on IBM Cloud.</p>
-          <a class="button is-dark is-medium" title="Create Services" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Ccreate-ibm-services%7Csandbox%20terminal|chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh">Create Services</a>
+          <a class="button is-dark is-medium" title="Create Services" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Ccreate-ibm-services%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh">Create Services</a>
         </div>
       </div>
       <div class="container right">
@@ -364,13 +364,13 @@
       <div class="container right">
         <div class="content">
           <p>Create a new empty deployment space. Make sure your <a href="https://dataplatform.cloud.ibm.com?cm_sp=ibmdev--developer-sandbox--cloudreg">IBM Cloud Pak for Data</a> account is active.</p>
-          <a class="button is-dark is-medium" title="Create Deployment Space" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Ccreate-deployment-space%7Csandbox%20terminal|cd%20churn-prediction;python3.8%20create_space.py">Create Deployment Space</a>
+          <a class="button is-dark is-medium" title="Create Deployment Space" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Ccreate-deployment-space%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;python3.8%20create_space.py">Create Deployment Space</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
           <p>Train and deploy the model.</p>
-           <a class="button is-dark is-medium" title="Deploy Model" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cdeploy-model%7Csandbox%20terminal|python3.8%20DeployModel/DeployMLModel.py">Deploy Model</a>
+           <a class="button is-dark is-medium" title="Deploy Model" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cdeploy-model%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;python3.8%20DeployModel/DeployMLModel.py">Deploy Model</a>
         </div>
       </div>
         <div class="container right">
@@ -390,7 +390,7 @@
         <a class="button is-dark is-medium" title="Re-Launch Application" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Crestart-app%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;cd%20client;npm%20install;npm%20run%20build;cd%20..;npm%20start">Re-Launch Application</a>
         <p style="margin-top:10px;">Click on Clean up to delete the IBM Cloud services that were created. Make sure to stop the application first!
         </p>
-        <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cclean-up%7Csandbox%20terminal|chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean Up</a>
+        <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cclean-up%7Csandbox%20terminal|cd%20cd%20${CHE_PROJECTS_ROOT}/churn-prediction;chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean Up</a>
         <p style="margin-top:10px;">You can also manage the services in
           <a href="https://cloud.ibm.com/resources">IBM Cloud Dashboard</a>
         </p>

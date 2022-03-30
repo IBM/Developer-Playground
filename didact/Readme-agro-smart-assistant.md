@@ -41,7 +41,7 @@
   /* Container around content */
   .container {
     padding: 0px 0px;
-    width: 70%;
+    width: 100%;
     align-content: left;
     margin: 0px 0px 0px 0px;
     margin-left: 25px;

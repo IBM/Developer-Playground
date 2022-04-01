@@ -90,7 +90,7 @@ ul, ol,b{
 <br/><li>Explore the Code.</li><br/>
 <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=workbench.view.explorer">Explore the Code</a><br><br>
 <p style="margin-top:10px;">Click to push code to your own Github repository. You will need a personal access token to complete this action via the CLI. Refer to this <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">guide</a> for generating your personal access token.</p>
-            <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=sandbox%20terminal$$sh%20/github.sh ">Push code to your Github repository</a>
+            <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=sandbox%20terminal$$sh%20/github.sh ">Push to Github</a>
 
 
 </ol>

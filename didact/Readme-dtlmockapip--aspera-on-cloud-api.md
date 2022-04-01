@@ -355,7 +355,7 @@
          <p class="afterbutton ">To view the changes you've made, re-launch the application</p>
          <a class="button is-dark is-medium" title="Re-Launch the Application" href="didact://?commandId=extension.sendToTerminal&text=AsperaonCloud%7Crelaunch-application%7CAsperaonCloud|cd%20${CHE_PROJECTS_ROOT}/aspera-on-cloud/AoCSampleApp%20%26%26%20npm%20start">Re-Launch the Application</a> 
           <p style="margin-top:10px;">Click to push code to your own Github repository. You will need a personal access token to complete this action via the CLI. Refer to this <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">guide</a> for generating your personal access token.</p>
-            <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=sandbox%20terminal$$sh%20/github.sh ">Push code to your Github repository</a>
+            <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=sandbox%20terminal$$sh%20/github.sh ">Push to Github</a>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more? <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a href="https://github.com/IBM/Developer-Playground/tree/aspera">Github Repository</a></span> </p>

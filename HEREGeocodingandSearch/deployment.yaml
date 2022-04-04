@@ -17,7 +17,7 @@ spec:
           image: IMAGE_NAME
           imagePullPolicy: Always
           ports:
-            - containerPort: 3000
+            - containerPort: 3100
       restartPolicy: Always
 ---
 kind: Service
@@ -27,8 +27,8 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 3000
-      targetPort: 3000
+    - port: 3100
+      targetPort: 3100
       protocol: TCP
       nodePort: 31000
   selector:

@@ -1,3 +1,4 @@
+python3.8 ${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/ibm/deployment-files/DeleteDeployment.py
 python3.8 ${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/ibm/delete_services.py
 
 # delete APIKEY using it's id to avoid incorrect APIkey deletion 

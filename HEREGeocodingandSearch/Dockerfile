@@ -4,5 +4,7 @@ COPY package.json .
 COPY package-lock.json .
 RUN npm install
 COPY . .
-EXPOSE 3000
-CMD [ "npm", "start" ]
+RUN node token.js
+CMD ["node", "server.js"]
+
+EXPOSE 3100

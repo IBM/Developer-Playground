@@ -32,7 +32,7 @@ print(data)
 function_arn = data["FunctionArn"]
 dotenv.set_key("../../.env","LAMBDA_CONSUMER_ARN",data["FunctionArn"])
 
-data = os.popen("aws lambda create-event-source-mapping --function-name Consumer --enabled --batch-size 100 --starting-position LATEST --event-source-arn "+kinesis_ARN).read()
+data = json.loads(os.popen("aws lambda create-event-source-mapping --function-name Consumer --enabled --batch-size 100 --starting-position LATEST --event-source-arn "+kinesis_ARN).read())
 print(data)
-
+dotenv.set_key("../../.env","TRIGGER_UUID",data["UUID"])
 

@@ -3,7 +3,7 @@ from dotenv import dotenv_values
 
 
 config = dotenv_values("../../.env") 
-UUID = config["UUID"]
+UUID = config["TRIGGER_UUID"]
 
 
 os.popen("aws lambda delete-event-source-mapping --uuid " +UUID)

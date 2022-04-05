@@ -2,6 +2,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .header{
+            background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/anomaly.jpeg');
+        }
+    </style>
 </head>
 <body>
     <div style="margin-top:2rem"></div>

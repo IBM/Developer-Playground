@@ -1,0 +1,35 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: bank-loan-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bank-loan-deployment
+  template:
+    metadata:
+      labels:
+        app: bank-loan-deployment
+    spec:
+      containers:
+        - name: bank-loan-deployment
+          image: IMAGE_NAME
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+      restartPolicy: Always
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: bank-loan-deployment
+spec:
+  type: NodePort
+  ports:
+    - port: 5000
+      targetPort: 5000
+      protocol: TCP
+      nodePort: 31000
+  selector:
+    app: bank-loan-deployment

@@ -1,0 +1,35 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: here-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: here-deployment
+  template:
+    metadata:
+      labels:
+        app: here-deployment
+    spec:
+      containers:
+        - name: here-deployment
+          image: IMAGE_NAME
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+      restartPolicy: Always
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: here-deployment
+spec:
+  type: NodePort
+  ports:
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
+      nodePort: 31000
+  selector:
+    app: here-deployment

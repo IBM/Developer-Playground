@@ -4,22 +4,22 @@ import axios from 'axios';
 import './churnForm.scss';
 import App from './App';
 const initialUserState = {
-  tenure: '',
+  tenure: '12',
   invalidTenure: false,
   tenureError: '',
-  security: '',
-  support: '',
-  contract: '',
-  dependents: '',
-  phone: '',
-  internet: '',
-  payment: '',
-  backup: '',
-  charges: '',
+  security: '1',
+  support: '0',
+  contract: '3',
+  dependents: '1',
+  phone: '1',
+  internet: '1',
+  payment: '4',
+  backup: '1',
+  charges: '25',
   invalidCharges: false,
   chargesError: '',
-  protection: '',
-  paperless: '',
+  protection: '0',
+  paperless: '1',
   isSubmitted: 'no',
   ChrunPred: ''
 }
@@ -296,18 +296,15 @@ class ChurnForm extends Component {
                       <Column style={{ marginLeft: '40px', marginTop: '28px' }}>
                         <FormGroup legendText="Customer registered for network security?" onChange={this.onChangeSecurity} value={this.state.security} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
-                            // defaultSelected="No"
-                            // legend="Group Legend"
-                            // name="radio-button-group"
                             labelPosition='right'
                             orientation='horizontal'
-                          // className="radio-button-group-horizontal-"
+                            valueSelected="1"
                           >
                             <RadioButton
                               id="security_1"
                               labelText="Yes"
-                              value="1"
                               name='security'
+                              value="1"
                             />
                             <RadioButton
                               id="security_0"
@@ -321,10 +318,7 @@ class ChurnForm extends Component {
                       <Column sm={3} md={2} lg={3} style={{ marginLeft: '40px', marginTop: '28px' }}>
                         <FormGroup legendText="Customer signed up for technical support?" onChange={this.onChangeSupport} value={this.state.support} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
-                            // className="radio-button-group-horizontal-"
-                            // defaultSelected="No"
-                            // legend="Group Legend"
-                            // name="radio-button-group"
+                            valueSelected="0"
                             labelPosition='right'
                             orientation='horizontal'
                           >
@@ -346,11 +340,7 @@ class ChurnForm extends Component {
                       <Column sm={3} md={3} lg={4} style={{ marginLeft: '40px', marginTop: '28px' }}>
                         <FormGroup legendText="Customer registered for phone service?" onChange={this.onChangePhone} value={this.state.phone} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
-                            // defaultSelected="No"
-                            // legend="Group Legend"
-                            // name="radio-button-group"
-                            // valueSelected='No'
-                            // className="radio-button-group-horizontal-"
+                            valueSelected="1"
                             labelPosition='right'
                             orientation='horizontal'
                           >
@@ -359,7 +349,6 @@ class ChurnForm extends Component {
                               labelText="Yes"
                               value="1"
                               name='phone'
-
                             />
                             <RadioButton
                               id="phone-0"
@@ -375,10 +364,7 @@ class ChurnForm extends Component {
                       <Column style={{ marginLeft: '40px', marginTop: '10px' }}>
                         <FormGroup legendText="Customer has dependents?(eg. child, minor brother/sister, parents)" onChange={this.onChangeDependents} value={this.state.dependents} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
-                            // defaultSelected="No"
-                            // legend="Group Legend"
-                            // name="radio-button-group"
-                            // className="radio-button-group-horizontal-"
+                            valueSelected="1"
                             labelPosition='right'
                             orientation='horizontal'
                           >
@@ -400,10 +386,7 @@ class ChurnForm extends Component {
                       <Column sm={3} md={2} lg={3} style={{ marginLeft: '40px', marginTop: '10px' }}>
                         <FormGroup legendText="Customer registered for device protection?" onChange={this.onChangeProtection} value={this.state.protection} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
-                            // defaultSelected="No"
-                            // legend="Group Legend"
-                            // name="radio-button-group"
-                            // className="radio-button-group-horizontal-"
+                            valueSelected="0"
                             labelPosition='right'
                             orientation='horizontal'
                           >
@@ -412,7 +395,6 @@ class ChurnForm extends Component {
                               labelText="Yes"
                               value="1"
                               name='protection'
-
                             />
                             <RadioButton
                               id="protection-0"
@@ -426,11 +408,7 @@ class ChurnForm extends Component {
                       <Column sm={3} md={3} lg={4} style={{ marginLeft: '40px', marginTop: '10px' }}>
                         <FormGroup legendText="Customer receives electronic bills?" onChange={this.onChangePaperless} value={this.state.paperless} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
-                            // defaultSelected="No"
-                            // legend="Group Legend"
-                            // name="radio-button-group"
-                            // valueSelected='No'
-                            // className="radio-button-group-horizontal-"
+                            valueSelected="1"
                             labelPosition='right'
                             orientation='horizontal'
                           >
@@ -439,7 +417,6 @@ class ChurnForm extends Component {
                               labelText="Yes"
                               value="1"
                               name='paperless'
-
                             />
                             <RadioButton
                               id="paperless-0"
@@ -456,11 +433,7 @@ class ChurnForm extends Component {
                       <Column style={{ marginLeft: '40px', marginTop: '10px' }}>
                         <FormGroup legendText="Customer takes online backup?" onChange={this.onChangeBackup} value={this.state.backup} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
-                            // defaultSelected="No"
-                            // // legend="Group Legend"
-                            // name="radio-button-group"
-                            // valueSelected='No'
-                            // className="radio-button-group-horizontal-"
+                            valueSelected="1"
                             labelPosition='right'
                             orientation='horizontal'
                           >
@@ -469,7 +442,6 @@ class ChurnForm extends Component {
                               labelText="Yes"
                               value="1"
                               name='backup'
-
                             />
                             <RadioButton
                               id="backup-0"
@@ -486,10 +458,7 @@ class ChurnForm extends Component {
                       <Column style={{ marginLeft: '40px', marginTop: '10px' }}>
                         <FormGroup legendText="Customer registered for internet services?" onChange={this.onChangeInternet} value={this.state.internet} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
-                            // defaultSelected="No"
-                            // legend="Group Legend"
-                            // name="radio-button-group"
-                            // className="radio-button-group-horizontal-"
+                            valueSelected="1"
                             labelPosition='right'
                             orientation='horizontal'
                           >
@@ -498,7 +467,6 @@ class ChurnForm extends Component {
                               labelText="DSL"
                               value="1"
                               name='internet'
-
                             />
                             <RadioButton
                               id="internet-2"
@@ -518,10 +486,7 @@ class ChurnForm extends Component {
                       <Column sm={3} md={4} lg={4} style={{ marginLeft: '40px', marginTop: '10px' }}>
                         <FormGroup legendText="Customer signed the telecommunications contract?" onChange={this.onChangeContract} value={this.state.contract} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
-                            // defaultSelected="No"
-                            // legend="Group Legend"
-                            // name="radio-button-group"
-                            // className="radio-button-group-horizontal-"
+                            valueSelected="3"
                             labelPosition='right'
                             orientation='horizontal'
                           >
@@ -551,17 +516,13 @@ class ChurnForm extends Component {
                       <Column style={{ marginLeft: '40px', marginTop: '12px' }}>
                         <FormGroup legendText="Mode of payment used by the customer:" onChange={this.onChangePayment} value={this.state.payment} style={{ textAlign: 'left' }}>
                           <RadioButtonGroup
-                          // defaultSelected="No"
-                          // legend="Group Legend"
-                          // name="radio-button-group"
-                          // className="radio-button-group-horizontal-"
+                           valueSelected="4"
                           >
                             <RadioButton
                               id="payment-1"
                               labelText="Credit Card"
                               value="1"
                               name='payment'
-
                             />
                             <RadioButton
                               id="payment-2"

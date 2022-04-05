@@ -307,10 +307,10 @@ if space_id is None:
     print("WARNING: Your space does not exist. Create a deployment space before proceeding to the next cell.")
     #space_id = client.spaces.store(meta_props={client.spaces.ConfigurationMetaNames.NAME: space_name})["metadata"]["guid"]
 client.set.default_space(space_id)
-sofware_spec_uid = client.software_specifications.get_id_by_name('default_py3.7_opence')
+sofware_spec_uid = client.software_specifications.get_id_by_name('runtime-22.1-py3.9')
 metadata = {
             client.repository.ModelMetaNames.NAME: 'Churn Prediction',
-            client.repository.ModelMetaNames.TYPE: 'scikit-learn_0.23',
+            client.repository.ModelMetaNames.TYPE: 'scikit-learn_1.0',
             client.repository.ModelMetaNames.SOFTWARE_SPEC_UID: sofware_spec_uid
 }
 published_model = client.repository.store_model(model=model, meta_props=metadata, training_data=X_train, training_target=y_train)

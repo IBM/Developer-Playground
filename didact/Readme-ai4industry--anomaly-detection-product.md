@@ -1,12 +1,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css" />
-    <style>
-        .header{
-             background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/anomaly.jpeg');
-        }
-    </style>
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/style.css">
 </head>
 <body>
     <div style="margin-top:2rem"></div>
@@ -228,5 +223,5 @@
             </div>
         </div>
 </body>
-<script src="progressive.js"></script>
+<script src="https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/progressive.js"></script>
 </html>

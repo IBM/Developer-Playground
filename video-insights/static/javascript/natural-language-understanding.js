@@ -15,7 +15,7 @@ const categoryHere = document.getElementById('categoryHere');
 const conceptHere = document.getElementById('conceptHere');
 const entityHere = document.getElementById('entityHere');
 const sentimentsHere = document.getElementById('sentimentsHere');
-const positiveSentencesHere = document.getElementById('positiveSentencesHere');
+//const positiveSentencesHere = document.getElementById('positiveSentencesHere');
 const wordCloudHere = document.getElementById('wordCloudHere');
 
 const nluFeatures = () => {
@@ -29,7 +29,7 @@ const nluFeatures = () => {
         concepts: conceptsBool,
         entity: entityBool,
         sentiments: 'True',
-        positiveSentences: 'True'
+        positiveSentences: 'False'
     }
 }
 
@@ -58,7 +58,7 @@ const NluAnalysis = async (filename) => {
     conceptHere.innerHTML = "";
     entityHere.innerHTML = "";
     sentimentsHere.innerHTML = "";
-    positiveSentencesHere.innerHTML = "";
+    //positiveSentencesHere.innerHTML = "";
     wordCloudHere.innerHTML = "";
     
     const res = await fetch(url, options);
@@ -130,12 +130,12 @@ const NluAnalysis = async (filename) => {
     });
     sentimentsHere.innerHTML += `</ul>`;
 
-    positiveSentencesHere.innerHTML = `<ul>`;
+    /*positiveSentencesHere.innerHTML = `<ul>`;
     response.positiveSentences.forEach(element => {
         positiveSentencesHere.innerHTML += `<br>`;
         positiveSentencesHere.innerHTML += `<li>${element.text} <div class="bx--tag bx--tag--green"><span class="bx--tag__label">${element.score}</span> </div> </li>`;
     });
-    positiveSentencesHere.innerHTML += `</ul>`;
+    positiveSentencesHere.innerHTML += `</ul>`;*/
 
     wordCloudHere.innerHTML = `<div class="bx--col-md-3"><div class="outside"><div class="inside"><h6> Nouns & Adjectives </h6><br> <img class="center" height="256" width="256" src="${response.wordclouds[0]}"> </div></div></div>
             <div class="bx--col-md-4"><div class="outside"><div class="inside"> <h6> Verbs </h6><br><img class="center" height="256" width="256" src="${response.wordclouds[1]}"> </div></div></div>`;

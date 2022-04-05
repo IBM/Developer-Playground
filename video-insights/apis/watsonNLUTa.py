@@ -39,7 +39,7 @@ class WatsonNLUTA(Resource):
         except json.decoder.JSONDecodeError:
             print("Natural Language Understanding credentials file is empty, please enter the credentials and try again.")
 
-        try:    
+        '''try:    
             with open('toneanalyzer.json', 'r') as credentialsFile:
                 credentials2 = json.loads(credentialsFile.read())
             
@@ -56,7 +56,7 @@ class WatsonNLUTA(Resource):
             self.tone_analyzer = tone_analyzer
 
         except json.decoder.JSONDecodeError:
-            print("Tone Analyzer credentials file is empty, please enter the credentials and try again.")
+            print("Tone Analyzer credentials file is empty, please enter the credentials and try again.")'''
             
 
     def get(self):
@@ -181,7 +181,7 @@ class WatsonNLUTA(Resource):
 
             ''' Analyse tone to get top 5 positive sentences '''
 
-            if options.get('positiveSentences') == "True":
+            '''if options.get('positiveSentences') == "True":
                 tone_analysis = self.tone_analyzer.tone(
                     {'text': text},
                     content_type='application/json'
@@ -214,7 +214,7 @@ class WatsonNLUTA(Resource):
                         {"positiveSentences": [tempDict]})
                 # return sentences_with_joy[:5] ['text'] ['score']
             else:
-                pass
+                pass'''
 
             ''' Pre-Processing parts of speech to plot Word Cloud '''
             try:

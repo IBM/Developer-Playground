@@ -183,8 +183,6 @@ html,
             font-size: 16px !important;
         }
         .header {
-            background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/anomaly.jpeg');
-            background-position: right;
             width: 95%;
             min-height: 4.375rem;
             display: inline-block;

@@ -350,7 +350,7 @@
    <div class="container right">
          <div class="content">
             <p>Clone the GitHub repository.</p>
-          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cget-code%7Csandbox%20terminal|git%20clone%20-b%20bank-loan%20https://github.com/IBM/Developer-Playground.git ${CHE_PROJECTS_ROOT}/bank-loan/ && cd ${CHE_PROJECTS_ROOT}/bank-loan/bankloan">Get Code</a>
+          <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cget-code%7Csandbox%20terminal|git%20clone%20-b%20bank-loan%20https://github.com/nupurnegi/Developer-Playground.git ${CHE_PROJECTS_ROOT}/bank-loan/ && cd ${CHE_PROJECTS_ROOT}/bank-loan/bankloan">Get Code</a>
          </div>
       </div>
      <div class="container right">
@@ -449,6 +449,8 @@
         <p style="margin-top:10px;">You can also manage the services in
           <a href="https://cloud.ibm.com/resources">IBM Cloud Dashboard</a>
         </p> 
+        <p style="margin-top:10px;">Click to push code to your own Github repository. You will need a personal access token to complete this action via the CLI. Refer to this <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">guide</a> for generating your personal access token.</p>
+            <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=sandbox%20terminal$$sh%20/github.sh ">Push to Github</a>
       </div>
       <div class="image-div">
         <p class="image-content">Want to explore this project more?

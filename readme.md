@@ -1,4 +1,3 @@
-Instructions
 Find the detailed steps to run the application locally or deploy to IKS:
 
 Steps:

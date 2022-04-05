@@ -36,5 +36,5 @@ else:
     dotenv.set_key("./.env",service.upper()+"_CRN",data.split("\n")[-2].split(" ")[0])
     dotenv.set_key("./.env",service.upper()+"_UPDATED","True")
 print("###########################################################")        
-os.system("echo Updated "+service+" instance details successfuly")
+os.system("echo Updated "+service+" instance details successfully")
 print("###########################################################")         

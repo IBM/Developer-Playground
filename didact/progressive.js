@@ -47,10 +47,10 @@ window.onload = function () {
     function enableCTA(step) {
         let currentStep = 0
         if (isNaN(step)) {
-            if (step.path[0].tagName == "SPAN")
-                currentStep = getNodeIndex(step.path[2])
+            if (step.target.tagName == "SPAN")
+                currentStep = getNodeIndex(step.target.parentElement.parentElement)
             else
-                currentStep = getNodeIndex(step.path[1])
+                currentStep = getNodeIndex(step.target.parentElement)
             try {
                 completedCTAs.push(currentStep)
             }

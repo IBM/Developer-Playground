@@ -24,6 +24,11 @@ Steps to run the application locally or deploy to IKS:
     ```
     cd Developer-Playground;ibmcloud iam api-key-create ApiKey-SVA -d 'this is API key for Smart Virtual Assitant' --file Developer-Playground/key_file
     ``` 
+7. Create a new deployment space with the pre-loaded model. Make sure your [IBM Cloud Pak for Data](https://dataplatform.cloud.ibm.com/) account is        active in the region given in terminal.
+    ```
+    cd Developer-Playground/Agro-Smart-Assistant/deployment-files && python3 create_space.py
+    ```
+    If your model import failed, follow these [steps](error.md)
 10. Install docker(https://docs.docker.com/get-docker/) or podman(https://podman.io/getting-started/installation)
 11. Build Docker Image (docker build -t docker_username/video_insights .), To run the image locally execute (docker run -p 8080:8080 -it docker_username/video_insights)
 12. Push the image to docker registry(https://hub.docker.com or quay.io), docker login, use your creds to login, once successfully logged in, push the image to the registry(docker push docker_username/video_insights)

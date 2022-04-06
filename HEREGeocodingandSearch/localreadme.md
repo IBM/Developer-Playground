@@ -8,9 +8,9 @@
 
 6. Build Docker Image `docker build -t docker_username/here .`, To run the image locally execute `docker run -p 8080:8080 -it docker_username/here` and access the application on http://localhost:8080/
 
-7. Push the image to docker registry(https://hub.docker.com or quay.io), docker login, use your creds to login, once successfully logged in, push the image to the registry `docker push docker_username/bank-loan`
+7. Push the image to docker registry(https://hub.docker.com or quay.io), docker login, use your creds to login, once successfully logged in, push the image to the registry `docker push docker_username/here`
 
-8. Once the image is pushed to docker registry, go to deployment.yaml file, and replace IMAGE_NAME with your image i.e `docker_username/bank-loan`
+8. Once the image is pushed to docker registry, go to deployment.yaml file, and replace IMAGE_NAME with your image i.e `docker_username/here`
 
 9. To connect the cli to the IKS(IBM Kubernetes Service) follow the below steps:
 

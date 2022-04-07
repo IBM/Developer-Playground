@@ -2,9 +2,14 @@ Find the detailed steps to run the application locally or deploy to IKS:
 
 Steps:
 1. Install ibmcloud cli:  https://cloud.ibm.com/docs/cli?topic=cli-install-ibmcloud-cli
-2. Clone the repo: git clone -b video-insights https://github.com/IBM/Developer-Playground.git
-3. Go inside the repo(cd video-insights), open terminal and execute (chmod +x ./login.sh && ./login.sh)  
-4. After loging in successfully,execute (chmod +x ./create-ibm-cloud-services.sh && ./create-ibm-cloud-services.sh) which will create all the required services
+2. Clone the repo: 
+```git clone -b video-insights https://github.com/IBM/Developer-Playground.git```
+3. Go inside the repo(cd video-insights), open terminal and execute 
+    ```chmod +x ./login.sh && ./login.sh```
+
+4. After loging in successfully,execute 
+```chmod +x ./create-ibm-cloud-services.sh && ./create-ibm-cloud-services.sh)```
+ which will create all the required services
 5. Install docker(https://docs.docker.com/get-docker/) or podman(https://podman.io/getting-started/installation)
 6. Build Docker Image (docker build -t docker_username/video_insights .), To run the image locally execute (docker run -p 8080:8080 -it docker_username/video_insights)
 7. Push the image to docker registry(https://hub.docker.com or quay.io), docker login, use your creds to login, once successfully logged in, push the image to the registry(docker push docker_username/video_insights) 

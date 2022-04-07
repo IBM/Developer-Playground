@@ -72,7 +72,7 @@ ibmcloud ks cluster config --cluster CLUSTER_ID
 kubectl config current-context
 ```
 7. To deploy the application, execute the command 
-``
+```
 kubectl apply -f deployment.yaml
 ```
 8. To get the deployed IP, execute 

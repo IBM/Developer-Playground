@@ -68,7 +68,9 @@ docker_username/churn-prediction
 ibmcloud ks cluster config --cluster CLUSTER_ID
 ```
 * Set the kubectl context by executing this command 
-```kubectl config current-context```
+```
+kubectl config current-context
+```
 7. To deploy the application, execute the command 
 ``
 kubectl apply -f deployment.yaml

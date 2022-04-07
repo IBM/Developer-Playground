@@ -8,7 +8,3 @@ python3.8 deleteservices.py $filename
 rm naturallanguageunderstanding.json
 touch naturallanguageunderstanding.json
 
-filename="toneanalyzer.json"
-python3.8 deleteservices.py $filename
-rm toneanalyzer.json
-touch toneanalyzer.json

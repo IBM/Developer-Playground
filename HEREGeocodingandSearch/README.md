@@ -1,8 +1,8 @@
 # IBM Developer Technology Sandbox
 
 Steps to run **HERE Geocoding and Search**
-1. [Steps to run application locally](#1-local-setup)
-2. [Steps to deploy application to IKS](#2-deploy-app)
+1. [Steps to run application locally](#1-steps-to-run-application-locally)
+2. [Steps to deploy application to IKS](#2-steps-to-deploy-application-to-iks)
 
 ## 1. Steps to run application locally
 

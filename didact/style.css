@@ -192,9 +192,9 @@ html,
             margin-right: 1.875rem;
             max-width: 75rem;
             background-repeat: no-repeat;
-            background-size: 43.75rem 31.25rem;
+            background-size: 75rem 31.25rem;
         }
-        .header .right-content {
+        .header .left-content {
             float: left;
             width: 50%;
             background-color: #525252 !important;
@@ -202,25 +202,19 @@ html,
             font-size: 16px;
             padding-top: 2.188rem;
         }
-        .header .right-content h4 {
+        .header .left-content h4 {
             background: none;
             color: #C1C7CD;
             padding-left: 1.563rem;
             padding-right: 1.563rem;
         }
-        .header .right-content div {
+        .header .left-content div {
             background: none;
             color: #C1C7CD;
             padding-left: 0.938rem;
             padding-right: 1.563rem;
             font-size: 16px;
             margin-bottom: 0.625rem;
-        }
-        .header .right-content ul {
-            margin: 0px;
-            margin-left: 1.563rem;
-            margin-bottom: 0.625rem;
-            line-height: 1rem;
         }
         .container a {
             color: #BE95FF;
@@ -265,6 +259,9 @@ html,
         }
         .show-dot{
           opacity: 1 !important;
+        }
+        .hidden-state{
+            display: none;
         }
         @media screen and (max-width: 50rem) {
             .footer {

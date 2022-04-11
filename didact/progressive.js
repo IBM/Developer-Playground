@@ -2,6 +2,7 @@ window.onload = function () {
     let ctaPairs = {
         "git-clone": ["explore-application"]
     }
+    let workspaceId = document.getElementsByClassName("hidden-state")[0].textContent
     console.log(Object.keys(ctaPairs))
     let steps = document.getElementsByClassName("step");
     activate(steps[0])
@@ -9,16 +10,16 @@ window.onload = function () {
 
     let didact = document.getElementsByClassName("apptitle")[0].textContent
     let data = {
-        time: new Date().getTime(),
+        workspaceId: workspaceId,
         ctasClicked: null
     }
 
     if (localStorage[didact] === undefined) {
         localStorage[didact] = JSON.stringify(data)
     }
-    console.log(JSON.parse(localStorage[didact]))
-    if (new Date().getTime() - JSON.parse(localStorage[didact]).time >= 60 * 60 * 4 * 1000) {
-        localStorage.clear()
+    console.log(JSON.parse(localStorage[didact]).workspaceId)
+    if (JSON.parse(localStorage[didact]).workspaceId !== workspaceId) {
+        localStorage[didact] = JSON.stringify(data)
     }
     try {
         completedCTAs = JSON.parse(localStorage[didact]).ctasClicked;

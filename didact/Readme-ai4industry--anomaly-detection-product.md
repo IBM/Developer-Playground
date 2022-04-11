@@ -10,8 +10,9 @@
 </head>
 <body>
     <div style="margin-top:2rem"></div>
+    <div class="hidden-state">$workspace_id</div>
     <div class="header">
-        <div class="right-content">
+        <div class="left-content">
             <div class="apptitle">
                 Anomaly Detection
             </div>

@@ -1,77 +1,77 @@
-<!-- This should be the location of the title of the repository, normally the short name -->
-# repo-template
+# IBM Developer Technology Sandbox
 
-<!-- Build Status, is a great thing to have at the top of your repository, it shows that you take your CI/CD as first class citizens -->
-<!-- [![Build Status](https://travis-ci.org/jjasghar/ibm-cloud-cli.svg?branch=master)](https://travis-ci.org/jjasghar/ibm-cloud-cli) -->
+Steps to run **Data Quality for AI**
+1. [Steps to run application locally](#1-steps-to-run-application-locally)
+2. [Steps to deploy application to IKS](#2-steps-to-deploy-application-to-iks)
 
-<!-- Not always needed, but a scope helps the user understand in a short sentance like below, why this repo exists -->
-## Scope
+## 1. Steps to run application locally
 
-The purpose of this project is to provide a template for new open source repositories.
+1. Clone the source code.
+    ``` 
+    git clone -b DART https://github.com/IBM/Developer-Playground.git && cd Developer-Playground
+    ```
+3. Install application dependencies.
+    ```
+    cd DataQuality && npm install --production
+    ```
+4. Obtain API credentials, with the following steps:
 
-<!-- A more detailed Usage or detailed explaination of the repository here -->
-## Usage
+    * [Subscribe](https://www.ibm.com/account/reg/us-en/signup?formid=urx-50307) to the Data Quality for AI.
+    * Check your [API Subscriptions](https://developer.ibm.com/profile/myapis).
+    * Select the subscription for Data Quality for AI to proceed.
+    * You can obtain your Client ID/Secret from here. Else, you can "Generate API Key".
 
-This repository contains some example best practices for open source repositories:
 
-* [LICENSE](LICENSE)
-* [README.md](README.md)
-* [CONTRIBUTING.md](CONTRIBUTING.md)
-* [MAINTAINERS.md](MAINTAINERS.md)
-<!-- A Changelog allows you to track major changes and things that happen, https://github.com/github-changelog-generator/github-changelog-generator can help automate the process -->
-* [CHANGELOG.md](CHANGELOG.md)
+5. Configure the application by adding your DQAI API credentials (Client ID, Client Secret) to the `.env` file
+6. Launch the application.
+    ```
+    node server.js
+    ```
+7. Access the application in your browser with this [URL](http://localhost:3100/)
 
-> These are optional
 
-<!-- The following are OPTIONAL, but strongly suggested to have in your repository. -->
-* [dco.yml](.github/dco.yml) - This enables DCO bot for you, please take a look https://github.com/probot/dco for more details.
-* [travis.yml](.travis.yml) - This is a example `.travis.yml`, please take a look https://docs.travis-ci.com/user/tutorial/ for more details.
 
-These may be copied into a new or existing project to make it easier for developers not on a project team to collaborate.
+## 2. Steps to deploy application to IKS
 
-<!-- A notes section is useful for anything that isn't covered in the Usage or Scope. Like what we have below. -->
-## Notes
-
-**NOTE: While this boilerplate project uses the Apache 2.0 license, when
-establishing a new repo using this template, please use the
-license that was approved for your project.**
-
-**NOTE: This repository has been configured with the [DCO bot](https://github.com/probot/dco).
-When you set up a new repository that uses the Apache license, you should
-use the DCO to manage contributions. The DCO bot will help enforce that.
-Please contact one of the IBM GH Org stewards.**
-
-<!-- Questions can be useful but optional, this gives you a place to say, "This is how to contact this project maintainers or create PRs -->
-If you have any questions or issues you can create a new [issue here][issues].
-
-Pull requests are very welcome! Make sure your patches are well tested.
-Ideally create a topic branch for every separate change you make. For
-example:
-
-1. Fork the repo
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Added some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
-
-## License
-
-All source files must include a Copyright and License header. The SPDX license header is 
-preferred because it can be easily scanned.
-
-If you would like to see the detailed LICENSE click [here](LICENSE).
-
-```text
-#
-# Copyright 2020- IBM Inc. All rights reserved
-# SPDX-License-Identifier: Apache2.0
-#
-```
-## Authors
-
-Optionally, you may include a list of authors, though this is redundant with the built-in
-GitHub list of contributors.
-
-- Author: New OpenSource IBMer <new-opensource-ibmer@ibm.com>
-
-[issues]: https://github.com/IBM/repo-template/issues/new
+1. Install [Docker](https://docs.docker.com/get-docker/) or [Podman](https://podman.io/getting-started/installation).
+2. Build the Docker Image. 
+    ```
+    docker build -t docker_username/dqai .
+    ```
+3. To run the image locally execute the following command.
+    ```
+    docker run -p 3100:3100 -it docker_username/dqai
+    ```
+4. Push the image to a registry like [Docker](https://hub.docker.com) or [Quay](quay.io). Login with your credentials.
+    ```
+    docker login
+    ```
+    Then push the image to the registry
+    ```
+    docker push docker_username/dqai
+    ```
+5. Once the image is pushed to docker registry, go to `deployment.yaml` file, and replace `IMAGE_NAME` with your image i.e (docker_username/dqai)
+6. To connect the CLI to the IKS(IBM Kubernetes Service) follow the below steps:
+* Create a new [IBM Kubernetes cluster](https://cloud.ibm.com/kubernetes/catalog/create) or use an existing IKS cluster.
+* Execute the following command in the terminal, replace the `CLUSTER_ID` with the created cluster_id
+    ```
+    ibmcloud ks cluster config --cluster CLUSTER_ID
+    ```
+* Set the kubectl context by executing this command 
+    ```
+    kubectl config current-context
+    ```
+* To deploy the application, execute the command 
+    ```
+    kubectl apply -f deployment.yaml
+    ```
+* To get the deployed IP, execute 
+    ```
+    kubectl get nodes -o wide
+    ```
+    copy the value under EXTERNAL-IP(eg:159.122.177.131)
+    to get the port number, execute 
+    ```
+    kubectl get services
+    ```
+    under the PORT(S) section, copy the 5 digit port number. eg: If the value is 5000:31001/TCP, the 5 digit port number is 31001. Go to any browser and load the endpoint which is EXTERNAL-IP:ROUTE (eg: 159.122.177.131:31001)

@@ -34,7 +34,8 @@ Steps to run **HERE Geocoding and Search**
 ## 2. Steps to deploy application to IKS
 
 1. Install [Docker](https://docs.docker.com/get-docker/) or [Podman](https://podman.io/getting-started/installation).
-2. Build the Docker Image. 
+2. Install [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cli-install-ibmcloud-cli).
+3. Build the Docker Image. 
     ```
     docker build -t docker_username/here-geocoding .
     ```

@@ -1,4 +1,4 @@
-## Instructions on how to run the application locally on your workstation or deploy to IKS
+## Instructions to run the application locally on your workstation or deploy to IKS
 
 Steps to run **HERE Geocoding and Search**
 1. [Steps to run application locally](#1-steps-to-run-application-locally)

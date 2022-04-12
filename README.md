@@ -1,4 +1,4 @@
-# Developer-Playground
+## Instructions on how to run the application locally on your workstation or deploy to IKS
 Steps to run the application locally or deploy to IKS:
 
 1. Install ibmcloud cli: https://cloud.ibm.com/docs/cli?topic=cli-install-ibmcloud-cli

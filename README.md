@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# IBM Developer Technology Sandbox
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Steps to run **Anomaly Detection**
+1. [Steps to run application locally](#1-steps-to-run-application-locally)
+2. [Steps to deploy application to IKS](#2-steps-to-deploy-application-to-iks)
 
-## Available Scripts
+## 1. Steps to run application locally
 
-In the project directory, you can run:
+1. Clone the source code.
+    ``` 
+    git clone -b anomaly https://github.com/IBM/Developer-Playground.git && cd Developer-Playground
+    ```
+3. Install application dependencies.
+    ```
+    npm install --production
+    ```
+4. Obtain API credentials, with the following steps:
 
-### `yarn start`
+    * [Subscribe](https://www.ibm.com/account/reg/us-en/signup?formid=urx-51009) to the Anomaly Detection API.
+    * Check your [API Subscriptions](https://developer.ibm.com/profile/myapis).
+    * Select the subscription for Anomaly Detection API to proceed.
+    * You can obtain your Client ID/Secret from here. Else, you can "Generate API Key".
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+5. Configure the application by adding your Anomaly Detection API credentials (Client ID, Client Secret) to the `.env` file
+6. Launch the application.
+    ```
+    node server.js
+    ```
+7. Access the application in your browser with this [URL](http://localhost:3100/)
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## 2. Steps to deploy application to IKS
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Install [Docker](https://docs.docker.com/get-docker/) or [Podman](https://podman.io/getting-started/installation).
+2. Install [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cli-install-ibmcloud-cli).
+3. Build the Docker Image. 
+    ```
+    docker build -t docker_username/anomaly .
+    ```
+3. To run the image locally execute the following command.
+    ```
+    docker run -p 3100:3100 -it docker_username/anomaly
+    ```
+4. Push the image to a registry like [Docker](https://hub.docker.com) or [Quay](quay.io). Login with your credentials.
+    ```
+    docker login
+    ```
+    Then push the image to the registry
+    ```
+    docker push docker_username/anomaly
+    ```
+5. Once the image is pushed to docker registry, go to `deployment.yaml` file, and replace `IMAGE_NAME` with your image i.e (docker_username/anomaly)
+6. To connect the CLI to the IKS(IBM Kubernetes Service) follow the below steps:
+* Create a new [IBM Kubernetes cluster](https://cloud.ibm.com/kubernetes/catalog/create) or use an existing IKS cluster.
+* Execute the following command in the terminal, replace the `CLUSTER_ID` with the created cluster_id
+    ```
+    ibmcloud ks cluster config --cluster CLUSTER_ID
+    ```
+* Set the kubectl context by executing this command 
+    ```
+    kubectl config current-context
+    ```
+* To deploy the application, execute the command 
+    ```
+    kubectl apply -f deployment.yaml
+    ```
+* To get the deployed IP, execute 
+    ```
+    kubectl get nodes -o wide
+    ```
+    copy the value under EXTERNAL-IP(eg:159.122.177.131)
+    to get the port number, execute 
+    ```
+    kubectl get services
+    ```
+    under the PORT(S) section, copy the 5 digit port number. eg: If the value is 5000:31001/TCP, the 5 digit port number is 31001. Go to any browser and load the endpoint which is EXTERNAL-IP:ROUTE (eg: 159.122.177.131:31001)

@@ -1,0 +1,19 @@
+{
+    "LambdaFunctionConfigurations": [
+      {
+        "Id" : "Data-Upload",
+        "LambdaFunctionArn": "LAMBDA_PRODUCER_ARN",
+        "Events": ["s3:ObjectCreated:*"],
+        "Filter": {
+            "Key": {
+              "FilterRules": [
+                {
+                  "Name": "suffix",
+                  "Value": ".csv"
+                }
+              ]
+            }
+          }
+      }
+    ]
+}

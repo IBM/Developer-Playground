@@ -1,0 +1,3 @@
+python-dotenv==0.19.2
+requests==2.20.0
+ibm_watson_machine_learning

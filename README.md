@@ -1,4 +1,4 @@
-# IBM Developer Technology Sandbox
+## Instructions to run the application locally on your workstation or deploy to IKS
 
 Steps to run **Weather Data Assistant for Travel**
 1. [Steps to run application locally](#1-steps-to-run-application-locally)

@@ -263,6 +263,19 @@ html,
         .hidden-state{
             display: none;
         }
+        summary{
+            float:left;
+          }
+          details > summary { 
+            list-style-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/arrow-right.svg");
+            direction:rtl;
+          }
+          details[open] > summary {
+              list-style-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/arrow-down.svg");
+          }
+          details{
+              margin-bottom: 1.25rem;
+          }
         @media screen and (max-width: 50rem) {
             .footer {
                 display: flex;

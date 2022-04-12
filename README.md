@@ -1,4 +1,4 @@
-# IBM Developer Technology Sandbox
+## Instructions to run the application locally on your workstation or deploy to IKS
 
 Steps to run **Anomaly Detection**
 1. [Steps to run application locally](#1-steps-to-run-application-locally)

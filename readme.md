@@ -1,6 +1,5 @@
-Find the detailed steps to run the application locally or deploy to IKS:
+## Instructions to run the application locally on your workstation or deploy to IKS
 
-Steps:
 1. Install ibmcloud cli:  https://cloud.ibm.com/docs/cli?topic=cli-install-ibmcloud-cli
 2. Clone the repo: 
 ```git clone -b video-insights https://github.com/IBM/Developer-Playground.git```

@@ -1,6 +1,7 @@
 window.onload = function () {
     let ctaPairs = {
-        "git-clone": ["explore-application"]
+        "git-clone": ["explore-application"],
+        "launch-application-wca": ["stop-application"]
     }
     let workspaceId = document.getElementsByClassName("hidden-state")[0].textContent
     console.log(Object.keys(ctaPairs))
@@ -90,14 +91,17 @@ window.onload = function () {
     }
 
     function activate(step) {
-        let cta = step.getElementsByTagName("A")[0]
+        let anchor_tags = step.getElementsByTagName("A")
         try {
             let dot = step.getElementsByClassName("dot")[0]
             dot.classList.add("show-dot")
-        } catch {
+        } catch(e) {
+            console.log(e)
             //Do Nothing
         }
         step.classList.add("enable");
-        cta.classList.add("allow-click")
+        for(let i = 0; i < anchor_tags.length; i++){
+            anchor_tags[i].classList.add("allow-click")
+        }
     }
 }

@@ -24,6 +24,7 @@ html,
             padding: 0.5rem 1rem 1rem 4rem;
         }
         .dot{
+            content: url("https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/check-mark.svg");
             position: absolute;
             width: 10px;
             aspect-ratio: 1;
@@ -265,17 +266,17 @@ html,
         }
         summary{
             float:left;
-          }
-          details > summary { 
+        }
+        details > summary { 
             list-style-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/arrow-right.svg");
             direction:rtl;
-          }
-          details[open] > summary {
-              list-style-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/arrow-down.svg");
-          }
-          details{
-              margin-bottom: 1.25rem;
-          }
+        }
+        details[open] > summary {
+            list-style-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/arrow-down.svg");
+        }
+        details{
+            margin-bottom: 1.25rem;
+        }
         @media screen and (max-width: 50rem) {
             .footer {
                 display: flex;

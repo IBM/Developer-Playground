@@ -462,6 +462,8 @@
          <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%203$$servicename%3D%22cp-wa%22%20%26%26%20ibmcloud%20resource%20service-key-delete%20%22%24servicename-creds%22%20-f%20%26%26%20ibmcloud%20resource%20service-instance-delete%20%24servicename%20-f">Clean up</a>
          <p style="margin-top:10px;">Find the detailed steps <a href="https://github.com/IBM/authenticate-users-on-your-chatbot-with-sms-otp#4-create-a-cloud-function-action">here.</a></p>
          <p style="margin-top:10px;">You can also manage the services in <a href="https://cloud.ibm.com/resources">IBM Cloud Dashboard</a>.</p>
+            <p style="margin-top:10px;">Click to push code to your own Github repository. You will need a personal access token to complete this action via the CLI. Refer to this <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">guide</a> for generating your personal access token.</p>
+            <a class="button is-dark is-medium" title="Delete services from IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=sandbox%20terminal$$sh%20/github.sh ">Push to Github</a>
       </div>
       <div class="image-div">
          <p class="image-content">Want to explore this project more?

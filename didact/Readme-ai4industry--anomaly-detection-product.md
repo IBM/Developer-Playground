@@ -64,7 +64,7 @@
                     <li><a href="https://www.ibm.com/account/reg/us-en/signup?formid=urx-51009">Subscribe</a> to the
                         Anomaly
                         Detection API.</li>
-                    <li>Check out <a href="https://developer.ibm.com/profile/myapis"> API Subscriptions</a>.</li>
+                    <li>Check your <a href="https://developer.ibm.com/profile/myapis"> API Subscriptions</a>.</li>
                     <li>Select subscription for Anomaly Detection API to proceed.</li>
                     <li>Get the Client ID/Secret, if not, Generate an API Key.</li>
                 </ul>
@@ -82,21 +82,8 @@
             </div>
             <input type="checkbox"><a id="step" class="button is-dark is-medium" title="Get the Code"
                 href="didact://?commandId=extension.sendToTerminal&text=AnomalyDetection%7Cclone%7Canomaly|git%20clone%20-b%20anomaly%20https://github.com/IBM/Developer-Playground.git%20${CHE_PROJECTS_ROOT}/anomaly"
-                target="_blank"><span>Get Code</span></a>
-            <span class="dot"><svg fill="white" id="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                    viewBox="0 0 32 32">
-                    <defs>
-                        <style>
-                            .cls-1 {
-                                fill: none;
-                            }
-                        </style>
-                    </defs>
-                    <polygon points="14 21.414 9 16.413 10.413 15 14 18.586 21.585 11 23 12.415 14 21.414" />
-                    <path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,26A12,12,0,1,1,28,16,12,12,0,0,1,16,28Z" />
-                    <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1"
-                        width="32" height="32" />
-                </svg></span>
+                target="_blank">Get Code</a>
+            <span class="dot"></span>
         </div>
         <div class="timeline step install-dependencies">
             <div class="content">
@@ -104,21 +91,8 @@
             </div>
             <input type="checkbox"><a id="step" class="button is-dark is-medium" title="Build the Application"
                 href="didact://?commandId=extension.sendToTerminal&text=AnomalyDetection%7Cbuild%7Canomaly|cd%20${CHE_PROJECTS_ROOT}/anomaly%20%26%26%20npm%20install%20--production"
-                target="_blank"><span>Install Dependencies</span></a>
-            <span class="dot"><svg fill="white" id="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                    viewBox="0 0 32 32">
-                    <defs>
-                        <style>
-                            .cls-1 {
-                                fill: none;
-                            }
-                        </style>
-                    </defs>
-                    <polygon points="14 21.414 9 16.413 10.413 15 14 18.586 21.585 11 23 12.415 14 21.414" />
-                    <path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,26A12,12,0,1,1,28,16,12,12,0,0,1,16,28Z" />
-                    <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1"
-                        width="32" height="32" />
-                </svg></span>
+                target="_blank">Install Dependencies</a>
+            <span class="dot"></span>
         </div>
         <div class="timeline step configure-application">
             <div class="content">
@@ -126,21 +100,8 @@
             </div>
             <input type="checkbox"><a id="step" class="button is-dark is-medium" title="Open the File"
                 href="didact://?commandId=extension.openFile&text=AnomalyDetection%7Cconfigure-application%7C${CHE_PROJECTS_ROOT}/anomaly/.env"
-                target="_blank"><span>Configure Application</span></a>
-            <span class="dot"><svg fill="white" id="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                    viewBox="0 0 32 32">
-                    <defs>
-                        <style>
-                            .cls-1 {
-                                fill: none;
-                            }
-                        </style>
-                    </defs>
-                    <polygon points="14 21.414 9 16.413 10.413 15 14 18.586 21.585 11 23 12.415 14 21.414" />
-                    <path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,26A12,12,0,1,1,28,16,12,12,0,0,1,16,28Z" />
-                    <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1"
-                        width="32" height="32" />
-                </svg></span>
+                target="_blank">Configure Application</a>
+            <span class="dot"></span>
         </div>
         <div class="timeline step launch-application">
             <div class="content">
@@ -148,21 +109,8 @@
             </div>
             <input type="checkbox"><a id="step" class="button is-dark is-medium" title="Launch the Application"
                 href="didact://?commandId=extension.sendToTerminal&text=AnomalyDetection%7Claunch%7Canomaly|cd%20${CHE_PROJECTS_ROOT}/anomaly/%20%26%26%20npm%20run%20server"
-                target="_blank"><span>Launch Application</span></a>
-            <span class="dot"><svg fill="white" id="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                    viewBox="0 0 32 32">
-                    <defs>
-                        <style>
-                            .cls-1 {
-                                fill: none;
-                            }
-                        </style>
-                    </defs>
-                    <polygon points="14 21.414 9 16.413 10.413 15 14 18.586 21.585 11 23 12.415 14 21.414" />
-                    <path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,26A12,12,0,1,1,28,16,12,12,0,0,1,16,28Z" />
-                    <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1"
-                        width="32" height="32" />
-                </svg></span>
+                target="_blank">Launch Application</a>
+            <span class="dot"></span>
         </div>
     </div>
         <div class="footer">
@@ -173,13 +121,13 @@
                     href="didact://?commandId=vscode.didact.sendNamedTerminalCtrlC&text=anomaly">Stop Application</a>
             </div>
              <div class="footer-step explore-application" style="background:transparent">
-                <p class="afterbutton">Explore and update the code as per your requirement.</p>
+                <p>Explore and update the code as per your requirement.</p>
                 <a class="button is-dark is-medium" title="Explore the Code"
                     href="didact://?commandId=extension.openFile&text=AnomalyDetection%7Cexplore-code%7C${CHE_PROJECTS_ROOT}/anomaly/src/App.js">Explore
                     Code</a>
             </div>
              <div class="footer-step re-launch-application" style="background:transparent">
-                <p class="afterbutton ">Re-launch the application to view the changes made.</p>
+                <p>Re-launch the application to view the changes made.</p>
                 <a class="button is-dark is-medium" title="Re-Launch the Application"
                     href="didact://?commandId=extension.sendToTerminal&text=AnomalyDetection%7Cre-launch%7Canomaly|cd%20${CHE_PROJECTS_ROOT}/anomaly%20%26%26%20npm%20install%20--only=dev%20%26%26%20rm%20-rf%20build%20%26%26%20npm%20run%20build%20%26%26%20npm%20run%20server">Re-Launch
                     Application</a>
@@ -203,7 +151,7 @@
                         target="_blank">
                         View Product Details
                         <span>
-                            <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false"
+                            <svg style="position: absolute; right: 0.625rem;" fill="#ffffff" focusable="false"
                                 preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25"
                                 height="25" viewBox="0 0 32 32" aria-hidden="true">
                                 <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
@@ -216,7 +164,7 @@
                         target="_blank">
                         Get Trial Subcription
                         <span>
-                            <svg style="position: absolute; right: 10px;" fill="#ffffff" focusable="false"
+                            <svg style="position: absolute; right: 0.625rem;" fill="#ffffff" focusable="false"
                                 preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25"
                                 height="25" viewBox="0 0 32 32" aria-hidden="true">
                                 <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>

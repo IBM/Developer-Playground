@@ -1,10 +1,10 @@
 window.onload = function () {
     let ctaPairs = {
         "git-clone": ["explore-application"],
-        "launch-application-wca": ["stop-application"]
+        "launch-application-wca": ["stop-application"],
+        "create-deployment-space":["deploy-model"]
     }
     let workspaceId = document.getElementsByClassName("hidden-state")[0].textContent
-    console.log(Object.keys(ctaPairs))
     let steps = document.getElementsByClassName("step");
     activate(steps[0])
     let completedCTAs = null;
@@ -24,20 +24,24 @@ window.onload = function () {
     }
     try {
         completedCTAs = JSON.parse(localStorage[didact]).ctasClicked;
-        console.log(completedCTAs)
         try {
             for (let i = 0; i < completedCTAs.length; i++) {
                 enableCTA(Number(completedCTAs[i]))
             }
         } catch (e) {
-            console.log(e)
             //Do Nothing
         }
     } catch {
         completedCTAs = null
     }
     for (let i = 0; i < steps.length; i++) {
-        steps[i].addEventListener("click", enableCTA)
+        let anchor_tags = steps[i].getElementsByTagName("A")
+        for(let j = 0; j < anchor_tags.length; j++){
+            if(anchor_tags[j].className.includes("button is-dark is-medium")){
+                anchor_tags[j].addEventListener("click", enableCTA)
+                break
+            }
+        }
     }
     function getNodeIndex(step) {
         let steps = document.getElementsByClassName("step");
@@ -65,14 +69,12 @@ window.onload = function () {
             console.log(completedCTAs);
             console.log(currentStep + 1, steps.length)
         } else {
-            console.log("clicked")
             currentStep = step
-            console.log(currentStep, step + 1)
         }
         for (cta of Object.keys(ctaPairs)) {
             if (steps[currentStep].classList.contains(cta)) {
-                for (ctaPair of ctaPairs[cta]) {
-                    let pair = document.getElementsByClassName(ctaPair)[0];
+                for (let ctaPair of ctaPairs[cta]) {
+                        let pair = document.getElementsByClassName(ctaPair)[0];
                     activate(pair)
                 }
             }
@@ -82,7 +84,6 @@ window.onload = function () {
         if (currentStep + 1 != steps.length)
             activate(steps[currentStep + 1])
         else {
-            console.log("footer")
             let footer = document.getElementsByClassName("footer-step")
             for (let i = 0; i < footer.length; i++) {
                 activate(footer[i])
@@ -96,12 +97,13 @@ window.onload = function () {
             let dot = step.getElementsByClassName("dot")[0]
             dot.classList.add("show-dot")
         } catch(e) {
-            console.log(e)
             //Do Nothing
         }
         step.classList.add("enable");
         for(let i = 0; i < anchor_tags.length; i++){
             anchor_tags[i].classList.add("allow-click")
+            if(anchor_tags[i].className.includes("button is-dark is-medium"))
+                break
         }
     }
 }

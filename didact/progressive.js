@@ -106,8 +106,10 @@ window.onload = function () {
         let checkbox = steps[currentStep].getElementsByTagName("INPUT")[0]
         checkbox.checked = true;
         //Enablke the next CTA
-        if (currentStep + 1 != steps.length)
+        if (currentStep + 1 != steps.length){
             activate(steps[currentStep + 1])
+            steps[currentStep + 1].scrollIntoView({ block: "center" })
+        }
         else {
             //if last CTA of timeline unlock the footer CTAs
             let footer = document.getElementsByClassName("footer-step")

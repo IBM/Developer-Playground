@@ -278,6 +278,10 @@ html,
         details{
             margin-bottom: 1.25rem;
         }
+        .dropdown-ctas{
+            opacity: 0.5;
+            pointer-events: none;
+        }
         @media screen and (max-width: 50rem) {
             .footer {
                 display: flex;

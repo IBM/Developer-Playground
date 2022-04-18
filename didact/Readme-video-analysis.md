@@ -166,7 +166,7 @@
         <a class="button is-dark is-medium" title="Delete services from IBM Cloud"
           href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Cdelete-services%7Csandbox%20terminal%7Ccd%20${CHE_PROJECTS_ROOT}/video-analysis/video-insights%20%26%26%20chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh">Clean
           Up</a>
-        <p style="margin-top:0.625rem;">You can also manage the services in <a href="https://cloud.ibm.com/resources">IBM
+          <p style="margin-top:0.625rem;">You can also manage the services in <a href="https://cloud.ibm.com/resources">IBM
             Cloud Dashboard</a>.</p>
       </div>
       <div class="footer-step git-push" style="background:transparent">

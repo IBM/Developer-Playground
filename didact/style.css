@@ -124,14 +124,6 @@ html,
             margin-left:2rem;
             margin-top:2rem;
         }
-        .github-icon {
-            min-height: 100%;
-            min-width: 100%;
-            object-fit: cover;
-            object-position: 250% 6.35rem;
-            opacity: 15%;
-            bottom: 0.938rem;
-        }
         .image-content {
             pointer-events: auto !important;
             padding: 0.313rem 0.625rem;
@@ -148,7 +140,7 @@ html,
             background-color: white;
             min-width: 50%;
             background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/github.svg");
-            background-position: -50% 3.75rem;
+            background-position: -8rem top;
             background-repeat: no-repeat;
             padding-top: 1.25rem;
             padding-left: 1.25rem;
@@ -277,6 +269,10 @@ html,
         }
         details{
             margin-bottom: 1.25rem;
+        }
+        .dropdown-ctas{
+            opacity: 0.5;
+            pointer-events: none;
         }
         @media screen and (max-width: 50rem) {
             .footer {

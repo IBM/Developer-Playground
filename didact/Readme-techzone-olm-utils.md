@@ -364,6 +364,11 @@
         <a class="button is-dark is-medium" title="Execute" id="install_olm"
           >Execute
         </a>
+        <br/>
+        <br/>
+        <a class="button is-dark is-medium" title="open the preview file" id="get_preview"
+          >Open Preview File
+        </a>
       </div>
     </div>
      <div style="margin-top: 0px; padding-top: 0px" class="container right">
@@ -383,6 +388,11 @@
       <input type="text" id="cr_cpd_instance" placeholder="cpd_instance"><br><br>
         <a class="button is-dark is-medium" title="Execute" id="install_cr"
           >Execute
+        </a>
+          <br/>
+        <br/>
+        <a class="button is-dark is-medium" title="open the preview file" id="get_preview_2"
+          >Open Preview File
         </a>
       </div>
     </div>

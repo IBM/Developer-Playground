@@ -24,7 +24,7 @@ window.onload = function () {
       release_version +
       " --components=" +
       component_list +
-      " storage_vendor="+storage_vendor;
+      " storage_vendor=" + storage_vendor;
     document.getElementById("command_exec").click();
   }
 
@@ -50,7 +50,19 @@ window.onload = function () {
       " --cpd_instance_ns=" +
       cr_cpd_instance +
       " --storage_class=" +
-      cr_storage_class;
+      cr_storage_class + "";
     document.getElementById("command_exec").click();
   }
+  // Preview logic
+  document.getElementById("get_preview").addEventListener("click", get_preview);
+  document.getElementById("get_preview_2").addEventListener("click", get_preview);
+  function get_preview() {
+    document.getElementById("command_exec").href =
+      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$get_preview"
+    document.getElementById("command_exec").click();
+    document.getElementById("command_exec").href =
+      "didact://?commandId=vscode.open&projectFilePath=preview.sh"
+    document.getElementById("command_exec").click();
+  }
+
 };

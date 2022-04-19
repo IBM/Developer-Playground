@@ -14,6 +14,7 @@ window.onload = function () {
 
   function install_olm() {
     let component_list = document.getElementById("olm_component_list").value;
+    let storage_vendor = document.getElementById("storage_vendor").value;
     let release_version = document.getElementById("olm_release_version").value;
     let preview_value = document.getElementById("olm_preview_value").value;
     document.getElementById("command_exec").href =
@@ -22,7 +23,8 @@ window.onload = function () {
       " --release=" +
       release_version +
       " --components=" +
-      component_list;
+      component_list +
+      " storage_vendor="+storage_vendor;
     document.getElementById("command_exec").click();
   }
 

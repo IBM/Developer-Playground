@@ -304,7 +304,7 @@
       <div class="content">
         <p>Add Openshift Credentials to configure the application</p>
         <a class="button is-dark is-medium" title="open env file"
-          href="didact://?commandId=vscode.open&projectFilePath=env.sh">Configure
+          href="didact://?commandId=vscode.open&projectFilePath=${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils/env.sh">Configure
         </a>
       </div>
     </div>

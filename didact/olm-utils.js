@@ -61,7 +61,7 @@ window.onload = function () {
       "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$get_preview"
     document.getElementById("command_exec").click();
     document.getElementById("command_exec").href =
-      "didact://?commandId=vscode.open&projectFilePath=preview.sh"
+      "didact://?commandId=vscode.open&projectFilePath=${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils/preview.sh"
     document.getElementById("command_exec").click();
   }
 

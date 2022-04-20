@@ -9,6 +9,7 @@ components:
       - name: access-react-web-app
         port: 3001
     memoryLimit: 2Gi
+    cpuLimit: 1
     type: dockerimage
     alias: sandbox
     image: 'quay.io/devplayground/developer-container-utilities:latest'
@@ -23,4 +24,5 @@ components:
     type: chePlugin
   - id: eclipse/che-theia/latest
     memoryLimit: 4Gi
+    cpuLimit: 1
     type: cheEditor

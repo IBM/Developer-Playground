@@ -259,13 +259,19 @@ html,
         }
         summary{
             float:left;
+            display:flex;
+            justify-content: space-between;
         }
-        details > summary { 
-            list-style-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/arrow-right.svg");
-            direction:rtl;
+        summary::marker{
+            display:none;
+            content: "";
         }
-        details[open] > summary {
-            list-style-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/arrow-down.svg");
+        details > summary > span { 
+            content: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/arrow-right.svg");
+            margin-left: 1rem;
+        }
+        details[open] > summary > span {
+            content: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/arrow-down.svg");
         }
         details{
             margin-bottom: 1.25rem;

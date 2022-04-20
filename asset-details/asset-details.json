@@ -40,5 +40,17 @@
         "name": "Weather Data Assistant for Travel",
         "title": "weather-data-assistant-for-travel",
         "description": "Get to know weather trends of a location from a set of GIS information"
-    }
+    },
+	{
+		"id": "techzone-demo-builder",
+		"name": "Techzone Demo Builder",
+		"title": "techzone-demo-builder",
+		"description": "Techzone Demo Builder"
+	},
+	{
+		"id": "techzone-olm-utils",
+		"name": "Techzone OLM Utils",
+		"title": "techzone-olm-utils",
+		"description": "Techzone OLM Utils"
+	}
 ]

@@ -151,8 +151,8 @@
     <div class="timeline dropdown-ctas create-deploy-model step">
       <div class="content">
         <details>
-          <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create a New Deployment Space and Deploy the Model using Watson Machine
-            Learning</summary></br></br>
+          <summary>Create a New Deployment Space and Deploy the Model using Watson Machine
+            Learning<span class="arrow"></span></summary></br></br>
           <div class="timeline step" style="opacity:1">
             <div class="content">
               <p>Step 1 : Generate an API Key in the IBM account. This is required to access the model for our Cloud
@@ -176,7 +176,7 @@
           <div class="timeline dropdown-ctas error-ctas">
             <div class="content">
               <details>
-                <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Incase your model import failed, do the following steps</summary>
+                <summary>Incase your model import failed, do the following steps<span class="arrow"></span></summary>
                 </br></br>
                 <div class="timeline step" style="opacity:1">
                   <div class="content">
@@ -300,7 +300,7 @@
     <div class="timeline dropdown-ctas create-cloud-function step">
       <div class="content">
         <details>
-          <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configure Cloud Functions to access the model</summary></br></br>
+          <summary>Configure Cloud Functions to access the model<span class="arrow"></span></summary></br></br>
           <div class="timeline step" style="opacity:1">
             <div class="content">
               <p>Step 1 : Create an Action in cloud functions with web action enabled.</p>
@@ -334,7 +334,7 @@
     <div class="timeline dropdown-ctas create-assistant step">
       <div class="content">
         <details>
-          <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integrate the Machine Learning Model with Watson Assistant</summary>
+          <summary>Integrate the Machine Learning Model with Watson Assistant<span class="arrow"></span></summary>
           </br></br>
           <div class="timeline step" style="opacity:1">
             <div class="content">
@@ -420,7 +420,7 @@
     <div class="timeline dropdown-ctas configure-application-ctas step">
       <div class="content">
         <details>
-          <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configure the application</summary></br></br>
+          <summary>Configure the application<span class="arrow"></span></summary></br></br>
           <div class="timeline step" style="opacity:1">
             <div class="content">
               <p>Step 1 : Once the skill is created, click on (⋮) on top right and Click on "Assitant Settings".</p>

@@ -155,14 +155,14 @@
     <div class="timeline dropdown-ctas error-ctas step">
       <div class="content">
         <details>
-          <summary>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Incase <b>Importing the Model Fails</b>, do the following steps</summary></br></br>
+          <summary>Incase Importing the Model Fails, do the following steps<span class="arrow"></span></summary></br></br>
           <div class="timeline step" style="opacity:1">
             <div class="content">
               <p>Step 1 : Download the project zip file.</p>
             </div>
             <input type="checkbox">
             <a id="step" class="button is-dark is-medium"
-              href="#https://github.com/IBM/Developer-Playground/raw/bank-loan/bankloan/data/bankLoan.zip">Download</a>
+              href="https://github.com/IBM/Developer-Playground/raw/bank-loan/bankloan/data/bankLoan.zip">Download</a>
             <span class="dot"></span>
           </div>
           <div class="timeline step">

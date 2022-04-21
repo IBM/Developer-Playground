@@ -300,7 +300,7 @@
     </div>
     <div class="container right timelinestep">
       <div class="content">
-        <p>Get the resources required to deploy and run the olm-utils.</p>
+        <p>Get the resources required to do User management, Governance and Project management.</p>
         <a class="button is-dark is-medium" title="Get Resources"
           href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$git%20clone%20https://github.com/bodarajeshkumar/techzone-demo%20${CHE_PROJECTS_ROOT}/techzone-demo">Get
           Resources</a>

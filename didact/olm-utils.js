@@ -14,6 +14,7 @@ window.onload = function () {
 
   function install_olm() {
     let component_list = document.getElementById("olm_component_list").value;
+    let storage_vendor = document.getElementById("storage_vendor").value;
     let release_version = document.getElementById("olm_release_version").value;
     let preview_value = document.getElementById("olm_preview_value").value;
     document.getElementById("command_exec").href =
@@ -22,7 +23,8 @@ window.onload = function () {
       " --release=" +
       release_version +
       " --components=" +
-      component_list;
+      component_list +
+      " storage_vendor=" + storage_vendor;
     document.getElementById("command_exec").click();
   }
 
@@ -48,7 +50,19 @@ window.onload = function () {
       " --cpd_instance_ns=" +
       cr_cpd_instance +
       " --storage_class=" +
-      cr_storage_class;
+      cr_storage_class + "";
     document.getElementById("command_exec").click();
   }
+  // Preview logic
+  document.getElementById("get_preview").addEventListener("click", get_preview);
+  document.getElementById("get_preview_2").addEventListener("click", get_preview);
+  function get_preview() {
+    document.getElementById("command_exec").href =
+      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$get_preview"
+    document.getElementById("command_exec").click();
+    document.getElementById("command_exec").href =
+      "didact://?commandId=vscode.open&projectFilePath=/projects/techzone-demo/olm-utils/preview.sh"
+    document.getElementById("command_exec").click();
+  }
+
 };

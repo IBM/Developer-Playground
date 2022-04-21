@@ -276,7 +276,8 @@
   <div class="header">
     <div class="right-content" style="padding-top: 40px">
       <div class="apptitle" style="font-size: 28px; color: white">CP4D demo</div>
-      <div class="subheading"></div>
+      <div class="subheading">Cloud Pak for Data (CPD) v4 adopted the Operator based installation & management pattern. This relies on the Operator Lifecycle Manager (OLM) as well as some key features delivered by Cloud Pak Foundational Services (CPFS).<br>
+      "olm-utils" is to improve the experience and reliability of various operations against Cloud Pak for Data Services, validate pre-conditions and post-conditions to ensure that the steps work as expected.</div>
     </div>
   </div>
   <div class="section">
@@ -291,8 +292,6 @@
           href="didact://?commandId=terminal-for-sandbox-container:new">Open Terminal</a>
       </div>
     </div>
-    </div>
-     <div class="timeline">
     <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
         <p>Get the resources required to deploy and run the olm-utils.</p>
@@ -334,7 +333,7 @@
     </div> -->
       <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
-        <p>list of components supported by olm-utils </p>
+        <p>Get details about the components supported by olm-utils, i.e. for which, OLM and other metadata exists. </p>
         <a class="button is-dark is-medium" title="Check Pod State"
           href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$run_utils list-components --release=4.0.5">List Components
         </a>
@@ -342,7 +341,7 @@
       </div>
       <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
-        <p>Show existing Service</p>
+        <p>Get the status of all Services/components (operands) in a CPD instance namespace</p>
         <label>cpd_instance_ns value</label>
       <input type="text" id="cpd_instance_value" placeholder="cpd-inst-01"><br><br>
         <a class="button is-dark is-medium" title="Execute" id="existing_service"
@@ -352,7 +351,7 @@
     </div>
      <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
-        <p>Install Selected services(OLM artifacts)</p>
+        <p>Install Selected services (apply-olm to introduce Catalog Sources and Subscriptions for selected services)</p>
         <label>preview value</label>
       <input type="text" id="olm_preview_value" placeholder="true/false"><br><br>
         <label>Release version</label>

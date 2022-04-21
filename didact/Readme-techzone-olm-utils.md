@@ -291,11 +291,20 @@
           href="didact://?commandId=terminal-for-sandbox-container:new">Open Terminal</a>
       </div>
     </div>
+    </div>
+     <div class="timeline">
+    <div style="margin-top: 0px; padding-top: 0px" class="container right">
+      <div class="content">
+        <p>Get the resources required to deploy and run the olm-utils.</p>
+        <a class="button is-dark is-medium" title="Open Terminal"
+          href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$git clone https://github.com/bodarajeshkumar/techzone-demo;cd%20${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils">Get Resources</a>
+      </div>
+    </div>
       <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
-        <p>Add openshift Credentials to deploy to olm-utils </p>
+        <p>Add Openshift Credentials to configure the application</p>
         <a class="button is-dark is-medium" title="open env file"
-          href="didact://?commandId=vscode.open&projectFilePath=env.sh">env creds
+          href="didact://?commandId=vscode.open&projectFilePath=/projects/techzone-demo/olm-utils/env.sh">Configure
         </a>
       </div>
     </div>
@@ -303,7 +312,7 @@
       <div class="content">
         <p>Deploy olm-utils and set the required aliases </p>
         <a class="button is-dark is-medium" title="open env file"
-          href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$source env.sh">Configure
+          href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$source env.sh">Deploy
         </a>
       </div>
     </div>
@@ -315,14 +324,14 @@
         </a>
       </div>
     </div>
-    <div style="margin-top: 0px; padding-top: 0px" class="container right">
+    <!-- <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
         <p>Run Utils Login to OC</p>
         <a class="button is-dark is-medium" title="Check Pod State"
           href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$oclogin_auto">oclogin
         </a>
       </div>
-    </div>
+    </div> -->
       <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
         <p>list of components supported by olm-utils </p>
@@ -350,8 +359,15 @@
       <input type="text" id="olm_release_version" placeholder="4.0.5"><br><br>
       <label>Component list(comma separated)</label>
       <input type="text" id="olm_component_list" placeholder="cpfs,cpd_platform"><br><br>
+      <label>storage_vendor</label>
+      <input type="text" id="storage_vendor" placeholder="ocs"><br><br>
         <a class="button is-dark is-medium" title="Execute" id="install_olm"
           >Execute
+        </a>
+        <br/>
+        <br/>
+        <a class="button is-dark is-medium" title="open the preview file" id="get_preview"
+          >Open Preview File
         </a>
       </div>
     </div>
@@ -373,11 +389,16 @@
         <a class="button is-dark is-medium" title="Execute" id="install_cr"
           >Execute
         </a>
+          <br/>
+        <br/>
+        <a class="button is-dark is-medium" title="open the preview file" id="get_preview_2"
+          >Open Preview File
+        </a>
       </div>
     </div>
      <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
-        <p>Delete the resources </p>
+        <p>Delete the resources created during this session</p>
         <a class="button is-dark is-medium" title="Check Pod State"
           href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$sh delete.sh">delete
         </a>

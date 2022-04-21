@@ -283,7 +283,7 @@
   <div class="header">
     <div class="right-content" style="padding-top: 40px">
       <div class="apptitle" style="font-size: 28px; color: white">CP4D demo</div>
-      <div class="subheading"></div>
+      <div class="subheading">Cloud Pak for Data (CPD) v4 adopted the Operator based installation & management pattern. This relies on the Operator Lifecycle Manager (OLM) as well as some key features delivered by Cloud Pak Foundational Services (CPFS).</div>
     </div>
   </div>
   <div class="section">
@@ -300,18 +300,17 @@
     </div>
     <div class="container right timelinestep">
       <div class="content">
-        <p>Clone the GitHub repository.</p>
-        <a class="button is-dark is-medium" title="Get the Code"
+        <p>Get the resources required to deploy and run the olm-utils.</p>
+        <a class="button is-dark is-medium" title="Get Resources"
           href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$git%20clone%20https://github.com/bodarajeshkumar/techzone-demo%20${CHE_PROJECTS_ROOT}/techzone-demo">Get
-          Code</a>
+          Resources</a>
       </div>
     </div>
     <div class="container right timelinestep">
       <div class="content">
-        <p>Configure Environment</p>
+        <p>Add CP4D instance credentails to configure environment</p>
         <a class="button is-dark is-medium" title="Configure Environment"
-          href="didact://?commandId=extension.openFile&&text=cp4d%7Cconfigure-application%7C/projects/techzone-demo/.env">Configure
-          Environment</a>
+          href="didact://?commandId=extension.openFile&&text=cp4d%7Cconfigure-application%7C/projects/techzone-demo/.env">Configure</a>
       </div>
     </div>
     <div class="container right timelinestep">

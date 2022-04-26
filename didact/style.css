@@ -140,7 +140,8 @@ html,
             background-color: white;
             min-width: 50%;
             background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/github.svg");
-            background-position: -8rem top;
+            background-position: -8rem 120%;
+            background-size:contain;
             background-repeat: no-repeat;
             padding-top: 1.25rem;
             padding-left: 1.25rem;

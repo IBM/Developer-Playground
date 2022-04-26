@@ -611,7 +611,7 @@
             <div class="content">
               <p>Export project from the configured cp4d instance</p>
               <a class="button is-dark is-medium" title="Export Project"
-                href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;/home/user/.local/bin/ipython3 exportProject.py">Export
+                href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python3.8 exportProject.py">Export
                 Project</a>
             </div>
           </div>
@@ -619,7 +619,7 @@
             <div class="content">
               <p>Import project from the configured cp4d instance</p>
               <a class="button is-dark is-medium" title="Import Project"
-                href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox: IPython: notebooks/sandbox$$cd /projects/techzone-demo/notebooks/sandbox/;/home/user/.local/bin/ipython3 importProject.py">Import
+                href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python3.8 importProject.py">Import
                 Project</a>
             </div>
           </div>

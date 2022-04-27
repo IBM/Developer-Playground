@@ -85,7 +85,7 @@
         <p>Open the sandbox terminal.</p>
       </div>
       <input type="checkbox"><a id="step" class="button is-dark is-medium" title="Open Terminal"
-        href="didact://?commandId=terminal-for-sandbox-container:new"><span>Open Terminal</span></a>
+        href="didact://?commandId=terminal-for-sandbox-container:new">Open Terminal</a>
       <span class="dot"></span>
     </div>
     <div class="timeline step git-clone">

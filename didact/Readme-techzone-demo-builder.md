@@ -48,6 +48,9 @@
       margin-left: 25px;
       margin-top: 32px;
     }
+    .container a{
+      padding:0px;
+      }
     /* The circles on the timeline */
     .container::after {
       content: "";
@@ -99,7 +102,6 @@
       border-color: white;
       color: #fff;
       border: 1px solid white;
-      padding: 10px;
       padding-left: 20px;
       margin-bottom: 13px;
       border-radius: 0px;
@@ -324,6 +326,23 @@
     </div>
     <div class="container right timelinestep">
       <div class="content">
+        <p>Select the required tasks</p>
+        <div style="float:left;padding-left:0px;">
+          <input type="checkbox" name="checkboxtask" value="task1"/>
+          <label for="task1">User Management</label>
+        </div>
+        <div style="float:left;padding-left:30px;">
+          <input type="checkbox" name="checkboxtask" value="task2"/>
+          <label for="task2">Governance artifacts</label><br />
+        </div>
+        <div style="float:left;padding-left:30px;">
+          <input type="checkbox" name="checkboxtask" value="task3"/>
+          <label for="task3">Project Management</label><br />
+        </div>
+      </div>
+    </div>
+    <div class="container right timelinestep" style="clear:both;" id="task1">
+      <div class="content">
         <details>
           <summary>User management</summary>
           <br><br>
@@ -421,7 +440,7 @@
         </details>
       </div>
     </div>
-    <div class="container right">
+    <div class="container right" id="task2">
       <div class="content">
         <details>
           <summary>Governance artifacts</summary>
@@ -602,7 +621,7 @@
       </div>
       </details>
     </div>
-    <div class="container right">
+    <div class="container right" id="task3">
       <div class="content">
         <details>
           <summary>Project management</summary>

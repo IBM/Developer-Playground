@@ -23,8 +23,7 @@ window.onload = function () {
       " --release=" +
       release_version +
       " --components=" +
-      component_list +
-      " storage_vendor=" + storage_vendor;
+      component_list 
     document.getElementById("command_exec").click();
   }
 

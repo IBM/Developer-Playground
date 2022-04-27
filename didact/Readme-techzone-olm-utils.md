@@ -358,8 +358,6 @@
       <input type="text" id="olm_release_version" placeholder="4.0.5"><br><br>
       <label>Component list(comma separated)</label>
       <input type="text" id="olm_component_list" placeholder="cpfs,cpd_platform"><br><br>
-      <label>storage_vendor</label>
-      <input type="text" id="storage_vendor" placeholder="ocs"><br><br>
         <a class="button is-dark is-medium" title="Execute" id="install_olm"
           >Execute
         </a>

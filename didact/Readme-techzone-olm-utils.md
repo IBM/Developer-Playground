@@ -381,7 +381,8 @@
       <input type="text" id="cr_component_list" placeholder="cpfs,cpd_platform"><br><br>
        <label>license_acceptance</label>
       <input type="text" id="cr_license_acceptance" placeholder="true/false"><br><br>
-      <label>Storage class</label>
+      <label>Storage Class/Storage Vendor</label>
+      <input type="text" id="cr_storage_class" placeholder="storage_class"> or <input type="text" id="cr_storage_vendor" placeholder="storage_vendor"><br><br>
       <input type="text" id="cr_storage_class" placeholder="nfs_client"><br><br>
       <label>cpd_instance_ns</label>
       <input type="text" id="cr_cpd_instance" placeholder="cpd_instance"><br><br>

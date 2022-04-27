@@ -37,6 +37,13 @@ window.onload = function () {
     let license_acceptance = document.getElementById("cr_license_acceptance").value;
     let cr_cpd_instance = document.getElementById("cr_cpd_instance").value;
     let cr_storage_class = document.getElementById("cr_storage_class").value;
+    let cr_storage_vendor=document.getElementById("cr_storage_vendor").value;
+    let storage=""
+    if(cr_storage_class){
+      storage = " --storage_class="+cr_storage_class
+    }else{
+      storage = " --storage_vendor="+cr_storage_vendor
+    }
 
     document.getElementById("command_exec").href =
       "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$run_utils apply-cr --preview=" +
@@ -49,8 +56,7 @@ window.onload = function () {
       license_acceptance +
       " --cpd_instance_ns=" +
       cr_cpd_instance +
-      " --storage_class=" +
-      cr_storage_class + "";
+      storage;
     document.getElementById("command_exec").click();
   }
   // Preview logic

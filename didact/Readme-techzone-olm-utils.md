@@ -343,7 +343,7 @@
       <div class="content">
         <p>Get the status of all Services/components (operands) in a CPD instance namespace</p>
         <label>cpd_instance_ns value</label>
-      <input type="text" id="cpd_instance_value" placeholder="cpd-inst-01"><br><br>
+      <input type="text" id="cpd_instance_value" value="cpd-instance"><br><br>
         <a class="button is-dark is-medium" title="Execute" id="existing_service"
           >Execute
         </a>
@@ -353,7 +353,11 @@
       <div class="content">
         <p>Install Selected services (apply-olm to introduce Catalog Sources and Subscriptions for selected services)</p>
         <label>preview value</label>
-      <input type="text" id="olm_preview_value" placeholder="true/false"><br><br>
+      <select id="olm_preview_value">
+        <option value="true">true</option>
+        <option value="false">false</option>
+      </select>
+      <br><br>
         <label>Release version</label>
       <input type="text" id="olm_release_version" placeholder="4.0.5"><br><br>
       <label>Component list(comma separated)</label>
@@ -372,17 +376,25 @@
       <div class="content">
         <p>Install Selected services (Custom resources CRs)</p>
         <label>preview value</label>
-      <input type="text" id="cr_preview_value" placeholder="true/false"><br><br>
+       <select id="cr_preview_value">
+        <option value="true">true</option>
+        <option value="false">false</option>
+      </select>
+      <br><br>
         <label>Release version</label>
       <input type="text" id="cr_release_version" placeholder="4.0.5"><br><br>
       <label>Component list(comma separated)</label>
       <input type="text" id="cr_component_list" placeholder="cpfs,cpd_platform"><br><br>
        <label>license_acceptance</label>
-      <input type="text" id="cr_license_acceptance" placeholder="true/false"><br><br>
+      <select id="cr_license_acceptance">
+        <option value="true">true</option>
+        <option value="false">false</option>
+      </select>
+      <br><br>
       <label>Storage Class/Storage Vendor</label>
       <input type="text" id="cr_storage_class" placeholder="storage_class"> or <input type="text" id="cr_storage_vendor" placeholder="storage_vendor"><br><br>
-      <label>cpd_instance_ns</label>
-      <input type="text" id="cr_cpd_instance" placeholder="cpd_instance"><br><br>
+      <label>cpd_instance_ns value</label>
+      <input type="text" id="cr_cpd_instance" value="cpd-instance"><br><br>
         <a class="button is-dark is-medium" title="Execute" id="install_cr"
           >Execute
         </a>
@@ -397,7 +409,7 @@
       <div class="content">
         <p>Delete the resources created during this session</p>
         <a class="button is-dark is-medium" title="Check Pod State"
-          href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$sh delete.sh">delete
+          href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$sh delete.sh">Delete
         </a>
       </div>
       </div>

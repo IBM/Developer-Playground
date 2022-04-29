@@ -15,9 +15,7 @@ window.onload = function () {
   function install_olm() {
     let component_list = document.getElementById("olm_component_list").value;
     let release_version = document.getElementById("olm_release_version").value;
-    // let preview_value = document.getElementById("olm_preview_value").value;
-    let select = document.getElementById('olm_preview_value');
-    let preview_value = select.options[select.selectedIndex].text;
+    let preview_value = document.getElementById('olm_preview_value').value;
     document.getElementById("command_exec").href =
       "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$run_utils apply-olm --preview=" +
       preview_value +
@@ -33,18 +31,17 @@ window.onload = function () {
   function install_cr() {
     let component_list = document.getElementById("cr_component_list").value;
     let release_version = document.getElementById("cr_release_version").value;
-    let select = document.getElementById('cr_preview_value');
-    let preview_value = select.options[select.selectedIndex].text;
+    let preview_value = document.getElementById('cr_preview_value').value;
     select = document.getElementById('cr_license_acceptance');
     let license_acceptance = select.options[select.selectedIndex].text;
     let cr_cpd_instance = document.getElementById("cr_cpd_instance").value;
     let cr_storage_class = document.getElementById("cr_storage_class").value;
-    let cr_storage_vendor=document.getElementById("cr_storage_vendor").value;
+    let cr_storage_value=document.getElementById("cr_storage_value").value;
     let storage=""
-    if(cr_storage_class){
-      storage = " --storage_class="+cr_storage_class
+    if(cr_storage_class === "storage_class"){
+      storage = " --storage_class="+cr_storage_value
     }else{
-      storage = " --storage_vendor="+cr_storage_vendor
+      storage = " --storage_vendor="+cr_storage_value
     }
 
     document.getElementById("command_exec").href =

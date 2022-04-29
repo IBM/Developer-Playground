@@ -275,7 +275,7 @@
 <body>
   <div class="header">
     <div class="right-content" style="padding-top: 40px">
-      <div class="apptitle" style="font-size: 28px; color: white">CP4D demo</div>
+      <div class="apptitle" style="font-size: 28px; color: white">OLM Utils demo</div>
       <div class="subheading">Cloud Pak for Data (CPD) v4 adopted the Operator based installation & management pattern. This relies on the Operator Lifecycle Manager (OLM) as well as some key features delivered by Cloud Pak Foundational Services (CPFS).<br>
       "olm-utils" is to improve the experience and reliability of various operations against Cloud Pak for Data Services, validate pre-conditions and post-conditions to ensure that the steps work as expected.</div>
     </div>
@@ -301,7 +301,8 @@
     </div>
       <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
-        <p>Add Openshift Credentials to configure the application</p>
+        <p>Add Openshift Credentials to configure the application,
+Optionally you can enter the ICR KEY value For IBM cloud ROKS cluster</p>
         <a class="button is-dark is-medium" title="open env file"
           href="didact://?commandId=vscode.open&projectFilePath=/projects/techzone-demo/olm-utils/env.sh">Configure
         </a>
@@ -317,7 +318,7 @@
     </div>
       <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
-        <p>Check the status of the deployment, it might take upto 30-45 seconds </p>
+        <p>Check the status of the deployment, it might take upto 30-45 seconds, olm-utils pod should be in running state </p>
         <a class="button is-dark is-medium" title="Check Pod State"
           href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$get_pods">Check Pod State
         </a>
@@ -342,7 +343,7 @@
       <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
         <p>Get the status of all Services/components (operands) in a CPD instance namespace</p>
-        <label>cpd_instance_ns value</label>
+        <label>CPD instance namespace</label>
       <input type="text" id="cpd_instance_value" value="cpd-instance"><br><br>
         <a class="button is-dark is-medium" title="Execute" id="existing_service"
           >Execute
@@ -352,13 +353,13 @@
      <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
         <p>Install Selected services (apply-olm to introduce Catalog Sources and Subscriptions for selected services)</p>
-        <label>preview value</label>
+        <label>Preview</label>
       <select id="olm_preview_value">
         <option value="true">true</option>
         <option value="false">false</option>
       </select>
       <br><br>
-        <label>Release version</label>
+        <label>Release Version</label>
       <input type="text" id="olm_release_version" placeholder="4.0.5"><br><br>
       <label>Component list(comma separated)</label>
       <input type="text" id="olm_component_list" placeholder="cpfs,cpd_platform"><br><br>
@@ -375,7 +376,7 @@
      <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
         <p>Install Selected services (Custom resources CRs)</p>
-        <label>preview value</label>
+        <label>Preview</label>
        <select id="cr_preview_value">
         <option value="true">true</option>
         <option value="false">false</option>
@@ -391,9 +392,13 @@
         <option value="false">false</option>
       </select>
       <br><br>
-      <label>Storage Class/Storage Vendor</label>
-      <input type="text" id="cr_storage_class" placeholder="storage_class"> or <input type="text" id="cr_storage_vendor" placeholder="storage_vendor"><br><br>
-      <label>cpd_instance_ns value</label>
+      <label>Select Storage Type</label>
+      <select id="cr_storage_class">
+        <option value="storage_class">Storage Class</option>
+        <option value="storage_vendor">Storage Vendor</option>
+      </select>
+      <input type="text" id="cr_storage_value" placeholder="Storage Value"><br><br>
+      <label>CPD instance namespace</label>
       <input type="text" id="cr_cpd_instance" value="cpd-instance"><br><br>
         <a class="button is-dark is-medium" title="Execute" id="install_cr"
           >Execute
@@ -409,7 +414,7 @@
       <div class="content">
         <p>Delete the resources created during this session</p>
         <a class="button is-dark is-medium" title="Check Pod State"
-          href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$sh delete.sh">Delete
+          href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$sh delete.sh">Clean up
         </a>
       </div>
       </div>

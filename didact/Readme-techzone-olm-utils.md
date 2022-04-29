@@ -296,7 +296,7 @@
       <div class="content">
         <p>Get the resources required to deploy and run the olm-utils.</p>
         <a class="button is-dark is-medium" title="Open Terminal"
-          href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$git clone https://github.com/IBM/Developer-Playground -b techzone --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils">Get Resources</a>
+          href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$git clone https://github.com/IBM/Developer-Playground -b techzone --single-branch techzone-demo;cd%20${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils">Get Resources</a>
       </div>
     </div>
       <div style="margin-top: 0px; padding-top: 0px" class="container right">

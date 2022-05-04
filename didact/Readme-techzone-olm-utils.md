@@ -275,9 +275,8 @@
 <body>
   <div class="header">
     <div class="right-content" style="padding-top: 40px">
-      <div class="apptitle" style="font-size: 28px; color: white">OLM Utils demo</div>
-      <div class="subheading">Cloud Pak for Data (CPD) v4 adopted the Operator based installation & management pattern. This relies on the Operator Lifecycle Manager (OLM) as well as some key features delivered by Cloud Pak Foundational Services (CPFS).<br>
-      "olm-utils" is to improve the experience and reliability of various operations against Cloud Pak for Data Services, validate pre-conditions and post-conditions to ensure that the steps work as expected.
+      <div class="apptitle" style="font-size: 28px; color: white">Self-service customizable CP4D environment setup</div>
+      <div class="subheading">Cloud Pak for Data (CP4D) v4 adopted the Operator based installation & management pattern. This gives us flexibility to custom build a demo environment based on our needs. If we are doing a simple data science demo with services WS, WML you can choose to just install those 2 services in a self-service fashion on an appropriately sized cluster for more cost effectiveness in addition to better performance as you would have installed just services you need for your demo. This interface uses standard engineering-supported install utility/mechanism for ongoing support/maintainability.
       </div>
     </div>
   </div>

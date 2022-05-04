@@ -312,7 +312,7 @@
 You can get the ICR KEY by logging onto <a href="https://myibm.ibm.com">myibm.ibm.com</a> using your IBM ID.
 </p>
         <a class="button is-dark is-medium" title="open env file"
-          href="didact://?commandId=vscode.open&projectFilePath=/projects/techzone-demo/olm-utils/env.sh">Configure *
+          href="didact://?commandId=vscode.open&projectFilePath=/projects/techzone/olm-utils/env.sh">Configure *
         </a>
       </div>
     </div>

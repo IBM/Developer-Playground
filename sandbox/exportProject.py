@@ -33,7 +33,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 CPD_USER_NAME =  config('WKCUSER')
 CPD_USER_PASSWORD =  config('PASSWORD')
-CPD_URL =  config('TZHOSTNAME')
+CPD_URL = "https://"+config('TZHOSTNAME')
 
 version_r = os.popen('cpdctl version').read()
 
@@ -91,20 +91,15 @@ def existing_projects(options, service_info):
     terminal_menu = TerminalMenu(options,title = "Select a project to export. Use Keyboard keys to select.", menu_cursor_style = ("fg_cyan", "bold"), menu_highlight_style =("bold",))
     menu_entry_index = terminal_menu.show()
     #########Confirmation message#########
-    print("The Project "+ service_info[menu_entry_index]['name']+" having Project ID "+service_info[menu_entry_index]['guid']+" will be Exported.\nDo you want to continue?(Y/N)")
-    confirm=input()
-    if(confirm=="Y" or confirm=="y"):
-        return service_info[menu_entry_index]['guid']  # return guid of selected project
-    elif(confirm=="N" or confirm=="n"):
-        #########Printing the next step menu in the terminal#########
-        optionsNo = ["Want to select a different existing project", "Exit from the Menu"]
-        terminal_menu_No = TerminalMenu(optionsNo,title = "Select the next step. Use Keyboard keys to select.", menu_cursor_style = ("fg_cyan", "bold"), menu_highlight_style =("bold",))
-        menu_entry_index_No = terminal_menu_No.show()
-        if(menu_entry_index_No==0):
+    if(menu_entry_index!=len(options)-1):
+        print("The Project "+ service_info[menu_entry_index]['name']+" having Project ID "+service_info[menu_entry_index]['guid']+" will be Exported.\nDo you want to continue?(Y/N)")
+        confirm=input()
+        if(confirm=="Y" or confirm=="y"):
+            return service_info[menu_entry_index]['guid']  # return guid of selected project
+        elif(confirm=="N" or confirm=="n"):
             return existing_projects(options, service_info) # recursive call to select a project again
-        else:
-            return 0 # No project selected
-
+    else:
+        return 0
 #####################End of function existing_projects#####################
 
 ## Access the selected project assets
@@ -126,7 +121,7 @@ for i in range(0,entries):
         "guid": data['resources'][i]['metadata']['guid']
     }
     options[i]+=" ("+data['resources'][i]['metadata']['guid']+")"
-
+options.append("Exit from the Menu")
 PROJECT_ID=existing_projects(options, service_info)   #function call to list the existing projects and returning the selected project guid
 # print(PROJECT_ID)
 if(PROJECT_ID==0):

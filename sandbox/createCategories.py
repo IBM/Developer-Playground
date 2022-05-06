@@ -3,7 +3,7 @@ import pandas
 
 logging.basicConfig(format="%(asctime)s %(levelname)-7s %(message)s", level=logging.INFO)
 import sys
-sys.path.append('../..')
+sys.path.append('../')
 from apis import endpoints, MainAPI, usecases
 
 categoriesAPI = endpoints.CategoriesAPI()

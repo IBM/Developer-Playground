@@ -13,25 +13,91 @@ window.onload = function funLoad() {
     document.getElementById("createusersteps").style.display = "none";
     document.getElementById("updateusersteps").style.display = "inherit";
   }*/
+ let compositeHref = "didact://?commandId=extension.compositeCommand&&text=vscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20techzone%20https://github.com/IBM/Developer-Playground%20%24%7BCHE_PROJECTS_ROOT%7D%2Ftechzone-demo%2C%2Fprojects%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd%20%2Fprojects%2Ftechzone-demo%3Bpip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%3Bpython3.8%20update-env.py%20" 
 
-  try{
+  /*var myHeaders = new Headers();
+  myHeaders.append("Content-Security-Policy", "default-src *");
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("insecureHTTPParser",true)
+
+  var raw = JSON.stringify({
+    "username": "admin",
+    "password": "CP4DDataFabric"
+  });
+
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+  };
+
+  fetch("https://datafabric.ibmcloudpack.com:12010/icp4d-api/v1/authorize", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+
+  let timelineContainer = document.getElementsByClassName("timeline-container")[0]
+  timelineContainer.style.opacity = 0.5;
+  timelineContainer.style.cursor = "not-allowed";
+  [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
+  [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none")*/
+  let config = {
+    hostname: "",
+    wkcuser: "",
+    password: "",
+  }
   let checkList = document.getElementById('list1');
-  checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
+  document.onclick = function (e) {
+    if (e.target.parentElement !== checkList && e.target.name !== "governance-artifacts" && e.target.nodeName !== "LI") {
+      checkList.classList.remove('visible');
+    }
+  };
+  checkList.getElementsByClassName('anchor')[0].onclick = function (evt) {
     if (checkList.classList.contains('visible'))
       checkList.classList.remove('visible');
     else
       checkList.classList.add('visible');
   }
-  } catch {
-      //Do NOTHING
+
+  let envVariables = document.getElementsByClassName('env-variables');
+  console.log([...envVariables]);
+  [...envVariables].forEach((task) => {
+    task.addEventListener("input", getEnvValues)
+  });
+
+  function getEnvValues(e) {
+    if (e.target.name === "hostname") {
+      e.target.value = e.target.value.replace(/(^\w+:|^)\/\//, '');
+    }
+    config[e.target.name] = e.target.value
+    let cta = document.getElementById("configure-env")
+    cta.href = `${compositeHref}${Object.values(config).toString().replaceAll(",", "%20")}`
+    /*valid = true
+    for (val of Object.values(config)) {
+      if (val.trim() === "")
+        valid = false
+    }
+    if (valid) {
+      timelineContainer.style.opacity = 1;
+      timelineContainer.style.cursor = "auto";
+      [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "auto");
+      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto")
+    } else {
+      timelineContainer.style.opacity = 0.5;
+      timelineContainer.style.cursor = "not-allowed";
+      [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
+      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none")
+    }*/
   }
+
   let tasks = document.querySelectorAll("[id^='task']");
   tasks.forEach((task) => (task.style.display = "none"));
 
   let selectedTasks = document.getElementsByName("checkboxtask");
   selectedTasks.forEach((task) => task.addEventListener("click", showTasks));
   function showTasks(e) {
-    
+
     if (e.target.checked) {
       document.getElementById(e.target.value).style.display = "block";
     } else {
@@ -65,12 +131,12 @@ window.onload = function funLoad() {
     }
     let task = document.getElementById("export-task")
     let cta = task.getElementsByTagName("A")[0]
-    if(selectedArtifacts.length === 0){
+    if (selectedArtifacts.length === 0) {
       task.classList.remove("enable")
       task.classList.add("disable")
       cta.classList.remove("allow-click")
       cta.classList.add("no-click")
-    } else{
+    } else {
       task.classList.remove("disable")
       task.classList.add("enable")
       cta.classList.remove("no-click")
@@ -97,3 +163,4 @@ window.onload = function funLoad() {
     }
   }
 };
+

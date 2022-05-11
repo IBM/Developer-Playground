@@ -323,7 +323,7 @@
             }
         }
         .header {
-            background-image: url("https://raw.githubusercontent.com/IBMP/Developer-Playground/master/didact/images/video_insights.jpeg");
+            background-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/video_insights.jpeg");
         }
     </style>
 </head>

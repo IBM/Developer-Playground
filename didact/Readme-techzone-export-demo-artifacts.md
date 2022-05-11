@@ -2,7 +2,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="export-demo-artifacts.css">
+    <!--<link rel="stylesheet" href="export-demo-artifacts.css">-->
     <style>
         html,
         div,
@@ -307,6 +307,12 @@
           .dropdown-check-list.visible .items {
             display: block;
           }
+          .env-config{
+            display:grid;
+            grid-template-columns: max-content max-content;
+            grid-gap:5px;
+        }
+        .env-config label       { text-align:right; }
         @media screen and (max-width: 50rem) {
             .footer {
                 display: flex;
@@ -317,7 +323,7 @@
             }
         }
         .header {
-            background-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/video_insights.jpeg");
+            background-image: url("https://raw.githubusercontent.com/IBMP/Developer-Playground/master/didact/images/video_insights.jpeg");
         }
     </style>
 </head>
@@ -330,6 +336,17 @@
             <div class="subheading">Cloud Pak for Data (CPD) v4 adopted the Operator based installation & management
                 pattern. This relies on the Operator Lifecycle Manager (OLM) as well as some key features delivered by
                 Cloud Pak Foundational Services (CPFS).</div>
+        </div>
+    </div>
+    <div class="section">
+        <p style="font-size:24px">Pre-requisites</p>
+        <div>
+            <p>Enter your cp4d details.</p>
+            <div class="env-config">
+                <label>Hostname: </label><input class="env-variables" name="hostname" type="text" />
+                <label>User: </label><input class="env-variables" name="wkcuser" type="text" />
+                <label>Password: </label><input class="env-variables" name="password" type="password" />
+            </div>
         </div>
     </div>
     <div class="section">
@@ -349,26 +366,27 @@
             <div class="content">
                 <p>Get the resources required and update the cp4d details in .env file.</p>
             </div>
-            <a class="button is-dark is-medium" title="Configure Resources"
-          href="didact://?commandId=extension.compositeCommand&&text=vscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20techzone%20https://github.com/IBM/Developer-Playground%20%24%7BCHE_PROJECTS_ROOT%7D%2Ftechzone-demo%2C%2Fprojects%7Cvscode.open%2C%2Fprojects%2Ftechzone-demo%2F.env%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd%20%2Fprojects%2Ftechzone-demo%3Bpip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fnotebooks%2Fsandbox%2F">Configure Resources</a>
+            <a id="configure-env" class="button is-dark is-medium" title="Configure Resources"
+                href="didact://?commandId=extension.compositeCommand%26%26text%3Dvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20techzone%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground%20%24%7BCHE_PROJECTS_ROOT%7D%2Ftechzone-demo%2C%2Fprojects%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cpip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%7C">Configure
+                Environment</a>
             <span class="dot"></span>
         </div>
         <div class="timeline timelinestep">
             <div class="content">
                 <p>Select the required tasks</p>
                 <div class="checkbox-group">
-                <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
-                    <input type="checkbox" name="checkboxtask" value="task1" />
-                    <label for="task1">User Management</label>
-                </div>
-                <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
-                    <input type="checkbox" name="checkboxtask" value="task2" />
-                    <label for="task2">Governance Artifacts</label>
-                </div>
-                <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
-                    <input type="checkbox" name="checkboxtask" value="task3" />
-                    <label for="task3">Project Management</label>
-                </div>
+                    <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
+                        <input type="checkbox" name="checkboxtask" value="task1" />
+                        <label for="task1">User Management</label>
+                    </div>
+                    <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
+                        <input type="checkbox" name="checkboxtask" value="task2" />
+                        <label for="task2">Governance Artifacts</label>
+                    </div>
+                    <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
+                        <input type="checkbox" name="checkboxtask" value="task3" />
+                        <label for="task3">Project Management</label>
+                    </div>
                 </div>
                 <span class="dot"></span>
             </div>
@@ -383,9 +401,9 @@
                         <div class="content">
                             <p>Export User List to the csv file</p>
                         </div>
-                    <a class="button is-dark is-medium" title="Export User List"
-                      href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportUsers.py demo_users.csv">Export
-                      User List</a>
+                        <a class="button is-dark is-medium" title="Export User List"
+                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportUsers.py demo_users.csv">Export
+                            User List</a>
                         <span class="dot"></span>
                     </div>
                 </details>
@@ -399,40 +417,31 @@
                     <br><br>
                     <div class="content">
                         <p>Select the action to perform in the configured cp4d instance</p>
-                        <div class="checkbox-group">
-                        <div class="checkbox-item">
-                            <input type="checkbox" name="governance-artifacts" value="all" checked/>
-                            <label for="governance-artifacts">All</label><br />
+                        <div id="list1" class="dropdown-check-list" tabindex="100">
+                            <span class="anchor">Select Artifacts</span>
+                            <ul class="items">
+                                <li><input type="checkbox" name="governance-artifacts" value="all" checked />All </li>
+                                <li><input type="checkbox" name="governance-artifacts"
+                                        value="category" />Category</label>
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts"
+                                        value="classification" />Classification</label>
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts" value="data_class" />Data
+                                    Class</label>
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts" value="glossary_term" />Glossary
+                                    Terms</label>
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts" value="policy" />Policy</label>
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts"
+                                        value="reference_data" />Reference Data</label>
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts" value="rule" />Rule</label>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" name="governance-artifacts" value="category" />
-                            <label for="governance-artifacts">Category</label><br />
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" name="governance-artifacts" value="classfication" />
-                            <label for="governance-artifacts">Classfication</label><br />
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" name="governance-artifacts" value="data_class" />
-                            <label for="governance-artifacts">Data Class</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" name="governance-artifacts" value="glossary_term" />
-                            <label for="governance-artifacts">Glossary Terms</label><br />
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" name="governance-artifacts" value="policy" />
-                            <label for="governance-artifacts">Policy</label><br />
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" name="governance-artifacts" value="reference_data" />
-                            <label for="governance-artifacts">Reference Data</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" name="governance-artifacts" value="rule" />
-                            <label for="governance-artifacts">Rule</label><br />
-                        </div>
-                    </div>
                     </div>
                     <br>
                     <div id="export-task">
@@ -455,11 +464,16 @@
                     <br><br>
                     <div>
                         <div class="content">
-                            <p>Export project from the configured cp4d instance. Follow the instructions given in sandbox terminal.</p>
+                            <p>Export project from the configured cp4d instance</p>
                         </div>
-              <a class="button is-dark is-medium" title="Export Project"
-                href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportProject.py">Export
-                Project</a>
+                        <!--<select name="select" id="select-option" class="form-control">
+                            <option value="">Select a Option</option>
+                            <option value="Option_one">Option one</option>
+                            <option value="Option_two">Option two</option>
+                        </select>-->
+                        <a class="button is-dark is-medium" title="Export Project"
+                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportProject.py">Export
+                            Project</a>
                         <span class="dot"></span>
                     </div>
                 </details>
@@ -485,5 +499,4 @@
     </div>
 </body>
 <script src="export-demo-artifacts.js"></script>
-
 </html>

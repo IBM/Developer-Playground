@@ -13,7 +13,7 @@ window.onload = function funLoad() {
     document.getElementById("createusersteps").style.display = "none";
     document.getElementById("updateusersteps").style.display = "inherit";
   }*/
- let compositeHref = "didact://?commandId=extension.compositeCommand&&text=vscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20techzone%20https://github.com/IBM/Developer-Playground%20%24%7BCHE_PROJECTS_ROOT%7D%2Ftechzone-demo%2C%2Fprojects%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd%20%2Fprojects%2Ftechzone-demo%3Bpip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%3Bpython3.8%20update-env.py%20" 
+ let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20techzone%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground%20%24%7BCHE_PROJECTS_ROOT%7D%2Ftechzone-demo%2C%2Fprojects%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd%20${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%3Bpython3.8%20update-env.py%20" 
 
   /*var myHeaders = new Headers();
   myHeaders.append("Content-Security-Policy", "default-src *");
@@ -35,9 +35,9 @@ window.onload = function funLoad() {
   fetch("https://datafabric.ibmcloudpack.com:12010/icp4d-api/v1/authorize", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+    .catch(error => console.log('error', error));*/
 
-  let timelineContainer = document.getElementsByClassName("timeline-container")[0]
+  /*let timelineContainer = document.getElementsByClassName("timeline-container")[0]
   timelineContainer.style.opacity = 0.5;
   timelineContainer.style.cursor = "not-allowed";
   [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
@@ -143,6 +143,10 @@ window.onload = function funLoad() {
       cta.classList.add("allow-click")
     }
     cta.href = `didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py gov-artifacts.zip ${selectedArtifacts.toString()};unzip gov-artifacts.zip -d gov-artifacts`
+    if(selectedArtifacts.indexOf("rule") >= 0)
+    {
+        cta.href = cta.href + ";python3.8 exportDataProtectionRules.py data_protection_rules.json"
+    }
   }
   var governanceOptions = document.getElementsByName("governanceartifactsopt");
   for (let key in governanceOptions) {
@@ -163,4 +167,3 @@ window.onload = function funLoad() {
     }
   }
 };
-

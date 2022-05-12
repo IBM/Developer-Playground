@@ -15,6 +15,23 @@ window.onload = function funLoad() {
   }*/
  let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20techzone%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground%20%24%7BCHE_PROJECTS_ROOT%7D%2Ftechzone-demo%2C%2Fprojects%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd%20${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%3Bpython3.8%20update-env.py%20" 
 
+
+ // Github push related code
+ document.getElementById("pushToGit").addEventListener("click", pushToGit);
+ function pushToGit(){
+   let industry = document.getElementById("industry").value
+   let tags = document.getElementById("tags").value
+   let author = document.getElementById("author").value
+   let services = document.getElementById("services").value
+   let demoname = document.getElementById("demoname").value
+   // JSON ARRAY
+   let metadata=`{"industry":"${industry}","tags":"${tags}","author":"${author}","services":"${services}","demoname":"${demoname}"}`
+   metadata = JSON.stringify(metadata)
+   document.getElementById("command_exec").href =
+     "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=github terminal$$sh /projects/techzone-demo/github.sh " + demoname + " "+metadata + " "+author;
+   document.getElementById("command_exec").click();
+   
+ }
   /*var myHeaders = new Headers();
   myHeaders.append("Content-Security-Policy", "default-src *");
   myHeaders.append("Content-Type", "application/json");

@@ -149,22 +149,33 @@
             </div>
             <span class="dot"></span>
         </div>
-        <div class="timeline">
-            <div class="content">
-                <p>Push code to GitHub repository</p>
-            </div>
-            <a class="button is-dark is-medium" title="Delete services from IBM Cloud"
-                href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=sandbox: IPython: notebooks/sandbox$$cd%20%2Fprojects%2Ftechzone-demo%20%26%26sh%20/github.sh ">Push
-                to GitHub</a>
-            <p style="margin-top:10px;">Click to push code to your own Github repository. You will need a personal
-                access
-                token to complete this action via the CLI. Refer to this <a
-                    href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">guide</a>
-                for generating your personal access token.</p>
+       <div class="timeline">
+           <div class="content">
+                <details>
+                    <summary>Push to Github<span class="arrow"></span></summary>
+                    <br><br>
+                    <div class="content">
+                        <!-- <p>Select the action to perform in the configured cp4d instance</p> -->
+                    <label>Demo Name*</label><br>
+                    <input type="text" id="demoname"><br><br>
+                    <label>Industry*</label><br>
+                    <input type="text" id="industry"><br><br>
+                    <label>Tags(comma separated)*</label><br>
+                    <input type="text" id="tags"><br><br>
+                    <label>Author*</label><br>
+                    <input type="text" id="author"><br><br>
+                    <label>Services(comma separated)*</label><br>
+                    <input type="text" id="services"><br><br>
+                     <button class="button is-dark is-medium" title="Push to github"
+                 id="pushToGit">Push
+                to GitHub</button>
+                    </div>     
+                    </div>
             <span class="dot"></span>
         </div>
     </div>
     </div>
+    <a id="command_exec",href=""></a>
     </div>
 </body>
 <script src="export-demo-artifacts.js"></script>

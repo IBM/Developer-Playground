@@ -23,7 +23,7 @@ git remote add upstream $github_url
 git sparse-checkout set $demo_name
 if [ -d "$demo_name" ]; then
   # Control will enter here if $DIRECTORY doesn't exist.
-  echo "This name is Already Taken, please give other namea!"
+  echo "DemoName Already Exists, Choose another name!"
   exit 2
 fi
 gtd=`echo $git_token | base64 -d`

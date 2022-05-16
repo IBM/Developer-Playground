@@ -116,6 +116,7 @@
                                 </li>
                             </ul>
                         </div>
+                    <p><b id="selected">Selected Artifacts: all</b></p>
                     </div>
                     <br>
                     <div id="export-task">

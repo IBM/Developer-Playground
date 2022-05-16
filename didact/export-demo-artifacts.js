@@ -159,8 +159,8 @@ window.onload = function funLoad() {
       cta.classList.remove("no-click")
       cta.classList.add("allow-click")
     }
-    cta.href = `didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py gov-artifacts.zip ${selectedArtifacts.toString()};unzip gov-artifacts.zip -d gov-artifacts`
-    if(selectedArtifacts.indexOf("rule") >= 0)
+    cta.href = `didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py governance_artifacts.zip ${selectedArtifacts.toString()};unzip governance_artifacts.zip -d governance_artifacts`
+    if(selectedArtifacts.indexOf("rule") >= 0 || selectedArtifacts.indexOf("all") >= 0)
     {
         cta.href = cta.href + ";python3.8 exportDataProtectionRules.py data_protection_rules.json"
     }

@@ -1,0 +1,183 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="export-demo-artifacts.css">
+    <style>
+        .header {
+            background-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/video_insights.jpeg");
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin-top:2rem"></div>
+    <div class="header">
+        <div class="left-content">
+            <div class="apptitle">CP4D demo</div>
+            <div class="subheading">Cloud Pak for Data (CPD) v4 adopted the Operator based installation & management
+                pattern. This relies on the Operator Lifecycle Manager (OLM) as well as some key features delivered by
+                Cloud Pak Foundational Services (CPFS).</div>
+        </div>
+    </div>
+    <div class="section">
+        <p style="font-size:24px">Pre-requisites</p>
+        <div>
+            <p>Enter your cp4d details.</p>
+            <div class="env-config">
+                <label>Hostname: </label><input class="env-variables" name="hostname" type="text" />
+                <label>User: </label><input class="env-variables" name="wkcuser" type="text" />
+                <label>Password: </label><input class="env-variables" name="password" type="password" />
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <p style="font-size:24px">Instructions</p>
+        <p>Please follow all the below steps in proper sequence.</p>
+    </div>
+    <div class="timeline-container">
+        <div class="timeline timelinestep">
+            <div class="content">
+                <p>Get the resources required and update the cp4d details in .env file.</p>
+            </div>
+            <a id="configure-env" class="button is-dark is-medium" title="Configure Resources"
+                href="didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20techzone%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground%20%24%7BCHE_PROJECTS_ROOT%7D%2Ftechzone-demo%2C%2Fprojects%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd%20${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%7C">Configure
+                Environment</a>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline timelinestep">
+            <div class="content">
+                <p>Select the required tasks</p>
+                <div class="checkbox-group">
+                    <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
+                        <input type="checkbox" name="checkboxtask" value="task1" />
+                        <label for="task1">User Management</label>
+                    </div>
+                    <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
+                        <input type="checkbox" name="checkboxtask" value="task2" />
+                        <label for="task2">Governance Artifacts</label>
+                    </div>
+                    <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
+                        <input type="checkbox" name="checkboxtask" value="task3" />
+                        <label for="task3">Project Management</label>
+                    </div>
+                </div>
+                <span class="dot"></span>
+            </div>
+            </br>
+        </div>
+        <div class="timeline" id="task1">
+            <div class="content">
+                <details>
+                    <summary>User management<span class="arrow"></span></summary>
+                    <br><br>
+                    <div>
+                        <div class="content">
+                            <p>Export User List to the csv file</p>
+                        </div>
+                        <a class="button is-dark is-medium" title="Export User List"
+                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportUsers.py users.csv">Export
+                            User List</a>
+                        <span class="dot"></span>
+                    </div>
+                </details>
+            </div>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline" id="task2">
+            <div class="content">
+                <details>
+                    <summary>Governance Artifacts<span class="arrow"></span></summary>
+                    <br><br>
+                    <div class="content">
+                        <p>Select the action to perform in the configured cp4d instance</p>
+                        <div id="list1" class="dropdown-check-list" tabindex="100">
+                            <span class="anchor">Select Artifacts</span>
+                            <ul class="items">
+                                <li><input type="checkbox" name="governance-artifacts" value="all" checked />All </li>
+                                <li><input type="checkbox" name="governance-artifacts"
+                                        value="category" />Category</label>
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts"
+                                        value="classification" />Classification</label>
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts" value="data_class" />Data
+                                    Class</label>
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts" value="glossary_term" />Glossary
+                                    Terms</label>
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts" value="policy" />Policy</label>
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts"
+                                        value="reference_data" />Reference Data</label>
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts" value="rule" />Rule</label>
+                                </li>
+                            </ul>
+                        </div>
+                    <p><b id="selected">Selected Artifacts: all</b></p>
+                    </div>
+                    <br>
+                    <div id="export-task">
+                        <div class="content">
+                            <p>Export Governance Artifacts</p>
+                        </div>
+                        <a class="button is-dark is-medium" title="Export Governance Artifacts"
+                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py governance_artifacts.zip all;unzip governance_artifacts.zip -d governance_artifacts;python3.8 exportDataProtectionRules.py data_protection_rules.json">Export
+                            Artifacts</a>
+                        <span class="dot"></span>
+                    </div>
+                </details>
+            </div>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline" id="task3">
+            <div class="content">
+                <details>
+                    <summary>Project management<span class="arrow"></span></summary>
+                    <br><br>
+                    <div>
+                        <div class="content">
+                            <p>Export project from the configured cp4d instance</p>
+                        </div>
+                        <a class="button is-dark is-medium" title="Export Project"
+                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportProject.py project_assets.zip">Export
+                            Project</a>
+                        <span class="dot"></span>
+                    </div>
+                </details>
+            </div>
+            <span class="dot"></span>
+        </div>
+       <div class="timeline">
+           <div class="content">
+                <details>
+                    <summary>Push to Github<span class="arrow"></span></summary>
+                    <br><br>
+                    <div class="content">
+                        <!-- <p>Select the action to perform in the configured cp4d instance</p> -->
+                    <label>Demo Name*</label><br>
+                    <input type="text" id="demoname"><br><br>
+                    <label>Industry*</label><br>
+                    <input type="text" id="industry"><br><br>
+                    <label>Tags(comma separated)*</label><br>
+                    <input type="text" id="tags"><br><br>
+                    <label>Author*</label><br>
+                    <input type="text" id="author"><br><br>
+                    <label>Services(comma separated)*</label><br>
+                    <input type="text" id="services"><br><br>
+                     <button class="button is-dark is-medium" title="Push to github"
+                 id="pushToGit">Push
+                to GitHub</button>
+                    </div>     
+                    </div>
+            <span class="dot"></span>
+        </div>
+    </div>
+    </div>
+    <a id="command_exec",href=""></a>
+    </div>
+</body>
+<script src="export-demo-artifacts.js"></script>
+</html>

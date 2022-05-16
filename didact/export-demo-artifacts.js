@@ -164,6 +164,8 @@ window.onload = function funLoad() {
     {
         cta.href = cta.href + ";python3.8 exportDataProtectionRules.py data_protection_rules.json"
     }
+    let showSeleted = document.getElementById("selected")
+    showSeleted.innerHTML = `Selected Artifacts: ${selectedArtifacts.toString().replaceAll(",",", ")}`
   }
   var governanceOptions = document.getElementsByName("governanceartifactsopt");
   for (let key in governanceOptions) {

@@ -52,5 +52,11 @@
 		"name": "Techzone OLM Utils",
 		"title": "techzone-olm-utils",
 		"description": "Techzone OLM Utils"
+	},
+	{
+		"id": "techzone-export-demo-artifacts",
+		"name": "Techzone Export Demo artifacts",
+		"title": "techzone-export-demo-artifacts",
+		"description": "Techzone Export Demo artifacts"
 	}
 ]

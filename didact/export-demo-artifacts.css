@@ -187,9 +187,8 @@ html,
         }
         .apptitle {
             margin-left: 1.563rem;
-            margin-top: 1.25rem;
             margin-bottom: 0px;
-            font-size: 28px !important;
+            font-size: 26px !important;
             color: white !important;
             background: transparent;
         }
@@ -197,7 +196,7 @@ html,
             margin-left: 1.563rem;
             margin-top: 0rem;
             margin-bottom: 0rem;
-            font-size: 16px;
+            font-size: 14px;
             color: #c1c7cd;
             background: transparent;
         }

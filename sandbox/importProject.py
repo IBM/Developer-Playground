@@ -31,10 +31,10 @@ import sys
 #!/usr/bin/python
 
 #Pick the Demo Project and and zip file name from arguments 
-###python3.8 importProject.py DEMO_NAME PROJECT_ZIP###
+###python3.8 importProject.py PROJECT_ZIP DEMO_NAME###
 
-DEMO_NAME=str(sys.argv[1])
-PROJECT_ZIP=str(sys.argv[2])+'.zip'
+DEMO_NAME=str(sys.argv[2])
+PROJECT_ZIP=str(sys.argv[1])+'.zip'
 # print(DEMO_NAME)
 # print(PROJECT_ZIP)
 

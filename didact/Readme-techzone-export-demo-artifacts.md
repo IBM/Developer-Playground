@@ -14,10 +14,8 @@
     <div style="margin-top:2rem"></div>
     <div class="header">
         <div class="left-content">
-            <div class="apptitle">CP4D demo</div>
-            <div class="subheading">Cloud Pak for Data (CPD) v4 adopted the Operator based installation & management
-                pattern. This relies on the Operator Lifecycle Manager (OLM) as well as some key features delivered by
-                Cloud Pak Foundational Services (CPFS).</div>
+            <div class="apptitle">Save/Share demo assets with community</div>
+            <div class="subheading">Save demo artifacts to a centralized location (Shared GitHub repository). This will enable you to recreate your demo assets onto a different/new infrastructure (potentially on a newer version of Cloud Pak for Data). The centralized collection of demo assets can be leveraged by the broader community so we all benefit from each others work.</div>
         </div>
     </div>
     <div class="section">

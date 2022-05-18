@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .header {
-      background-image: url('https://s3.us.cloud-object-storage.appdomain.cloud/developer/default/patterns/create-a-web-based-intelligent-bank-loan-application-for-a-loan-agent/header.jpg');
+      background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/bank-loan-header.jpg');
     }
   </style>
 </head>
@@ -95,7 +95,7 @@
       </div>
       <input type="checkbox">
       <a id="step" class="button is-dark is-medium" title="Clone the Repo"
-        href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cget-code%7Csandbox%20terminal|git%20clone%20-b%20bank-loan%20https://github.com/nupurnegi/Developer-Playground.git ${CHE_PROJECTS_ROOT}/bank-loan/ && cd ${CHE_PROJECTS_ROOT}/bank-loan/bankloan">Get
+        href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cget-code%7Csandbox%20terminal|git%20clone%20-b%20bank-loan%20https://github.com/IBM/Developer-Playground.git ${CHE_PROJECTS_ROOT}/bank-loan/ && cd ${CHE_PROJECTS_ROOT}/bank-loan/bankloan">Get
         Code</a>
       <span class="dot"></span>
     </div>

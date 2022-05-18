@@ -6,7 +6,7 @@ logStream=os.popen("aws logs describe-log-streams --log-group-name /aws/lambda/C
 ##Error handling 
 if(len(logStream)==0):
     print('\nCONNECTION FAILED!!\n')
-    print("\n########################################################\nPlease click the previous CTA to Upload the data again.\n########################################################\n")
+    print("\n########################################################\nThere seems to be an issue with retrieving the data.\nPlease click Upload Data Button to try again.\n########################################################\n")
 else:
     #Edit the format of the log Stream Name
     logStream = logStream[:12] + '\\' + logStream[12:]

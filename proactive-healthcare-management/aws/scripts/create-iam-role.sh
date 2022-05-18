@@ -1,6 +1,6 @@
 servicename=proactivehealthcarecp4diam;
 servicename+=$CHE_WORKSPACE_ID;
-aws iam create-role --role-name $servicename --assume-role-policy-document file://Test-Role-Trust-Policy.json;
+aws iam create-role --role-name $servicename --assume-role-policy-document file://../Test-Role-Trust-Policy.json;
 aws iam attach-role-policy --role-name $servicename --policy-arn arn:aws:iam::aws:policy/CloudWatchFullAccess;
 aws iam attach-role-policy --role-name $servicename --policy-arn arn:aws:iam::aws:policy/AmazonKinesisFullAccess;
 aws iam attach-role-policy --role-name $servicename --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess;

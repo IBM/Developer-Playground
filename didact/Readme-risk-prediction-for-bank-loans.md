@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .header {
-      background-image: url('https://s3.us.cloud-object-storage.appdomain.cloud/developer/default/patterns/create-a-web-based-intelligent-bank-loan-application-for-a-loan-agent/header.jpg');
+      background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/bank-loan-header.jpg');
     }
   </style>
 </head>

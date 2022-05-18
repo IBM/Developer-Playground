@@ -2,7 +2,7 @@ import json
 import os
 
 #get the log Stream Name from AWS
-logStream=os.popen("aws logs describe-log-streams --log-group-name /aws/lambda/Consume | grep logStreamName | sed 's/^.*: //'|sed 's/..$//'|sed 's/^.\{1\}//'").read()
+logStream=os.popen("aws logs describe-log-streams --log-group-name /aws/lambda/Consumer | grep logStreamName | sed 's/^.*: //'|sed 's/..$//'|sed 's/^.\{1\}//'").read()
 ##Error handling 
 if(len(logStream)==0):
     print('\nCONNECTION FAILED!!\n')
@@ -22,4 +22,5 @@ else:
     for event in logs["events"]:
         with open("logs.txt",'a') as contents:
             contents.write(event["message"])
+    print("\nLogs fetching completed successfully.\n")
         #print(event["message"])

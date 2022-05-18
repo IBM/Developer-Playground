@@ -12,6 +12,8 @@
 
 <body>
     <div style="margin-top:2rem"></div>
+    <div id="workspaceID" class="hidden-state">$workspace_id</div>
+    <div id="userID" class="hidden-state">$user_id</div>
     <div class="header">
         <div class="left-content">
             <div class="apptitle">Recreate shared demo assets on your cluster</div>
@@ -39,9 +41,7 @@
                 <p>Select Demo</p>
                 <select>
                     <option>Select Demo</option>
-                    <option>Demo 1</option>
-                    <option>Demo 2</option>
-                    <option>Demo 3</option>
+                    $demo_options
                 </select>
             </div>
             <span class="dot"></span>

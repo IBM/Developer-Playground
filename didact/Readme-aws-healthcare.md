@@ -262,7 +262,7 @@
         </div>
         <div class="timeline step get-cloudwatch-logs">
             <div class="content">
-                <p>From AWS CloudWatch, get the Consumer Logs having the data streamed from the Kinesis and the predictions received from the Watson ML. Kindly keep track of the Sandbox terminal messages.</p>
+                <p>From AWS CloudWatch, get the Consumer Logs having the data streamed from the Kinesis and the predictions received from the Watson ML. Fetching the logs might take some time. Kindly wait for the retries to end.</p>
             </div>
             <input type="checkbox">
             <a id="step" class="button is-dark is-medium" title="Get logs" href="didact://?commandId=extension.sendToTerminal&text=AwsHealthcare%7Cget-logs%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/aws/;python3.8%20print-logs.py">Get Logs</a>

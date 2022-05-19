@@ -103,7 +103,7 @@
                 <p>Log in to your <a href="https://console.aws.amazon.com/iam/home#/security_credentials$access_key">AWS account</a> and create access key.</p>
             </div>
             <input type="checkbox">
-            <a id="step" class="button is-dark is-medium" title="Configure AWS Account" href="didact://?commandId=extension.sendToTerminal&text=AwsHealthcare%7Cconfigure-aws%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/%20%26%26%20aws%20configure">Configure AWS Account</a>
+            <a id="step" class="button is-dark is-medium" title="Configure AWS Account" href="didact://?commandId=extension.sendToTerminal&text=AwsHealthcare%7Cconfigure-aws%7Csandbox%20terminal|export AWS_PAGER='';cd%20${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/%20%26%26%20aws%20configure">Configure AWS Account</a>
             <span class="dot"></span>
         </div>
         <div class="timeline step create-s3-bucket">

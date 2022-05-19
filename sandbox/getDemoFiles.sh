@@ -17,6 +17,7 @@ if [ -d "$demo_name" ]; then
     echo "Files loaded successfully!"
     exit 2
 fi
+echo "DemoName Not Found!"
 echo "File loading failed!"
 rm -rf /projects/techzone-demo/sandbox/$project_name
 

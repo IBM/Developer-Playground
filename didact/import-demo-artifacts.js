@@ -38,7 +38,8 @@ window.onload = function funLoad() {
     password: localData.password,
   }
   let cta = document.getElementById("configure-env")
-  cta.href = `${compositeHref}${Object.values(config).toString().replaceAll(",", "%20")}`
+  compositeHref=`${compositeHref}${Object.values(config).toString().replaceAll(",", "%20")}`
+  cta.href = compositeHref
   
   let checkList = document.getElementById('list1');
   document.onclick = function (e) {
@@ -58,7 +59,7 @@ window.onload = function funLoad() {
   [...options].forEach(option=> option.addEventListener("click",selectOption))
   function selectOption(e){
     document.getElementById("selected").textContent = e.target.textContent
-    compositeHref.replace("demo_name",e.target.textContent)
+    cta.href=compositeHref.replace("demo_name",e.target.textContent)
     document.getElementById("import-project").href = `didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 importProject.py project_assets ${e.target.textContent}`
     checkList.classList.remove('visible');
   }

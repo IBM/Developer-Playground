@@ -39,10 +39,12 @@
         <div class="timeline timelinestep">
             <div class="content">
                 <p>Select Demo</p>
-                <select>
-                    <option>Select Demo</option>
-                    $demo_options
-                </select>
+                <div id="list1" class="dropdown-check-list" tabindex="100">
+                            <span id="selected" class="anchor">Select Demo</span>
+                            <ul class="items">
+                                $demo_options
+                            </ul>
+                        </div>
             </div>
             <span class="dot"></span>
         </div>
@@ -51,8 +53,7 @@
                 <p>Get the resources required and update the cp4d details in .env file.</p>
             </div>
             <a id="configure-env" class="button is-dark is-medium" title="Configure Resources"
-                href="didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20techzone%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground%20%24%7BCHE_PROJECTS_ROOT%7D%2Ftechzone-demo%2C%2Fprojects%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd%20${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%7C">Get
-                Resources</a>
+                href="didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20techzone%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground%20%24%7BCHE_PROJECTS_ROOT%7D%2Ftechzone-demo%2C%2Fprojects%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd%20${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%7C">Configure Environment</a>
             <span class="dot"></span>
         </div>
         <div class="timeline" id="task1">
@@ -62,11 +63,11 @@
                     <br><br>
                     <div>
                         <div class="content">
-                            <p>Create Users</p>
+                            <p>Create users in the configured cp4d instance.</p>
                         </div>
-                        <a class="button is-dark is-medium" title="Export User List"
-                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportUsers.py demo_users.csv">Create
-                            User</a>
+                        <a class="button is-dark is-medium" title="Create Users"
+                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 createUsers.py">Create
+                            Users</a>
                     </div>
                 </details>
             </div>
@@ -79,10 +80,10 @@
                     <br><br>
                     <div>
                         <div class="content">
-                            <p>Create Governance Artifacts</p>
+                            <p>Import Governance Artifacts</p>
                         </div>
-                        <a class="button is-dark is-medium" title="Export Gov Artifacts"
-                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py gov-artifacts.zip all;unzip gov-artifacts.zip -d gov-artifacts">Create
+                        <a class="button is-dark is-medium" title="Import Gov Artifacts"
+                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 importGovArtifacts.py">Import
                             Artifacts</a>
                     </div>
                 </details>
@@ -106,13 +107,8 @@
                         <div class="content">
                             <p>Import project</p>
                         </div>
-                        <!--<select name="select" id="select-option" class="form-control">
-                            <option value="">Select a Option</option>
-                            <option value="Option_one">Option one</option>
-                            <option value="Option_two">Option two</option>
-                        </select>-->
-                        <a class="button is-dark is-medium" title="Export Project"
-                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportProject.py">Import
+                        <a id="import-project" class="button is-dark is-medium" title="Import Project"
+                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 importProject.py project_assets ">Import
                             Project</a>
                         <span class="dot"></span>
                     </div>

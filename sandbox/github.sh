@@ -50,5 +50,6 @@ curl \
   https://api.github.com/repos/${username}/${project_name}/pulls \
   -d '{"title":"Sandbox Demo by '$sandbox_username'","body":"Sandbox demo description!","head":"'$demo_name'","base":"main"}'
 
-
+cd /projects/techzone-demo/sandbox
+rm -rf $project_name
 echo "Pull Request created successfully!"   

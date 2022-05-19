@@ -127,7 +127,7 @@
                 <p>Create an IAM Role to AWS services.</p>
             </div>
             <input type="checkbox">
-            <a id="step" class="button is-dark is-medium" title="Create IAM Role" href="didact://?commandId=extension.sendToTerminal&text=AwsHealthcare%7Ccreate-iam-role%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/aws/scripts%20%26%26%20chmod%20%2Bx%20.%2Fcreate-iam-role.sh%20%26%26%20.%2Fcreate-iam-role.sh">Create IAM Role</a>
+            <a id="step" class="button is-dark is-medium" title="Create IAM Role" href="didact://?commandId=extension.sendToTerminal&text=AwsHealthcare%7Ccreate-iam-role%7Csandbox%20terminal|export AWS_PAGER='';cd%20${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/aws/scripts%20%26%26%20chmod%20%2Bx%20.%2Fcreate-iam-role.sh%20%26%26%20.%2Fcreate-iam-role.sh">Create IAM Role</a>
             <span class="dot"></span>
         </div>
         <div class="timeline step create-lambda-function">

@@ -58,7 +58,7 @@ window.onload = function funLoad() {
   [...options].forEach(option=> option.addEventListener("click",selectOption))
   function selectOption(e){
     document.getElementById("selected").textContent = e.target.textContent
-    document.getElementById("import-project").href = `${document.getElementById("import-project").href}${e.target.textContent}`
+    document.getElementById("import-project").href = `didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 importProject.py project_assets ${e.target.textContent}`
     checkList.classList.remove('visible');
   }
 

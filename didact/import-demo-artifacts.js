@@ -75,6 +75,9 @@ window.onload = function funLoad() {
     cta.href=`${compositeHref.replace("demo_name",e.target.textContent)}${Object.values(config).toString().replaceAll(",", "%20")}`
     document.getElementById("import-project").href = `didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 importProject.py project_assets ${e.target.textContent}`
     checkList.classList.remove('visible');
+    let tempData = JSON.parse(localStorage[didact])
+    tempData["demo"] = e.target.textContent
+    localStorage[didact] = JSON.stringify(tempData)
   }
 
   let envVariables = document.getElementsByClassName('env-variables');

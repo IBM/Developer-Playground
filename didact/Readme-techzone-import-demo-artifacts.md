@@ -66,7 +66,7 @@
                             <p>Create users in the configured cp4d instance.</p>
                         </div>
                         <a class="button is-dark is-medium" title="Create Users"
-                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 createUsers.py">Create
+                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 createUsers.py users.csv">Create
                             Users</a>
                     </div>
                 </details>
@@ -83,7 +83,7 @@
                             <p>Import Governance Artifacts</p>
                         </div>
                         <a class="button is-dark is-medium" title="Import Gov Artifacts"
-                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 importGovArtifacts.py">Import
+                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 importGovArtifacts.py governance_artifacts.zip">Import
                             Artifacts</a>
                     </div>
                 </details>
@@ -95,7 +95,7 @@
                             <p>Validate</p>
                         </div>
                         <a class="button is-dark is-medium" title="Export Gov Artifacts"
-                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py gov-artifacts.zip all;unzip gov-artifacts.zip -d gov-artifacts">Validate</a>
+                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;">Validate</a>
             <span class="dot"></span>
         </div>
         <div class="timeline" id="task3">

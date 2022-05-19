@@ -58,5 +58,11 @@
 		"name": "Techzone Export Demo artifacts",
 		"title": "techzone-export-demo-artifacts",
 		"description": "Techzone Export Demo artifacts"
+	},
+	{
+		"id": "techzone-import-demo-artifacts",
+		"name": "Techzone Import Demo artifacts",
+		"title": "techzone-import-demo-artifacts",
+		"description": "Techzone Import Demo artifacts"
 	}
 ]

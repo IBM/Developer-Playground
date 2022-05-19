@@ -75,13 +75,6 @@ window.onload = function funLoad() {
     }
     config[e.target.name] = e.target.value
     let cta = document.getElementById("configure-env")
-    let result = document.getElementById("selected").textContent
-    if(result){
-      result=result?result:'demo_name_error'
-      compositeHref.replace("demo_name",result)
-    }else{
-      compositeHref.replace("demo_name","demo_name_error")
-    }
     
     cta.href = `${compositeHref}${Object.values(config).toString().replaceAll(",", "%20")}%7Cpython3%20update-project-dropdown.py%7Cvscode.didact.reload`
     valid = true

@@ -58,11 +58,5 @@
 		"name": "Techzone Export Demo artifacts",
 		"title": "techzone-export-demo-artifacts",
 		"description": "Techzone Export Demo artifacts"
-	},
-	{
-		"id": "aws-healthcare",
-		"name": "AWS Proactive Healthcare Management System",
-		"title": "aws-healthcare",
-		"description": "AWS Proactive Healthcare Management System"
 	}
 ]

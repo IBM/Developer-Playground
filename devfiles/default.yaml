@@ -12,7 +12,7 @@ components:
     cpuLimit: 1
     type: dockerimage
     alias: sandbox
-    image: 'quay.io/devplayground/developer-container-utilities:ibmcloud'
+    image: 'quay.io/devplayground/developer-container-utilities:next'
   - id: redhat/vscode-didact/latest
     type: chePlugin
     preferences:

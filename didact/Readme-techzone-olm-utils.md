@@ -275,50 +275,58 @@
 <body>
   <div class="header">
     <div class="right-content" style="padding-top: 40px">
-      <div class="apptitle" style="font-size: 28px; color: white">OLM Utils demo</div>
-      <div class="subheading">Cloud Pak for Data (CPD) v4 adopted the Operator based installation & management pattern. This relies on the Operator Lifecycle Manager (OLM) as well as some key features delivered by Cloud Pak Foundational Services (CPFS).<br>
-      "olm-utils" is to improve the experience and reliability of various operations against Cloud Pak for Data Services, validate pre-conditions and post-conditions to ensure that the steps work as expected.</div>
+      <div class="apptitle" style="font-size: 28px; color: white">Self-service customizable CP4D environment setup</div>
+      <div class="subheading">Cloud Pak for Data (CP4D) v4 adopted the Operator based installation & management pattern. This gives us flexibility to custom build a demo environment based on our needs. If we are doing a simple data science demo with services WS, WML you can choose to just install those 2 services in a self-service fashion on an appropriately sized cluster for more cost effectiveness in addition to better performance as you would have installed just services you need for your demo. This interface uses standard engineering-supported install utility/mechanism for ongoing support/maintainability.
+      </div>
     </div>
   </div>
   <div class="section">
     <p style="font-size: 24px">Instructions</p>
-    <p style="margin-bottom: 10px">Please follow all the below steps in proper sequence.</p>
+    Please follow all the below steps in proper sequence<br>
+      At a high level the installation steps include:
+      <ol>
+      <li>Deploy Operator Lifecycle Manager (OLM )objects for selected Cloud Pak for Data(CP4D) services.</li>
+      <li>Deploy custom resources for selected CP4D services.</li>
+      </ol>
+      Please follow steps below as appropriate, some steps are optional depending on what needs to be done. Mandatory steps are indicated using *<br><br>
   </div>
   <div class="timeline">
     <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
-        <p>Open the sandbox terminal.</p>
         <a class="button is-dark is-medium" title="Open Terminal"
-          href="didact://?commandId=terminal-for-sandbox-container:new">Open Terminal</a>
+          href="didact://?commandId=terminal-for-sandbox-container:new">Open Terminal *</a>
       </div>
     </div>
     <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
-        <p>Get the resources required to deploy and run the olm-utils.</p>
+        <p>Get the resources required to deploy CP4D services</p>
         <a class="button is-dark is-medium" title="Open Terminal"
-          href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$git clone https://github.com/IBM/Developer-Playground -b techzone --single-branch techzone-demo;cd%20${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils">Get Resources</a>
+          href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$git clone https://github.com/IBM/Developer-Playground -b techzone --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils">Get Resources *</a>
       </div>
     </div>
       <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
-        <p>Add Openshift Credentials to configure the application.
-Optionally you can enter the ICR KEY value For IBM Cloud ROKS cluster</p>
+        <p>Configure Openshift credentials (either use combination of server, user/password (OR) server, token).<br> Openshift server name (including https://) and token can be obtained using one of two methods
+<ol><li>From Openshift console, select your profile on top right and select “Copy login command”</li>
+<li>From oc cli, run “oc config view --minify|grep server” to get server name and “oc whoami -t” to get token</li></ol>
+You can get the ICR KEY by logging onto <a href="https://myibm.ibm.com">myibm.ibm.com</a> using your IBM ID.
+</p>
         <a class="button is-dark is-medium" title="open env file"
-          href="didact://?commandId=vscode.open&projectFilePath=/projects/techzone-demo/olm-utils/env.sh">Configure
+          href="didact://?commandId=vscode.open&projectFilePath=/projects/techzone/olm-utils/env.sh">Configure *
         </a>
       </div>
     </div>
       <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
-        <p>Deploy olm-utils and set the required aliases </p>
+        <p>Deploy CP4D installation utility </p>
         <a class="button is-dark is-medium" title="open env file"
-          href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$source env.sh">Deploy
+          href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$source env.sh">Deploy *
         </a>
       </div>
     </div>
       <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
-        <p>Check the status of the deployment, it might take upto 30-45 seconds, olm-utils pod should be in running state </p>
+        <p>Check the status of the installation utility deployment, it might take upto 45 seconds for the deployment to be ready, you are ready to proceed to the next step when the olm-utils pod is in running state </p>
         <a class="button is-dark is-medium" title="Check Pod State"
           href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$get_pods">Check Pod State
         </a>
@@ -334,7 +342,7 @@ Optionally you can enter the ICR KEY value For IBM Cloud ROKS cluster</p>
     </div> -->
       <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
-        <p>Get details about the components supported by olm-utils, i.e. for which, OLM and other metadata exists. </p>
+        <p>Installation of CP4D services requires the correct service code/name to be used, you can get the services code/name by listing components. The subsequent steps have a “components” field where you can provide one or more service code(s) in a comma-separated list </p>
         <a class="button is-dark is-medium" title="Check Pod State"
           href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$run_utils list-components --release=4.0.5">List Components
         </a>
@@ -342,7 +350,7 @@ Optionally you can enter the ICR KEY value For IBM Cloud ROKS cluster</p>
       </div>
       <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
-        <p>Get the status of all Services/components (operands) in a CPD instance namespace</p>
+        <p>Check currently installed CP4D services on the cluster in the selected namespace. If this is a new cluster/namespace, there will be no CP4D services installed</p>
         <label>CPD instance namespace</label>
       <input type="text" id="cpd_instance_value" value="cpd-instance"><br><br>
         <a class="button is-dark is-medium" title="Execute" id="existing_service"
@@ -352,7 +360,7 @@ Optionally you can enter the ICR KEY value For IBM Cloud ROKS cluster</p>
     </div>
      <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
-        <p>Install Selected services (apply-olm to introduce Catalog Sources and Subscriptions for selected services)</p>
+        <p>Deploy OLM  (Catalog source, Subscription, Cluster service version, Install Plan) objects for selected CP4D services</p>
         <label>Preview</label>
       <select id="olm_preview_value">
         <option value="true">true</option>
@@ -375,7 +383,7 @@ Optionally you can enter the ICR KEY value For IBM Cloud ROKS cluster</p>
     </div>
      <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
-        <p>Install Selected services (Custom resources CRs)</p>
+        <p>Deploy custom resources for selected CP4D services</p>
         <label>Preview</label>
        <select id="cr_preview_value">
         <option value="true">true</option>
@@ -412,7 +420,7 @@ Optionally you can enter the ICR KEY value For IBM Cloud ROKS cluster</p>
     </div>
      <div style="margin-top: 0px; padding-top: 0px" class="container right">
       <div class="content">
-        <p>Delete the resources created during this session</p>
+        <p>Cleanup install utility artifacts</p>
         <a class="button is-dark is-medium" title="Check Pod State"
           href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$sh delete.sh">Clean up
         </a>

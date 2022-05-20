@@ -90,14 +90,14 @@
             </div>
             <span class="dot"></span>
         </div>
-        <div class="timeline" id="task2">
+        <!--<div class="timeline" id="task2">
             <div class="content">
                             <p>Validate</p>
                         </div>
                         <a class="button is-dark is-medium" title="Export Gov Artifacts"
                             href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;">Validate</a>
             <span class="dot"></span>
-        </div>
+        </div>-->
         <div class="timeline" id="task3">
             <div class="content">
                 <details>

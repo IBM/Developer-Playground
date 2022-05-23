@@ -12,15 +12,10 @@
 
 <body>
     <div style="margin-top:2rem"></div>
-    <div id="workspaceID" class="hidden-state">$workspace_id</div>
-    <div id="userID" class="hidden-state">$user_id</div>
     <div class="header">
         <div class="left-content">
             <div class="apptitle">Save/Share demo assets with community</div>
-            <div class="subheading">Save demo artifacts to a centralized location (Shared GitHub repository). This will
-                enable you to recreate your demo assets onto a different/new infrastructure (potentially on a newer
-                version of Cloud Pak for Data). The centralized collection of demo assets can be leveraged by the
-                broader community so we all benefit from each others work.</div>
+            <div class="subheading">Save demo artifacts to a centralized location (Shared GitHub repository). This will enable you to recreate your demo assets onto a different/new infrastructure (potentially on a newer version of Cloud Pak for Data). The centralized collection of demo assets can be leveraged by the broader community so we all benefit from each others work.</div>
         </div>
     </div>
     <div class="section">
@@ -67,6 +62,7 @@
                 </div>
                 <span class="dot"></span>
             </div>
+            </br>
         </div>
         <div class="timeline" id="task1">
             <div class="content">
@@ -97,27 +93,28 @@
                             <span class="anchor">Select Artifacts</span>
                             <ul class="items">
                                 <li><input type="checkbox" name="governance-artifacts" value="all" checked />All </li>
-                                <li><input type="checkbox" name="governance-artifacts" value="category" />Category
+                                <li><input type="checkbox" name="governance-artifacts"
+                                        value="category" />Category</label>
                                 </li>
                                 <li><input type="checkbox" name="governance-artifacts"
-                                        value="classification" />Classification
+                                        value="classification" />Classification</label>
                                 </li>
                                 <li><input type="checkbox" name="governance-artifacts" value="data_class" />Data
-                                    Class
+                                    Class</label>
                                 </li>
                                 <li><input type="checkbox" name="governance-artifacts" value="glossary_term" />Glossary
-                                    Terms
+                                    Terms</label>
                                 </li>
-                                <li><input type="checkbox" name="governance-artifacts" value="policy" />Policy
+                                <li><input type="checkbox" name="governance-artifacts" value="policy" />Policy</label>
                                 </li>
                                 <li><input type="checkbox" name="governance-artifacts"
-                                        value="reference_data" />Reference Data
+                                        value="reference_data" />Reference Data</label>
                                 </li>
                                 <li><input type="checkbox" name="governance-artifacts" value="rule" />Rule</label>
                                 </li>
                             </ul>
                         </div>
-                        <p style="margin-top:1rem;"><b>Selected Artifacts: </b><span id="selected">all</span></p>
+                    <p><b id="selected">Selected Artifacts: all</b></p>
                     </div>
                     <br>
                     <div id="export-task">
@@ -151,36 +148,34 @@
             </div>
             <span class="dot"></span>
         </div>
-        <div class="timeline">
-            <div class="content">
+       <div class="timeline">
+           <div class="content">
                 <details>
                     <summary>Push to Github<span class="arrow"></span></summary>
                     <br><br>
                     <div class="content">
                         <!-- <p>Select the action to perform in the configured cp4d instance</p> -->
-                        <div class="env-config">
-                            <label>Demo Name*</label>
-                            <input type="text" id="demoname">
-                            <label>Industry*</label>
-                            <input type="text" id="industry">
-                            <label>Tags(comma separated)*</label>
-                            <input type="text" id="tags">
-                            <label>Author*</label>
-                            <input type="text" id="author">
-                            <label>Services(comma separated)*</label>
-                            <input type="text" id="services">
-                        </div>
+                    <label>Demo Name*</label><br>
+                    <input type="text" id="demoname"><br><br>
+                    <label>Industry*</label><br>
+                    <input type="text" id="industry"><br><br>
+                    <label>Tags(comma separated)*</label><br>
+                    <input type="text" id="tags"><br><br>
+                    <label>Author*</label><br>
+                    <input type="text" id="author"><br><br>
+                    <label>Services(comma separated)*</label><br>
+                    <input type="text" id="services"><br><br>
+                     <button class="button is-dark is-medium" title="Push to github"
+                 id="pushToGit">Push
+                to GitHub</button>
+                    </div>     
                     </div>
-                    <button class="button is-dark is-medium" title="Push to github" id="pushToGit">Push
-                        to GitHub</button>
-            </div>
             <span class="dot"></span>
         </div>
     </div>
     </div>
-    <a id="command_exec" ,href=""></a>
+    <a id="command_exec",href=""></a>
     </div>
 </body>
 <script src="export-demo-artifacts.js"></script>
-
 </html>

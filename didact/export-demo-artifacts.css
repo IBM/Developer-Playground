@@ -227,13 +227,7 @@ html,
             content: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/arrow-down.svg");
         }
         details{
-            margin-bottom: -2rem;
-        }
-        details .button.is-dark.is-medium{
-            min-height: 0rem;
-        }
-        details .content{
-            padding-left:1.5rem;
+            margin-bottom: 1.25rem;
         }
         .checkbox-group{
             display: flex;
@@ -316,12 +310,9 @@ html,
           .env-config{
             display:grid;
             grid-template-columns: max-content max-content;
-            grid-gap:1rem;
+            grid-gap:5px;
         }
-        .env-config label { 
-            text-align:left;
-        }
-        
+        .env-config label       { text-align:right; }
         @media screen and (max-width: 50rem) {
             .footer {
                 display: flex;

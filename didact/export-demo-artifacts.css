@@ -272,6 +272,7 @@ html,
             display: inline-block;
             padding: 5px 50px 5px 10px;
             border: 1px solid #ccc;
+            width: 12rem;
           }
           
           .dropdown-check-list .anchor:after {
@@ -294,7 +295,7 @@ html,
             top: 21%;
           }
           
-          .dropdown-check-list ul.items {
+          .dropdown-check-list .items {
             padding: 2px;
             display: none;
             margin: 0;
@@ -302,8 +303,11 @@ html,
             border-top: none;
           }
           
-          .dropdown-check-list ul.items li {
+          .dropdown-check-list .items li {
             list-style: none;
+          }
+          .dropdown-check-list .items ul {
+            margin-left: 0rem;
           }
           
           .dropdown-check-list.visible .anchor {
@@ -312,6 +316,9 @@ html,
           
           .dropdown-check-list.visible .items {
             display: block;
+            max-height: 14rem;
+            max-width: 15.52rem;
+            overflow: auto;
           }
           .env-config{
             display:grid;
@@ -322,12 +329,3 @@ html,
             text-align:left;
         }
         
-        @media screen and (max-width: 50rem) {
-            .footer {
-                display: flex;
-                flex-direction: column;
-            }
-            .image-content {
-                height: 20rem;
-            }
-        }

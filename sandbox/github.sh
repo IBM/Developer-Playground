@@ -27,17 +27,17 @@ if [ -d "$demo_name" ]; then
   exit 2
 fi
 gtd=`echo $git_token | base64 -d`
-mkdir `$sandbox_username-$demo_name`
-git sparse-checkout set `$sandbox_username-$demo_name`
+mkdir $demo_name
+git sparse-checkout set $demo_name
 # TODO
 # Add the meta_data and files to demo_name variable
 # ......
-echo $meta_data > `$sandbox_username-$demo_name`/readme.json
+echo $meta_data > $demo_name/readme.json
 # add the required files
-cp /projects/techzone-demo/sandbox/governance_artifacts.zip `$sandbox_username-$demo_name`/
-cp /projects/techzone-demo/sandbox/users.csv `$sandbox_username-$demo_name`/
-cp /projects/techzone-demo/sandbox/data_protection_rules.json `$sandbox_username-$demo_name`/
-cp /projects/techzone-demo/sandbox/project_assets.zip `$sandbox_username-$demo_name`/
+cp /projects/techzone-demo/sandbox/governance_artifacts.zip $demo_name/
+cp /projects/techzone-demo/sandbox/users.csv $demo_name/
+cp /projects/techzone-demo/sandbox/data_protection_rules.json $demo_name/
+cp /projects/techzone-demo/sandbox/project_assets.zip $demo_name/
 
 
 git add .

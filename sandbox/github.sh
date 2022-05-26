@@ -18,26 +18,26 @@ fi
 # Update the actual url
 cd /projects/techzone-demo/sandbox/$project_name
 
-git checkout -b $demo_name
+git checkout -b $sandbox_username-$demo_name
 git remote add upstream $github_url
-git sparse-checkout set $demo_name
-if [ -d "$demo_name" ]; then
+git sparse-checkout set $sandbox_username-$demo_name
+if [ -d "$sandbox_username-$demo_name" ]; then
   # Control will enter here if $DIRECTORY doesn't exist.
   echo "DemoName Already Exists, Choose another name!"
   exit 2
 fi
 gtd=`echo $git_token | base64 -d`
-mkdir $demo_name
-git sparse-checkout set $demo_name
+mkdir $sandbox_username-$demo_name
+git sparse-checkout set $sandbox_username-$demo_name
 # TODO
 # Add the meta_data and files to demo_name variable
 # ......
-echo $meta_data > $demo_name/readme.json
+echo $meta_data > $sandbox_username-$demo_name/readme.json
 # add the required files
-cp /projects/techzone-demo/sandbox/governance_artifacts.zip $demo_name/
-cp /projects/techzone-demo/sandbox/users.csv $demo_name/
-cp /projects/techzone-demo/sandbox/data_protection_rules.json $demo_name/
-cp /projects/techzone-demo/sandbox/project_assets.zip $demo_name/
+cp /projects/techzone-demo/sandbox/governance_artifacts.zip $sandbox_username-$demo_name/
+cp /projects/techzone-demo/sandbox/users.csv $sandbox_username-$demo_name/
+cp /projects/techzone-demo/sandbox/data_protection_rules.json $sandbox_username-$demo_name/
+cp /projects/techzone-demo/sandbox/project_assets.zip $sandbox_username-$demo_name/
 
 
 git add .
@@ -48,7 +48,7 @@ curl \
   -X POST \
   -H 'Authorization: token '${gtd}'' \
   https://api.github.com/repos/${username}/${project_name}/pulls \
-  -d '{"title":"Sandbox Demo by '$sandbox_username'","body":"Sandbox demo description!","head":"'$demo_name'","base":"main"}'
+  -d '{"title":"Sandbox Demo by '$sandbox_username'","body":"Sandbox demo description!","head":"'$sandbox_username-$demo_name'","base":"main"}'
 
 cd /projects/techzone-demo/sandbox
 rm -rf $project_name

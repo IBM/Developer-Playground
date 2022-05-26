@@ -2,6 +2,59 @@ window.onload = function funLoad() {
 
   let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20techzone%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground%20%24%7BCHE_PROJECTS_ROOT%7D%2Ftechzone-demo%2C%2Fprojects%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd%20${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%3Bpython3.8%20update-env.py%20"
   let prerequisite = ["hostname", "wkcuser", "password"]
+  let services = {
+    analyticsengine: 'Analytics Engine Powered by Apache Spark',
+    bigsql: 'Db2 Big SQL',
+    cde: 'Cognos Dashboards',
+    cognos_analytics: 'Cognos Analytics',
+    cpd_platform: 'Cloud Pak for Data Control Plane',
+    cpfs: 'Cloud Pak Foundational Services(CPFS)',
+    datagate: 'Data Gate',
+    datarefinery: 'Data Refinery',
+    datastage_ent: 'DataStage Enterprise',
+    datastage_ent_plus: 'DataStage Enterprise Plus',
+    db2aaservice: 'CPD db2 aas component',
+    db2oltp: 'Db2',
+    db2u: 'IBM Db2u',
+    db2wh: 'Db2 Warehouse',
+    dmc: 'Data Management Console',
+    dods: 'Decision Optimization',
+    dp: 'Data Privacy',
+    dv: 'Data Virtualization',
+    edb_cp4d: 'EnterpriseDB Postgres',
+    hee: 'Execution Engine for Apache Hadoop',
+    iis: "WKC's IIS component",
+    informix: 'Informix install Operator',
+    informix_cp4d: 'Informix deployment Operator',
+    match360: 'Match 360 with Watson',
+    model_train: 'IBM cloudpak operator for training with Model Train',
+    mongodb: 'MongoDB Operator',
+    mongodb_cp4d: 'MongoDB for Cloud Pak for Data',
+    openpages: 'OpenPages',
+    openpages_instance: 'OpenPages Instance',
+    openscale: 'Watson OpenScale',
+    planning_analytics: 'Planning Analytics',
+    postgresql: 'Cloud Native PostgreSQL',
+    productmaster: 'Product Master',
+    productmaster_instance: 'Product Master Instance',
+    rstudio: 'RStudio Server',
+    scheduler: 'CPD Scheduler',
+    spss: 'SPSS Modeler',
+    voice_gateway: 'Voice Gateway',
+    watson_assistant: 'Watson Assistant',
+    watson_discovery: 'Watson Discovery',
+    watson_gateway: 'IBM Watson Gateway Operator',
+    watson_ks: 'Watson Knowledge Studio',
+    watson_speech: 'Watson Speech to Text',
+    wkc: 'Watson Knowledge Catalog',
+    wml: 'Watson Machine Learning',
+    wml_accelerator: 'Watson Machine Learning Accelerator',
+    ws: 'Watson Studio',
+    ws_pipelines: 'Watson Studio Pipelines',
+    ws_runtimes: 'Watson Studio Runtimes',
+    zen: 'Zen Service in CPFS'
+  }
+  let selectedServices = []
   let didact = document.getElementsByClassName("apptitle")[0].textContent
 
   //Get Workspace ID and setup default data for localStorage
@@ -32,7 +85,8 @@ window.onload = function funLoad() {
     let industry = document.getElementById("industry").value
     let tags = document.getElementById("tags").value
     let author = document.getElementById("author").value
-    let services = document.getElementById("services").value
+    let services = selectedServices.toString()//document.getElementById("services").value
+    console.log(services)
     let demoname = document.getElementById("demoname").value
     // JSON ARRAY
     let metadata = `{"industry":"${industry}","tags":"${tags}","author":"${author}","services":"${services}","demoname":"${demoname}"}`
@@ -163,22 +217,66 @@ window.onload = function funLoad() {
     let showSeleted = document.getElementById("selected")
     showSeleted.textContent = selectedArtifacts.toString().replaceAll(",", ", ")
   }
-  var governanceOptions = document.getElementsByName("governanceartifactsopt");
-  for (let key in governanceOptions) {
-    document.getElementById(governanceOptions[key].value).style.display = "none";
-    document.getElementById(governanceOptions[key].id).addEventListener("click", handleGovernanceOptions);
-    if (governanceOptions[key].checked) {
-      document.getElementById(governanceOptions[key].value).style.display = "inherit";
+
+  let serviceList = document.getElementById('service-list');
+  console.log(serviceList)
+  document.onclick = function (e) {
+    if (e.target.parentElement !== checkList && e.target.name !== "governance-artifacts" && e.target.parentElement !== serviceList && e.target.name !== "services" && e.target.nodeName !== "LI" && e.target.nodeName !== "INPUT") {
+      serviceList.classList.remove('visible');
+      checkList.classList.remove('visible');
     }
+  };
+  serviceList.getElementsByClassName('anchor')[0].onclick = function (evt) {
+    console.log("anchor clicked")
+    if (serviceList.classList.contains('visible'))
+      serviceList.classList.remove('visible');
+    else
+      serviceList.classList.add('visible');
   }
 
-  function handleGovernanceOptions() {
-    for (let key in governanceOptions) {
-      console.log(governanceOptions[key].value)
-      document.getElementById(governanceOptions[key].value).style.display = "none";
-      if (governanceOptions[key].checked) {
-        document.getElementById(governanceOptions[key].value).style.display = "inherit";
-      }
+  let gitServicesList = document.getElementById("git-services");
+  Object.keys(services).forEach(id => {
+    let li = document.createElement("li");
+    let input = document.createElement("input");
+    input.setAttribute("value", id)
+    input.setAttribute("name", "services")
+    input.setAttribute("type", "checkbox")
+    li.appendChild(input)
+    li.appendChild(document.createTextNode(services[id]));
+    gitServicesList.appendChild(li);
+  })
+  let gitServices = document.getElementsByName("services");
+  gitServices.forEach((task) => task.addEventListener("click", updateSelectedServices));
+  function updateSelectedServices(e) {
+    if (e.target.checked) {
+      selectedServices.push(e.target.value)
+      gitServicesList.insertBefore(e.target.parentElement, gitServicesList.firstChild);
+    } else {
+      selectedServices.indexOf(e.target.value) !== -1 && selectedServices.splice(selectedServices.indexOf(e.target.value), 1)
+      console.log(Object.keys(services).indexOf(e.target.value))
+      gitServicesList.insertBefore(e.target.parentElement, gitServices[Object.keys(services).indexOf(e.target.value)].parentElement);
+      
     }
+    let showSeleted = document.getElementById("selected-services")
+    showSeleted.textContent = selectedServices.toString().replaceAll(",", ", ")
   }
+  let searchItem = document.getElementById("services-search")
+  searchItem.addEventListener("input", filterServiceList)
+
+  function filterServiceList(e){
+    let filteredServices = {}
+    let htmlServices = document.getElementsByName("services")
+    let listServices = [...htmlServices].map(service => service.value)
+    console.log(htmlServices)
+    listServices.forEach((res, idx) => {
+      if (res.toLowerCase().includes(e.target.value.toLowerCase()) || services[res].toLowerCase().includes(e.target.value.toLowerCase())){
+        filteredServices[res] = services[res]
+        htmlServices[idx].parentElement.style.display = "block"
+      } else {
+        htmlServices[idx].parentElement.style.display = "none"
+      }
+    })
+    console.log(filteredServices)
+  }
+
 };

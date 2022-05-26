@@ -97,6 +97,7 @@ window.onload = function funLoad() {
 
   }
 
+  //Enable/Disable timeline
   let localData = JSON.parse(localStorage[didact])
   let timelineContainer = document.getElementsByClassName("timeline-container")[0]
   if (localData.hostname.trim() === "" || localData.wkcuser.trim() === "" || localData.password.trim() === "") {
@@ -105,13 +106,19 @@ window.onload = function funLoad() {
     [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
     [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none")
   }
+
+  //default data
   let config = {
     hostname: localData.hostname,
     wkcuser: localData.wkcuser,
     password: localData.password,
   }
+
+//Modify configure-env with localstorage values
   let cta = document.getElementById("configure-env")
   cta.href = `${compositeHref}${Object.values(config).toString().replaceAll(",", "%20")}`
+
+//open/close gov-artifacts dropdown
   let checkList = document.getElementById('list1');
   document.onclick = function (e) {
     if (e.target.parentElement !== checkList && e.target.name !== "governance-artifacts" && e.target.nodeName !== "LI") {
@@ -125,6 +132,7 @@ window.onload = function funLoad() {
       checkList.classList.add('visible');
   }
 
+  //Get env values
   let envVariables = document.getElementsByClassName('env-variables');
   console.log([...envVariables]);
   [...envVariables].forEach((task) => {
@@ -159,6 +167,8 @@ window.onload = function funLoad() {
     }
   }
 
+
+  //enable managemnet dropdowns
   let tasks = document.querySelectorAll("[id^='task']");
   tasks.forEach((task) => (task.style.display = "none"));
 
@@ -173,6 +183,8 @@ window.onload = function funLoad() {
     }
   }
 
+
+//Get selected values
   let govArtifacts = document.getElementsByName("governance-artifacts");
   govArtifacts.forEach((task) => task.addEventListener("click", UpdateExport));
   let selectedArtifacts = ["all"]
@@ -218,8 +230,8 @@ window.onload = function funLoad() {
     showSeleted.textContent = selectedArtifacts.toString().replaceAll(",", ", ")
   }
 
+  //Open Close services dropdowns
   let serviceList = document.getElementById('service-list');
-  console.log(serviceList)
   document.onclick = function (e) {
     if (e.target.parentElement !== checkList && e.target.name !== "governance-artifacts" && e.target.parentElement !== serviceList && e.target.name !== "services" && e.target.nodeName !== "LI" && e.target.nodeName !== "INPUT") {
       serviceList.classList.remove('visible');
@@ -233,7 +245,7 @@ window.onload = function funLoad() {
     else
       serviceList.classList.add('visible');
   }
-
+// Populate the dropdown
   let gitServicesList = document.getElementById("git-services");
   Object.keys(services).forEach(id => {
     let li = document.createElement("li");
@@ -245,6 +257,8 @@ window.onload = function funLoad() {
     li.appendChild(document.createTextNode(services[id]));
     gitServicesList.appendChild(li);
   })
+
+  //Get selected values
   let gitServices = document.getElementsByName("services");
   gitServices.forEach((task) => task.addEventListener("click", updateSelectedServices));
   function updateSelectedServices(e) {
@@ -260,6 +274,8 @@ window.onload = function funLoad() {
     let showSeleted = document.getElementById("selected-services")
     showSeleted.textContent = selectedServices.toString().replaceAll(",", ", ")
   }
+
+  //Search in dropdown
   let searchItem = document.getElementById("services-search")
   searchItem.addEventListener("input", filterServiceList)
 

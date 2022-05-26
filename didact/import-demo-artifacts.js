@@ -45,6 +45,7 @@ window.onload = function funLoad() {
   }
   let demo = localData.demo
 
+  //modify cta with localStorage data
   let cta = document.getElementById("configure-env")
   cta.href =`${compositeHref.replace("demo_name",demo)}${Object.values(config).toString().replaceAll(",", "%20")}`
 
@@ -53,6 +54,8 @@ window.onload = function funLoad() {
     document.getElementById("import-project").href = `didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 importProject.py project_assets ${demo}`
   }
   
+
+  //open/close demo dropdown
   let checkList = document.getElementById('list1');
   document.onclick = function (e) {
     if (e.target.parentElement !== checkList && e.target.name !== "governance-artifacts" && e.target.nodeName !== "LI") {
@@ -66,8 +69,8 @@ window.onload = function funLoad() {
       checkList.classList.add('visible');
   }
 
+  //modify cta with selected demo value
   let options = checkList.getElementsByTagName('LI');
-  console.log(options);
   [...options].forEach(option=> option.addEventListener("click",selectOption))
   function selectOption(e){
     document.getElementById("selected").textContent = e.target.textContent
@@ -80,6 +83,7 @@ window.onload = function funLoad() {
     localStorage[didact] = JSON.stringify(tempData)
   }
 
+  //get env values
   let envVariables = document.getElementsByClassName('env-variables');
   console.log([...envVariables]);
   [...envVariables].forEach((task) => {

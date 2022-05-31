@@ -87,7 +87,7 @@ window.onload = function funLoad() {
     let author = document.getElementById("author").value || ""
     let services = selectedServices.toString()//document.getElementById("services").value
     let demoName = document.getElementById("demoname").value || ""
-    let desc = document.getElementById("desc").value || ""
+    let desc = document.getElementById("desc").value || "Update"
     tags = tags.split(",")
     services=services.split(",")
     // JSON ARRAY

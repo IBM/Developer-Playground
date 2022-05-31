@@ -84,12 +84,15 @@ window.onload = function funLoad() {
   function pushToGit() {
     let industry = document.getElementById("industry").value
     let tags = document.getElementById("tags").value
+    if(tags.split(",").length > 0){
+      tags = tags.split(",")
+    }
     let author = document.getElementById("author").value
     let services = selectedServices.toString()//document.getElementById("services").value
     console.log(services)
-    let demoname = document.getElementById("demoname").value
+    let demoName = document.getElementById("demoname").value
     // JSON ARRAY
-    let metadata = `{"industry":"${industry}","tags":"${tags}","author":"${author}","services":"${services}","demoname":"${demoname}"}`
+    let metadata = `{"industry":"${industry}","tags":"${tags}","author":"${author}","services":"${services}","demoName":"${demoName}"}`
     metadata = JSON.stringify(metadata)
     document.getElementById("command_exec").href =
       "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=github terminal$$sh /projects/techzone-demo/sandbox/github.sh " + demoname + " " + metadata + " " + author;

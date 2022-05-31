@@ -2,6 +2,7 @@
 demo_name=$1
 meta_data=$2
 sandbox_username=$3
+desc=$4
 
 # TODO GIT Creds logic
 github_url=https://github.com/IBM/ibmtechzone-demo-artifacts
@@ -48,7 +49,7 @@ curl \
   -X POST \
   -H 'Authorization: token '${gtd}'' \
   https://api.github.com/repos/${username}/${project_name}/pulls \
-  -d '{"title":"Sandbox Demo by '$sandbox_username'","body":"Sandbox demo description!","head":"'$sandbox_username-$demo_name'","base":"main"}'
+  -d '{"title":"Sandbox Demo by '$sandbox_username'","body":"'$desc'","head":"'$sandbox_username-$demo_name'","base":"main"}'
 
 cd /projects/techzone-demo/sandbox
 rm -rf $project_name

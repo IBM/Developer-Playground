@@ -90,6 +90,7 @@ window.onload = function funLoad() {
     let desc = document.getElementById("desc").value || "Update"
     tags = tags.split(",")
     services=services.split(",")
+    industry=industry.split(",")
     // JSON ARRAY
     let metadata = {
       "industry":industry,

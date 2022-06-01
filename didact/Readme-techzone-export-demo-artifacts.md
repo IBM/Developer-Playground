@@ -162,7 +162,24 @@
                             <label>Demo Name*</label>
                             <input type="text" id="demoname">
                             <label>Industries(comma separated)*</label>
-                            <input type="text" id="industry">
+                            <!--<input type="text" id="industry">-->
+                            <div id="industry-list" class="dropdown-check-list" tabindex="100">
+                                <span id="selected-industry" class="anchor">Select Demo</span>
+                                <ul class="items">
+                                    <li>Banking and financial services</li>
+                                    <li>E-commerce</li>
+                                    <li>Healthcare</li>
+                                    <li>Hospitality</li>
+                                    <li>Insurance</li>
+                                    <li>Retail</li>
+                                    <li>Software</li>
+                                    <li>Telecommunications</li>
+                                    <li>Transportation</li>
+                                    <li>Utilities</li>
+                                    <li>Other</li>
+                                    </select>
+                                </ul>
+                            </div>
                             <label>Tags(comma separated)*</label>
                             <input type="text" id="tags">
                             <label>Author*</label>
@@ -174,7 +191,8 @@
                             <div id="service-list" class="dropdown-check-list" tabindex="100">
                                 <span class="anchor">Select Services</span>
                                 <div class="items">
-                                    <input id="services-search" type="search" placeholder="Search services" style="width: 100%" />
+                                    <input id="services-search" type="search" placeholder="Search services"
+                                        style="width: 100%" />
                                     <ul id="git-services">
                                     </ul>
                                 </div>

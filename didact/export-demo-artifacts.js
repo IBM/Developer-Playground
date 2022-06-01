@@ -55,6 +55,7 @@ window.onload = function funLoad() {
     zen: 'Zen Service in CPFS'
   }
   let selectedServices = []
+  let selecetdIndustry = ""
   let didact = document.getElementsByClassName("apptitle")[0].textContent
 
   //Get Workspace ID and setup default data for localStorage
@@ -82,7 +83,7 @@ window.onload = function funLoad() {
   // Github push related code
   document.getElementById("pushToGit").addEventListener("click", pushToGit);
   function pushToGit() {
-    let industry = document.getElementById("industry").value || ""
+    let industry = selecetdIndustry//document.getElementById("industry").value || ""
     let tags = document.getElementById("tags").value|| ""
     let author = document.getElementById("author").value || ""
     let services = selectedServices.toString()//document.getElementById("services").value
@@ -129,10 +130,34 @@ window.onload = function funLoad() {
   let cta = document.getElementById("configure-env")
   cta.href = `${compositeHref}${Object.values(config).toString().replaceAll(",", "%20")}`
 
+
+//open/close industry dropdown
+let industryList = document.getElementById('industry-list');
+document.onclick = function (e) {
+  if (e.target.parentElement !== industryList && e.target.name !== "governance-artifacts" && e.target.nodeName !== "LI") {
+    industryList.classList.remove('visible');
+  }
+};
+industryList.getElementsByClassName('anchor')[0].onclick = function (evt) {
+  if (industryList.classList.contains('visible'))
+  industryList.classList.remove('visible');
+  else
+  industryList.classList.add('visible');
+}
+
+//modify cta with selected industry value
+let options = industryList.getElementsByTagName('LI');
+[...options].forEach(option=> option.addEventListener("click",selectOption))
+function selectOption(e){
+  document.getElementById("selected-industry").textContent = e.target.textContent
+  selecetdIndustry = e.target.textContent
+  industryList.classList.remove('visible');
+}
+
 //open/close gov-artifacts dropdown
   let checkList = document.getElementById('list1');
   document.onclick = function (e) {
-    if (e.target.parentElement !== checkList && e.target.name !== "governance-artifacts" && e.target.nodeName !== "LI") {
+    if (e.target.parentElement !== industryList && e.target.parentElement !== checkList && e.target.name !== "governance-artifacts" && e.target.nodeName !== "LI") {
       checkList.classList.remove('visible');
     }
   };
@@ -244,7 +269,7 @@ window.onload = function funLoad() {
   //Open Close services dropdowns
   let serviceList = document.getElementById('service-list');
   document.onclick = function (e) {
-    if (e.target.parentElement !== checkList && e.target.name !== "governance-artifacts" && e.target.parentElement !== serviceList && e.target.name !== "services" && e.target.nodeName !== "LI" && e.target.nodeName !== "INPUT") {
+    if (e.target.parentElement !== industryList &&e.target.parentElement !== checkList && e.target.name !== "governance-artifacts" && e.target.parentElement !== serviceList && e.target.name !== "services" && e.target.nodeName !== "LI" && e.target.nodeName !== "INPUT") {
       serviceList.classList.remove('visible');
       checkList.classList.remove('visible');
     }

@@ -93,7 +93,7 @@ window.onload = function funLoad() {
     industry=industry.split(",")
     // JSON ARRAY
     let metadata = {
-      "industry":industry,
+      "industries":industry,
       "tags":tags,
       "author":author,
       "services":services,

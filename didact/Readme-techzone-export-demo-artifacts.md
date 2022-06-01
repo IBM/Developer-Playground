@@ -161,7 +161,7 @@
                         <div class="env-config">
                             <label>Demo Name*</label>
                             <input type="text" id="demoname">
-                            <label>Industry*</label>
+                            <label>Industries(comma separated)*</label>
                             <input type="text" id="industry">
                             <label>Tags(comma separated)*</label>
                             <input type="text" id="tags">

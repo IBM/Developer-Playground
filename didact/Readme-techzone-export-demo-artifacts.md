@@ -161,12 +161,14 @@
                         <div class="env-config">
                             <label>Demo Name*</label>
                             <input type="text" id="demoname">
-                            <label>Industry*</label>
+                            <label>Industries(comma separated)*</label>
                             <input type="text" id="industry">
                             <label>Tags(comma separated)*</label>
                             <input type="text" id="tags">
                             <label>Author*</label>
                             <input type="text" id="author">
+                            <label>Description</label>
+                            <input type="text" id="desc">
                             <label>Services(comma separated)*</label>
                             <!--<input type="text" id="services">-->
                             <div id="service-list" class="dropdown-check-list" tabindex="100">

@@ -49,7 +49,7 @@ curl \
   -X POST \
   -H 'Authorization: token '${gtd}'' \
   https://api.github.com/repos/${username}/${project_name}/pulls \
-  -d '{"title":"Sandbox Demo by '$sandbox_username'","body":"'$desc'","head":"'$sandbox_username-$demo_name'","base":"main"}'
+  -d '{"title":"Sandbox Demo by '$sandbox_username'","body":"","head":"'$sandbox_username-$demo_name'","base":"main"}'
 
 cd /projects/techzone-demo/sandbox
 rm -rf $project_name

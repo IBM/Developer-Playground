@@ -133,11 +133,6 @@ window.onload = function funLoad() {
 
 //open/close industry dropdown
 let industryList = document.getElementById('industry-list');
-document.onclick = function (e) {
-  if (e.target.parentElement !== industryList && e.target.name !== "governance-artifacts" && e.target.nodeName !== "LI") {
-    industryList.classList.remove('visible');
-  }
-};
 industryList.getElementsByClassName('anchor')[0].onclick = function (evt) {
   if (industryList.classList.contains('visible'))
   industryList.classList.remove('visible');
@@ -156,11 +151,6 @@ function selectOption(e){
 
 //open/close gov-artifacts dropdown
   let checkList = document.getElementById('list1');
-  document.onclick = function (e) {
-    if (e.target.parentElement !== industryList && e.target.parentElement !== checkList && e.target.name !== "governance-artifacts" && e.target.nodeName !== "LI") {
-      checkList.classList.remove('visible');
-    }
-  };
   checkList.getElementsByClassName('anchor')[0].onclick = function (evt) {
     if (checkList.classList.contains('visible'))
       checkList.classList.remove('visible');
@@ -268,12 +258,6 @@ function selectOption(e){
 
   //Open Close services dropdowns
   let serviceList = document.getElementById('service-list');
-  document.onclick = function (e) {
-    if (e.target.parentElement !== industryList &&e.target.parentElement !== checkList && e.target.name !== "governance-artifacts" && e.target.parentElement !== serviceList && e.target.name !== "services" && e.target.nodeName !== "LI" && e.target.nodeName !== "INPUT") {
-      serviceList.classList.remove('visible');
-      checkList.classList.remove('visible');
-    }
-  };
   serviceList.getElementsByClassName('anchor')[0].onclick = function (evt) {
     console.log("anchor clicked")
     if (serviceList.classList.contains('visible'))
@@ -330,5 +314,15 @@ function selectOption(e){
     })
     console.log(filteredServices)
   }
+
+
+  //close dropdowns when clicked outside
+  document.onclick = function (e) {
+    if (e.target.parentElement !== industryList &&e.target.parentElement !== checkList && e.target.name !== "governance-artifacts" && e.target.parentElement !== serviceList && e.target.name !== "services" && e.target.nodeName !== "LI" && e.target.nodeName !== "INPUT") {
+      serviceList.classList.remove('visible');
+      checkList.classList.remove('visible');
+      industryList.classList.remove('visible');
+    }
+  };
 
 };

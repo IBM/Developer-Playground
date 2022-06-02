@@ -164,7 +164,7 @@
                             <label>Industries(comma separated)*</label>
                             <!--<input type="text" id="industry">-->
                             <div id="industry-list" class="dropdown-check-list" tabindex="100">
-                                <span id="selected-industry" class="anchor">Select Demo</span>
+                                <span id="selected-industry" class="anchor">Select Industry</span>
                                 <ul class="items">
                                     <li>Banking and financial services</li>
                                     <li>E-commerce</li>

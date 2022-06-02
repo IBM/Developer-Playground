@@ -80,8 +80,7 @@ window.onload = function funLoad() {
   //Fill input data from localStorage
   prerequisite.forEach(input => document.getElementsByName(input)[0].value = JSON.parse(localStorage[didact])[input])
 
-  // .
-  push related code
+  // .push related code
   document.getElementById("pushToGit").addEventListener("click", pushToGit);
   function pushToGit() {
     let industry = selecetdIndustry//document.getElementById("industry").value || ""

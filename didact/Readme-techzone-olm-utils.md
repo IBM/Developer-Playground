@@ -53,7 +53,7 @@
         <p>Get the resources required to deploy CP4D services</p>
       </div>
       <a class="button is-dark is-medium" title="Open Terminal"
-        href="didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$git clone https://github.com/IBM/Developer-Playground -b techzone --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils">Get
+        href="didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit clone https://github.com/IBM/Developer-Playground -b techzone --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils">Get
         Resources *</a>
       <span class="dot"></span>
     </div>

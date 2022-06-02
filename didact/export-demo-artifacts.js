@@ -80,7 +80,8 @@ window.onload = function funLoad() {
   //Fill input data from localStorage
   prerequisite.forEach(input => document.getElementsByName(input)[0].value = JSON.parse(localStorage[didact])[input])
 
-  // Github push related code
+  // .
+  push related code
   document.getElementById("pushToGit").addEventListener("click", pushToGit);
   function pushToGit() {
     let industry = selecetdIndustry//document.getElementById("industry").value || ""
@@ -104,7 +105,7 @@ window.onload = function funLoad() {
     // let metadata=`{"industry":"${industry}","tags":"${["tags","asddsa","dsa"]}","author":"${author}","services":"${services}","demoName":"${demoName}"}`
     metadata = '\''+JSON.stringify(metadata)+'\''
     document.getElementById("command_exec").href =
-      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$sh /projects/techzone-demo/sandbox/github.sh " + "\""+demoName.replace(/ /g,'')+ "\""+" " + metadata + " " + "\""+ author.replace(/ /g,'')+ "\""+ " "+ "\""+desc+ "\"";
+      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$bash /projects/techzone-demo/sandbox/github.sh " + "\""+demoName.replace(/ /g,'')+ "\""+" " + metadata + " " + "\""+ author.replace(/ /g,'')+ "\""+ " "+ "\""+desc+ "\"";
     document.getElementById("command_exec").click();
 
   }

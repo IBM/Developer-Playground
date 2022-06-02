@@ -272,6 +272,7 @@ html,
             display: inline-block;
             padding: 5px 50px 5px 10px;
             border: 1px solid #ccc;
+            width: 100%;
           }
           
           .dropdown-check-list .anchor:after {

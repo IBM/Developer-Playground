@@ -108,6 +108,7 @@ window.onload = function funLoad() {
     let services = selectedServices.toString()//document.getElementById("services").value
     let demoName = document.getElementById("demoname").value || ""
     let desc = document.getElementById("desc").value || "Update"
+    let userID=document.getElementById("userID").textContent || author
     tags = tags.split(",")
     services = services.split(",")
     industry = industry.split(",")
@@ -117,13 +118,14 @@ window.onload = function funLoad() {
       "tags": tags,
       "author": author,
       "services": services,
-      "demoName": demoName,
+      "demoName": userID.replace(/ /g,'')+"-"+demoName.replace(/ /g,''),
+      "displayName":demoName,
       "desc": desc
     }
     // let metadata=`{"industry":"${industry}","tags":"${["tags","asddsa","dsa"]}","author":"${author}","services":"${services}","demoName":"${demoName}"}`
     metadata = '\'' + JSON.stringify(metadata) + '\''
     document.getElementById("command_exec").href =
-      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$bash /projects/techzone-demo/sandbox/github.sh " + "\""+demoName.replace(/ /g,'')+ "\""+" " + metadata + " " + "\""+ author.replace(/ /g,'')+ "\""+ " "+ "\""+desc+ "\"";
+      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$bash /projects/techzone-demo/sandbox/github.sh " + "\""+demoName.replace(/ /g,'')+ "\""+" " + metadata + " " + "\""+ userID.replace(/ /g,'')+ "\""+ " "+ "\""+desc+ "\"";
 
     document.getElementById("command_exec").click();
 
@@ -136,7 +138,8 @@ window.onload = function funLoad() {
     timelineContainer.style.opacity = 0.5;
     timelineContainer.style.cursor = "not-allowed";
     [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
-    [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none")
+    [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none");
+    [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
   }
 
   //default data
@@ -166,7 +169,6 @@ window.onload = function funLoad() {
   function selectOption(e) {
     document.getElementById("selected-industry").textContent = e.target.textContent
     selecetdIndustry = getIndustry(e.target.textContent);
-    console.log(selecetdIndustry)
     industryList.classList.remove('visible');
   }
 
@@ -181,7 +183,6 @@ window.onload = function funLoad() {
 
   //Get env values
   let envVariables = document.getElementsByClassName('env-variables');
-  console.log([...envVariables]);
   [...envVariables].forEach((task) => {
     task.addEventListener("input", getEnvValues)
   });
@@ -205,12 +206,14 @@ window.onload = function funLoad() {
       timelineContainer.style.opacity = 1;
       timelineContainer.style.cursor = "auto";
       [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "auto");
-      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto")
+      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
+      [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
     } else {
       timelineContainer.style.opacity = 0.5;
       timelineContainer.style.cursor = "not-allowed";
       [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
-      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none")
+      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none");
+      [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
     }
   }
 
@@ -280,7 +283,6 @@ window.onload = function funLoad() {
   //Open Close services dropdowns
   let serviceList = document.getElementById('service-list');
   serviceList.getElementsByClassName('anchor')[0].onclick = function (evt) {
-    console.log("anchor clicked")
     if (serviceList.classList.contains('visible'))
       serviceList.classList.remove('visible');
     else
@@ -308,7 +310,6 @@ window.onload = function funLoad() {
       gitServicesList.insertBefore(e.target.parentElement, gitServicesList.firstChild);
     } else {
       selectedServices.indexOf(e.target.value) !== -1 && selectedServices.splice(selectedServices.indexOf(e.target.value), 1)
-      console.log(Object.keys(services).indexOf(e.target.value))
       gitServicesList.insertBefore(e.target.parentElement, gitServices[Object.keys(services).indexOf(e.target.value)].parentElement);
 
     }
@@ -324,7 +325,6 @@ window.onload = function funLoad() {
     let filteredServices = {}
     let htmlServices = document.getElementsByName("services")
     let listServices = [...htmlServices].map(service => service.value)
-    console.log(htmlServices)
     listServices.forEach((res, idx) => {
       if (res.toLowerCase().includes(e.target.value.toLowerCase()) || services[res].toLowerCase().includes(e.target.value.toLowerCase())) {
         filteredServices[res] = services[res]
@@ -333,7 +333,6 @@ window.onload = function funLoad() {
         htmlServices[idx].parentElement.style.display = "none"
       }
     })
-    console.log(filteredServices)
   }
 
 

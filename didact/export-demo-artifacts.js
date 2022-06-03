@@ -2,6 +2,79 @@ window.onload = function funLoad() {
 
   let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20techzone%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground%20%24%7BCHE_PROJECTS_ROOT%7D%2Ftechzone-demo%2C%2Fprojects%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd%20${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%3Bpython3.8%20update-env.py%20"
   let prerequisite = ["hostname", "wkcuser", "password"]
+  let services = {
+    analyticsengine: 'Analytics Engine Powered by Apache Spark',
+    bigsql: 'Db2 Big SQL',
+    cde: 'Cognos Dashboards',
+    cognos_analytics: 'Cognos Analytics',
+    cpd_platform: 'Cloud Pak for Data Control Plane',
+    cpfs: 'Cloud Pak Foundational Services(CPFS)',
+    datagate: 'Data Gate',
+    datarefinery: 'Data Refinery',
+    datastage_ent: 'DataStage Enterprise',
+    datastage_ent_plus: 'DataStage Enterprise Plus',
+    db2aaservice: 'CPD db2 aas component',
+    db2oltp: 'Db2',
+    db2u: 'IBM Db2u',
+    db2wh: 'Db2 Warehouse',
+    dmc: 'Data Management Console',
+    dods: 'Decision Optimization',
+    dp: 'Data Privacy',
+    dv: 'Data Virtualization',
+    edb_cp4d: 'EnterpriseDB Postgres',
+    hee: 'Execution Engine for Apache Hadoop',
+    iis: "WKC's IIS component",
+    informix: 'Informix install Operator',
+    informix_cp4d: 'Informix deployment Operator',
+    match360: 'Match 360 with Watson',
+    model_train: 'IBM cloudpak operator for training with Model Train',
+    mongodb: 'MongoDB Operator',
+    mongodb_cp4d: 'MongoDB for Cloud Pak for Data',
+    openpages: 'OpenPages',
+    openpages_instance: 'OpenPages Instance',
+    openscale: 'Watson OpenScale',
+    planning_analytics: 'Planning Analytics',
+    postgresql: 'Cloud Native PostgreSQL',
+    productmaster: 'Product Master',
+    productmaster_instance: 'Product Master Instance',
+    rstudio: 'RStudio Server',
+    scheduler: 'CPD Scheduler',
+    spss: 'SPSS Modeler',
+    voice_gateway: 'Voice Gateway',
+    watson_assistant: 'Watson Assistant',
+    watson_discovery: 'Watson Discovery',
+    watson_gateway: 'IBM Watson Gateway Operator',
+    watson_ks: 'Watson Knowledge Studio',
+    watson_speech: 'Watson Speech to Text',
+    wkc: 'Watson Knowledge Catalog',
+    wml: 'Watson Machine Learning',
+    wml_accelerator: 'Watson Machine Learning Accelerator',
+    ws: 'Watson Studio',
+    ws_pipelines: 'Watson Studio Pipelines',
+    ws_runtimes: 'Watson Studio Runtimes',
+    zen: 'Zen Service in CPFS'
+  }
+
+  let industries = [
+    { id: 'hospitality', value: 'Hospitality' },
+    { id: 'healthcare', value: 'Healthcare' },
+    { id: 'e-commerce', value: 'E-commerce' },
+    { id: 'banking', value: 'Banking and financial services' },
+    { id: 'insurance', value: 'Insurance' },
+    { id: 'retail', value: 'Retail' },
+    { id: 'software', value: 'Software' },
+    { id: 'telecommunications', value: 'Telecommunications' },
+    { id: 'transportation', value: 'Transportation' },
+    { id: 'utilities', value: 'Utilities' },
+    { id: 'other', value: 'Other' }
+  ]
+
+  function getIndustry(industry){
+    return industries.find(({id, value}) => value===industry).id
+    }
+
+  let selectedServices = []
+  let selecetdIndustry = ""
   let didact = document.getElementsByClassName("apptitle")[0].textContent
 
   //Get Workspace ID and setup default data for localStorage
@@ -26,35 +99,37 @@ window.onload = function funLoad() {
   //Fill input data from localStorage
   prerequisite.forEach(input => document.getElementsByName(input)[0].value = JSON.parse(localStorage[didact])[input])
 
-  // Github push related code
+  // .push related code
   document.getElementById("pushToGit").addEventListener("click", pushToGit);
   function pushToGit() {
-    let industry = document.getElementById("industry").value || ""
-    let tags = document.getElementById("tags").value|| ""
+    let industry = selecetdIndustry//document.getElementById("industry").value || ""
+    let tags = document.getElementById("tags").value || ""
     let author = document.getElementById("author").value || ""
     let services = selectedServices.toString()//document.getElementById("services").value
     let demoName = document.getElementById("demoname").value || ""
     let desc = document.getElementById("desc").value || "Update"
     tags = tags.split(",")
-    services=services.split(",")
-    industry=industry.split(",")
+    services = services.split(",")
+    industry = industry.split(",")
     // JSON ARRAY
     let metadata = {
-      "industries":industry,
-      "tags":tags,
-      "author":author,
-      "services":services,
-      "demoName":demoName,
-      "desc":desc
+      "industries": industry,
+      "tags": tags,
+      "author": author,
+      "services": services,
+      "demoName": demoName,
+      "desc": desc
     }
     // let metadata=`{"industry":"${industry}","tags":"${["tags","asddsa","dsa"]}","author":"${author}","services":"${services}","demoName":"${demoName}"}`
-    metadata = '\''+JSON.stringify(metadata)+'\''
+    metadata = '\'' + JSON.stringify(metadata) + '\''
     document.getElementById("command_exec").href =
       "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$bash /projects/techzone-demo/sandbox/github.sh " + "\""+demoName.replace(/ /g,'')+ "\""+" " + metadata + " " + "\""+ author.replace(/ /g,'')+ "\""+ " "+ "\""+desc+ "\"";
+
     document.getElementById("command_exec").click();
 
   }
 
+  //Enable/Disable timeline
   let localData = JSON.parse(localStorage[didact])
   let timelineContainer = document.getElementsByClassName("timeline-container")[0]
   if (localData.hostname.trim() === "" || localData.wkcuser.trim() === "" || localData.password.trim() === "") {
@@ -63,19 +138,40 @@ window.onload = function funLoad() {
     [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
     [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none")
   }
+
+  //default data
   let config = {
     hostname: localData.hostname,
     wkcuser: localData.wkcuser,
     password: localData.password,
   }
+
+  //Modify configure-env with localstorage values
   let cta = document.getElementById("configure-env")
   cta.href = `${compositeHref}${Object.values(config).toString().replaceAll(",", "%20")}`
+
+
+  //open/close industry dropdown
+  let industryList = document.getElementById('industry-list');
+  industryList.getElementsByClassName('anchor')[0].onclick = function (evt) {
+    if (industryList.classList.contains('visible'))
+      industryList.classList.remove('visible');
+    else
+      industryList.classList.add('visible');
+  }
+
+  //modify cta with selected industry value
+  let options = industryList.getElementsByTagName('LI');
+  [...options].forEach(option => option.addEventListener("click", selectOption))
+  function selectOption(e) {
+    document.getElementById("selected-industry").textContent = e.target.textContent
+    selecetdIndustry = getIndustry(e.target.textContent);
+    console.log(selecetdIndustry)
+    industryList.classList.remove('visible');
+  }
+
+  //open/close gov-artifacts dropdown
   let checkList = document.getElementById('list1');
-  document.onclick = function (e) {
-    if (e.target.parentElement !== checkList && e.target.name !== "governance-artifacts" && e.target.nodeName !== "LI") {
-      checkList.classList.remove('visible');
-    }
-  };
   checkList.getElementsByClassName('anchor')[0].onclick = function (evt) {
     if (checkList.classList.contains('visible'))
       checkList.classList.remove('visible');
@@ -83,6 +179,7 @@ window.onload = function funLoad() {
       checkList.classList.add('visible');
   }
 
+  //Get env values
   let envVariables = document.getElementsByClassName('env-variables');
   console.log([...envVariables]);
   [...envVariables].forEach((task) => {
@@ -117,6 +214,8 @@ window.onload = function funLoad() {
     }
   }
 
+
+  //enable managemnet dropdowns
   let tasks = document.querySelectorAll("[id^='task']");
   tasks.forEach((task) => (task.style.display = "none"));
 
@@ -131,6 +230,8 @@ window.onload = function funLoad() {
     }
   }
 
+
+  //Get selected values
   let govArtifacts = document.getElementsByName("governance-artifacts");
   govArtifacts.forEach((task) => task.addEventListener("click", UpdateExport));
   let selectedArtifacts = ["all"]
@@ -175,22 +276,74 @@ window.onload = function funLoad() {
     let showSeleted = document.getElementById("selected")
     showSeleted.textContent = selectedArtifacts.toString().replaceAll(",", ", ")
   }
-  var governanceOptions = document.getElementsByName("governanceartifactsopt");
-  for (let key in governanceOptions) {
-    document.getElementById(governanceOptions[key].value).style.display = "none";
-    document.getElementById(governanceOptions[key].id).addEventListener("click", handleGovernanceOptions);
-    if (governanceOptions[key].checked) {
-      document.getElementById(governanceOptions[key].value).style.display = "inherit";
+
+  //Open Close services dropdowns
+  let serviceList = document.getElementById('service-list');
+  serviceList.getElementsByClassName('anchor')[0].onclick = function (evt) {
+    console.log("anchor clicked")
+    if (serviceList.classList.contains('visible'))
+      serviceList.classList.remove('visible');
+    else
+      serviceList.classList.add('visible');
+  }
+  // Populate the dropdown
+  let gitServicesList = document.getElementById("git-services");
+  Object.keys(services).forEach(id => {
+    let li = document.createElement("li");
+    let input = document.createElement("input");
+    input.setAttribute("value", id)
+    input.setAttribute("name", "services")
+    input.setAttribute("type", "checkbox")
+    li.appendChild(input)
+    li.appendChild(document.createTextNode(services[id]));
+    gitServicesList.appendChild(li);
+  })
+
+  //Get selected values
+  let gitServices = document.getElementsByName("services");
+  gitServices.forEach((task) => task.addEventListener("click", updateSelectedServices));
+  function updateSelectedServices(e) {
+    if (e.target.checked) {
+      selectedServices.push(e.target.value)
+      gitServicesList.insertBefore(e.target.parentElement, gitServicesList.firstChild);
+    } else {
+      selectedServices.indexOf(e.target.value) !== -1 && selectedServices.splice(selectedServices.indexOf(e.target.value), 1)
+      console.log(Object.keys(services).indexOf(e.target.value))
+      gitServicesList.insertBefore(e.target.parentElement, gitServices[Object.keys(services).indexOf(e.target.value)].parentElement);
+
     }
+    let showSeleted = document.getElementById("selected-services")
+    showSeleted.textContent = selectedServices.toString().replaceAll(",", ", ")
   }
 
-  function handleGovernanceOptions() {
-    for (let key in governanceOptions) {
-      console.log(governanceOptions[key].value)
-      document.getElementById(governanceOptions[key].value).style.display = "none";
-      if (governanceOptions[key].checked) {
-        document.getElementById(governanceOptions[key].value).style.display = "inherit";
+  //Search in dropdown
+  let searchItem = document.getElementById("services-search")
+  searchItem.addEventListener("input", filterServiceList)
+
+  function filterServiceList(e) {
+    let filteredServices = {}
+    let htmlServices = document.getElementsByName("services")
+    let listServices = [...htmlServices].map(service => service.value)
+    console.log(htmlServices)
+    listServices.forEach((res, idx) => {
+      if (res.toLowerCase().includes(e.target.value.toLowerCase()) || services[res].toLowerCase().includes(e.target.value.toLowerCase())) {
+        filteredServices[res] = services[res]
+        htmlServices[idx].parentElement.style.display = "block"
+      } else {
+        htmlServices[idx].parentElement.style.display = "none"
       }
-    }
+    })
+    console.log(filteredServices)
   }
+
+
+  //close dropdowns when clicked outside
+  document.onclick = function (e) {
+    if (e.target.parentElement !== industryList && e.target.parentElement !== checkList && e.target.name !== "governance-artifacts" && e.target.parentElement !== serviceList && e.target.name !== "services" && e.target.nodeName !== "LI" && e.target.nodeName !== "INPUT") {
+      serviceList.classList.remove('visible');
+      checkList.classList.remove('visible');
+      industryList.classList.remove('visible');
+    }
+  };
+
 };

@@ -108,6 +108,7 @@ window.onload = function funLoad() {
     let services = selectedServices.toString()//document.getElementById("services").value
     let demoName = document.getElementById("demoname").value || ""
     let desc = document.getElementById("desc").value || "Update"
+    let userID=document.getElementById("userID").value || author
     tags = tags.split(",")
     services = services.split(",")
     industry = industry.split(",")
@@ -117,13 +118,14 @@ window.onload = function funLoad() {
       "tags": tags,
       "author": author,
       "services": services,
-      "demoName": demoName,
+      "demoName": userID.replace(/ /g,'')+"-"+demoName.replace(/ /g,''),
+      "displayName":demoName,
       "desc": desc
     }
     // let metadata=`{"industry":"${industry}","tags":"${["tags","asddsa","dsa"]}","author":"${author}","services":"${services}","demoName":"${demoName}"}`
     metadata = '\'' + JSON.stringify(metadata) + '\''
     document.getElementById("command_exec").href =
-      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$bash /projects/techzone-demo/sandbox/github.sh " + "\""+demoName.replace(/ /g,'')+ "\""+" " + metadata + " " + "\""+ author.replace(/ /g,'')+ "\""+ " "+ "\""+desc+ "\"";
+      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$bash /projects/techzone-demo/sandbox/github.sh " + "\""+demoName.replace(/ /g,'')+ "\""+" " + metadata + " " + "\""+ userID.replace(/ /g,'')+ "\""+ " "+ "\""+desc+ "\"";
 
     document.getElementById("command_exec").click();
 

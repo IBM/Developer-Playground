@@ -166,7 +166,6 @@ window.onload = function funLoad() {
   function selectOption(e) {
     document.getElementById("selected-industry").textContent = e.target.textContent
     selecetdIndustry = getIndustry(e.target.textContent);
-    console.log(selecetdIndustry)
     industryList.classList.remove('visible');
   }
 
@@ -181,7 +180,6 @@ window.onload = function funLoad() {
 
   //Get env values
   let envVariables = document.getElementsByClassName('env-variables');
-  console.log([...envVariables]);
   [...envVariables].forEach((task) => {
     task.addEventListener("input", getEnvValues)
   });
@@ -280,7 +278,6 @@ window.onload = function funLoad() {
   //Open Close services dropdowns
   let serviceList = document.getElementById('service-list');
   serviceList.getElementsByClassName('anchor')[0].onclick = function (evt) {
-    console.log("anchor clicked")
     if (serviceList.classList.contains('visible'))
       serviceList.classList.remove('visible');
     else
@@ -308,7 +305,6 @@ window.onload = function funLoad() {
       gitServicesList.insertBefore(e.target.parentElement, gitServicesList.firstChild);
     } else {
       selectedServices.indexOf(e.target.value) !== -1 && selectedServices.splice(selectedServices.indexOf(e.target.value), 1)
-      console.log(Object.keys(services).indexOf(e.target.value))
       gitServicesList.insertBefore(e.target.parentElement, gitServices[Object.keys(services).indexOf(e.target.value)].parentElement);
 
     }
@@ -324,7 +320,6 @@ window.onload = function funLoad() {
     let filteredServices = {}
     let htmlServices = document.getElementsByName("services")
     let listServices = [...htmlServices].map(service => service.value)
-    console.log(htmlServices)
     listServices.forEach((res, idx) => {
       if (res.toLowerCase().includes(e.target.value.toLowerCase()) || services[res].toLowerCase().includes(e.target.value.toLowerCase())) {
         filteredServices[res] = services[res]
@@ -333,7 +328,6 @@ window.onload = function funLoad() {
         htmlServices[idx].parentElement.style.display = "none"
       }
     })
-    console.log(filteredServices)
   }
 
 

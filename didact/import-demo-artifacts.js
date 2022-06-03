@@ -35,7 +35,8 @@ window.onload = function funLoad() {
     timelineContainer.style.opacity = 0.5;
     timelineContainer.style.cursor = "not-allowed";
     [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
-    [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none")
+    [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none");
+    [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
   }
 
   //Store Config data
@@ -47,7 +48,7 @@ window.onload = function funLoad() {
   let demo = document.getElementById("selected-demo").textContent
 
   //username from demo
-  document.getElementById("selected-demo").textContent = demo.split(/-(.*)/s)[1]
+  document.getElementById("selected-demo").textContent = demo.split(/-(.*)/s)[1] ? demo.split(/-(.*)/s)[1] : demo
 
   //modify cta with localStorage data
   let cta = document.getElementById("configure-env")
@@ -58,7 +59,6 @@ window.onload = function funLoad() {
 
   //get env values
   let envVariables = document.getElementsByClassName('env-variables');
-  console.log([...envVariables]);
   [...envVariables].forEach((task) => {
     task.addEventListener("input", getEnvValues)
   });
@@ -82,12 +82,14 @@ window.onload = function funLoad() {
       timelineContainer.style.opacity = 1;
       timelineContainer.style.cursor = "auto";
       [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "auto");
-      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto")
+      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
+      [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
     } else {
       timelineContainer.style.opacity = 0.5;
       timelineContainer.style.cursor = "not-allowed";
       [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
-      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none")
+      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none");
+      [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
     }
   }
 }

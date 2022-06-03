@@ -54,7 +54,27 @@ window.onload = function funLoad() {
     ws_runtimes: 'Watson Studio Runtimes',
     zen: 'Zen Service in CPFS'
   }
+
+  let industries = [
+    { id: 'hospitality', value: 'Hospitality' },
+    { id: 'healthcare', value: 'Healthcare' },
+    { id: 'e-commerce', value: 'E-commerce' },
+    { id: 'banking', value: 'Banking and financial services' },
+    { id: 'insurance', value: 'Insurance' },
+    { id: 'retail', value: 'Retail' },
+    { id: 'software', value: 'Software' },
+    { id: 'telecommunications', value: 'Telecommunications' },
+    { id: 'transportation', value: 'Transportation' },
+    { id: 'utilities', value: 'Utilities' },
+    { id: 'other', value: 'Other' }
+  ]
+
+  function getIndustry(industry){
+    return industries.find(({id, value}) => value===industry).id
+    }
+
   let selectedServices = []
+  let selecetdIndustry = ""
   let didact = document.getElementsByClassName("apptitle")[0].textContent
 
   //Get Workspace ID and setup default data for localStorage
@@ -79,35 +99,37 @@ window.onload = function funLoad() {
   //Fill input data from localStorage
   prerequisite.forEach(input => document.getElementsByName(input)[0].value = JSON.parse(localStorage[didact])[input])
 
-  // Github push related code
+  // .push related code
   document.getElementById("pushToGit").addEventListener("click", pushToGit);
   function pushToGit() {
-    let industry = document.getElementById("industry").value || ""
-    let tags = document.getElementById("tags").value|| ""
+    let industry = selecetdIndustry//document.getElementById("industry").value || ""
+    let tags = document.getElementById("tags").value || ""
     let author = document.getElementById("author").value || ""
     let services = selectedServices.toString()//document.getElementById("services").value
     let demoName = document.getElementById("demoname").value || ""
     let desc = document.getElementById("desc").value || "Update"
     tags = tags.split(",")
-    services=services.split(",")
-    industry=industry.split(",")
+    services = services.split(",")
+    industry = industry.split(",")
     // JSON ARRAY
     let metadata = {
-      "industries":industry,
-      "tags":tags,
-      "author":author,
-      "services":services,
-      "demoName":demoName,
-      "desc":desc
+      "industries": industry,
+      "tags": tags,
+      "author": author,
+      "services": services,
+      "demoName": demoName,
+      "desc": desc
     }
     // let metadata=`{"industry":"${industry}","tags":"${["tags","asddsa","dsa"]}","author":"${author}","services":"${services}","demoName":"${demoName}"}`
-    metadata = '\''+JSON.stringify(metadata)+'\''
+    metadata = '\'' + JSON.stringify(metadata) + '\''
     document.getElementById("command_exec").href =
       "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$bash /projects/techzone-demo/sandbox/github.sh " + "\""+demoName.replace(/ /g,'')+ "\""+" " + metadata + " " + "\""+ author.replace(/ /g,'')+ "\""+ " "+ "\""+desc+ "\"";
+
     document.getElementById("command_exec").click();
 
   }
 
+  //Enable/Disable timeline
   let localData = JSON.parse(localStorage[didact])
   let timelineContainer = document.getElementsByClassName("timeline-container")[0]
   if (localData.hostname.trim() === "" || localData.wkcuser.trim() === "" || localData.password.trim() === "") {
@@ -116,19 +138,40 @@ window.onload = function funLoad() {
     [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
     [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none")
   }
+
+  //default data
   let config = {
     hostname: localData.hostname,
     wkcuser: localData.wkcuser,
     password: localData.password,
   }
+
+  //Modify configure-env with localstorage values
   let cta = document.getElementById("configure-env")
   cta.href = `${compositeHref}${Object.values(config).toString().replaceAll(",", "%20")}`
+
+
+  //open/close industry dropdown
+  let industryList = document.getElementById('industry-list');
+  industryList.getElementsByClassName('anchor')[0].onclick = function (evt) {
+    if (industryList.classList.contains('visible'))
+      industryList.classList.remove('visible');
+    else
+      industryList.classList.add('visible');
+  }
+
+  //modify cta with selected industry value
+  let options = industryList.getElementsByTagName('LI');
+  [...options].forEach(option => option.addEventListener("click", selectOption))
+  function selectOption(e) {
+    document.getElementById("selected-industry").textContent = e.target.textContent
+    selecetdIndustry = getIndustry(e.target.textContent);
+    console.log(selecetdIndustry)
+    industryList.classList.remove('visible');
+  }
+
+  //open/close gov-artifacts dropdown
   let checkList = document.getElementById('list1');
-  document.onclick = function (e) {
-    if (e.target.parentElement !== checkList && e.target.name !== "governance-artifacts" && e.target.nodeName !== "LI") {
-      checkList.classList.remove('visible');
-    }
-  };
   checkList.getElementsByClassName('anchor')[0].onclick = function (evt) {
     if (checkList.classList.contains('visible'))
       checkList.classList.remove('visible');
@@ -136,6 +179,7 @@ window.onload = function funLoad() {
       checkList.classList.add('visible');
   }
 
+  //Get env values
   let envVariables = document.getElementsByClassName('env-variables');
   console.log([...envVariables]);
   [...envVariables].forEach((task) => {
@@ -170,6 +214,8 @@ window.onload = function funLoad() {
     }
   }
 
+
+  //enable managemnet dropdowns
   let tasks = document.querySelectorAll("[id^='task']");
   tasks.forEach((task) => (task.style.display = "none"));
 
@@ -184,6 +230,8 @@ window.onload = function funLoad() {
     }
   }
 
+
+  //Get selected values
   let govArtifacts = document.getElementsByName("governance-artifacts");
   govArtifacts.forEach((task) => task.addEventListener("click", UpdateExport));
   let selectedArtifacts = ["all"]
@@ -229,14 +277,8 @@ window.onload = function funLoad() {
     showSeleted.textContent = selectedArtifacts.toString().replaceAll(",", ", ")
   }
 
+  //Open Close services dropdowns
   let serviceList = document.getElementById('service-list');
-  console.log(serviceList)
-  document.onclick = function (e) {
-    if (e.target.parentElement !== checkList && e.target.name !== "governance-artifacts" && e.target.parentElement !== serviceList && e.target.name !== "services" && e.target.nodeName !== "LI" && e.target.nodeName !== "INPUT") {
-      serviceList.classList.remove('visible');
-      checkList.classList.remove('visible');
-    }
-  };
   serviceList.getElementsByClassName('anchor')[0].onclick = function (evt) {
     console.log("anchor clicked")
     if (serviceList.classList.contains('visible'))
@@ -244,7 +286,7 @@ window.onload = function funLoad() {
     else
       serviceList.classList.add('visible');
   }
-
+  // Populate the dropdown
   let gitServicesList = document.getElementById("git-services");
   Object.keys(services).forEach(id => {
     let li = document.createElement("li");
@@ -256,6 +298,8 @@ window.onload = function funLoad() {
     li.appendChild(document.createTextNode(services[id]));
     gitServicesList.appendChild(li);
   })
+
+  //Get selected values
   let gitServices = document.getElementsByName("services");
   gitServices.forEach((task) => task.addEventListener("click", updateSelectedServices));
   function updateSelectedServices(e) {
@@ -266,21 +310,23 @@ window.onload = function funLoad() {
       selectedServices.indexOf(e.target.value) !== -1 && selectedServices.splice(selectedServices.indexOf(e.target.value), 1)
       console.log(Object.keys(services).indexOf(e.target.value))
       gitServicesList.insertBefore(e.target.parentElement, gitServices[Object.keys(services).indexOf(e.target.value)].parentElement);
-      
+
     }
     let showSeleted = document.getElementById("selected-services")
     showSeleted.textContent = selectedServices.toString().replaceAll(",", ", ")
   }
+
+  //Search in dropdown
   let searchItem = document.getElementById("services-search")
   searchItem.addEventListener("input", filterServiceList)
 
-  function filterServiceList(e){
+  function filterServiceList(e) {
     let filteredServices = {}
     let htmlServices = document.getElementsByName("services")
     let listServices = [...htmlServices].map(service => service.value)
     console.log(htmlServices)
     listServices.forEach((res, idx) => {
-      if (res.toLowerCase().includes(e.target.value.toLowerCase()) || services[res].toLowerCase().includes(e.target.value.toLowerCase())){
+      if (res.toLowerCase().includes(e.target.value.toLowerCase()) || services[res].toLowerCase().includes(e.target.value.toLowerCase())) {
         filteredServices[res] = services[res]
         htmlServices[idx].parentElement.style.display = "block"
       } else {
@@ -289,5 +335,15 @@ window.onload = function funLoad() {
     })
     console.log(filteredServices)
   }
+
+
+  //close dropdowns when clicked outside
+  document.onclick = function (e) {
+    if (e.target.parentElement !== industryList && e.target.parentElement !== checkList && e.target.name !== "governance-artifacts" && e.target.parentElement !== serviceList && e.target.name !== "services" && e.target.nodeName !== "LI" && e.target.nodeName !== "INPUT") {
+      serviceList.classList.remove('visible');
+      checkList.classList.remove('visible');
+      industryList.classList.remove('visible');
+    }
+  };
 
 };

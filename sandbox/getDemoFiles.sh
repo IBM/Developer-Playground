@@ -1,10 +1,18 @@
 #!/bin/bash  
 demo_name=$1
 project_name=ibmtechzone-demo-artifacts 
+branch="main"
+if [[ $PLAYGROUND_ENVIRONMENT == *"development"* ]]; then
+      branch="development" 
+fi
+if [[ $PLAYGROUND_ENVIRONMENT == *"staging"* ]]; then
+      branch="staging" 
+fi
+
 github_url=https://github.com/IBM/ibmtechzone-demo-artifacts
 cd /projects/techzone-demo/sandbox
 rm -rf /projects/techzone-demo/sandbox/$project_name
-git clone --sparse $github_url
+git clone --single-branch --branch $branch --sparse $github_url 
 cd /projects/techzone-demo/sandbox/$project_name
 git sparse-checkout set $demo_name
 # cd /projects/techzone-demo/sandbox/

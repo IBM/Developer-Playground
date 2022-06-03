@@ -46,9 +46,13 @@ window.onload = function funLoad() {
   }
   let demo = document.getElementById("selected-demo").textContent
 
+  //username from demo
+  document.getElementById("selected-demo").textContent = demo.split(/-(.*)/s)[1]
+
   //modify cta with localStorage data
   let cta = document.getElementById("configure-env")
   cta.href = `${compositeHref.replace("demo_name", demo)}${Object.values(config).toString().replaceAll(",", "%20")}`
+  document.getElementById("import-project").href = `didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 importProject.py project_assets ${demo}`
 
 
 

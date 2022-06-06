@@ -2,7 +2,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="import-demo-artifacts.css">
+    <link rel="stylesheet" href="import-all-demo-artifacts.css">
     <style>
         .header {
             background-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/video_insights.jpeg");
@@ -16,7 +16,7 @@
     <div id="userID" class="hidden-state">$user_id</div>
     <div class="header">
         <div class="left-content">
-            <div class="apptitle">Load shared demo assets on your cluster</div>
+            <div class="apptitle">Recreate shared demo assets on your cluster</div>
             <div class="subheading">Search centralized repository of demo assets and recreate selected demo assets on your cluster. The assumption is that you have an existing Openshift cluster with Cloud Pak for Data installed. Demo assets can include different types of artifacts such as Users, Governance artifacts, Analytics projects, Data integration projects etc. You can selectively pick one or more of these artifacts and import into your cluster.</div>
         </div>
     </div>
@@ -38,7 +38,13 @@
     <div class="timeline-container">
         <div class="timeline timelinestep">
             <div class="content">
-                <p>Demo Name: <b id="selected-demo">$demo_name</b></p>
+                <p>Select Demo</p>
+                <div id="list1" class="dropdown-check-list" tabindex="100">
+                            <span id="selected" class="anchor">Select Demo</span>
+                            <ul class="items">
+                                $demo_options
+                            </ul>
+                        </div>
             </div>
             <span class="dot"></span>
         </div>
@@ -114,6 +120,6 @@
     </div>
     </div>
 </body>
-<script src="import-demo-artifacts.js"></script>
+<script src="import-all-demo-artifacts.js"></script>
 
 </html>

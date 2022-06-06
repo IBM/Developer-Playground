@@ -138,14 +138,12 @@ window.onload = function () {
     }
   };
   serviceList.getElementsByClassName('anchor')[0].onclick = function (evt) {
-    console.log("anchor clicked")
     if (serviceList.classList.contains('visible'))
       serviceList.classList.remove('visible');
     else
       serviceList.classList.add('visible');
   }
   olmServiceList.getElementsByClassName('anchor')[0].onclick = function (evt) {
-    console.log("anchor clicked")
     if (olmServiceList.classList.contains('visible'))
       olmServiceList.classList.remove('visible');
     else
@@ -187,7 +185,6 @@ window.onload = function () {
       gitServicesList.insertBefore(e.target.parentElement, gitServicesList.firstChild);
     } else {
       selectedServices.indexOf(e.target.value) !== -1 && selectedServices.splice(selectedServices.indexOf(e.target.value), 1)
-      console.log(Object.keys(services).indexOf(e.target.value))
       gitServicesList.insertBefore(e.target.parentElement, gitServices[Object.keys(services).indexOf(e.target.value)].parentElement);
 
     }
@@ -216,7 +213,6 @@ window.onload = function () {
   olmSearchItem.addEventListener("input", filterServiceList)
 
   function filterServiceList(e) {
-    console.log(e.target.id)
     let currServices = []
     if (e.target.id === "cr-services-search") {
       currServices = gitServices
@@ -224,7 +220,6 @@ window.onload = function () {
       currServices = olmServices
     }
     let listServices = [...currServices].map(service => service.value)
-    console.log(currServices)
     listServices.forEach((res, idx) => {
       if (res.toLowerCase().includes(e.target.value.toLowerCase()) || services[res].toLowerCase().includes(e.target.value.toLowerCase())) {
         currServices[idx].parentElement.style.display = "block"

@@ -111,7 +111,7 @@ window.onload = function () {
     console.log(e.target.name, e.target.value)
     config[e.target.name] = e.target.value
     let cta = document.getElementById("configure-env")
-    cta.href = `${compositeHref}${Object.keys(config).map(val => `${val}-${config[val]}`).toString().replaceAll(",","%20")}`
+    cta.href = `${compositeHref}${Object.keys(config).map(val => `${val.toUpperCase()}=${config[val]}`).toString().replaceAll(",","%20")}`
     let tempData = JSON.parse(localStorage[didact])
     tempData[e.target.name] = e.target.value
     localStorage[didact] = JSON.stringify(tempData)

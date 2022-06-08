@@ -1,5 +1,7 @@
 window.onload = function () {
   // console.log(document.getElementById("execute"))
+  let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit clone https://github.com/IBM/Developer-Playground -b techzone --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils;python3.8%20update-env-vars.py%20"
+  let prerequisite = ["server", "api_token", "kubeadmin_user", "kubeadmin_password"]
   let services = {
     analyticsengine: 'Analytics Engine Powered by Apache Spark',
     bigsql: 'Db2 Big SQL',
@@ -54,6 +56,85 @@ window.onload = function () {
   }
   let selectedServices = []
   let olmSelectedServices = []
+
+  let didact = document.getElementsByClassName("apptitle")[0].textContent
+
+  //Get Workspace ID and setup default data for localStorage
+  let workspaceId = document.getElementById("workspaceID").textContent
+  let data = {
+    workspaceId: workspaceId,
+    server: "",
+    api_token: "",
+    kubeadmin_user: "",
+    kubeadmin_password: "",
+  }
+
+  //Create localStorage item if didact name not present 
+  if (localStorage[didact] === undefined) {
+    localStorage[didact] = JSON.stringify(data)
+  }
+
+  //Reset localStorage to default data if workspace is changed
+  if (JSON.parse(localStorage[didact]).workspaceId !== workspaceId) {
+    localStorage[didact] = JSON.stringify(data)
+  }
+
+  //Fill input data from localStorage
+  prerequisite.forEach(input => document.getElementsByName(input)[0].value = JSON.parse(localStorage[didact])[input])
+
+  //Enable/Disable timeline
+  let localData = JSON.parse(localStorage[didact])
+  let timelineContainer = document.getElementsByClassName("timeline-container")[0]
+  if ((localData.server.trim() === "" || localData.api_token.trim() === "" ) && (localData.kubeadmin_user.trim() === "" || localData.kubeadmin_password.trim() === "")) {
+    timelineContainer.style.opacity = 0.5;
+    timelineContainer.style.cursor = "not-allowed";
+    [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
+    [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none");
+    [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
+    [...timelineContainer.getElementsByTagName("DIV")].forEach(ele => ele.style.pointerEvents = "none");
+  }
+
+  //default data
+  let config = {
+    server: localData.server,
+    api_token: localData.api_token,
+    kubeadmin_user: localData.kubeadmin_user,
+    kubeadmin_password: localData.kubeadmin_password,
+  }
+  //Get env values
+  let envVariables = document.getElementsByClassName('env-variables');
+  [...envVariables].forEach((task) => {
+    task.addEventListener("input", getEnvValues)
+  });
+
+  function getEnvValues(e) {
+    console.log(e.target.name, e.target.value)
+    config[e.target.name] = e.target.value
+    let cta = document.getElementById("configure-env")
+    cta.href = `${compositeHref}${Object.keys(config).map(val => `${val}-${config[val]}`).toString().replaceAll(",","%20")}`
+    let tempData = JSON.parse(localStorage[didact])
+    tempData[e.target.name] = e.target.value
+    localStorage[didact] = JSON.stringify(tempData)
+    let valid = true
+    if((config.server.trim() === "" || config.api_token.trim() === "") && (config.kubeadmin_user.trim() === "" || config.kubeadmin_password.trim() === ""))
+      valid = false
+    if (valid) {
+      timelineContainer.style.opacity = 1;
+      timelineContainer.style.cursor = "auto";
+      [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "auto");
+      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
+      [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
+      [...timelineContainer.getElementsByTagName("DIV")].forEach(ele => ele.style.pointerEvents = "auto");
+    } else {
+      timelineContainer.style.opacity = 0.5;
+      timelineContainer.style.cursor = "not-allowed";
+      [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
+      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none");
+      [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
+      [...timelineContainer.getElementsByTagName("DIV")].forEach(ele => ele.style.pointerEvents = "none");
+    }
+  }
+
 
   document.getElementById("existing_service").addEventListener("click", existing_service);
 
@@ -126,7 +207,7 @@ window.onload = function () {
   }
 
 
- // Get the dropdown elements
+  // Get the dropdown elements
   let olmServiceList = document.getElementById('olm-service-list');
   let serviceList = document.getElementById('cr-service-list');
 
@@ -162,7 +243,7 @@ window.onload = function () {
     li.appendChild(input)
     li.appendChild(document.createTextNode(services[id]));
     gitServicesList.appendChild(li);
-     li = document.createElement("li");
+    li = document.createElement("li");
     input = document.createElement("input");
     input.setAttribute("value", id)
     input.setAttribute("name", "olm-services")
@@ -178,7 +259,7 @@ window.onload = function () {
   let olmServices = document.getElementsByName("olm-services");
   gitServices.forEach((task) => task.addEventListener("click", updateSelectedServices));
   olmServices.forEach((task) => task.addEventListener("click", updateOlmSelectedServices));
-  
+
   function updateSelectedServices(e) {
     if (e.target.checked) {
       selectedServices.push(e.target.value)
@@ -195,7 +276,7 @@ window.onload = function () {
   function updateOlmSelectedServices(e) {
     if (e.target.checked) {
       olmSelectedServices.push(e.target.value)
-      olmServicesList.insertBefore(e.target.parentElement,olmServicesList.firstChild);
+      olmServicesList.insertBefore(e.target.parentElement, olmServicesList.firstChild);
     } else {
       olmSelectedServices.indexOf(e.target.value) !== -1 && olmSelectedServices.splice(olmSelectedServices.indexOf(e.target.value), 1)
       olmServicesList.insertBefore(e.target.parentElement, olmServices[Object.keys(services).indexOf(e.target.value)].parentElement);
@@ -204,7 +285,7 @@ window.onload = function () {
     let showSeleted = document.getElementById("olm-selected-services")
     showSeleted.textContent = olmSelectedServices.toString().replaceAll(",", ", ")
   }
-  
+
 
   //Search in the dropdown
   let searchItem = document.getElementById("cr-services-search")

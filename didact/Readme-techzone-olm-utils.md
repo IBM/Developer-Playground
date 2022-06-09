@@ -29,6 +29,28 @@
     </div>
   </div>
   <div class="section">
+    <p style="font-size:24px">Pre-requisites</p>
+    <div>
+      <p>Configure Openshift credentials (either use combination of server, user/password (OR) server, token).<br>
+        Openshift server name (including https://) and token can be obtained using one of two methods
+      <ol>
+        <li>From Openshift console, select your profile on top right and select “Copy login command”</li>
+        <li>From oc cli, run “oc config view --minify|grep server” to get server name and “oc whoami -t” to get token
+        </li>
+      </ol>
+      You can get the ICR KEY by logging onto <a href="https://myibm.ibm.com">myibm.ibm.com</a> using your IBM ID.
+      </p>
+      <div class="env-config">
+        <label>Server: </label><input class="env-variables" name="server" type="text" />
+        <label>API Token: </label><input class="env-variables" name="api_token" type="text" />
+        <p>-------OR-------</p>
+        <p></p>
+        <label>Kube Admin User: </label><input class="env-variables" name="kubeadmin_user" type="text" />
+        <label>Kube Admin Password: </label><input class="env-variables" name="kubeadmin_pass" type="password" />
+      </div>
+    </div>
+  </div>
+  <div class="section">
     <p style="font-size: 24px">Instructions</p>
     Please follow all the below steps in proper sequence<br>
     At a high level the installation steps include:
@@ -50,14 +72,14 @@
     </div>-->
     <div class="timeline">
       <div class="content">
-        <p>Get the resources required to deploy CP4D services</p>
+        <p>Get the resources required to deploy CP4D services and configure the openshift credentials.</p>
       </div>
-      <a class="button is-dark is-medium" title="Open Terminal"
-        href="didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit clone https://github.com/IBM/Developer-Playground -b techzone --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils">Get
-        Resources *</a>
+      <a class="button is-dark is-medium" id="configure-env" title="Configure Environment"
+        href="didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit clone https://github.com/IBM/Developer-Playground -b techzone --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils;python3.8%20update-env-vars.py%20">Configure
+        Environment *</a>
       <span class="dot"></span>
     </div>
-    <div class="timeline">
+    <!--<div class="timeline">
       <div class="content">
         <p>Configure Openshift credentials (either use combination of server, user/password (OR) server, token).<br>
           Openshift server name (including https://) and token can be obtained using one of two methods
@@ -73,7 +95,7 @@
         href="didact://?commandId=vscode.open&projectFilePath=/projects/techzone/olm-utils/env.sh">Configure *
       </a>
       <span class="dot"></span>
-    </div>
+    </div>-->
     <div class="timeline">
       <div class="content">
         <p>Deploy CP4D installation utility </p>

@@ -46,7 +46,7 @@
         <p>-------OR-------</p>
         <p></p>
         <label>Kube Admin User: </label><input class="env-variables" name="kubeadmin_user" type="text" />
-        <label>Kube Admin Password: </label><input class="env-variables" name="kubeadmin_password" type="password" />
+        <label>Kube Admin Password: </label><input class="env-variables" name="kubeadmin_pass" type="password" />
       </div>
     </div>
   </div>

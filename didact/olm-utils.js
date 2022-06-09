@@ -1,7 +1,7 @@
 window.onload = function () {
   // console.log(document.getElementById("execute"))
   let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit clone https://github.com/IBM/Developer-Playground -b techzone --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils;python3.8%20update-env-vars.py%20"
-  let prerequisite = ["server", "api_token", "kubeadmin_user", "kubeadmin_password"]
+  let prerequisite = ["server", "api_token", "kubeadmin_user", "kubeadmin_pass"]
   let services = {
     analyticsengine: 'Analytics Engine Powered by Apache Spark',
     bigsql: 'Db2 Big SQL',
@@ -66,7 +66,7 @@ window.onload = function () {
     server: "",
     api_token: "",
     kubeadmin_user: "",
-    kubeadmin_password: "",
+    kubeadmin_pass: "",
   }
 
   //Create localStorage item if didact name not present 
@@ -85,7 +85,7 @@ window.onload = function () {
   //Enable/Disable timeline
   let localData = JSON.parse(localStorage[didact])
   let timelineContainer = document.getElementsByClassName("timeline-container")[0]
-  if ((localData.server.trim() === "" || localData.api_token.trim() === "" ) && (localData.kubeadmin_user.trim() === "" || localData.kubeadmin_password.trim() === "")) {
+  if ((localData.server.trim() === "" || localData.api_token.trim() === "" ) && (localData.kubeadmin_user.trim() === "" || localData.kubeadmin_pass.trim() === "")) {
     timelineContainer.style.opacity = 0.5;
     timelineContainer.style.cursor = "not-allowed";
     [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
@@ -99,7 +99,7 @@ window.onload = function () {
     server: localData.server,
     api_token: localData.api_token,
     kubeadmin_user: localData.kubeadmin_user,
-    kubeadmin_password: localData.kubeadmin_password,
+    kubeadmin_pass: localData.kubeadmin_pass,
   }
   //Get env values
   let envVariables = document.getElementsByClassName('env-variables');
@@ -116,7 +116,7 @@ window.onload = function () {
     tempData[e.target.name] = e.target.value
     localStorage[didact] = JSON.stringify(tempData)
     let valid = true
-    if((config.server.trim() === "" || config.api_token.trim() === "") && (config.kubeadmin_user.trim() === "" || config.kubeadmin_password.trim() === ""))
+    if((config.server.trim() === "" || config.api_token.trim() === "") && (config.kubeadmin_user.trim() === "" || config.kubeadmin_pass.trim() === ""))
       valid = false
     if (valid) {
       timelineContainer.style.opacity = 1;

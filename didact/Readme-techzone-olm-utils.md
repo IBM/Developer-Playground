@@ -74,11 +74,9 @@
       <div class="content">
         <p>Get the resources required to deploy CP4D services and configure the openshift credentials.</p>
       </div>
-
       <a class="button is-dark is-medium" id="configure-env" title="Configure Environment"
         href="didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit clone https://github.com/IBM/Developer-Playground -b techzone --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils;python3.8%20update-env-vars.py%20">Configure
         Environment *</a>
-
       <span class="dot"></span>
     </div>
     <!--<div class="timeline">

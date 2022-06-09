@@ -10,7 +10,6 @@ with open("env.sh") as f:
     lines[4] = api_token + "\n"
     lines[9] = kubeadmin_user + "\n"
     lines[10] = kubeadmin_password + "\n"
-    print(lines)
     
 with open("env.sh","w") as f:    
     f.writelines(lines)

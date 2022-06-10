@@ -200,7 +200,7 @@
                         </div>
                         <p style="margin-top:1rem;"><b>Selected Services: </b><span id="selected-services"></span></p>
                     </div>
-                    <button class="button is-dark is-medium" title="Push to github" id="pushToGit">Push
+                    <button class="button is-dark is-medium no-click disable" title="Push to github" id="pushToGit">Push
                         to GitHub</button>
             </div>
             <span class="dot"></span>

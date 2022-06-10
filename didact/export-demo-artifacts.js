@@ -2,6 +2,13 @@ window.onload = function funLoad() {
 
   let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20techzone%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground%20%24%7BCHE_PROJECTS_ROOT%7D%2Ftechzone-demo%2C%2Fprojects%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd%20${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%3Bpython3.8%20update-env.py%20"
   let prerequisite = ["hostname", "wkcuser", "password"]
+  let pushToGitRequiredFields = ["demoname","tags","author","desc"]
+  requiredVals={
+    demoname:"",
+    tags:"",
+    author:"",
+    desc: "",
+  }
   let services = {
     analyticsengine: 'Analytics Engine Powered by Apache Spark',
     bigsql: 'Db2 Big SQL',
@@ -108,6 +115,7 @@ window.onload = function funLoad() {
     let services = selectedServices.toString()//document.getElementById("services").value
     let demoName = document.getElementById("demoname").value || ""
     let desc = document.getElementById("desc").value || "Update"
+    let userID=document.getElementById("userID").textContent || author
     tags = tags.split(",")
     services = services.split(",")
     industry = industry.split(",")
@@ -117,13 +125,14 @@ window.onload = function funLoad() {
       "tags": tags,
       "author": author,
       "services": services,
-      "demoName": demoName,
+      "demoName": userID.replace(/ /g,'')+"-"+demoName.replace(/ /g,''),
+      "displayName":demoName,
       "desc": desc
     }
     // let metadata=`{"industry":"${industry}","tags":"${["tags","asddsa","dsa"]}","author":"${author}","services":"${services}","demoName":"${demoName}"}`
     metadata = '\'' + JSON.stringify(metadata) + '\''
     document.getElementById("command_exec").href =
-      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$bash /projects/techzone-demo/sandbox/github.sh " + "\""+demoName.replace(/ /g,'')+ "\""+" " + metadata + " " + "\""+ author.replace(/ /g,'')+ "\""+ " "+ "\""+desc+ "\"";
+      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$bash /projects/techzone-demo/sandbox/github.sh " + "\""+demoName.replace(/ /g,'')+ "\""+" " + metadata + " " + "\""+ userID.replace(/ /g,'')+ "\""+ " "+ "\""+desc+ "\"";
 
     document.getElementById("command_exec").click();
 
@@ -136,7 +145,8 @@ window.onload = function funLoad() {
     timelineContainer.style.opacity = 0.5;
     timelineContainer.style.cursor = "not-allowed";
     [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
-    [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none")
+    [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none");
+    [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
   }
 
   //default data
@@ -166,8 +176,19 @@ window.onload = function funLoad() {
   function selectOption(e) {
     document.getElementById("selected-industry").textContent = e.target.textContent
     selecetdIndustry = getIndustry(e.target.textContent);
-    console.log(selecetdIndustry)
     industryList.classList.remove('visible');
+    let cta = document.getElementById("pushToGit")
+    if(Object.values(requiredVals).map(val => val.trim()).includes("") || selectedServices.length === 0 || selecetdIndustry.trim() === ""){
+      cta.classList.remove("enable")
+      cta.classList.add("disable")
+      cta.classList.remove("allow-click")
+      cta.classList.add("no-click")
+    }else{
+      cta.classList.remove("disable")
+      cta.classList.add("enable")
+      cta.classList.remove("no-click")
+      cta.classList.add("allow-click")
+    }
   }
 
   //open/close gov-artifacts dropdown
@@ -181,7 +202,6 @@ window.onload = function funLoad() {
 
   //Get env values
   let envVariables = document.getElementsByClassName('env-variables');
-  console.log([...envVariables]);
   [...envVariables].forEach((task) => {
     task.addEventListener("input", getEnvValues)
   });
@@ -205,12 +225,14 @@ window.onload = function funLoad() {
       timelineContainer.style.opacity = 1;
       timelineContainer.style.cursor = "auto";
       [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "auto");
-      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto")
+      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
+      [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
     } else {
       timelineContainer.style.opacity = 0.5;
       timelineContainer.style.cursor = "not-allowed";
       [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
-      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none")
+      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none");
+      [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
     }
   }
 
@@ -280,7 +302,6 @@ window.onload = function funLoad() {
   //Open Close services dropdowns
   let serviceList = document.getElementById('service-list');
   serviceList.getElementsByClassName('anchor')[0].onclick = function (evt) {
-    console.log("anchor clicked")
     if (serviceList.classList.contains('visible'))
       serviceList.classList.remove('visible');
     else
@@ -308,12 +329,23 @@ window.onload = function funLoad() {
       gitServicesList.insertBefore(e.target.parentElement, gitServicesList.firstChild);
     } else {
       selectedServices.indexOf(e.target.value) !== -1 && selectedServices.splice(selectedServices.indexOf(e.target.value), 1)
-      console.log(Object.keys(services).indexOf(e.target.value))
       gitServicesList.insertBefore(e.target.parentElement, gitServices[Object.keys(services).indexOf(e.target.value)].parentElement);
 
     }
     let showSeleted = document.getElementById("selected-services")
     showSeleted.textContent = selectedServices.toString().replaceAll(",", ", ")
+    let cta = document.getElementById("pushToGit")
+    if(Object.values(requiredVals).map(val => val.trim()).includes("") || selectedServices.length === 0 || selecetdIndustry.trim() === ""){
+      cta.classList.remove("enable")
+      cta.classList.add("disable")
+      cta.classList.remove("allow-click")
+      cta.classList.add("no-click")
+    }else{
+      cta.classList.remove("disable")
+      cta.classList.add("enable")
+      cta.classList.remove("no-click")
+      cta.classList.add("allow-click")
+    }
   }
 
   //Search in dropdown
@@ -324,7 +356,6 @@ window.onload = function funLoad() {
     let filteredServices = {}
     let htmlServices = document.getElementsByName("services")
     let listServices = [...htmlServices].map(service => service.value)
-    console.log(htmlServices)
     listServices.forEach((res, idx) => {
       if (res.toLowerCase().includes(e.target.value.toLowerCase()) || services[res].toLowerCase().includes(e.target.value.toLowerCase())) {
         filteredServices[res] = services[res]
@@ -333,7 +364,6 @@ window.onload = function funLoad() {
         htmlServices[idx].parentElement.style.display = "none"
       }
     })
-    console.log(filteredServices)
   }
 
 
@@ -345,5 +375,24 @@ window.onload = function funLoad() {
       industryList.classList.remove('visible');
     }
   };
+
+  //Enable/Disable PushToGit CTA
+  pushToGitRequiredFields.forEach(id => document.getElementById(id).addEventListener("input", setPushToGitCTA))
+
+  function setPushToGitCTA(e) {
+    requiredVals[e.target.id] = e.target.value
+    let cta = document.getElementById("pushToGit")
+    if(Object.values(requiredVals).map(val => val.trim()).includes("") || selectedServices.length === 0 || selecetdIndustry.trim() === ""){
+      cta.classList.remove("enable")
+      cta.classList.add("disable")
+      cta.classList.remove("allow-click")
+      cta.classList.add("no-click")
+    }else{
+      cta.classList.remove("disable")
+      cta.classList.add("enable")
+      cta.classList.remove("no-click")
+      cta.classList.add("allow-click")
+    }
+  }
 
 };

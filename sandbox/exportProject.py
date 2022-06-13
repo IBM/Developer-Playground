@@ -92,8 +92,7 @@ def existing_projects(options, service_info):
     menu_entry_index = terminal_menu.show()
     #########Confirmation message#########
     if(menu_entry_index!=len(options)-1):
-        print("The Project "+ service_info[menu_entry_index]['name']+" having Project ID "+service_info[menu_entry_index]['guid']+" will be Exported.\nDo you want to continue?(Y/N)")
-        confirm=input()
+        confirm=input("The Project "+ service_info[menu_entry_index]['name']+" having Project ID "+service_info[menu_entry_index]['guid']+" will be Exported.\nDo you want to continue?(Y/N)")
         if(confirm=="Y" or confirm=="y"):
             return service_info[menu_entry_index]['guid']  # return guid of selected project
         elif(confirm=="N" or confirm=="n"):

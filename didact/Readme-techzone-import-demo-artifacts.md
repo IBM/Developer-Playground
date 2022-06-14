@@ -16,8 +16,8 @@
     <div id="userID" class="hidden-state">$user_id</div>
     <div class="header">
         <div class="left-content">
-            <div class="apptitle">Load shared demo assets on your cluster</div>
-            <div class="subheading">Search centralized repository of demo assets and recreate selected demo assets on your cluster. The assumption is that you have an existing Openshift cluster with Cloud Pak for Data installed. Demo assets can include different types of artifacts such as Users, Governance artifacts, Analytics projects, Data integration projects etc. You can selectively pick one or more of these artifacts and import into your cluster.</div>
+            <div class="apptitle">Recreate shared demo assets on your CPD cluster</div>
+            <div class="subheading">Demo assets include different types of artifacts such as Users, Governance artifacts, Analytics projects, Data integration projects etc.</br>Enter your CPD credentials and select one or more artifacts to recreate into your CPD cluster.</div>
         </div>
     </div>
     <div class="section">

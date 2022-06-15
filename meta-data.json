@@ -15,6 +15,7 @@
         "techzone-export-demo-artifacts": "Techzone Export Demo Artifacts",
         "techzone-import-all-demo-artifacts": "Techzone Import All Demo Artifacts",
         "techzone-import-demo-artifacts": "Techzone Import Demo Artifacts",
-        "aws-healthcare": "AWS Proactive Healthcare Management System"
+        "aws-healthcare": "AWS Proactive Healthcare Management System",
+        "test":"This is for testing"
     }
 }

@@ -17,6 +17,7 @@
   <div style="margin-top:2rem"></div>
   <div id="workspaceID" class="hidden-state">$workspace_id</div>
   <div id="userID" class="hidden-state">$user_id</div>
+  <div id="environment" class="hidden-state">$environment</div>
   <div class="header">
     <div class="left-content">
       <div class="apptitle">Self-service customizable CP4D environment setup</div>

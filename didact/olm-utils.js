@@ -1,6 +1,13 @@
 window.onload = function () {
   // console.log(document.getElementById("execute"))
-  let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit clone https://github.com/IBM/Developer-Playground -b techzone --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils;python3.8%20update-env-vars.py%20"
+  let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit clone https://github.com/IBM/CPDemoFramework -b $BRANCH --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils;python3.8%20update-env-vars.py%20"
+  if(window.location.href.includes("sandbox.runtest"))
+    compositeHref.replace("$BRANCH","staging")
+  else if(window.location.href.includes("sandbox.run"))
+    compositeHref.replace("$BRANCH","production")
+  else
+    compositeHref.replace("$BRANCH","development")
+  
   let prerequisite = ["server", "api_token", "kubeadmin_user", "kubeadmin_pass"]
   let services = {
     analyticsengine: 'Analytics Engine Powered by Apache Spark',

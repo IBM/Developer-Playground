@@ -1,11 +1,9 @@
 {
-    header: {
-        brandLogo: 'logo.svg',
+
+        headerBrandLogo: 'logo.svg',
         showHelpAndSupport: false,
         showQuickTour: false,
         showDashboard: true,
-    },
-    intermediatePageStrings: {
         showNotifcation: true,
         welcomemsg: 'Welcome {0}.',
         welcomebackmsg: 'Welcome back {0}.',
@@ -18,10 +16,6 @@
         userFeatureText: 'There is a variety of features for you, all in one place!',
         notificationBody1: 'Cloud Paks Demo Framework creates an ephemeral workspace for you. Your workspace is active for {0}. The timer shows time left in your workspace session.',
         notificationBody2: 'To save any code edits that you have made in the workspace, use the Github feature.',
-
-    },
-    showCarousel: false,
-    footer: {
-        brandLogo: 'logo.svg',
-    }
+        showCarousel: false,
+        footerBrandLogo: 'logo.svg',
 }

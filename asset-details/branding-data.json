@@ -11,7 +11,7 @@
         "play1": "Light-weight browser-based experience",
         "play2": "Guided tutorials to experience and run applications",
         "play3": "Modify and build on top of pre-built applications",
-        "launchbutton": "Launch CP Demo Framework',
+        "launchbutton": "Launch CP Demo Framework",
         "userFeatureText": "There is a variety of features for you, all in one place!",
         "notificationBody1": "Cloud Paks Demo Framework creates an ephemeral workspace for you. Your workspace is active for {0}. The timer shows time left in your workspace session.",
         "notificationBody2": "To save any code edits that you have made in the workspace, use the Github feature.",

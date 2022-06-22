@@ -1,0 +1,9 @@
+{
+   "welcomemsg":"Welcome {0}.",
+   "welcomebackmsg":"Welcome back {0}.",
+   "refreshUsermsg":"Hang tight, {0}.",
+   "apisectionmsg":"Cp Demo Framework Sandbox is loading {0} resources.",
+   "play1":"Heavy-weight browser-based experience",
+   "play2":"Guided tutorials to experience and run applications1",
+   "play3":"Modify and build on top of pre-built applications1"
+}

@@ -1,6 +1,6 @@
 {
         "headerBrandLogo": "logo.svg",
-        "headerSubText": "Techzone",
+        "headerSubText": "Technology Zone",
         "appTitle": "CP Demo Framework",
         "showHelpAndSupport": false,
         "showQuickTour": false,
@@ -18,5 +18,6 @@
         "notificationBody1": "Cloud Paks Demo Framework creates an ephemeral workspace for you. Your workspace is active for {0}. The timer shows time left in your workspace session.",
         "notificationBody2": "To save any code edits that you have made in the workspace, use the Github feature.",
         "showCarousel": false,
-        "footerBrandLogo": "logo.svg"
+        "footerBrandLogo": "logo.svg",
+        "ibmURL": "https://techzone.ibm.com/"
 }

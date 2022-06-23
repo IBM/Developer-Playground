@@ -19,5 +19,6 @@
         "notificationBody2": "To save any code edits that you have made in the workspace, use the Github feature.",
         "showCarousel": false,
         "footerBrandLogo": "logo.svg",
-        "ibmURL": "https://techzone.ibm.com/"
+        "developerUrl": "https://techzone.ibm.com/",
+        "developerWinName": "techzone",
 }

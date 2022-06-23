@@ -1,9 +1,11 @@
 {
         "headerBrandLogo": "logo.svg",
+        "headerSubText": "Techzone",
+        "appTitle": "CP Demo Framework",
         "showHelpAndSupport": false,
         "showQuickTour": false,
         "showDashboard": true,
-        "showNotifcation": true,
+        "showNotification": true,
         "welcomemsg": "Welcome {0}.",
         "welcomebackmsg": "Welcome back {0}.",
         "refreshUsermsg": "Hang tight, {0}.",

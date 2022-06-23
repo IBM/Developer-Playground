@@ -3,5 +3,6 @@
         "apisectionmsg": "CP Demo Framework is loading {0} resources.",
         "launchbutton": "Launch CP Demo Framework",
         "notificationBody1": "CP Demo Framework creates an ephemeral workspace for you. Your workspace is active for {0}. The timer shows time left in your workspace session.",
-        "showCarousel": false
+        "showCarousel": false,
+        "showQuickTour": false
 }

@@ -6,7 +6,7 @@
         "showNotifcation": true,
         "welcomemsg": "Welcome {0}.",
         "welcomebackmsg": "Welcome back {0}.",
-        "refreshUsermsg": "Hang Tight, {0}.",
+        "refreshUsermsg": "Hang tight, {0}.",
         "apisectionmsg": "Cloud Paks Demo Framework is loading {0} resources.",
         "play1": "Light-weight browser-based experience",
         "play2": "Guided tutorials to experience and run applications",

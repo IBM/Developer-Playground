@@ -2,8 +2,8 @@
         "headerBrandLogo": "logo.svg",
         "headerSubText": "Technology Zone",
         "appTitle": "CP Demo Framework",
-        "showHelpAndSupport": true,
-        "showQuickTour": true,
+        "showHelpAndSupport": false,
+        "showQuickTour": false,
         "showDashboard": false,
         "showNotification": true,
         "welcomemsg": "Welcome {0}.",
@@ -21,7 +21,6 @@
         "footerBrandLogo": "logo.svg",
         "developerUrl": "https://techzone.ibm.com/",
         "developerWinName": "techzone",
-        "supportURL": "https://slack.com/intl/en-in/help",
-        "helpSupportToolTipText":"Slack Support",
-        "quickTourToolTipText":"Git Support"
+        "showSlackSupport": true,
+        "showGitSupport": true
 }

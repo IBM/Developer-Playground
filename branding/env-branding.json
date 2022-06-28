@@ -20,5 +20,8 @@
         "showCarousel": false,
         "footerBrandLogo": "logo.svg",
         "developerUrl": "https://techzone.ibm.com/",
-        "developerWinName": "techzone"
+        "developerWinName": "techzone",
+        "supportURL": "https://slack.com/intl/en-in/help",
+        "helpSupportToolTipText":"Slack Support",
+        "quickTourToolTipText":"Git Support"
 }

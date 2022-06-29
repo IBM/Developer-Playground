@@ -20,5 +20,7 @@
         "showCarousel": false,
         "footerBrandLogo": "logo.svg",
         "developerUrl": "https://techzone.ibm.com/",
-        "developerWinName": "techzone"
+        "developerWinName": "techzone",
+        "showSlackSupport": true,
+        "showGitSupport": true
 }

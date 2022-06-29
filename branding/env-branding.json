@@ -2,7 +2,7 @@
         "headerBrandLogo": "logo.svg",
         "headerSubText": "Technology Zone",
         "appTitle": "CP Demo Framework",
-        "showHelpAndSupport": false,
+        "showHelpAndSupport": true,
         "showQuickTour": true,
         "showDashboard": true,
         "showNotification": true,

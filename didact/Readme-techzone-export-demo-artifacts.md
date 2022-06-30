@@ -93,7 +93,7 @@
                     <summary>Governance Artifacts<span class="arrow"></span></summary>
                     <br><br>
                     <div class="content">
-                        <p>Select the required Governance artifacts. By Default All artifacts will be exported.</p>
+                        <p>Select the required Governance artifacts. By default all artifacts will be exported.</p>
                         <div id="list1" class="dropdown-check-list" tabindex="100">
                             <span class="anchor">Select Artifacts</span>
                             <ul class="items">
@@ -155,7 +155,7 @@
         <div class="timeline">
             <div class="content">
                 <details>
-                    <summary>Publish Demo Asset to common repository.<span class="arrow"></span></summary>
+                    <summary>Publish Demo Asset to centralised repository.<span class="arrow"></span></summary>
                     <br><br>
                     <div class="content">
                         <!-- <p>Select the action to perform in the configured cp4d instance</p> -->

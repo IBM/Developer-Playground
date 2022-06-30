@@ -1,7 +1,7 @@
 window.onload = function funLoad() {
   let env = document.getElementById("environment").textContent
   let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20$BRANCH%20https%3A%2F%2Fgithub.com%2FIBM%2FCPDemoFramework%20%24%7BCHE_PROJECTS_ROOT%7D%2Ftechzone-demo%2C%2Fprojects%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cbash%20/projects/techzone-demo/sandbox/getDemoFiles.sh%20demo_name%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd%20${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%3Bpython3.8%20update-env.py%20"
-  compositeHref = compositeHref.replaceAll("$BRANCH",env)
+  compositeHref = compositeHref.replaceAll("$BRANCH", env)
 
   let prerequisite = ["hostname", "wkcuser", "password"]
 
@@ -51,6 +51,10 @@ window.onload = function funLoad() {
     password: localData.password,
   }
 
+  //update open cluster cta URL
+  let clusterUrl = `https://${config.hostname}`
+  let openClusterCta = document.getElementById("open-cpd-cluster")
+  openClusterCta.href = clusterUrl
 
   //username from demo
   document.getElementById("selected-demo").textContent = demo.split(/-(.*)/s)[1] ? demo.split(/-(.*)/s)[1] : demo
@@ -96,5 +100,8 @@ window.onload = function funLoad() {
       [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none");
       [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
     }
+    let clusterUrl = `https://${config.hostname}`
+    let openClusterCta = document.getElementById("open-cpd-cluster")
+    openClusterCta.href = clusterUrl
   }
 }

@@ -62,7 +62,7 @@
                         </div>
                         <a class="button is-dark is-medium force-disabled" title="Create Users"
                             href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 createUsers.py users.csv">Create
-                            Users(..Coming Soon)</a>
+                            Users (Coming Soon)</a>
                     </div>
                 </details>
             </div>

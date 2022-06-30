@@ -321,6 +321,11 @@ html,
         .env-config label { 
             text-align:left;
         }
+        .force-disabled {
+            opacity: 0.5 !important;
+            cursor: not-allowed !important;
+            pointer-events: none !important;
+        }
         
         @media screen and (max-width: 50rem) {
             .footer {

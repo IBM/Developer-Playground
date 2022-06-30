@@ -27,7 +27,7 @@
     <div class="section">
         <p style="font-size:24px">Pre-requisites</p>
         <div>
-            <p>Enter your cp4d details.</p>
+            <p>Enter your CPD cluster details.</p>
             <div class="env-config">
                 <label>Hostname: </label><input class="env-variables" name="hostname" type="text" />
                 <label>User: </label><input class="env-variables" name="wkcuser" type="text" />
@@ -42,7 +42,7 @@
     <div class="timeline-container">
         <div class="timeline timelinestep">
             <div class="content">
-                <p>Get the resources required and update the cp4d details in .env file.</p>
+                <p>Configure the environment with the required resources and connect to the specified CPD cluster.</p>
             </div>
             <a id="configure-env" class="button is-dark is-medium" title="Configure Resources"
                 href="didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20techzone%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground%20%24%7BCHE_PROJECTS_ROOT%7D%2Ftechzone-demo%2C%2Fprojects%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd%20${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%7C">Configure
@@ -76,7 +76,7 @@
                     <br><br>
                     <div>
                         <div class="content">
-                            <p>Export User List to the csv file</p>
+                            <p>Export Users from the specified CPD cluster.</p>
                         </div>
                         <a class="button is-dark is-medium" title="Export User List"
                             href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportUsers.py users.csv">Export
@@ -93,7 +93,7 @@
                     <summary>Governance Artifacts<span class="arrow"></span></summary>
                     <br><br>
                     <div class="content">
-                        <p>Select the action to perform in the configured cp4d instance</p>
+                        <p>Select the required Governance artifacts. By Default All artifacts will be exported.</p>
                         <div id="list1" class="dropdown-check-list" tabindex="100">
                             <span class="anchor">Select Artifacts</span>
                             <ul class="items">
@@ -123,7 +123,7 @@
                     <br>
                     <div id="export-task">
                         <div class="content">
-                            <p>Export Governance Artifacts</p>
+                            <p>Export the selected Governance Artifacts.</p>
                         </div>
                         <a class="button is-dark is-medium" title="Export Governance Artifacts"
                             href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py governance_artifacts.zip all;unzip governance_artifacts.zip -d governance_artifacts;python3.8 exportDataProtectionRules.py data_protection_rules.json">Export
@@ -141,7 +141,7 @@
                     <br><br>
                     <div>
                         <div class="content">
-                            <p>Export project from the configured cp4d instance</p>
+                            <p>Click the action and select the project to be exported using the terminal below.</p>
                         </div>
                         <a class="button is-dark is-medium" title="Export Project"
                             href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportProject.py project_assets.zip">Export
@@ -155,7 +155,7 @@
         <div class="timeline">
             <div class="content">
                 <details>
-                    <summary>Push to Github<span class="arrow"></span></summary>
+                    <summary>Publish Demo Asset to common repository.<span class="arrow"></span></summary>
                     <br><br>
                     <div class="content">
                         <!-- <p>Select the action to perform in the configured cp4d instance</p> -->

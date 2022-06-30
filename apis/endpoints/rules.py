@@ -14,8 +14,8 @@ class RulesAPI(subAPIs.SubAPI):
     """Delete the log of a given rule"""
     return self.mainAPI._DELETE(f'/v3/enforcement/rules/{rule_id}', statusCheck=204)
 
-  def exportDataProtectionRules(self):
-    return self.mainAPI._getFile('/v3/enforcement/rules/export',"data_protection_rules.json",200)
+  def exportDataProtectionRules(self, file_name):
+    return self.mainAPI._getFile('/v3/enforcement/rules/export',file_name ,200)
   
   def importDataProtectionRules(self, dataprotectionrulefile):
     payload = json.load(open(dataprotectionrulefile, encoding= 'utf-8' ))

@@ -21,6 +21,7 @@
         "footerBrandLogo": "logo.svg",
         "developerUrl": "https://techzone.ibm.com/",
         "developerWinName": "techzone",
-        "showSlackSupport": false,
-        "showGitSupport": false
+        "showSlackSupport": true,
+        "slackSupportURL":"https://ibm-analytics.slack.com/app_redirect?channel=C03MHBJ2FTN",
+        "showGitSupport": true
 }

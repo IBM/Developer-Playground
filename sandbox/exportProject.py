@@ -92,8 +92,7 @@ def existing_projects(options, service_info):
     menu_entry_index = terminal_menu.show()
     #########Confirmation message#########
     if(menu_entry_index!=len(options)-1):
-        print("The Project "+ service_info[menu_entry_index]['name']+" having Project ID "+service_info[menu_entry_index]['guid']+" will be Exported.\nDo you want to continue?(Y/N)")
-        confirm=input()
+        confirm=input("The Project "+ service_info[menu_entry_index]['name']+" having Project ID "+service_info[menu_entry_index]['guid']+" will be Exported.\nDo you want to continue?(Y/N)")
         if(confirm=="Y" or confirm=="y"):
             return service_info[menu_entry_index]['guid']  # return guid of selected project
         elif(confirm=="N" or confirm=="n"):
@@ -158,4 +157,4 @@ result = os.popen('cpdctl asset export start --project-id '+PROJECT_ID+ ' --asse
 EXPORT_ID = result
 print('Export ID: {}'.format(EXPORT_ID))
 EXPORT_ID=EXPORT_ID.strip()
-os.system('cpdctl asset export download --project-id '+PROJECT_ID+' --export-id '+EXPORT_ID+' --output-file project-assets.zip --progress')
+os.system('cpdctl asset export download --project-id '+PROJECT_ID+' --export-id '+EXPORT_ID+' --output-file '+ sys.argv[1] +' --progress')

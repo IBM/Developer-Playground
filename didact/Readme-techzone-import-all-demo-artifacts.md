@@ -17,14 +17,14 @@
     <div id="environment" class="hidden-state">$environment</div>
     <div class="header">
         <div class="left-content">
-            <div class="apptitle">Recreate shared demo assets on your cluster</div>
+            <div class="apptitle">Recreate shared demo assets onto your CPD cluster</div>
             <div class="subheading">Search centralized repository of demo assets and recreate selected demo assets on your cluster. The assumption is that you have an existing Openshift cluster with Cloud Pak for Data installed. Demo assets can include different types of artifacts such as Users, Governance artifacts, Analytics projects, Data integration projects etc. You can selectively pick one or more of these artifacts and import into your cluster.</div>
         </div>
     </div>
     <div class="section">
         <p style="font-size:24px">Pre-requisites</p>
         <div>
-            <p>Enter your cp4d details.</p>
+            <p>EEnter your CPD cluster details.</p>
             <div class="env-config">
                 <label>Hostname: </label><input class="env-variables" name="hostname" type="text" />
                 <label>User: </label><input class="env-variables" name="wkcuser" type="text" />
@@ -51,7 +51,7 @@
         </div>
         <div class="timeline timelinestep">
             <div class="content">
-                <p>Get the resources required and update the cp4d details in .env file.</p>
+                <p>Configure the environment with the required resources and connect to the specified CP4D cluster.</p>
             </div>
             <a id="configure-env" class="button is-dark is-medium" title="Configure Resources"
                 href="didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20techzone%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground%20%24%7BCHE_PROJECTS_ROOT%7D%2Ftechzone-demo%2C%2Fprojects%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Csh%20/projects/techzone-demo/sandbox/getDemoFiles.sh%20demo_name%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd%20${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F">Configure Environment</a>
@@ -64,11 +64,11 @@
                     <br><br>
                     <div>
                         <div class="content">
-                            <p>Create users in the configured cp4d instance.</p>
+                            <p>Recreate demo users onto new CPD cluster.</p>
                         </div>
-                        <a class="button is-dark is-medium" title="Create Users"
+                        <a class="button is-dark is-medium force-disabled" title="Create Users"
                             href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 createUsers.py users.csv">Create
-                            Users</a>
+                            Users(..Coming Soon)</a>
                     </div>
                 </details>
             </div>
@@ -81,7 +81,7 @@
                     <br><br>
                     <div>
                         <div class="content">
-                            <p>Import Governance Artifacts</p>
+                            <p>Import Governance artifacts to new CPD cluster.</p>
                         </div>
                         <a class="button is-dark is-medium" title="Import Gov Artifacts"
                             href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 importGovArtifacts.py governance_artifacts.zip">Import
@@ -115,6 +115,14 @@
                     </div>
                 </details>
             </div>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline timelinestep">
+            <div class="content">
+                <p>Open the CPD cluster to  verify the resources created.</p>
+            </div>
+            <a id="open-cpd-cluster" class="button is-dark is-medium" title="Open Cluster"
+                href="">Open CPD Cluster</a>
             <span class="dot"></span>
         </div>
     </div>

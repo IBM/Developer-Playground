@@ -126,7 +126,7 @@
         </a>
       </div>
     </div> -->
-    <div class="timeline">
+<!--     <div class="timeline">
       <div class="content">
         <p>Installation of CP4D services requires the correct service code/name to be used, you can get the services
           code/name by listing components. The subsequent steps have a “components” field where you can provide one or
@@ -137,7 +137,7 @@
         Components
       </a>
       <span class="dot"></span>
-    </div>
+    </div> -->
     <div class="timeline">
       <div class="content">
         <p>Check currently installed CP4D services on the cluster in the selected namespace. If this is a new

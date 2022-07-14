@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .header {
-      background-image: url('https://github.com/IBM/Developer-Playground/blob/master/didact/images/data-quality.png?raw=true');
+      background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/data-quality.png');
     }
   </style>
 </head>

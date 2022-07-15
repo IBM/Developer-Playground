@@ -103,6 +103,9 @@ window.onload = function () {
     kubeadmin_user: localData.kubeadmin_user,
     kubeadmin_pass: localData.kubeadmin_pass,
   }
+  let configCta = document.getElementById("configure-env")
+  configCta.href = `${compositeHref}${Object.keys(config).map(val => `${val.toUpperCase()}=${config[val]}`).toString().replaceAll(",","%20")}`
+  
   //Get env values
   let envVariables = document.getElementsByClassName('env-variables');
   [...envVariables].forEach((task) => {

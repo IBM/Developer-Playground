@@ -200,14 +200,14 @@ clf_lr = LogisticRegression()
 model = clf_lr.fit(X_train_scaled, y_train)
 model
 
-#Multilayer Perceptron (Neural Network) on preprocessed data
+# #Multilayer Perceptron (Neural Network) on preprocessed data
 
-from sklearn.neural_network import MLPClassifier
+# from sklearn.neural_network import MLPClassifier
 
-clf_mlp = MLPClassifier(verbose=0)
-clf_mlp.fit(X_train_scaled, y_train)
+# clf_mlp = MLPClassifier(verbose=0)
+# clf_mlp.fit(X_train_scaled, y_train)
 
-# Note: MLP as a NN, can use data without the feature engineering step, as the NN will handle that automatically
+# # Note: MLP as a NN, can use data without the feature engineering step, as the NN will handle that automatically
 
 #13. Evaluate our model
 
@@ -265,19 +265,19 @@ average_precision_lr = average_precision_score(y_test, y_score_lr)
 print('Average precision-recall score: {0:0.2f}'.format(
       average_precision_lr))
 
-#Evaluate MLP on preprocessed data
+# #Evaluate MLP on preprocessed data
 
-y_score_mlp = clf_mlp.predict_proba(X_test_scaled)[:, 1]
-y_score_mlp
+# y_score_mlp = clf_mlp.predict_proba(X_test_scaled)[:, 1]
+# y_score_mlp
 
-y_pred_mlp = clf_mlp.predict(X_test_scaled)
-acc_mlp = accuracy_score(y_test, y_pred_mlp)
-print(acc_mlp)
+# y_pred_mlp = clf_mlp.predict(X_test_scaled)
+# acc_mlp = accuracy_score(y_test, y_pred_mlp)
+# print(acc_mlp)
 
-average_precision_mlp = average_precision_score(y_test, y_score_mlp)
+# average_precision_mlp = average_precision_score(y_test, y_score_mlp)
 
-print('Average precision-recall score: {0:0.2f}'.format(
-      average_precision_mlp))
+# print('Average precision-recall score: {0:0.2f}'.format(
+#       average_precision_mlp))
 
 config = dotenv_values(".env") 
 deployment_space_name=config["DEPLOYMENT_SPACE_NAME"]

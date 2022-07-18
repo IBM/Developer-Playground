@@ -103,9 +103,6 @@ window.onload = function () {
     kubeadmin_user: localData.kubeadmin_user,
     kubeadmin_pass: localData.kubeadmin_pass,
   }
-  console.log(config)
-  let configCta = document.getElementById("configure-env")
-  configCta.href = `${compositeHref}${Object.keys(config).map(val => `${val.toUpperCase()}=${config[val]}`).toString().replaceAll(",","%20")}`
   
   //Get env values
   let envVariables = document.getElementsByClassName('env-variables');
@@ -116,8 +113,8 @@ window.onload = function () {
   function getEnvValues(e) {
     console.log(e.target.name, e.target.value)
     config[e.target.name] = e.target.value
-    let cta = document.getElementById("configure-env")
-    cta.href = `${compositeHref}${Object.keys(config).map(val => `${val.toUpperCase()}=${config[val]}`).toString().replaceAll(",","%20")}`
+    //let cta = document.getElementById("configure-env")
+    //cta.href = `${compositeHref}${Object.keys(config).map(val => `${val.toUpperCase()}=${config[val]}`).toString().replaceAll(",","%20")}`
     let tempData = JSON.parse(localStorage[didact])
     tempData[e.target.name] = e.target.value
     localStorage[didact] = JSON.stringify(tempData)
@@ -139,6 +136,13 @@ window.onload = function () {
       [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
       [...timelineContainer.getElementsByTagName("DIV")].forEach(ele => ele.style.pointerEvents = "none");
     }
+  }
+
+  //configure cta
+  document.getElementById("configure-env").addEventListener("click", updateConfigVars);
+  function updateConfigVars(e){
+    document.getElementById("config_command_exec").href =`${compositeHref}${Object.keys(config).map(val => `${val.toUpperCase()}=${document.getElementsByName(val)[0].value}`).toString().replaceAll(",","%20")}`
+    document.getElementById("config_command_exec").click();
   }
 
 

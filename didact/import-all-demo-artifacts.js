@@ -136,9 +136,7 @@ window.onload = function funLoad() {
     let openClusterCta = document.getElementById("open-cpd-cluster")
     openClusterCta.href = clusterUrl
   }
-}
-
-//configure cta
+  //configure cta
 document.getElementById("configure-env").addEventListener("click", updateConfigVars);
 function updateConfigVars(e){
   document.getElementById("config_command_exec").href =`${compositeHref.replace("demo_name", demo)}${Object.values(config).toString().replaceAll(",", "%20")}`
@@ -147,3 +145,5 @@ function updateConfigVars(e){
   let openClusterCta = document.getElementById("open-cpd-cluster")
   openClusterCta.href = clusterUrl
 }
+}
+

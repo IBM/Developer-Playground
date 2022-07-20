@@ -75,9 +75,8 @@
       <div class="content">
         <p>Get the resources required to deploy CP4D services and configure the openshift credentials.</p>
       </div>
-      <a class="button is-dark is-medium" id="configure-env" title="Configure Environment"
-        href="didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit clone https://github.com/IBM/Developer-Playground -b techzone --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils;python3.8%20update-env-vars.py%20">Configure
-        Environment *</a>
+      <button class="button is-dark is-medium" id="configure-env" title="Configure Environment">Configure Environment *</button>
+      <a id="config_command_exec" ,href=""></a>
       <span class="dot"></span>
     </div>
     <!--<div class="timeline">
@@ -126,7 +125,7 @@
         </a>
       </div>
     </div> -->
-<!--     <div class="timeline">
+    <div class="timeline">
       <div class="content">
         <p>Installation of CP4D services requires the correct service code/name to be used, you can get the services
           code/name by listing components. The subsequent steps have a “components” field where you can provide one or
@@ -137,7 +136,7 @@
         Components
       </a>
       <span class="dot"></span>
-    </div> -->
+    </div>
     <div class="timeline">
       <div class="content">
         <p>Check currently installed CP4D services on the cluster in the selected namespace. If this is a new

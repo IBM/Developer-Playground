@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .header {
-      background-image: url('https://github.com/IBM/Developer-Playground/blob/development/didact/images/weather.png?raw=true');
+      background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/development/didact/images/weather.png');
     }
   </style>
 </head>

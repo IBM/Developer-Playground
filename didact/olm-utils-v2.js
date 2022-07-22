@@ -1,7 +1,6 @@
 window.onload = function () {
   // console.log(document.getElementById("execute"))
-  let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit clone https://github.com/IBM/Developer-Playground -b techzone --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2;python3.8%20update-env-vars.py%20"
-  let prerequisite = ["server", "api_token", "kubeadmin_user", "kubeadmin_pass", "icr_key"]
+  let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit clone https://github.com/IBM/CPDemoFramework -b $BRANCH --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils;python3.8%20update-env-vars.py%20"  let prerequisite = ["server", "api_token", "kubeadmin_user", "kubeadmin_pass", "icr_key"]
   let services = {
     analyticsengine: 'Analytics Engine Powered by Apache Spark',
     bigsql: 'Db2 Big SQL',
@@ -178,7 +177,7 @@ window.onload = function () {
     let component_list = selectedServices.toString()
     let storage = document.getElementById("cr_storage_value").value;
     document.getElementById("command_exec").href =
-      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox%20terminal$$cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2/;python3.8%20updateYaml.py%20"+component_list+"%20"+storage;
+      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox%20terminal$$cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2/;pip3.8%20install%20PyYAML;python3.8%20updateYaml.py%20"+component_list+"%20"+storage;
     document.getElementById("command_exec").click();
   }
   // Preview logic

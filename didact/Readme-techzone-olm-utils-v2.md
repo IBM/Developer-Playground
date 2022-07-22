@@ -39,15 +39,17 @@
         <li>From oc cli, run “oc config view --minify|grep server” to get server name and “oc whoami -t” to get token
         </li>
       </ol>
-      You can get the ICR KEY by logging onto <a href="https://myibm.ibm.com">myibm.ibm.com</a> using your IBM ID.
+      Obtain an Entitlement key from <a href="https://myibm.ibm.com/products-services/containerlibrary"> IBM Container Library</a> using your IBM ID. Click Get an entitlement key if you are not on the entitlement page.
       </p>
       <div class="env-config">
         <label>Server: </label><input class="env-variables" name="server" type="text" />
         <label>API Token: </label><input class="env-variables" name="api_token" type="text" />
+        <label>ICR Key: </label><input class="env-variables" name="icr_key" type="text" />
         <p>-------OR-------</p>
         <p></p>
         <label>Kube Admin User: </label><input class="env-variables" name="kubeadmin_user" type="text" />
         <label>Kube Admin Password: </label><input class="env-variables" name="kubeadmin_pass" type="password" />
+        <label>ICR Key: </label><input class="env-variables" name="icr_key" type="text" />
       </div>
     </div>
   </div>
@@ -63,14 +65,6 @@
     steps are indicated using *<br><br>
   </div>
   <div class="timeline-container">
-    <!--<div class="timeline">
-      <div class="content">
-        <p>Open the sandbox terminal.</p>
-      </div>
-      <a class="button is-dark is-medium" title="Open Terminal"
-        href="didact://?commandId=terminal-for-sandbox-container:new">Open Terminal *</a>
-      <span class="dot"></span>
-    </div>-->
     <div class="timeline">
       <div class="content">
         <p>Get the resources required to deploy CP4D services and configure the openshift credentials.</p>
@@ -79,117 +73,10 @@
       <a id="config_command_exec" ,href=""></a>
       <span class="dot"></span>
     </div>
-    <!--<div class="timeline">
-      <div class="content">
-        <p>Configure Openshift credentials (either use combination of server, user/password (OR) server, token).<br>
-          Openshift server name (including https://) and token can be obtained using one of two methods
-        <ol>
-          <li>From Openshift console, select your profile on top right and select “Copy login command”</li>
-          <li>From oc cli, run “oc config view --minify|grep server” to get server name and “oc whoami -t” to get token
-          </li>
-        </ol>
-        You can get the ICR KEY by logging onto <a href="https://myibm.ibm.com">myibm.ibm.com</a> using your IBM ID.
-        </p>
-      </div>
-      <a class="button is-dark is-medium" title="open env file"
-        href="didact://?commandId=vscode.open&projectFilePath=/projects/techzone/olm-utils-v2/env.sh">Configure *
-      </a>
-      <span class="dot"></span>
-    </div>-->
-    <div class="timeline">
-      <div class="content">
-        <p>Deploy CP4D installation utility </p>
-      </div>
-      <a class="button is-dark is-medium" title="open env file"
-        href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$source env.sh">Deploy
-        *
-      </a>
-      <span class="dot"></span>
-    </div>
-    <div class="timeline">
-      <div class="content">
-        <p>Check the status of the installation utility deployment, it might take upto 45 seconds for the deployment to
-          be ready, you are ready to proceed to the next step when the olm-utils pod is in running state </p>
-      </div>
-      <a class="button is-dark is-medium" title="Check Pod State"
-        href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$get_pods">Check Pod
-        State
-      </a>
-      <span class="dot"></span>
-    </div>
-    <!-- <div class="timeline">
-      <div class="content">
-        <p>Run Utils Login to OC</p>
-        <a class="button is-dark is-medium" title="Check Pod State"
-          href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$oclogin_auto">oclogin
-        </a>
-      </div>
-    </div> -->
-    <!--<div class="timeline">
-      <div class="content">
-        <p>Installation of CP4D services requires the correct service code/name to be used, you can get the services
-          code/name by listing components. The subsequent steps have a “components” field where you can provide one or
-          more service code(s) in a comma-separated list </p>
-      </div>
-      <a class="button is-dark is-medium" title="Check Pod State"
-        href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$run_utils list-components --release=4.0.5">List
-        Components
-      </a>
-      <span class="dot"></span>
-    </div>-->
-    <div class="timeline">
-      <div class="content">
-        <p>Check currently installed CP4D services on the cluster in the selected namespace. If this is a new
-          cluster/namespace, there will be no CP4D services installed</p>
-        <label>CPD instance namespace</label>
-        <input type="text" id="cpd_instance_value" value="cpd-instance">
-      </div>
-      <a class="button is-dark is-medium" title="Execute" id="existing_service">Execute
-      </a>
-      <span class="dot"></span>
-    </div>
-    <div class="timeline">
-      <div class="content">
-        <p>Deploy OLM (Catalog source, Subscription, Cluster service version, Install Plan) objects for selected CP4D
-          services</p>
-        <div class="env-config">
-          <label>Preview</label>
-          <select id="olm_preview_value">
-            <option value="true">true</option>
-            <option value="false">false</option>
-          </select>
-          <label>Release Version</label>
-          <input type="text" id="olm_release_version" placeholder="4.0.5">
-          <label>Components list</label>
-          <div id="olm-service-list" class="dropdown-check-list" tabindex="100">
-            <span class="anchor">Select Components</span>
-            <div class="items">
-              <input id="olm-services-search" type="search" placeholder="Search components" style="width: 100%" />
-              <ul id="olm-git-services">
-              </ul>
-            </div>
-          </div>
-        </div>
-        <p style="margin-top:1rem"><b>Selected Services: </b><span id="olm-selected-services"></span></p>
-        <!--<input type="text" id="olm_component_list" placeholder="cpfs,cpd_platform"><br><br>-->
-      </div>
-      <a class="button is-dark is-medium" title="Execute" id="install_olm">Execute
-      </a>
-      <br />
-      <br />
-      <a class="button is-dark is-medium" title="open the preview file" id="get_preview">Open Preview File
-      </a>
-      <span class="dot"></span>
-    </div>
     <div class="timeline">
       <div class="content">
         <p>Deploy custom resources for selected CP4D services</p>
         <div class="env-config">
-          <label>Preview</label>
-          <select id="cr_preview_value">
-            <option value="true">true</option>
-            <option value="false">false</option>
-          </select>
           <label>Release version</label>
           <input type="text" id="cr_release_version" placeholder="4.0.5">
           <label>Components list
@@ -205,20 +92,15 @@
         </div>
         <p style="margin-top:1rem"><b>Selected Services: </b><span id="cr-selected-services"></span></p>
         <p></p>
-        <!--<input type="text" id="cr_component_list" placeholder="cpfs,cpd_platform">-->
         <div class="env-config">
           <label>license_acceptance</label>
           <select id="cr_license_acceptance">
             <option value="true">true</option>
             <option value="false">false</option>
           </select>
-          <label>Select Storage Type</label>
+          <label>Storage Vendor</label>
           <div>
-            <select id="cr_storage_class">
-              <option value="storage_class">Storage Class</option>
-              <option value="storage_vendor">Storage Vendor</option>
-            </select>
-            <input type="text" id="cr_storage_value" placeholder="Storage Value">
+            <input type="text" id="cr_storage_value" placeholder="Storage Vendor">
           </div>
           <label>CPD instance namespace</label>
           <input type="text" id="cr_cpd_instance" value="cpd-instance">
@@ -228,7 +110,15 @@
       </a>
       <br />
       <br />
-      <a class="button is-dark is-medium" title="open the preview file" id="get_preview_2">Open Preview File
+      <span class="dot"></span>
+    </div>
+    <div class="timeline">
+      <div class="content">
+        <p>Deploy CP4D installation utility </p>
+      </div>
+      <a class="button is-dark is-medium" title="open env file"
+        href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$source env.sh">Deploy
+        *
       </a>
       <span class="dot"></span>
     </div>

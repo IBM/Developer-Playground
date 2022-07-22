@@ -1,9 +1,7 @@
 window.onload = function () {
-  let env = document.getElementById("environment").textContent
-  let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit clone https://github.com/IBM/CPDemoFramework -b $BRANCH --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils;python3.8%20update-env-vars.py%20"
-  compositeHref = compositeHref.replaceAll("$BRANCH",env)
-
-  let prerequisite = ["server", "api_token", "kubeadmin_user", "kubeadmin_pass"]
+  // console.log(document.getElementById("execute"))
+  let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit clone https://github.com/IBM/Developer-Playground -b techzone --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2;python3.8%20update-env-vars.py%20"
+  let prerequisite = ["server", "api_token", "kubeadmin_user", "kubeadmin_pass", "icr_key"]
   let services = {
     analyticsengine: 'Analytics Engine Powered by Apache Spark',
     bigsql: 'Db2 Big SQL',
@@ -69,6 +67,7 @@ window.onload = function () {
     api_token: "",
     kubeadmin_user: "",
     kubeadmin_pass: "",
+    icr_key: "",
   }
 
   //Create localStorage item if didact name not present 
@@ -87,7 +86,7 @@ window.onload = function () {
   //Enable/Disable timeline
   let localData = JSON.parse(localStorage[didact])
   let timelineContainer = document.getElementsByClassName("timeline-container")[0]
-  if ((localData.server.trim() === "" || localData.api_token.trim() === "" ) && (localData.kubeadmin_user.trim() === "" || localData.kubeadmin_pass.trim() === "")) {
+  if ((localData.server.trim() === "" || localData.api_token.trim() === "" || localData.icr_key.trim() === "" ) && (localData.kubeadmin_user.trim() === "" || localData.kubeadmin_pass.trim() === "" || localData.icr_key.trim() === "")) {
     timelineContainer.style.opacity = 0.5;
     timelineContainer.style.cursor = "not-allowed";
     [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
@@ -102,8 +101,9 @@ window.onload = function () {
     api_token: localData.api_token,
     kubeadmin_user: localData.kubeadmin_user,
     kubeadmin_pass: localData.kubeadmin_pass,
+    icr_key: localData.icr_key,
   }
-  
+
   //Get env values
   let envVariables = document.getElementsByClassName('env-variables');
   [...envVariables].forEach((task) => {
@@ -113,8 +113,8 @@ window.onload = function () {
   function getEnvValues(e) {
     console.log(e.target.name, e.target.value)
     config[e.target.name] = e.target.value
-    //let cta = document.getElementById("configure-env")
-    //cta.href = `${compositeHref}${Object.keys(config).map(val => `${val.toUpperCase()}=${config[val]}`).toString().replaceAll(",","%20")}`
+    // let cta = document.getElementById("configure-env")
+    // cta.href = `${compositeHref}${Object.keys(config).map(val => `${val.toUpperCase()}=${config[val]}`).toString().replaceAll(",","%20")}`
     let tempData = JSON.parse(localStorage[didact])
     tempData[e.target.name] = e.target.value
     localStorage[didact] = JSON.stringify(tempData)
@@ -138,94 +138,71 @@ window.onload = function () {
     }
   }
 
-  //configure cta
-  document.getElementById("configure-env").addEventListener("click", updateConfigVars);
-  function updateConfigVars(e){
-    document.getElementById("config_command_exec").href =`${compositeHref}${Object.keys(config).map(val => `${val.toUpperCase()}=${document.getElementsByName(val)[0].value}`).toString().replaceAll(",","%20")}`
-    document.getElementById("config_command_exec").click();
-  }
+      //configure cta
+      document.getElementById("configure-env").addEventListener("click", updateConfigVars);
+      function updateConfigVars(e){
+        document.getElementById("config_command_exec").href =`${compositeHref}${Object.keys(config).map(val => `${val.toUpperCase()}=${document.getElementsByName(val)[0].value}`).toString().replaceAll(",","%20")}`
+        document.getElementById("config_command_exec").click();
+      }
+    
 
+  // document.getElementById("existing_service").addEventListener("click", existing_service);
 
-  document.getElementById("existing_service").addEventListener("click", existing_service);
+  // function existing_service() {
+  //   let artifacts = document.getElementById("cpd_instance_value").value;
+  //   //samplevalue cpd-inst-01
+  //   document.getElementById("command_exec").href =
+  //     "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$run_utils get-cr-status --cpd_instance_ns=" + artifacts;
+  //   document.getElementById("command_exec").click();
+  // }
 
-  function existing_service() {
-    let artifacts = document.getElementById("cpd_instance_value").value;
-    //samplevalue cpd-inst-01
-    document.getElementById("command_exec").href =
-      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$run_utils get-cr-status --cpd_instance_ns=" + artifacts;
-    document.getElementById("command_exec").click();
-  }
+  // document.getElementById("install_olm").addEventListener("click", install_olm);
 
-  document.getElementById("install_olm").addEventListener("click", install_olm);
-
-  function install_olm() {
-    let component_list = olmSelectedServices.toString()
-    let release_version = document.getElementById("olm_release_version").value;
-    let preview_value = document.getElementById('olm_preview_value').value;
-    document.getElementById("command_exec").href =
-      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$run_utils apply-olm --preview=" +
-      preview_value +
-      " --release=" +
-      release_version +
-      " --components=" +
-      component_list;
-    document.getElementById("command_exec").click();
-  }
+  // function install_olm() {
+  //   let component_list = olmSelectedServices.toString()
+  //   // let release_version = document.getElementById("olm_release_version").value;
+  //   let preview_value = document.getElementById('olm_preview_value').value;
+  //   document.getElementById("command_exec").href =
+  //     "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$run_utils apply-olm --preview=" +
+  //     preview_value +
+  //     // " --release=" +
+  //     // release_version +
+  //     " --components=" +
+  //     component_list;
+  //   document.getElementById("command_exec").click();
+  // }
 
   document.getElementById("install_cr").addEventListener("click", install_cr);
 
   function install_cr() {
     let component_list = selectedServices.toString()
-    let release_version = document.getElementById("cr_release_version").value;
-    let preview_value = document.getElementById('cr_preview_value').value;
-    select = document.getElementById('cr_license_acceptance');
-    let license_acceptance = select.options[select.selectedIndex].text;
-    let cr_cpd_instance = document.getElementById("cr_cpd_instance").value;
-    let cr_storage_class = document.getElementById("cr_storage_class").value;
-    let cr_storage_value = document.getElementById("cr_storage_value").value;
-    let storage = ""
-    if (cr_storage_class === "storage_class") {
-      storage = " --storage_class=" + cr_storage_value
-    } else {
-      storage = " --storage_vendor=" + cr_storage_value
-    }
-
+    let storage = document.getElementById("cr_storage_value").value;
     document.getElementById("command_exec").href =
-      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$run_utils apply-cr --preview=" +
-      preview_value +
-      " --release=" +
-      release_version +
-      " --components=" +
-      component_list +
-      " --license_acceptance=" +
-      license_acceptance +
-      " --cpd_instance_ns=" +
-      cr_cpd_instance +
-      storage;
+      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox%20terminal$$cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2/;python3.8%20updateYaml.py%20"+component_list+"%20"+storage;
     document.getElementById("command_exec").click();
   }
   // Preview logic
-  document.getElementById("get_preview").addEventListener("click", get_preview);
-  document.getElementById("get_preview_2").addEventListener("click", get_preview);
-  function get_preview() {
-    document.getElementById("command_exec").href =
-      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$get_preview"
-    document.getElementById("command_exec").click();
-    document.getElementById("command_exec").href =
-      "didact://?commandId=vscode.open&projectFilePath=/projects/techzone-demo/olm-utils/preview.sh"
-    document.getElementById("command_exec").click();
-  }
+  // document.getElementById("get_preview").addEventListener("click", get_preview);
+  // document.getElementById("get_preview_2").addEventListener("click", get_preview);
+  // function get_preview() {
+  //   document.getElementById("command_exec").href =
+  //     "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$get_preview"
+  //   document.getElementById("command_exec").click();
+  //   document.getElementById("command_exec").href =
+  //     "didact://?commandId=vscode.open&projectFilePath=/projects/techzone-demo/olm-utils-v2/preview.sh"
+  //   document.getElementById("command_exec").click();
+  // }
 
 
   // Get the dropdown elements
-  let olmServiceList = document.getElementById('olm-service-list');
+  // let olmServiceList = document.getElementById('olm-service-list');
   let serviceList = document.getElementById('cr-service-list');
 
   //Open close dropdowns
   document.onclick = function (e) {
-    if (e.target.parentElement !== olmServiceList && e.target.name !== "olm-services" && e.target.parentElement !== serviceList && e.target.name !== "cr-services" && e.target.nodeName !== "LI" && e.target.nodeName !== "INPUT") {
+    if (e.target.name !== "olm-services" && e.target.parentElement !== serviceList && e.target.name !== "cr-services" && e.target.nodeName !== "LI" && e.target.nodeName !== "INPUT") {
       serviceList.classList.remove('visible');
-      olmServiceList.classList.remove('visible');
+      // olmServiceList.classList.remove('visible');
     }
   };
   serviceList.getElementsByClassName('anchor')[0].onclick = function (evt) {
@@ -234,15 +211,9 @@ window.onload = function () {
     else
       serviceList.classList.add('visible');
   }
-  olmServiceList.getElementsByClassName('anchor')[0].onclick = function (evt) {
-    if (olmServiceList.classList.contains('visible'))
-      olmServiceList.classList.remove('visible');
-    else
-      olmServiceList.classList.add('visible');
-  }
 
   //populate the respective dropdown lists
-  let olmServicesList = document.getElementById("olm-git-services");
+  // let olmServicesList = document.getElementById("olm-git-services");
   let gitServicesList = document.getElementById("cr-git-services");
   Object.keys(services).forEach(id => {
     let li = document.createElement("li");
@@ -260,15 +231,15 @@ window.onload = function () {
     input.setAttribute("type", "checkbox")
     li.appendChild(input)
     li.appendChild(document.createTextNode(services[id]));
-    olmServicesList.appendChild(li);
+    // olmServicesList.appendChild(li);
 
   })
 
   //Get selected values
   let gitServices = document.getElementsByName("cr-services");
-  let olmServices = document.getElementsByName("olm-services");
+  // let olmServices = document.getElementsByName("olm-services");
   gitServices.forEach((task) => task.addEventListener("click", updateSelectedServices));
-  olmServices.forEach((task) => task.addEventListener("click", updateOlmSelectedServices));
+  // olmServices.forEach((task) => task.addEventListener("click", updateOlmSelectedServices));
 
   function updateSelectedServices(e) {
     if (e.target.checked) {
@@ -283,33 +254,34 @@ window.onload = function () {
     showSeleted.textContent = selectedServices.toString().replaceAll(",", ", ")
   }
 
-  function updateOlmSelectedServices(e) {
-    if (e.target.checked) {
-      olmSelectedServices.push(e.target.value)
-      olmServicesList.insertBefore(e.target.parentElement, olmServicesList.firstChild);
-    } else {
-      olmSelectedServices.indexOf(e.target.value) !== -1 && olmSelectedServices.splice(olmSelectedServices.indexOf(e.target.value), 1)
-      olmServicesList.insertBefore(e.target.parentElement, olmServices[Object.keys(services).indexOf(e.target.value)].parentElement);
+  // function updateOlmSelectedServices(e) {
+  //   if (e.target.checked) {
+  //     olmSelectedServices.push(e.target.value)
+  //     olmServicesList.insertBefore(e.target.parentElement, olmServicesList.firstChild);
+  //   } else {
+  //     olmSelectedServices.indexOf(e.target.value) !== -1 && olmSelectedServices.splice(olmSelectedServices.indexOf(e.target.value), 1)
+  //     olmServicesList.insertBefore(e.target.parentElement, olmServices[Object.keys(services).indexOf(e.target.value)].parentElement);
 
-    }
-    let showSeleted = document.getElementById("olm-selected-services")
-    showSeleted.textContent = olmSelectedServices.toString().replaceAll(",", ", ")
-  }
+  //   }
+  //   let showSeleted = document.getElementById("olm-selected-services")
+  //   showSeleted.textContent = olmSelectedServices.toString().replaceAll(",", ", ")
+  // }
 
 
   //Search in the dropdown
   let searchItem = document.getElementById("cr-services-search")
   searchItem.addEventListener("input", filterServiceList)
-  let olmSearchItem = document.getElementById("olm-services-search")
-  olmSearchItem.addEventListener("input", filterServiceList)
+  // let olmSearchItem = document.getElementById("olm-services-search")
+  // olmSearchItem.addEventListener("input", filterServiceList)
 
   function filterServiceList(e) {
     let currServices = []
     if (e.target.id === "cr-services-search") {
       currServices = gitServices
-    } else {
-      currServices = olmServices
-    }
+    } 
+    // else {
+    //   currServices = olmServices
+    // }
     let listServices = [...currServices].map(service => service.value)
     listServices.forEach((res, idx) => {
       if (res.toLowerCase().includes(e.target.value.toLowerCase()) || services[res].toLowerCase().includes(e.target.value.toLowerCase())) {

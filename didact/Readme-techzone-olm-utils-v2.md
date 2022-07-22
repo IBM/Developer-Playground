@@ -92,7 +92,7 @@
         </p>
       </div>
       <a class="button is-dark is-medium" title="open env file"
-        href="didact://?commandId=vscode.open&projectFilePath=/projects/techzone/olm-utils/env.sh">Configure *
+        href="didact://?commandId=vscode.open&projectFilePath=/projects/techzone/olm-utils-v2/env.sh">Configure *
       </a>
       <span class="dot"></span>
     </div>-->

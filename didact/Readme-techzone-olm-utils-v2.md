@@ -39,17 +39,16 @@
         <li>From oc cli, run “oc config view --minify|grep server” to get server name and “oc whoami -t” to get token
         </li>
       </ol>
-      Obtain an Entitlement key from <a href="https://myibm.ibm.com/products-services/containerlibrary"> IBM Container Library</a> using your IBM ID. Click Get an entitlement key if you are not on the entitlement page.
       </p>
+      <p>Obtain an Entitlement key from <a href="https://myibm.ibm.com/products-services/containerlibrary"> IBM Container Library</a> using your IBM ID. Click Get an entitlement key if you are not on the entitlement page.</p>
       <div class="env-config">
+        <label>ICR Key: </label><input class="env-variables" name="icr_key" type="text" /><p></p><p></p>
         <label>Server: </label><input class="env-variables" name="server" type="text" />
         <label>API Token: </label><input class="env-variables" name="api_token" type="text" />
-        <label>ICR Key: </label><input class="env-variables" name="icr_key" type="text" />
         <p>-------OR-------</p>
         <p></p>
         <label>Kube Admin User: </label><input class="env-variables" name="kubeadmin_user" type="text" />
         <label>Kube Admin Password: </label><input class="env-variables" name="kubeadmin_pass" type="password" />
-        <label>ICR Key: </label><input class="env-variables" name="icr_key" type="text" />
       </div>
     </div>
   </div>
@@ -77,8 +76,6 @@
       <div class="content">
         <p>Deploy custom resources for selected CP4D services</p>
         <div class="env-config">
-          <label>Release version</label>
-          <input type="text" id="cr_release_version" placeholder="4.0.5">
           <label>Components list
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
           <div id="cr-service-list" class="dropdown-check-list" tabindex="100">
@@ -93,17 +90,10 @@
         <p style="margin-top:1rem"><b>Selected Services: </b><span id="cr-selected-services"></span></p>
         <p></p>
         <div class="env-config">
-          <label>license_acceptance</label>
-          <select id="cr_license_acceptance">
-            <option value="true">true</option>
-            <option value="false">false</option>
-          </select>
           <label>Storage Vendor</label>
           <div>
             <input type="text" id="cr_storage_value" placeholder="Storage Vendor">
           </div>
-          <label>CPD instance namespace</label>
-          <input type="text" id="cr_cpd_instance" value="cpd-instance">
         </div>
       </div>
       <a class="button is-dark is-medium" title="Execute" id="install_cr">Execute

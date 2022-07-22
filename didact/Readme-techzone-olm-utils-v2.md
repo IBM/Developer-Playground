@@ -2,9 +2,9 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script src="olm-utils.js">
+  <script src="olm-utils-v2.js">
   </script>
-  <link rel="stylesheet" href="olm-utils.css">
+  <link rel="stylesheet" href="olm-utils-v2.css">
   <style>
     .header {
       background-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/video_insights.jpeg");
@@ -92,7 +92,7 @@
         </p>
       </div>
       <a class="button is-dark is-medium" title="open env file"
-        href="didact://?commandId=vscode.open&projectFilePath=/projects/techzone/olm-utils/env.sh">Configure *
+        href="didact://?commandId=vscode.open&projectFilePath=/projects/techzone/olm-utils-v2/env.sh">Configure *
       </a>
       <span class="dot"></span>
     </div>-->

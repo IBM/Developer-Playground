@@ -214,8 +214,6 @@ window.onload = function funLoad() {
       e.target.value = e.target.value.replace(/(^\w+:|^)\/\//, '');
     }
     config[e.target.name] = e.target.value
-    let cta = document.getElementById("configure-env")
-    cta.href = `${compositeHref}${Object.values(config).toString().replaceAll(",", "%20")}`
     let tempData = JSON.parse(localStorage[didact])
     tempData[e.target.name] = e.target.value
     localStorage[didact] = JSON.stringify(tempData)
@@ -239,6 +237,12 @@ window.onload = function funLoad() {
     }
   }
 
+  //configure cta
+  document.getElementById("configure-env").addEventListener("click", updateConfigVars);
+  function updateConfigVars(e){
+    document.getElementById("config_command_exec").href =`${compositeHref}${Object.values(config).toString().replaceAll(",", "%20")}`
+    document.getElementById("config_command_exec").click();
+  }
 
   //enable managemnet dropdowns
   let tasks = document.querySelectorAll("[id^='task']");

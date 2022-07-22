@@ -1,6 +1,6 @@
 window.onload = function () {
   // console.log(document.getElementById("execute"))
-  let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit clone https://github.com/IBM/CPDemoFramework -b $BRANCH --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils;python3.8%20update-env-vars.py%20"  
+  let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit clone https://github.com/IBM/CPDemoFramework -b techzone --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2;python3.8%20update-env-vars.py%20"  
   let prerequisite = ["server", "api_token", "kubeadmin_user", "kubeadmin_pass", "icr_key"]
   let services = {
     analyticsengine: 'Analytics Engine Powered by Apache Spark',
@@ -119,7 +119,7 @@ window.onload = function () {
     tempData[e.target.name] = e.target.value
     localStorage[didact] = JSON.stringify(tempData)
     let valid = true
-    if((config.server.trim() === "" || config.api_token.trim() === "") && (config.kubeadmin_user.trim() === "" || config.kubeadmin_pass.trim() === ""))
+    if((config.server.trim() === "" || config.api_token.trim() === "" || config.icr_key.trim() === "") && (config.kubeadmin_user.trim() === "" || config.kubeadmin_pass.trim() === "" || config.icr_key.trim() === ""))
       valid = false
     if (valid) {
       timelineContainer.style.opacity = 1;

@@ -88,13 +88,22 @@
           </div>
         </div>
         <p style="margin-top:1rem"><b>Selected Services: </b><span id="cr-selected-services"></span></p>
-        <p></p>
         <div class="env-config">
-          <label>Storage Vendor</label>
+          <b>Storage Vendor</b><br>
           <div>
-            <input type="text" id="cr_storage_value" placeholder="Storage Vendor">
+            Valid values include:
+        <ul>
+          <li>nfs: If using NFS you should ensure that there is a storage class called managed-nfs-storage </li>
+          <li>ocs: If you are using OCS storage for CP4D </li>
+          <li>portworx: If you are using Portworx storage for CP4D </li>
+          <li>roks-classic: If you want to use ibmc-file-gold-gid and ibm-block-gold-gid </li>
+          <ul>
+            <div>
+          <input type="text" id="cr_storage_value" placeholder="Storage Vendor">
+          </div>
           </div>
         </div>
+        </p>
       </div>
       <a class="button is-dark is-medium" title="Execute" id="install_cr">Apply and Deploy CP4D installation utility
       </a>

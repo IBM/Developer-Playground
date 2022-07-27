@@ -96,13 +96,13 @@
           </div>
         </div>
       </div>
-      <a class="button is-dark is-medium" title="Execute" id="install_cr">Execute
+      <a class="button is-dark is-medium" title="Execute" id="install_cr">Apply and Deploy CP4D installation utility
       </a>
       <br />
       <br />
       <span class="dot"></span>
     </div>
-    <div class="timeline">
+    <!-- <div class="timeline">
       <div class="content">
         <p>Deploy CP4D installation utility </p>
       </div>
@@ -111,7 +111,7 @@
         *
       </a>
       <span class="dot"></span>
-    </div>
+    </div> -->
     <div class="timeline">
       <div class="content">
         <p>Cleanup install utility artifacts</p>

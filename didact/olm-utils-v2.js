@@ -178,7 +178,7 @@ window.onload = function () {
     let component_list = selectedServices.toString()
     let storage = document.getElementById("cr_storage_value").value;
     document.getElementById("command_exec").href =
-      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox%20terminal$$cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2/;pip3.8%20install%20PyYAML;python3.8%20updateYaml.py%20"+component_list+"%20"+storage;
+      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox%20terminal$$cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2/;pip3.8%20install%20PyYAML;python3.8%20updateYaml.py%20"+component_list+"%20"+storage+"; source env.sh";
     document.getElementById("command_exec").click();
   }
   // Preview logic

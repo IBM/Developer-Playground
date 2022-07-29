@@ -32,6 +32,7 @@
                 <label>Hostname: </label><input class="env-variables" name="hostname" type="text" />
                 <label>User: </label><input class="env-variables" name="wkcuser" type="text" />
                 <label>Password: </label><input class="env-variables" name="password" type="password" />
+                <label>API Key: </label><input class="env-variables" name="api_key" type="text" />
             </div>
         </div>
     </div>
@@ -78,7 +79,7 @@
                             <p>Export Users from the specified CPD cluster.</p>
                         </div>
                         <a class="button is-dark is-medium" title="Export User List"
-                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportUsers.py users.csv">Export
+                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportUsersv2.py users.csv">Export
                             User List</a>
                         <span class="dot"></span>
                     </div>

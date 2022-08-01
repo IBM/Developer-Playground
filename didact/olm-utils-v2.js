@@ -41,7 +41,7 @@ window.onload = function () {
     scheduler: 'CPD Scheduler',
     spss: 'SPSS Modeler',
     voice_gateway: 'Voice Gateway',
-    watson_assistant: 'Watson Assistant',
+    "watson-assistant": 'Watson Assistant',
     watson_discovery: 'Watson Discovery',
     watson_gateway: 'IBM Watson Gateway Operator',
     watson_ks: 'Watson Knowledge Studio',

@@ -3,7 +3,7 @@ window.onload = function funLoad() {
   let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20$BRANCH%20https%3A%2F%2Fgithub.com%2FIBM%2FCPDemoFramework%20%24%7BCHE_PROJECTS_ROOT%7D%2Ftechzone-demo%2C%2Fprojects%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cbash%20/projects/techzone-demo/sandbox/getDemoFiles.sh%20demo_name%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd%20${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%3Bpython3.8%20update-env.py%20"
   compositeHref = compositeHref.replaceAll("$BRANCH",env)
   
-  let prerequisite = ["hostname", "wkcuser", "password"]
+  let prerequisite = ["hostname", "wkcuser", "password", "api_key"]
   let didact = document.getElementsByClassName("apptitle")[0].textContent
 
   //Get Workspace ID and setup default data for localStorage
@@ -13,7 +13,8 @@ window.onload = function funLoad() {
     hostname: "",
     wkcuser: "",
     password: "",
-    demo: ""
+    api_key: "",
+    demo: "",
   }
 
   //Create localStorage item if didact name not present 
@@ -33,7 +34,7 @@ window.onload = function funLoad() {
   //Disable timeline
   let localData = JSON.parse(localStorage[didact])
   let timelineContainer = document.getElementsByClassName("timeline-container")[0]
-  if (localData.hostname.trim() === "" || localData.wkcuser.trim() === "" || localData.password.trim() === "") {
+  if (localData.hostname.trim() === "" || localData.wkcuser.trim() === "" || localData.password.trim() === "" || localData.api_key.trim() === "") {
     timelineContainer.style.opacity = 0.5;
     timelineContainer.style.cursor = "not-allowed";
     [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
@@ -50,6 +51,7 @@ window.onload = function funLoad() {
     hostname: localData.hostname,
     wkcuser: localData.wkcuser,
     password: localData.password,
+    api_key: localData.api_key
   }
   let demo = localData.demo
 

@@ -29,6 +29,7 @@
                 <label>Hostname: </label><input class="env-variables" name="hostname" type="text" />
                 <label>User: </label><input class="env-variables" name="wkcuser" type="text" />
                 <label>Password: </label><input class="env-variables" name="password" type="password" />
+                <label>API Key: </label><input class="env-variables" name="api_key" type="text" />
             </div>
         </div>
     </div>
@@ -60,9 +61,9 @@
                         <div class="content">
                             <p>Recreate demo users onto new CPD cluster.</p>
                         </div>
-                        <a class="button is-dark is-medium force-disabled" title="Create Users"
+                        <a class="button is-dark is-medium" title="Create Users"
                             href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 createUsers.py users.csv">Create
-                            Users (Coming Soon)</a>
+                            Users</a>
                     </div>
                 </details>
             </div>

@@ -29,6 +29,7 @@
                 <label>Hostname: </label><input class="env-variables" name="hostname" type="text" />
                 <label>User: </label><input class="env-variables" name="wkcuser" type="text" />
                 <label>Password: </label><input class="env-variables" name="password" type="password" />
+                <label>API Key: </label><input class="env-variables" name="api_key" type="text" />
             </div>
         </div>
     </div>

@@ -44,7 +44,7 @@
                 <p>Configure the environment with the required resources and connect to the specified CPD cluster.</p>
             </div>
             <button class="button is-dark is-medium" id="configure-env" title="Configure Resources" action="senddata" successmessage="clone" terminalName="sandbox" 
-            command="cd%20${CHE_PROJECTS_ROOT} && git clone -b development https://github.com/IBM/CPDemoFramework ${CHE_PROJECTS_ROOT}/techzone-demo">Configure Environment</button>
+            command="cd%20${CHE_PROJECTS_ROOT} && git clone -b development https://github.com/IBM/CPDemoFramework ${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%3Bpython3.8%20update-env.py%20">Configure Environment</button>
             <button  class="button is-dark is-medium" title="Get Data from API" action="getdata">Get data</button>
            <span class="dot"></span>
             <div id="message">Output</div>
@@ -76,8 +76,8 @@
                     <br><br>
                     <div class="content">
                         <p>Export Users from the specified CPD cluster.</p>
-                    <a title="Export User List"
-                        href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportUsersv2.py users.csv"><button class="button is-dark is-medium">Export
+                    <a title="Export User List" successmessage="" terminalName="sandbox" 
+                        command="cd /projects/techzone-demo/sandbox/;python3.8 exportUsersv2.py users.csv"><button class="button is-dark is-medium">Export
                         User List</button></a>
                     </div>
                     <div class="content">
@@ -126,8 +126,8 @@
                         <div class="content">
                             <p>Export the selected Governance Artifacts.</p>
                         </div>
-                        <a title="Export Governance Artifacts"
-                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py governance_artifacts.zip all;unzip governance_artifacts.zip -d governance_artifacts;python3.8 exportDataProtectionRules.py data_protection_rules.json"><button class="button is-dark is-medium">Export
+                        <a title="Export Governance Artifacts" successmessage="" terminalName="sandbox" 
+                            command="cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py governance_artifacts.zip all;unzip governance_artifacts.zip -d governance_artifacts;python3.8 exportDataProtectionRules.py data_protection_rules.json"><button class="button is-dark is-medium">Export
                             Artifacts</button></a>
                         <span class="dot"></span>
                     </div>
@@ -149,7 +149,7 @@
                             <option>-- Select project--</option>
                           </select>
                         <a title="Export Project"
-                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportProject.py project_assets.zip"><button class="button is-dark is-medium">Export
+                            command="cd /projects/techzone-demo/sandbox/;python3.8 exportProject.py project_assets.zip"><button class="button is-dark is-medium">Export
                             Project</button></a>
                           </div>
                         <span class="dot"></span>

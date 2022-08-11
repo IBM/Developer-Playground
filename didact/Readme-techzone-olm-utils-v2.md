@@ -100,10 +100,15 @@
           <li>portworx: If you are using Portworx storage for CP4D </li>
           <li>roks-classic: If you want to use ibmc-file-gold-gid and ibm-block-gold-gid </li>
           <ul>
-            <div>
-          <input type="text" id="cr_storage_value" placeholder="Storage Vendor">
           </div>
-          </div>
+          <!-- <input type="text" id="cr_storage_value" placeholder="Storage Vendor"> -->
+          <label></label>
+          <select id="cr_storage_value" style="width:150px;height:33px;padding-left: -150px">
+            <option value="nfs">nfs</option>
+            <option value="ocs">ocs</option>
+            <option value="portworx">portworx</option>
+            <option value="roks-classic">roks-classic</option>
+          </select>
         </div>
         </p>
       </div>

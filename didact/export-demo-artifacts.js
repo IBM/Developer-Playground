@@ -1,407 +1,274 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="$$rootcsspath$$"> 
+    <style>
+        .header {
+            background-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/video_insights.jpeg");
+        }
+    </style>
+</head>
+<body>
+    <div style="margin-top:2rem"></div>
+    <div id="workspaceID" class="hidden-state">$workspace_id</div>
+    <div id="userID" class="hidden-state">$user_id</div>
+    <div id="environment" class="hidden-state">$environment</div>
+    <div class="header">
+        <div class="left-content">
+            <div class="apptitle">Save/Share demo assets with community</div>
+            <div class="subheading">Save demo artifacts to a centralized location (Shared GitHub repository). This will
+                enable you to recreate your demo assets onto a different/new infrastructure (potentially on a newer
+                version of Cloud Pak for Data). The centralized collection of demo assets can be leveraged by the
+                broader community so we all benefit from each others work.</div>
+        </div>
+    </div>
+    <div class="section">
+        <p style="font-size:24px">Pre-requisites</p>
+        <div>
+            <p>Enter your CPD cluster details.</p>
+            <div class="env-config">
+                <label>Hostname: </label><input class="env-variables" name="hostname" type="text" id="hostname"/>
+                <label>User: </label><input class="env-variables" name="wkcuser" type="text" id="username"/>
+                <label>Password: </label><input class="env-variables" name="password" type="password" id="password"/>
+                <label>API Key: </label><input class="env-variables" name="api_key" type="text" id="apikey"/>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <p style="font-size:24px">Instructions</p>
+        <p>Please follow all the below steps in proper sequence.</p>
+    </div>
+    <div class="timeline-container">
+        <div class="timeline timelinestep">
+            <div class="content">
+                <p>Configure the environment with the required resources and connect to the specified CPD cluster.</p>
+            </div>
+            <button class="button is-dark is-medium" id="configure-env" title="Configure Resources" action="senddata" successmessage="clone" terminalName="sandbox" 
+            command="cd%20${CHE_PROJECTS_ROOT} && git clone -b development https://github.com/IBM/CPDemoFramework ${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%3Bpython3.8%20update-env.py%20">Configure Environment</button>
+            <button  class="button is-dark is-medium" title="Get Data from API" action="getdata">Get data</button>
+           <span class="dot"></span>
+            <div id="message">Output</div>
+        </div>
+        <div class="timeline timelinestep">
+            <div class="content">
+                <p>Select the required tasks</p>
+                <div class="checkbox-group">
+                    <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
+                        <input type="checkbox" name="checkboxtask" value="task1" />
+                        <label for="task1">User Management</label>
+                    </div>
+                    <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
+                        <input type="checkbox" name="checkboxtask" value="task2" />
+                        <label for="task2">Governance Artifacts</label>
+                    </div>
+                    <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
+                        <input type="checkbox" name="checkboxtask" value="task3" />
+                        <label for="task3">Project Management</label>
+                    </div>
+                </div>
+                <span class="dot"></span>
+            </div>
+        </div>
+        <div class="timeline" id="task1">
+            <div class="content">
+                <details>
+                    <summary>User management<span class="arrow"></span></summary>
+                    <br><br>
+                    <div class="content">
+                        <p>Export Users from the specified CPD cluster.</p>
+                    <button class="button is-dark is-medium" title="Export User List" successmessage="" terminalName="sandbox" 
+                        command="cd /projects/techzone-demo/sandbox/;python3.8 exportUsersv2.py users.csv">Export
+                        User List</button>
+                    </div>
+                    <div class="content">
+                      <p></p>
+                  </div>
+                    <span class="dot"></span>
+                </details>
+            </div>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline" id="task2">
+            <div class="content">
+                <details>
+                    <summary>Governance Artifacts<span class="arrow"></span></summary>
+                    <br><br>
+                    <div class="content">
+                        <p>Select the required Governance artifacts. By default all artifacts will be exported.</p>
+                        <div id="list1" class="dropdown-check-list" tabindex="100">
+                            <span class="anchor">Select Artifacts</span>
+                            <ul class="items">
+                                <li><input type="checkbox" name="governance-artifacts" value="all" checked />All </li>
+                                <li><input type="checkbox" name="governance-artifacts" value="category" />Category
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts"
+                                        value="classification" />Classification
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts" value="data_class" />Data
+                                    Class
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts" value="glossary_term" />Glossary
+                                    Terms
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts" value="policy" />Policy
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts"
+                                        value="reference_data" />Reference Data
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts" value="rule" />Rule</label>
+                                </li>
+                            </ul>
+                        </div>
+                        <p style="margin-top:1rem;"><b>Selected Artifacts: </b><span id="selected">all</span></p>
+                    </div>
+                    <br>
+                    <div id="export-task">
+                        <div class="content">
+                            <p>Export the selected Governance Artifacts.</p>
+                        </div>
+                        <button class="button is-dark is-medium" title="Export Governance Artifacts" successmessage="" terminalName="sandbox" 
+                            command="cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py governance_artifacts.zip all;unzip governance_artifacts.zip -d governance_artifacts;python3.8 exportDataProtectionRules.py data_protection_rules.json">Export
+                            Artifacts</button>
+                        <span class="dot"></span>
+                    </div>
+                </details>
+            </div>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline" id="task3">
+            <div class="content">
+                <details>
+                    <summary>Project management<span class="arrow"></span></summary>
+                    <br><br>
+                    <div>
+                        <div class="content">
+                            <p>Click the action and select the project to be exported using the terminal below.</p>
+                        </div>
+                        <div class="custom-select" width="100px;" style="margin:5px;">
+                          <select id="sel">
+                            <option>-- Select project--</option>
+                          </select>
+                        <button class="button is-dark is-medium" title="Export Project"
+                            command="cd /projects/techzone-demo/sandbox/;python3.8 exportProject.py project_assets.zip">Export
+                            Project</button>
+                          </div>
+                        <span class="dot"></span>
+                    </div>
+                </details>
+            </div>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline">
+            <div class="content">
+                <details>
+                    <summary>Publish Demo Asset to centralised repository.<span class="arrow"></span></summary>
+                    <br><br>
+                    <div class="content">
+                        <!-- <p>Select the action to perform in the configured cp4d instance</p> -->
+                        <div class="env-config">
+                            <label>Demo Name*</label>
+                            <input type="text" id="demoname">
+                            <label>Industry*</label>
+                            <!--<input type="text" id="industry">-->
+                            <div id="industry-list" class="dropdown-check-list" tabindex="100">
+                                <span id="selected-industry" class="anchor">Select Industry</span>
+                                <ul class="items">
+                                    <li>Banking and financial services</li>
+                                    <li>E-commerce</li>
+                                    <li>Healthcare</li>
+                                    <li>Hospitality</li>
+                                    <li>Insurance</li>
+                                    <li>Retail</li>
+                                    <li>Software</li>
+                                    <li>Telecommunications</li>
+                                    <li>Transportation</li>
+                                    <li>Utilities</li>
+                                    <li>Other</li>
+                                    </select>
+                                </ul>
+                            </div>
+                            <label>Tags(comma separated)*</label>
+                            <input type="text" id="tags">
+                            <label>Author*</label>
+                            <input type="text" id="author">
+                            <label>Description</label>
+                            <input type="text" id="desc">
+                            <label>Services*</label>
+                            <!--<input type="text" id="services">-->
+                            <div id="service-list" class="dropdown-check-list" tabindex="100">
+                                <span class="anchor">Select Services</span>
+                                <div class="items">
+                                    <input id="services-search" type="search" placeholder="Search services"
+                                        style="width: 100%" />
+                                    <ul id="git-services">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <p style="margin-top:1rem;"><b>Selected Services: </b><span id="selected-services"></span></p>
+                    </div>
+                    <button class="button is-dark is-medium no-click disable" title="Push to github" id="pushToGit">Publish</button>
+            </div>
+            <span class="dot"></span>
+        </div>
+    </div>
+    </div>
+    <a id="command_exec" ,href=""></a>
+    </div>
+</body>
+<script>
 window.onload = function funLoad() {
 
-  let env = document.getElementById("environment").textContent
-  let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20$BRANCH%20https%3A%2F%2Fgithub.com%2FIBM%2FCPDemoFramework%20%24%7BCHE_PROJECTS_ROOT%7D%2Ftechzone-demo%2C%2Fprojects%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd%20${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%3Bpython3.8%20update-env.py%20"
-  compositeHref = compositeHref.replaceAll("$BRANCH",env)
+    const vscode = acquireVsCodeApi();
+    let inputFields = {};
+    window.addEventListener('message', event => {
+      const receivedOutput = event.data; // The JSON data our extension sent
+      switch (receivedOutput.command) {
+        case 'refactor':
+          document.querySelector('[id="message"]').innerHTML = receivedOutput.message;
+          break;
+        case 'receivedata':
+          //document.querySelector('[id="message"]').innerHTML = message.message;
+          var ele = document.getElementById('sel');
+          for (var i = 0; i < receivedOutput.outputData.resources.length; i++) {
+              // POPULATE SELECT ELEMENT WITH JSON.
+              ele.innerHTML = ele.innerHTML +
+                  '<option value="' + receivedOutput.outputData.resources[i].entity.name + '">' +receivedOutput.outputData.resources[i].entity.name+ '</option>';
+          }
+          break;
+      }
+    });
 
-  let prerequisite = ["hostname", "wkcuser", "password", "api_key"]
-  let pushToGitRequiredFields = ["demoname","tags","author","desc"]
-  requiredVals={
-    demoname:"",
-    tags:"",
-    author:"",
-    desc: "",
-  }
-  let services = {
-    analyticsengine: 'Analytics Engine Powered by Apache Spark',
-    bigsql: 'Db2 Big SQL',
-    cde: 'Cognos Dashboards',
-    cognos_analytics: 'Cognos Analytics',
-    cpd_platform: 'Cloud Pak for Data Control Plane',
-    cpfs: 'Cloud Pak Foundational Services(CPFS)',
-    datagate: 'Data Gate',
-    datarefinery: 'Data Refinery',
-    datastage_ent: 'DataStage Enterprise',
-    datastage_ent_plus: 'DataStage Enterprise Plus',
-    db2aaservice: 'CPD db2 aas component',
-    db2oltp: 'Db2',
-    db2u: 'IBM Db2u',
-    db2wh: 'Db2 Warehouse',
-    dmc: 'Data Management Console',
-    dods: 'Decision Optimization',
-    dp: 'Data Privacy',
-    dv: 'Data Virtualization',
-    edb_cp4d: 'EnterpriseDB Postgres',
-    hee: 'Execution Engine for Apache Hadoop',
-    iis: "WKC's IIS component",
-    informix: 'Informix install Operator',
-    informix_cp4d: 'Informix deployment Operator',
-    match360: 'Match 360 with Watson',
-    model_train: 'IBM cloudpak operator for training with Model Train',
-    mongodb: 'MongoDB Operator',
-    mongodb_cp4d: 'MongoDB for Cloud Pak for Data',
-    openpages: 'OpenPages',
-    openpages_instance: 'OpenPages Instance',
-    openscale: 'Watson OpenScale',
-    planning_analytics: 'Planning Analytics',
-    postgresql: 'Cloud Native PostgreSQL',
-    productmaster: 'Product Master',
-    productmaster_instance: 'Product Master Instance',
-    rstudio: 'RStudio Server',
-    scheduler: 'CPD Scheduler',
-    spss: 'SPSS Modeler',
-    voice_gateway: 'Voice Gateway',
-    watson_assistant: 'Watson Assistant',
-    watson_discovery: 'Watson Discovery',
-    watson_gateway: 'IBM Watson Gateway Operator',
-    watson_ks: 'Watson Knowledge Studio',
-    watson_speech: 'Watson Speech to Text',
-    wkc: 'Watson Knowledge Catalog',
-    wml: 'Watson Machine Learning',
-    wml_accelerator: 'Watson Machine Learning Accelerator',
-    ws: 'Watson Studio',
-    ws_pipelines: 'Watson Studio Pipelines',
-    ws_runtimes: 'Watson Studio Runtimes',
-    zen: 'Zen Service in CPFS'
-  }
-
-  let industries = [
-    { id: 'hospitality', value: 'Hospitality' },
-    { id: 'healthcare', value: 'Healthcare' },
-    { id: 'e-commerce', value: 'E-commerce' },
-    { id: 'banking', value: 'Banking and financial services' },
-    { id: 'insurance', value: 'Insurance' },
-    { id: 'retail', value: 'Retail' },
-    { id: 'software', value: 'Software' },
-    { id: 'telecommunications', value: 'Telecommunications' },
-    { id: 'transportation', value: 'Transportation' },
-    { id: 'utilities', value: 'Utilities' },
-    { id: 'other', value: 'Other' }
-  ]
-
-  function getIndustry(industry){
-    return industries.find(({id, value}) => value===industry).id
-    }
-
-  let selectedServices = []
-  let selecetdIndustry = ""
-  let didact = document.getElementsByClassName("apptitle")[0].textContent
-
-  //Get Workspace ID and setup default data for localStorage
-  let workspaceId = document.getElementById("workspaceID").textContent
-  let data = {
-    workspaceId: workspaceId,
-    hostname: "",
-    wkcuser: "",
-    password: "",
-    api_key: ""
-  }
-
-  //Create localStorage item if didact name not present 
-  if (localStorage[didact] === undefined) {
-    localStorage[didact] = JSON.stringify(data)
-  }
-
-  //Reset localStorage to default data if workspace is changed
-  if (JSON.parse(localStorage[didact]).workspaceId !== workspaceId) {
-    localStorage[didact] = JSON.stringify(data)
-  }
-
-  //Fill input data from localStorage
-  prerequisite.forEach(input => document.getElementsByName(input)[0].value = JSON.parse(localStorage[didact])[input])
-
-  // .push related code
-  document.getElementById("pushToGit").addEventListener("click", pushToGit);
-  function pushToGit() {
-    let industry = selecetdIndustry//document.getElementById("industry").value || ""
-    let tags = document.getElementById("tags").value || ""
-    let author = document.getElementById("author").value || ""
-    let services = selectedServices.toString()//document.getElementById("services").value
-    let demoName = document.getElementById("demoname").value || ""
-    let desc = document.getElementById("desc").value || "Update"
-    let userID=document.getElementById("userID").textContent || author
-    tags = tags.split(",")
-    services = services.split(",")
-    industry = industry.split(",")
-    // JSON ARRAY
-    let metadata = {
-      "industries": industry,
-      "tags": tags,
-      "author": author,
-      "services": services,
-      "demoName": userID.replace(/ /g,'')+"-"+demoName.replace(/ /g,''),
-      "displayName":demoName,
-      "desc": desc
-    }
-    // let metadata=`{"industry":"${industry}","tags":"${["tags","asddsa","dsa"]}","author":"${author}","services":"${services}","demoName":"${demoName}"}`
-    metadata = '\'' + JSON.stringify(metadata) + '\''
-    document.getElementById("command_exec").href =
-      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$bash /projects/techzone-demo/sandbox/github.sh " + "\""+demoName.replace(/ /g,'')+ "\""+" " + metadata + " " + "\""+ userID.replace(/ /g,'')+ "\""+ " "+ "\""+desc+ "\"";
-
-    document.getElementById("command_exec").click();
-
-  }
-
-  //Enable/Disable timeline
-  let localData = JSON.parse(localStorage[didact])
-  let timelineContainer = document.getElementsByClassName("timeline-container")[0]
-  if (localData.hostname.trim() === "" || localData.wkcuser.trim() === "" || localData.password.trim() === "" || localData.api_key.trim() === "") {
-    timelineContainer.style.opacity = 0.5;
-    timelineContainer.style.cursor = "not-allowed";
-    [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
-    [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none");
-    [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
-  }
-
-  //default data
-  let config = {
-    hostname: localData.hostname,
-    wkcuser: localData.wkcuser,
-    password: localData.password,
-    api_key: localData.api_key
-  }
-
-  //Modify configure-env with localstorage values
-  let cta = document.getElementById("configure-env")
-  cta.href = `${compositeHref}${Object.values(config).toString().replaceAll(",", "%20")}`
-
-
-  //open/close industry dropdown
-  let industryList = document.getElementById('industry-list');
-  industryList.getElementsByClassName('anchor')[0].onclick = function (evt) {
-    if (industryList.classList.contains('visible'))
-      industryList.classList.remove('visible');
-    else
-      industryList.classList.add('visible');
-  }
-
-  //modify cta with selected industry value
-  let options = industryList.getElementsByTagName('LI');
-  [...options].forEach(option => option.addEventListener("click", selectOption))
-  function selectOption(e) {
-    document.getElementById("selected-industry").textContent = e.target.textContent
-    selecetdIndustry = getIndustry(e.target.textContent);
-    industryList.classList.remove('visible');
-    let cta = document.getElementById("pushToGit")
-    if(Object.values(requiredVals).map(val => val.trim()).includes("") || selectedServices.length === 0 || selecetdIndustry.trim() === ""){
-      cta.classList.remove("enable")
-      cta.classList.add("disable")
-      cta.classList.remove("allow-click")
-      cta.classList.add("no-click")
-    }else{
-      cta.classList.remove("disable")
-      cta.classList.add("enable")
-      cta.classList.remove("no-click")
-      cta.classList.add("allow-click")
-    }
-  }
-
-  //open/close gov-artifacts dropdown
-  let checkList = document.getElementById('list1');
-  checkList.getElementsByClassName('anchor')[0].onclick = function (evt) {
-    if (checkList.classList.contains('visible'))
-      checkList.classList.remove('visible');
-    else
-      checkList.classList.add('visible');
-  }
-
-  //Get env values
-  let envVariables = document.getElementsByClassName('env-variables');
-  [...envVariables].forEach((task) => {
-    task.addEventListener("input", getEnvValues)
-  });
-
-  function getEnvValues(e) {
-    if (e.target.name === "hostname") {
-      e.target.value = e.target.value.replace(/(^\w+:|^)\/\//, '');
-    }
-    config[e.target.name] = e.target.value
-    let tempData = JSON.parse(localStorage[didact])
-    tempData[e.target.name] = e.target.value
-    localStorage[didact] = JSON.stringify(tempData)
-    valid = true
-    for (val of Object.values(config)) {
-      if (val.trim() === "")
-        valid = false
-    }
-    if (valid) {
-      timelineContainer.style.opacity = 1;
-      timelineContainer.style.cursor = "auto";
-      [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "auto");
-      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
-      [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
-    } else {
-      timelineContainer.style.opacity = 0.5;
-      timelineContainer.style.cursor = "not-allowed";
-      [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
-      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none");
-      [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
-    }
-  }
-
-  //configure cta
-  document.getElementById("configure-env").addEventListener("click", updateConfigVars);
-  function updateConfigVars(e){
-    document.getElementById("config_command_exec").href =`${compositeHref}${Object.values(config).toString().replaceAll(",", "%20")}`
-    document.getElementById("config_command_exec").click();
-  }
-
-  //enable managemnet dropdowns
-  let tasks = document.querySelectorAll("[id^='task']");
-  tasks.forEach((task) => (task.style.display = "none"));
-
-  let selectedTasks = document.getElementsByName("checkboxtask");
-  selectedTasks.forEach((task) => task.addEventListener("click", showTasks));
-  function showTasks(e) {
-
-    if (e.target.checked) {
-      document.getElementById(e.target.value).style.display = "block";
-    } else {
-      document.getElementById(e.target.value).style.display = "none";
-    }
-  }
-
-
-  //Get selected values
-  let govArtifacts = document.getElementsByName("governance-artifacts");
-  govArtifacts.forEach((task) => task.addEventListener("click", UpdateExport));
-  let selectedArtifacts = ["all"]
-  function UpdateExport(e) {
-    /*if(e.target.value==="select-all") {
-      if(e.target.checked ===true){ 
-      govArtifacts.forEach((task) => {
-        if(task.value!=="select-all"){
-          selectedArtifacts.push(task.value);
-          task.checked = true
+    document.querySelector("body").addEventListener('click', function (e) {
+      var anchor = e.target.closest('button');
+      if (anchor !== null) {
+        var action = anchor.getAttribute("action");
+        var command = anchor.getAttribute("command");
+        var terminalName = anchor.getAttribute("termianlName");
+        inputFields["hostName"] = document.getElementById('hostname').value;
+        inputFields["userName"] = document.getElementById('username').value;
+        inputFields["password"] = document.getElementById('password').value;
+        inputFields["apikey"] = document.getElementById('apikey').value;
+        if(action=="getdata")
+        {
+            vscode.postMessage({
+              command: 'getdata',
+              inputFields : inputFields
+            });
         }
-      }) }
-      else{
-        govArtifacts.forEach((task) => {
-            task.checked = false
-          })
-       selectedArtifacts = []
+        else{
+
+          vscode.postMessage({
+              command: 'sendcommand',
+              terminalName: terminalName,
+              text: command,
+              inputFields : inputFields
+          });
+        }
       }
-    }*/
-    if (e.target.checked) {
-      selectedArtifacts.push(e.target.value)
-    } else {
-      selectedArtifacts.indexOf(e.target.value) !== -1 && selectedArtifacts.splice(selectedArtifacts.indexOf(e.target.value), 1)
-    }
-    let task = document.getElementById("export-task")
-    let cta = task.getElementsByTagName("A")[0]
-    if (selectedArtifacts.length === 0) {
-      task.classList.remove("enable")
-      task.classList.add("disable")
-      cta.classList.remove("allow-click")
-      cta.classList.add("no-click")
-    } else {
-      task.classList.remove("disable")
-      task.classList.add("enable")
-      cta.classList.remove("no-click")
-      cta.classList.add("allow-click")
-    }
-    cta.href = `didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py governance_artifacts.zip ${selectedArtifacts.toString()};unzip governance_artifacts.zip -d governance_artifacts`
-    if (selectedArtifacts.indexOf("rule") >= 0 || selectedArtifacts.indexOf("all") >= 0) {
-      cta.href = cta.href + ";python3.8 exportDataProtectionRules.py data_protection_rules.json"
-    }
-    let showSeleted = document.getElementById("selected")
-    showSeleted.textContent = selectedArtifacts.toString().replaceAll(",", ", ")
-  }
-
-  //Open Close services dropdowns
-  let serviceList = document.getElementById('service-list');
-  serviceList.getElementsByClassName('anchor')[0].onclick = function (evt) {
-    if (serviceList.classList.contains('visible'))
-      serviceList.classList.remove('visible');
-    else
-      serviceList.classList.add('visible');
-  }
-  // Populate the dropdown
-  let gitServicesList = document.getElementById("git-services");
-  Object.keys(services).forEach(id => {
-    let li = document.createElement("li");
-    let input = document.createElement("input");
-    input.setAttribute("value", id)
-    input.setAttribute("name", "services")
-    input.setAttribute("type", "checkbox")
-    li.appendChild(input)
-    li.appendChild(document.createTextNode(services[id]));
-    gitServicesList.appendChild(li);
-  })
-
-  //Get selected values
-  let gitServices = document.getElementsByName("services");
-  gitServices.forEach((task) => task.addEventListener("click", updateSelectedServices));
-  function updateSelectedServices(e) {
-    if (e.target.checked) {
-      selectedServices.push(e.target.value)
-      gitServicesList.insertBefore(e.target.parentElement, gitServicesList.firstChild);
-    } else {
-      selectedServices.indexOf(e.target.value) !== -1 && selectedServices.splice(selectedServices.indexOf(e.target.value), 1)
-      gitServicesList.insertBefore(e.target.parentElement, gitServices[Object.keys(services).indexOf(e.target.value)].parentElement);
-
-    }
-    let showSeleted = document.getElementById("selected-services")
-    showSeleted.textContent = selectedServices.toString().replaceAll(",", ", ")
-    let cta = document.getElementById("pushToGit")
-    if(Object.values(requiredVals).map(val => val.trim()).includes("") || selectedServices.length === 0 || selecetdIndustry.trim() === ""){
-      cta.classList.remove("enable")
-      cta.classList.add("disable")
-      cta.classList.remove("allow-click")
-      cta.classList.add("no-click")
-    }else{
-      cta.classList.remove("disable")
-      cta.classList.add("enable")
-      cta.classList.remove("no-click")
-      cta.classList.add("allow-click")
-    }
-  }
-
-  //Search in dropdown
-  let searchItem = document.getElementById("services-search")
-  searchItem.addEventListener("input", filterServiceList)
-
-  function filterServiceList(e) {
-    let filteredServices = {}
-    let htmlServices = document.getElementsByName("services")
-    let listServices = [...htmlServices].map(service => service.value)
-    listServices.forEach((res, idx) => {
-      if (res.toLowerCase().includes(e.target.value.toLowerCase()) || services[res].toLowerCase().includes(e.target.value.toLowerCase())) {
-        filteredServices[res] = services[res]
-        htmlServices[idx].parentElement.style.display = "block"
-      } else {
-        htmlServices[idx].parentElement.style.display = "none"
-      }
-    })
-  }
-
-
-  //close dropdowns when clicked outside
-  document.onclick = function (e) {
-    if (e.target.parentElement !== industryList && e.target.parentElement !== checkList && e.target.name !== "governance-artifacts" && e.target.parentElement !== serviceList && e.target.name !== "services" && e.target.nodeName !== "LI" && e.target.nodeName !== "INPUT") {
-      serviceList.classList.remove('visible');
-      checkList.classList.remove('visible');
-      industryList.classList.remove('visible');
-    }
-  };
-
-  //Enable/Disable PushToGit CTA
-  pushToGitRequiredFields.forEach(id => document.getElementById(id).addEventListener("input", setPushToGitCTA))
-
-  function setPushToGitCTA(e) {
-    requiredVals[e.target.id] = e.target.value
-    let cta = document.getElementById("pushToGit")
-    if(Object.values(requiredVals).map(val => val.trim()).includes("") || selectedServices.length === 0 || selecetdIndustry.trim() === ""){
-      cta.classList.remove("enable")
-      cta.classList.add("disable")
-      cta.classList.remove("allow-click")
-      cta.classList.add("no-click")
-    }else{
-      cta.classList.remove("disable")
-      cta.classList.add("enable")
-      cta.classList.remove("no-click")
-      cta.classList.add("allow-click")
-    }
-  }
+    }, false);
 
 };
+
+</script>
+</html>

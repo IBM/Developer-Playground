@@ -57,8 +57,8 @@
     Please follow all the below steps in proper sequence<br>
     At a high level the installation steps include:
     <ol>
-      <li>Deploy Operator Lifecycle Manager (OLM )objects for selected Cloud Pak for Data(CP4D) services.</li>
-      <li>Deploy custom resources for selected CP4D services.</li>
+      <li>Configure CP deployer on Openshift cluster.</li>
+      <li>Deploy selected CP4D services.</li>
     </ol>
     Please follow steps below as appropriate, some steps are optional depending on what needs to be done. Mandatory
     steps are indicated using *<br><br>
@@ -112,7 +112,7 @@
         </div>
         </p>
       </div>
-      <a class="button is-dark is-medium" title="Execute" id="install_cr">Apply and Deploy CP4D installation utility
+      <a class="button is-dark is-medium" title="Execute" id="install_cr">Install selected services
       </a>
       <br />
       <br />

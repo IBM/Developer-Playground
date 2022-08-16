@@ -156,6 +156,9 @@ window.onload = function () {
   function install_cr() {
     let cp4dVersion = document.getElementById('cp4d_version').value;
     let component_list = selectedServices.toString()
+    if(!component_list){
+      component_list="null"
+    }
     let storage = document.getElementById("cr_storage_value").value;
     document.getElementById("command_exec").href =
       "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox%20terminal$$cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2/;pip3.8%20install%20PyYAML;python3.8%20updateYaml.py%20"+component_list+"%20"+storage+"%20"+cp4dVersion+"; source env.sh";

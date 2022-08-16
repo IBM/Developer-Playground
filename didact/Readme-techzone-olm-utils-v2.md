@@ -77,7 +77,7 @@
         <p>Deploy custom resources for selected CP4D services</p>
         <div class="env-config">
         <label>CP4D Version</label>
-          <input type="text" id="cp4d_version" placeholder="4.5.0">
+          <input type="text" id="cp4d_version" value="4.5.0">
           <label>Components list
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
           <div id="cr-service-list" class="dropdown-check-list" tabindex="100">

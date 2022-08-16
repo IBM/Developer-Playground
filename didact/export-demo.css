@@ -369,6 +369,7 @@ overflow: auto;
 }
 
 .env-config {
+margin-top:40px;
 display: grid;
 grid-template-columns: max-content max-content;
 grid-gap: 1rem;

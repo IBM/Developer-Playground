@@ -10,7 +10,7 @@
         "welcomebackmsg": "Welcome back {0}.",
         "refreshUsermsg": "Hang tight, {0}.",
         "apisectionmsg": "CP Demo Framework is loading {0} resources.",
-        "play1": "Light-weight browser-based experience",
+        "play1": "Light-weight browser-based interactive experience",
         "play2": "Guided experience to install and customise Cloud Pak services",
         "play3": "Contribute and leverage Cloud Pak demo assets via centralised repository",
         "launchbutton": "Launch CP Demo Framework",

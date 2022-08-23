@@ -10,9 +10,9 @@
         "welcomebackmsg": "Welcome back {0}.",
         "refreshUsermsg": "Hang tight, {0}.",
         "apisectionmsg": "CP Demo Framework is loading {0} resources.",
-        "play1": "Light-weight browser-based experience",
-        "play2": "Guided tutorials to experience and run applications",
-        "play3": "Modify and build on top of pre-built applications",
+        "play1": "Light-weight browser-based interactive experience",
+        "play2": "Guided experience to install and customise Cloud Pak services",
+        "play3": "Contribute and leverage Cloud Pak demo assets via centralised repository",
         "launchbutton": "Launch CP Demo Framework",
         "userFeatureText": "There is a variety of features for you, all in one place!",
         "notificationBody1": "CP Demo Framework creates an ephemeral workspace for you. Your workspace is active for {0}. The timer shows time left in your workspace session.",
@@ -24,5 +24,6 @@
         "showSlackSupport": true,
         "slackSupportURL":"https://ibm-analytics.slack.com/app_redirect?channel=C03MHBJ2FTN",
         "showGitSupport": true,
-        "showMaintenance": false 
+        "showMaintenance": false,
+        "showDeleteWorkspace": false
 }

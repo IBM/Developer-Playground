@@ -512,7 +512,7 @@
                     for (var i = 0; i < receivedOutput.outputData.resources.length; i++) {
                         // POPULATE SELECT ELEMENT WITH JSON.
                         ele.innerHTML = ele.innerHTML +
-                            '<option value="' + receivedOutput.outputData.resources[i].entity.metadata.guid + '">' + receivedOutput.outputData.resources[i].entity.name + '</option>';
+                            '<option value="' + receivedOutput.outputData.resources[i].metadata.guid + '">' + receivedOutput.outputData.resources[i].entity.name + '</option>';
                     }
                     break;
             }

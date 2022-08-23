@@ -120,7 +120,7 @@ window.onload = function () {
         //configure cta
         document.getElementById("configure-env").addEventListener("click", updateConfigVars);
         function updateConfigVars(e){
-          document.getElementById("config_command_exec").href =`${compositeHref}${Object.keys(config).map(val => `${val.toUpperCase()}=${document.getElementsByName(val)[0].value}`).toString().replaceAll(",","%20")}`
+          document.getElementById("config_command_exec").href =`${compositeHref}${Object.keys(config).map(val => `${document.getElementsByName(val)[0].value}`).toString().replaceAll(",","%20")}`
           document.getElementById("config_command_exec").click();
         }
 

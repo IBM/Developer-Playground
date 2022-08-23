@@ -2,9 +2,9 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script src="techzone-cpd-test.js">
+  <script src="cpd-test.js">
   </script>
-  <link rel="stylesheet" href="techzone-cpd-test.css">
+  <link rel="stylesheet" href="cpd-test.css">
   <style>
     .header {
       background-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/video_insights.jpeg");

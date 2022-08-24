@@ -25,5 +25,5 @@
         "slackSupportURL":"https://ibm-analytics.slack.com/app_redirect?channel=C03MHBJ2FTN",
         "showGitSupport": true,
         "showMaintenance": false,
-        "showDeleteWorkspace": false
+        "showDeleteWorkspace": true
 }

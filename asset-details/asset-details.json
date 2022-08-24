@@ -66,12 +66,6 @@
 		"description": "Techzone Import Demo artifacts"
 	},
 	{
-		"id": "techzone-cpd-test",
-		"name": "Techzone CPD Test",
-		"title": "techzone-cpd-test",
-		"description": "Techzone CPD Test"
-	},
-	{
 		"id": "aws-healthcare",
 		"name": "AWS Proactive Healthcare Management System",
 		"title": "aws-healthcare",

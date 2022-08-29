@@ -25,5 +25,6 @@
         "slackSupportURL":"https://ibm-analytics.slack.com/app_redirect?channel=C03MHBJ2FTN",
         "showGitSupport": true,
         "showMaintenance": false,
-        "showDeleteWorkspace": true
+        "showDeleteWorkspace": true,
+        "expiryWarning": "Your ephemeral workspace session will end in less than {0} minutes. Please click on Refresh on timeout page to start a new session."
 }

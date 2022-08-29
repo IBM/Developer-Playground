@@ -77,11 +77,11 @@ window.onload = function () {
   
     //default data
     let config = {
-      server: localData.server,
-      api_token: localData.api_token,
-      kubeadmin_user: localData.kubeadmin_user,
-      kubeadmin_pass: localData.kubeadmin_pass,
-      icr_key: localData.icr_key,
+      server: localData.server.trim(),
+      api_token: localData.api_token.trim(),
+      kubeadmin_user: localData.kubeadmin_user.trim(),
+      kubeadmin_pass: localData.kubeadmin_pass.trim(),
+      icr_key: localData.icr_key.trim(),
     }
   
     //Get env values

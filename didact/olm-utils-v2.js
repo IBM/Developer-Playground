@@ -1,6 +1,6 @@
 window.onload = function () {
   // console.log(document.getElementById("execute"))
-  let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit clone https://github.com/IBM/CPDemoFramework -b techzone --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2;python3.8%20update-env-vars.py%20"  
+  let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd /projects;git clone https://github.com/IBM/CPDemoFramework -b techzone-fk --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2;sh%20configure-env.sh%20"  
   let prerequisite = ["server", "api_token", "kubeadmin_user", "kubeadmin_pass", "icr_key"]
   let services = {
     "analyticsengine": 'Analytics Engine Powered by Apache Spark',
@@ -76,11 +76,11 @@ window.onload = function () {
 
   //default data
   let config = {
-    server: localData.server,
-    api_token: localData.api_token,
-    kubeadmin_user: localData.kubeadmin_user,
-    kubeadmin_pass: localData.kubeadmin_pass,
-    icr_key: localData.icr_key,
+    server: localData.server.trim(),
+    api_token: localData.api_token.trim(),
+    kubeadmin_user: localData.kubeadmin_user.trim(),
+    kubeadmin_pass: localData.kubeadmin_pass.trim(),
+    icr_key: localData.icr_key.trim(),
   }
 
   //Get env values
@@ -120,36 +120,10 @@ window.onload = function () {
       //configure cta
       document.getElementById("configure-env").addEventListener("click", updateConfigVars);
       function updateConfigVars(e){
-        document.getElementById("config_command_exec").href =`${compositeHref}${Object.keys(config).map(val => `${val.toUpperCase()}=${document.getElementsByName(val)[0].value}`).toString().replaceAll(",","%20")}`
-        document.getElementById("config_command_exec").click();
+      document.getElementById("config_command_exec").href =`${compositeHref}${Object.keys(config).map(val => `${document.getElementsByName(val)[0].value || "\"\""}`).toString().replaceAll(",","%20")}`          
+      document.getElementById("config_command_exec").click();
       }
-    
 
-  // document.getElementById("existing_service").addEventListener("click", existing_service);
-
-  // function existing_service() {
-  //   let artifacts = document.getElementById("cpd_instance_value").value;
-  //   //samplevalue cpd-inst-01
-  //   document.getElementById("command_exec").href =
-  //     "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$run_utils get-cr-status --cpd_instance_ns=" + artifacts;
-  //   document.getElementById("command_exec").click();
-  // }
-
-  // document.getElementById("install_olm").addEventListener("click", install_olm);
-
-  // function install_olm() {
-  //   let component_list = olmSelectedServices.toString()
-  //   // let release_version = document.getElementById("olm_release_version").value;
-  //   let preview_value = document.getElementById('olm_preview_value').value;
-  //   document.getElementById("command_exec").href =
-  //     "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$run_utils apply-olm --preview=" +
-  //     preview_value +
-  //     // " --release=" +
-  //     // release_version +
-  //     " --components=" +
-  //     component_list;
-  //   document.getElementById("command_exec").click();
-  // }
 
   document.getElementById("install_cr").addEventListener("click", install_cr);
   
@@ -161,24 +135,10 @@ window.onload = function () {
     }
     let storage = document.getElementById("cr_storage_value").value;
     document.getElementById("command_exec").href =
-      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox%20terminal$$cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2/;pip3.8%20install%20PyYAML;python3.8%20updateYaml.py%20"+component_list+"%20"+storage+"%20"+cp4dVersion+"; source env.sh";
+      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox%20terminal$$cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2/;pip3.8%20install%20PyYAML;python3.8%20updateYaml.py%20"+component_list+"%20"+storage+"%20"+cp4dVersion+";bash deploy.sh";
     document.getElementById("command_exec").click();
   }
-  // Preview logic
-  // document.getElementById("get_preview").addEventListener("click", get_preview);
-  // document.getElementById("get_preview_2").addEventListener("click", get_preview);
-  // function get_preview() {
-  //   document.getElementById("command_exec").href =
-  //     "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$get_preview"
-  //   document.getElementById("command_exec").click();
-  //   document.getElementById("command_exec").href =
-  //     "didact://?commandId=vscode.open&projectFilePath=/projects/techzone-demo/olm-utils-v2/preview.sh"
-  //   document.getElementById("command_exec").click();
-  // }
 
-
-  // Get the dropdown elements
-  // let olmServiceList = document.getElementById('olm-service-list');
   let serviceList = document.getElementById('cr-service-list');
 
   //Open close dropdowns
@@ -195,8 +155,6 @@ window.onload = function () {
       serviceList.classList.add('visible');
   }
 
-  //populate the respective dropdown lists
-  // let olmServicesList = document.getElementById("olm-git-services");
   let gitServicesList = document.getElementById("cr-git-services");
   Object.keys(services).forEach(id => {
     let li = document.createElement("li");
@@ -236,19 +194,6 @@ window.onload = function () {
     let showSeleted = document.getElementById("cr-selected-services")
     showSeleted.textContent = selectedServices.toString().replaceAll(",", ", ")
   }
-
-  // function updateOlmSelectedServices(e) {
-  //   if (e.target.checked) {
-  //     olmSelectedServices.push(e.target.value)
-  //     olmServicesList.insertBefore(e.target.parentElement, olmServicesList.firstChild);
-  //   } else {
-  //     olmSelectedServices.indexOf(e.target.value) !== -1 && olmSelectedServices.splice(olmSelectedServices.indexOf(e.target.value), 1)
-  //     olmServicesList.insertBefore(e.target.parentElement, olmServices[Object.keys(services).indexOf(e.target.value)].parentElement);
-
-  //   }
-  //   let showSeleted = document.getElementById("olm-selected-services")
-  //   showSeleted.textContent = olmSelectedServices.toString().replaceAll(",", ", ")
-  // }
 
 
   //Search in the dropdown

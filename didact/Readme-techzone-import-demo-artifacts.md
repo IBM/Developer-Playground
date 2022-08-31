@@ -78,7 +78,7 @@
                             <p>Import Governance Artifacts</p>
                         </div>
                         <a class="button is-dark is-medium" title="Import Gov Artifacts"
-                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 importGovArtifacts.py governance_artifacts.zip">Import
+                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 importGovArtifacts.py governance_artifacts.zip ;python3.8 importDataProtectionRules.py data_protection_rules.json">Import
                             Artifacts</a>
                     </div>
                 </details>

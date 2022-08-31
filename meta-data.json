@@ -1,0 +1,22 @@
+{
+  "cpext": {
+    "video-analysis": "Video Analysis",
+    "extract-textual-insights-from-videos": "Extract Textual Insights From Videos",
+    "weather-data-assistant-for-travel": "Weather Data Assistant for Travel",
+    "authenticate-users-on-chatbot-with-sms-otp": "OTP Based Authentication for Chatbot"
+  },
+  "paext": {
+    "chatbot": "GSI Chatbot using IBM Watson Discovery",
+    "risk-prediction-for-bank-loans": "Risk Prediction for Bank Loans",
+    "customer-churn-prediction": "Customer Churn Prediction",
+    "agro-smart-assistant": "Agro Smart Assistant",
+    "techzone-demo-builder": "Techzone Demo Builder",
+    "techzone-olm-utils": "Techzone OLM Utils",
+    "techzone-olm-utils-v2": "Techzone OLM Utils v2",
+    "techzone-export-demo-artifacts": "Techzone Export Demo Artifacts",
+    "techzone-import-all-demo-artifacts": "Techzone Import All Demo Artifacts",
+    "techzone-import-demo-artifacts": "Techzone Import Demo Artifacts",
+    "aws-healthcare": "AWS Proactive Healthcare Management System",
+    "test": "This is for testing"
+  }
+}

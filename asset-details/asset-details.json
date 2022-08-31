@@ -54,6 +54,12 @@
 		"description": "Techzone OLM Utils"
 	},
 	{
+		"id": "techzone-olm-utils-v2",
+		"name": "Techzone CP Deployer",
+		"title": "techzone-cp-deployer",
+		"description": "Techzone CP Deployer"
+	},
+	{
 		"id": "techzone-export-demo-artifacts",
 		"name": "Techzone Export Demo artifacts",
 		"title": "techzone-export-demo-artifacts",
@@ -64,6 +70,12 @@
 		"name": "Techzone Import Demo artifacts",
 		"title": "techzone-import-demo-artifacts",
 		"description": "Techzone Import Demo artifacts"
+	},
+	{
+		"id": "techzone-cpd-test",
+		"name": "Techzone CPD Test",
+		"title": "techzone-cpd-test",
+		"description": "Techzone CPD Test"
 	},
 	{
 		"id": "aws-healthcare",

@@ -53,6 +53,11 @@ window.onload = function funLoad() {
   }
   let demo = localData.demo
 
+  //update open cluster cta URL
+  let clusterUrl = `https://${config.hostname}`
+  let openClusterCta = document.getElementById("open-cpd-cluster")
+  openClusterCta.href = clusterUrl
+
   //modify cta with localStorage data
   let cta = document.getElementById("configure-env")
   cta.href = `${compositeHref.replace("demo_name", demo)}${Object.values(config).toString().replaceAll(",", "%20")}`
@@ -102,8 +107,6 @@ window.onload = function funLoad() {
       e.target.value = e.target.value.replace(/(^\w+:|^)\/\//, '');
     }
     config[e.target.name] = e.target.value
-    let cta = document.getElementById("configure-env")
-    cta.href = `${compositeHref.replace("demo_name", demo)}${Object.values(config).toString().replaceAll(",", "%20")}`
     let tempData = JSON.parse(localStorage[didact])
     tempData[e.target.name] = e.target.value
     localStorage[didact] = JSON.stringify(tempData)
@@ -129,5 +132,18 @@ window.onload = function funLoad() {
       let checkList = document.getElementById('list1');
       checkList.style.pointerEvents = "none";
     }
+    let clusterUrl = `https://${config.hostname}`
+    let openClusterCta = document.getElementById("open-cpd-cluster")
+    openClusterCta.href = clusterUrl
   }
+  //configure cta
+document.getElementById("configure-env").addEventListener("click", updateConfigVars);
+function updateConfigVars(e){
+  document.getElementById("config_command_exec").href =`${compositeHref.replace("demo_name", demo)}${Object.values(config).toString().replaceAll(",", "%20")}`
+  document.getElementById("config_command_exec").click();
+  let clusterUrl = `https://${config.hostname}`
+  let openClusterCta = document.getElementById("open-cpd-cluster")
+  openClusterCta.href = clusterUrl
 }
+}
+

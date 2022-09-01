@@ -59,6 +59,16 @@ window.onload = function () {
     if (JSON.parse(localStorage[didact]).workspaceId !== workspaceId) {
       localStorage[didact] = JSON.stringify(data)
     }
+
+
+    // Add Open CPD URL in CP Deployer Didact
+    let get_cpd_endpoint = document.getElementById("get_cpd_endpoint");
+    get_cpd_endpoint.addEventListener("input", getCpdEndpoint)
+    function getCpdEndpoint(e) {
+      document.getElementById("command_exec").href =
+      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=oc get route -n cpd-instance;oc extract secret/admin-user-details --keys=initial_admin_password --to=- -n cpd-instance";
+      document.getElementById("command_exec").click();
+    }
   
     //Fill input data from localStorage
     prerequisite.forEach(input => document.getElementsByName(input)[0].value = JSON.parse(localStorage[didact])[input])
@@ -177,15 +187,7 @@ window.onload = function () {
   
     })
     
-    // Add Open CPD URL in CP Deployer Didact
 
-    let get_cpd_endpoint = document.getElementById("get_cpd_endpoint")
-    get_cpd_endpoint.addEventListener("input", getCpdEndpoint)
-    function getCpdEndpoint(e) {
-      document.getElementById("command_exec").href =
-      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=oc get route -n cpd-instance;oc extract secret/admin-user-details --keys=initial_admin_password --to=- -n cpd-instance";
-      document.getElementById("command_exec").click();
-    }
     //Get selected values
     let gitServices = document.getElementsByName("cr-services");
     // let olmServices = document.getElementsByName("olm-services");

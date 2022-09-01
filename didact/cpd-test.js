@@ -63,7 +63,7 @@ window.onload = function () {
 
     // Add Open CPD URL in CP Deployer Didact
     let get_cpd_endpoint = document.getElementById("get_cpd_endpoint");
-    get_cpd_endpoint.addEventListener("input", getCpdEndpoint)
+    get_cpd_endpoint.addEventListener("click", getCpdEndpoint)
     function getCpdEndpoint(e) {
       document.getElementById("command_exec").href =
       "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=oc get route -n cpd-instance;oc extract secret/admin-user-details --keys=initial_admin_password --to=- -n cpd-instance";

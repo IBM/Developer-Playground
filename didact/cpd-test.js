@@ -66,7 +66,7 @@ window.onload = function () {
     get_cpd_endpoint.addEventListener("click", getCpdEndpoint)
     function getCpdEndpoint(e) {
       document.getElementById("command_exec").href =
-      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=oc get route -n cpd-instance;oc extract secret/admin-user-details --keys=initial_admin_password --to=- -n cpd-instance";
+      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox%20terminal$$oc get route -n cpd-instance;oc extract secret/admin-user-details --keys=initial_admin_password --to=- -n cpd-instance";
       document.getElementById("command_exec").click();
     }
   

@@ -176,7 +176,16 @@ window.onload = function () {
       // olmServicesList.appendChild(li);
   
     })
-  
+    
+    // Add Open CPD URL in CP Deployer Didact
+
+    let get_cpd_endpoint = document.getElementById("get_cpd_endpoint")
+    get_cpd_endpoint.addEventListener("input", getCpdEndpoint)
+    function getCpdEndpoint(e) {
+      document.getElementById("command_exec").href =
+      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=oc get route -n cpd-instance;oc extract secret/admin-user-details --keys=initial_admin_password --to=- -n cpd-instance";
+      document.getElementById("command_exec").click();
+    }
     //Get selected values
     let gitServices = document.getElementsByName("cr-services");
     // let olmServices = document.getElementsByName("olm-services");

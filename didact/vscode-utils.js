@@ -35,6 +35,9 @@ window.addEventListener('message', event => {
             console.log(receivedOutput.outputData.cursor, receivedOutput.outputData.pointerEvents)
             document.body.style.cursor = receivedOutput.outputData.cursor;
             document.getElementsByClassName("timeline-container")[0].style.pointerEvents = receivedOutput.outputData.pointerEvents;
+            if(receivedOutput.outputData.clickCTA){
+                document.getElementById(receivedOutput.outputData.clickCTA).click();
+            }
             break;
     }
 });

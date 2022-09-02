@@ -1,7 +1,7 @@
 window.onload = function funLoad() {
 
   let env = document.getElementById("environment").textContent
-  let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20$BRANCH%20https%3A%2F%2Fgithub.com%2FIBM%2FCPDemoFramework%20%24%7BCHE_PROJECTS_ROOT%7D%2Ftechzone-demo%2C%2Fprojects%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd%20${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%3Bpython3.8%20update-env.py%20"
+  let compositeHref = "git clone -b $BRANCH https://github.com/IBM/CPDemoFramework ${CHE_PROJECTS_ROOT}/techzone-demo;cd ${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8 install -r requirements.txt;cd /projects/techzone-demo/sandbox/;python3.8 update-env.py "
   compositeHref = compositeHref.replaceAll("$BRANCH", env)
 
   let prerequisite = ["hostname", "wkcuser", "password"]
@@ -247,7 +247,6 @@ window.onload = function funLoad() {
   function updateConfigVars(e) {
     document.getElementById("config_command_exec").setAttribute("command", `${compositeHref}${Object.values(config).toString().replaceAll(",", "%20")}`)
     document.getElementById("config_command_exec").click();
-    document.getElementById("get-project-list").click();
   }
 
   //enable managemnet dropdowns
@@ -264,7 +263,7 @@ window.onload = function funLoad() {
       document.getElementById(e.target.value).style.display = "none";
     }
   }
-  
+
   //open/close project list
   let projectList = document.getElementById('project-list');
   projectList.getElementsByClassName('anchor')[0].onclick = function (evt) {

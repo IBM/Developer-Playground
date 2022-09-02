@@ -4,7 +4,6 @@ window.addEventListener('message', event => {
     const receivedOutput = event.data; // The JSON data our extension sent
     switch (receivedOutput.command) {
         case 'refactor':
-            document.querySelector('[id="message"]').innerHTML = receivedOutput.message;
             break;
         case 'receivedata':
             //document.querySelector('[id="message"]').innerHTML = message.message;

@@ -1,13 +1,15 @@
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="$$rootcsspath$$"> 
+    <link rel="stylesheet" href="$$rootcsspath$$">
     <style>
         .header {
             background-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/video_insights.jpeg");
         }
     </style>
 </head>
+
 <body>
     <div style="margin-top:2rem"></div>
     <div id="workspaceID" class="hidden-state">$workspace_id</div>
@@ -27,10 +29,10 @@
         <div>
             <p>Enter your CPD cluster details.</p>
             <div class="env-config">
-                <label>Hostname: </label><input class="env-variables" name="hostname" type="text" id="hostname"/>
-                <label>User: </label><input class="env-variables" name="wkcuser" type="text" id="username"/>
-                <label>Password: </label><input class="env-variables" name="password" type="password" id="password"/>
-                <label>API Key: </label><input class="env-variables" name="api_key" type="text" id="apikey"/>
+                <label>Hostname: </label><input class="env-variables" name="hostname" type="text" id="hostname" />
+                <label>User: </label><input class="env-variables" name="wkcuser" type="text" id="username" />
+                <label>Password: </label><input class="env-variables" name="password" type="password" id="password" />
+                <label>API Key: </label><input class="env-variables" name="api_key" type="text" id="apikey" />
             </div>
         </div>
     </div>
@@ -43,10 +45,12 @@
             <div class="content">
                 <p>Configure the environment with the required resources and connect to the specified CPD cluster.</p>
             </div>
-            <button class="button is-dark is-medium" id="configure-env" title="Configure Resources" action="senddata" successmessage="clone" terminalName="sandbox" 
-            command="cd%20${CHE_PROJECTS_ROOT} && git clone -b development https://github.com/IBM/CPDemoFramework ${CHE_PROJECTS_ROOT}/techzone-demo;cd ${CHE_PROJECTS_ROOT}/techzone-demo && pip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%3Bpython3.8%20update-env.py%20 ${HOST_NAME} ${USER_NAME} ${PASSWORD}">Configure Environment</button>
-            <button  class="button is-dark is-medium" title="Get Data from API" action="getdata">Get data</button>
-           <span class="dot"></span>
+            <button class="button is-dark is-medium" id="configure-env" title="Configure Resources" action="senddata"
+                successmessage="clone" terminalName="sandbox"
+                command="cd%20${CHE_PROJECTS_ROOT} && git clone -b development https://github.com/IBM/CPDemoFramework ${CHE_PROJECTS_ROOT}/techzone-demo;cd ${CHE_PROJECTS_ROOT}/techzone-demo && pip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%3Bpython3.8%20update-env.py%20 ${HOST_NAME} ${USER_NAME} ${PASSWORD}">Configure
+                Environment</button>
+            <button class="button is-dark is-medium" title="Get Data from API" action="getdata">Get data</button>
+            <span class="dot"></span>
             <div id="message">Output</div>
         </div>
         <div class="timeline timelinestep">
@@ -76,13 +80,14 @@
                     <br><br>
                     <div class="content">
                         <p>Export Users from the specified CPD cluster.</p>
-                    <button class="button is-dark is-medium" title="Export User List" successmessage="" terminalName="sandbox" 
-                        command="cd /projects/techzone-demo/sandbox/;python3.8 exportUsers.py users.csv">Export
-                        User List</button>
+                        <button class="button is-dark is-medium" title="Export User List" successmessage=""
+                            terminalName="sandbox"
+                            command="cd /projects/techzone-demo/sandbox/;python3.8 exportUsers.py users.csv">Export
+                            User List</button>
                     </div>
                     <div class="content">
-                      <p></p>
-                  </div>
+                        <p></p>
+                    </div>
                     <span class="dot"></span>
                 </details>
             </div>
@@ -126,7 +131,8 @@
                         <div class="content">
                             <p>Export the selected Governance Artifacts.</p>
                         </div>
-                        <button class="button is-dark is-medium" title="Export Governance Artifacts" successmessage="" terminalName="sandbox" 
+                        <button class="button is-dark is-medium" title="Export Governance Artifacts" successmessage=""
+                            terminalName="sandbox"
                             command="cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py governance_artifacts.zip ${SELECTED_ARTIFACTS};unzip governance_artifacts.zip -d governance_artifacts">Export
                             Artifacts</button>
                         <span class="dot"></span>
@@ -144,14 +150,17 @@
                         <div class="content">
                             <p>Click the action and select the project to be exported using the terminal below.</p>
                         </div>
-                        <div class="custom-select" width="100px;" style="margin:5px;">
-                          <select id="projectList">
-                            <option value="">--Select project--</option>
-                          </select>
-                        <button class="button is-dark is-medium" title="Export Project" action="exportproject" successmessage="" terminalName="sandbox" 
-                            command="cd /projects/techzone-demo/sandbox/;python3.8 exportProjectv2.py project_assets.zip ${SELECTED_PROJECT}">Export
-                            Project</button>
-                          </div>
+                        <div id="project-list" class="dropdown-check-list" tabindex="100">
+                            <span id="selected-project" class="anchor">Select Project</span>
+                            <ul class="items">
+                                
+                            </ul>
+                        </div>
+                            <button class="button is-dark is-medium" title="Export Project" action="exportproject"
+                                successmessage="" terminalName="sandbox"
+                                command="cd /projects/techzone-demo/sandbox/;python3.8 exportProjectv2.py project_assets.zip ${SELECTED_PROJECT}">Export
+                                Project</button>
+                        </div>
                         <span class="dot"></span>
                     </div>
                 </details>
@@ -207,14 +216,26 @@
                         </div>
                         <p style="margin-top:1rem;"><b>Selected Services: </b><span id="selected-services"></span></p>
                     </div>
-                    <button class="button is-dark is-medium no-click disable" title="Push to github" action="publish" id="pushToGit" command="">Publish</button>
+                    <button class="button is-dark is-medium no-click disable" title="Push to github" action="publish"
+                        id="pushToGit" command="">Publish</button>
+            </div>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline">
+            <div class="content">
+                <details>
+                    <summary>Test File data<span class="arrow"></span></summary>
+                    <br><br>
+                    <div class="content">
+                        <!-- <p>Select the action to perform in the configured cp4d instance</p> -->
+                    </div>
+                    <button class="button is-dark is-medium" title="Push to github" action="readfile" id="get-file"
+                        command="sleep 10$/projects/techzone-demo/test.json">Get File</button>
             </div>
             <span class="dot"></span>
         </div>
     </div>
-    </div>
     <a id="command_exec" ,href=""></a>
-    </div>
 </body>
 <script>
     window.onload = function funLoad() {
@@ -369,6 +390,20 @@
                 cta.classList.add("allow-click")
             }
         }
+        //open/close project dropdown
+        let projectList = document.getElementById('project-list');
+        projectList.getElementsByClassName('anchor')[0].onclick = function (evt) {
+            if (projectList.classList.contains('visible'))
+                projectList.classList.remove('visible');
+            else
+                projectList.classList.add('visible');
+        }
+
+        function selectProject(e) {
+            document.getElementById("selected-project").textContent = e.target.textContent
+            selecetdProject = e.target.textContent;
+            projectList.classList.remove('visible');
+        }
 
         //Open Close services dropdowns
         let serviceList = document.getElementById('service-list');
@@ -495,6 +530,12 @@
             console.log("command:" + document.getElementById("pushToGit").getAttribute("command"));
         }
 
+        let getFileCta = document.getElementById("get-file")
+        getFileCta.addEventListener("click", getFileData)
+        function getFileData() {
+console.log("test")
+        }
+
 
 
 
@@ -508,12 +549,33 @@
                     break;
                 case 'receivedata':
                     //document.querySelector('[id="message"]').innerHTML = message.message;
-                    var ele = document.getElementById('projectList');
+                    var ele = document.getElementById('project-list');
                     for (var i = 0; i < receivedOutput.outputData.resources.length; i++) {
                         // POPULATE SELECT ELEMENT WITH JSON.
                         ele.innerHTML = ele.innerHTML +
                             '<option value="' + receivedOutput.outputData.resources[i].metadata.guid + '">' + receivedOutput.outputData.resources[i].entity.name + '</option>';
                     }
+                    break;
+                case 'renderFileData':
+                    //document.querySelector('[id="message"]').innerHTML = message.message;
+                    console.log(receivedOutput.outputData)
+                    let data = JSON.parse(receivedOutput.outputData)
+                    console.log(data.parentId,data.parentTagName, data.elementToRender)
+                    let elementToRender = document.getElementById(data.parentId)
+                    let list = elementToRender.getElementsByTagName(data.parentTagName)[0]
+                    console.log(list, elementToRender)
+                    data.data.forEach((option) => {
+                        let li = document.createElement(data.elementToRender);
+                        li.innerHTML = option
+                        list.appendChild(li);
+                        li.addEventListener("click", selectProject)
+                    })
+                    console.log(typeof (data))
+                    break;
+                case 'executing':
+                    console.log(receivedOutput.outputData.cursor, receivedOutput.outputData.pointerEvents)
+                    document.body.style.cursor = receivedOutput.outputData.cursor;
+                    document.getElementsByClassName("timeline-container")[0].style.pointerEvents = receivedOutput.outputData.pointerEvents;
                     break;
             }
         });
@@ -528,7 +590,7 @@
                 inputFields["userName"] = document.getElementById('username').value;
                 inputFields["password"] = document.getElementById('password').value;
                 inputFields["apikey"] = document.getElementById('apikey').value;
-                var projectElelment = document.getElementById('projectList');
+                var projectElelment = document.getElementById('project-list');
                 console.log("selected project:" + projectElelment.value);
                 inputFields["selectedProject"] = projectElelment.value;
                 if (action == "getdata") {
@@ -542,6 +604,14 @@
                     command = anchor.getAttribute("command");
                     vscode.postMessage({
                         command: 'sendcommand',
+                        text: command,
+                        inputFields: inputFields
+                    });
+                }
+                else if (action == "readfile") {
+                    command = anchor.getAttribute("command");
+                    vscode.postMessage({
+                        command: 'readfile',
                         text: command,
                         inputFields: inputFields
                     });
@@ -561,4 +631,5 @@
     };
 
 </script>
+
 </html>

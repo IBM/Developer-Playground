@@ -145,7 +145,7 @@ window.onload = function funLoad() {
   //Enable/Disable timeline
   let localData = JSON.parse(localStorage[didact])
   let timelineContainer = document.getElementsByClassName("timeline-container")[0]
-  if (localData.hostname.trim() === "" || localData.wkcuser.trim() === "" || localData.password.trim() === "" || localData.api_key.trim() === "") {
+  if (localData.hostname.trim() === "" || localData.wkcuser.trim() === "" || localData.password.trim() === "") {
     timelineContainer.style.opacity = 0.5;
     timelineContainer.style.cursor = "not-allowed";
     [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");

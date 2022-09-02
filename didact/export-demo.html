@@ -232,6 +232,7 @@
                     <button class="button is-dark is-medium" title="Push to github" action="readfile" id="get-file"
                         command="sleep 10$/projects/techzone-demo/test.json">Get File</button>
             </div>
+            <input type="text" id="get-path"/>
             <span class="dot"></span>
         </div>
     </div>
@@ -530,10 +531,18 @@
             console.log("command:" + document.getElementById("pushToGit").getAttribute("command"));
         }
 
+        const updatePath = () => {
+            let getFileCta = document.getElementById("get-file")
+            getFileCta.setAttribute("command",`sleep 10$${document.getElementById("get-path").value}`)
+        }
+        let filepath = document.getElementById("get-path")
+        filepath.addEventListener("input",updatePath);
+
+
         let getFileCta = document.getElementById("get-file")
         getFileCta.addEventListener("click", getFileData)
         function getFileData() {
-console.log("test")
+            console.log("test")
         }
 
 

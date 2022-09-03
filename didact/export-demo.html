@@ -47,8 +47,11 @@
             </div>
             <button class="button is-dark is-medium" id="configure-env" title="Configure Resources">Configure
                 Environment</button>
-            <button id="config_command_exec" class="send-to-extension hidden-state" action="senddata" command=""></button>
-            <button id="get-project-list" class="send-to-extension" action="readfile" command="cd /projects/techzone-demo/sandbox;python3.8 getProjects.py$/projects/techzone-demo/sandbox/projectsData.json"></button>
+            <button id="config_command_exec" class="send-to-extension hidden-state" action="senddata" command=""
+                nextAction="get-project-list"></button>
+            <button id="get-project-list" class="send-to-extension hidden-state" action="readfile"
+                command="cd /projects/techzone-demo/sandbox;python3.8 getProjects.py"
+                filePath="/projects/techzone-demo/sandbox/projectsData.json" preProcess="true" silent></button>
             <span class="dot"></span>
         </div>
         <div class="timeline">
@@ -80,7 +83,8 @@
                         <div class="content">
                             <p>Export Users from the specified CPD cluster.</p>
                         </div>
-                        <button class="send-to-extension button is-dark is-medium" title="Export User List" action="senddata"
+                        <button class="send-to-extension button is-dark is-medium" title="Export User List"
+                            action="senddata"
                             command="cd /projects/techzone-demo/sandbox/;python3.8 exportUsersv2.py users.csv">Export
                             User List</button>
                         <span class="dot"></span>
@@ -127,7 +131,8 @@
                         <div class="content">
                             <p>Export the selected Governance Artifacts.</p>
                         </div>
-                        <button class="send-to-extension button is-dark is-medium" title="Export Governance Artifacts" action="senddata"
+                        <button class="send-to-extension button is-dark is-medium" title="Export Governance Artifacts"
+                            action="senddata"
                             command="cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py governance_artifacts.zip all;unzip governance_artifacts.zip -d governance_artifacts;python3.8 exportDataProtectionRules.py data_protection_rules.json">Export
                             Artifacts</button>
                         <span class="dot"></span>
@@ -148,15 +153,14 @@
                         <div class="env-config">
                             <div id="project-list" class="dropdown-check-list" tabindex="100">
                                 <span class="anchor">Select Project</span>
-                                <div class="items">
-                                    <ul>
-                                    </ul>
-                                </div>
+                                <ul class="items">
+                                </ul>
                             </div>
+                            <button class="send-to-extension button is-dark is-medium" title="Export Project"
+                                action="senddata"
+                                command="cd /projects/techzone-demo/sandbox/;python3.8 exportProject.py project_assets.zip">Export
+                                Project</button>
                         </div>
-                        <button class="send-to-extension button is-dark is-medium" title="Export Project" action="senddata"
-                            command="cd /projects/techzone-demo/sandbox/;python3.8 exportProject.py project_assets.zip">Export
-                            Project</button>
                         <span class="dot"></span>
                     </div>
                 </details>
@@ -213,7 +217,8 @@
                     </div>
                     <button class="button is-dark is-medium no-click disable" title="Push to github"
                         id="pushToGit">Publish</button>
-                    <button id="command_exec" class="send-to-extension hidden-state" action="senddata" command=""></button>
+                    <button id="command_exec" class="send-to-extension hidden-state" action="senddata"
+                        command=""></button>
             </div>
             <span class="dot"></span>
         </div>

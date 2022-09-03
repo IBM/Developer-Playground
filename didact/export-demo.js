@@ -152,6 +152,7 @@ window.onload = function funLoad() {
     [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => ele.style.pointerEvents = "none");
     [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none");
     [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
+    document.getElementById("get-project-list").click();
   }
 
   //default data
@@ -229,7 +230,7 @@ window.onload = function funLoad() {
       timelineContainer.style.opacity = 1;
       timelineContainer.style.cursor = "auto";
       [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "auto");
-      [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => ele.style.pointerEvents = "auto");
+      [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click")? ele.style.pointerEvents = "auto": null);
       [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
       [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
     } else {
@@ -320,8 +321,7 @@ window.onload = function funLoad() {
     }
     cta.setAttribute("command", `cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py governance_artifacts.zip ${selectedArtifacts.toString()};unzip governance_artifacts.zip -d governance_artifacts`)
     if (selectedArtifacts.indexOf("rule") >= 0 || selectedArtifacts.indexOf("all") >= 0) {
-      console.log(cta.command)
-      cta.href = cta.href + ";python3.8 exportDataProtectionRules.py data_protection_rules.json"
+      cta.setAttribute("command", `${cta.getAttribute("command")};python3.8 exportDataProtectionRules.py data_protection_rules.json`)
     }
     let showSeleted = document.getElementById("selected")
     showSeleted.textContent = selectedArtifacts.toString().replaceAll(",", ", ")

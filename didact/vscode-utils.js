@@ -47,6 +47,10 @@ window.addEventListener('message', event => {
             var action = anchor.getAttribute("action");
             var command = anchor.getAttribute("command");
             var terminalName = anchor.getAttribute("termianlName");
+            var nextAction = anchor.getAttribute("nextAction") ? anchor.getAttribute("nextAction") : false;
+            var silent = anchor.getAttribute("silent") ? true : false;
+            var filePath = anchor.getAttribute("filePath");
+            var preProcess = anchor.getAttribute("preProcess") ? true : false;
             /*inputFields["hostName"] = document.getElementById('hostname').value;
             inputFields["userName"] = document.getElementById('username').value;
             inputFields["password"] = document.getElementById('password').value;
@@ -74,6 +78,10 @@ window.addEventListener('message', event => {
                 vscode.postMessage({
                     command: 'readfile',
                     text: command,
+                    filePath: filePath,
+                    silent: silent,
+                    nextAction: nextAction,
+                    preProcess: preProcess,
                     inputFields: inputFields
                 });
             }
@@ -83,6 +91,8 @@ window.addEventListener('message', event => {
                     command: 'sendcommand',
                     terminalName: terminalName,
                     text: command,
+                    silent: silent,
+                    nextAction: nextAction,
                     inputFields: inputFields
                 });
             }

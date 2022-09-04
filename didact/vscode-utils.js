@@ -35,7 +35,7 @@ window.addEventListener('message', event => {
         case 'executing':
             console.log(receivedOutput.outputData.cursor, receivedOutput.outputData.pointerEvents)
             let timelineContainer = document.getElementsByClassName("timeline-container")[0]
-            document.body.style.cursor = receivedOutput.outputData.cursor;
+            timelineContainer.style.cursor = receivedOutput.outputData.cursor;
             [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = receivedOutput.outputData.pointerEvents);
             [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click") ? ele.style.pointerEvents = receivedOutput.outputData.pointerEvents : ele.style.pointerEvents = "none");
             [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = receivedOutput.outputData.pointerEvents);

@@ -421,43 +421,17 @@ window.onload = function funLoad() {
   }
 
 
-  function selectProject(e) {
-    document.getElementById("selected-project").textContent = e.target.textContent
-    selecetdProject = e.target.textContent;
-    projectList.classList.remove('visible');
+  function renderData(e) {
+    let elementModified = document.getElementById("data-fetched").value
+    if(elementModified === "project-list"){
+      document.getElementById("selected-project").textContent = e.target.textContent
+      selectedProject = e.target.textContent;
+      projectList.classList.remove('visible');
+    }
+    document.getElementById("data-fetched").value = ""
   }
 
-  const targetNode = document.getElementById("project-list").getElementsByTagName(UL)[0];
-  const observerOptions = {
-    childList: true,
-    attributes: true,
-  
-    // Omit (or set to false) to observe only changes to the parent node
-    subtree: true
-  }
-  function callback(mutationList, observer) {
-    mutationList.forEach((mutation) => {
-      switch(mutation.type) {
-        case 'childList':
-          console.log("modified child");
-          [...targetNode.getElementsByTagName(LI)].forEach( ele => ele.addEventListener("click", selectProject) )
-          break;
-        case 'attributes':
-          /* An attribute value changed on the element in
-             mutation.target.
-             The attribute name is in mutation.attributeName, and
-             its previous value is in mutation.oldValue. */
-          break;
-        case 'subtree':
-          console.log("modified");
-          [...targetNode.getElementsByTagName(LI)].forEach( ele => ele.addEventListener("click", selectProject) )
-          break;
-      }
-    });
-  }
-
-  const observer = new MutationObserver(callback);
-  observer.observe(targetNode, observerOptions);
-
+  let dataFetchInput = document.getElementById("data-fetched")
+  dataFetchInput.addEventListener("input",renderData)
 };
 

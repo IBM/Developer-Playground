@@ -1,3 +1,5 @@
+
+
 const vscode = acquireVsCodeApi();
 let inputFields = {};
 window.addEventListener('message', event => {
@@ -32,9 +34,13 @@ window.addEventListener('message', event => {
             break;
         case 'executing':
             console.log(receivedOutput.outputData.cursor, receivedOutput.outputData.pointerEvents)
+            let timelineContainer = document.getElementsByClassName("timeline-container")[0]
             document.body.style.cursor = receivedOutput.outputData.cursor;
-            document.getElementsByClassName("timeline-container")[0].style.pointerEvents = receivedOutput.outputData.pointerEvents;
-            if(receivedOutput.outputData.clickCTA){
+            [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = receivedOutput.outputData.pointerEvents);
+            [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click") ? ele.style.pointerEvents = receivedOutput.outputData.pointerEvents : ele.style.pointerEvents = "none");
+            [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = receivedOutput.outputData.pointerEvents);
+            [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = receivedOutput.outputData.pointerEvents);
+            if (receivedOutput.outputData.clickCTA) {
                 document.getElementById(receivedOutput.outputData.clickCTA).click();
             }
             break;

@@ -152,6 +152,7 @@ window.onload = function funLoad() {
     [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => ele.style.pointerEvents = "none");
     [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none");
     [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
+  } else {
     document.getElementById("get-project-list").click();
   }
 
@@ -230,7 +231,7 @@ window.onload = function funLoad() {
       timelineContainer.style.opacity = 1;
       timelineContainer.style.cursor = "auto";
       [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "auto");
-      [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click")? ele.style.pointerEvents = "auto": null);
+      [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => ele.style.pointerEvents = "auto");
       [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
       [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
     } else {

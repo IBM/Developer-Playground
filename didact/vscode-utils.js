@@ -26,7 +26,7 @@ window.addEventListener('message', event => {
                 let li = document.createElement(data.elementToRender);
                 li.innerHTML = option
                 list.appendChild(li);
-                li.addEventListener("click", selectProject)
+                //li.addEventListener("click", selectProject)
             })
             console.log(typeof (data))
             break;

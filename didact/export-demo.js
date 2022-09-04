@@ -427,7 +427,7 @@ window.onload = function funLoad() {
     projectList.classList.remove('visible');
   }
 
-  const targetNode = document.getElementById("project-list");
+  const targetNode = document.getElementById("project-list").getElementsByTagName(UL)[0];
   const observerOptions = {
     childList: true,
     attributes: true,
@@ -439,9 +439,8 @@ window.onload = function funLoad() {
     mutationList.forEach((mutation) => {
       switch(mutation.type) {
         case 'childList':
-          /* One or more children have been added to and/or removed
-             from the tree.
-             (See mutation.addedNodes and mutation.removedNodes.) */
+          console.log("modified child");
+          [...targetNode.getElementsByTagName(LI)].forEach( ele => ele.addEventListener("click", selectProject) )
           break;
         case 'attributes':
           /* An attribute value changed on the element in
@@ -450,7 +449,9 @@ window.onload = function funLoad() {
              its previous value is in mutation.oldValue. */
           break;
         case 'subtree':
+          console.log("modified");
           [...targetNode.getElementsByTagName(LI)].forEach( ele => ele.addEventListener("click", selectProject) )
+          break;
       }
     });
   }

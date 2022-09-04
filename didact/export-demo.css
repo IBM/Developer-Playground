@@ -298,7 +298,7 @@ label {
 }
 
 .no-click {
-    pointer-events: none;
+    pointer-events: none !important;
 }
 
 .enable {
@@ -307,7 +307,7 @@ label {
 }
 
 .allow-click {
-    pointer-events: auto;
+    pointer-events: auto !important;
 }
 
 .dropdown-check-list {

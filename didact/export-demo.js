@@ -427,7 +427,7 @@ window.onload = function funLoad() {
     projectList.classList.remove('visible');
   }
 
-  const targetNode = document.querySelector("project-list");
+  const targetNode = document.getElementById("project-list");
   const observerOptions = {
     childList: true,
     attributes: true,

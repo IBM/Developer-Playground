@@ -420,13 +420,15 @@ window.onload = function funLoad() {
     }
   }
 
-
+function selectProject(e){
+  document.getElementById("selected-project").textContent = e.target.textContent
+  selectedProject = e.target.textContent;
+  projectList.classList.remove('visible');
+}
   function renderData(e) {
     let elementModified = document.getElementById("data-fetched").value
     if(elementModified === "project-list"){
-      document.getElementById("selected-project").textContent = e.target.textContent
-      selectedProject = e.target.textContent;
-      projectList.classList.remove('visible');
+      [...document.getElementById(elementModified).getElementsByTagName("LI")].forEach(ele => ele.addEventListener("click",selectProject))
     }
     document.getElementById("data-fetched").value = ""
   }

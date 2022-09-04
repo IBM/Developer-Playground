@@ -84,6 +84,7 @@ window.onload = function funLoad() {
   }
 
   let selectedServices = []
+  let selectProject = ""
   let selecetdIndustry = ""
   let didact = document.getElementsByClassName("apptitle")[0].textContent
 
@@ -231,7 +232,7 @@ window.onload = function funLoad() {
       timelineContainer.style.opacity = 1;
       timelineContainer.style.cursor = "auto";
       [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "auto");
-      [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => ele.style.pointerEvents = "auto");
+      [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click")? ele.style.pointerEvents = "auto": ele.style.pointerEvents = "none");
       [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
       [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
     } else {
@@ -275,11 +276,6 @@ window.onload = function funLoad() {
       projectList.classList.add('visible');
   }
 
-  function selectProject(e) {
-    document.getElementById("selected-project").textContent = e.target.textContent
-    selecetdProject = e.target.textContent;
-    projectList.classList.remove('visible');
-  }
 
 
   //Get selected values
@@ -424,4 +420,43 @@ window.onload = function funLoad() {
     }
   }
 
+
+  function selectProject(e) {
+    document.getElementById("selected-project").textContent = e.target.textContent
+    selecetdProject = e.target.textContent;
+    projectList.classList.remove('visible');
+  }
+
+  const targetNode = document.querySelector("project-list");
+  const observerOptions = {
+    childList: true,
+    attributes: true,
+  
+    // Omit (or set to false) to observe only changes to the parent node
+    subtree: true
+  }
+  function callback(mutationList, observer) {
+    mutationList.forEach((mutation) => {
+      switch(mutation.type) {
+        case 'childList':
+          /* One or more children have been added to and/or removed
+             from the tree.
+             (See mutation.addedNodes and mutation.removedNodes.) */
+          break;
+        case 'attributes':
+          /* An attribute value changed on the element in
+             mutation.target.
+             The attribute name is in mutation.attributeName, and
+             its previous value is in mutation.oldValue. */
+          break;
+        case 'subtree':
+          [...targetNode.getElementsByTagName(LI)].forEach( ele => ele.addEventListener("click", selectProject) )
+      }
+    });
+  }
+
+  const observer = new MutationObserver(callback);
+  observer.observe(targetNode, observerOptions);
+
 };
+

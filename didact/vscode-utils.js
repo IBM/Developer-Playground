@@ -30,6 +30,8 @@ window.addEventListener('message', event => {
                 list.appendChild(li);
                 //li.addEventListener("click", selectProject)
             })
+            document.getElementById("data-fetched").value = data.parentId
+            document.getElementById("data-fetched").dispatchEvent(new Event('input', {bubbles:true, }));
             console.log(typeof (data))
             break;
         case 'executing':

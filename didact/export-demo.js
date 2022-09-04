@@ -84,7 +84,7 @@ window.onload = function funLoad() {
   }
 
   let selectedServices = []
-  let selectProject = ""
+  let selectedProject = ""
   let selecetdIndustry = ""
   let didact = document.getElementsByClassName("apptitle")[0].textContent
 

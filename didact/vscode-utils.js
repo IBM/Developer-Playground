@@ -26,7 +26,8 @@ window.addEventListener('message', event => {
             console.log(list, elementToRender)
             data.data.forEach((option) => {
                 let li = document.createElement(data.elementToRender);
-                li.innerHTML = option
+                li.innerHTML = option.name
+                li.name = option.guid
                 list.appendChild(li);
                 //li.addEventListener("click", selectProject)
             })

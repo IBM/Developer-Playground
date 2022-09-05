@@ -423,6 +423,12 @@ window.onload = function funLoad() {
 function selectProject(e){
   document.getElementById("selected-project").textContent = e.target.textContent
   selectedProject = e.target.textContent;
+  let exportProjectCTA = document.getElementById("export-project")
+  exportProjectCTA.setAttribute("command",`${exportProjectCTA.getAttribute("command")} ${e.target.name} project_assets.zip`)
+  exportProjectCTA.classList.remove("disable")
+  exportProjectCTA.classList.add("enable")
+  exportProjectCTA.classList.remove("no-click")
+  exportProjectCTA.classList.add("allow-click")
   projectList.classList.remove('visible');
 }
   function renderData(e) {

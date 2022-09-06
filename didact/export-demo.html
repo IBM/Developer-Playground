@@ -32,7 +32,7 @@
                 <label>Hostname: </label><input class="env-variables" name="hostname" type="text" />
                 <label>User: </label><input class="env-variables" name="wkcuser" type="text" />
                 <label>Password: </label><input class="env-variables" name="password" type="password" />
-                <label>API Key: </label><input class="env-variables" name="api_key" type="text" />
+                <label class="hidden-state">API Key: </label><input class="env-variables hidden-state" name="api_key" type="text" />
             </div>
         </div>
     </div>
@@ -87,7 +87,7 @@
                         </div>
                         <button id="export-user-list" class="send-to-extension button is-dark is-medium"
                             title="Export User List" action="senddata"
-                            command="cd /projects/techzone-demo/sandbox/;python3.8 exportUsersv2.py users.csv">Export
+                            command="cd /projects/techzone-demo/sandbox/;python3.8 exportUsers.py users.csv">Export
                             User List</button><span class="spinner hidden-state"></span>
                         <span class="dot"></span>
                     </div>

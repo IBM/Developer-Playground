@@ -213,7 +213,7 @@ window.onload = function funLoad() {
 
   function getEnvValues(e) {
     if (e.target.name === "hostname") {
-      e.target.value = e.target.value.replace(/(^\w+:|^)\/\//, '');
+      e.target.value = e.target.value.trim().replace(/(^\w+:|^)\/\//, '').replace(/^\/+|\/+$/g, '');
     }
     config[e.target.name] = e.target.value
     let tempData = JSON.parse(localStorage[didact])

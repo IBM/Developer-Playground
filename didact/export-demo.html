@@ -85,11 +85,10 @@
                         <div class="content">
                             <p>Export Users from the specified CPD cluster.</p>
                         </div>
-                        <button class="send-to-extension button is-dark is-medium" id="export-user-list"
+                        <button id="export-user-list" class="send-to-extension button is-dark is-medium"
                             title="Export User List" action="senddata"
                             command="cd /projects/techzone-demo/sandbox/;python3.8 exportUsersv2.py users.csv">Export
-                            User List</button>
-                        <span class="spinner hidden-state"></span>
+                            User List</button><span class="spinner hidden-state"></span>
                         <span class="dot"></span>
                     </div>
                 </details>
@@ -134,11 +133,10 @@
                         <div class="content">
                             <p>Export the selected Governance Artifacts.</p>
                         </div>
-                        <button class="send-to-extension button is-dark is-medium" id="export-governance-artifacts"
+                        <button id="export-governance-artifacts" class="send-to-extension button is-dark is-medium"
                             title="Export Governance Artifacts" action="senddata"
                             command="cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py governance_artifacts.zip all;unzip governance_artifacts.zip -d governance_artifacts;python3.8 exportDataProtectionRules.py data_protection_rules.json">Export
-                            Artifacts</button>
-                        <span class="spinner hidden-state"></span>
+                            Artifacts</button><span class="spinner hidden-state"></span>
                         <span class="dot"></span>
                     </div>
                 </details>
@@ -165,8 +163,7 @@
                     <button id="export-project" class="send-to-extension button is-dark is-medium no-click disable"
                         title="Export Project" action="senddata"
                         command="">Export
-                        Project</button>
-                    <span class="spinner hidden-state"></span>
+                        Project</button><span class="spinner hidden-state"></span>
                     <span class="dot"></span>
                 </details>
             </div>
@@ -223,8 +220,7 @@
                     <button class="button is-dark is-medium no-click disable" title="Push to github"
                         id="pushToGit">Publish</button>
                     <button id="command_exec" class="send-to-extension hidden-state" action="senddata"
-                        command=""></button>
-                    <span class="spinner hidden-state"></span>
+                        command=""></button><span class="spinner hidden-state"></span>
             </div>
             <span class="dot"></span>
         </div>

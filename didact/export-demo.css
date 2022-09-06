@@ -240,7 +240,7 @@ a:visited {
 }
 
 .hidden-state {
-    display: none;
+    display: none !important;
 }
 
 summary {
@@ -378,4 +378,20 @@ label {
 
 .env-config label {
     text-align: left;
+}
+
+.spinner{
+    width : 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    display: inline-block;
+    border-top:3px solid #fff;
+    border-right:3px solid transparent;
+    animation: rotation 0.6s linear infinite;
+    margin-left: 0.5rem;
+  }
+  
+@keyframes rotation {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(360deg) }
 }

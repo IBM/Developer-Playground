@@ -32,7 +32,7 @@ window.addEventListener('message', event => {
                 //li.addEventListener("click", selectProject)
             })
             document.getElementById("data-fetched").value = data.parentId
-            document.getElementById("data-fetched").dispatchEvent(new Event('input', {bubbles:true, }));
+            document.getElementById("data-fetched").dispatchEvent(new Event('input', { bubbles: true, }));
             console.log(typeof (data))
             break;
         case 'executing':
@@ -46,6 +46,11 @@ window.addEventListener('message', event => {
             if (receivedOutput.outputData.clickCTA) {
                 document.getElementById(receivedOutput.outputData.clickCTA).click();
             }
+            console.log(receivedOutput.outputData.parent,document.getElementById(receivedOutput.outputData.parent))
+            if (receivedOutput.outputData.showSpinner)
+                document.getElementById(receivedOutput.outputData.parent).nextSibling.classList.remove("hidden-state");
+            else
+                document.getElementById(receivedOutput.outputData.parent).nextSibling.classList.add("hidden-state");
             break;
     }
 });
@@ -60,6 +65,8 @@ window.addEventListener('message', event => {
             var silent = anchor.getAttribute("silent") ? true : false;
             var filePath = anchor.getAttribute("filePath");
             var preProcess = anchor.getAttribute("preProcess") ? true : false;
+            var parent = anchor.getAttribute("id")
+            console.log(parent, anchor)
             /*inputFields["hostName"] = document.getElementById('hostname').value;
             inputFields["userName"] = document.getElementById('username').value;
             inputFields["password"] = document.getElementById('password').value;
@@ -79,7 +86,8 @@ window.addEventListener('message', event => {
                 vscode.postMessage({
                     command: 'sendcommand',
                     text: command,
-                    inputFields: inputFields
+                    inputFields: inputFields,
+                    parent: parent
                 });
             }
             else if (action == "readfile") {
@@ -91,7 +99,8 @@ window.addEventListener('message', event => {
                     silent: silent,
                     nextAction: nextAction,
                     preProcess: preProcess,
-                    inputFields: inputFields
+                    inputFields: inputFields,
+                    parent: parent
                 });
             }
             else {
@@ -102,7 +111,8 @@ window.addEventListener('message', event => {
                     text: command,
                     silent: silent,
                     nextAction: nextAction,
-                    inputFields: inputFields
+                    inputFields: inputFields,
+                    parent: parent
                 });
             }
         }

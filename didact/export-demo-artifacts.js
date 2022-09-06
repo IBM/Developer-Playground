@@ -2,14 +2,14 @@ window.onload = function funLoad() {
 
   let env = document.getElementById("environment").textContent
   let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20$BRANCH%20https%3A%2F%2Fgithub.com%2FIBM%2FCPDemoFramework%20%24%7BCHE_PROJECTS_ROOT%7D%2Ftechzone-demo%2C%2Fprojects%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd%20${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8%20install%20-r%20requirements.txt%3Bcd%20%2Fprojects%2Ftechzone-demo%2Fsandbox%2F%3Bpython3.8%20update-env.py%20"
-  compositeHref = compositeHref.replaceAll("$BRANCH", env)
+  compositeHref = compositeHref.replaceAll("$BRANCH",env)
 
   let prerequisite = ["hostname", "wkcuser", "password", "api_key"]
-  let pushToGitRequiredFields = ["demoname", "tags", "author", "desc"]
-  requiredVals = {
-    demoname: "",
-    tags: "",
-    author: "",
+  let pushToGitRequiredFields = ["demoname","tags","author","desc"]
+  requiredVals={
+    demoname:"",
+    tags:"",
+    author:"",
     desc: "",
   }
   let services = {
@@ -79,9 +79,9 @@ window.onload = function funLoad() {
     { id: 'other', value: 'Other' }
   ]
 
-  function getIndustry(industry) {
-    return industries.find(({ id, value }) => value === industry).id
-  }
+  function getIndustry(industry){
+    return industries.find(({id, value}) => value===industry).id
+    }
 
   let selectedServices = []
   let selecetdIndustry = ""
@@ -119,7 +119,7 @@ window.onload = function funLoad() {
     let services = selectedServices.toString()//document.getElementById("services").value
     let demoName = document.getElementById("demoname").value || ""
     let desc = document.getElementById("desc").value || "Update"
-    let userID = document.getElementById("userID").textContent || author
+    let userID=document.getElementById("userID").textContent || author
     tags = tags.split(",")
     services = services.split(",")
     industry = industry.split(",")
@@ -129,14 +129,14 @@ window.onload = function funLoad() {
       "tags": tags,
       "author": author,
       "services": services,
-      "demoName": userID.replace(/ /g, '') + "-" + demoName.replace(/ /g, ''),
-      "displayName": demoName,
+      "demoName": userID.replace(/ /g,'')+"-"+demoName.replace(/ /g,''),
+      "displayName":demoName,
       "desc": desc
     }
     // let metadata=`{"industry":"${industry}","tags":"${["tags","asddsa","dsa"]}","author":"${author}","services":"${services}","demoName":"${demoName}"}`
     metadata = '\'' + JSON.stringify(metadata) + '\''
     document.getElementById("command_exec").href =
-      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$bash /projects/techzone-demo/sandbox/github.sh " + "\"" + demoName.replace(/ /g, '') + "\"" + " " + metadata + " " + "\"" + userID.replace(/ /g, '') + "\"" + " " + "\"" + desc + "\"";
+      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$bash /projects/techzone-demo/sandbox/github.sh " + "\""+demoName.replace(/ /g,'')+ "\""+" " + metadata + " " + "\""+ userID.replace(/ /g,'')+ "\""+ " "+ "\""+desc+ "\"";
 
     document.getElementById("command_exec").click();
 
@@ -183,12 +183,12 @@ window.onload = function funLoad() {
     selecetdIndustry = getIndustry(e.target.textContent);
     industryList.classList.remove('visible');
     let cta = document.getElementById("pushToGit")
-    if (Object.values(requiredVals).map(val => val.trim()).includes("") || selectedServices.length === 0 || selecetdIndustry.trim() === "") {
+    if(Object.values(requiredVals).map(val => val.trim()).includes("") || selectedServices.length === 0 || selecetdIndustry.trim() === ""){
       cta.classList.remove("enable")
       cta.classList.add("disable")
       cta.classList.remove("allow-click")
       cta.classList.add("no-click")
-    } else {
+    }else{
       cta.classList.remove("disable")
       cta.classList.add("enable")
       cta.classList.remove("no-click")
@@ -241,8 +241,8 @@ window.onload = function funLoad() {
 
   //configure cta
   document.getElementById("configure-env").addEventListener("click", updateConfigVars);
-  function updateConfigVars(e) {
-    document.getElementById("config_command_exec").href = `${compositeHref}${Object.values(config).toString().replaceAll(",", "%20")}`
+  function updateConfigVars(e){
+    document.getElementById("config_command_exec").href =`${compositeHref}${Object.values(config).toString().replaceAll(",", "%20")}`
     document.getElementById("config_command_exec").click();
   }
 
@@ -344,12 +344,12 @@ window.onload = function funLoad() {
     let showSeleted = document.getElementById("selected-services")
     showSeleted.textContent = selectedServices.toString().replaceAll(",", ", ")
     let cta = document.getElementById("pushToGit")
-    if (Object.values(requiredVals).map(val => val.trim()).includes("") || selectedServices.length === 0 || selecetdIndustry.trim() === "") {
+    if(Object.values(requiredVals).map(val => val.trim()).includes("") || selectedServices.length === 0 || selecetdIndustry.trim() === ""){
       cta.classList.remove("enable")
       cta.classList.add("disable")
       cta.classList.remove("allow-click")
       cta.classList.add("no-click")
-    } else {
+    }else{
       cta.classList.remove("disable")
       cta.classList.add("enable")
       cta.classList.remove("no-click")
@@ -391,12 +391,12 @@ window.onload = function funLoad() {
   function setPushToGitCTA(e) {
     requiredVals[e.target.id] = e.target.value
     let cta = document.getElementById("pushToGit")
-    if (Object.values(requiredVals).map(val => val.trim()).includes("") || selectedServices.length === 0 || selecetdIndustry.trim() === "") {
+    if(Object.values(requiredVals).map(val => val.trim()).includes("") || selectedServices.length === 0 || selecetdIndustry.trim() === ""){
       cta.classList.remove("enable")
       cta.classList.add("disable")
       cta.classList.remove("allow-click")
       cta.classList.add("no-click")
-    } else {
+    }else{
       cta.classList.remove("disable")
       cta.classList.add("enable")
       cta.classList.remove("no-click")

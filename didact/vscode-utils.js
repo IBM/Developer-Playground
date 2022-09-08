@@ -36,21 +36,19 @@ window.addEventListener('message', event => {
             console.log(typeof (data))
             break;
         case 'executing':
-            console.log(receivedOutput.outputData.cursor, receivedOutput.outputData.pointerEvents)
-            let timelineContainer = document.getElementsByClassName("timeline-container")[0]
-            timelineContainer.style.cursor = receivedOutput.outputData.cursor;
-            [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = receivedOutput.outputData.pointerEvents);
-            [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click") ? ele.style.pointerEvents = receivedOutput.outputData.pointerEvents : ele.style.pointerEvents = "none");
-            [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = receivedOutput.outputData.pointerEvents);
-            [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = receivedOutput.outputData.pointerEvents);
+            console.log(receivedOutput.outputData.elementId,receivedOutput.outputData.status)
+            if (receivedOutput.outputData.showSpinner)
+                document.getElementById(receivedOutput.outputData.elementId).nextSibling.classList.remove("hidden-state");
+            else
+                document.getElementById(receivedOutput.outputData.elementId).nextSibling.classList.add("hidden-state");
+            if (receivedOutput.outputData.status === "error") {
+                document.getElementById(receivedOutput.outputData.elementId).style.borderColor = "red";
+            } else if (receivedOutput.outputData.status === "success") {
+                document.getElementById(receivedOutput.outputData.elementId).style.borderColor = "green";
+            }
             if (receivedOutput.outputData.clickCTA) {
                 document.getElementById(receivedOutput.outputData.clickCTA).click();
             }
-            console.log(receivedOutput.outputData.parent,document.getElementById(receivedOutput.outputData.parent))
-            if (receivedOutput.outputData.showSpinner)
-                document.getElementById(receivedOutput.outputData.parent).nextSibling.classList.remove("hidden-state");
-            else
-                document.getElementById(receivedOutput.outputData.parent).nextSibling.classList.add("hidden-state");
             break;
     }
 });
@@ -65,8 +63,8 @@ window.addEventListener('message', event => {
             var silent = anchor.getAttribute("silent") ? true : false;
             var filePath = anchor.getAttribute("filePath");
             var preProcess = anchor.getAttribute("preProcess") ? true : false;
-            var parent = anchor.getAttribute("id")
-            console.log(parent, anchor)
+            var elementId = anchor.getAttribute("id")
+            console.log(elementId, anchor)
             /*inputFields["hostName"] = document.getElementById('hostname').value;
             inputFields["userName"] = document.getElementById('username').value;
             inputFields["password"] = document.getElementById('password').value;
@@ -87,7 +85,7 @@ window.addEventListener('message', event => {
                     command: 'sendcommand',
                     text: command,
                     inputFields: inputFields,
-                    parent: parent
+                    elementId: elementId
                 });
             }
             else if (action == "readfile") {
@@ -100,7 +98,7 @@ window.addEventListener('message', event => {
                     nextAction: nextAction,
                     preProcess: preProcess,
                     inputFields: inputFields,
-                    parent: parent
+                    elementId: elementId
                 });
             }
             else {
@@ -112,7 +110,7 @@ window.addEventListener('message', event => {
                     silent: silent,
                     nextAction: nextAction,
                     inputFields: inputFields,
-                    parent: parent
+                    elementId: elementId
                 });
             }
         }

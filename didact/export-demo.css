@@ -22,12 +22,14 @@ a:visited {
 
 .timeline-container {
     margin-top: 3rem;
+    margin-left: 1.5rem;
     display: inline-block;
 }
 
 .timeline {
     position: relative;
     padding: 0.5rem 1rem 1rem 4rem;
+    margin-bottom: 1rem;
 }
 
 .dot {
@@ -55,7 +57,7 @@ a:visited {
     width: 1px;
     background-color: white;
     left: 1.25rem;
-    bottom: 0rem;
+    bottom: -1rem;
     top: 0.6rem;
 }
 
@@ -237,6 +239,7 @@ a:visited {
 .section {
     margin-top: 0.313rem;
     margin-bottom: -3.125rem;
+    margin-left: 1.5rem;
 }
 
 .hidden-state {

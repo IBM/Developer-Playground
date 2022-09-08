@@ -42,9 +42,9 @@ window.addEventListener('message', event => {
             else
                 document.getElementById(receivedOutput.outputData.elementId).nextSibling.classList.add("hidden-state");
             if (receivedOutput.outputData.status === "error") {
-                document.getElementById(receivedOutput.outputData.elementId).style.borderColor = "red";
+                document.getElementById(receivedOutput.outputData.elementId.split("$")[0]).style.borderColor = "red";
             } else if (receivedOutput.outputData.status === "success") {
-                document.getElementById(receivedOutput.outputData.elementId).style.borderColor = "green";
+                document.getElementById(receivedOutput.outputData.elementId.split("$")[0]).style.borderColor = "green";
             }
             if (receivedOutput.outputData.clickCTA) {
                 document.getElementById(receivedOutput.outputData.clickCTA).click();

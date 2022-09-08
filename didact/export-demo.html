@@ -14,7 +14,7 @@
     <div style="margin-top:2rem"></div>
     <div id="workspaceID" class="hidden-state">$workspace_id</div>
     <div id="userID" class="hidden-state">$user_id</div>
-    <div id="environment" class="hidden-state">$environment</div>
+    <div id="environment" class="hidden-state">development</div>
     <div class="header">
         <div class="left-content">
             <div class="apptitle">Save/Share demo assets with community</div>
@@ -48,9 +48,9 @@
             </div>
             <button class="button is-dark is-medium" id="configure-env" title="Configure Environment">Configure
                 Environment</button>
-            <button id="config_command_exec" class="send-to-extension hidden-state" action="senddata" command=""
-                nextAction="get-project-list"></button><span class="spinner hidden-state"></span>
-            <button id="get-project-list" class="send-to-extension hidden-state" action="readfile"
+            <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
+                nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
+            <button id="configure-env$2" class="send-to-extension hidden-state" action="readfile"
                 command="cd /projects/techzone-demo/sandbox;python3.8 getProjects.py"
                 filePath="/projects/techzone-demo/sandbox/projectsData.json" preProcess="true"
                 silent="true"></button><span class="spinner hidden-state"></span>
@@ -218,7 +218,7 @@
                     </div>
                     <button class="button is-dark is-medium no-click disable" title="Push to github"
                         id="pushToGit">Publish</button>
-                    <button id="command_exec" class="send-to-extension hidden-state" action="senddata"
+                    <button id="pushToGit$1" class="send-to-extension hidden-state" action="senddata"
                         command=""></button><span class="spinner hidden-state"></span>
             </div>
             <span class="dot"></span>

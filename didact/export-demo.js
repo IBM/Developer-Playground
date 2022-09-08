@@ -136,10 +136,10 @@ window.onload = function funLoad() {
     }
     // let metadata=`{"industry":"${industry}","tags":"${["tags","asddsa","dsa"]}","author":"${author}","services":"${services}","demoName":"${demoName}"}`
     metadata = '\'' + JSON.stringify(metadata) + '\''
-    document.getElementById("command_exec").setAttribute("command",
+    document.getElementById("pushToGit$1").setAttribute("command",
       "bash /projects/techzone-demo/sandbox/github.sh " + "\"" + demoName.replace(/ /g, '') + "\"" + " " + metadata + " " + "\"" + userID.replace(/ /g, '') + "\"" + " " + "\"" + desc + "\"");
 
-    document.getElementById("command_exec").click();
+    document.getElementById("pushToGit$1").click();
 
   }
 
@@ -248,8 +248,8 @@ window.onload = function funLoad() {
   //configure cta
   document.getElementById("configure-env").addEventListener("click", updateConfigVars);
   function updateConfigVars(e) {
-    document.getElementById("config_command_exec").setAttribute("command", `${compositeHref}${Object.values(config).toString().replaceAll(",", "%20")}`)
-    document.getElementById("config_command_exec").click();
+    document.getElementById("configure-env$1").setAttribute("command", `${compositeHref}${Object.values(config).toString().replaceAll(",", "%20")}`)
+    document.getElementById("configure-env$1").click();
   }
 
   //enable managemnet dropdowns

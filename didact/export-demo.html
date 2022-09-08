@@ -14,7 +14,7 @@
     <div style="margin-top:2rem"></div>
     <div id="workspaceID" class="hidden-state">$workspace_id</div>
     <div id="userID" class="hidden-state">$user_id</div>
-    <div id="environment" class="hidden-state">development</div>
+    <div id="environment" class="hidden-state">$environment</div>
     <div class="header">
         <div class="left-content">
             <div class="apptitle">Save/Share demo assets with community</div>
@@ -32,7 +32,7 @@
                 <label>Hostname: </label><input class="env-variables" name="hostname" type="text" />
                 <label>User: </label><input class="env-variables" name="wkcuser" type="text" />
                 <label>Password: </label><input class="env-variables" name="password" type="password" />
-                <label class="hidden-state">API Key: </label><input class="env-variables hidden-state" name="api_key" type="text" />
+                <label>API Key: </label><input class="env-variables" name="api_key" type="text" />
             </div>
         </div>
     </div>
@@ -85,9 +85,9 @@
                         <div class="content">
                             <p>Export Users from the specified CPD cluster.</p>
                         </div>
-                        <button id="export-user-list" class="send-to-extension button is-dark is-medium"
+                        <button class="send-to-extension button is-dark is-medium" id="export-user-list"
                             title="Export User List" action="senddata"
-                            command="cd /projects/techzone-demo/sandbox/;python3.8 exportUsers.py users.csv">Export
+                            command="cd /projects/techzone-demo/sandbox/;python3.8 exportUsersv2.py users.csv">Export
                             User List</button><span class="spinner hidden-state"></span>
                         <span class="dot"></span>
                     </div>
@@ -133,11 +133,10 @@
                         <div class="content">
                             <p>Export the selected Governance Artifacts.</p>
                         </div>
-                        <button id="export-governance-artifacts" class="send-to-extension button is-dark is-medium"
+                        <button class="send-to-extension button is-dark is-medium" id="export-governance-artifacts"
                             title="Export Governance Artifacts" action="senddata"
                             command="cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py governance_artifacts.zip all;unzip governance_artifacts.zip -d governance_artifacts;python3.8 exportDataProtectionRules.py data_protection_rules.json">Export
-                            Artifacts</button><span class="spinner hidden-state"></span>
-                        <span class="dot"></span>
+                            Artifacts</button><span class="spinner hidden-state"></span><span class="dot"></span>
                     </div>
                 </details>
             </div>

@@ -45,6 +45,8 @@ window.addEventListener('message', event => {
                 document.getElementById(receivedOutput.outputData.elementId.split("$")[0]).style.borderColor = "red";
             } else if (receivedOutput.outputData.status === "success") {
                 document.getElementById(receivedOutput.outputData.elementId.split("$")[0]).style.borderColor = "green";
+            } else {
+                document.getElementById(receivedOutput.outputData.elementId.split("$")[0]).style.borderColor = "white";
             }
             if (receivedOutput.outputData.clickCTA) {
                 document.getElementById(receivedOutput.outputData.clickCTA).click();

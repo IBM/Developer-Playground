@@ -112,6 +112,21 @@ window.onload = function funLoad() {
   prerequisite.forEach(input => document.getElementsByName(input)[0].value = JSON.parse(localStorage[didact])[input])
 
   // .push related code
+  document.getElementById("private-git-toggle").addEventListener("change", showPrivateDemoOptions);
+  function showPrivateDemoOptions() {
+    if(document.getElementById("private-git-toggle").checked){
+      document.getElementById("private-git-url-label").classList.remove("hidden-state");
+      document.getElementById("private-git-url").classList.remove("hidden-state");
+      document.getElementById("private-git-access-token-label").classList.remove("hidden-state");
+      document.getElementById("private-git-access-token").classList.remove("hidden-state");
+    } else {
+      document.getElementById("private-git-url-label").classList.add("hidden-state");
+      document.getElementById("private-git-url").classList.add("hidden-state");
+      document.getElementById("private-git-access-token-label").classList.add("hidden-state");
+      document.getElementById("private-git-access-token").classList.add("hidden-state");
+    }
+  }
+
   document.getElementById("pushToGit").addEventListener("click", pushToGit);
   function pushToGit() {
     let industry = selecetdIndustry//document.getElementById("industry").value || ""
@@ -124,6 +139,8 @@ window.onload = function funLoad() {
     tags = tags.split(",")
     services = services.split(",")
     industry = industry.split(",")
+    let gitUrl = document.getElementById("private-git-url").value
+    let gitAccessToken = document.getElementById("private-git-access-token").value
     // JSON ARRAY
     let metadata = {
       "industries": industry,
@@ -134,11 +151,21 @@ window.onload = function funLoad() {
       "displayName": demoName,
       "desc": desc
     }
+    if(document.getElementById("private-git-toggle").checked){
+      metadata.isPrivate =true,
+      metadata.privateGitRepoUrl = gitUrl
+    }
+    console.log(gitUrl, gitAccessToken)
+    console.log(metadata)
     // let metadata=`{"industry":"${industry}","tags":"${["tags","asddsa","dsa"]}","author":"${author}","services":"${services}","demoName":"${demoName}"}`
     metadata = '\'' + JSON.stringify(metadata) + '\''
+    if(document.getElementById("private-git-toggle").checked){
+      document.getElementById("pushToGit$1").setAttribute("command",
+      "bash /projects/techzone-demo/sandbox/github.sh " + "\"" + demoName.replace(/ /g, '') + "\"" + " " + metadata + " " + "\"" + userID.replace(/ /g, '') + "\"" + " " + "\"" + desc + "\"" + " " + "\"" + gitUrl +"\""+ " " + "\"" + gitAccessToken+ "\"");
+    } else {
     document.getElementById("pushToGit$1").setAttribute("command",
       "bash /projects/techzone-demo/sandbox/github.sh " + "\"" + demoName.replace(/ /g, '') + "\"" + " " + metadata + " " + "\"" + userID.replace(/ /g, '') + "\"" + " " + "\"" + desc + "\"");
-
+    }
     document.getElementById("pushToGit$1").click();
 
   }
@@ -232,7 +259,7 @@ window.onload = function funLoad() {
       timelineContainer.style.opacity = 1;
       timelineContainer.style.cursor = "auto";
       [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "auto");
-      [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click")? ele.style.pointerEvents = "auto": ele.style.pointerEvents = "none");
+      [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click") ? ele.style.pointerEvents = "auto" : ele.style.pointerEvents = "none");
       [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
       [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
     } else {
@@ -420,26 +447,26 @@ window.onload = function funLoad() {
     }
   }
 
-function selectProject(e){
-  document.getElementById("selected-project").textContent = e.target.textContent
-  selectedProject = e.target.textContent;
-  let exportProjectCTA = document.getElementById("export-project")
-  exportProjectCTA.setAttribute("command",`cd /projects/techzone-demo/sandbox/;python3.8 exportProjectv3.py ${e.target.name} project_assets.zip`)
-  exportProjectCTA.classList.remove("disable")
-  exportProjectCTA.classList.add("enable")
-  exportProjectCTA.classList.remove("no-click")
-  exportProjectCTA.classList.add("allow-click")
-  projectList.classList.remove('visible');
-}
+  function selectProject(e) {
+    document.getElementById("selected-project").textContent = e.target.textContent
+    selectedProject = e.target.textContent;
+    let exportProjectCTA = document.getElementById("export-project")
+    exportProjectCTA.setAttribute("command", `cd /projects/techzone-demo/sandbox/;python3.8 exportProjectv3.py ${e.target.name} project_assets.zip`)
+    exportProjectCTA.classList.remove("disable")
+    exportProjectCTA.classList.add("enable")
+    exportProjectCTA.classList.remove("no-click")
+    exportProjectCTA.classList.add("allow-click")
+    projectList.classList.remove('visible');
+  }
   function renderData(e) {
     let elementModified = document.getElementById("data-fetched").value
-    if(elementModified === "project-list"){
-      [...document.getElementById(elementModified).getElementsByTagName("LI")].forEach(ele => ele.addEventListener("click",selectProject))
+    if (elementModified === "project-list") {
+      [...document.getElementById(elementModified).getElementsByTagName("LI")].forEach(ele => ele.addEventListener("click", selectProject))
     }
     document.getElementById("data-fetched").value = ""
   }
 
   let dataFetchInput = document.getElementById("data-fetched")
-  dataFetchInput.addEventListener("input",renderData)
+  dataFetchInput.addEventListener("input", renderData)
 };
 

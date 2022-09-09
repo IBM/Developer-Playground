@@ -5,12 +5,16 @@ window.onload = function funLoad() {
   compositeHref = compositeHref.replaceAll("$BRANCH", env)
 
   let prerequisite = ["hostname", "wkcuser", "password"]
-  let pushToGitRequiredFields = ["demoname", "tags", "author", "desc"]
-  requiredVals = {
+  let pushToGitRequiredFields = ["demoname", "tags", "author", "desc", "private-git-url", "private-git-access-token"]
+  let requiredVals = {
     demoname: "",
     tags: "",
     author: "",
     desc: "",
+  }
+  let privateGitRequired = {
+    "private-git-url": "",
+    "private-git-access-token": "",
   }
   let services = {
     analyticsengine: 'Analytics Engine Powered by Apache Spark',
@@ -114,7 +118,7 @@ window.onload = function funLoad() {
   // .push related code
   document.getElementById("private-git-toggle").addEventListener("change", showPrivateDemoOptions);
   function showPrivateDemoOptions() {
-    if(document.getElementById("private-git-toggle").checked){
+    if (document.getElementById("private-git-toggle").checked) {
       document.getElementById("private-git-url-label").classList.remove("hidden-state");
       document.getElementById("private-git-url").classList.remove("hidden-state");
       document.getElementById("private-git-access-token-label").classList.remove("hidden-state");
@@ -124,6 +128,32 @@ window.onload = function funLoad() {
       document.getElementById("private-git-url").classList.add("hidden-state");
       document.getElementById("private-git-access-token-label").classList.add("hidden-state");
       document.getElementById("private-git-access-token").classList.add("hidden-state");
+    }
+    let cta = document.getElementById("pushToGit")
+    if (document.getElementById("private-git-toggle").checked) {
+      if (Object.values(privateGitRequired).map(val => val.trim()).includes("")) {
+        cta.classList.remove("enable")
+        cta.classList.add("disable")
+        cta.classList.remove("allow-click")
+        cta.classList.add("no-click")
+      } else {
+        cta.classList.remove("disable")
+        cta.classList.add("enable")
+        cta.classList.remove("no-click")
+        cta.classList.add("allow-click")
+      }
+    } else {
+      if (Object.values(requiredVals).map(val => val.trim()).includes("") || selectedServices.length === 0 || selecetdIndustry.trim() === "") {
+        cta.classList.remove("enable")
+        cta.classList.add("disable")
+        cta.classList.remove("allow-click")
+        cta.classList.add("no-click")
+      } else {
+        cta.classList.remove("disable")
+        cta.classList.add("enable")
+        cta.classList.remove("no-click")
+        cta.classList.add("allow-click")
+      }
     }
   }
 
@@ -151,20 +181,20 @@ window.onload = function funLoad() {
       "displayName": demoName,
       "desc": desc
     }
-    if(document.getElementById("private-git-toggle").checked){
-      metadata.isPrivate =true,
-      metadata.privateGitRepoUrl = gitUrl
+    if (document.getElementById("private-git-toggle").checked) {
+      metadata.isPrivate = true,
+        metadata.privateGitRepoUrl = gitUrl
     }
     console.log(gitUrl, gitAccessToken)
     console.log(metadata)
     // let metadata=`{"industry":"${industry}","tags":"${["tags","asddsa","dsa"]}","author":"${author}","services":"${services}","demoName":"${demoName}"}`
     metadata = '\'' + JSON.stringify(metadata) + '\''
-    if(document.getElementById("private-git-toggle").checked){
+    if (document.getElementById("private-git-toggle").checked) {
       document.getElementById("pushToGit$1").setAttribute("command",
-      "bash /projects/techzone-demo/sandbox/github.sh " + "\"" + demoName.replace(/ /g, '') + "\"" + " " + metadata + " " + "\"" + userID.replace(/ /g, '') + "\"" + " " + "\"" + desc + "\"" + " " + "\"" + gitUrl +"\""+ " " + "\"" + gitAccessToken+ "\"");
+        "bash /projects/techzone-demo/sandbox/github.sh " + "\"" + demoName.replace(/ /g, '') + "\"" + " " + metadata + " " + "\"" + userID.replace(/ /g, '') + "\"" + " " + "\"" + desc + "\"" + " " + "\"" + gitUrl + "\"" + " " + "\"" + gitAccessToken + "\"");
     } else {
-    document.getElementById("pushToGit$1").setAttribute("command",
-      "bash /projects/techzone-demo/sandbox/github.sh " + "\"" + demoName.replace(/ /g, '') + "\"" + " " + metadata + " " + "\"" + userID.replace(/ /g, '') + "\"" + " " + "\"" + desc + "\"");
+      document.getElementById("pushToGit$1").setAttribute("command",
+        "bash /projects/techzone-demo/sandbox/github.sh " + "\"" + demoName.replace(/ /g, '') + "\"" + " " + metadata + " " + "\"" + userID.replace(/ /g, '') + "\"" + " " + "\"" + desc + "\"");
     }
     document.getElementById("pushToGit$1").click();
 
@@ -432,18 +462,36 @@ window.onload = function funLoad() {
   pushToGitRequiredFields.forEach(id => document.getElementById(id).addEventListener("input", setPushToGitCTA))
 
   function setPushToGitCTA(e) {
-    requiredVals[e.target.id] = e.target.value
     let cta = document.getElementById("pushToGit")
-    if (Object.values(requiredVals).map(val => val.trim()).includes("") || selectedServices.length === 0 || selecetdIndustry.trim() === "") {
-      cta.classList.remove("enable")
-      cta.classList.add("disable")
-      cta.classList.remove("allow-click")
-      cta.classList.add("no-click")
+    if (e.target.id === "private-git-url" || e.target.id === "private-git-access-token") {
+      privateGitRequired[e.target.id] = e.target.value
     } else {
-      cta.classList.remove("disable")
-      cta.classList.add("enable")
-      cta.classList.remove("no-click")
-      cta.classList.add("allow-click")
+      requiredVals[e.target.id] = e.target.value
+    }
+    if (document.getElementById("private-git-toggle").checked) {
+      if (Object.values(privateGitRequired).map(val => val.trim()).includes("") || Object.values(requiredVals).map(val => val.trim()).includes("") || selectedServices.length === 0 || selecetdIndustry.trim() === "") {
+        cta.classList.remove("enable")
+        cta.classList.add("disable")
+        cta.classList.remove("allow-click")
+        cta.classList.add("no-click")
+      } else {
+        cta.classList.remove("disable")
+        cta.classList.add("enable")
+        cta.classList.remove("no-click")
+        cta.classList.add("allow-click")
+      }
+    } else {
+      if (Object.values(requiredVals).map(val => val.trim()).includes("") || selectedServices.length === 0 || selecetdIndustry.trim() === "") {
+        cta.classList.remove("enable")
+        cta.classList.add("disable")
+        cta.classList.remove("allow-click")
+        cta.classList.add("no-click")
+      } else {
+        cta.classList.remove("disable")
+        cta.classList.add("enable")
+        cta.classList.remove("no-click")
+        cta.classList.add("allow-click")
+      }
     }
   }
 

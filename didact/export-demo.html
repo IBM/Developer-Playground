@@ -32,7 +32,7 @@
                 <label>Hostname: </label><input class="env-variables" name="hostname" type="text" />
                 <label>User: </label><input class="env-variables" name="wkcuser" type="text" />
                 <label>Password: </label><input class="env-variables" name="password" type="password" />
-                <label>API Key: </label><input class="env-variables" name="api_key" type="text" />
+                <label class="hidden-state">API Key: </label><input class="env-variables hidden-state" name="api_key" type="text" />
             </div>
         </div>
     </div>
@@ -176,6 +176,15 @@
                     <div class="content">
                         <!-- <p>Select the action to perform in the configured cp4d instance</p> -->
                         <div class="env-config">
+                            <label>Private Demo</label>
+                            <label class="switch">
+                                <input id="private-git-toggle" type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                            <label id="private-git-url-label" class="hidden-state">Git URL:</label>
+                            <input type="text" id="private-git-url" class="hidden-state">
+                            <lable id="private-git-access-token-label" class="hidden-state">Git Access Token:</lable>
+                            <input type="text" id="private-git-access-token" class="hidden-state">
                             <label>Demo Name*</label>
                             <input type="text" id="demoname">
                             <label>Industry*</label>
@@ -216,8 +225,7 @@
                         </div>
                         <p style="margin-top:1rem;"><b>Selected Services: </b><span id="selected-services"></span></p>
                     </div>
-                    <button class="button is-dark is-medium no-click disable" title="Push to github"
-                        id="pushToGit">Publish</button>
+                    <button id="pushToGit" class="button is-dark is-medium no-click disable" title="Push to github">Publish</button>
                     <button id="pushToGit$1" class="send-to-extension hidden-state" action="senddata"
                         command=""></button><span class="spinner hidden-state"></span>
             </div>

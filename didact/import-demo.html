@@ -29,11 +29,11 @@
                 <label>Hostname: </label><input class="env-variables" name="hostname" type="text" />
                 <label>User: </label><input class="env-variables" name="wkcuser" type="text" />
                 <label>Password: </label><input class="env-variables" name="password" type="password" />
-                <label>API Key: </label><input class="env-variables" name="api_key" type="text" />
+                <label class="hidden-state">API Key: </label><input class="env-variables hidden-state" name="api_key" type="text" />
             </div>
         </div>
     </div>
-    <div class="section">
+    <div class="section" style="margin-top:5rem;">
         <p style="font-size:24px">Instructions</p>
         <p>Please follow all the below steps in proper sequence.</p>
     </div>
@@ -122,8 +122,10 @@
             <div class="content">
                 <p>Open the CPD cluster to  verify the resources created.</p>
             </div>
-            <a id="open-cpd-cluster" class="button is-dark is-medium" title="Open Cluster"
-                href="">Open CPD Cluster</a>
+            <button class="button is-dark is-medium" title="Open Cluster"
+            onclick="() => document.getElementById('open-cpd-cluster').click();">Open CPD Cluster</a>
+            <a id="open-cpd-cluster" class="hidden-state" title="Open Cluster"
+                href=""></a>
             <span class="dot"></span>
         </div>
     </div>

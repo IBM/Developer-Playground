@@ -1,7 +1,7 @@
 window.onload = function () {
     // console.log(document.getElementById("execute"))
     let env = document.getElementById("environment").textContent
-    let compositeHref = "git clone https://github.com/IBM/CPDemoFramework -b techzone --single-branch techzone;cd ${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2;sh configure-env.sh"    
+    let compositeHref = "git clone https://github.com/IBM/CPDemoFramework -b techzone --single-branch ${CHE_PROJECTS_ROOT}/techzone-demo;cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;sh configure-env.sh"    
     let prerequisite = ["server", "api_token", "kubeadmin_user", "kubeadmin_pass", "icr_key"]
     let cpiSelectedServices = []
     let servicescpi = {
@@ -120,7 +120,7 @@ window.onload = function () {
       }
       let storage = document.getElementById("cr_storage_value").value;
       document.getElementById("command_exec").href =
-        "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox%20terminal$$cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2/;pip3.8%20install%20PyYAML;python3.8%20updateYaml.py%20"+component_list+"%20"+storage+"%20"+cp4iVersion+";bash deploy.sh";    
+        "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox%20terminal$$cd%20${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/;pip3.8%20install%20PyYAML;python3.8%20updateYaml.py%20"+component_list+"%20"+storage+"%20"+cp4iVersion+";bash deploy.sh";    
         document.getElementById("command_exec").click();
     }
   

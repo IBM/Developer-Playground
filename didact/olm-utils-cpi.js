@@ -1,7 +1,7 @@
 window.onload = function () {
     // console.log(document.getElementById("execute"))
-    let env = document.getElementById("environment").textContent
-    let compositeHref = "git clone https://github.com/IBM/CPDemoFramework -b techzone --single-branch ${CHE_PROJECTS_ROOT}/techzone-demo;cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;sh configure-env.sh"    
+    // let env = document.getElementById("environment").textContent
+    let compositeHref = "git clone https://github.com/IBM/CPDemoFramework -b techzone --single-branch ${CHE_PROJECTS_ROOT}/techzone-demo;cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;sh configure-env.sh"   
     let prerequisite = ["server", "api_token", "kubeadmin_user", "kubeadmin_pass", "icr_key"]
     let cpiSelectedServices = []
     let servicescpi = {
@@ -65,9 +65,9 @@ window.onload = function () {
       kubeadmin_pass: localData.kubeadmin_pass.trim(),
       icr_key: localData.icr_key.trim(),
     }
-      //Modify configure-env with localstorage values
-      let cta = document.getElementById("configure-env")
-      cta.href = `${compositeHref}${Object.values(config).toString().replaceAll(",", " ")}`  
+    //   //Modify configure-env with localstorage values
+    //   let cta = document.getElementById("configure-env")
+    //   cta.href = `${compositeHref}${Object.values(config).toString().replaceAll(",", " ")}`  
     //Get env values
     let envVariables = document.getElementsByClassName('env-variables');
     [...envVariables].forEach((task) => {
@@ -206,3 +206,4 @@ window.onload = function () {
       })
     }
   };
+  

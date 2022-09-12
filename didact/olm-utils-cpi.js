@@ -203,4 +203,18 @@ window.onload = function () {
         }
       })
     }
+    function selectService(e) {
+        document.getElementById("selected-component").textContent = e.target.textContent
+        input.setAttribute("checked", "true")
+    }
+    function renderData(e) {
+        let elementModified = document.getElementById("data-fetched").value
+        if (elementModified === "cpi-service-list") {
+          [...document.getElementById(elementModified).getElementsByTagName("LI")].forEach(ele => ele.addEventListener("click", selectService))
+        }
+        document.getElementById("data-fetched").value = ""
+      }
+    
+      let dataFetchInput = document.getElementById("data-fetched")
+      dataFetchInput.addEventListener("input", renderData)
   };

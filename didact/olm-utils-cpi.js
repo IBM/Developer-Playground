@@ -1,6 +1,4 @@
 window.onload = function () {
-    // console.log(document.getElementById("execute"))
-    // let env = document.getElementById("environment").textContent
     let compositeHref = "git clone https://github.com/IBM/CPDemoFramework -b techzone --single-branch ${CHE_PROJECTS_ROOT}/techzone-demo;cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;sh configure-env.sh"   
     let prerequisite = ["server", "api_token", "kubeadmin_user", "kubeadmin_pass", "icr_key"]
     let cpiSelectedServices = []
@@ -105,7 +103,7 @@ window.onload = function () {
         //configure cta
         document.getElementById("configure-env").addEventListener("click", updateConfigVars);
         function updateConfigVars(e) {
-            document.getElementById("configure-env$1").setAttribute("command", `${compositeHref}${Object.values(config).toString().replaceAll(",", "%20")}`)
+            document.getElementById("configure-env$1").setAttribute("command", `${compositeHref}${Object.keys(config).map(val => `${document.getElementsByName(val)[0].value || "\"\""}`).toString().replaceAll(",","%20")}`)
             document.getElementById("configure-env$1").click();
           }
    
@@ -206,4 +204,3 @@ window.onload = function () {
       })
     }
   };
-  

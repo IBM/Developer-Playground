@@ -1,5 +1,5 @@
 window.onload = function () {
-    let compositeHref = "git clone https://github.com/IBM/CPDemoFramework -b techzone --single-branch ${CHE_PROJECTS_ROOT}/techzone-demo;cd ${CHE_PROJECTS_ROOT}/-demo/olm-utils-v2;sh configure-env.sh"   
+    let compositeHref = "git clone https://github.com/IBM/CPDemoFramework -b techzone --single-branch ${CHE_PROJECTS_ROOT}/techzone-demo;cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;sh configure-env.sh"   
     let prerequisite = ["server", "api_token", "kubeadmin_user", "kubeadmin_pass", "icr_key"]
     let cpiSelectedServices = []
     let servicescpi = {
@@ -204,4 +204,3 @@ window.onload = function () {
       })
     }
   };
-  

@@ -69,7 +69,7 @@
             <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
                 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
             <button id="configure-env$2" class="send-to-extension hidden-state" action="readfile"
-                command="cd /projects/techzone-demo/olm-utils-v2;python3.8 getServiceList.py"
+                command="cd /projects/techzon-demo/olm-utils-v2;python3.8 getServiceList.py"
                 filePath="/projects/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
                 silent="true"></button><span class="spinner hidden-state"></span>
             <span class="dot"></span>
@@ -87,10 +87,9 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             <div id="cpi-service-list" class="dropdown-check-list" tabindex="100">
                                 <span id="selected-component" class="anchor">Select Components</span>
-                                <div class="items">
-                                    <input id="cpi-services-search" type="search" placeholder="Search components" style="width: 100%" />
-                                    <ul id="cpi-git-services"></ul>
-                                </div>
+                                    <!-- <input id="cpi-services-search" type="search" placeholder="Search components" style="width: 100%" /> -->
+                                    <ul id="cpi-git-services">
+                                    </ul>
                             </div>
                         </div>
                         <p style="margin-top:1rem"><b>Selected Services: </b><span id="cpi-selected-services"></span></p>

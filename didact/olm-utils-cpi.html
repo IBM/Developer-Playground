@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="$$rootcsspath$$">
+  <link rel="stylesheet" href="olm-utils.css">
   <style>
     .header {
       background-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/video_insights.jpeg");
@@ -69,17 +69,15 @@
             <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
                 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
             <button id="configure-env$2" class="send-to-extension hidden-state" action="readfile"
-                command="cd /projects/techzone-demo/olm-utils-v2;python3.8 getServiceList.py"
-                filePath="/projects/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
+                command="cd /projects/techzone/olm-utils-v2;python3.8 getServiceList.py"
+                filePath="/projects/techzone/olm-utils-v2/serviceList.json" preProcess="true"
                 silent="true"></button><span class="spinner hidden-state"></span>
-            
             <span class="dot"></span>
         </div>
         <div class="timeline">
             <div class="content">
-                    CP4I
-                    <br><br>
-                <div>
+                    <p>CP4I</p>
+                <div style="padding: 1.5rem;">
                     <div class="content">
                         <p>Deploy custom resources for selected CP4I services</p>
                         <div class="env-config">
@@ -115,7 +113,7 @@
                             </select>
                         </div>
                     </div>
-                
+                    <br /><br />
                     <button class="button is-dark is-medium" title="Execute" id="install_cpi">Install selected services</button>
                     <br /><br />
                     <div class="content">
@@ -123,12 +121,12 @@
                 </div>
                 <button class="send-to-extension button is-dark is-medium" id="install_cpi"
                             title="Clean up" action="senddata"
-                            command="cd /projects/techzone-demo/olm-utils-v2/;sandbox terminal$$sh delete.sh">Clean up</button><span class="spinner hidden-state"></span><span class="dot"></span>
+                            command="cd /projects/techzone/olm-utils-v2/;sandbox terminal$$sh delete.sh">Clean up</button><span class="spinner hidden-state"></span><span class="dot"></span>
                                 </div>
         <span class="dot"></span>
         </div>
     </div>
 </body>
-<script src="$$rootjspath$$"></script>
-<script src="$$rootvscodeutilspath$$"></script>
+<script src="olm-utils.js"></script>
+<!-- <script src="$$rootvscodeutilspath$$"></script> -->
 </html>

@@ -57,7 +57,7 @@ window.onload = function () {
   
     //default data
     let config = {
-      server: localData.server.trim()+",",
+      server: localData.server.trim(),
       api_token: localData.api_token.trim(),
       kubeadmin_user: localData.kubeadmin_user.trim(),
       kubeadmin_pass: localData.kubeadmin_pass.trim(),

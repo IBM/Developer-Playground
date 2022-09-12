@@ -1,5 +1,5 @@
 window.onload = function () {
-    let compositeHref = "git clone https://github.com/IBM/CPDemoFramework -b techzone --single-branch ${CHE_PROJECTS_ROOT}/techzone-demo;cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;sh configure-env.sh"   
+    let compositeHref = "git clone https://github.com/IBM/CPDemoFramework -b techzone --single-branch ${CHE_PROJECTS_ROOT}/techzone-demo;cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;sh configure-env.sh "   
     let prerequisite = ["server", "api_token", "kubeadmin_user", "kubeadmin_pass", "icr_key"]
     let cpiSelectedServices = []
     let servicescpi = {
@@ -203,4 +203,18 @@ window.onload = function () {
         }
       })
     }
+    function selectService(e) {
+        document.getElementById("selected-component").textContent = e.target.textContent
+        input.setAttribute("checked", "true")
+    }
+    function renderData(e) {
+        let elementModified = document.getElementById("data-fetched").value
+        if (elementModified === "cpi-service-list") {
+          [...document.getElementById(elementModified).getElementsByTagName("LI")].forEach(ele => ele.addEventListener("click", selectService))
+        }
+        document.getElementById("data-fetched").value = ""
+      }
+    
+      let dataFetchInput = document.getElementById("data-fetched")
+      dataFetchInput.addEventListener("input", renderData)
   };

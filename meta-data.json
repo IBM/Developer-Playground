@@ -19,6 +19,7 @@
         "aws-healthcare": "AWS Proactive Healthcare Management System",
         "test":"This is for testing",
         "export-demo": "Export Demo for CP4D",
-        "techzone-cpd-test": "Techzone CPD Test"
+        "techzone-cpd-test": "Techzone CPD Test",
+        "olm-utils-cpi": "Techzone CP4I OLM Utils"
     }
 }

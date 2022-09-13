@@ -66,8 +66,8 @@ window.addEventListener('message', event => {
             var filePath = anchor.getAttribute("filePath");
             var preProcess = anchor.getAttribute("preProcess") ? true : false;
             var elementId = anchor.getAttribute("id")
-            var numSuccess = anchor.getAttribute("numSuccess") ? anchor.getAttribute("numSuccess") : 1
-            console.log(elementId, anchor)
+            var numSuccess = anchor.getAttribute("numSuccess") ? parseInt(anchor.getAttribute("numSuccess")) : 1
+            console.log(typeof(numSuccess))
             /*inputFields["hostName"] = document.getElementById('hostname').value;
             inputFields["userName"] = document.getElementById('username').value;
             inputFields["password"] = document.getElementById('password').value;

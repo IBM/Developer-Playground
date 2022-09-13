@@ -1,5 +1,5 @@
 window.onload = function () {
-  let compositeHref = "git clone https://github.com/IBM/CPDemoFramework -b techzone-fk --single-branch techzone-demo;cd%20./techzone-demo/olm-utils-v2;sh%20configure-env.sh%20"   
+  let compositeHref = "git clone https://github.com/nupurnegi/CPDemoFramework -b techzone --single-branch techzone-demo;cd%20./techzone-demo/olm-utils-v2;sh%20configure-env.sh%20"   
   let prerequisite = ["server", "api_token", "kubeadmin_user", "kubeadmin_pass", "icr_key"]
   let services = {
     "analyticsengine": 'Analytics Engine Powered by Apache Spark',

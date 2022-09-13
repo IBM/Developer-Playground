@@ -25,5 +25,6 @@
         "slackSupportURL":"https://ibm-analytics.slack.com/app_redirect?channel=C03MHBJ2FTN",
         "showGitSupport": true,
         "showIntermediatePage": true,
-        "showDeleteWorkspace": true
+        "showDeleteWorkspace": true,
+        "techzoneProduct": "Import Demo for CP4D"
 }

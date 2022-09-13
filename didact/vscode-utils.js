@@ -66,7 +66,8 @@ window.addEventListener('message', event => {
             var filePath = anchor.getAttribute("filePath");
             var preProcess = anchor.getAttribute("preProcess") ? true : false;
             var elementId = anchor.getAttribute("id")
-            console.log(elementId, anchor)
+            var numSuccess = anchor.getAttribute("numSuccess") ? parseInt(anchor.getAttribute("numSuccess")) : 1
+            console.log(typeof(numSuccess))
             /*inputFields["hostName"] = document.getElementById('hostname').value;
             inputFields["userName"] = document.getElementById('username').value;
             inputFields["password"] = document.getElementById('password').value;
@@ -100,7 +101,8 @@ window.addEventListener('message', event => {
                     nextAction: nextAction,
                     preProcess: preProcess,
                     inputFields: inputFields,
-                    elementId: elementId
+                    elementId: elementId,
+                    numSuccess: numSuccess
                 });
             }
             else {
@@ -112,7 +114,8 @@ window.addEventListener('message', event => {
                     silent: silent,
                     nextAction: nextAction,
                     inputFields: inputFields,
-                    elementId: elementId
+                    elementId: elementId,
+                    numSuccess: numSuccess
                 });
             }
         }

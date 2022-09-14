@@ -214,7 +214,7 @@ window.onload = function () {
     Object.keys(services).forEach(id => {
          let li = document.createElement("li");
          let input = document.createElement("input");
-         if(id == selectedServices)
+         if(id === selectedServices)
            input.setAttribute("checked", true)
          input.setAttribute("value", id)
          input.setAttribute("name", "cr-services")

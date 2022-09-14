@@ -1,5 +1,5 @@
 window.onload = function () {
-  let compositeHref = "git clone https://github.com/nupurnegi/CPDemoFramework -b techzone --single-branch techzone-demo;cd%20./techzone-demo/olm-utils-v2;sh%20configure-env.sh%20"   
+  let compositeHref = "git clone https://github.com/IBM/CPDemoFramework -b techzone-fk --single-branch techzone-demo;cd%20./techzone-demo/olm-utils-v2;sh%20configure-env.sh%20"   
   let prerequisite = ["server", "api_token", "kubeadmin_user", "kubeadmin_pass", "icr_key"]
   let services = {
     "analyticsengine": 'Analytics Engine Powered by Apache Spark',
@@ -144,12 +144,12 @@ window.onload = function () {
   // Get the dropdown elements
   let serviceList = document.getElementById('cr-service-list');  
   
-  //Open close dropdowns cp4d
-  document.onclick = function (e) {
-      if (e.target.parentElement !== serviceList && e.target.name !== "cr-services" && e.target.nodeName !== "LI" && e.target.nodeName !== "INPUT") {
-          serviceList.classList.remove('visible');
-    }
-  };
+  // //Open close dropdowns cp4d
+  // document.onclick = function (e) {
+  //     if (e.target.parentElement !== serviceList && e.target.name !== "cr-services" && e.target.nodeName !== "LI" && e.target.nodeName !== "INPUT") {
+  //         serviceList.classList.remove('visible');
+  //   }
+  // };
   serviceList.getElementsByClassName('anchor')[0].onclick = function (evt) {
       if (serviceList.classList.contains('visible'))
       serviceList.classList.remove('visible');
@@ -157,17 +157,6 @@ window.onload = function () {
       serviceList.classList.add('visible');
   }
   
-  let gitServicesList = document.getElementById("cr-git-services");
-  Object.keys(services).forEach(id => {
-      let li = document.createElement("li");
-      let input = document.createElement("input");
-      input.setAttribute("value", id)
-      input.setAttribute("name", "cr-services")
-      input.setAttribute("type", "checkbox")
-      li.appendChild(input)
-      li.appendChild(document.createTextNode(services[id]));
-      gitServicesList.appendChild(li);
-    })
 
   //Get selected values
   let gitServices = document.getElementsByName("cr-services");
@@ -200,7 +189,7 @@ window.onload = function () {
       }
     }
 
-  //Search in the dropdown
+  // Search in the dropdown
   // let searchItem = document.getElementById("cr-services-search")
   // searchItem.addEventListener("input", filterServiceList)
 
@@ -219,23 +208,29 @@ window.onload = function () {
   //   })
   // }
   function selectService(e) {
-    document.getElementById("selected-service").textContent = e.target.textContent
+    // document.getElementById("selected-service").textContent = e.target.textContent
     selectedServices = e.target.textContent;
-    // let exportProjectCTA = document.getElementById("export-project")
-    // exportProjectCTA.setAttribute("command", `cd /projects/techzone-demo/sandbox/;python3.8 exportProjectv3.py ${e.target.name} project_assets.zip`)
-    // exportProjectCTA.classList.remove("disable")
-    // exportProjectCTA.classList.add("enable")
-    // exportProjectCTA.classList.remove("no-click")
-    // exportProjectCTA.classList.add("allow-click")
-    serviceList.classList.remove('visible');
+    // let gitServicesList = document.getElementById("cr-git-services");
+    // Object.keys(services).forEach(id => {
+    //     let li = document.createElement("li");
+    //     let input = document.createElement("input");
+    //     if(service in dataFetchInput.value)
+    //       input.setAttribute("checked", true)
+    //     input.setAttribute("value", id)
+    //     input.setAttribute("name", "cr-services")
+    //     input.setAttribute("type", "checkbox")
+    //     li.appendChild(input)
+    //     li.appendChild(document.createTextNode(services[id]));
+    //     gitServicesList.appendChild(li);
+    //   })
   }
+  
   function renderData(e) {
     let elementModified = document.getElementById("data-fetched").value
     if (elementModified === "cr-service-list") {
       [...document.getElementById(elementModified).getElementsByTagName("LI")].forEach(ele => ele.addEventListener("click", selectService))
     }
     document.getElementById("data-fetched").value = ""
-    // console.log("funtion called")
   }
 
   let dataFetchInput = document.getElementById("data-fetched")

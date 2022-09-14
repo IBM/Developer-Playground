@@ -146,7 +146,7 @@ window.onload = function () {
       }
       let storage = document.getElementById("cr_storage_value").value;
       document.getElementById("command_exec").href =
-        "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox%20terminal$$cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2/;pip3.8%20install%20PyYAML;python3.8%20updateConfig.py%20"+component_list+"%20"+storage+"%20"+cp4dVersion+"%20cp4d;bash deploy.sh cp4d";
+        "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox%20terminal$$cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2/;pip3.8%20install%20PyYAML;python3.8%20updateYaml.py%20"+component_list+"%20"+storage+"%20"+cp4dVersion+"%20cp4d;bash deploy.sh cp4d";
       document.getElementById("command_exec").click();
     }
 

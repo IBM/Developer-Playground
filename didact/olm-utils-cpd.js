@@ -156,7 +156,17 @@ window.onload = function () {
       else
       serviceList.classList.add('visible');
   }
-  
+  let gitServicesList = document.getElementById("cr-git-services");
+    Object.keys(services).forEach(id => {
+         let li = document.createElement("li");
+         let input = document.createElement("input");
+         input.setAttribute("value", id)
+         input.setAttribute("name", "cr-services")
+         input.setAttribute("type", "checkbox")
+         li.appendChild(input)
+         li.appendChild(document.createTextNode(services[id]));
+         gitServicesList.appendChild(li);
+       })
 
   //Get selected values
   let gitServices = document.getElementsByName("cr-services");
@@ -211,16 +221,16 @@ window.onload = function () {
     document.getElementById("cr-selected-services").textContent = e.target.textContent
     selectedServices = e.target.textContent;
     let gitServicesList = document.getElementById("cr-git-services");
-    Object.keys(services).forEach(id => {
+    Object.keys(selectedServices).forEach(id => {
          let li = document.createElement("li");
          let input = document.createElement("input");
-         if(id === selectedServices)
-           input.setAttribute("checked", true)
+//          if(id === selectedServices)
+         input.setAttribute("checked", true)
          input.setAttribute("value", id)
          input.setAttribute("name", "cr-services")
          input.setAttribute("type", "checkbox")
          li.appendChild(input)
-         li.appendChild(document.createTextNode(services[id]));
+         li.appendChild(document.createTextNode(selectedServices[id]));
          gitServicesList.appendChild(li);
        })
   }

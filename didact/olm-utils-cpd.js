@@ -208,21 +208,21 @@ window.onload = function () {
   //   })
   // }
   function selectService(e) {
-    // document.getElementById("selected-service").textContent = e.target.textContent
+    document.getElementById("cr-selected-services").textContent = e.target.textContent
     selectedServices = e.target.textContent;
-    // let gitServicesList = document.getElementById("cr-git-services");
-    // Object.keys(services).forEach(id => {
-    //     let li = document.createElement("li");
-    //     let input = document.createElement("input");
-    //     if(service in dataFetchInput.value)
-    //       input.setAttribute("checked", true)
-    //     input.setAttribute("value", id)
-    //     input.setAttribute("name", "cr-services")
-    //     input.setAttribute("type", "checkbox")
-    //     li.appendChild(input)
-    //     li.appendChild(document.createTextNode(services[id]));
-    //     gitServicesList.appendChild(li);
-    //   })
+    let gitServicesList = document.getElementById("cr-git-services");
+    Object.keys(services).forEach(id => {
+         let li = document.createElement("li");
+         let input = document.createElement("input");
+         if(id == selectedServices)
+           input.setAttribute("checked", true)
+         input.setAttribute("value", id)
+         input.setAttribute("name", "cr-services")
+         input.setAttribute("type", "checkbox")
+         li.appendChild(input)
+         li.appendChild(document.createTextNode(services[id]));
+         gitServicesList.appendChild(li);
+       })
   }
   
   function renderData(e) {

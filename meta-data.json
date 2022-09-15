@@ -20,6 +20,9 @@
         "test":"This is for testing",
         "export-demo": "Export Demo for CP4D",
         "techzone-cpd-test": "Techzone CPD Test",
-        "olm-utils-cpi": "Techzone CP4I OLM Utils"
+        "olm-utils-cpi": "Techzone CP4I OLM Utils",
+        "olm-utils-cpd": "Techzone CP4D OLM Utils",
+        "import-demo": "Import Demo for CP4D",
+        "import-all-demo": "Import all Demo for CP4D"
     }
 }

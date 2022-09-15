@@ -300,6 +300,8 @@ window.onload = function funLoad() {
       [...configCTA.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
       [...configCTA.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
     } else {
+      let timelineCTA = timelineContainer.getElementsByClassName("timeline");
+      [...timelineCTA].forEach(ele => ele.style.opacity=0.5)
       //timelineContainer.style.opacity = 0.5;
       timelineContainer.style.cursor = "not-allowed";
       [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");

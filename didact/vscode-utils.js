@@ -48,7 +48,7 @@ window.addEventListener('message', event => {
             } else {
                 document.getElementById(receivedOutput.outputData.elementId.split("$")[0]).style.borderColor = "white";
             }
-            if (receivedOutput.outputData.clickCTA) {
+            if (receivedOutput.outputData.status === "success" && receivedOutput.outputData.clickCTA) {
                 document.getElementById(receivedOutput.outputData.clickCTA).click();
             }
             break;

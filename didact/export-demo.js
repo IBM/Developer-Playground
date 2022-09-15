@@ -313,7 +313,8 @@ window.onload = function funLoad() {
 
   document.getElementById("enable-timeline").addEventListener("click",activateRemainingCTA)
   function activateRemainingCTA(){
-      timelineContainer.style.opacity = 1;
+      let timelineCTA = timelineContainer.getElementsByClassName("timeline");
+      [...timelineCTA].forEach(ele => ele.style.opacity=1)
       timelineContainer.style.cursor = "auto";
       [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "auto");
       [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click") ? ele.style.pointerEvents = "auto" : ele.style.pointerEvents = "none");

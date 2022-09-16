@@ -22,5 +22,11 @@
 		"name": "Techzone CPD Test",
 		"title": "techzone-cpd-test",
 		"description": "Techzone CPD Test"
+	},
+	{
+		"id": "cpi-test",
+		"name": "Techzone CPI Test",
+		"title": "cpi-test",
+		"description": "Techzone CPI Test"
 	}
 ]

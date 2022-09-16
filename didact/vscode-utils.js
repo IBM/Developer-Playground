@@ -33,9 +33,33 @@ window.addEventListener('message', event => {
             break;
         case 'renderFileData':
             //document.querySelector('[id="message"]').innerHTML = message.message;
+            const createElementWithAttributes = (parentElement, elementToRender, attributes, children) => {
+                let element;
+                if (elementToRender !== "TEXT_NODE") {
+                    element = document.createElement(elementToRender);
+                    if (attributes) {
+                        for (const [key, value] of Object.entries(attributes)) {
+                            console.log(key,value)
+                            element[key] = value
+                          }
+                    }
+                } else {
+                    element = document.createTextNode(attributes.value)
+                }
+                if (children) {
+                    children.forEach(childElement => {
+                        createElementWithAttributes(element, childElement.elementToRender, childElement.attributes, childElement.children)
+                    })
+                }
+                parentElement.appendChild(element)
+            }
             console.log(receivedOutput.outputData)
-            let data = JSON.parse(receivedOutput.outputData)
-            console.log(data.parentId, data.parentTagName, data.elementToRender)
+            let dataFromFile = JSON.parse(receivedOutput.outputData)
+            let parentElement = document.getElementById(dataFromFile.parentId);
+            dataFromFile.dataToRender.forEach(element => {
+                createElementWithAttributes(parentElement, element.elementToRender, element.attributes, element.children);
+            })
+            /*console.log(data.parentId, data.parentTagName, data.elementToRender)
             let elementToRender = document.getElementById(data.parentId)
             let list = elementToRender.getElementsByTagName(data.parentTagName)[0]
             console.log(list, elementToRender)
@@ -45,13 +69,13 @@ window.addEventListener('message', event => {
                 li.name = option.guid
                 list.appendChild(li);
                 //li.addEventListener("click", selectProject)
-            })
-            document.getElementById("data-fetched").value = data.parentId
+            })*/
+            document.getElementById("data-fetched").value = dataFromFile.parentId
             document.getElementById("data-fetched").dispatchEvent(new Event('input', { bubbles: true, }));
             console.log(typeof (data))
             break;
         case 'executing':
-            console.log(receivedOutput.outputData.elementId,receivedOutput.outputData.status)
+            console.log(receivedOutput.outputData.elementId, receivedOutput.outputData.status)
             if (receivedOutput.outputData.showSpinner)
                 document.getElementById(receivedOutput.outputData.elementId).nextSibling.classList.remove("hidden-state");
             else
@@ -82,7 +106,7 @@ window.addEventListener('message', event => {
             var preProcess = anchor.getAttribute("preProcess") ? true : false;
             var elementId = anchor.getAttribute("id")
             var numSuccess = anchor.getAttribute("numSuccess") ? parseInt(anchor.getAttribute("numSuccess")) : 1
-            console.log(typeof(numSuccess))
+            console.log(typeof (numSuccess))
             /*inputFields["hostName"] = document.getElementById('hostname').value;
             inputFields["userName"] = document.getElementById('username').value;
             inputFields["password"] = document.getElementById('password').value;

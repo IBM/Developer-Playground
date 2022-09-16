@@ -1,5 +1,5 @@
 {
-    "parentId": "root-element-id",
+    "parentId": "git-services",
     "dataToRender": [
         {
             "elementToRender": "li",
@@ -7,29 +7,65 @@
             "children": [
                 {
                     "elementToRender": "input",
-                    "attributes": [
-                        {
-                            "value": "attribute1Value"
-                        },
-                        {
-                            "name": "attribute2Value"
-                        },
-                        {
-                            "type": "checkbox"
-                        },
-                        {
-                            "checked": true
-                        }
-                    ],
+                    "attributes": {
+                        "value": "option1",
+                        "name": "services",
+                        "type": "checkbox",
+                        "checked": true
+                    },
                     "children": false
                 },
                 {
                     "elementToRender": "TEXT_NODE",
-                    "attributes": [
-                        {
-                            "value": "service_name"
-                        }
-                    ],
+                    "attributes": {
+                        "value": "Option 1"
+                    },
+                    "children": false
+                }
+            ]
+        },
+        {
+            "elementToRender": "li",
+            "attributes": [],
+            "children": [
+                {
+                    "elementToRender": "input",
+                    "attributes": {
+                        "value": "option2",
+                        "name": "services",
+                        "type": "checkbox",
+                        "checked": false
+                    },
+                    "children": false
+                },
+                {
+                    "elementToRender": "TEXT_NODE",
+                    "attributes": {
+                        "value": "Option 2"
+                    },
+                    "children": false
+                }
+            ]
+        },
+        {
+            "elementToRender": "li",
+            "attributes": [],
+            "children": [
+                {
+                    "elementToRender": "input",
+                    "attributes": {
+                        "value": "option3",
+                        "name": "services",
+                        "type": "checkbox",
+                        "checked": true
+                    },
+                    "children": false
+                },
+                {
+                    "elementToRender": "TEXT_NODE",
+                    "attributes": {
+                        "value": "Option 3"
+                    },
                     "children": false
                 }
             ]

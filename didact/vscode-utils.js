@@ -23,9 +23,9 @@ window.addEventListener('message', event => {
                 if (elementToRender !== "TEXT_NODE") {
                     element = document.createElement(elementToRender);
                     if (attributes.length >= 1) {
-                        attributes.forEach(({ attribute, value }) => {
-                            console.log(element, attribute, value);
-                            element[attribute] = value;
+                        attributes.forEach((attribute) => {
+                            let [key, value] = Object.entries(attribute)
+                            element[key] = value;
                         })
                     }
                 } else {

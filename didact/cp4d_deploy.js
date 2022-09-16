@@ -123,14 +123,14 @@ window.onload = function () {
 
       //configure cta
       document.getElementById("configure-env").addEventListener("click", updateConfigVars);
-      function updateConfigVars(e) {
+      function updateConfigVars(e){
           document.getElementById("configure-env$1").setAttribute("command", `${compositeHref}${Object.values(config).toString().replaceAll(",", " ")}`)
           document.getElementById("configure-env$1").click();
         }
  
   ////// CP4I dropdown
   document.getElementById("install_cr").addEventListener("click", installCr);
-  function installCr(e) {
+  function installCr() {
     let cp4dVersion = document.getElementById('cp4d_version').value;
     let component_list = selectedServices.toString()
     if(!component_list){
@@ -138,11 +138,10 @@ window.onload = function () {
     }
     let storage = document.getElementById("cr_storage_value").value;
     document.getElementById("install_cr$1").setAttribute("command", `cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/;python3.8 updateYaml.py ${component_list} ${storage} ${cp4dVersion};bash deploy.sh`)
-    // document.getElementById("install_cr$1").click();
   }
 
   // Get the dropdown elements
-  let serviceList = document.getElementById('service-list');  
+  let serviceList = document.getElementById('cr-service-list');  
   
   // //Open close dropdowns cp4d
   // document.onclick = function (e) {
@@ -156,17 +155,19 @@ window.onload = function () {
       else
       serviceList.classList.add('visible');
   }
-  let gitServicesList = document.getElementById("git-services");
+    let gitServicesList = document.getElementById("cr-git-services");
     Object.keys(services).forEach(id => {
-         let li = document.createElement("li");
-         let input = document.createElement("input");
-         input.setAttribute("value", id)
-         input.setAttribute("name", "cr-services")
-         input.setAttribute("type", "checkbox")
-         li.appendChild(input)
-         li.appendChild(document.createTextNode(services[id]));
-         gitServicesList.appendChild(li);
-       })
+        let li = document.createElement("li");
+        let input = document.createElement("input");
+        // if(service in dataFetchInput.value)
+        //   input.setAttribute("checked", true)
+        input.setAttribute("value", id)
+        input.setAttribute("name", "cr-services")
+        input.setAttribute("type", "checkbox")
+        li.appendChild(input)
+        li.appendChild(document.createTextNode(services[id]));
+        gitServicesList.appendChild(li);
+      })
 
   //Get selected values
   let gitServices = document.getElementsByName("cr-services");
@@ -180,32 +181,18 @@ window.onload = function () {
         gitServicesList.insertBefore(e.target.parentElement, gitServices[Object.keys(services).indexOf(e.target.value)].parentElement);
   
       }
-      let showSeleted = document.getElementById("selected-services")
+      let showSeleted = document.getElementById("cr-selected-services")
       showSeleted.textContent = selectedServices.toString().replaceAll(",", ", ")
     }
-    //enable radio dropdowns
-    let tasks = document.querySelectorAll("[id^='task']");
-    tasks.forEach((task) => (task.style.display = "none"));
-  
-    let selectedTasks = document.getElementsByName("checkboxtask");
-    selectedTasks.forEach((task) => task.addEventListener("click", showTasks));
 
-    function showTasks(e) {
-      tasks.forEach((task) => (task.style.display = "none"));
-      if (e.target.checked) {
-        document.getElementById(e.target.value).style.display = "block";
-      } else {
-        document.getElementById(e.target.value).style.display = "none";
-      }
-    }
 
   // Search in the dropdown
-  // let searchItem = document.getElementById("services-search")
+  // let searchItem = document.getElementById("cr-services-search")
   // searchItem.addEventListener("input", filterServiceList)
 
   // function filterServiceList(e) {
   //   let currServices = []
-  //   if (e.target.id === "services-search") {
+  //   if (e.target.id === "cr-services-search") {
   //     currServices = gitServices
   //   }
   //   let listServices = [...currServices].map(service => service.value)
@@ -218,26 +205,13 @@ window.onload = function () {
   //   })
   // }
   function selectService(e) {
-    document.getElementById("selected-services").textContent = e.target.textContent
+    document.getElementById("cr-selected-services").textContent = e.target.textContent
     selectedServices = e.target.textContent;
-    let gitServicesList = document.getElementById("git-services");
-    Object.keys(selectedServices).forEach(id => {
-         let li = document.createElement("li");
-         let input = document.createElement("input");
-//          if(id === selectedServices)
-         input.setAttribute("checked", true)
-         input.setAttribute("value", id)
-         input.setAttribute("name", "services")
-         input.setAttribute("type", "checkbox")
-         li.appendChild(input)
-         li.appendChild(document.createTextNode(selectedServices[id]));
-         gitServicesList.appendChild(li);
-       })
   }
   
   function renderData(e) {
     let elementModified = document.getElementById("data-fetched").value
-    if (elementModified === "service-list") {
+    if (elementModified === "cr-service-list") {
       [...document.getElementById(elementModified).getElementsByTagName("LI")].forEach(ele => ele.addEventListener("click", selectService))
     }
     document.getElementById("data-fetched").value = ""

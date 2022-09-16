@@ -25,6 +25,7 @@ window.addEventListener('message', event => {
                     if (attributes.length >= 1) {
                         attributes.forEach((attribute) => {
                             let [key, value] = Object.entries(attribute)
+                            console.log(key,value, attribute)
                             element[key] = value;
                         })
                     }

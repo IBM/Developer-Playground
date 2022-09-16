@@ -24,6 +24,7 @@ window.addEventListener('message', event => {
                     element = document.createElement(elementToRender);
                     if (attributes) {
                         for (const [key, value] of Object.entries(attributes)) {
+                            console.log(key,value)
                             element[key] = value
                           }
                     }

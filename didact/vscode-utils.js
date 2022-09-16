@@ -29,7 +29,7 @@ window.addEventListener('message', event => {
                           }
                     }
                 } else {
-                    element = document.createTextNode(attributes[0].value)
+                    element = document.createTextNode(attributes.value)
                 }
                 if (children) {
                     children.forEach(childElement => {

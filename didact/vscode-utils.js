@@ -24,11 +24,12 @@ window.addEventListener('message', event => {
                     element = document.createElement(elementToRender);
                     if (attributes.length >= 1) {
                         attributes.forEach(({ attribute, value }) => {
+                            console.log(element, attribute, value);
                             element[attribute] = value;
                         })
                     }
                 } else {
-                    element = document.createTextNode(attributes[0])
+                    element = document.createTextNode(attributes[0].value)
                 }
                 if (children) {
                     children.forEach(childElement => {
@@ -54,7 +55,7 @@ window.addEventListener('message', event => {
                 list.appendChild(li);
                 //li.addEventListener("click", selectProject)
             })*/
-            document.getElementById("data-fetched").value = data.parentId
+            document.getElementById("data-fetched").value = dataFromFile.parentId
             document.getElementById("data-fetched").dispatchEvent(new Event('input', { bubbles: true, }));
             console.log(typeof (data))
             break;

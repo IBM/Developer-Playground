@@ -142,7 +142,7 @@ window.onload = function () {
   }
 
   // Get the dropdown elements
-  let serviceList = document.getElementById('cr-service-list');  
+  let serviceList = document.getElementById('service-list');  
   
   // //Open close dropdowns cp4d
   // document.onclick = function (e) {
@@ -237,7 +237,7 @@ window.onload = function () {
   
   function renderData(e) {
     let elementModified = document.getElementById("data-fetched").value
-    if (elementModified === "cr-service-list") {
+    if (elementModified === "service-list") {
       [...document.getElementById(elementModified).getElementsByTagName("LI")].forEach(ele => ele.addEventListener("click", selectService))
     }
     document.getElementById("data-fetched").value = ""

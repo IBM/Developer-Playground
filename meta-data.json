@@ -3,7 +3,7 @@
     "techzone-olm-utils": "Techzone OLM Utils",
     "techzone-olm-utils-v2": "Techzone OLM Utils v2",
     "techzone-cpd-test":"Techzone CP Demo Test",
-    "cpi-test":"Techzone CP4I Demo Test",
+    "techzone-cpi-test":"Techzone CP4I Demo Test",
     "techzone-export-demo-artifacts": "Techzone Export Demo Artifacts",
     "techzone-import-demo-artifacts": "Techzone Import Demo Artifacts",
     "test": "This is for testing!"

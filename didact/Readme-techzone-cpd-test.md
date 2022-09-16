@@ -94,7 +94,7 @@
           <b>Storage Vendor</b><br>
           <div>
             Valid values include:
-        <ul>
+          <ul>
           <li>nfs: If using NFS you should ensure that there is a storage class called managed-nfs-storage </li>
           <li>ocs: If you are using OCS storage for CP4D </li>
           <li>portworx: If you are using Portworx storage for CP4D </li>
@@ -113,6 +113,10 @@
         </p>
       </div>
       <a class="button is-dark is-medium" title="Execute" id="install_cr">Install selected services
+      </a>
+      <br />
+      <br />
+      <a class="button is-dark is-medium" title="Execute" id="get_cpd_endpoint">GET CPD URL
       </a>
       <br />
       <br />

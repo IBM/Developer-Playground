@@ -59,6 +59,16 @@ window.onload = function () {
     if (JSON.parse(localStorage[didact]).workspaceId !== workspaceId) {
       localStorage[didact] = JSON.stringify(data)
     }
+
+
+    // Add Open CPD URL in CP Deployer Didact
+    let get_cpd_endpoint = document.getElementById("get_cpd_endpoint");
+    get_cpd_endpoint.addEventListener("click", getCpdEndpoint)
+    function getCpdEndpoint(e) {
+      document.getElementById("command_exec").href =
+      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox%20terminal$$oc get route -n cpd-instance;oc extract secret/admin-user-details --keys=initial_admin_password --to=- -n cpd-instance";
+      document.getElementById("command_exec").click();
+    }
   
     //Fill input data from localStorage
     prerequisite.forEach(input => document.getElementsByName(input)[0].value = JSON.parse(localStorage[didact])[input])
@@ -136,7 +146,7 @@ window.onload = function () {
       }
       let storage = document.getElementById("cr_storage_value").value;
       document.getElementById("command_exec").href =
-        "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox%20terminal$$cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2/;pip3.8%20install%20PyYAML;python3.8%20updateYaml.py%20"+component_list+"%20"+storage+"%20"+cp4dVersion+";bash deploy.sh";
+        "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox%20terminal$$cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2/;pip3.8%20install%20PyYAML;python3.8%20updateYaml.py%20"+component_list+"%20"+storage+"%20"+cp4dVersion+"%20cp4d;bash deploy.sh cp4d";
       document.getElementById("command_exec").click();
     }
 
@@ -176,7 +186,8 @@ window.onload = function () {
       // olmServicesList.appendChild(li);
   
     })
-  
+    
+
     //Get selected values
     let gitServices = document.getElementsByName("cr-services");
     // let olmServices = document.getElementsByName("olm-services");

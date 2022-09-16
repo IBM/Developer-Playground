@@ -1,0 +1,38 @@
+{
+    "parentId": "root-element-id",
+    "dataToRender": [
+        {
+            "elementToRender": "li",
+            "attributes": [],
+            "children": [
+                {
+                    "elementToRender": "input",
+                    "attributes": [
+                        {
+                            "value": "attribute1Value"
+                        },
+                        {
+                            "name": "attribute2Value"
+                        },
+                        {
+                            "type": "checkbox"
+                        },
+                        {
+                            "checked": true
+                        }
+                    ],
+                    "children": false
+                },
+                {
+                    "elementToRender": "TEXT_NODE",
+                    "attributes": [
+                        {
+                            "value": "service_name"
+                        }
+                    ],
+                    "children": false
+                }
+            ]
+        }
+    ]
+}

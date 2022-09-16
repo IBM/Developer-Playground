@@ -22,12 +22,10 @@ window.addEventListener('message', event => {
                 let element;
                 if (elementToRender !== "TEXT_NODE") {
                     element = document.createElement(elementToRender);
-                    if (attributes.length >= 1) {
-                        attributes.forEach((attribute) => {
-                            let [key, value] = Object.entries(attribute)
-                            console.log(key,value, attribute)
-                            element[key] = value;
-                        })
+                    if (attributes) {
+                        for (const [key, value] of Object.entries(attributes)) {
+                            element[key] = value
+                          }
                     }
                 } else {
                     element = document.createTextNode(attributes[0].value)

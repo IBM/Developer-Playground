@@ -2,10 +2,25 @@
 
 const vscode = acquireVsCodeApi();
 let inputFields = {};
+let productInfo = {};
 window.addEventListener('message', event => {
     const receivedOutput = event.data; // The JSON data our extension sent
     switch (receivedOutput.command) {
         case 'refactor':
+            break;
+        case 'receiveProductInfo':
+            //document.querySelector('[id="message"]').innerHTML = message.message;
+            productInfo = receivedOutput.productInfo;
+            console.log(JSON.stringify(productInfo));
+            document.getElementById("demo-url").innerHTML = productInfo.privateGitRepoUrl;
+            if(productInfo.isPrivate) {
+                document.getElementById("gittokeninput").style.display = "block";
+                document.getElementById("private-demo-url").style.display = "block";
+            }
+            else {
+                document.getElementById("gittokeninput").style.display = "none";
+                document.getElementById("private-demo-url").style.display = "none";
+            }
             break;
         case 'receivedata':
             //document.querySelector('[id="message"]').innerHTML = message.message;

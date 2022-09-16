@@ -1,6 +1,6 @@
 window.onload = function funLoad() {
     let env = document.getElementById("environment").textContent
-    let compositeHref = "git clone -b $BRANCH https://github.com/IBM/CPDemoFramework ${CHE_PROJECTS_ROOT}/techzone-demo;bash /projects/techzone-demo/sandbox/getDemoFiles.sh demo_name;cd ${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8 install -r requirements.txt;cd /projects/techzone-demo/sandbox/;python3.8 update-env.py "
+    let compositeHref = "git clone -b $BRANCH https://github.com/IBM/CPDemoFramework ${CHE_PROJECTS_ROOT}/techzone-demo;bash /projects/techzone-demo/sandbox/getDemoFiles.sh demo_name is_private git_url git_token;cd ${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8 install -r requirements.txt;cd /projects/techzone-demo/sandbox/;python3.8 update-env.py "
     compositeHref = compositeHref.replaceAll("$BRANCH", env)
 
     let prerequisite = ["hostname", "wkcuser", "password"/*, "api_key"*/]
@@ -107,7 +107,8 @@ window.onload = function funLoad() {
     //configure cta
     document.getElementById("configure-env").addEventListener("click", updateConfigVars);
     function updateConfigVars(e) {
-        document.getElementById("configure-env$1").setAttribute("command", `${compositeHref.replace("demo_name", demo)}${Object.values(config).toString().replaceAll(",", "%20")}`)
+        let gitToken = document.getElementById("gittoken")?document.getElementById("gittoken").value:'';
+        document.getElementById("configure-env$1").setAttribute("command", `${compositeHref.replace("demo_name", demo).replace("is_private", productInfo.isPrivate).replace("git_url", productInfo.privateGitRepoUrl).replace("git_token", gitToken)}${Object.values(config).toString().replaceAll(",", "%20")}`)
         document.getElementById("configure-env$1").click();
         let clusterUrl = `https://${config.hostname}`
         let openClusterCta = document.getElementById("open-cpd-cluster")

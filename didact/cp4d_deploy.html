@@ -69,7 +69,7 @@
             <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
                 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
             <button id="configure-env$2" class="send-to-extension hidden-state" action="readfile"
-                command="cd /projects/techzone-demo/olm-utils-v2;pip3.8 install pyYaml;python3.8 getServiceList.py"
+                command="cd /projects/techzone-demo/olm-utils-v2;pip3.8 install pyYaml;python3.8 getInstalledServices.py cp4d"
                 filePath="/projects/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
                 silent="true"></button><span class="spinner hidden-state"></span>
             <span class="dot"></span>
@@ -85,9 +85,9 @@
                             <input type="text" id="cp4d_version" value="4.5.0">
                             <label>Components list
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <div id="cr-service-list" class="dropdown-check-list" tabindex="100">
+                            <div id="service-list" class="dropdown-check-list" tabindex="100">
                                 <span id="selected-service" class="anchor">Select Components</span>
-                                <!-- <div id="cr-service-list" class="items"> -->
+                                <!-- <div id="service-list" class="items"> -->
                                     <!-- <input id="cr-services-search" type="search" placeholder="Search components" style="width: 100%" /> -->
                                     <ul class="items" id="cr-git-services">
                                     </ul>

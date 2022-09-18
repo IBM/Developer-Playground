@@ -38,6 +38,7 @@ window.addEventListener('message', event => {
                     }
                 } else {
                     element = parentElement.nextSibling.nodeValue || ""
+                    console.log("Text node",element, attributes.value)
                     if (element != attributes.value) {
                         element = document.createTextNode(attributes.value)
                         newElementCreated = true

@@ -38,9 +38,9 @@ window.addEventListener('message', event => {
                     }
                 } else {
                     console.log(parentElement)
-                    element = parentElement.nextSibling.textContent || ""
-                    console.log(`text_node_${element}_${attributes.value}`)
-                    if (element != attributes.value) {
+                    //element = parentElement.nextSibling.nodeValue || ""
+                    console.log("Text node",document.contains(parentElement))
+                    if (!document.contains(parentElement)) {
                         element = document.createTextNode(attributes.value)
                         newElementCreated = true
                     }

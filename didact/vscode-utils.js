@@ -47,6 +47,7 @@ window.addEventListener('message', event => {
                         })
                     }
                 }
+                 console.log("Element" + element + newElementCreated)
                 if (newElementCreated) {
                     parentElement.appendChild(element)
                 }

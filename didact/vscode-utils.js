@@ -37,7 +37,8 @@ window.addEventListener('message', event => {
                         }
                     }
                 } else {
-                    element = parentElement.nextSibling.textContent || ""
+                    console.log(parentElement)
+                    element = parentElement.nextSibling.nodeValue || ""
                     console.log("Text node",element, attributes.value)
                     if (element != attributes.value) {
                         element = document.createTextNode(attributes.value)
@@ -45,9 +46,10 @@ window.addEventListener('message', event => {
                     }
                 }
                 if (children) {
-                    children.forEach(childElement => {
+                    for (let i = 0; i < children.length; i++) {
+                        let childElement = children[i]
                         createElementWithAttributes(element, childElement.elementToRender, childElement.attributes, childElement.children)
-                    })
+                    }
                 }
                 console.log("Element" + element + newElementCreated)
                 if (newElementCreated) {
@@ -59,13 +61,13 @@ window.addEventListener('message', event => {
             let dataFromFile = JSON.parse(receivedOutput.outputData)
             let parentElement = document.getElementById(dataFromFile.parentId);
             let sendInputEvent = false;
-            dataFromFile.dataToRender.forEach(element => {
+            for (let i = 0; i < dataFromFile.dataToRender.length; i++) {
+                let element = dataFromFile.dataToRender[i];
                 let newElementCreated = createElementWithAttributes(parentElement, element.elementToRender, element.attributes, element.children);
                 if (newElementCreated) {
                     sendInputEvent = true
                 }
-
-            })
+            }
             /*console.log(data.parentId, data.parentTagName, data.elementToRender)
             let elementToRender = document.getElementById(data.parentId)
             let list = elementToRender.getElementsByTagName(data.parentTagName)[0]

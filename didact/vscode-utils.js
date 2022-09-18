@@ -37,7 +37,7 @@ window.addEventListener('message', event => {
                         }
                     }
                 } else {
-                    element = parentElement.nextSibling.nodeValue || ""
+                    element = parentElement.nextSibling.textContent || ""
                     console.log("Text node",element, attributes.value)
                     if (element != attributes.value) {
                         element = document.createTextNode(attributes.value)

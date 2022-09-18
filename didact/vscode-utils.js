@@ -29,6 +29,7 @@ window.addEventListener('message', event => {
                     if (attributes) {
                         for (const [key, value] of Object.entries(attributes)) {
                             if (key !== "class") {
+                                console.log(key, value)
                                 element[key] = value
                             } else {
                                 element.classList.add(value)
@@ -41,13 +42,13 @@ window.addEventListener('message', event => {
                         element = document.createTextNode(attributes.value)
                         newElementCreated = true
                     }
-                    if (children) {
-                        children.forEach(childElement => {
-                            createElementWithAttributes(element, childElement.elementToRender, childElement.attributes, childElement.children)
-                        })
-                    }
                 }
-                 console.log("Element" + element + newElementCreated)
+                if (children) {
+                    children.forEach(childElement => {
+                        createElementWithAttributes(element, childElement.elementToRender, childElement.attributes, childElement.children)
+                    })
+                }
+                console.log("Element" + element + newElementCreated)
                 if (newElementCreated) {
                     parentElement.appendChild(element)
                 }

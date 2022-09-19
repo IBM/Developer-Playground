@@ -338,6 +338,9 @@ window.onload = function funLoad() {
       [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click") ? ele.style.pointerEvents = "auto" : ele.style.pointerEvents = "none");
       [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
       [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
+      let tempData = JSON.parse(localStorage[didact])
+      tempData.envConfigured = true
+      localStorage[didact] = JSON.stringify(tempData)
   }
 
   //configure cta

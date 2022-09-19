@@ -49,7 +49,9 @@ window.addEventListener('message', event => {
                             } else if(key === "class") {
                                 element.classList.add(value)
                             } else if(key==="checked"){
-                                element.dispatchEvent(new Event('change', { bubbles: true, }));
+                                element[key] = value
+                                element.dispatchEvent(new Event('change'));
+                                console.log("event-triggered")
                             }
                         }
                     }

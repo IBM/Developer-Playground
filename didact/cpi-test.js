@@ -1,5 +1,5 @@
 window.onload = function () {
-  let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd /projects;git clone https://github.com/IBM/CPDemoFramework -b techzone --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2;sh%20configure-env.sh%20"    
+  let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd /projects;git clone https://github.com/IBM/CPDemoFramework -b techzone-fk --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2;sh%20configure-env.sh%20"    
   let prerequisite = ["server", "api_token", "kubeadmin_user", "kubeadmin_pass", "icr_key"]
   let cpiSelectedServices = []
   let servicescpi = {

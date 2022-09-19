@@ -30,6 +30,7 @@ a:visited {
     position: relative;
     padding: 0.5rem 1rem 1rem 4rem;
     margin-bottom: 1rem;
+    opacity: 0.5;
 }
 
 .dot {
@@ -356,6 +357,10 @@ label {
 
 .dropdown-check-list .items li {
     list-style: none;
+}
+
+#git-services li {
+    margin-left: -2rem;
 }
 
 .dropdown-check-list .items ul {

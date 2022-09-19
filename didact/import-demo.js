@@ -53,6 +53,11 @@ window.onload = function funLoad() {
         if (localData.envConfigured) {
             let timelineCTA = timelineContainer.getElementsByClassName("timeline");
             [...timelineCTA].forEach(ele => ele.style.opacity = 1);
+            timelineContainer.style.cursor = "auto";
+            [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "auto");
+            [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click") ? ele.style.pointerEvents = "auto" : ele.style.pointerEvents = "none");
+            [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
+            [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
         } else {
             console.log(document.getElementById("gittokeninput").style.display, "test---")
             let configCTA = timelineContainer.getElementsByClassName("timeline")[0]

@@ -43,15 +43,16 @@ window.addEventListener('message', event => {
                     }
                     if (attributes) {
                         for (const [key, value] of Object.entries(attributes)) {
+                            console.log(key!=="checked", "checking", key)
                             if (key !== "class" && key!=="checked") {
-                                console.log(key, value)
-                                element[key] = value
+                                console.log(key, value);
+                                element[key] = value;
                             } else if(key === "class") {
                                 element.classList.add(value)
                             } else if(key==="checked"){
-                                element[key] = value
+                                element[key] = value;
                                 element.dispatchEvent(new Event('change'));
-                                console.log("event-triggered")
+                                console.log("event-triggered");
                             }
                         }
                     }

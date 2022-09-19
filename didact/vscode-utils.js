@@ -43,11 +43,13 @@ window.addEventListener('message', event => {
                     }
                     if (attributes) {
                         for (const [key, value] of Object.entries(attributes)) {
-                            if (key !== "class") {
+                            if (key !== "class" && key!=="checked") {
                                 console.log(key, value)
                                 element[key] = value
-                            } else {
+                            } else if(key === "class") {
                                 element.classList.add(value)
+                            } else if(key==="checked"){
+                                element.dispatchEvent(new Event('change', { bubbles: true, }));
                             }
                         }
                     }

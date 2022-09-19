@@ -99,6 +99,7 @@ window.onload = function funLoad() {
     hostname: "",
     wkcuser: "",
     password: "",
+    envConfigured: false,
     //api_key: ""
   }
 
@@ -211,8 +212,25 @@ window.onload = function funLoad() {
     [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none");
     [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
   } else {
-    document.getElementById("get-project-list").click();
-  }
+      timelineContainer.style.cursor = "not-allowed";
+        [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
+        [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => ele.style.pointerEvents = "none");
+        [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none");
+        [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
+        if (localData.envConfigured) {
+            let timelineCTA = timelineContainer.getElementsByClassName("timeline");
+            [...timelineCTA].forEach(ele => ele.style.opacity = 1);
+            document.getElementById("get-project-list").click();
+        } else {
+            let configCTA = timelineContainer.getElementsByClassName("timeline")[0]
+            configCTA.style.opacity = 1;
+            configCTA.style.cursor = "auto";
+            [...configCTA.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "auto");
+            [...configCTA.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click") ? ele.style.pointerEvents = "auto" : ele.style.pointerEvents = "none");
+            [...configCTA.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
+            [...configCTA.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
+        }
+    }
 
   //default data
   let config = {

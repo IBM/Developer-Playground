@@ -121,7 +121,8 @@ window.onload = function () {
         component_list="null"
       }
       let storage = document.getElementById("storage_value").value;
-      document.getElementById("install_cpd").setAttribute("command", `cd /projects/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4iVersion} cp4i; source deploy.sh cp4i`)
+      document.getElementById("install_cpd$1").setAttribute("command", `cd /projects/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4iVersion} cp4i; source deploy.sh cp4i`)
+      document.getElementById("install_cpd$1").click();  
     }
   
     // Get the dropdown elements

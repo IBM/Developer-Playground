@@ -19,10 +19,12 @@
         "aws-healthcare": "AWS Proactive Healthcare Management System",
         "test":"This is for testing",
         "export-demo": "Export Demo for CP4D",
+        "cp4d-export": "Export Demo for CP4D",
         "techzone-cpd-test": "Techzone CPD Test",
-        "cp4i_deploy": "Techzone CP4I OLM Utils",
-        "cp4d_deploy": "Techzone CP4D OLM Utils",
+        "cp4i-deploy": "Techzone CP4I OLM Utils",
+        "cp4d-deploy": "Techzone CP4D OLM Utils",
         "import-demo": "Import Demo for CP4D",
+        "cp4d-import": "Import Demo for CP4D",
         "import-all-demo": "Import all Demo for CP4D"
     }
 }

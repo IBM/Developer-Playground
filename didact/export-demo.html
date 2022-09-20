@@ -53,7 +53,8 @@
             <button id="configure-env$2" class="send-to-extension hidden-state" action="readfile"
                 command="cd /projects/techzone-demo/sandbox;python3.8 getProjects.py"
                 filePath="/projects/techzone-demo/sandbox/projectsData.json" preProcess="true"
-                ></button><span class="spinner hidden-state"></span>
+                nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
+            <button id="enable-timeline" class="hidden-state">Enable</button>
             <span class="dot"></span>
         </div>
         <div class="timeline">
@@ -87,7 +88,7 @@
                         </div>
                         <button class="send-to-extension button is-dark is-medium" id="export-user-list"
                             title="Export User List" action="senddata"
-                            command="cd /projects/techzone-demo/sandbox/;python3.8 exportUsersv2.py users.csv">Export
+                            command="cd /projects/techzone-demo/sandbox/;python3.8 exportUsers.py users.csv">Export
                             User List</button><span class="spinner hidden-state"></span>
                         <span class="dot"></span>
                     </div>
@@ -151,7 +152,7 @@
                         <p>Select the required Project.</p>
                         <div id="project-list" class="dropdown-check-list" tabindex="100">
                             <span id="selected-project" class="anchor">Select Project</span>
-                            <ul class="items">
+                            <ul id="project-list-ul" class="items">
                             </ul>
                         </div>
                     </div>

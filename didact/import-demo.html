@@ -41,6 +41,8 @@
         <div class="timeline timelinestep">
             <div class="content">
                 <p>Demo Name: <b id="selected-demo">$demo_name</b></p>
+				<p id="private-demo-url">Demo URL: <b id="demo-url"></b></p>
+				<p id="gittokeninput"><label>Git key: </label><input id="gittoken" type="text" /></p>
             </div>
             <span class="dot"></span>
         </div>
@@ -50,7 +52,8 @@
             </div>
             <button class="button is-dark is-medium" id="configure-env" title="Configure Environment">Configure
                 Environment</button>
-            <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command="" numSuccess=2></button><span class="spinner hidden-state"></span>
+            <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command="" numSuccess=2 nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
+            <button id="enable-timeline" class="hidden-state"></button>
             <!--<button class="button is-dark is-medium" id="configure-env" title="Configure Environment">Configure Environment</button>
             <a id="config_command_exec" ,href=""></a>-->
             <span class="dot"></span>

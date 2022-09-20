@@ -71,7 +71,7 @@
             <button id="configure-env$2" class="send-to-extension hidden-state" action="readfile"
                 command="cd /projects/techzone-demo/olm-utils-v2;pip3.8 install pyYaml;python3.8 getInstalledServices.py cp4d"
                 filePath="/projects/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
-                silent="true"></button><span class="spinner hidden-state" numSuccess=1></span>
+                numSuccess=1></button><span class="spinner hidden-state"></span>
             <span class="dot"></span>
         </div>
         <div class="timeline">
@@ -90,7 +90,6 @@
                                 <div class="items">
                                     <input id="services-search" type="search" placeholder="Search components" style="width: 100%" />
                                     <ul id="git-services">
-
                                     </ul>
                                 </div>
                             </div>
@@ -116,19 +115,20 @@
                             </select>
                         </div>
                     </div>
-                    <br /><br />
+                        <br /><br />
                     <button class="button is-dark is-medium" id="install_cpd" title="Execute" command="">Install selected services</button>
-                    <button id="install_cpd$1" class="send-to-extension hidden-state" command=""  numSuccess=1></button><span class="spinner hidden-state"></span>
+                    <button id="install_cpd$1" class="send-to-extension hidden-state" command="" numSuccess=1></button><span class="spinner hidden-state"></span>
                     <span class="dot"></span>
-                    <br /><br />
+                    </div>
+                </div>
+            </div>
+                    <div class="timeline">
                     <div class="content">
                     <p>Cleanup install utility artifacts</p>
                 </div>
-                <button class="send-to-extension button is-dark is-medium"
-                            title="Clean up" action="senddata"
-                            command="cd /projects/techzone-demo/olm-utils-v2/;sh delete.sh">Clean up</button><span class="spinner hidden-state"></span><span class="dot"></span>
-                                </div>
-        <span class="dot"></span>
+                <button class="send-to-extension button is-dark is-medium" title="Clean up" action="senddata" command="cd /projects/techzone-demo/olm-utils-v2/;sh delete.sh">Clean up</button><span class="spinner hidden-state"></span>
+                <span class="dot"></span>
+        </div>
         </div>
     </div>
 </body>

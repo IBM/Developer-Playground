@@ -85,16 +85,17 @@
                             <input type="text" id="cp4d_version" value="4.5.0">
                             <label>Components list
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <div id="cr-service-list" class="dropdown-check-list" tabindex="100">
-                                <span id="cr-selected-service" class="anchor">Select Components</span>
-                                <!-- <div id="cr-service-list" class="items"> -->
-                                    <!-- <input id="cr-services-search" type="search" placeholder="Search components" style="width: 100%" /> -->
-                                    <ul class="items" id="cr-git-services">
+                            <div id="service-list" class="dropdown-check-list" tabindex="100">
+                                <span class="anchor">Select Components</span>
+                                <div class="items">
+                                    <input id="services-search" type="search" placeholder="Search components" style="width: 100%" />
+                                    <ul id="git-services">
+
                                     </ul>
-                                <!-- </div> -->
+                                </div>
                             </div>
                         </div>
-                        <p style="margin-top:1rem"><b>Selected Services: </b><span id="cr-selected-services"></span></p>
+                        <p style="margin-top:1rem"><b>Selected Services: </b><span id="selected-services"></span></p>
                         <div class="env-config">
                             <b>Storage Vendor</b><br>
                             <div>
@@ -107,7 +108,7 @@
                                 <ul>
                             </div>
                             <label></label>
-                            <select id="cr_storage_value" style="width:150px;height:33px;padding-left: -150px">
+                            <select id="cpi_storage_value" style="width:150px;height:33px;padding-left: -150px">
                                 <option value="nfs">nfs</option>
                                 <option value="ocs">ocs</option>
                                 <option value="portworx">portworx</option>
@@ -116,8 +117,7 @@
                         </div>
                     </div>
                     <br /><br />
-                    <button class="button is-dark is-medium" title="Execute" id="install_cr">Install selected services</button>
-                    <button id="install_cr$1" class="send-to-extension hidden-state" action="senddata" command=""></button><span class="spinner hidden-state"></span>
+                    <button class="button is-dark is-medium send-to-extension" nextAction="install_cpd$2" action="senddata" id="install_cpd" title="Execute" command="">Install selected services</button><span class="spinner hidden-state"></span>
                     <span class="dot"></span>
                     <br /><br />
                     <div class="content">

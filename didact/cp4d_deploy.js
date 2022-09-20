@@ -129,95 +129,85 @@ window.onload = function () {
         }
  
   ////// CP4I dropdown
-  document.getElementById("install_cr").addEventListener("click", installCr);
-  function installCr() {
+  document.getElementById("install_cpd").addEventListener("click", install_cpd);
+  function install_cpd() {
     let cp4dVersion = document.getElementById('cp4d_version').value;
     let component_list = selectedServices.toString()
     if(!component_list){
       component_list="null"
     }
     let storage = document.getElementById("cr_storage_value").value;
-    document.getElementById("install_cr$1").setAttribute("command", `cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/;python3.8 updateYaml.py ${component_list} ${storage} ${cp4dVersion};bash deploy.sh`)
+    // console.log("In the install CR funtion!!!")
+    document.getElementById("install_cpd").setAttribute("command", `cd /projects/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d; source deploy.sh cp4d`)
+    // console.log("Still in the install CR funtion!!!")
+    // document.getElementById("install_cr$1").click();
   }
 
   // Get the dropdown elements
-  let serviceList = document.getElementById('cr-service-list');  
+  let serviceList = document.getElementById('service-list');  
   
-  // //Open close dropdowns cp4d
-  // document.onclick = function (e) {
-  //     if (e.target.parentElement !== serviceList && e.target.name !== "cr-services" && e.target.nodeName !== "LI" && e.target.nodeName !== "INPUT") {
-  //         serviceList.classList.remove('visible');
-  //   }
-  // };
+  //Open close dropdowns cp4d
+  document.onclick = function (e) {
+      if (e.target.parentElement !== serviceList && e.target.name !== "services" && e.target.nodeName !== "LI" && e.target.nodeName !== "INPUT") {
+          serviceList.classList.remove('visible');
+    }
+  };
   serviceList.getElementsByClassName('anchor')[0].onclick = function (evt) {
       if (serviceList.classList.contains('visible'))
       serviceList.classList.remove('visible');
       else
       serviceList.classList.add('visible');
   }
-    let gitServicesList = document.getElementById("cr-git-services");
-    Object.keys(services).forEach(id => {
-        let li = document.createElement("li");
-        let input = document.createElement("input");
-        // if(service in dataFetchInput.value)
-        //   input.setAttribute("checked", true)
-        input.setAttribute("value", id)
-        input.setAttribute("name", "cr-services")
-        input.setAttribute("type", "checkbox")
-        li.appendChild(input)
-        li.appendChild(document.createTextNode(services[id]));
-        gitServicesList.appendChild(li);
-      })
+  let gitServicesList = document.getElementById("git-services");
+    Object.keys(services).forEach((id, index) => {
+         let li = document.createElement("li");
+         let input = document.createElement("input");
+         input.id = `input_option${index}`
+         input.value = id
+         input.name = "services"
+         input.type = "checkbox"
+         li.id = `li_option${index}`
+         li.appendChild(input)
+         li.appendChild(document.createTextNode(services[id]));
+         gitServicesList.appendChild(li);
+       })
 
   //Get selected values
-  let gitServices = document.getElementsByName("cr-services");
-  gitServices.forEach((task) => task.addEventListener("click", updateSelectedServices));
+  let gitServices = document.getElementsByName("services");
+  gitServices.forEach((task) => task.addEventListener("change", updateSelectedServices));
   function updateSelectedServices(e) {
       if (e.target.checked) {
-        selectedServices.push(e.target.value)
-        gitServicesList.insertBefore(e.target.parentElement, gitServicesList.firstChild);
+        if(!selectedServices.includes(e.target.value)){
+            selectedServices.push(e.target.value)
+            gitServicesList.insertBefore(e.target.parentElement, gitServicesList.firstChild);
+        }
       } else {
         selectedServices.indexOf(e.target.value) !== -1 && selectedServices.splice(selectedServices.indexOf(e.target.value), 1)
         gitServicesList.insertBefore(e.target.parentElement, gitServices[Object.keys(services).indexOf(e.target.value)].parentElement);
   
       }
-      let showSeleted = document.getElementById("cr-selected-services")
+      let showSeleted = document.getElementById("selected-services")
       showSeleted.textContent = selectedServices.toString().replaceAll(",", ", ")
     }
 
 
   // Search in the dropdown
-  // let searchItem = document.getElementById("cr-services-search")
-  // searchItem.addEventListener("input", filterServiceList)
+  let searchItem = document.getElementById("services-search")
+  searchItem.addEventListener("input", filterServiceList)
 
-  // function filterServiceList(e) {
-  //   let currServices = []
-  //   if (e.target.id === "cr-services-search") {
-  //     currServices = gitServices
-  //   }
-  //   let listServices = [...currServices].map(service => service.value)
-  //   listServices.forEach((res, idx) => {
-  //     if (res.toLowerCase().includes(e.target.value.toLowerCase()) || services[res].toLowerCase().includes(e.target.value.toLowerCase())) {
-  //       currServices[idx].parentElement.style.display = "block"
-  //     } else {
-  //       currServices[idx].parentElement.style.display = "none"
-  //     }
-  //   })
-  // }
-  function selectService(e) {
-    document.getElementById("cr-selected-services").textContent = e.target.textContent
-    selectedServices = e.target.textContent;
-  }
-  
-  function renderData(e) {
-    let elementModified = document.getElementById("data-fetched").value
-    if (elementModified === "cr-service-list") {
-      [...document.getElementById(elementModified).getElementsByTagName("LI")].forEach(ele => ele.addEventListener("click", selectService))
+  function filterServiceList(e) {
+    let currServices = []
+    if (e.target.id === "services-search") {
+      currServices = gitServices
     }
-    document.getElementById("data-fetched").value = ""
+    let listServices = [...currServices].map(service => service.value)
+    listServices.forEach((res, idx) => {
+      if (res.toLowerCase().includes(e.target.value.toLowerCase()) || services[res].toLowerCase().includes(e.target.value.toLowerCase())) {
+        currServices[idx].parentElement.style.display = "block"
+      } else {
+        currServices[idx].parentElement.style.display = "none"
+      }
+    })
   }
-
   let dataFetchInput = document.getElementById("data-fetched")
-  dataFetchInput.addEventListener("input", renderData)
-  // console.log(dataFetchInput)
 };

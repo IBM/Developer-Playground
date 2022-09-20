@@ -121,10 +121,7 @@ window.onload = function () {
         component_list="null"
       }
       let storage = document.getElementById("storage_value").value;
-      console.log("In the install CR funtion!!!")
-    document.getElementById("install_cpd").setAttribute("command", `cd /projects/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4iVersion} cp4i; source deploy.sh cp4i`)
-    console.log("Still in the install CR funtion!!!")
-    // document.getElementById("install_cpd$1").click();
+      document.getElementById("install_cpd").setAttribute("command", `cd /projects/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4iVersion} cp4i; source deploy.sh cp4i`)
     }
   
     // Get the dropdown elements
@@ -157,9 +154,9 @@ window.onload = function () {
       })
   
     //Get selected values
-    let cpiServices = document.getElementsByName("services");
-    cpiServices.forEach((task) => task.addEventListener("change", updateCpiSelectedServices));
-    function updateCpiSelectedServices(e) {
+    let gitServices = document.getElementsByName("services");
+    gitServices.forEach((task) => task.addEventListener("change", updateSelectedServices));
+    function updateSelectedServices(e) {
         if (e.target.checked) {
           if(!selectedServices.includes(e.target.value)){
             selectedServices.push(e.target.value)
@@ -167,7 +164,7 @@ window.onload = function () {
         }
           } else {
           selectedServices.indexOf(e.target.value) !== -1 && selectedServices.splice(selectedServices.indexOf(e.target.value), 1)
-          gitServicesList.insertBefore(e.target.parentElement, cpiServices[Object.keys(services).indexOf(e.target.value)].parentElement);
+          gitServicesList.insertBefore(e.target.parentElement, gitServices[Object.keys(services).indexOf(e.target.value)].parentElement);
     
         }
         let showSeleted = document.getElementById("selected-services")
@@ -190,13 +187,13 @@ window.onload = function () {
       }
   
     //Search in the dropdown
-    let cpiSearchItem = document.getElementById("services-search")
-    cpiSearchItem.addEventListener("input", filterServiceList)
+    let searchItem = document.getElementById("services-search")
+    searchItem.addEventListener("input", filterServiceList)
   
     function filterServiceList(e) {
       let currServices = []
       if (e.target.id === "services-search") {
-        currServices = cpiServices
+        currServices = gitServices
       }
       let listServices = [...currServices].map(service => service.value)
       listServices.forEach((res, idx) => {

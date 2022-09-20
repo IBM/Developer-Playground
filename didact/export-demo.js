@@ -225,7 +225,7 @@ window.onload = function funLoad() {
             [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click") ? ele.style.pointerEvents = "auto" : ele.style.pointerEvents = "none");
             [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
             [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
-            document.getElementById("get-project-list").click();
+            document.getElementById("configure-env$2").click();
         } else {
             let configCTA = timelineContainer.getElementsByClassName("timeline")[0]
             configCTA.style.opacity = 1;
@@ -554,7 +554,7 @@ window.onload = function funLoad() {
   }
   function renderData(e) {
     let elementModified = document.getElementById("data-fetched").value
-    if (elementModified === "project-list") {
+    if (elementModified === "project-list-ul") {
       [...document.getElementById(elementModified).getElementsByTagName("LI")].forEach(ele => ele.addEventListener("click", selectProject))
     }
     document.getElementById("data-fetched").value = ""

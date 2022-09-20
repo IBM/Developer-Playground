@@ -67,7 +67,7 @@ window.onload = function funLoad() {
             [...configCTA.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click") ? ele.style.pointerEvents = "auto" : ele.style.pointerEvents = "none");
             [...configCTA.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
             [...configCTA.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
-            if (!document.getElementById("gittokeninput").style.display || document.getElementById("gittokeninput").style.display === "none") {
+            if (document.getElementById("gittokeninput").style.display === "none") {
                 let configCTA = timelineContainer.getElementsByClassName("timeline")[1]
                 configCTA.style.opacity = 1;
                 configCTA.style.cursor = "auto";
@@ -176,6 +176,7 @@ window.onload = function funLoad() {
     document.getElementById("gittoken").addEventListener("input", showConfigureCTA)
     function showConfigureCTA(e) {
         let configCTA = timelineContainer.getElementsByClassName("timeline")[1]
+        console.log(e.target.value.trim())
         if (e.target.value.trim() !== "") {
             configCTA.style.opacity = 1;
             configCTA.style.cursor = "auto";
@@ -184,6 +185,12 @@ window.onload = function funLoad() {
             [...configCTA.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
             [...configCTA.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
         } else {
+            configCTA.style.opacity = 0.5;
+            configCTA.style.cursor = "not-allowed";
+            [...configCTA.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
+            [...configCTA.getElementsByTagName("BUTTON")].forEach(ele => ele.style.pointerEvents = "none");
+            [...configCTA.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none");
+            [...configCTA.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
         }
     }
 

@@ -144,6 +144,15 @@ window.onload = function funLoad() {
                 [...configCTA.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
                 [...configCTA.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
             }
+            if (localData.envConfigured) {
+                let timelineCTA = timelineContainer.getElementsByClassName("timeline");
+                [...timelineCTA].forEach(ele => ele.style.opacity = 1);
+                timelineContainer.style.cursor = "auto";
+                [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "auto");
+                [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click") ? ele.style.pointerEvents = "auto" : ele.style.pointerEvents = "none");
+                [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
+                [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
+            }
         } else {
             let timelineCTA = timelineContainer.getElementsByClassName("timeline");
             [...timelineCTA].forEach(ele => ele.style.opacity = 0.5)

@@ -28,6 +28,7 @@ window.onload = function () {
       kubeadmin_user: "",
       kubeadmin_pass: "",
       icr_key: "",
+      envConfigured: false,
     }
   
     //Create localStorage item if didact name not present 
@@ -47,14 +48,40 @@ window.onload = function () {
     let localData = JSON.parse(localStorage[didact])
     let timelineContainer = document.getElementsByClassName("timeline-container")[0]
     if ((localData.server.trim() === "" || localData.api_token.trim() === "" || localData.icr_key.trim() === "" ) && (localData.kubeadmin_user.trim() === "" || localData.kubeadmin_pass.trim() === "" || localData.icr_key.trim() === "")) {
-      timelineContainer.style.opacity = 0.5;
+      //timelineContainer.style.opacity = 0.5;
       timelineContainer.style.cursor = "not-allowed";
       [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
       [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => ele.style.pointerEvents = "none");
       [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none");
       [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
       [...timelineContainer.getElementsByTagName("DIV")].forEach(ele => ele.style.pointerEvents = "none");
+  } else {
+    timelineContainer.style.cursor = "not-allowed";
+    [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
+    [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => ele.style.pointerEvents = "none");
+    [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none");
+    [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
+    [...timelineContainer.getElementsByTagName("DIV")].forEach(ele => ele.style.pointerEvents = "none");
+    if (localData.envConfigured) {
+      let timelineCTA = timelineContainer.getElementsByClassName("timeline");
+      [...timelineCTA].forEach(ele => ele.style.opacity = 1);
+      timelineContainer.style.cursor = "auto";
+      [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "auto");
+      [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click") ? ele.style.pointerEvents = "auto" : ele.style.pointerEvents = "none");
+      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
+      [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
+      [...timelineContainer.getElementsByTagName("DIV")].forEach(ele => ele.style.pointerEvents = "auto");
+    } else {
+      let configCTA = timelineContainer.getElementsByClassName("timeline")[0]
+      configCTA.style.opacity = 1;
+      configCTA.style.cursor = "auto";
+      [...configCTA.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "auto");
+      [...configCTA.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click") ? ele.style.pointerEvents = "auto" : ele.style.pointerEvents = "none");
+      [...configCTA.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
+      [...configCTA.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
+      [...configCTA.getElementsByTagName("DIV")].forEach(ele => ele.style.pointerEvents = "auto");
     }
+  }
   
     //default data
     let config = {
@@ -86,23 +113,57 @@ window.onload = function () {
       if((config.server.trim() === "" || config.api_token.trim() === "" || config.icr_key.trim() === "") && (config.kubeadmin_user.trim() === "" || config.kubeadmin_pass.trim() === "" || config.icr_key.trim() === ""))
         valid = false
       if (valid) {
-        timelineContainer.style.opacity = 1;
+        /*timelineContainer.style.opacity = 1;
+      timelineContainer.style.cursor = "auto";
+      [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "auto");
+      [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click") ? ele.style.pointerEvents = "auto" : ele.style.pointerEvents = "none");
+      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
+      [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");*/
+      let configCTA = timelineContainer.getElementsByClassName("timeline")[0]
+      configCTA.style.opacity = 1;
+      configCTA.style.cursor = "auto";
+      [...configCTA.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "auto");
+      [...configCTA.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click") ? ele.style.pointerEvents = "auto" : ele.style.pointerEvents = "none");
+      [...configCTA.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
+      [...configCTA.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
+      [...configCTA.getElementsByTagName("DIV")].forEach(ele => ele.style.pointerEvents = "auto");
+      if (localData.envConfigured) {
+        let timelineCTA = timelineContainer.getElementsByClassName("timeline");
+        [...timelineCTA].forEach(ele => ele.style.opacity = 1);
         timelineContainer.style.cursor = "auto";
         [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "auto");
         [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click") ? ele.style.pointerEvents = "auto" : ele.style.pointerEvents = "none");
         [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
         [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
         [...timelineContainer.getElementsByTagName("DIV")].forEach(ele => ele.style.pointerEvents = "auto");
-      } else {
-        timelineContainer.style.opacity = 0.5;
-        timelineContainer.style.cursor = "not-allowed";
-        [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
-        [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => ele.style.pointerEvents = "none");
-        [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none");
-        [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
-        [...timelineContainer.getElementsByTagName("DIV")].forEach(ele => ele.style.pointerEvents = "none");
       }
+    } else {
+      let timelineCTA = timelineContainer.getElementsByClassName("timeline");
+      [...timelineCTA].forEach(ele => ele.style.opacity = 0.5)
+      //timelineContainer.style.opacity = 0.5;
+      timelineContainer.style.cursor = "not-allowed";
+      [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
+      [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => ele.style.pointerEvents = "none");
+      [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "none");
+      [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "none");
+      [...timelineContainer.getElementsByTagName("DIV")].forEach(ele => ele.style.pointerEvents = "none");
     }
+  }
+  document.getElementById("enable-timeline").addEventListener("click", activateRemainingCTA)
+  function activateRemainingCTA() {
+    let timelineCTA = timelineContainer.getElementsByClassName("timeline");
+    [...timelineCTA].forEach(ele => ele.style.opacity = 1)
+    timelineContainer.style.cursor = "auto";
+    [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "auto");
+    [...timelineContainer.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click") ? ele.style.pointerEvents = "auto" : ele.style.pointerEvents = "none");
+    [...timelineContainer.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = "auto");
+    [...timelineContainer.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = "auto");
+    [...timelineContainer.getElementsByTagName("DIV")].forEach(ele => ele.style.pointerEvents = "auto");
+    let tempData = JSON.parse(localStorage[didact])
+    tempData.envConfigured = true
+    localStorage[didact] = JSON.stringify(tempData)
+  }
+
   
         //configure cta
         document.getElementById("configure-env").addEventListener("click", updateConfigVars);

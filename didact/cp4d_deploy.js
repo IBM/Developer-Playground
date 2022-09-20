@@ -136,11 +136,9 @@ window.onload = function () {
     if(!component_list){
       component_list="null"
     }
-    let storage = document.getElementById("cr_storage_value").value;
-    // console.log("In the install CR funtion!!!")
+    let storage = document.getElementById("storage_value").value;
     document.getElementById("install_cpd").setAttribute("command", `cd /projects/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d; source deploy.sh cp4d`)
-    // console.log("Still in the install CR funtion!!!")
-    // document.getElementById("install_cr$1").click();
+
   }
 
   // Get the dropdown elements

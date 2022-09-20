@@ -65,13 +65,13 @@
             <div class="content">
                 <p>Get the resources required to deploy CP4D services and configure the openshift credentials.</p>
             </div>
-            <button class="button is-dark is-medium" id="configure-env" title="Configure Environment" numSuccess=1>Configure Environment *</button>
+            <button class="button is-dark is-medium" id="configure-env" title="Configure Environment" numSuccess=1>Configure Environment</button>
             <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
                 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
             <button id="configure-env$2" class="send-to-extension hidden-state" action="readfile"
                 command="cd /projects/techzone-demo/olm-utils-v2;pip3.8 install pyYaml;python3.8 getInstalledServices.py cp4d"
                 filePath="/projects/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
-                numSuccess=1></button><span class="spinner hidden-state"></span>
+                numSuccess=1 nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
             <button id="enable-timeline" class="hidden-state">Enable</button>
             <span class="dot"></span>
         </div>
@@ -118,7 +118,7 @@
                     </div>
                         <br /><br />
                     <button class="button is-dark is-medium" id="install_cpd" title="Execute" command="">Install selected services</button>
-                    <button id="install_cpd$1" class="send-to-extension hidden-state" command="" numSuccess=1></button><span class="spinner hidden-state"></span>
+                    <button id="install_cpd$1" class="send-to-extension hidden-state" action="senddata" command="" numSuccess=2></button><span class="spinner hidden-state"></span>
                     <span class="dot"></span>
                     </div>
                 </div>
@@ -127,7 +127,7 @@
                     <div class="content">
                     <p>Cleanup install utility artifacts</p>
                 </div>
-                <button class="send-to-extension button is-dark is-medium" title="Clean up" action="senddata" command="cd /projects/techzone-demo/olm-utils-v2/;sh delete.sh">Clean up</button><span class="spinner hidden-state"></span>
+                <button class="send-to-extension button is-dark is-medium" id="clean-up-job" title="Clean up" command="cd /projects/techzone-demo/olm-utils-v2/;sh delete.sh" numSuccess=1>Clean up</button><span class="spinner hidden-state"></span>
                 <span class="dot"></span>
         </div>
         </div>

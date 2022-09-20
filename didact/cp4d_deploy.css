@@ -358,6 +358,10 @@ label {
     list-style: none;
 }
 
+#git-services li {
+    margin-left: -2rem;
+}
+
 .dropdown-check-list .items ul {
     margin-left: 0rem;
 }

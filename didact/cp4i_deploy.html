@@ -69,10 +69,9 @@
             <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
                 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
             <button id="configure-env$2" class="send-to-extension hidden-state" action="readfile"
-                command="cd /projects/techzone-demo/olm-utils-v2;python3.8 getServiceList.py"
-                filePath="/projects/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
-                silent="true"></button><span class="spinner hidden-state"></span>
-            <span class="dot"></span>
+            command="cd /projects/techzone-demo/olm-utils-v2;pip3.8 install pyYaml;python3.8 getInstalledServices.py cp4i"
+            filePath="/projects/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
+                silent="true"></button><span class="spinner hidden-state"></span><span class="dot"></span>
         </div>
         <div class="timeline">
             <div class="content">
@@ -85,17 +84,20 @@
                             <input type="text" id="cp4i_version" value="2022.2.1-0">
                             <label>Components list
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <div id="cpi-service-list" class="dropdown-check-list" tabindex="100">
-                                <span id="selected-component" class="anchor">Select Components</span>
-                                    <!-- <input id="cpi-services-search" type="search" placeholder="Search components" style="width: 100%" /> -->
-                                    <ul id="cpi-git-services">
+                            <div id="service-list" class="dropdown-check-list" tabindex="100">
+                                <span class="anchor">Select Components</span>
+                                <div class="items">    
+                                    <input id="services-search" type="search" placeholder="Search components" style="width: 100%" />
+                                    <ul id="git-services">
                                     </ul>
                             </div>
                         </div>
-                        <p style="margin-top:1rem"><b>Selected Services: </b><span id="cpi-selected-services"></span></p>
+                    </div>
+                        <p style="margin-top:1rem"><b>Selected Services: </b><span id="selected-services"></span></p>
                         <div class="env-config">
                             <b>Storage Vendor</b><br>
-                            <div>Valid values include:
+                            <div>
+                                Valid values include:
                                 <ul>
                                 <li>nfs: If using NFS you should ensure that there is a storage class called managed-nfs-storage </li>
                                 <li>ocs: If you are using OCS storage for CP4I </li>
@@ -104,7 +106,7 @@
                                 <ul>
                             </div>
                             <label></label>
-                            <select id="cr_storage_value" style="width:150px;height:33px;padding-left: -150px">
+                            <select id="storage_value" style="width:150px;height:33px;padding-left: -150px">
                                 <option value="nfs">nfs</option>
                                 <option value="ocs">ocs</option>
                                 <option value="portworx">portworx</option>
@@ -113,7 +115,8 @@
                         </div>
                     </div>
                     <br /><br />
-                    <button class="button is-dark is-medium" title="Execute" id="install_cpi">Install selected services</button>
+                    <button class="button is-dark is-medium send-to-extension" nextAction="install_cpd$2" action="senddata" id="install_cpd" title="Execute" command="">Install selected services</button><span class="spinner hidden-state"></span>
+                    <span class="dot"></span>
                     <br /><br />
                     <div class="content">
                     <p>Cleanup install utility artifacts</p>

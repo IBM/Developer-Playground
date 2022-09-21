@@ -6,6 +6,10 @@
     "techzone-cpi-test":"Techzone CP4I Demo Test",
     "techzone-export-demo-artifacts": "Techzone Export Demo Artifacts",
     "techzone-import-demo-artifacts": "Techzone Import Demo Artifacts",
-    "test": "This is for testing!"
+    "test": "This is for testing!",
+    "cp4i-deploy": "Techzone CP4I OLM Utils",
+    "cp4d-deploy": "Techzone CP4D OLM Utils",
+    "cp4d-export": "Export Demo for CP4D",
+    "cp4d-import": "Import Demo for CP4D" 
   }
 }

@@ -1,0 +1,240 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="$$rootcsspath$$">
+    <style>
+        .header {
+            background-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/video_insights.jpeg");
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin-top:2rem"></div>
+    <div id="workspaceID" class="hidden-state">$workspace_id</div>
+    <div id="userID" class="hidden-state">$user_id</div>
+    <div id="environment" class="hidden-state">$environment</div>
+    <div class="header">
+        <div class="left-content">
+            <div class="apptitle">Save/Share demo assets with community</div>
+            <div class="subheading">Save demo artifacts to a centralized location (Shared GitHub repository). This will
+                enable you to recreate your demo assets onto a different/new infrastructure (potentially on a newer
+                version of Cloud Pak for Data). The centralized collection of demo assets can be leveraged by the
+                broader community so we all benefit from each others work.</div>
+        </div>
+    </div>
+    <div class="section">
+        <p style="font-size:24px">Pre-requisites</p>
+        <div>
+            <p>Enter your CPD cluster details.</p>
+            <div class="env-config">
+                <label>Hostname: </label><input class="env-variables" name="hostname" type="text" />
+                <label>User: </label><input class="env-variables" name="wkcuser" type="text" />
+                <label>Password: </label><input class="env-variables" name="password" type="password" />
+                <label class="hidden-state">API Key: </label><input class="env-variables hidden-state" name="api_key" type="text" />
+            </div>
+        </div>
+    </div>
+    <div class="section" style="margin-top:5rem;">
+        <p style="font-size:24px">Instructions</p>
+        <p>Please follow all the below steps in proper sequence.</p>
+    </div>
+    <div class="timeline-container">
+        <input type="text" class="hidden-state" id="data-fetched" />
+        <div class="timeline">
+            <div class="content">
+                <p>Configure the environment with the required resources and connect to the specified CPD cluster.</p>
+            </div>
+            <button class="button is-dark is-medium" id="configure-env" title="Configure Environment">Configure
+                Environment</button>
+            <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
+                nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
+            <button id="configure-env$2" class="send-to-extension hidden-state" action="readfile"
+                command="cd /projects/techzone-demo/sandbox;python3.8 getProjects.py"
+                filePath="/projects/techzone-demo/sandbox/projectsData.json" preProcess="true"
+                nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
+            <button id="enable-timeline" class="hidden-state"></button>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline">
+            <div class="content">
+                <p>Select the required tasks</p>
+                <div class="checkbox-group">
+                    <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
+                        <input type="checkbox" name="checkboxtask" value="task1" />
+                        <label for="task1">User Management</label>
+                    </div>
+                    <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
+                        <input type="checkbox" name="checkboxtask" value="task2" />
+                        <label for="task2">Governance Artifacts</label>
+                    </div>
+                    <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
+                        <input type="checkbox" name="checkboxtask" value="task3" />
+                        <label for="task3">Project Management</label>
+                    </div>
+                </div>
+                <span class="dot"></span>
+            </div>
+        </div>
+        <div class="timeline" id="task1">
+            <div class="content">
+                <details>
+                    <summary>User management<span class="arrow"></span></summary>
+                    <br><br>
+                    <div>
+                        <div class="content">
+                            <p>Export Users from the specified CPD cluster.</p>
+                        </div>
+                        <button class="send-to-extension button is-dark is-medium" id="export-user-list"
+                            title="Export User List" action="senddata"
+                            command="cd /projects/techzone-demo/sandbox/;python3.8 exportUsers.py users.csv">Export
+                            User List</button><span class="spinner hidden-state"></span>
+                        <span class="dot"></span>
+                    </div>
+                </details>
+            </div>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline" id="task2">
+            <div class="content">
+                <details>
+                    <summary>Governance Artifacts<span class="arrow"></span></summary>
+                    <br><br>
+                    <div class="content">
+                        <p>Select the required Governance artifacts. By default all artifacts will be exported.</p>
+                        <div id="list1" class="dropdown-check-list" tabindex="100">
+                            <span class="anchor">Select Artifacts</span>
+                            <ul class="items">
+                                <li><input type="checkbox" name="governance-artifacts" value="all" checked />All </li>
+                                <li><input type="checkbox" name="governance-artifacts" value="category" />Category
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts"
+                                        value="classification" />Classification
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts" value="data_class" />Data
+                                    Class
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts" value="glossary_term" />Glossary
+                                    Terms
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts" value="policy" />Policy
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts"
+                                        value="reference_data" />Reference Data
+                                </li>
+                                <li><input type="checkbox" name="governance-artifacts" value="rule" />Rule</label>
+                                </li>
+                            </ul>
+                        </div>
+                        <p style="margin-top:1rem;"><b>Selected Artifacts: </b><span id="selected">all</span></p>
+                    </div>
+                    <br>
+                    <div id="export-task">
+                        <div class="content">
+                            <p>Export the selected Governance Artifacts.</p>
+                        </div>
+                        <button class="send-to-extension button is-dark is-medium" id="export-governance-artifacts"
+                            title="Export Governance Artifacts" action="senddata"
+                            command="cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py governance_artifacts.zip all;unzip governance_artifacts.zip -d governance_artifacts;python3.8 exportDataProtectionRules.py data_protection_rules.json">Export
+                            Artifacts</button><span class="spinner hidden-state"></span><span class="dot"></span>
+                    </div>
+                </details>
+            </div>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline" id="task3">
+            <div class="content">
+                <details>
+                    <summary>Project management<span class="arrow"></span></summary>
+                    <br><br>
+                    <div class="content">
+                        <p>Select the required Project.</p>
+                        <div id="project-list" class="dropdown-check-list" tabindex="100">
+                            <span id="selected-project" class="anchor">Select Project</span>
+                            <ul id="project-list-ul" class="items">
+                            </ul>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="content">
+                        <p>Export the project.</p>
+                    </div>
+                    <button id="export-project" class="send-to-extension button is-dark is-medium no-click disable"
+                        title="Export Project" action="senddata"
+                        command="">Export
+                        Project</button><span class="spinner hidden-state"></span>
+                    <span class="dot"></span>
+                </details>
+            </div>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline">
+            <div class="content">
+                <details>
+                    <summary>Publish Demo Asset to centralised repository.<span class="arrow"></span></summary>
+                    <br><br>
+                    <div class="content">
+                        <!-- <p>Select the action to perform in the configured cp4d instance</p> -->
+                        <div class="env-config">
+                            <label>Private Demo</label>
+                            <label class="switch">
+                                <input id="private-git-toggle" type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                            <label id="private-git-url-label" class="hidden-state">Git URL:</label>
+                            <input type="text" id="private-git-url" class="hidden-state">
+                            <lable id="private-git-access-token-label" class="hidden-state">Git Access Token:</lable>
+                            <input type="text" id="private-git-access-token" class="hidden-state">
+                            <label>Demo Name*</label>
+                            <input type="text" id="demoname">
+                            <label>Industry*</label>
+                            <!--<input type="text" id="industry">-->
+                            <div id="industry-list" class="dropdown-check-list" tabindex="100">
+                                <span id="selected-industry" class="anchor">Select Industry</span>
+                                <ul class="items">
+                                    <li>Banking and financial services</li>
+                                    <li>E-commerce</li>
+                                    <li>Healthcare</li>
+                                    <li>Hospitality</li>
+                                    <li>Insurance</li>
+                                    <li>Retail</li>
+                                    <li>Software</li>
+                                    <li>Telecommunications</li>
+                                    <li>Transportation</li>
+                                    <li>Utilities</li>
+                                    <li>Other</li>
+                                </ul>
+                            </div>
+                            <label>Tags(comma separated)*</label>
+                            <input type="text" id="tags">
+                            <label>Author*</label>
+                            <input type="text" id="author">
+                            <label>Description*</label>
+                            <input type="text" id="desc">
+                            <label>Services*</label>
+                            <!--<input type="text" id="services">-->
+                            <div id="service-list" class="dropdown-check-list" tabindex="100">
+                                <span class="anchor">Select Services</span>
+                                <div class="items">
+                                    <input id="services-search" type="search" placeholder="Search services"
+                                        style="width: 100%" />
+                                    <ul id="git-services">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <p style="margin-top:1rem;"><b>Selected Services: </b><span id="selected-services"></span></p>
+                    </div>
+                    <button id="pushToGit" class="button is-dark is-medium no-click disable" title="Push to github">Publish</button>
+                    <button id="pushToGit$1" class="send-to-extension hidden-state" action="senddata"
+                        command=""></button><span class="spinner hidden-state"></span>
+            </div>
+            <span class="dot"></span>
+        </div>
+    </div>
+</body>
+<script src="$$rootjspath$$"></script>
+<script src="$$rootvscodeutilspath$$"></script>
+
+</html>

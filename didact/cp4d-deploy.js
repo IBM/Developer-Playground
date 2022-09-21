@@ -108,9 +108,9 @@ window.onload = function () {
     kubeadmin_pass: localData.kubeadmin_pass.trim(),
     icr_key: localData.icr_key.trim(),
   }
-  //Modify configure-env with localstorage values
-  let cta = document.getElementById("configure-env")
-  cta.href = `${compositeHref}${Object.values(config).toString().replaceAll(",", " ")}`
+//   //Modify configure-env with localstorage values
+//   let cta = document.getElementById("configure-env")
+//   cta.href = `${compositeHref}${Object.values(config).toString().replaceAll(",", " ")}`
   //Get env values
   let envVariables = document.getElementsByClassName('env-variables');
   [...envVariables].forEach((task) => {
@@ -184,7 +184,7 @@ window.onload = function () {
   //configure cta
   document.getElementById("configure-env").addEventListener("click", updateConfigVars);
   function updateConfigVars(e) {
-    document.getElementById("configure-env$1").setAttribute("command", `${compositeHref}${Object.values(config).toString().replaceAll(",", " ")}`)
+    document.getElementById("configure-env$1").setAttribute("command", `${compositeHref}${Object.keys(config).map(val => `${document.getElementsByName(val)[0].value || "\"\""}`).toString().replaceAll(",","%20")}` )
     document.getElementById("configure-env$1").click();
   }
 

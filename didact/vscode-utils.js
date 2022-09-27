@@ -1,5 +1,3 @@
-
-
 const vscode = acquireVsCodeApi();
 let inputFields = {};
 let productInfo = {};
@@ -43,22 +41,20 @@ window.addEventListener('message', event => {
                     }
                     if (attributes) {
                         for (const [key, value] of Object.entries(attributes)) {
-                            console.log(key!=="checked", "checking", key)
-                            if (key !== "class" && key!=="checked") {
-                                console.log(key, value);
-                                element[key] = value;
+                            if (key === "addEventListener") {
+                                element[key](value[0], window[value[1]])
                             } else if(key === "class") {
                                 element.classList.add(value)
-                            } else if(key==="checked"){
-                                element[key] = value;
-                                element.dispatchEvent(new Event('change'));
+                            } else if(key==="dispatchEvent"){
+                                element[key](new Event(value));
                                 console.log("event-triggered");
+                            } else {
+                                element[key] = value;
                             }
                         }
                     }
                 } else {
                     console.log(parentElement)
-                    //element = parentElement.nextSibling.nodeValue || ""
                     console.log("Text node",document.contains(parentElement))
                     if (!document.contains(parentElement)) {
                         element = document.createTextNode(attributes.value)
@@ -75,18 +71,13 @@ window.addEventListener('message', event => {
                 if (newElementCreated) {
                     parentElement.appendChild(element)
                 }
-                return newElementCreated
             }
             console.log(receivedOutput.outputData)
             let dataFromFile = JSON.parse(receivedOutput.outputData)
             let parentElement = document.getElementById(dataFromFile.parentId);
-            let sendInputEvent = false;
             for (let i = 0; i < dataFromFile.dataToRender.length; i++) {
                 let element = dataFromFile.dataToRender[i];
-                let newElementCreated = createElementWithAttributes(parentElement, element.elementToRender, element.attributes, element.children);
-                if (newElementCreated) {
-                    sendInputEvent = true
-                }
+                createElementWithAttributes(parentElement, element.elementToRender, element.attributes, element.children);
             }
             /*console.log(data.parentId, data.parentTagName, data.elementToRender)
             let elementToRender = document.getElementById(data.parentId)
@@ -99,11 +90,7 @@ window.addEventListener('message', event => {
                 list.appendChild(li);
                 //li.addEventListener("click", selectProject)
             })*/
-            if (sendInputEvent) {
-                document.getElementById("data-fetched").value = dataFromFile.parentId
-                document.getElementById("data-fetched").dispatchEvent(new Event('input', { bubbles: true, }));
-            }
-            console.log(typeof (data))
+            
             break;
         case 'executing':
             console.log(receivedOutput.outputData.elementId, receivedOutput.outputData.status)
@@ -145,6 +132,7 @@ window.addEventListener('message', event => {
             //var projectElelment = document.getElementById('project-list');
             //console.log("selected project:" + projectElelment.value);
             //inputFields["selectedProject"] = projectElelment.value;
+            console.log(preProcess, "preProcess")
             if (action == "getdata") {
                 vscode.postMessage({
                     command: 'getdata',

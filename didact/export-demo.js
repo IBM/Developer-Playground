@@ -1,4 +1,4 @@
-let configureCommand = "git clone -b $BRANCH https://github.com/IBM/CPDemoFramework ${CHE_PROJECTS_ROOT}/techzone-demo;cd ${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8 install -r requirements.txt;cd /projects/techzone-demo/sandbox/;python3.8 update-env.py ";
+let configureCommand = "git clone -b ${BRANCH} https://github.com/IBM/CPDemoFramework ${CHE_PROJECTS_ROOT}/techzone-demo;cd ${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8 install -r requirements.txt;cd /projects/techzone-demo/sandbox/;python3.8 update-env.py ";
 
 currentHTMLstateData = {
   prerequisites: {
@@ -23,6 +23,7 @@ currentHTMLstateData = {
     "private-git-url": "",
     "private-git-access-token": ""
   },
+  doNotRestore: ["private-git-access-token"]
 }
 
 const services = {
@@ -96,31 +97,23 @@ const funcLoad = () => {
   // Disable timeline
   disableTimelineFromElement("all");
 
-  //Get the env data
-  htmlName = document.getElementsByClassName("apptitle")[0].textContent;
-  let env = document.getElementById("environment").textContent
-  configureCommand = configureCommand.replaceAll("$BRANCH", env)
-
-  //Restore data if available
-  restoreData();
-
   //handle prerequisites
   for (let prerequisite of Object.keys(currentHTMLstateData.prerequisites)) {
-    document.getElementById(prerequisite).addEventListener("input", handlePrerequisiteValues);
+    addEventListener(document.getElementById(prerequisite), "input", handlePrerequisiteValues);
   }
 
   //generate config command
-  document.getElementById("configure-env").addEventListener("click", updateConfigVars);
+  addEventListener(document.getElementById("configure-env"),"click", updateConfigVars);
 
   //After env configured successfully enable timeline
-  document.getElementById("enable-timeline").addEventListener("click", enableAll)
+  addEventListener(document.getElementById("enable-timeline"),"click", enableAll)
 
   //handle managemnet dropdowns
   let tasks = document.querySelectorAll("[id^='task']");
   tasks.forEach((task) => (task.style.display = "none"));
 
   let selectedTasks = document.getElementsByName("checkboxtask");
-  selectedTasks.forEach((task) => task.addEventListener("click", showTasks));
+  selectedTasks.forEach((task) => addEventListener(task, "click", showTasks));
 
   //open/close logic for all dropdowns
   toggleDropdowns(currentHTMLstateData.dropdownIds)
@@ -128,30 +121,32 @@ const funcLoad = () => {
 
   //handle governance artifacts
   let govArtifacts = document.getElementsByName("governance-artifacts");
-  govArtifacts.forEach((task) => task.addEventListener("click", UpdateExport));
+  govArtifacts.forEach((task) => addEventListener(task, "click", UpdateExport));
 
   //show private demo options
-  document.getElementById("private-git-toggle").addEventListener("change", showPrivateDemoOptions);
+  addEventListener(document.getElementById("private-git-toggle"), "change", showPrivateDemoOptions);
 
   //handle required github fields
   for (let gitField of Object.keys(currentHTMLstateData.requiredGithubFields)) {
-    document.getElementById(gitField).addEventListener("input", handleGitValues);
+    addEventListener(document.getElementById(gitField), "input", handleGitValues);
   }
 
   //handle private demo required github fields
   for (let privateGitField of Object.keys(currentHTMLstateData.requiredPrivateGithubFields)) {
-    document.getElementById(privateGitField).addEventListener("input", handleGitValues);
+    addEventListener(document.getElementById(privateGitField), "input", handleGitValues);
   }
 
   //create industry dropdown
   createSingleSelectDropdown("industry-ul", industries, selectIndustry);
-   
+
   //create services dropdown
   createMultiSelectDropdownWithSearch("git-services", services, updateSelectedServices, "services", "services-search", filterServiceList)
 
   //handle push to git 
-  document.getElementById("pushToGit").addEventListener("click", pushToGit);
+  addEventListener(document.getElementById("pushToGit"),"click", pushToGit);
 
+  //Restore data if available
+  restoreData();
 }
 
 
@@ -179,7 +174,7 @@ const UpdateExport = (e) => {
     currentHTMLstateData.selectedArtifacts.indexOf(e.target.value) !== -1 && currentHTMLstateData.selectedArtifacts.splice(currentHTMLstateData.selectedArtifacts.indexOf(e.target.value), 1)
   }
 
-  if ( currentHTMLstateData.selectedArtifacts.length === 0) {
+  if (currentHTMLstateData.selectedArtifacts.length === 0) {
     modifyVisibilityOfCTAs(["export-task"], "disable")
   } else {
     modifyVisibilityOfCTAs(["export-task"], "enable")
@@ -247,7 +242,7 @@ const selectIndustry = (e) => {
 
 const updateSelectedServices = (e) => {
   let gitServicesList = document.getElementById("git-services");
-  
+
   if (e.target.checked) {
     currentHTMLstateData.selectedServices.push(e.target.value)
     gitServicesList.insertBefore(e.target.parentElement, gitServicesList.firstChild);

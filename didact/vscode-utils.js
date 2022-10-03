@@ -11,7 +11,7 @@ window.addEventListener('message', event => {
             productInfo = receivedOutput.productInfo;
             console.log(JSON.stringify(productInfo));
             document.getElementById("demo-url").innerHTML = productInfo.privateGitRepoUrl;
-            if(productInfo.isPrivate) {
+            if (productInfo.isPrivate) {
                 document.getElementById("gittokeninput").style.display = "block";
                 document.getElementById("private-demo-url").style.display = "block";
             }
@@ -43,9 +43,9 @@ window.addEventListener('message', event => {
                         for (const [key, value] of Object.entries(attributes)) {
                             if (key === "addEventListener") {
                                 element[key](value[0], window[value[1]])
-                            } else if(key === "class") {
+                            } else if (key === "class") {
                                 element.classList.add(value)
-                            } else if(key==="dispatchEvent"){
+                            } else if (key === "dispatchEvent") {
                                 element[key](new Event(value));
                                 console.log("event-triggered");
                             } else {
@@ -55,7 +55,7 @@ window.addEventListener('message', event => {
                     }
                 } else {
                     console.log(parentElement)
-                    console.log("Text node",document.contains(parentElement))
+                    console.log("Text node", document.contains(parentElement))
                     if (!document.contains(parentElement)) {
                         element = document.createTextNode(attributes.value)
                         newElementCreated = true
@@ -90,7 +90,7 @@ window.addEventListener('message', event => {
                 list.appendChild(li);
                 //li.addEventListener("click", selectProject)
             })*/
-            
+
             break;
         case 'executing':
             console.log(receivedOutput.outputData.elementId, receivedOutput.outputData.status)
@@ -108,6 +108,9 @@ window.addEventListener('message', event => {
             if (receivedOutput.outputData.status === "success" && receivedOutput.outputData.clickCTA) {
                 document.getElementById(receivedOutput.outputData.clickCTA).click();
             }
+            break;
+        case 'get-workspace-state':
+            dataToRestoreOnReload = receivedOutput.outputData;
             break;
     }
 });
@@ -161,6 +164,23 @@ window.addEventListener('message', event => {
                     inputFields: inputFields,
                     elementId: elementId,
                     numSuccess: numSuccess
+                });
+            }
+            else if (action == "update-workspace-state") {
+                vscode.postMessage({
+                    command: 'update-workspace-state',
+                    data: dataToRestoreOnReload,
+                    nextAction: nextAction,
+                    preProcess: preProcess,
+                    elementId: elementId,
+                });
+            } 
+            else if (action == "get-workspace-state") {
+                vscode.postMessage({
+                    command: 'get-workspace-state',
+                    nextAction: nextAction,
+                    preProcess: preProcess,
+                    elementId: elementId,
                 });
             }
             else {

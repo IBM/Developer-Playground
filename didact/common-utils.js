@@ -175,6 +175,7 @@ const createSingleSelectDropdown = (parentId, data, clickFunction) => {
         let li = document.createElement("li");
         li.id = `li_${id}`
         li.textContent = data[id];
+        li.classList.add('store-data')
         li.addEventListener('click', clickFunction);
         parent.appendChild(li);
     })
@@ -188,6 +189,7 @@ const createMultiSelectDropdownWithSearch = (parentId, data, checkFunction, inpu
         let input = document.createElement("input");
         input.id = `input_${id}`
         li.id = `li_${id}`
+        input.classList.add('store-data')
         input.setAttribute("value", id)
         input.setAttribute("name", inputName)
         input.setAttribute("type", "checkbox")

@@ -22,6 +22,7 @@ const updateWorkspaceState = (e) => {
 }
 
 
+
 const addEventListener = (element, eventType, triggerFunction) => {
     element.addEventListener(eventType, triggerFunction);
     if (element.classList.contains('store-data')) {
@@ -32,18 +33,28 @@ const addEventListener = (element, eventType, triggerFunction) => {
 // Fill available state data
 const restoreData = () => {
     //get data from workspace state
-    document.getElementById("get-workspace-state").click();
-    for (let elementId of Object.keys(dataToRestoreOnReload)) {
-        let elementToRestore = document.getElementById(elementId);
-        for (let attribute of Object.keys(dataToRestoreOnReload[elementId])) {
-            if (attribute === "dispatchEvent") {
-                elementToRestore.dispatchEvent(new Event(dataToRestoreOnReload[elementId][attribute]));
-            } else {
-                elementToRestore[attribute] = dataToRestoreOnReload[elementId][attribute];
-            }
-        }
+    setTimeout(() => {
+        document.getElementById("get-workspace-state").click();
+        console.log(document.getElementById("get-workspace-state"))
+        setTimeout(() => {
+            console.log("get-workspace-state", dataToRestoreOnReload)
+            for (let elementId of Object.keys(dataToRestoreOnReload)) {
+                let elementToRestore = document.getElementById(elementId);
+                for (let attribute of Object.keys(dataToRestoreOnReload[elementId])) {
+                    try {
+                        if (attribute === "dispatchEvent") {
+                            elementToRestore.dispatchEvent(new Event(dataToRestoreOnReload[elementId][attribute]));
+                        } else {
+                            elementToRestore[attribute] = dataToRestoreOnReload[elementId][attribute];
+                        }
+                    } catch {
+                        continue;
+                    }
+                }
 
-    }
+            }
+        }, 500)
+    }, 500);
 }
 
 // validate prequisites
@@ -68,10 +79,6 @@ const handlePrerequisiteValues = (e) => {
         e.target.value = e.target.value.trim().replace(/(^\w+:|^)\/\//, '').replace(/^\/+|\/+$/g, '');
     }
     currentHTMLstateData.prerequisites[e.target.name] = e.target.value;
-    updateWorkspaceState(e.target.id, {
-        value: e.target.value,
-        dispatchEvent: e.type,
-    });
     let prerequisiteFulfilled = checkAllPrequisiteFieldsfilled()
 
     if (prerequisiteFulfilled) {
@@ -176,7 +183,7 @@ const createSingleSelectDropdown = (parentId, data, clickFunction) => {
         li.id = `li_${id}`
         li.textContent = data[id];
         li.classList.add('store-data')
-        li.addEventListener('click', clickFunction);
+        addEventListener(li,'click', clickFunction);
         parent.appendChild(li);
     })
 }

@@ -68,10 +68,6 @@ const handlePrerequisiteValues = (e) => {
         e.target.value = e.target.value.trim().replace(/(^\w+:|^)\/\//, '').replace(/^\/+|\/+$/g, '');
     }
     currentHTMLstateData.prerequisites[e.target.name] = e.target.value;
-    updateWorkspaceState(e.target.id, {
-        value: e.target.value,
-        dispatchEvent: e.type,
-    });
     let prerequisiteFulfilled = checkAllPrequisiteFieldsfilled()
 
     if (prerequisiteFulfilled) {

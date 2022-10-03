@@ -1,32 +1,38 @@
 let dataToRestoreOnReload = {};
 let currentHTMLstateData = {};
-let htmlName = "";
+
+
 
 //update workspace state with events
 const updateWorkspaceState = (e) => {
-    let data= {};
-    if(e.type === "change"){
+    let data = {};
+    if (currentHTMLstateData.doNotRestore.includes(e.target.id)) {
+        return;
+    }
+    if (e.type === "change") {
         data.checked = e.target.checked;
-    } else if(e.type === "input"){
+    } else if (e.type === "input") {
         data.value = e.target.value;
     }
     data.dispatchEvent = e.type;
-    dataToRestoreOnReload[e.id] = data;
+    dataToRestoreOnReload[e.target.id] = data;
     // update dataToRestoreOnReload in extension
+    document.getElementById("update-workspace-state").click();
+    delete dataToRestoreOnReload[e.target.id];
 }
 
-const initiateDataStoring = () => {
-    let elementsToRestore = [...document.getElementsByClassName("store-data")];
-    elementsToRestore.forEach(elementToRestore => {
-        elementToRestore.addEventListener("click",updateWorkspaceState);
-        elementToRestore.addEventListener("change", updateWorkspaceState);
-        elementToRestore.addEventListener("input", updateWorkspaceState);
-    })
+
+const addEventListener = (element, eventType, triggerFunction) => {
+    element.addEventListener(eventType, triggerFunction);
+    if (element.classList.contains('store-data')) {
+        element.addEventListener(eventType, updateWorkspaceState);
+    }
 }
 
 // Fill available state data
 const restoreData = () => {
-    dataToRestoreOnReload = {}//get data from workspace state
+    //get data from workspace state
+    document.getElementById("get-workspace-state").click();
     for (let elementId of Object.keys(dataToRestoreOnReload)) {
         let elementToRestore = document.getElementById(elementId);
         for (let attribute of Object.keys(dataToRestoreOnReload[elementId])) {
@@ -167,8 +173,9 @@ const createSingleSelectDropdown = (parentId, data, clickFunction) => {
     let parent = document.getElementById(parentId);
     Object.keys(data).forEach(id => {
         let li = document.createElement("li");
-        li.id = id;
+        li.id = `li_${id}`
         li.textContent = data[id];
+        li.classList.add('store-data')
         li.addEventListener('click', clickFunction);
         parent.appendChild(li);
     })
@@ -180,13 +187,16 @@ const createMultiSelectDropdownWithSearch = (parentId, data, checkFunction, inpu
     Object.keys(data).forEach(id => {
         let li = document.createElement("li");
         let input = document.createElement("input");
+        input.id = `input_${id}`
+        li.id = `li_${id}`
+        input.classList.add('store-data')
         input.setAttribute("value", id)
         input.setAttribute("name", inputName)
         input.setAttribute("type", "checkbox")
-        input.addEventListener("change", checkFunction);
+        addEventListener(input, "change", checkFunction);
         li.appendChild(input)
         li.appendChild(document.createTextNode(data[id]));
         parent.appendChild(li);
     })
-    document.getElementById(searchInputId).addEventListener("input", filterFunction);
+    addEventListener(document.getElementById(searchInputId), "input", filterFunction);
 }

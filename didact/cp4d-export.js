@@ -457,7 +457,7 @@ Object.keys(services).forEach(id => {
 
 //Get selected values
 let gitServices = document.getElementsByName("services");
-gitServices.forEach((task) => task.addEventListener("click", updateSelectedServices));
+gitServices.forEach((task) => task.addEventListener("change", updateSelectedServices));
 function updateSelectedServices(e) {
   if (e.target.checked) {
     selectedServices.push(e.target.value)

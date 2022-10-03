@@ -14,7 +14,7 @@
     <div style="margin-top:2rem"></div>
     <div id="workspaceID" class="hidden-state">$workspace_id</div>
     <div id="userID" class="hidden-state">$user_id</div>
-    <div id="environment" class="hidden-state">development</div>
+    <div id="environment" class="hidden-state">$environment</div>
     <div class="header">
         <div class="left-content">
             <div class="apptitle">Save/Share demo assets with community</div>
@@ -29,10 +29,9 @@
         <div>
             <p>Enter your CPD cluster details.</p>
             <div class="env-config">
-                <label>Hostname: </label><input class="env-variables" name="hostname" type="text" />
-                <label>User: </label><input class="env-variables" name="wkcuser" type="text" />
-                <label>Password: </label><input class="env-variables" name="password" type="password" />
-                <label class="hidden-state">API Key: </label><input class="env-variables hidden-state" name="api_key" type="text" />
+                <label>Hostname: </label><input class="store-data env-variables" id="hostname" name="hostname" type="text" />
+                <label>User: </label><input class="store-data env-variables" id="wkcuser" name="wkcuser" type="text" />
+                <label>Password: </label><input class="store-data env-variables" id="password" name="password" type="password" />
             </div>
         </div>
     </div>
@@ -41,8 +40,7 @@
         <p>Please follow all the below steps in proper sequence.</p>
     </div>
     <div class="timeline-container">
-        <input type="text" class="hidden-state" id="data-fetched" />
-        <div class="timeline">
+        <div class="timeline" id="configure-environment-CTA">
             <div class="content">
                 <p>Configure the environment with the required resources and connect to the specified CPD cluster.</p>
             </div>
@@ -54,7 +52,7 @@
                 command="cd /projects/techzone-demo/sandbox;python3.8 getProjects.py"
                 filePath="/projects/techzone-demo/sandbox/projectsData.json" preProcess="true"
                 nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
-            <button id="enable-timeline" class="hidden-state"></button>
+            <button id="enable-timeline" class="store-data"></button>
             <span class="dot"></span>
         </div>
         <div class="timeline">
@@ -62,15 +60,15 @@
                 <p>Select the required tasks</p>
                 <div class="checkbox-group">
                     <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
-                        <input type="checkbox" name="checkboxtask" value="task1" />
+                        <input class="store-data" type="checkbox" name="checkboxtask" value="task1" />
                         <label for="task1">User Management</label>
                     </div>
                     <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
-                        <input type="checkbox" name="checkboxtask" value="task2" />
+                        <input class="store-data" type="checkbox" name="checkboxtask" value="task2" />
                         <label for="task2">Governance Artifacts</label>
                     </div>
                     <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
-                        <input type="checkbox" name="checkboxtask" value="task3" />
+                        <input class="store-data" type="checkbox" name="checkboxtask" value="task3" />
                         <label for="task3">Project Management</label>
                     </div>
                 </div>
@@ -103,27 +101,27 @@
                     <br><br>
                     <div class="content">
                         <p>Select the required Governance artifacts. By default all artifacts will be exported.</p>
-                        <div id="list1" class="dropdown-check-list" tabindex="100">
+                        <div id="governance-list" class="dropdown-check-list" tabindex="100">
                             <span class="anchor">Select Artifacts</span>
                             <ul class="items">
-                                <li><input type="checkbox" name="governance-artifacts" value="all" checked />All </li>
-                                <li><input type="checkbox" name="governance-artifacts" value="category" />Category
+                                <li><input class="store-data" type="checkbox" name="governance-artifacts" value="all" checked />All </li>
+                                <li><input class="store-data" type="checkbox" name="governance-artifacts" value="category" />Category
                                 </li>
-                                <li><input type="checkbox" name="governance-artifacts"
+                                <li><input class="store-data" type="checkbox" name="governance-artifacts"
                                         value="classification" />Classification
                                 </li>
-                                <li><input type="checkbox" name="governance-artifacts" value="data_class" />Data
+                                <li><input class="store-data" type="checkbox" name="governance-artifacts" value="data_class" />Data
                                     Class
                                 </li>
-                                <li><input type="checkbox" name="governance-artifacts" value="glossary_term" />Glossary
+                                <li><input class="store-data" type="checkbox" name="governance-artifacts" value="glossary_term" />Glossary
                                     Terms
                                 </li>
-                                <li><input type="checkbox" name="governance-artifacts" value="policy" />Policy
+                                <li><input class="store-data" type="checkbox" name="governance-artifacts" value="policy" />Policy
                                 </li>
-                                <li><input type="checkbox" name="governance-artifacts"
+                                <li><input class="store-data" type="checkbox" name="governance-artifacts"
                                         value="reference_data" />Reference Data
                                 </li>
-                                <li><input type="checkbox" name="governance-artifacts" value="rule" />Rule</label>
+                                <li><input class="store-data" type="checkbox" name="governance-artifacts" value="rule" />Rule</label>
                                 </li>
                             </ul>
                         </div>
@@ -179,39 +177,29 @@
                         <div class="env-config">
                             <label>Private Demo</label>
                             <label class="switch">
-                                <input id="private-git-toggle" type="checkbox">
+                                <input class="store-data" id="private-git-toggle" type="checkbox">
                                 <span class="slider round"></span>
                             </label>
                             <label id="private-git-url-label" class="hidden-state">Git URL:</label>
-                            <input type="text" id="private-git-url" class="hidden-state">
+                            <input type="text" id="private-git-url" class="store-data hidden-state">
                             <lable id="private-git-access-token-label" class="hidden-state">Git Access Token:</lable>
-                            <input type="text" id="private-git-access-token" class="hidden-state">
+                            <input type="password" id="private-git-access-token" class="hidden-state">
                             <label>Demo Name*</label>
-                            <input type="text" id="demoname">
+                            <input class="store-data" type="text" id="demoName">
                             <label>Industry*</label>
                             <!--<input type="text" id="industry">-->
                             <div id="industry-list" class="dropdown-check-list" tabindex="100">
                                 <span id="selected-industry" class="anchor">Select Industry</span>
-                                <ul class="items">
-                                    <li>Banking and financial services</li>
-                                    <li>E-commerce</li>
-                                    <li>Healthcare</li>
-                                    <li>Hospitality</li>
-                                    <li>Insurance</li>
-                                    <li>Retail</li>
-                                    <li>Software</li>
-                                    <li>Telecommunications</li>
-                                    <li>Transportation</li>
-                                    <li>Utilities</li>
-                                    <li>Other</li>
+                                <ul id="industry-ul"class="items">
+                                    
                                 </ul>
                             </div>
                             <label>Tags(comma separated)*</label>
-                            <input type="text" id="tags">
+                            <input class="store-data" type="text" id="tags">
                             <label>Author*</label>
-                            <input type="text" id="author">
+                            <input class="store-data" type="text" id="author">
                             <label>Description*</label>
-                            <input type="text" id="desc">
+                            <input class="store-data" type="text" id="desc">
                             <label>Services*</label>
                             <!--<input type="text" id="services">-->
                             <div id="service-list" class="dropdown-check-list" tabindex="100">
@@ -234,6 +222,7 @@
         </div>
     </div>
 </body>
+<script src="$$rootcommonjspath$$"></script>
 <script src="$$rootjspath$$"></script>
 <script src="$$rootvscodeutilspath$$"></script>
 

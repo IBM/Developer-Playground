@@ -113,7 +113,7 @@ const funcLoad = () => {
   tasks.forEach((task) => (task.style.display = "none"));
 
   let selectedTasks = document.getElementsByName("checkboxtask");
-  selectedTasks.forEach((task) => addEventListener(task, "click", showTasks));
+  selectedTasks.forEach((task) => addEventListener(task, "change", showTasks));
 
   //open/close logic for all dropdowns
   toggleDropdowns(currentHTMLstateData.dropdownIds)
@@ -121,7 +121,7 @@ const funcLoad = () => {
 
   //handle governance artifacts
   let govArtifacts = document.getElementsByName("governance-artifacts");
-  govArtifacts.forEach((task) => addEventListener(task, "click", UpdateExport));
+  govArtifacts.forEach((task) => addEventListener(task, "change", UpdateExport));
 
   //show private demo options
   addEventListener(document.getElementById("private-git-toggle"), "change", showPrivateDemoOptions);
@@ -242,7 +242,7 @@ const selectIndustry = (e) => {
 
 const updateSelectedServices = (e) => {
   let gitServicesList = document.getElementById("git-services");
-
+  let gitServices = document.getElementsByName("services");
   if (e.target.checked) {
     currentHTMLstateData.selectedServices.push(e.target.value)
     gitServicesList.insertBefore(e.target.parentElement, gitServicesList.firstChild);
@@ -250,7 +250,6 @@ const updateSelectedServices = (e) => {
     currentHTMLstateData.selectedServices.indexOf(e.target.value) !== -1 && currentHTMLstateData.selectedServices.splice(currentHTMLstateData.selectedServices.indexOf(e.target.value), 1)
     gitServicesList.insertBefore(e.target.parentElement, gitServices[Object.keys(services).indexOf(e.target.value)].parentElement);
   }
-
   let showSeleted = document.getElementById("selected-services")
   showSeleted.textContent = currentHTMLstateData.selectedServices.toString().replaceAll(",", ", ")
   validateGithubFields();

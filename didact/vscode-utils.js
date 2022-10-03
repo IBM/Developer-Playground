@@ -111,6 +111,10 @@ window.addEventListener('message', event => {
             break;
         case 'get-workspace-state':
             dataToRestoreOnReload = receivedOutput.outputData;
+            console.log('got data to restore', dataToRestoreOnReload)
+            break;
+        case 'reset-workspace-state':
+            dataToRestoreOnReload = receivedOutput.outputData;
             break;
     }
 });
@@ -167,6 +171,7 @@ window.addEventListener('message', event => {
                 });
             }
             else if (action == "update-workspace-state") {
+                console.log("update-workspace-state", dataToRestoreOnReload)
                 vscode.postMessage({
                     command: 'update-workspace-state',
                     data: dataToRestoreOnReload,
@@ -176,8 +181,17 @@ window.addEventListener('message', event => {
                 });
             } 
             else if (action == "get-workspace-state") {
+                console.log("getupdate-workspace-state", dataToRestoreOnReload)
                 vscode.postMessage({
                     command: 'get-workspace-state',
+                    nextAction: nextAction,
+                    preProcess: preProcess,
+                    elementId: elementId,
+                });
+            }
+            else if (action == "reset-workspace-state") {
+                vscode.postMessage({
+                    command: 'reset-workspace-state',
                     nextAction: nextAction,
                     preProcess: preProcess,
                     elementId: elementId,

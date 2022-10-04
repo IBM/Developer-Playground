@@ -1,6 +1,59 @@
 let dataToRestoreOnReload = {};
 let currentHTMLstateData = {};
 
+const services = {
+    analyticsengine: "Analytics Engine Powered by Apache Spark",
+    bigsql: "Db2 Big SQL",
+    cde: "Cognos Dashboards",
+    cognos_analytics: "Cognos Analytics",
+    cpd_platform: "Cloud Pak for Data Control Plane",
+    cpfs: "Cloud Pak Foundational Services(CPFS)",
+    datagate: "Data Gate",
+    datarefinery: "Data Refinery",
+    datastage_ent: "DataStage Enterprise",
+    datastage_ent_plus: "DataStage Enterprise Plus",
+    db2aaservice: "CPD db2 aas component",
+    db2oltp: "Db2",
+    db2u: "IBM Db2u",
+    db2wh: "Db2 Warehouse",
+    dmc: "Data Management Console",
+    dods: "Decision Optimization",
+    dp: "Data Privacy",
+    dv: "Data Virtualization",
+    edb_cp4d: "EnterpriseDB Postgres",
+    hee: "Execution Engine for Apache Hadoop",
+    iis: "WKC's IIS component",
+    informix: "Informix install Operator",
+    informix_cp4d: "Informix deployment Operator",
+    match360: "Match 360 with Watson",
+    model_train: "IBM cloudpak operator for training with Model Train",
+    mongodb: "MongoDB Operator",
+    mongodb_cp4d: "MongoDB for Cloud Pak for Data",
+    openpages: "OpenPages",
+    openpages_instance: "OpenPages Instance",
+    openscale: "Watson OpenScale",
+    planning_analytics: "Planning Analytics",
+    postgresql: "Cloud Native PostgreSQL",
+    productmaster: "Product Master",
+    productmaster_instance: "Product Master Instance",
+    rstudio: "RStudio Server",
+    scheduler: "CPD Scheduler",
+    spss: "SPSS Modeler",
+    voice_gateway: "Voice Gateway",
+    watson_assistant: "Watson Assistant",
+    watson_discovery: "Watson Discovery",
+    watson_gateway: "IBM Watson Gateway Operator",
+    watson_ks: "Watson Knowledge Studio",
+    watson_speech: "Watson Speech to Text",
+    wkc: "Watson Knowledge Catalog",
+    wml: "Watson Machine Learning",
+    wml_accelerator: "Watson Machine Learning Accelerator",
+    ws: "Watson Studio",
+    ws_pipelines: "Watson Studio Pipelines",
+    ws_runtimes: "Watson Studio Runtimes",
+    zen: "Zen Service in CPFS"
+}
+
 
 
 //update workspace state with events
@@ -22,7 +75,7 @@ const updateWorkspaceState = (e) => {
 }
 
 
-
+//adds additional event listener to update the state in workspace
 const addEventListener = (element, eventType, triggerFunction) => {
     element.addEventListener(eventType, triggerFunction);
     if (element.classList.contains('store-data')) {
@@ -31,30 +84,22 @@ const addEventListener = (element, eventType, triggerFunction) => {
 }
 
 // Fill available state data
-const restoreData = () => {
-    //get data from workspace state
-    setTimeout(() => {
-        document.getElementById("get-workspace-state").click();
-        console.log(document.getElementById("get-workspace-state"))
-        setTimeout(() => {
-            console.log("get-workspace-state", dataToRestoreOnReload)
-            for (let elementId of Object.keys(dataToRestoreOnReload)) {
-                let elementToRestore = document.getElementById(elementId);
-                for (let attribute of Object.keys(dataToRestoreOnReload[elementId])) {
-                    try {
-                        if (attribute === "dispatchEvent") {
-                            elementToRestore.dispatchEvent(new Event(dataToRestoreOnReload[elementId][attribute]));
-                        } else {
-                            elementToRestore[attribute] = dataToRestoreOnReload[elementId][attribute];
-                        }
-                    } catch {
-                        continue;
-                    }
+const restoreData = (dataToRestore) => {
+    console.log("get-workspace-state", dataToRestore)
+    for (let elementId of Object.keys(dataToRestore)) {
+        let elementToRestore = document.getElementById(elementId);
+        for (let attribute of Object.keys(dataToRestore[elementId])) {
+            try {
+                if (attribute === "dispatchEvent") {
+                    elementToRestore.dispatchEvent(new Event(dataToRestore[elementId][attribute]));
+                } else {
+                    elementToRestore[attribute] = dataToRestore[elementId][attribute];
                 }
-
+            } catch {
+                continue;
             }
-        }, 500)
-    }, 500);
+        }
+    }
 }
 
 // validate prequisites
@@ -183,7 +228,7 @@ const createSingleSelectDropdown = (parentId, data, clickFunction) => {
         li.id = `li_${id}`
         li.textContent = data[id];
         li.classList.add('store-data')
-        addEventListener(li,'click', clickFunction);
+        addEventListener(li, 'click', clickFunction);
         parent.appendChild(li);
     })
 }

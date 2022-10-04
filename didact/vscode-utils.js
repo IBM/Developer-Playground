@@ -4,8 +4,6 @@ let productInfo = {};
 window.addEventListener('message', event => {
     const receivedOutput = event.data; // The JSON data our extension sent
     switch (receivedOutput.command) {
-        case 'refactor':
-            break;
         case 'receiveProductInfo':
             //document.querySelector('[id="message"]').innerHTML = message.message;
             productInfo = receivedOutput.productInfo;
@@ -18,15 +16,6 @@ window.addEventListener('message', event => {
             else {
                 document.getElementById("gittokeninput").style.display = "none";
                 document.getElementById("private-demo-url").style.display = "none";
-            }
-            break;
-        case 'receivedata':
-            //document.querySelector('[id="message"]').innerHTML = message.message;
-            var ele = document.getElementById('project-list');
-            for (var i = 0; i < receivedOutput.outputData.resources.length; i++) {
-                // POPULATE SELECT ELEMENT WITH JSON.
-                ele.innerHTML = ele.innerHTML +
-                    '<option value="' + receivedOutput.outputData.resources[i].metadata.guid + '">' + receivedOutput.outputData.resources[i].entity.name + '</option>';
             }
             break;
         case 'renderFileData':
@@ -110,11 +99,10 @@ window.addEventListener('message', event => {
             }
             break;
         case 'get-workspace-state':
-            dataToRestoreOnReload = receivedOutput.outputData;
-            console.log('got data to restore', dataToRestoreOnReload)
+            restoreData(receivedOutput.outputData);
             break;
         case 'reset-workspace-state':
-            dataToRestoreOnReload = receivedOutput.outputData;
+            dataToRestoreOnReload = {};
             break;
     }
 });
@@ -192,6 +180,7 @@ window.addEventListener('message', event => {
             else if (action == "reset-workspace-state") {
                 vscode.postMessage({
                     command: 'reset-workspace-state',
+                    text: command,
                     nextAction: nextAction,
                     preProcess: preProcess,
                     elementId: elementId,

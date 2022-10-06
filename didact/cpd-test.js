@@ -1,6 +1,7 @@
 window.onload = function () {
     // console.log(document.getElementById("execute"))
-    let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit clone https://github.com/IBM/CPDemoFramework -b techzone-fr --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2;bash configure-env.sh%20"  
+    let compositeHref = "didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd /projects;git clone https://github.com/IBM/CPDemoFramework -b techzone-fk --single-branch techzone;cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2;sh%20configure-env.sh%20"  
+
     let prerequisite = ["server", "api_token", "kubeadmin_user", "kubeadmin_pass", "icr_key"]
     let services = {
       "analyticsengine": 'Analytics Engine Powered by Apache Spark',
@@ -58,6 +59,16 @@ window.onload = function () {
     if (JSON.parse(localStorage[didact]).workspaceId !== workspaceId) {
       localStorage[didact] = JSON.stringify(data)
     }
+
+
+    // Add Open CPD URL in CP Deployer Didact
+    let get_cpd_endpoint = document.getElementById("get_cpd_endpoint");
+    get_cpd_endpoint.addEventListener("click", getCpdEndpoint)
+    function getCpdEndpoint(e) {
+      document.getElementById("command_exec").href =
+      "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox%20terminal$$oc get route -n cpd-instance;oc extract secret/admin-user-details --keys=initial_admin_password --to=- -n cpd-instance";
+      document.getElementById("command_exec").click();
+    }
   
     //Fill input data from localStorage
     prerequisite.forEach(input => document.getElementsByName(input)[0].value = JSON.parse(localStorage[didact])[input])
@@ -76,11 +87,11 @@ window.onload = function () {
   
     //default data
     let config = {
-      server: localData.server,
-      api_token: localData.api_token,
-      kubeadmin_user: localData.kubeadmin_user,
-      kubeadmin_pass: localData.kubeadmin_pass,
-      icr_key: localData.icr_key,
+      server: localData.server.trim(),
+      api_token: localData.api_token.trim(),
+      kubeadmin_user: localData.kubeadmin_user.trim(),
+      kubeadmin_pass: localData.kubeadmin_pass.trim(),
+      icr_key: localData.icr_key.trim(),
     }
   
     //Get env values
@@ -120,8 +131,8 @@ window.onload = function () {
         //configure cta
         document.getElementById("configure-env").addEventListener("click", updateConfigVars);
         function updateConfigVars(e){
-          document.getElementById("config_command_exec").href =`${compositeHref}${Object.keys(config).map(val => `${val.toUpperCase()}=${document.getElementsByName(val)[0].value}`).toString().replaceAll(",","%20")}`
-          document.getElementById("config_command_exec").click();
+        document.getElementById("config_command_exec").href =`${compositeHref}${Object.keys(config).map(val => `${document.getElementsByName(val)[0].value || "\"\""}`).toString().replaceAll(",","%20")}`          
+        document.getElementById("config_command_exec").click();
         }
 
   
@@ -135,7 +146,7 @@ window.onload = function () {
       }
       let storage = document.getElementById("cr_storage_value").value;
       document.getElementById("command_exec").href =
-        "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox%20terminal$$cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2/;pip3.8%20install%20PyYAML;python3.8%20updateYaml.py%20"+component_list+"%20"+storage+"%20"+cp4dVersion+"; source env.sh";
+        "didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox%20terminal$$cd%20${CHE_PROJECTS_ROOT}/techzone/olm-utils-v2/;pip3.8%20install%20PyYAML;python3.8%20updateYaml.py%20"+component_list+"%20"+storage+"%20"+cp4dVersion+"%20cp4d;bash deploy.sh cp4d";
       document.getElementById("command_exec").click();
     }
 
@@ -175,7 +186,8 @@ window.onload = function () {
       // olmServicesList.appendChild(li);
   
     })
-  
+    
+
     //Get selected values
     let gitServices = document.getElementsByName("cr-services");
     // let olmServices = document.getElementsByName("olm-services");
@@ -220,4 +232,3 @@ window.onload = function () {
       })
     }
   };
-  

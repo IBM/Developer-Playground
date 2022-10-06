@@ -1,0 +1,23 @@
+{
+  "products": [
+		{
+			"productId": "video-analysis",
+			"assetType": "code pattern"
+		},
+		{
+			"productId": "risk-prediction-for-bank-loans",
+			"assetType": "code pattern"
+		},
+		{
+			"productId": "agro-smart-assistant",
+			"assetType": "code pattern"
+		},
+		{
+			"productId": "customer-churn-prediction",
+			"assetType": "code pattern"
+		},
+	  	{
+			"productId": "ai4industry--anomaly-detection-product"
+		}
+	]
+}

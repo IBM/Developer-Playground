@@ -65,7 +65,7 @@
             <div class="content">
                 <p>Get the resources required to deploy CP4D services and configure the openshift credentials.</p>
             </div>
-            <button class="button is-dark is-medium" id="configure-env" title="Configure Environment" numSuccess=1>Configure Environment</button>
+            <button class="button is-dark is-medium" id="configure-env" title="Configure Environment" numSuccess=1>Configure Environment</button><span class="spinner hidden-state"></span>
             <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
                 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
             <button id="configure-env$2" class="send-to-extension hidden-state" action="readfile"
@@ -133,6 +133,7 @@
         </div>
     </div>
 </body>
+<script src="$$rootcommonjspath$$"></script>
 <script src="$$rootjspath$$"></script>
 <script src="$$rootvscodeutilspath$$"></script>
 </html>

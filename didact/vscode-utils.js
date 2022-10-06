@@ -1,5 +1,4 @@
 const vscode = acquireVsCodeApi();
-let inputFields = {};
 let productInfo = {};
 window.addEventListener('message', event => {
     const receivedOutput = event.data; // The JSON data our extension sent
@@ -19,7 +18,6 @@ window.addEventListener('message', event => {
             }
             break;
         case 'renderFileData':
-            //document.querySelector('[id="message"]').innerHTML = message.message;
             const createElementWithAttributes = (parentElement, elementToRender, attributes, children) => {
                 let element = document.getElementById(attributes.id)
                 let newElementCreated = false;
@@ -43,7 +41,6 @@ window.addEventListener('message', event => {
                         }
                     }
                 } else {
-                    console.log(parentElement)
                     console.log("Text node", document.contains(parentElement))
                     if (!document.contains(parentElement)) {
                         element = document.createTextNode(attributes.value)
@@ -56,43 +53,33 @@ window.addEventListener('message', event => {
                         createElementWithAttributes(element, childElement.elementToRender, childElement.attributes, childElement.children)
                     }
                 }
-                console.log("Element" + element + newElementCreated)
                 if (newElementCreated) {
                     parentElement.appendChild(element)
                 }
             }
             console.log(receivedOutput.outputData)
             let dataFromFile = JSON.parse(receivedOutput.outputData)
-            let parentElement = document.getElementById(dataFromFile.parentId);
-            for (let i = 0; i < dataFromFile.dataToRender.length; i++) {
-                let element = dataFromFile.dataToRender[i];
-                createElementWithAttributes(parentElement, element.elementToRender, element.attributes, element.children);
+            for (let i = 0; i < dataFromFile.componentsToRender.length; i++) {
+                let parentElement = document.getElementById(dataFromFile.componentsToRender[i].parentId);
+                for (let j = 0; j < dataFromFile.componentsToRender[i].dataToRender.length; j++) {
+                    let element = dataFromFile.componentsToRender[i].dataToRender[j];
+                    createElementWithAttributes(parentElement, element.elementToRender, element.attributes, element.children);
+                }
             }
-            /*console.log(data.parentId, data.parentTagName, data.elementToRender)
-            let elementToRender = document.getElementById(data.parentId)
-            let list = elementToRender.getElementsByTagName(data.parentTagName)[0]
-            console.log(list, elementToRender)
-            data.data.forEach((option) => {
-                let li = document.createElement(data.elementToRender);
-                li.innerHTML = option.name
-                li.name = option.guid
-                list.appendChild(li);
-                //li.addEventListener("click", selectProject)
-            })*/
-
             break;
         case 'executing':
             console.log(receivedOutput.outputData.elementId, receivedOutput.outputData.status)
+            let element = document.getElementById(receivedOutput.outputData.elementId.split("$")[0])
             if (receivedOutput.outputData.showSpinner)
-                document.getElementById(receivedOutput.outputData.elementId).nextSibling.classList.remove("hidden-state");
+                element.nextSibling.classList.remove("hidden-state");
             else
-                document.getElementById(receivedOutput.outputData.elementId).nextSibling.classList.add("hidden-state");
+                element.nextSibling.classList.add("hidden-state");
             if (receivedOutput.outputData.status === "error") {
-                document.getElementById(receivedOutput.outputData.elementId.split("$")[0]).style.borderColor = "red";
+                element.style.borderColor = "red";
             } else if (receivedOutput.outputData.status === "success") {
-                document.getElementById(receivedOutput.outputData.elementId.split("$")[0]).style.borderColor = "green";
+                element.style.borderColor = "green";
             } else {
-                document.getElementById(receivedOutput.outputData.elementId.split("$")[0]).style.borderColor = "white";
+                element.style.borderColor = "white";
             }
             if (receivedOutput.outputData.status === "success" && receivedOutput.outputData.clickCTA) {
                 document.getElementById(receivedOutput.outputData.clickCTA).click();
@@ -118,33 +105,8 @@ window.addEventListener('message', event => {
             var filePath = anchor.getAttribute("filePath");
             var preProcess = anchor.getAttribute("preProcess") ? true : false;
             var elementId = anchor.getAttribute("id")
-            var numSuccess = anchor.getAttribute("numSuccess") ? parseInt(anchor.getAttribute("numSuccess")) : 1
-            console.log(typeof (numSuccess))
-            /*inputFields["hostName"] = document.getElementById('hostname').value;
-            inputFields["userName"] = document.getElementById('username').value;
-            inputFields["password"] = document.getElementById('password').value;
-            inputFields["apikey"] = document.getElementById('apikey').value;*/
-            //var projectElelment = document.getElementById('project-list');
-            //console.log("selected project:" + projectElelment.value);
-            //inputFields["selectedProject"] = projectElelment.value;
-            console.log(preProcess, "preProcess")
-            if (action == "getdata") {
-                vscode.postMessage({
-                    command: 'getdata',
-                    inputFields: inputFields
-                });
-            }
-            else if (action == "publish") {
-                pushToGit();
-                command = anchor.getAttribute("command");
-                vscode.postMessage({
-                    command: 'sendcommand',
-                    text: command,
-                    inputFields: inputFields,
-                    elementId: elementId
-                });
-            }
-            else if (action == "readfile") {
+            var numSuccess = anchor.getAttribute("numSuccess") ? parseInt(anchor.getAttribute("numSuccess")) : 1;
+            if (action == "readfile") {
                 command = anchor.getAttribute("command");
                 vscode.postMessage({
                     command: 'readfile',
@@ -153,7 +115,6 @@ window.addEventListener('message', event => {
                     silent: silent,
                     nextAction: nextAction,
                     preProcess: preProcess,
-                    inputFields: inputFields,
                     elementId: elementId,
                     numSuccess: numSuccess
                 });
@@ -167,7 +128,7 @@ window.addEventListener('message', event => {
                     preProcess: preProcess,
                     elementId: elementId,
                 });
-            } 
+            }
             else if (action == "get-workspace-state") {
                 console.log("getupdate-workspace-state", dataToRestoreOnReload)
                 vscode.postMessage({
@@ -187,14 +148,12 @@ window.addEventListener('message', event => {
                 });
             }
             else {
-
                 vscode.postMessage({
                     command: 'sendcommand',
                     terminalName: terminalName,
                     text: command,
                     silent: silent,
                     nextAction: nextAction,
-                    inputFields: inputFields,
                     elementId: elementId,
                     numSuccess: numSuccess
                 });

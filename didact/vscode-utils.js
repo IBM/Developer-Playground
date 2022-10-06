@@ -82,7 +82,8 @@ window.addEventListener('message', event => {
                 element.style.borderColor = "white";
             }
             if (receivedOutput.outputData.status === "success" && receivedOutput.outputData.clickCTA) {
-                document.getElementById(receivedOutput.outputData.clickCTA).click();
+                let nextCTA = document.getElementById(receivedOutput.outputData.clickCTA);
+                nextCTA.click();
             }
             break;
         case 'get-workspace-state':

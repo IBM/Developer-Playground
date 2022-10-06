@@ -93,6 +93,9 @@ const funcLoad = () => {
   //handle push to git 
   addEventListener(document.getElementById("pushToGit"),"click", pushToGit);
 
+  //Store required CTAs in state
+  storeCTAInState();
+
   //Restore data if available
   document.getElementById("get-workspace-state").click();
 }

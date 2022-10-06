@@ -1,0 +1,97 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="$$rootcsspath$$">
+  <style>
+    .header {
+      background-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/video_insights.jpeg");
+    }
+  </style>
+</head>
+<body>
+    <div style="margin-top:2rem"></div>
+    <div id="workspaceID" class="hidden-state">$workspace_id</div>
+    <div id="userID" class="hidden-state">$user_id</div>
+    <div id="environment" class="hidden-state">development</div>
+    <div class="header">
+        <div class="left-content">
+            <div class="apptitle">CP4D Backup</div>
+            <div class="subheading">
+                Red Hat Advanced Cluster Management (ACM), offers end-to-end visibility and control for managing your cluster and application lifecycle. Among other features, it ensures security and compliance for your entire Kubernetes domain across multiple data centers and public clouds.
+                OpenShift API for Data Protection (OADP) enables backup, restore, and disaster recovery of applications on an OpenShift cluster. Data that can be protected with OADP include Kubernetes resource objects, persistent volumes, and internal images</div>
+        </div>
+    </div>
+    <div class="section">
+        <p style="font-size:24px">Pre-requisites</p>
+        <div>
+        <p>Configure Openshift credentials (either use combination of server, user/password (OR) server, token).<br>
+            Openshift server name (including https://) and token can be obtained using one of two methods
+        <ol>
+            <li>From Openshift console, select your profile on top right and select “Copy login command”</li>
+            <li>From oc cli, run “oc config view --minify|grep server” to get server name and “oc whoami -t” to get token
+            </li>
+        </ol>
+        </p>
+        <p>Obtain an Entitlement key from <a href="https://myibm.ibm.com/products-services/containerlibrary"> IBM Container Library</a> using your IBM ID. Click Get an entitlement key if you are not on the entitlement page.</p>
+        <div class="env-config">
+            <label>Public S3 URL: </label><input class="env-variables" name="s3_url" type="text" />
+            <label>Bucket name: </label><input class="env-variables" name="bucket" type="text" />
+            <label>Region: </label><input class="env-variables" name="region" type="text" />
+            <label>Access Key: </label><input class="env-variables" name="access_key" type="text" />
+            <label>Access ID: </label><input class="env-variables" name="access_id" type="text" />
+            <label>ICR Key: </label><input class="env-variables" name="icr_key" type="text" /><p></p><p></p>
+            <label>Source Server: </label><input class="env-variables" name="src_server" type="text" />
+            <label>Source API Token: </label><input class="env-variables" name="src_api_token" type="text" />
+            <p>-------OR-------</p>
+            <p></p>
+            <label>Source Kube Admin User: </label><input class="env-variables" name="kubeadmin_user" type="text" />
+            <label>Source Kube Admin Password: </label><input class="env-variables" name="kubeadmin_pass" type="password" />
+        </div>
+        </div>
+    </div>
+    <div class="section" style="margin-top:5rem;">
+        <p style="font-size:24px">Instructions</p>
+        <p>Please follow all the below steps in proper sequence.</p>
+        <br>
+        At a high level the installation steps include:
+        <ol>
+            <li>Configure Source Openshift cluster.</li>
+            <li>Backup Source Cluster.</li>
+        </ol>
+        Please follow steps below as appropriate, some steps are optional depending on what needs to be done. Mandatory
+        steps are indicated using *<br><br>
+    </div>
+    <div class="timeline-container">
+        <input type="text" class="hidden-state" id="data-fetched" />
+        <div class="timeline">
+            <div class="content">
+                <p>Get the resources required to deploy CP4D services and configure the openshift credentials.</p>
+            </div>
+            <button class="button is-dark is-medium" id="configure-env" title="Configure Environment" numSuccess=1>Configure Environment</button>
+            <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command="" nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
+            <button id="configure-env$2" class="send-to-extension hidden-state" action="senddata"
+                command="cd /projects/cpd-backup/sandbox/cpdbr/;pip3.8 install pyYAML python-dotenv==0.19.2;python3.8 add-config.py"
+                nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
+            <button id="enable-timeline" class="hidden-state">Enable</button>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline">
+            <div class="content">
+                <p>Configure Source Cluster.</p>
+            </div>
+            <button class="send-to-extension button is-dark is-medium" id="configure-src" title="Configure Source Cluster" command="cd /projects/cpd-backup/sandbox/cpdbr;sh config-src-cluster.sh" numSuccess=1>Configure Source Cluster</button><span class="spinner hidden-state"></span>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline">
+            <div class="content">
+                <p>Backup Source Cluster.</p>
+            </div>
+            <button class="send-to-extension button is-dark is-medium" id="backup-src" title="Backup Source Cluster" command="cd /projects/cpd-backup/sandbox/cpdbr;sh start-backup.sh" numSuccess=1>Start Backup</button><span class="spinner hidden-state"></span>
+            <span class="dot"></span>
+        </div>            
+        </div>
+    </div>
+</body>
+<script src="$$rootjspath$$"></script>
+<script src="$$rootvscodeutilspath$$"></script>
+</html>

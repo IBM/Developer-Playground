@@ -25,6 +25,7 @@
         "cp4d-deploy": "Techzone CP4D OLM Utils",
         "import-demo": "Import Demo for CP4D",
         "cp4d-import": "Import Demo for CP4D",
-        "import-all-demo": "Import all Demo for CP4D"
+        "import-all-demo": "Import all Demo for CP4D",
+        "cp4d-backup": "Backup CP4D Demo"
     }
 }

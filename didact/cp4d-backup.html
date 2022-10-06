@@ -40,12 +40,12 @@
             <label>Access Key: </label><input class="env-variables" name="access_key" type="text" />
             <label>Access ID: </label><input class="env-variables" name="access_id" type="text" />
             <label>ICR Key: </label><input class="env-variables" name="icr_key" type="text" /><p></p><p></p>
-            <label>Source Server: </label><input class="env-variables" name="src_server" type="text" />
-            <label>Source API Token: </label><input class="env-variables" name="src_api_token" type="text" />
+            <label>Server: </label><input class="env-variables" name="src_server" type="text" />
+            <label>API Token: </label><input class="env-variables" name="src_api_token" type="text" />
             <p>-------OR-------</p>
             <p></p>
-            <label>Source Kube Admin User: </label><input class="env-variables" name="kubeadmin_user" type="text" />
-            <label>Source Kube Admin Password: </label><input class="env-variables" name="kubeadmin_pass" type="password" />
+            <label>Kube Admin User: </label><input class="env-variables" name="kubeadmin_user" type="text" />
+            <label>Kube Admin Password: </label><input class="env-variables" name="kubeadmin_pass" type="password" />
         </div>
         </div>
     </div>
@@ -55,8 +55,8 @@
         <br>
         At a high level the installation steps include:
         <ol>
-            <li>Configure Source Openshift cluster.</li>
-            <li>Backup Source Cluster.</li>
+            <li>Configure Openshift cluster.</li>
+            <li>Backup the Cluster.</li>
         </ol>
         Please follow steps below as appropriate, some steps are optional depending on what needs to be done.<br><br>
     </div>
@@ -76,7 +76,7 @@
         </div>
         <div class="timeline">
             <div class="content">
-                <p>Backup Source Cluster.</p>
+                <p>Backup the Cluster.</p>
             </div>
             <button class="send-to-extension button is-dark is-medium" id="backup-src" title="Backup Source Cluster" command="cd /projects/cpd-backup/sandbox/cpdbr;sh start-backup.sh" numSuccess=1>Start Backup</button><span class="spinner hidden-state"></span>
             <span class="dot"></span>

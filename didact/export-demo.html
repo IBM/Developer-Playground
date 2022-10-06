@@ -70,10 +70,10 @@
                 <p>Configure the environment with the required resources and connect to the specified CPD cluster.</p>
             </div>
             <button class="button is-dark is-medium" id="configure-env" title="Configure Environment">Configure
-                Environment</button>
+                Environment</button><span class="spinner hidden-state"></span>
             <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
                 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
-            <button id="configure-env$2" class="send-to-extension hidden-state" action="readfile"
+            <button id="configure-env$2" class="send-to-extension hidden-state store-data" action="readfile"
                 command="cd /projects/techzone-demo/sandbox;python3.8 getProjects.py"
                 filePath="/projects/techzone-demo/sandbox/projectsData.json" preProcess="true"
                 nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>

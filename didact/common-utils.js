@@ -83,6 +83,15 @@ const addEventListener = (element, eventType, triggerFunction) => {
     }
 }
 
+//add additional event listener to update the state in workspace for CTAs 
+const storeCTAInState = () => {
+    [...document.getElementsByTagName("BUTTON")].forEach( cta => {
+        if(cta.classList.contains("store-data")){
+            cta.addEventListener("click", updateWorkspaceState);
+        }
+    })
+} 
+
 // Fill available state data
 const restoreData = (dataToRestore) => {
     console.log("get-workspace-state", dataToRestore)

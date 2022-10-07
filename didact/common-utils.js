@@ -281,9 +281,4 @@ const createMultiSelectDropdownWithSearch = (parentId, data, checkFunction, inpu
 const enableAll = (e) => {
     enableTimelineTillElement("all");
     currentHTMLstateData.envConfigured = true;
-    let clusterUrl = `https://${currentHTMLstateData.prerequisites.hostname}`
-    let openClusterCta = document.getElementById("open-cpd-cluster")
-    if (openClusterCta) {
-        openClusterCta.href = clusterUrl
-    }
 }

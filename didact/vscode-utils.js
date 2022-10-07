@@ -6,7 +6,9 @@ window.addEventListener('message', event => {
         case 'receiveProductInfo':
             //document.querySelector('[id="message"]').innerHTML = message.message;
             productInfo = receivedOutput.productInfo;
+            currentHTMLstateData.isPrivateDemo = productInfo.isPrivate;
             console.log(JSON.stringify(productInfo));
+            document.getElementById("selected-demo").innerHTML = productInfo.demoName
             document.getElementById("demo-url").innerHTML = productInfo.privateGitRepoUrl;
             if (productInfo.isPrivate) {
                 document.getElementById("gittokeninput").style.display = "block";

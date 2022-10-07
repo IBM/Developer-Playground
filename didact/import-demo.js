@@ -9,7 +9,7 @@ currentHTMLstateData = {
   },
   validPrequisites: [["hostname", "wkcuser", "password"]],
   envConfigured: false,
-  isPrivateDemo: document.getElementById("demo-url").textContent ? true : false,
+  isPrivateDemo: false,
   demo: document.getElementById("selected-demo").textContent,
   privateGitRepoUrl: document.getElementById("demo-url").textContent,
   gitToken:"",

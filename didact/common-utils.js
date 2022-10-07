@@ -54,6 +54,20 @@ const services = {
     zen: "Zen Service in CPFS"
 }
 
+const industries = {
+    hospitality: "Hospitality",
+    healthcare: "Healthcare",
+    "e-commerce": "E-commerce",
+    banking: "Banking and financial services",
+    insurance: "Insurance",
+    retail: "Retail",
+    software: "Software",
+    telecommunications: "Telecommunications",
+    transportation: "Transportation",
+    utilities: "Utilities",
+    other: "Other"
+}
+
 
 
 //update workspace state with events
@@ -85,12 +99,12 @@ const addEventListener = (element, eventType, triggerFunction) => {
 
 //add additional event listener to update the state in workspace for CTAs 
 const storeCTAInState = () => {
-    [...document.getElementsByTagName("BUTTON")].forEach( cta => {
-        if(cta.classList.contains("store-data")){
+    [...document.getElementsByTagName("BUTTON")].forEach(cta => {
+        if (cta.classList.contains("store-data")) {
             cta.addEventListener("click", updateWorkspaceState);
         }
     })
-} 
+}
 
 // Fill available state data
 const restoreData = (dataToRestore) => {
@@ -260,4 +274,15 @@ const createMultiSelectDropdownWithSearch = (parentId, data, checkFunction, inpu
         parent.appendChild(li);
     })
     addEventListener(document.getElementById(searchInputId), "input", filterFunction);
+}
+
+// enable complete timeline
+const enableAll = (e) => {
+    enableTimelineTillElement("all");
+    currentHTMLstateData.envConfigured = true;
+    let clusterUrl = `https://${currentHTMLstateData.prerequisites.hostname}`
+    let openClusterCta = document.getElementById("open-cpd-cluster")
+    if (openClusterCta) {
+        openClusterCta.href = clusterUrl
+    }
 }

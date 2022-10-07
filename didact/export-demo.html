@@ -7,38 +7,15 @@
         .header {
             background-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/video_insights.jpeg");
         }
-        .sticky {
-            position: fixed;
-            font-family: 'IBM Plex Sans', sans-serif;
-            background: transparent;
-            border-color: white;
-            color: #fff;
-            border: 1px solid white;
-            margin-left: 60% !important;
-            border-radius: 0rem;
-            min-width: 11.25rem;
-            font-size: 14px;
-            text-align: left;
-            min-height: 3rem;
-            margin: 0rem;
-            justify-content: left;
-        }
-        .sticky:hover{
-            font-family: 'IBM Plex Sans', sans-serif;
-            background-color: #2a67f5;
-            border-color: white;
-            color: #fff;
-            text-decoration: none;
-        }
     </style>
 </head>
 
 <body>
+    <button id="reset-workspace-state" action="reset-workspace-state" class="send-to-extension button is-dark is-medium reset" command="cd /projects;rm -rf techzone-demo">Reset</button>
     <div style="margin-top:2rem"></div>
     <div id="userID" class="hidden-state">$user_id</div>
     <button id="update-workspace-state" action="update-workspace-state" class="send-to-extension hidden-state"></button>
-    <button id="get-workspace-state" action="get-workspace-state" class="send-to-extension hidden-state">get-ws-state</button>
-    <button id="reset-workspace-state" action="reset-workspace-state" class="send-to-extension sticky" command="cd /projects;rm -rf techzone-demo">Reset</button>
+    <button id="get-workspace-state" action="get-workspace-state" class="send-to-extension hidden-state"></button>
 
     <div class="header">
         <div class="left-content">
@@ -127,7 +104,7 @@
                     <div class="content">
                         <p>Select the required Governance artifacts. By default all artifacts will be exported.</p>
                         <div id="governance-list" class="dropdown-check-list" tabindex="100">
-                            <span class="anchor">Select Artifacts</span>
+                            <span id="selected-artifacts" class="anchor">Select Artifacts</span>
                             <ul class="items">
                                 <li><input id="ga_all" class="store-data" type="checkbox" name="governance-artifacts" value="all" checked />All </li>
                                 <li><input id="ga_category" class="store-data" type="checkbox" name="governance-artifacts" value="category" />Category

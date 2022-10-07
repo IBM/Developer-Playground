@@ -1,5 +1,6 @@
 let dataToRestoreOnReload = {};
 let currentHTMLstateData = {};
+let productInfo = {};
 
 const services = {
     analyticsengine: "Analytics Engine Powered by Apache Spark",

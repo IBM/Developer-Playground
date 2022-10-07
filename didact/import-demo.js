@@ -26,9 +26,8 @@ const funcLoad = () => {
   }
 
   //git token input for private demo
-  if(currentHTMLstateData.isPrivateDemo){
   addEventListener(document.getElementById("gittoken"),"input", showConfigureCTA);
-  }
+  
 
   //generate config command
   addEventListener(document.getElementById("configure-env"),"click", updateConfigVars);

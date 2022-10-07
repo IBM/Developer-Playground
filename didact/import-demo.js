@@ -48,7 +48,7 @@ const funcLoad = () => {
 
 const updateConfigVars = (e) => {
     let cta = document.getElementById("configure-env$1");
-    cta.setAttribute("command", `${configureCommand.replace("demo_name", currentHTMLstateData.demo).replace("is_private", currentHTMLstateData.isPrivate).replace("git_url", currentHTMLstateData.privateGitRepoUrl).replace("git_token", currentHTMLstateData.gitToken)}${Object.values(config).toString().replaceAll(",", "%20")}`)
+    cta.setAttribute("command", `${configureCommand.replace("demo_name", currentHTMLstateData.demo).replace("is_private", currentHTMLstateData.isPrivate).replace("git_url", currentHTMLstateData.privateGitRepoUrl).replace("git_token", currentHTMLstateData.gitToken)}${Object.values(currentHTMLstateData.prerequisites).toString().replaceAll(",", "%20")}`)
     cta.click();
     document.getElementById("import-project").setAttribute("command", `cd /projects/techzone-demo/sandbox/;python3.8 importProject.py project_assets ${currentHTMLstateData.demo}`)
 }
@@ -63,7 +63,10 @@ const showConfigureCTA = (e) => {
 }
 
 const openCluster = () => {
-    document.getElementById('open-cpd-cluster').click();
+    let clusterUrl = `https://${currentHTMLstateData.prerequisites.hostname}`
+    let openClusterCta = document.getElementById("open-cpd-cluster")
+    openClusterCta.href = clusterUrl
+    openClusterCta.click();
 }
 
 window.addEventListener("load", funcLoad);

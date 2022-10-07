@@ -388,20 +388,25 @@ label {
     text-align: left;
 }
 
-.spinner{
-    width : 1rem;
+.spinner {
+    width: 1rem;
     height: 1rem;
     border-radius: 50%;
     display: inline-block;
-    border-top:3px solid #fff;
-    border-right:3px solid transparent;
+    border-top: 3px solid #fff;
+    border-right: 3px solid transparent;
     animation: rotation 0.6s linear infinite;
     margin-left: 0.5rem;
-  }
-  
+}
+
 @keyframes rotation {
-    0% { transform: rotate(0deg) }
-    100% { transform: rotate(360deg) }
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
 }
 
 .switch {
@@ -409,17 +414,17 @@ label {
     display: inline-block;
     width: 60px;
     height: 34px;
-  }
-  
-  /* Hide default HTML checkbox */
-  .switch input {
+}
+
+/* Hide default HTML checkbox */
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  
-  /* The slider */
-  .slider {
+}
+
+/* The slider */
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -429,9 +434,9 @@ label {
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  .slider:before {
+}
+
+.slider:before {
     position: absolute;
     content: "";
     height: 26px;
@@ -441,27 +446,31 @@ label {
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  .switch input:checked + .slider {
+}
+
+.switch input:checked+.slider {
     background-color: #2196F3;
-  }
-  
-  .switch input:focus + .slider {
+}
+
+.switch input:focus+.slider {
     box-shadow: 0 0 1px #2196F3;
-  }
-  
-  .switch input:checked + .slider:before {
+}
+
+.switch input:checked+.slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
-  }
-  
-  /* Rounded sliders */
-  .slider.round {
+}
+
+/* Rounded sliders */
+.slider.round {
     border-radius: 34px;
-  }
-  
-  .slider.round:before {
+}
+
+.slider.round:before {
     border-radius: 50%;
-  }
+}
+
+.reset {
+    float: right;
+}

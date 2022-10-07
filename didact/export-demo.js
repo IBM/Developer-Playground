@@ -27,20 +27,6 @@ currentHTMLstateData = {
   doNotRestore: ["private-git-access-token"]
 }
 
-const industries = {
-  hospitality: "Hospitality",
-  healthcare: "Healthcare",
-  "e-commerce": "E-commerce",
-  banking: "Banking and financial services",
-  insurance: "Insurance",
-  retail: "Retail",
-  software: "Software",
-  telecommunications: "Telecommunications",
-  transportation: "Transportation",
-  utilities: "Utilities",
-  other: "Other"
-}
-
 const funcLoad = () => {
   // Disable timeline
   disableTimelineFromElement("all");
@@ -118,13 +104,52 @@ const showTasks = (e) => {
   }
 }
 
+const getShortenedString = (list) => {
+  const MAX_LENGTH = 19
+  let shortenedString = "";
+  for (let i = 0; i < list.length; i++) {
+    shortenedString += `${list[i]}, `;
+    if(shortenedString.length > MAX_LENGTH) {
+      shortenedString = shortenedString.substring(0, MAX_LENGTH);
+      shortenedString += "..." + (list.length-i-1 ? ` +${list.length-i-1}`: "");
+      break;
+    }
+  }
+  return shortenedString.endsWith(", ") ? shortenedString = shortenedString.substring(0, shortenedString.length-2) : shortenedString;
+}
+
 const UpdateExport = (e) => {
+  let artifacts = document.querySelectorAll("[id^='ga_']");
   if (e.target.checked) {
     currentHTMLstateData.selectedArtifacts.push(e.target.value)
+    if(e.target.value === "all"){
+      currentHTMLstateData.selectedArtifacts = ["all"];
+      artifacts.forEach(artifact => {
+        if(e.target.id !== artifact.id){
+          artifact.checked = false
+          artifact.dispatchEvent(new Event("change"))
+          currentHTMLstateData.selectedArtifacts.indexOf(artifact.value) !== -1 && currentHTMLstateData.selectedArtifacts.splice(currentHTMLstateData.selectedArtifacts.indexOf(artifact.value), 1)
+        }
+      })
+    } else if(e.target.value !== "all" && currentHTMLstateData.selectedArtifacts.length <= 6){
+      let artifact = document.getElementById("ga_all");
+      artifact.checked = false
+      artifact.dispatchEvent(new Event("change"))
+      currentHTMLstateData.selectedArtifacts.indexOf("all") !== -1 && currentHTMLstateData.selectedArtifacts.splice(currentHTMLstateData.selectedArtifacts.indexOf("all"), 1)
+    } else if(e.target.value !== "all" && currentHTMLstateData.selectedArtifacts.length > 6){
+      currentHTMLstateData.selectedArtifacts = ["all"];
+      artifacts.forEach(artifact => {
+        if("all" !== artifact.value){
+          artifact.checked = false
+        } else {
+          artifact.checked = true
+        }
+        artifact.dispatchEvent(new Event("change"))
+      })
+    }
   } else {
     currentHTMLstateData.selectedArtifacts.indexOf(e.target.value) !== -1 && currentHTMLstateData.selectedArtifacts.splice(currentHTMLstateData.selectedArtifacts.indexOf(e.target.value), 1)
   }
-
   if (currentHTMLstateData.selectedArtifacts.length === 0) {
     modifyVisibilityOfCTAs(["export-task"], "disable")
   } else {
@@ -139,6 +164,7 @@ const UpdateExport = (e) => {
   }
   let showSeleted = document.getElementById("selected")
   showSeleted.textContent = currentHTMLstateData.selectedArtifacts.toString().replaceAll(",", ", ")
+  document.getElementById("selected-artifacts").textContent = getShortenedString(currentHTMLstateData.selectedArtifacts) || "Select Artifacts";
 }
 
 function selectProject(e) {
@@ -205,8 +231,6 @@ const updateSelectedServices = (e) => {
   showSeleted.textContent = currentHTMLstateData.selectedServices.toString().replaceAll(",", ", ")
   validateGithubFields();
 }
-
-
 
 const filterServiceList = (e) => {
   let filteredServices = {}

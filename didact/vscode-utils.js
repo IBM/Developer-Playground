@@ -1,5 +1,4 @@
 const vscode = acquireVsCodeApi();
-let productInfo = {};
 window.addEventListener('message', event => {
     const receivedOutput = event.data; // The JSON data our extension sent
     switch (receivedOutput.command) {
@@ -7,16 +6,16 @@ window.addEventListener('message', event => {
             //document.querySelector('[id="message"]').innerHTML = message.message;
             productInfo = receivedOutput.productInfo;
             currentHTMLstateData.isPrivateDemo = productInfo.isPrivate;
+            currentHTMLstateData.demo = productInfo.demoName;
+            currentHTMLstateData.privateGitRepoUrl = productInfo.privateGitRepoUrl;
             console.log(JSON.stringify(productInfo));
-            document.getElementById("selected-demo").innerHTML = productInfo.demoName
+            document.getElementById("selected-demo").innerHTML = productInfo.displayName;
             document.getElementById("demo-url").innerHTML = productInfo.privateGitRepoUrl;
             if (productInfo.isPrivate) {
-                document.getElementById("gittokeninput").style.display = "block";
-                document.getElementById("private-demo-url").style.display = "block";
+                modifyVisibilityOfCTAs(["gittokeninput", "private-demo-url"],"unhide")
             }
             else {
-                document.getElementById("gittokeninput").style.display = "none";
-                document.getElementById("private-demo-url").style.display = "none";
+                modifyVisibilityOfCTAs(["gittokeninput", "private-demo-url"],"hide")
             }
             break;
         case 'renderFileData':

@@ -54,7 +54,7 @@
                 command="cd /projects/techzone-demo/sandbox;python3.8 getProjects.py"
                 filePath="/projects/techzone-demo/sandbox/projectsData.json" preProcess="true"
                 nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
-            <button id="enable-timeline" class="store-data hidden-state"></button>
+            <button id="enable-timeline" class="store-data"></button>
             <span class="dot"></span>
         </div>
         <div class="timeline">
@@ -205,7 +205,7 @@
                             <label>Services*</label>
                             <!--<input type="text" id="services">-->
                             <div id="service-list" class="dropdown-check-list" tabindex="100">
-                                <span class="anchor">Select Services</span>
+                                <span class="anchor" id="selected-services-string">Select Services</span>
                                 <div class="items">
                                     <input id="services-search" type="search" placeholder="Search services"
                                         style="width: 100%" />

@@ -9,10 +9,12 @@
   </style>
 </head>
 <body>
+    <button id="reset-workspace-state" action="reset-workspace-state" class="send-to-extension button is-dark is-medium reset" command="cd /projects;rm -rf techzone-demo">Reset</button>
     <div style="margin-top:2rem"></div>
-    <div id="workspaceID" class="hidden-state">$workspace_id</div>
     <div id="userID" class="hidden-state">$user_id</div>
-    <div id="environment" class="hidden-state">$environment</div>
+    <button id="update-workspace-state" action="update-workspace-state" class="send-to-extension hidden-state"></button>
+    <button id="get-workspace-state" action="get-workspace-state" class="send-to-extension hidden-state"></button>
+
     <div class="header">
         <div class="left-content">
             <div class="apptitle">Self-service customizable CP4I environment setup</div>
@@ -32,13 +34,13 @@
         </p>
         <p>Obtain an Entitlement key from <a href="https://myibm.ibm.com/products-services/containerlibrary"> IBM Container Library</a> using your IBM ID. Click Get an entitlement key if you are not on the entitlement page.</p>
         <div class="env-config">
-            <label>ICR Key: </label><input class="env-variables" name="icr_key" type="text" /><p></p><p></p>
-            <label>Server: </label><input class="env-variables" name="server" type="text" />
-            <label>API Token: </label><input class="env-variables" name="api_token" type="text" />
+            <label>ICR Key: </label><input class="store-data env-variables" id="icr_key" name="icr_key" type="text" /><p></p><p></p>
+            <label>Server: </label><input class="store-data env-variables" id="server" name="server" type="text" />
+            <label>API Token: </label><input class="store-data env-variables" id="api_token" name="api_token" type="text" />
             <p>-------OR-------</p>
             <p></p>
-            <label>Kube Admin User: </label><input class="env-variables" name="kubeadmin_user" type="text" />
-            <label>Kube Admin Password: </label><input class="env-variables" name="kubeadmin_pass" type="password" />
+            <label>Kube Admin User: </label><input class="store-data env-variables" id="kubeadmin_user" name="kubeadmin_user" type="text" />
+            <label>Kube Admin Password: </label><input class="store-data env-variables" id="kubeadmin_pass" name="kubeadmin_pass" type="password" />
         </div>
         </div>
     </div>
@@ -56,18 +58,18 @@
     </div>
     <div class="timeline-container">
         <input type="text" class="hidden-state" id="data-fetched" />
-        <div class="timeline">
+        <div class="timeline" id="configure-environment-CTA">
             <div class="content">
                 <p>Get the resources required to deploy CP4I services and configure the openshift credentials.</p>
             </div>
-            <button class="button is-dark is-medium" id="configure-env" title="Configure Environment" numSuccess=1>Configure Environment</button>
+            <button class="button is-dark is-medium" id="configure-env" title="Configure Environment" numSuccess=1>Configure Environment</button><span class="spinner hidden-state"></span>
             <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
                 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
             <button id="configure-env$2" class="send-to-extension hidden-state" action="readfile"
                 command="cd /projects/techzone-demo/olm-utils-v2;pip3.8 install pyYaml;python3.8 getInstalledServices.py cp4i"
                 filePath="/projects/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
                 numSuccess=1 nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
-            <button id="enable-timeline" class="hidden-state">Enable</button>
+            <button id="enable-timeline" class="store-data hidden-state">Enable</button>
             <span class="dot"></span>
         </div>
         <div class="timeline">
@@ -82,7 +84,7 @@
                             <label>Components list
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             <div id="service-list" class="dropdown-check-list" tabindex="100">
-                                <span class="anchor">Select Components</span>
+                                <span class="anchor" id="selected-components-string">Select Components</span>
                                 <div class="items">    
                                     <input id="services-search" type="search" placeholder="Search components" style="width: 100%" />
                                     <ul id="git-services">
@@ -103,7 +105,7 @@
                                 <ul>
                             </div>
                             <label></label>
-                            <select id="storage_value" style="width:150px;height:33px;padding-left: -150px">
+                            <select class="stroe-data" id="storage_value" style="width:150px;height:33px;padding-left: -150px">
                                 <option value="nfs">nfs</option>
                                 <option value="ocs">ocs</option>
                                 <option value="portworx">portworx</option>
@@ -128,6 +130,7 @@
         </div>
     </div>
 </body>
+<script src="$$rootcommonjspath$$"></script>
 <script src="$$rootjspath$$"></script>
 <script src="$$rootvscodeutilspath$$"></script>
 </html>

@@ -92,30 +92,12 @@ const updateConfigVars = (e) => {
   document.getElementById("configure-env$1").click();
 }
 
-const enableAll = (e) => {
-  enableTimelineTillElement("all");
-}
-
 const showTasks = (e) => {
   if (e.target.checked) {
     document.getElementById(e.target.value).style.display = "block";
   } else {
     document.getElementById(e.target.value).style.display = "none";
   }
-}
-
-const getShortenedString = (list) => {
-  const MAX_LENGTH = 19
-  let shortenedString = "";
-  for (let i = 0; i < list.length; i++) {
-    shortenedString += `${list[i]}, `;
-    if(shortenedString.length > MAX_LENGTH) {
-      shortenedString = shortenedString.substring(0, MAX_LENGTH);
-      shortenedString += "..." + (list.length-i-1 ? ` +${list.length-i-1}`: "");
-      break;
-    }
-  }
-  return shortenedString.endsWith(", ") ? shortenedString = shortenedString.substring(0, shortenedString.length-2) : shortenedString;
 }
 
 const UpdateExport = (e) => {
@@ -229,6 +211,7 @@ const updateSelectedServices = (e) => {
   }
   let showSeleted = document.getElementById("selected-services")
   showSeleted.textContent = currentHTMLstateData.selectedServices.toString().replaceAll(",", ", ")
+  document.getElementById("selected-services-string").textContent = getShortenedString(currentHTMLstateData.selectedServices) || "Select Services";
   validateGithubFields();
 }
 

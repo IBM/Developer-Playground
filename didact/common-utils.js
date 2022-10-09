@@ -2,7 +2,7 @@ let dataToRestoreOnReload = {};
 let currentHTMLstateData = {};
 let productInfo = {};
 
-const services = {
+let services = {
     analyticsengine: "Analytics Engine Powered by Apache Spark",
     bigsql: "Db2 Big SQL",
     cde: "Cognos Dashboards",
@@ -79,6 +79,7 @@ const updateWorkspaceState = (e) => {
     }
     if (e.type === "change") {
         data.checked = e.target.checked;
+        data.value = e.target.value;
     } else if (e.type === "input") {
         data.value = e.target.value;
     }
@@ -263,8 +264,8 @@ const createMultiSelectDropdownWithSearch = (parentId, data, checkFunction, inpu
     Object.keys(data).forEach(id => {
         let li = document.createElement("li");
         let input = document.createElement("input");
-        input.id = `input_${id}`
-        li.id = `li_${id}`
+        input.id = `input_option${id}`
+        li.id = `li_option${id}`
         input.classList.add('store-data')
         input.setAttribute("value", id)
         input.setAttribute("name", inputName)
@@ -282,3 +283,18 @@ const enableAll = (e) => {
     enableTimelineTillElement("all");
     currentHTMLstateData.envConfigured = true;
 }
+
+//get shortened string for dropdown
+const getShortenedString = (list) => {
+    const MAX_LENGTH = 19
+    let shortenedString = "";
+    for (let i = 0; i < list.length; i++) {
+      shortenedString += `${list[i]}, `;
+      if(shortenedString.length > MAX_LENGTH) {
+        shortenedString = shortenedString.substring(0, MAX_LENGTH);
+        shortenedString += "..." + (list.length-i-1 ? ` +${list.length-i-1}`: "");
+        break;
+      }
+    }
+    return shortenedString.endsWith(", ") ? shortenedString = shortenedString.substring(0, shortenedString.length-2) : shortenedString;
+  }

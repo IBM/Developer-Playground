@@ -229,3 +229,7 @@ const getShortenedString = (list) => {
     }
     return shortenedString.endsWith(", ") ? shortenedString = shortenedString.substring(0, shortenedString.length-2) : shortenedString;
   }
+
+const resetWorkspace = () => {
+    document.getElementById("reset-workspace-state").click()
+}

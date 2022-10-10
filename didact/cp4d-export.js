@@ -45,7 +45,6 @@ const services = {
   dmc: "Data Management Console",
   dods: "Decision Optimization",
   dp: "Data Privacy",
-  DPRA: "Data Privacy Risk Assessment",
   dv: "Data Virtualization",
   edb_cp4d: "EnterpriseDB Postgres",
   hee: "Execution Engine for Apache Hadoop",
@@ -105,10 +104,10 @@ const funcLoad = () => {
   }
 
   //generate config command
-  addEventListener(document.getElementById("configure-env"),"click", updateConfigVars);
+  addEventListener(document.getElementById("configure-env"), "click", updateConfigVars);
 
   //After env configured successfully enable timeline
-  addEventListener(document.getElementById("enable-timeline"),"click", enableAll)
+  addEventListener(document.getElementById("enable-timeline"), "click", enableAll)
 
   //handle managemnet dropdowns
   let tasks = document.querySelectorAll("[id^='task']");
@@ -145,13 +144,16 @@ const funcLoad = () => {
   createMultiSelectDropdownWithSearch("git-services", services, updateSelectedServices, "services", "services-search", filterServiceList)
 
   //handle push to git 
-  addEventListener(document.getElementById("pushToGit"),"click", pushToGit);
+  addEventListener(document.getElementById("pushToGit"), "click", pushToGit);
 
   //Store required CTAs in state
   storeCTAInState();
 
   //Restore data if available
   document.getElementById("get-workspace-state").click();
+
+  //reset workspace state
+  addEventListener(document.getElementById("reset-href"), "click", resetWorkspace);
 }
 
 
@@ -172,24 +174,24 @@ const UpdateExport = (e) => {
   let artifacts = document.querySelectorAll("[id^='ga_']");
   if (e.target.checked) {
     currentHTMLstateData.selectedArtifacts.push(e.target.value)
-    if(e.target.value === "all"){
+    if (e.target.value === "all") {
       currentHTMLstateData.selectedArtifacts = ["all"];
       artifacts.forEach(artifact => {
-        if(e.target.id !== artifact.id){
+        if (e.target.id !== artifact.id) {
           artifact.checked = false
           artifact.dispatchEvent(new Event("change"))
           currentHTMLstateData.selectedArtifacts.indexOf(artifact.value) !== -1 && currentHTMLstateData.selectedArtifacts.splice(currentHTMLstateData.selectedArtifacts.indexOf(artifact.value), 1)
         }
       })
-    } else if(e.target.value !== "all" && currentHTMLstateData.selectedArtifacts.length <= 6){
+    } else if (e.target.value !== "all" && currentHTMLstateData.selectedArtifacts.length <= 6) {
       let artifact = document.getElementById("ga_all");
       artifact.checked = false
       artifact.dispatchEvent(new Event("change"))
       currentHTMLstateData.selectedArtifacts.indexOf("all") !== -1 && currentHTMLstateData.selectedArtifacts.splice(currentHTMLstateData.selectedArtifacts.indexOf("all"), 1)
-    } else if(e.target.value !== "all" && currentHTMLstateData.selectedArtifacts.length > 6){
+    } else if (e.target.value !== "all" && currentHTMLstateData.selectedArtifacts.length > 6) {
       currentHTMLstateData.selectedArtifacts = ["all"];
       artifacts.forEach(artifact => {
-        if("all" !== artifact.value){
+        if ("all" !== artifact.value) {
           artifact.checked = false
         } else {
           artifact.checked = true

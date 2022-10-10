@@ -4,12 +4,12 @@ let configureCommand = "git clone https://github.com/IBM/CPDemoFramework -b ${BR
 currentHTMLstateData = {
   prerequisites: {
     server: "",
-    api_token: "", 
-    kubeadmin_user: "", 
+    api_token: "",
+    kubeadmin_user: "",
     kubeadmin_pass: "",
     icr_key: ""
   },
-  validPrequisites: [["icr_key", "api_token", "server"],["icr_key", "kubeadmin_user", "kubeadmin_pass"]],
+  validPrequisites: [["icr_key", "api_token", "server"], ["icr_key", "kubeadmin_user", "kubeadmin_pass"]],
   dropdownIds: ["service-list"],
   envConfigured: false,
   selectedServices: [],
@@ -29,6 +29,7 @@ const services = {
   "dmc": 'Data Management Console',
   "dods": 'Decision Optimization',
   "dp": 'Data Privacy',
+  "DPRA": "Data Privacy Risk Assessment",
   "dv": 'Data Virtualization',
   "hadoop": 'Execution Engine for Apache Hadoop',
   "mdm": 'IBM Master Data Management',
@@ -58,10 +59,10 @@ const funcLoad = () => {
   }
 
   //generate config command
-  addEventListener(document.getElementById("configure-env"),"click", updateConfigVars);
+  addEventListener(document.getElementById("configure-env"), "click", updateConfigVars);
 
   //After env configured successfully enable timeline
-  addEventListener(document.getElementById("enable-timeline"),"click", enableAll)
+  addEventListener(document.getElementById("enable-timeline"), "click", enableAll)
 
   //open/close logic for all dropdowns
   toggleDropdowns(currentHTMLstateData.dropdownIds)
@@ -69,19 +70,22 @@ const funcLoad = () => {
   //create services dropdown
   createMultiSelectDropdownWithSearch("git-services", services, updateSelectedServices, "services", "services-search", filterServiceList)
 
-  addEventListener(document.getElementById("install_cpd"),"click", install_cpd);
+  addEventListener(document.getElementById("install_cpd"), "click", install_cpd);
 
-  addEventListener(document.getElementById("storage_value"),"change", () => {} )
-  
+  addEventListener(document.getElementById("storage_value"), "change", () => { })
+
   //Store required CTAs in state
   storeCTAInState();
 
   //Restore data if available
   document.getElementById("get-workspace-state").click();
+
+  //reset workspace state
+  addEventListener(document.getElementById("reset-href"), "click", resetWorkspace);
 }
 
 const updateConfigVars = (e) => {
-  document.getElementById("configure-env$1").setAttribute("command", `${configureCommand}${Object.keys(currentHTMLstateData.prerequisites).map(val => `${currentHTMLstateData.prerequisites[val] || "\"\""}`).toString().replaceAll(",","%20")}` );
+  document.getElementById("configure-env$1").setAttribute("command", `${configureCommand}${Object.keys(currentHTMLstateData.prerequisites).map(val => `${currentHTMLstateData.prerequisites[val] || "\"\""}`).toString().replaceAll(",", "%20")}`);
   document.getElementById("configure-env$1").click();
 }
 

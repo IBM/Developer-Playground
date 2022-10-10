@@ -64,11 +64,9 @@
             <div class="content">
                 <p>Get the resources required to backup CP4D instance and configure the openshift credentials and cluster.</p>
             </div>
-            <button class="button is-dark is-medium" id="configure-env" title="Configure Environment" numSuccess=1>Configure Environment</button>
-            <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command="" nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
-            <button id="configure-env$2" class="send-to-extension hidden-state" action="senddata"
-                command="cd /projects/cpd-backup/sandbox/cpdbr/;pip3.8 install pyYAML python-dotenv==0.19.2;python3.8 add-config.py"
-                nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
+            <button class="button is-dark is-medium" id="configure-env" title="Configure Environment" numSuccess=1>Configure Environment</button><span class="spinner hidden-state"></span>
+            <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command="" 
+            nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
             <button id="enable-timeline" class="hidden-state">Enable</button>
             <span class="dot"></span>
         </div>
@@ -76,7 +74,7 @@
             <div class="content">
                 <p>Backup the Cluster.</p>
             </div>
-            <button class="send-to-extension button is-dark is-medium" id="backup-src" title="Backup Source Cluster" command="cd /projects/cpd-backup/sandbox/cpdbr;sh start-backup.sh" numSuccess=1>Start Backup</button><span class="spinner hidden-state"></span>
+            <button class="send-to-extension button is-dark is-medium" id="backup-src" title="Backup Source Cluster" command="cd /projects/cpd-backup/sandbox/cpdbr;bash backup.sh" numSuccess=1>Start Backup</button><span class="spinner hidden-state"></span>
             <span class="dot"></span>
         </div>            
         </div>

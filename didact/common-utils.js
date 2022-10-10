@@ -20,6 +20,7 @@ let services = {
     dmc: "Data Management Console",
     dods: "Decision Optimization",
     dp: "Data Privacy",
+    DPRA: "Data Privacy Risk Assessment",
     dv: "Data Virtualization",
     edb_cp4d: "EnterpriseDB Postgres",
     hee: "Execution Engine for Apache Hadoop",

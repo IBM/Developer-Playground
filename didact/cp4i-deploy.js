@@ -15,7 +15,7 @@ currentHTMLstateData = {
   doNotRestore: []
 }
 
-services = {
+const services = {
   "platform-navigator": "Platform Navigator",
   "api-management": "API Management",
   "automation-assets": "Automation Assets",

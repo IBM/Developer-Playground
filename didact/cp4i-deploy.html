@@ -9,7 +9,6 @@
   </style>
 </head>
 <body>
-    <button id="reset-workspace-state" action="reset-workspace-state" class="send-to-extension button is-dark is-medium reset" command="cd /projects;rm -rf techzone-demo">Reset</button>
     <div style="margin-top:2rem"></div>
     <div id="userID" class="hidden-state">$user_id</div>
     <button id="update-workspace-state" action="update-workspace-state" class="send-to-extension hidden-state"></button>
@@ -24,6 +23,8 @@
     <div class="section">
         <p style="font-size:24px">Pre-requisites</p>
         <div>
+            <p>To clear pre populated fields if any click <a id="reset-href">here</a>.</p>
+            <button id="reset-workspace-state" action="reset-workspace-state" class="send-to-extension hidden-state" command="cd /projects;rm -rf techzone-demo">Reset</button>
         <p>Configure Openshift credentials (either use combination of server, user/password (OR) server, token).<br>
             Openshift server name (including https://) and token can be obtained using one of two methods
         <ol>

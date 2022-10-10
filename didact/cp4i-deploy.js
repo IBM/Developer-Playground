@@ -1,4 +1,4 @@
-let configureCommand = "git clone https://github.com/SuyashGupte/CPDemoFramework -b ${BRANCH} --single-branch techzone-demo;cd%20./techzone-demo/olm-utils-v2;sh%20configure-env.sh%20";
+let configureCommand = "git clone https://github.com/IBM/CPDemoFramework -b ${BRANCH} --single-branch techzone-demo;cd%20./techzone-demo/olm-utils-v2;sh%20configure-env.sh%20";
 
 currentHTMLstateData = {
   prerequisites: {
@@ -59,6 +59,9 @@ const funcLoad = () => {
 
   //Restore data if available
   document.getElementById("get-workspace-state").click();
+
+  //reset workspace state
+  addEventListener(document.getElementById("reset-href"), "click", resetWorkspace);
 }
 
 const updateConfigVars = (e) => {

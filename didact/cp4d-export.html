@@ -11,7 +11,6 @@
 </head>
 
 <body>
-    <button id="reset-workspace-state" action="reset-workspace-state" class="send-to-extension button is-dark is-medium reset" command="cd /projects;rm -rf techzone-demo">Reset</button>
     <div style="margin-top:2rem"></div>
     <div id="userID" class="hidden-state">$user_id</div>
     <button id="update-workspace-state" action="update-workspace-state" class="send-to-extension hidden-state"></button>
@@ -29,6 +28,8 @@
     <div class="section">
         <p style="font-size:24px">Pre-requisites</p>
         <div>
+            <p>To clear pre populated fields if any click <a id="reset-href">here</a>.</p>
+            <button id="reset-workspace-state" action="reset-workspace-state" class="send-to-extension hidden-state" command="cd /projects;rm -rf techzone-demo">Reset</button>
             <p>Enter your CPD cluster details.</p>
             <div class="env-config">
                 <label>Hostname: </label><input class="store-data env-variables" id="hostname" name="hostname" type="text" />
@@ -104,7 +105,7 @@
                     <div class="content">
                         <p>Select the required Governance artifacts. By default all artifacts will be exported.</p>
                         <div id="governance-list" class="dropdown-check-list" tabindex="100">
-                            <span id="selected-artifacts" class="anchor">Select Artifacts</span>
+                            <span id="selected-artifacts" class="anchor">all</span>
                             <ul class="items">
                                 <li><input id="ga_all" class="store-data" type="checkbox" name="governance-artifacts" value="all" checked />All </li>
                                 <li><input id="ga_category" class="store-data" type="checkbox" name="governance-artifacts" value="category" />Category

@@ -2,47 +2,50 @@
 let configureCommand = "git clone -b ${BRANCH} https://github.com/IBM/CPDemoFramework ${CHE_PROJECTS_ROOT}/techzone-demo;bash /projects/techzone-demo/sandbox/getDemoFiles.sh demo_name is_private git_url git_token;cd ${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8 install -r requirements.txt;cd /projects/techzone-demo/sandbox/;python3.8 update-env.py ";
 
 currentHTMLstateData = {
-  prerequisites: {
-    hostname: "",
-    wkcuser: "",
-    password: ""
-  },
-  validPrequisites: [["hostname", "wkcuser", "password"]],
-  envConfigured: false,
-  isPrivateDemo: false,
-  demo: document.getElementById("selected-demo").textContent,
-  privateGitRepoUrl: document.getElementById("demo-url").textContent,
-  gitToken:"",
-  doNotRestore: []
+    prerequisites: {
+        hostname: "",
+        wkcuser: "",
+        password: ""
+    },
+    validPrequisites: [["hostname", "wkcuser", "password"]],
+    envConfigured: false,
+    isPrivateDemo: false,
+    demo: document.getElementById("selected-demo").textContent,
+    privateGitRepoUrl: document.getElementById("demo-url").textContent,
+    gitToken: "",
+    doNotRestore: []
 }
 
 const funcLoad = () => {
-  // Disable timeline
-  disableTimelineFromElement("all");
+    // Disable timeline
+    disableTimelineFromElement("all");
 
-  //handle prerequisites
-  for (let prerequisite of Object.keys(currentHTMLstateData.prerequisites)) {
-    addEventListener(document.getElementById(prerequisite), "input", handlePrerequisiteValues);
-  }
+    //handle prerequisites
+    for (let prerequisite of Object.keys(currentHTMLstateData.prerequisites)) {
+        addEventListener(document.getElementById(prerequisite), "input", handlePrerequisiteValues);
+    }
 
-  //git token input for private demo
-  addEventListener(document.getElementById("gittoken"),"input", showConfigureCTA);
-  
+    //git token input for private demo
+    addEventListener(document.getElementById("gittoken"), "input", showConfigureCTA);
 
-  //generate config command
-  addEventListener(document.getElementById("configure-env"),"click", updateConfigVars);
 
-  //After env configured successfully enable timeline
-  addEventListener(document.getElementById("enable-timeline"),"click", enableAll)
+    //generate config command
+    addEventListener(document.getElementById("configure-env"), "click", updateConfigVars);
 
-  //open cluster url
-  addEventListener(document.getElementById("open-cpd-cluster-button"),"click", openCluster);
+    //After env configured successfully enable timeline
+    addEventListener(document.getElementById("enable-timeline"), "click", enableAll)
 
-  //Store required CTAs in state
-  storeCTAInState();
+    //open cluster url
+    addEventListener(document.getElementById("open-cpd-cluster-button"), "click", openCluster);
 
-  //Restore data if available
-  document.getElementById("get-workspace-state").click();
+    //Store required CTAs in state
+    storeCTAInState();
+
+    //Restore data if available
+    document.getElementById("get-workspace-state").click();
+
+    //reset workspace state
+    addEventListener(document.getElementById("reset-href"), "click", resetWorkspace);
 }
 
 

@@ -72,11 +72,20 @@
         </div>
         <div class="timeline">
             <div class="content">
-                <p>Backup the Cluster.</p>
-            </div>
-            <button class="send-to-extension button is-dark is-medium" id="backup-src" title="Backup Source Cluster" command="cd /projects/cpd-backup/sandbox/cpdbr;bash cpdbr.sh cp4d backup" numSuccess=1>Start Backup</button><span class="spinner hidden-state"></span>
-            <span class="dot"></span>
-        </div>            
+                <div style="padding: 1.5rem;">
+                    <div class="content">
+                        <p>Backup the Cluster.</p>
+                        <div id="cp4d-deploy"class="env-config">
+                            <label>CP4D Backup Name</label>
+                            <input type="text" id="backup_name" value="cpd-backup"> 
+                        </div>
+                    </div>
+                    <br /><br />
+                    <button class="button is-dark is-medium" id="backup_src" title="Execute" numSuccess=1>Start Backup</button><span class="spinner hidden-state"></span>
+                    <button id="backup_src$1" class="send-to-extension hidden-state" action="senddata" command=""></button><span class="spinner hidden-state"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>         
         </div>
     </div>
 </body>

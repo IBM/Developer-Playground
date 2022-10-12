@@ -147,10 +147,17 @@ window.onload = function () {
     localStorage[didact] = JSON.stringify(tempData)
   }
 
-  //configure cta
+  //configure env cta
   document.getElementById("configure-env").addEventListener("click", updateConfigVars);
   function updateConfigVars(e) {
     document.getElementById("configure-env$1").setAttribute("command", `${compositeHref}${Object.keys(config).map(val => `${document.getElementsByName(val)[0].value || "\"\""}`).toString().replaceAll(",","%20")}` );
     document.getElementById("configure-env$1").click();
+  }
+  //start backup cta
+  document.getElementById("backup_src").addEventListener("click", backup_src);
+  function backup_src() {
+    let backupName = document.getElementById('backup_name').value;
+    document.getElementById("backup_src$1").setAttribute("command", `cd /projects/cpd-backup/sandbox/cpdbr; bash cpdbr.sh cp4d backup ${backupName}`)
+    document.getElementById("backup_src$1").click();
   }
 };

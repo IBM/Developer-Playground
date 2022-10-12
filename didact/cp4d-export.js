@@ -13,6 +13,7 @@ currentHTMLstateData = {
   selectedArtifacts: ["all"],
   selectedServices: [],
   selectedProject: {},
+  selecetdIndustry: "",
   isPrivateDemo: false,
   requiredGithubFields: {
     demoName: "",
@@ -300,10 +301,10 @@ const filterServiceList = (e) => {
 }
 
 const pushToGit = () => {
-  let industry = selecetdIndustry;
+  let industry = currentHTMLstateData.selecetdIndustry;
   let tags = currentHTMLstateData.requiredGithubFields.tags || ""
   let author = currentHTMLstateData.requiredGithubFields.author || ""
-  let services = selectedServices.toString()
+  let services = currentHTMLstateData.selectedServices.toString()
   let demoName = currentHTMLstateData.requiredGithubFields.demoName || ""
   let desc = currentHTMLstateData.requiredGithubFields.desc || "Update"
   let userID = document.getElementById("userID").textContent || author

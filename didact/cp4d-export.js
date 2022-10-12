@@ -330,7 +330,7 @@ const pushToGit = () => {
   metadata = '\'' + JSON.stringify(metadata) + '\''
   if (document.getElementById("private-git-toggle").checked) {
     document.getElementById("pushToGit$1").setAttribute("command",
-      "bash /projects/techzone-demo/sandbox/github.sh " + "\"" + demoName.replace(/ /g, '') + "\"" + " " + metadata + " " + "\"" + userID.replace(/ /g, '') + "\"" + " " + "\"" + desc + "\"" + " " + "\"" + gitUrl + "\"" + " " + "\"" + gitAccessToken + "\"");
+      "bash /projects/techzone-demo/sandbox/github.sh " + "\"" + demoName.replace(/ /g, '') + "\"" + " " + metadata + " " + "\"" + userID.replace(/ /g, '') + "\"" + " " + "\"" + desc + "\"" + " " + "\"" + currentHTMLstateData.requiredPrivateGithubFields["private-git-url"] + "\"" + " " + "\"" + currentHTMLstateData.requiredPrivateGithubFields["private-git-access-token"] + "\"");
   } else {
     document.getElementById("pushToGit$1").setAttribute("command",
       "bash /projects/techzone-demo/sandbox/github.sh " + "\"" + demoName.replace(/ /g, '') + "\"" + " " + metadata + " " + "\"" + userID.replace(/ /g, '') + "\"" + " " + "\"" + desc + "\"");

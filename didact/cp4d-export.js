@@ -265,7 +265,7 @@ const validateGithubFields = () => {
 
 const selectIndustry = (e) => {
   document.getElementById("selected-industry").textContent = e.target.textContent
-  currentHTMLstateData.selecetdIndustry = e.target.id;
+  currentHTMLstateData.selecetdIndustry = e.target.id.split("_")[1];
   document.getElementById("industry-list").classList.remove('visible');
   validateGithubFields();
 }

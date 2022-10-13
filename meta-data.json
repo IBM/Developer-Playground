@@ -26,6 +26,7 @@
         "import-demo": "Import Demo for CP4D",
         "cp4d-import": "Import Demo for CP4D",
         "import-all-demo": "Import all Demo for CP4D",
-        "cp4d-backup": "Backup CP4D Demo"
+        "cp4d-backup": "Backup CP4D Deployment",
+        "cp4d-restore": "Restore CP4D Deployment"
     }
 }

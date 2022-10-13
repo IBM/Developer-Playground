@@ -15,7 +15,7 @@
     <div id="environment" class="hidden-state">development</div>
     <div class="header">
         <div class="left-content">
-            <div class="apptitle">CP4D Backup</div>
+            <div class="apptitle">CP4D Restore</div>
             <div class="subheading">
                 Red Hat Advanced Cluster Management (ACM), offers end-to-end visibility and control for managing your cluster and application lifecycle. Among other features, it ensures security and compliance for your entire Kubernetes domain across multiple data centers and public clouds.
                 OpenShift API for Data Protection (OADP) enables backup, restore, and disaster recovery of applications on an OpenShift cluster. Data that can be protected with OADP include Kubernetes resource objects, persistent volumes, and internal images</div>
@@ -54,7 +54,7 @@
         At a high level the installation steps include:
         <ol>
             <li>Configure Openshift cluster.</li>
-            <li>Backup the Cluster.</li>
+            <li>Restore the Cluster.</li>
         </ol>
         Please follow steps below as appropriate, some steps are optional depending on what needs to be done.<br><br>
     </div>
@@ -62,7 +62,7 @@
         <input type="text" class="hidden-state" id="data-fetched" />
         <div class="timeline">
             <div class="content">
-                <p>Get the resources required to backup CP4D instance and configure the openshift credentials and cluster.</p>
+                <p>Get the resources required to restore CP4D instance and configure the openshift credentials and cluster.</p>
             </div>
             <button class="button is-dark is-medium" id="configure-env" title="Configure Environment" numSuccess=1>Configure Environment</button><span class="spinner hidden-state"></span>
             <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command="" 
@@ -74,15 +74,15 @@
             <div class="content">
                 <div style="padding: 1.5rem;">
                     <div class="content">
-                        <p>Backup the Cluster.</p>
+                        <p>Restore the Cluster.</p>
                         <div class="env-config">
-                            <label>CP4D Backup Name</label>
-                            <input type="text" id="backup_name" value="cpd-backup"> 
+                            <label>CP4D Restore Name</label>
+                            <input type="text" id="restore_name" value="cpd-restore"> 
                         </div>
                     </div>
                     <br /><br />
-                    <button class="button is-dark is-medium" id="backup_src" title="Execute" numSuccess=1>Start Backup</button><span class="spinner hidden-state"></span>
-                    <button id="backup_src$1" class="send-to-extension hidden-state" action="senddata" command=""></button><span class="spinner hidden-state"></span>
+                    <button class="button is-dark is-medium" id="restore_src" title="Execute" numSuccess=1>Start Restore</button><span class="spinner hidden-state"></span>
+                    <button id="restore_src$1" class="send-to-extension hidden-state" action="senddata" command=""></button><span class="spinner hidden-state"></span>
                     <span class="dot"></span>
                 </div>
             </div>         

@@ -156,8 +156,8 @@ window.onload = function () {
     //start restore cta
     document.getElementById("restore_src").addEventListener("click", restore_src);
     function restore_src() {
-      let restoreName = document.getElementById('restore_name').value;
-      document.getElementById("restore_src$1").setAttribute("command", `cd /projects/cpd-restore/sandbox/cpdbr; bash cpdbr.sh cp4d restore ${restoreName}`)
+      let backupName = document.getElementById('backup_name').value;
+      document.getElementById("restore_src$1").setAttribute("command", `cd /projects/cpd-restore/sandbox/cpdbr; bash cpdbr.sh cp4d restore ${backupName}`)
       document.getElementById("restore_src$1").click();
     }
   };

@@ -1,5 +1,6 @@
 //base command to configure the environment
 let configureCommand = "git clone -b ${BRANCH} https://github.com/IBM/CPDemoFramework ${CHE_PROJECTS_ROOT}/techzone-demo;bash /projects/techzone-demo/sandbox/getDemoFiles.sh demo_name is_private git_url git_token;cd ${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8 install -r requirements.txt;cd /projects/techzone-demo/sandbox/;python3.8 update-env.py ";
+var createUsersCTACommand = "cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python3.8 createUsers.py users.csv {IMPORT_USERS_PASSWORD}";
 
 currentHTMLstateData = {
     prerequisites: {
@@ -19,7 +20,7 @@ currentHTMLstateData = {
 const funcLoad = () => {
     // Disable timeline
     disableTimelineFromElement("all");
-
+    
     //handle prerequisites
     for (let prerequisite of Object.keys(currentHTMLstateData.prerequisites)) {
         addEventListener(document.getElementById(prerequisite), "input", handlePrerequisiteValues);
@@ -28,12 +29,15 @@ const funcLoad = () => {
     //git token input for private demo
     addEventListener(document.getElementById("gittoken"), "input", showConfigureCTA);
 
+    //password input for importing users
+    addEventListener(document.getElementById("importuserspwd"), "input", enableOrDisableCreateUsersCTA);
+   
 
     //generate config command
     addEventListener(document.getElementById("configure-env"), "click", updateConfigVars);
 
     //After env configured successfully enable timeline
-    addEventListener(document.getElementById("enable-timeline"), "click", enableAll)
+    addEventListener(document.getElementById("enable-timeline"), "click", enableAllExceptCreateUsers)
 
     //open cluster url
     addEventListener(document.getElementById("open-cpd-cluster-button"), "click", openCluster);
@@ -57,19 +61,36 @@ const updateConfigVars = (e) => {
 }
 
 const showConfigureCTA = (e) => {
-    let configCTA = document.getElementById("configure-environment-CTA")
+    let configCTA = document.getElementById("configure-environment-CTA");
     if (e.target.value.trim() !== "") {
-        modifyVisibilityInTimeline([configCTA], "auto", 1, "auto")
+        modifyVisibilityInTimeline([configCTA], "auto", 1, "auto");
     } else {
         modifyVisibilityInTimeline([configCTA], "not-allowed", 0.5, "none")
     }
 }
+
+const enableOrDisableCreateUsersCTA = (e) => {
+    let createUsersCTA = document.getElementById("create-users");
+    if (e.target.value.trim() !== "") {
+        modifyVisibilityOfCTAs(["create-users"], "enable");
+        createUsersCTA.setAttribute("command", createUsersCTACommand.replace("{IMPORT_USERS_PASSWORD}", e.target.value));
+    } else {
+        modifyVisibilityOfCTAs(["create-users"], "disable")
+    }
+}
+
 
 const openCluster = () => {
     let clusterUrl = `https://${currentHTMLstateData.prerequisites.hostname}`
     let openClusterCta = document.getElementById("open-cpd-cluster")
     openClusterCta.href = clusterUrl
     openClusterCta.click();
+}
+
+const enableAllExceptCreateUsers = () =>
+{
+    //document.getElementById("importuserspwd").dispatchEvent(new Event('input'));
+    enableAll();
 }
 
 window.addEventListener("load", funcLoad);

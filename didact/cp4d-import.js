@@ -8,7 +8,7 @@ currentHTMLstateData = {
         wkcuser: "",
         password: ""
     },
-    validPrequisites: [["hostname", "wkcuser", "password"]],
+    validPrerequisites: [["hostname", "wkcuser", "password"]],
     envConfigured: false,
     isPrivateDemo: false,
     demo: document.getElementById("selected-demo").textContent,
@@ -20,7 +20,7 @@ currentHTMLstateData = {
 const funcLoad = () => {
     // Disable timeline
     disableTimelineFromElement("all");
-    
+
     //handle prerequisites
     for (let prerequisite of Object.keys(currentHTMLstateData.prerequisites)) {
         addEventListener(document.getElementById(prerequisite), "input", handlePrerequisiteValues);
@@ -31,13 +31,12 @@ const funcLoad = () => {
 
     //password input for importing users
     addEventListener(document.getElementById("importuserspwd"), "input", enableOrDisableCreateUsersCTA);
-   
+
+    //After env configured successfully enable timeline
+    addEventListener(document.getElementById("enable-timeline"), "click", enableAll)
 
     //generate config command
     addEventListener(document.getElementById("configure-env"), "click", updateConfigVars);
-
-    //After env configured successfully enable timeline
-    addEventListener(document.getElementById("enable-timeline"), "click", enableAllExceptCreateUsers)
 
     //open cluster url
     addEventListener(document.getElementById("open-cpd-cluster-button"), "click", openCluster);
@@ -85,12 +84,6 @@ const openCluster = () => {
     let openClusterCta = document.getElementById("open-cpd-cluster")
     openClusterCta.href = clusterUrl
     openClusterCta.click();
-}
-
-const enableAllExceptCreateUsers = () =>
-{
-    //document.getElementById("importuserspwd").dispatchEvent(new Event('input'));
-    enableAll();
 }
 
 window.addEventListener("load", funcLoad);

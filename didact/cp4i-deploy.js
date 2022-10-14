@@ -8,7 +8,14 @@ currentHTMLstateData = {
     kubeadmin_pass: "",
     icr_key: ""
   },
-  validPrequisites: [["icr_key", "api_token", "server"], ["icr_key", "kubeadmin_user", "kubeadmin_pass"]],
+  authenticationOptions: {
+    required: ["icr_key","server"],
+    additionalOptions: {
+      "server_option": ["api_token"],        
+      "kube_option": ["kubeadmin_user", "kubeadmin_pass"]    
+    },
+  },
+  validPrerequisites: [["icr_key", "api_token", "server"], ["icr_key", "kubeadmin_user", "kubeadmin_pass"]],
   dropdownIds: ["service-list"],
   envConfigured: false,
   selectedServices: [],
@@ -37,6 +44,9 @@ const funcLoad = () => {
   for (let prerequisite of Object.keys(currentHTMLstateData.prerequisites)) {
     addEventListener(document.getElementById(prerequisite), "input", handlePrerequisiteValues);
   }
+
+  //handle authencation options
+  [...document.getElementsByName("authentication-options")].forEach(element => addEventListener(element, "change", handleAuthenticationOptions))
 
   //generate config command
   addEventListener(document.getElementById("configure-env"), "click", updateConfigVars);

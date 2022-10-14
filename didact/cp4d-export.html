@@ -19,7 +19,7 @@
     <div class="header">
         <div class="left-content">
             <div class="apptitle">Save/Share demo assets with community</div>
-            <div class="subheading">Save demo artifacts to a centralized location (Shared GitHub repository). This will
+            <div class="subheading">Save demo artifacts to a centralized location (shared GitHub repository). This will
                 enable you to recreate your demo assets onto a different/new infrastructure (potentially on a newer
                 version of Cloud Pak for Data). The centralized collection of demo assets can be leveraged by the
                 broader community so we all benefit from each others work.</div>
@@ -32,20 +32,19 @@
             <button id="reset-workspace-state" action="reset-workspace-state" class="send-to-extension hidden-state" command="cd /projects;rm -rf techzone-demo">Reset</button>
             <p>Enter your CPD cluster details.</p>
             <div class="env-config">
-                <label>Hostname: </label><input class="store-data env-variables" id="hostname" name="hostname" type="text" />
-                <label>User: </label><input class="store-data env-variables" id="wkcuser" name="wkcuser" type="text" />
-                <label>Password: </label><input class="store-data env-variables" id="password" name="password" type="password" />
+                <label>CP4D Hompage URL: </label><input class="store-data env-variables" id="hostname" name="hostname" type="text" />
+                <label>CP4D User: </label><input class="store-data env-variables" id="wkcuser" name="wkcuser" type="text" />
+                <label>CP4D Password: </label><input class="store-data env-variables" id="password" name="password" type="password" />
             </div>
         </div>
     </div>
     <div class="section" style="margin-top:5rem;">
         <p style="font-size:24px">Instructions</p>
-        <p>Please follow all the below steps in proper sequence.</p>
     </div>
     <div class="timeline-container">
         <div class="timeline" id="configure-environment-CTA">
             <div class="content">
-                <p>Configure the environment with the required resources and connect to the specified CPD cluster.</p>
+                <p>Configure the environment with the required resources and connect to the specified CP4D cluster.</p>
             </div>
             <button class="button is-dark is-medium" id="configure-env" title="Configure Environment">Configure
                 Environment</button><span class="spinner hidden-state"></span>
@@ -60,11 +59,11 @@
         </div>
         <div class="timeline">
             <div class="content">
-                <p>Select the required tasks</p>
+                <p>Select what needs to be exported</p>
                 <div class="checkbox-group">
                     <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
                         <input id="users-management" class="store-data" type="checkbox" name="checkboxtask" value="task1" />
-                        <label for="task1">User Management</label>
+                        <label for="task1">User/Groups</label>
                     </div>
                     <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
                         <input id="governance-artifacts"class="store-data" type="checkbox" name="checkboxtask" value="task2" />
@@ -72,7 +71,7 @@
                     </div>
                     <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
                         <input id="project-management" class="store-data" type="checkbox" name="checkboxtask" value="task3" />
-                        <label for="task3">Project Management</label>
+                        <label for="task3">CP4D Projects</label>
                     </div>
                 </div>
                 <span class="dot"></span>
@@ -81,16 +80,16 @@
         <div class="timeline" id="task1">
             <div class="content">
                 <details>
-                    <summary>User management<span class="arrow"></span></summary>
+                    <summary>Users/Groups<span class="arrow"></span></summary>
                     <br><br>
                     <div>
                         <div class="content">
-                            <p>Export Users from the specified CPD cluster.</p>
+                            <p>Export Users/Groups from the specified CP4D cluster.</p>
                         </div>
                         <button class="send-to-extension button is-dark is-medium" id="export-user-list"
                             title="Export User List" action="senddata"
-                            command="cd /projects/techzone-demo/sandbox/;python3.8 exportUsersv2.py users.csv">Export
-                            User List</button><span class="spinner hidden-state"></span>
+                            command="cd /projects/techzone-demo/sandbox/;python3.8 exportUsers.py users.csv">Export
+                            Users/Groups</button><span class="spinner hidden-state"></span>
                         <span class="dot"></span>
                     </div>
                 </details>
@@ -103,7 +102,7 @@
                     <summary>Governance Artifacts<span class="arrow"></span></summary>
                     <br><br>
                     <div class="content">
-                        <p>Select the required Governance artifacts. By default all artifacts will be exported.</p>
+                        <p>Select governance artifacts to be exported, all artifacts are selected by default.</p>
                         <div id="governance-list" class="dropdown-check-list" tabindex="100">
                             <span id="selected-artifacts" class="anchor">all</span>
                             <ul class="items">
@@ -132,13 +131,10 @@
                     </div>
                     <br>
                     <div id="export-task">
-                        <div class="content">
-                            <p>Export the selected Governance Artifacts.</p>
-                        </div>
                         <button class="send-to-extension button is-dark is-medium" id="export-governance-artifacts"
                             title="Export Governance Artifacts" action="senddata"
                             command="cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py governance_artifacts.zip all;unzip governance_artifacts.zip -d governance_artifacts;python3.8 exportDataProtectionRules.py data_protection_rules.json">Export
-                            Artifacts</button><span class="spinner hidden-state"></span><span class="dot"></span>
+                            Governance Artifacts</button><span class="spinner hidden-state"></span><span class="dot"></span>
                     </div>
                 </details>
             </div>
@@ -147,10 +143,10 @@
         <div class="timeline" id="task3">
             <div class="content">
                 <details>
-                    <summary>Project management<span class="arrow"></span></summary>
+                    <summary>CP4D Projects<span class="arrow"></span></summary>
                     <br><br>
                     <div class="content">
-                        <p>Select the required Project.</p>
+                        <p>Select CP4D project to be exported.</p>
                         <div id="project-list" class="dropdown-check-list" tabindex="100">
                             <span id="selected-project" class="anchor">Select Project</span>
                             <ul id="project-list-ul" class="items">
@@ -158,9 +154,6 @@
                         </div>
                     </div>
                     <br />
-                    <div class="content">
-                        <p>Export the project.</p>
-                    </div>
                     <button id="export-project" class="send-to-extension button is-dark is-medium no-click disable"
                         title="Export Project" action="senddata"
                         command="">Export

@@ -1,5 +1,5 @@
 //base command to configure the environment
-let configureCommand = "git clone -b ${BRANCH} https://github.com/IBM/CPDemoFramework ${CHE_PROJECTS_ROOT}/techzone-demo;cd ${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8 install -r requirements.txt;cd /projects/techzone-demo/sandbox/;python3.8 update-env.py ";
+let configureCommand = "git clone -b ${BRANCH} https://github.com/IBM/CPDemoFramework ${CHE_PROJECTS_ROOT}/techzone-demo;cd ${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8 install -r requirements.txt;cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python3.8 update-env.py ";
 
 currentHTMLstateData = {
   prerequisites: {
@@ -209,7 +209,7 @@ const UpdateExport = (e) => {
     modifyVisibilityOfCTAs(["export-task"], "enable")
   }
   let cta = document.getElementById("export-task").getElementsByTagName("BUTTON")[0]
-  cta.setAttribute("command", `cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py governance_artifacts.zip ${currentHTMLstateData.selectedArtifacts.toString()};unzip governance_artifacts.zip -d governance_artifacts`)
+  cta.setAttribute("command", "cd ${CHE_PROJECTS_ROOT}"+`/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py governance_artifacts.zip ${currentHTMLstateData.selectedArtifacts.toString()};unzip governance_artifacts.zip -d governance_artifacts`)
   cta.setAttribute("numSuccess", 1)
   if (currentHTMLstateData.selectedArtifacts.indexOf("rule") >= 0 || currentHTMLstateData.selectedArtifacts.indexOf("all") >= 0) {
     cta.setAttribute("command", `${cta.getAttribute("command")};python3.8 exportDataProtectionRules.py data_protection_rules.json`)
@@ -224,7 +224,7 @@ function selectProject(e) {
   document.getElementById("selected-project").textContent = e.target.textContent
   selectedProject = e.target.textContent;
   let exportProjectCTA = document.getElementById("export-project")
-  exportProjectCTA.setAttribute("command", `cd /projects/techzone-demo/sandbox/;python3.8 exportProjectv3.py ${e.target.name} project_assets.zip`)
+  exportProjectCTA.setAttribute("command", "cd ${CHE_PROJECTS_ROOT}"+`/techzone-demo/sandbox/;python3.8 exportProjectv3.py ${e.target.name} project_assets.zip`)
   modifyVisibilityOfCTAs(["export-project"], "enable")
   document.getElementById("project-list").classList.remove('visible');
 }
@@ -330,10 +330,10 @@ const pushToGit = () => {
   metadata = '\'' + JSON.stringify(metadata) + '\''
   if (document.getElementById("private-git-toggle").checked) {
     document.getElementById("pushToGit$1").setAttribute("command",
-      "bash /projects/techzone-demo/sandbox/github.sh " + "\"" + demoName.replace(/ /g, '') + "\"" + " " + metadata + " " + "\"" + userID.replace(/ /g, '') + "\"" + " " + "\"" + desc + "\"" + " " + "\"" + currentHTMLstateData.requiredPrivateGithubFields["private-git-url"] + "\"" + " " + "\"" + currentHTMLstateData.requiredPrivateGithubFields["private-git-access-token"] + "\"");
+      "bash ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/github.sh " + "\"" + demoName.replace(/ /g, '') + "\"" + " " + metadata + " " + "\"" + userID.replace(/ /g, '') + "\"" + " " + "\"" + desc + "\"" + " " + "\"" + currentHTMLstateData.requiredPrivateGithubFields["private-git-url"] + "\"" + " " + "\"" + currentHTMLstateData.requiredPrivateGithubFields["private-git-access-token"] + "\"");
   } else {
     document.getElementById("pushToGit$1").setAttribute("command",
-      "bash /projects/techzone-demo/sandbox/github.sh " + "\"" + demoName.replace(/ /g, '') + "\"" + " " + metadata + " " + "\"" + userID.replace(/ /g, '') + "\"" + " " + "\"" + desc + "\"");
+      "bash ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/github.sh " + "\"" + demoName.replace(/ /g, '') + "\"" + " " + metadata + " " + "\"" + userID.replace(/ /g, '') + "\"" + " " + "\"" + desc + "\"");
   }
   document.getElementById("pushToGit$1").click();
 

@@ -1,5 +1,5 @@
 //base command to configure the environment
-let configureCommand = "git clone https://github.com/IBM/CPDemoFramework -b ${BRANCH} --single-branch techzone-demo;cd%20./techzone-demo/olm-utils-v2;sh%20configure-env.sh%20";
+let configureCommand = "git clone https://github.com/IBM/CPDemoFramework -b ${BRANCH} --single-branch techzone-demo;cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;sh configure-env.sh ";
 
 currentHTMLstateData = {
   prerequisites: {
@@ -104,7 +104,7 @@ const install_cpd = () => {
     component_list = "null"
   }
   let storage = document.getElementById("storage_value").value;
-  document.getElementById("install_cpd$1").setAttribute("command", `cd /projects/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d; bash deploy.sh cp4d`)
+  document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}"+`/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d; bash deploy.sh cp4d`)
   document.getElementById("install_cpd$1").click();
 }
 

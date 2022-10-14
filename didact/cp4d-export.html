@@ -29,7 +29,7 @@
         <p style="font-size:24px">Pre-requisites</p>
         <div>
             <p>To clear pre populated fields if any click <a id="reset-href">here</a>.</p>
-            <button id="reset-workspace-state" action="reset-workspace-state" class="send-to-extension hidden-state" command="cd /projects;rm -rf techzone-demo">Reset</button>
+            <button id="reset-workspace-state" action="reset-workspace-state" class="send-to-extension hidden-state" command="cd ${CHE_PROJECTS_ROOT};rm -rf techzone-demo">Reset</button>
             <p>Enter your CPD cluster details.</p>
             <div class="env-config">
                 <label>CP4D Hompage URL: </label><input class="store-data env-variables" id="hostname" name="hostname" type="text" />
@@ -51,8 +51,8 @@
             <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
                 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
             <button id="configure-env$2" class="send-to-extension hidden-state store-data" action="readfile"
-                command="cd /projects/techzone-demo/sandbox;python3.8 getProjects.py"
-                filePath="/projects/techzone-demo/sandbox/projectsData.json" preProcess="true"
+                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox;python3.8 getProjects.py"
+                filePath="projects/techzone-demo/sandbox/projectData.json" preProcess="true"
                 nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
             <button id="enable-timeline" class="store-data hidden-state"></button>
             <span class="dot"></span>
@@ -88,7 +88,7 @@
                         </div>
                         <button class="send-to-extension button is-dark is-medium" id="export-user-list"
                             title="Export User List" action="senddata"
-                            command="cd /projects/techzone-demo/sandbox/;python3.8 exportUsers.py users.csv">Export
+                            command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python3.8 exportUsers.py users.csv">Export
                             Users/Groups</button><span class="spinner hidden-state"></span>
                         <span class="dot"></span>
                     </div>
@@ -133,7 +133,7 @@
                     <div id="export-task">
                         <button class="send-to-extension button is-dark is-medium" id="export-governance-artifacts"
                             title="Export Governance Artifacts" action="senddata"
-                            command="cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py governance_artifacts.zip all;unzip governance_artifacts.zip -d governance_artifacts;python3.8 exportDataProtectionRules.py data_protection_rules.json">Export
+                            command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py governance_artifacts.zip all;unzip governance_artifacts.zip -d governance_artifacts;python3.8 exportDataProtectionRules.py data_protection_rules.json">Export
                             Governance Artifacts</button><span class="spinner hidden-state"></span><span class="dot"></span>
                     </div>
                 </details>

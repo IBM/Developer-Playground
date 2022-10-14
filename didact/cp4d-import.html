@@ -65,11 +65,11 @@
         </div>
         <div class="timeline" id="task1">
             <div class="content">
-                <p>User/group/role management</p>
+                <p>User/Group/Role management</p>
                 <p>Recreate demo users/groups/roles onto new CP4D cluster.</p>
                 <p>Enter default pasword for the users: <input class="store-data" id="importuserspwd" type="text"></p>
             </div>
-                <button class="send-to-extension button is-dark is-medium" id="create-users" title="Create Users"
+                <button class="send-to-extension button is-dark is-medium disable no-click" id="create-users" title="Create Users"
                     command="cd /projects/techzone-demo/sandbox/;python3.8 createUsers.py users.csv {IMPORT_USERS_PASSWORD}">Create
                     Users</button><span class="spinner hidden-state"></span>
             <span class="dot"></span>

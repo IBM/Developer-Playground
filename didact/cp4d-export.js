@@ -7,7 +7,7 @@ currentHTMLstateData = {
     wkcuser: "",
     password: ""
   },
-  validPrequisites: [["hostname", "wkcuser", "password"]],
+  validPrerequisites: [["hostname", "wkcuser", "password"]],
   dropdownIds: ["project-list", "governance-list", "industry-list", "service-list"],
   envConfigured: false,
   selectedArtifacts: ["all"],

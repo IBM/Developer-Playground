@@ -9,7 +9,14 @@ currentHTMLstateData = {
     kubeadmin_pass: "",
     icr_key: ""
   },
-  validPrequisites: [["icr_key", "api_token", "server"], ["icr_key", "kubeadmin_user", "kubeadmin_pass"]],
+  authenticationOptions: {
+    required: ["icr_key","server"],
+    additionalOptions: {
+      "server_option": ["api_token"],        
+      "kube_option": ["kubeadmin_user", "kubeadmin_pass"]    
+    },
+  },
+  validPrerequisites: [["icr_key","server", "api_token", "server"], ["icr_key","server", "kubeadmin_user", "kubeadmin_pass"]],
   dropdownIds: ["service-list"],
   envConfigured: false,
   selectedServices: [],
@@ -58,6 +65,7 @@ const funcLoad = () => {
     addEventListener(document.getElementById(prerequisite), "input", handlePrerequisiteValues);
   }
 
+  [...document.getElementsByName("authentication-options")].forEach(element => addEventListener(element, "change", handleAuthenticationOptions))
   //generate config command
   addEventListener(document.getElementById("configure-env"), "click", updateConfigVars);
 
@@ -112,7 +120,7 @@ const updateSelectedServices = (e) => {
   }
   let showSeleted = document.getElementById("selected-services")
   showSeleted.textContent = currentHTMLstateData.selectedServices.toString().replaceAll(",", ", ")
-  document.getElementById("selected-components-string").textContent = getShortenedString(currentHTMLstateData.selectedServices) || "Select Components";
+  document.getElementById("selected-components-string").textContent = getShortenedString(currentHTMLstateData.selectedServices) || "Select Services";
 }
 
 const filterServiceList = (e) => {

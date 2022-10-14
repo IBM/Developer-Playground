@@ -60,7 +60,7 @@ const restoreData = (dataToRestore) => {
 
 // validate prequisites
 const checkAllPrequisiteFieldsfilled = () => {
-    for (combination of currentHTMLstateData.validPrequisites) {
+    for (combination of currentHTMLstateData.validPrerequisites) {
         let valid = true;
         for (prerequisite of combination) {
             if (currentHTMLstateData.prerequisites[prerequisite].trim() === "") {
@@ -76,10 +76,10 @@ const checkAllPrequisiteFieldsfilled = () => {
 
 //handle prerequisites values
 const handlePrerequisiteValues = (e) => {
-    if (e.target.name === "hostname") {
+    if (e.target.id === "hostname") {
         e.target.value = e.target.value.trim().replace(/(^\w+:|^)\/\//, '').replace(/^\/+|\/+$/g, '');
     }
-    currentHTMLstateData.prerequisites[e.target.name] = e.target.value;
+    currentHTMLstateData.prerequisites[e.target.id] = e.target.value;
     let prerequisiteFulfilled = checkAllPrequisiteFieldsfilled()
 
     if (prerequisiteFulfilled) {
@@ -91,6 +91,22 @@ const handlePrerequisiteValues = (e) => {
     } else {
         disableTimelineFromElement("all");
     }
+}
+
+//handle authentication options 
+const handleAuthenticationOptions = (e) => {
+    let allPrerequisites = Object.keys(currentHTMLstateData.prerequisites);
+    let allLabels = allPrerequisites.map( key => `${key}$label`);
+    let requiredPrerequisites = [...currentHTMLstateData.authenticationOptions.required, ...currentHTMLstateData.authenticationOptions.additionalOptions[e.target.id]];
+    let requiredLabels = requiredPrerequisites.map( key => `${key}$label`);
+    modifyVisibilityOfCTAs(allPrerequisites,"hide");
+    modifyVisibilityOfCTAs(allLabels,"hide");
+    modifyVisibilityOfCTAs(requiredPrerequisites, "unhide");
+    modifyVisibilityOfCTAs(requiredLabels, "unhide");
+    allPrerequisites.filter( prerequisite => !requiredPrerequisites.includes(prerequisite)).forEach( id => {
+        document.getElementById(id).value = "";
+        document.getElementById(id).dispatchEvent(new Event("input"))
+    })
 }
 
 // Disable/Enable components
@@ -119,8 +135,13 @@ const modifyVisibilityOfCTAs = (CTAids, visibility) => {
 // Handle timeline visibility
 const modifyVisibilityInTimeline = (element, cursorValue, opacityValue, pointerEventValue) => {
     [...element].forEach(parentEle => {
-        parentEle.style.opacity = opacityValue;
+        //parentEle.style.opacity = opacityValue;
         parentEle.style.cursor = cursorValue;
+        for (const child of parentEle.children) {
+            if(!child.classList.contains("disable")){
+                child.style.opacity = opacityValue;
+            }
+          }
         [...parentEle.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = pointerEventValue);
         [...parentEle.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click") ? ele.style.pointerEvents = pointerEventValue : ele.style.pointerEvents = "none");
         [...parentEle.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = pointerEventValue);

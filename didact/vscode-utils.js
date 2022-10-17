@@ -31,12 +31,18 @@ window.addEventListener('message', event => {
                         for (const [key, value] of Object.entries(attributes)) {
                             if (key === "addEventListener") {
                                 element[key](value[0], window[value[1]])
-                            } else if (key === "class") {
-                                element.classList.add(value)
+                            } else if (key === "classList") {
+                                for (const [action, classes] of Object.entries(attributes[key])) {
+                                    element[key][action](classes.toString())
+                                }
                             } else if (key === "dispatchEvent") {
                                 element[key](new Event(value));
                                 console.log("event-triggered");
-                            } else {
+                            } else if (key === "command") {
+                                element.setAttribute(key,element.getAttribute(key)+value);
+                            } else if (key === "numSuccess") {
+                                element.setAttribute(key,value);
+                            }else {
                                 element[key] = value;
                             }
                         }

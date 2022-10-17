@@ -33,7 +33,7 @@ window.addEventListener('message', event => {
                                 element[key](value[0], window[value[1]])
                             } else if (key === "classList") {
                                 for (const [action, classes] of Object.entries(attributes[key])) {
-                                    element[key][action](classes.toString())
+                                    element[key][action](...classes)
                                 }
                             } else if (key === "dispatchEvent") {
                                 element[key](new Event(value));

@@ -59,10 +59,10 @@
             <button class="button is-dark is-medium" id="configure-env" title="Configure Environment">Configure
                 Environment</button></button><span class="spinner hidden-state"></span>
             <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
-                numSuccess=2 nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
+                numSuccess=2 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
             <button id="configure-env$2" class="send-to-extension hidden-state store-data" action="readfile"
             command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox;python3.8 checkImportArtifacts.py"
-            filePath="projects/techzone-demo/sandbox/ArtifactsToShow.json" preProcess="true"></button>
+            filePath="/projects/techzone-demo/sandbox/ArtifactsToShow.json" preProcess="true" nextAction="enable-timeline"></button>
             <button id="enable-timeline" class="store-data hidden-state"></button>
             <span class="dot"></span>
         </div>

@@ -1,12 +1,13 @@
 window.onload = function () {
     let compositeHref = "git clone https://github.com/IBM/CPDemoFramework -b development --single-branch cpd-restore;cd%20/projects/cpd-restore/sandbox/cpdbr;sh%20configure-env.sh%20"
-    let prerequisite = ["src_server", "src_api_token", "kubeadmin_user", "kubeadmin_pass", "s3_url","bucket","region","access_key","access_id" ]
+    let prerequisite = ["icr", "src_server", "src_api_token", "kubeadmin_user", "kubeadmin_pass", "s3_url","bucket","region","access_key","access_id" ]
     let didact = document.getElementsByClassName("apptitle")[0].textContent
   
     //Get Workspace ID and setup default data for localStorage
     let workspaceId = document.getElementById("workspaceID").textContent
     let data = {
       workspaceId: workspaceId,
+      icr: "",
       src_server: "",
       src_api_token: "",
       kubeadmin_user: "",
@@ -35,7 +36,7 @@ window.onload = function () {
     //Enable/Disable timeline
     let localData = JSON.parse(localStorage[didact])
     let timelineContainer = document.getElementsByClassName("timeline-container")[0]
-    if ((localData.src_server.trim() === "" || localData.src_api_token.trim() === "" || localData.s3_url.trim() === "" || localData.bucket.trim() === "" || localData.region.trim() === "" || localData.access_key.trim() === "" || localData.access_id.trim() === "") && (localData.kubeadmin_user.trim() === "" || localData.kubeadmin_pass.trim() === "" || localData.s3_url.trim() === "" || localData.bucket.trim() === "" || localData.region.trim() === "" || localData.access_key.trim() === "" || localData.access_id.trim() === "")) {
+    if ((localData.icr.trim() === "" || localData.src_server.trim() === "" || localData.src_api_token.trim() === "" || localData.s3_url.trim() === "" || localData.bucket.trim() === "" || localData.region.trim() === "" || localData.access_key.trim() === "" || localData.access_id.trim() === "") && (localData.icr.trim() === "" || localData.src_server.trim() === "" || localData.kubeadmin_user.trim() === "" || localData.kubeadmin_pass.trim() === "" || localData.s3_url.trim() === "" || localData.bucket.trim() === "" || localData.region.trim() === "" || localData.access_key.trim() === "" || localData.access_id.trim() === "")) {
       //timelineContainer.style.opacity = 0.5;
       timelineContainer.style.cursor = "not-allowed";
       [...timelineContainer.getElementsByTagName("A")].forEach(ele => ele.style.pointerEvents = "none");
@@ -73,6 +74,7 @@ window.onload = function () {
   
     //default data
     let config = {
+      icr: localData.icr.trim(),
       src_server: localData.src_server.trim(),
       src_api_token: localData.src_api_token.trim(),
       kubeadmin_user: localData.kubeadmin_user.trim(),
@@ -99,7 +101,7 @@ window.onload = function () {
       tempData[e.target.name] = e.target.value
       localStorage[didact] = JSON.stringify(tempData)
       let valid = true
-      if ((config.src_server.trim() === "" || config.src_api_token.trim() === "" || config.s3_url.trim() === "" || config.bucket.trim() === "" || config.region.trim() === "" || config.access_key.trim() === "" || config.access_id.trim() === "") && (config.kubeadmin_user.trim() === "" || config.kubeadmin_pass.trim() === "" || config.s3_url.trim() === "" || config.bucket.trim() === "" || config.region.trim() === "" || config.access_key.trim() === "" || config.access_id.trim() === ""))
+      if ((config.icr.trim() === "" || config.src_server.trim() === "" || config.src_api_token.trim() === "" || config.s3_url.trim() === "" || config.bucket.trim() === "" || config.region.trim() === "" || config.access_key.trim() === "" || config.access_id.trim() === "") && (config.src_server.trim() === "" || config.icr.trim() === "" || config.kubeadmin_user.trim() === "" || config.kubeadmin_pass.trim() === "" || config.s3_url.trim() === "" || config.bucket.trim() === "" || config.region.trim() === "" || config.access_key.trim() === "" || config.access_id.trim() === ""))
         valid = false
       if (valid) {
         let configCTA = timelineContainer.getElementsByClassName("timeline")[0]

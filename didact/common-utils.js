@@ -136,6 +136,9 @@ const modifyVisibilityOfCTAs = (CTAids, visibility) => {
 const modifyVisibilityInTimeline = (element, cursorValue, opacityValue, pointerEventValue) => {
     [...element].forEach(parentEle => {
         //parentEle.style.opacity = opacityValue;
+        if(typeof(parentEle)==="string") {
+            parentEle = document.getElementById(parentEle)
+        }
         parentEle.style.cursor = cursorValue;
         for (const child of parentEle.children) {
             if(!child.classList.contains("disable")){

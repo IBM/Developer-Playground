@@ -93,6 +93,9 @@ window.onload = function () {
     if (e.target.name === "src_server") {
       e.target.value = e.target.value.replace(/(^\w+:|^)\/\//, '');
     }
+    if (e.target.name === "s3_url") {
+      e.target.value = e.target.value.replace(/(^\w+:|^)\/\//, '');
+    }
     console.log(e.target.name, e.target.value)
     config[e.target.name] = e.target.value
     let tempData = JSON.parse(localStorage[didact])

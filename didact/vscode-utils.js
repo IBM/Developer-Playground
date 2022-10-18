@@ -42,7 +42,9 @@ window.addEventListener('message', event => {
                                 element.setAttribute(key,element.getAttribute(key)+value);
                             } else if (key === "numSuccess") {
                                 element.setAttribute(key,value);
-                            }else {
+                            } else if (key === "executeFunction") {
+                                window[value[0]](...value[1])
+                            } else {
                                 element[key] = value;
                             }
                         }

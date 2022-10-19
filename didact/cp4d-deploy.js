@@ -7,16 +7,18 @@ currentHTMLstateData = {
     api_token: "",
     kubeadmin_user: "",
     kubeadmin_pass: "",
-    icr_key: ""
+    icr_key: "",
+    "oc-login":""
   },
   authenticationOptions: {
-    required: ["icr_key","server"],
+    required: ["icr_key"],
     additionalOptions: {
-      "server_option": ["api_token"],        
-      "kube_option": ["kubeadmin_user", "kubeadmin_pass"]    
+      "server_option": ["server","api_token"],
+      "kube_option": ["server","kubeadmin_user", "kubeadmin_pass"],
+      "oc_option": ["oc-login"]
     },
   },
-  validPrerequisites: [["icr_key","server", "api_token", "server"], ["icr_key","server", "kubeadmin_user", "kubeadmin_pass"]],
+  validPrerequisites: [["oc-login"],["icr_key", "server", "api_token"], ["icr_key", "server", "kubeadmin_user", "kubeadmin_pass"]],
   dropdownIds: ["service-list"],
   envConfigured: false,
   selectedServices: [],
@@ -56,21 +58,23 @@ const services = {
   "wsl": 'Watson Studio'
 }
 
-const funcLoad = () => {
+function funcLoad(){
   // Disable timeline
   disableTimelineFromElement("all");
 
   //handle prerequisites
   for (let prerequisite of Object.keys(currentHTMLstateData.prerequisites)) {
-    addEventListener(document.getElementById(prerequisite), "input", handlePrerequisiteValues);
+    addEventListenerToElement(document.getElementById(prerequisite), "input", handlePrerequisiteValues);
   }
 
-  [...document.getElementsByName("authentication-options")].forEach(element => addEventListener(element, "change", handleAuthenticationOptions))
+  [...document.getElementsByName("authentication-options")].forEach(element => addEventListenerToElement(element, "change", handleAuthenticationOptions))
+
+  addEventListenerToElement(document.getElementById("oc-login"),"input", handleOCLogin)
   //generate config command
-  addEventListener(document.getElementById("configure-env"), "click", updateConfigVars);
+  addEventListenerToElement(document.getElementById("configure-env"), "click", updateConfigVars);
 
   //After env configured successfully enable timeline
-  addEventListener(document.getElementById("enable-timeline"), "click", enableAll)
+  addEventListenerToElement(document.getElementById("enable-timeline"), "click", enableAll)
 
   //open/close logic for all dropdowns
   toggleDropdowns(currentHTMLstateData.dropdownIds)
@@ -78,9 +82,9 @@ const funcLoad = () => {
   //create services dropdown
   createMultiSelectDropdownWithSearch("git-services", services, updateSelectedServices, "services", "services-search", filterServiceList)
 
-  addEventListener(document.getElementById("install_cpd"), "click", install_cpd);
+  addEventListenerToElement(document.getElementById("install_cpd"), "click", install_cpd);
 
-  addEventListener(document.getElementById("storage_value"), "change", () => { })
+  addEventListenerToElement(document.getElementById("storage_value"), "change", () => { })
 
   //Store required CTAs in state
   storeCTAInState();
@@ -89,26 +93,26 @@ const funcLoad = () => {
   document.getElementById("get-workspace-state").click();
 
   //reset workspace state
-  addEventListener(document.getElementById("reset-href"), "click", resetWorkspace);
+  addEventListenerToElement(document.getElementById("reset-href"), "click", resetWorkspace);
 }
 
-const updateConfigVars = (e) => {
+function updateConfigVars(e) {
   document.getElementById("configure-env$1").setAttribute("command", `${configureCommand}${Object.keys(currentHTMLstateData.prerequisites).map(val => `${currentHTMLstateData.prerequisites[val] || "\"\""}`).toString().replaceAll(",", "%20")}`);
   document.getElementById("configure-env$1").click();
 }
 
-const install_cpd = () => {
+function install_cpd() {
   let cp4dVersion = document.getElementById('cp4d_version').value;
   let component_list = currentHTMLstateData.selectedServices.toString()
   if (!component_list) {
     component_list = "null"
   }
   let storage = document.getElementById("storage_value").value;
-  document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}"+`/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d; bash deploy.sh cp4d`)
+  document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d; bash deploy.sh cp4d`)
   document.getElementById("install_cpd$1").click();
 }
 
-const updateSelectedServices = (e) => {
+function updateSelectedServices(e) {
   let gitServicesList = document.getElementById("git-services");
   let gitServices = document.getElementsByName("services");
   if (e.target.checked) {
@@ -123,7 +127,7 @@ const updateSelectedServices = (e) => {
   document.getElementById("selected-components-string").textContent = getShortenedString(currentHTMLstateData.selectedServices) || "Select Services";
 }
 
-const filterServiceList = (e) => {
+function filterServiceList(e) {
   let filteredServices = {}
   let htmlServices = document.getElementsByName("services")
   let listServices = [...htmlServices].map(service => service.value)

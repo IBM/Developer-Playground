@@ -43,7 +43,7 @@
     <div class="section" style="margin-top:5rem;">
         <p style="font-size:24px">Instructions</p>
     </div>
-    <div class="timeline-container">
+    <div class="timeline-container" id="timeline-container">
         <div class="timeline" id="private-git-CTA">
             <div class="content">
                 <p>Demo Name: <b id="selected-demo"></b></p>
@@ -62,9 +62,12 @@
                 numSuccess=2 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
             <button id="configure-env$2" class="send-to-extension hidden-state store-data" action="readfile"
             command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox;python3.8 checkImportArtifacts.py"
-            filePath="${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/ArtifactsToShow.json" preProcess="true" nextAction="enable-timeline"></button>
+            filePath="${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/ArtifactsToShow.json" preProcess="true" nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
             <button id="enable-timeline" class="store-data hidden-state"></button>
             <span class="dot"></span>
+            <div id="artifact-message"class="content hidden-state" style="margin-top:1rem;">
+                <p>The following artifacts are available for import.</p>
+            </div>
         </div>
         <div class="timeline" id="task1">
             <div class="content">
@@ -73,7 +76,7 @@
                 <p>Enter default pasword for the users: <input class="store-data" id="importuserspwd" type="text"></p>
             </div>
                 <button class="send-to-extension button is-dark is-medium disable no-click" id="create-users" title="Create Users"
-                    command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python3.8 createUsers.py users.csv {IMPORT_USERS_PASSWORD}">Create
+                    command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python3.8 createUsers.py users.csv {IMPORT_USERS_PASSWORD}">Import
                     Users</button><span class="spinner hidden-state"></span>
             <span class="dot"></span>
         </div>
@@ -83,8 +86,8 @@
             </div>
             <button class="send-to-extension button is-dark is-medium" id="import-gov-artifacts"
                 title="Import Gov Artifacts"
-                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python3.8 importGovArtifacts.py governance_artifacts.zip ;python3.8 importDataProtectionRules.py data_protection_rules.json"
-                numSuccess=2>Import Artifacts</button><span class="spinner hidden-state"></span>
+                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox"
+                numSuccess=1>Import Artifacts</button><span class="spinner hidden-state"></span>
             <span class="dot"></span>
         </div>
         <div class="timeline" id="task3">

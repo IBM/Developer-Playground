@@ -23,23 +23,23 @@ const funcLoad = () => {
 
     //handle prerequisites
     for (let prerequisite of Object.keys(currentHTMLstateData.prerequisites)) {
-        addEventListener(document.getElementById(prerequisite), "input", handlePrerequisiteValues);
+        addEventListenerToElement(document.getElementById(prerequisite), "input", handlePrerequisiteValues);
     }
 
     //git token input for private demo
-    addEventListener(document.getElementById("gittoken"), "input", showConfigureCTA);
+    addEventListenerToElement(document.getElementById("gittoken"), "input", showConfigureCTA);
 
     //password input for importing users
-    addEventListener(document.getElementById("importuserspwd"), "input", enableOrDisableCreateUsersCTA);
+    addEventListenerToElement(document.getElementById("importuserspwd"), "input", enableOrDisableCreateUsersCTA);
 
     //After env configured successfully enable timeline
-    addEventListener(document.getElementById("enable-timeline"), "click", enableAll)
+    addEventListenerToElement(document.getElementById("enable-timeline"), "click", enableAll)
 
     //generate config command
-    addEventListener(document.getElementById("configure-env"), "click", updateConfigVars);
+    addEventListenerToElement(document.getElementById("configure-env"), "click", updateConfigVars);
 
     //open cluster url
-    addEventListener(document.getElementById("open-cpd-cluster-button"), "click", openCluster);
+    addEventListenerToElement(document.getElementById("open-cpd-cluster-button"), "click", openCluster);
 
     //Store required CTAs in state
     storeCTAInState();
@@ -48,18 +48,18 @@ const funcLoad = () => {
     document.getElementById("get-workspace-state").click();
 
     //reset workspace state
-    addEventListener(document.getElementById("reset-href"), "click", resetWorkspace);
+    addEventListenerToElement(document.getElementById("reset-href"), "click", resetWorkspace);
 }
 
 
-const updateConfigVars = (e) => {
+function updateConfigVars(e){
     let cta = document.getElementById("configure-env$1");
     cta.setAttribute("command", `${configureCommand.replace("demo_name", currentHTMLstateData.demo).replace("is_private", currentHTMLstateData.isPrivate).replace("git_url", currentHTMLstateData.privateGitRepoUrl).replace("git_token", currentHTMLstateData.gitToken)}${Object.values(currentHTMLstateData.prerequisites).toString().replaceAll(",", "%20")}`)
     cta.click();
     document.getElementById("import-project").setAttribute("command", `{CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python3.8 importProject.py project_assets ${currentHTMLstateData.demo}`)
 }
 
-const showConfigureCTA = (e) => {
+function showConfigureCTA(e){
     let configCTA = document.getElementById("configure-environment-CTA");
     if (e.target.value.trim() !== "") {
         modifyVisibilityInTimeline([configCTA], "auto", 1, "auto");
@@ -68,7 +68,7 @@ const showConfigureCTA = (e) => {
     }
 }
 
-const enableOrDisableCreateUsersCTA = (e) => {
+function enableOrDisableCreateUsersCTA(e){
     let createUsersCTA = document.getElementById("create-users");
     if (e.target.value.trim() !== "") {
         modifyVisibilityOfCTAs(["create-users"], "enable");
@@ -79,7 +79,7 @@ const enableOrDisableCreateUsersCTA = (e) => {
 }
 
 
-const openCluster = () => {
+function openCluster(){
     let clusterUrl = `https://${currentHTMLstateData.prerequisites.hostname}`
     let openClusterCta = document.getElementById("open-cpd-cluster")
     openClusterCta.href = clusterUrl

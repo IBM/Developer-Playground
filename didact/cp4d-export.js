@@ -95,27 +95,27 @@ const industries = {
   other: "Other"
 }
 
-const funcLoad = () => {
+function funcLoad(){
   // Disable timeline
   disableTimelineFromElement("all");
 
   //handle prerequisites
   for (let prerequisite of Object.keys(currentHTMLstateData.prerequisites)) {
-    addEventListener(document.getElementById(prerequisite), "input", handlePrerequisiteValues);
+    addEventListenerToElement(document.getElementById(prerequisite), "input", handlePrerequisiteValues);
   }
 
   //generate config command
-  addEventListener(document.getElementById("configure-env"), "click", updateConfigVars);
+  addEventListenerToElement(document.getElementById("configure-env"), "click", updateConfigVars);
 
   //After env configured successfully enable timeline
-  addEventListener(document.getElementById("enable-timeline"), "click", enableAll)
+  addEventListenerToElement(document.getElementById("enable-timeline"), "click", enableAll)
 
   //handle managemnet dropdowns
   let tasks = document.querySelectorAll("[id^='task']");
   tasks.forEach((task) => (task.style.display = "none"));
 
   let selectedTasks = document.getElementsByName("checkboxtask");
-  selectedTasks.forEach((task) => addEventListener(task, "change", showTasks));
+  selectedTasks.forEach((task) => addEventListenerToElement(task, "change", showTasks));
 
   //open/close logic for all dropdowns
   toggleDropdowns(currentHTMLstateData.dropdownIds)
@@ -123,19 +123,19 @@ const funcLoad = () => {
 
   //handle governance artifacts
   let govArtifacts = document.getElementsByName("governance-artifacts");
-  govArtifacts.forEach((task) => addEventListener(task, "change", UpdateExport));
+  govArtifacts.forEach((task) => addEventListenerToElement(task, "change", UpdateExport));
 
   //show private demo options
-  addEventListener(document.getElementById("private-git-toggle"), "change", showPrivateDemoOptions);
+  addEventListenerToElement(document.getElementById("private-git-toggle"), "change", showPrivateDemoOptions);
 
   //handle required github fields
   for (let gitField of Object.keys(currentHTMLstateData.requiredGithubFields)) {
-    addEventListener(document.getElementById(gitField), "input", handleGitValues);
+    addEventListenerToElement(document.getElementById(gitField), "input", handleGitValues);
   }
 
   //handle private demo required github fields
   for (let privateGitField of Object.keys(currentHTMLstateData.requiredPrivateGithubFields)) {
-    addEventListener(document.getElementById(privateGitField), "input", handleGitValues);
+    addEventListenerToElement(document.getElementById(privateGitField), "input", handleGitValues);
   }
 
   //create industry dropdown
@@ -145,7 +145,7 @@ const funcLoad = () => {
   createMultiSelectDropdownWithSearch("git-services", services, updateSelectedServices, "services", "services-search", filterServiceList)
 
   //handle push to git 
-  addEventListener(document.getElementById("pushToGit"), "click", pushToGit);
+  addEventListenerToElement(document.getElementById("pushToGit"), "click", pushToGit);
 
   //Store required CTAs in state
   storeCTAInState();
@@ -154,16 +154,16 @@ const funcLoad = () => {
   document.getElementById("get-workspace-state").click();
 
   //reset workspace state
-  addEventListener(document.getElementById("reset-href"), "click", resetWorkspace);
+  addEventListenerToElement(document.getElementById("reset-href"), "click", resetWorkspace);
 }
 
 
-const updateConfigVars = (e) => {
+function updateConfigVars(e){
   document.getElementById("configure-env$1").setAttribute("command", `${configureCommand}${Object.values(currentHTMLstateData.prerequisites).toString().replaceAll(",", "%20")}`)
   document.getElementById("configure-env$1").click();
 }
 
-const showTasks = (e) => {
+function showTasks(e){
   if (e.target.checked) {
     document.getElementById(e.target.value).style.display = "block";
   } else {
@@ -171,7 +171,7 @@ const showTasks = (e) => {
   }
 }
 
-const UpdateExport = (e) => {
+function  UpdateExport(e){
   let artifacts = document.querySelectorAll("[id^='ga_']");
   if (e.target.checked) {
     currentHTMLstateData.selectedArtifacts.push(e.target.value)
@@ -220,16 +220,16 @@ const UpdateExport = (e) => {
   document.getElementById("selected-artifacts").textContent = getShortenedString(currentHTMLstateData.selectedArtifacts) || "Select Artifacts";
 }
 
-function selectProject(e) {
+function selectProject(e){
   document.getElementById("selected-project").textContent = e.target.textContent
-  selectedProject = e.target.textContent;
+  currentHTMLstateData.selectedProject = e.target.textContent;
   let exportProjectCTA = document.getElementById("export-project")
   exportProjectCTA.setAttribute("command", "cd ${CHE_PROJECTS_ROOT}"+`/techzone-demo/sandbox/;python3.8 exportProjectv3.py ${e.target.name} project_assets.zip`)
   modifyVisibilityOfCTAs(["export-project"], "enable")
   document.getElementById("project-list").classList.remove('visible');
 }
 
-const showPrivateDemoOptions = (e) => {
+function showPrivateDemoOptions(e){
   if (e.target.checked) {
     modifyVisibilityOfCTAs(["private-git-url-label", "private-git-url", "private-git-access-token-label", "private-git-access-token"], "unhide")
     currentHTMLstateData.isPrivateDemo = true;
@@ -240,7 +240,7 @@ const showPrivateDemoOptions = (e) => {
   validateGithubFields();
 }
 
-const handleGitValues = (e) => {
+function handleGitValues(e){
   if (e.target.id in currentHTMLstateData.requiredGithubFields) {
     currentHTMLstateData.requiredGithubFields[e.target.id] = e.target.value;
   } else {
@@ -249,7 +249,7 @@ const handleGitValues = (e) => {
   validateGithubFields();
 }
 
-const validateGithubFields = () => {
+function validateGithubFields(){
   let notValid = false
   if (currentHTMLstateData.isPrivateDemo) {
     notValid = Object.values(currentHTMLstateData.requiredPrivateGithubFields).map(val => val.trim()).includes("") || Object.values(currentHTMLstateData.requiredGithubFields).map(val => val.trim()).includes("") || currentHTMLstateData.selectedServices.length === 0 || currentHTMLstateData.selecetdIndustry.trim() === "";
@@ -263,14 +263,14 @@ const validateGithubFields = () => {
   }
 }
 
-const selectIndustry = (e) => {
+function selectIndustry(e){
   document.getElementById("selected-industry").textContent = e.target.textContent
   currentHTMLstateData.selecetdIndustry = e.target.id.split("_")[1];
   document.getElementById("industry-list").classList.remove('visible');
   validateGithubFields();
 }
 
-const updateSelectedServices = (e) => {
+function updateSelectedServices(e){
   let gitServicesList = document.getElementById("git-services");
   let gitServices = document.getElementsByName("services");
   if (e.target.checked) {
@@ -286,7 +286,7 @@ const updateSelectedServices = (e) => {
   validateGithubFields();
 }
 
-const filterServiceList = (e) => {
+function filterServiceList(e){
   let filteredServices = {}
   let htmlServices = document.getElementsByName("services")
   let listServices = [...htmlServices].map(service => service.value)
@@ -300,7 +300,7 @@ const filterServiceList = (e) => {
   })
 }
 
-const pushToGit = () => {
+function pushToGit(){
   let industry = currentHTMLstateData.selecetdIndustry;
   let tags = currentHTMLstateData.requiredGithubFields.tags || ""
   let author = currentHTMLstateData.requiredGithubFields.author || ""

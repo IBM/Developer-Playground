@@ -33,6 +33,7 @@ window.addEventListener('message', event => {
                                 element[key](value[0], window[value[1]])
                             } else if (key === "classList") {
                                 for (const [action, classes] of Object.entries(attributes[key])) {
+                                    console.log(key, action)
                                     element[key][action](...classes)
                                 }
                             } else if (key === "dispatchEvent") {
@@ -43,6 +44,7 @@ window.addEventListener('message', event => {
                             } else if (key === "numSuccess") {
                                 element.setAttribute(key,value);
                             } else if (key === "executeFunction") {
+                                //console.log(value[0],value[1],window[value[0]])
                                 window[value[0]](...value[1])
                             } else {
                                 element[key] = value;

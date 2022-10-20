@@ -18,7 +18,7 @@ currentHTMLstateData = {
       "oc_option": ["oc-login"]
     },
   },
-  validPrerequisites: [["oc-login"],["icr_key", "server", "api_token"], ["icr_key", "server", "kubeadmin_user", "kubeadmin_pass"]],
+  validPrerequisites: [["icr_key", "oc-login"],["icr_key", "server", "api_token"], ["icr_key", "server", "kubeadmin_user", "kubeadmin_pass"]],
   dropdownIds: ["service-list"],
   envConfigured: false,
   selectedServices: [],

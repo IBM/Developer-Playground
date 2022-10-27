@@ -64,7 +64,7 @@ function updateConfigVars(e) {
 
     function restore_src() {
       let backupName = document.getElementById('backup_name').value;
-      document.getElementById("restore_src$1").setAttribute("command", `cd ${CHE_PROJECTS_ROOT}/cpd-restore/sandbox/cpdbr; bash cpdbr.sh cp4d restore ${backupName}`)
+      document.getElementById("restore_src$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/cpd-restore/sandbox/cpdbr; bash cpdbr.sh cp4d restore ${backupName}`)
       document.getElementById("restore_src$1").click();
     }
 

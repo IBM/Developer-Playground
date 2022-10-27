@@ -1,4 +1,4 @@
-let configureCommand = "git clone https://github.com/IBM/CPDemoFramework -b ${BRANCH} --single-branch cpd-restore;cd ${CHE_PROJECTS_ROOT}/cpd-backup/sandbox/cpdbr;sh configure-env.sh%20";
+let configureCommand = "git clone https://github.com/IBM/CPDemoFramework -b ${BRANCH} --single-branch cpd-restore;cd ${CHE_PROJECTS_ROOT}/cpd-restore/sandbox/cpdbr;sh configure-env.sh%20";
 currentHTMLstateData = {
   prerequisites: {
     icr_key: "",

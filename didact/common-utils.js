@@ -76,7 +76,7 @@ function checkAllPrequisiteFieldsfilled() {
 
 //handle prerequisites values
 function handlePrerequisiteValues(e) {
-    if (e.target.id === "hostname") {
+    if (e.target.id === "hostname" || e.target.id === "s3_url" || e.target.id === "server") {
         e.target.value = e.target.value.trim().replace(/(^\w+:|^)\/\//, '').replace(/^\/+|\/+$/g, '');
     }
     currentHTMLstateData.prerequisites[e.target.id] = e.target.value;

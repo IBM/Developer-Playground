@@ -11,17 +11,17 @@ currentHTMLstateData = {
     region: "",
     access_key: "",
     access_id: "", 
-    "oc-login":"",
+    oc_login:"",
   },
   authenticationOptions: {
     required: ["icr_key","s3_url", "bucket", "region", "access_key", "access_id"],
     additionalOptions: {
       "server_option": ["server","api_token"],
       "kube_option": ["server","kubeadmin_user", "kubeadmin_pass"],
-      "oc_option": ["oc-login"]
+      "oc_option": ["oc_login"]
     },
   },
-  validPrerequisites: [["icr_key", "oc-login", "s3_url", "bucket", "region", "access_key", "access_id"], ["icr_key", "server", "api_token", "s3_url", "bucket", "region", "access_key", "access_id"], ["icr_key", "server", "kubeadmin_user", "kubeadmin_pass", "s3_url", "bucket", "region", "access_key", "access_id"]],
+  validPrerequisites: [["icr_key", "oc_login", "s3_url", "bucket", "region", "access_key", "access_id"], ["icr_key", "server", "api_token", "s3_url", "bucket", "region", "access_key", "access_id"], ["icr_key", "server", "kubeadmin_user", "kubeadmin_pass", "s3_url", "bucket", "region", "access_key", "access_id"]],
   envConfigured: false,
   doNotRestore: []
 }
@@ -37,7 +37,7 @@ function funcLoad() {
 
   [...document.getElementsByName("authentication-options")].forEach(element => addEventListenerToElement(element, "change", handleAuthenticationOptions))
 
-  addEventListenerToElement(document.getElementById("oc-login"),"input", handleOCLogin)
+  addEventListenerToElement(document.getElementById("oc_login"),"input", handleOCLogin)
   //generate config command
   addEventListenerToElement(document.getElementById("configure-env"), "click", updateConfigVars);
 

@@ -42,11 +42,11 @@
             <label id="icr_key$label">Entitlement Key: </label><input class="store-data env-variables" id="icr_key" name="icr_key" type="text" />
             <label>Authentication Options:</label>
             <div>
-                <label><input type="radio" id="oc_option" name="authentication-options" value="OC-Login" class="store-data" />OC Login</label>
                 <label><input type="radio" id="server_option" name="authentication-options" value="Server" class="store-data" checked />API Key</label>
                 <label><input type="radio" id="kube_option" name="authentication-options" value="Kube" class="store-data" />Kube Admin</label>
+                <label><input type="radio" id="oc_option" name="authentication-options" value="OC-Login" class="store-data" />OC Login</label>
             </div>
-            <label id="oc-login$label" >OC Login: </label><input class="store-data env-variables" id="oc-login" name="oc-login" type="text" />
+            <label id="oc_login$label" class="hidden-state">OC Login: </label><input class="store-data env-variables hidden-state" id="oc_login" name="oc_login" type="text" />
             <label id="server$label" >Server: </label><input class="store-data env-variables" id="server" name="server" type="text" />
             <label id="api_token$label">API Token: </label><input class="store-data env-variables" id="api_token" name="api_token" type="text" />
             <label id="kubeadmin_user$label" class="hidden-state">Kube Admin User: </label><input class="store-data env-variables hidden-state" id="kubeadmin_user" name="kubeadmin_user" type="text" />

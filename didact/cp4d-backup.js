@@ -65,7 +65,7 @@ document.getElementById("backup_src").addEventListener("click", backup_src);
 
 function backup_src() {
   let backupName = document.getElementById('backup_name').value;
-  document.getElementById("backup_src$1").setAttribute("command", `cd ${CHE_PROJECTS_ROOT}/cpd-backup/sandbox/cpdbr; bash cpdbr.sh cp4d backup ${backupName}`)
+  document.getElementById("backup_src$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/cpd-backup/sandbox/cpdbr; bash cpdbr.sh cp4d backup ${backupName}`)
   document.getElementById("backup_src$1").click();
 }
 

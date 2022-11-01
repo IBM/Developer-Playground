@@ -1,0 +1,95 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="$$rootcsspath$$">
+  <style>
+    .header {
+      background-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/video_insights.jpeg");
+    }
+  </style>
+</head>
+<body>
+    <div style="margin-top:2rem"></div>
+    <div id="userID" class="hidden-state">$user_id</div>
+    <button id="update-workspace-state" action="update-workspace-state" class="send-to-extension hidden-state"></button>
+    <button id="get-workspace-state" action="get-workspace-state" class="send-to-extension hidden-state"></button>
+    
+    <div class="header">
+        <div class="left-content">
+            <div class="apptitle">CP4D Restore</div>
+            <div class="subheading">
+                Red Hat Advanced Cluster Management (ACM), offers end-to-end visibility and control for managing your cluster and application lifecycle. Among other features, it ensures security and compliance for your entire Kubernetes domain across multiple data centers and public clouds.
+                OpenShift API for Data Protection (OADP) enables backup, restore, and disaster recovery of applications on an OpenShift cluster. Data that can be protected with OADP include Kubernetes resource objects, persistent volumes, and internal images</div>
+        </div>
+    </div>
+    <div class="section">
+        <p style="font-size:24px">Pre-requisites</p>
+        <div>
+            <p>To clear pre populated fields if any click <a id="reset-href">here</a>.</p>
+            <button id="reset-workspace-state" action="reset-workspace-state" class="send-to-extension hidden-state" command="cd ${CHE_PROJECTS_ROOT};rm -rf techzone-demo">Reset</button>
+        <p>Configure Openshift credentials (either use combination of Openshift server URL, user/password (OR) Openshift server URL, token).
+         <ol>
+            <li>From Openshift console, select your profile on top right and select “Copy login command”</li>
+            <li>From oc cli, run “oc config view --minify|grep server” to get server name and “oc whoami -t” to get token
+            </li>
+        </ol>
+        </p>
+        <p>Obtain an IBM Software Entitlement Key from <a href="https://myibm.ibm.com/products-services/containerlibrary"> IBM Container Library</a> using your IBM ID. Click Get an entitlement key if you are not on the entitlement page.</p>
+        <div class="env-config">
+                <label id="icr_key$label">Entitlement Key: </label><input class="store-data env-variables" id="icr_key" name="icr_key" type="text" />
+                <label id="s3_url$label">Public S3 URL: </label><input class="store-data env-variables" id="s3_url" name="s3_url" type="text" />
+                <label id="bucket$label">Bucket name: </label><input class="store-data env-variables" id="bucket" name="bucket" type="text" />
+                <label id="region$label">Region: </label><input class="store-data env-variables" id="region" name="region" type="text" />
+                <label id="access_id$label">Access ID: </label><input class="store-data env-variables" id="access_id" name="access_id" type="text" />
+                <label id="access_key$label">Access Key: </label><input class="store-data env-variables" id="access_key" name="access_key" type="text" />
+                <label>Authentication Options:</label>
+                <div>
+                    <label><input type="radio" id="server_option" name="authentication-options" value="Server" class="store-data" checked />API Key</label>
+                    <label><input type="radio" id="kube_option" name="authentication-options" value="Kube" class="store-data" />Kube Admin</label>
+                    <label><input type="radio" id="oc_option" name="authentication-options" value="OC-Login" class="store-data" />OC Login</label>
+                </div>
+                <label id="oc_login$label" class="hidden-state">OC Login: </label><input class="store-data env-variables hidden-state" id="oc_login" name="oc_login" type="text" />
+                <label id="server$label" >Server: </label><input class="store-data env-variables" id="server" name="server" type="text" />
+                <label id="api_token$label">API Token: </label><input class="store-data env-variables" id="api_token" name="api_token" type="text" />
+                <label id="kubeadmin_user$label" class="hidden-state">Kube Admin User: </label><input class="store-data env-variables hidden-state" id="kubeadmin_user" name="kubeadmin_user" type="text" />
+                <label id="kubeadmin_pass$label" class="hidden-state">Kube Admin Password: </label><input class="store-data env-variables hidden-state" id="kubeadmin_pass" name="kubeadmin_pass" type="password" />
+            </div>
+        </div>
+    </div>
+    <div class="section" style="margin-top:5rem;">
+        <p style="font-size:24px">Instructions</p>
+    </div>
+    <div class="timeline-container">
+        <input type="text" class="hidden-state" id="data-fetched" />
+        <div class="timeline" id="configure-environment-CTA">
+            <div class="content">
+                <p>Get the resources required to restore CP4D instance and configure the openshift credentials and cluster.</p>
+            </div>
+            <button class="button is-dark is-medium" id="configure-env" title="Configure Environment" numSuccess=1>Configure Environment</button><span class="spinner hidden-state"></span>
+            <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command="" 
+            nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
+            <button id="enable-timeline" class="store-data hidden-state">Enable</button>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline">
+            <div class="content">
+                <div style="padding: 1.5rem;">
+                    <div class="content">
+                        <p>Restore the Cluster.</p>
+                        <div class="env-config">
+                            <label id="backup_name$label">CP4D Backup Name </label><input class="store-data env-variables" id="backup_name" value="cpd-backup" name="backup_name" type="text" />
+                        </div>
+                    </div>
+                    <br /><br />
+                    <button class="button is-dark is-medium" id="restore_src" title="Execute" numSuccess=1>Start Restore</button><span class="spinner hidden-state"></span>
+                    <button id="restore_src$1" class="send-to-extension hidden-state" action="senddata" command=""></button><span class="spinner hidden-state"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>         
+        </div>
+    </div>
+</body>
+<script src="$$rootcommonjspath$$"></script>
+<script src="$$rootjspath$$"></script>
+<script src="$$rootvscodeutilspath$$"></script>
+</html>

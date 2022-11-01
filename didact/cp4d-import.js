@@ -53,8 +53,9 @@ const funcLoad = () => {
 
 
 function updateConfigVars(e){
+    let gitToken = document.getElementById("gittoken") ? document.getElementById("gittoken").value : '';
     let cta = document.getElementById("configure-env$1");
-    cta.setAttribute("command", `${configureCommand.replace("demo_name", currentHTMLstateData.demo).replace("is_private", currentHTMLstateData.isPrivate).replace("git_url", currentHTMLstateData.privateGitRepoUrl).replace("git_token", currentHTMLstateData.gitToken)}${Object.values(currentHTMLstateData.prerequisites).toString().replaceAll(",", "%20")}`)
+    cta.setAttribute("command", `${configureCommand.replace("demo_name", currentHTMLstateData.demo).replace("is_private", currentHTMLstateData.isPrivateDemo).replace("git_url", currentHTMLstateData.privateGitRepoUrl).replace("git_token", gitToken)}${Object.values(currentHTMLstateData.prerequisites).toString().replaceAll(",", "%20")}`)
     cta.click();
     document.getElementById("import-project").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/sandbox/;python3.8 importProject.py project_assets ${currentHTMLstateData.demo}`)
 }

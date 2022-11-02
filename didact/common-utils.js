@@ -257,7 +257,7 @@ function createMultiSelectDropdownWithSearch(parentId, data, checkFunction, inpu
 function enableAll(e) {
     enableTimelineTillElement("all");
     currentHTMLstateData.envConfigured = true;
-    modifyVisibilityOfCTAs(["artifact-message"], "unhide")
+    //modifyVisibilityOfCTAs(["artifact-message"], "unhide")
 }
 
 //get shortened string for dropdown

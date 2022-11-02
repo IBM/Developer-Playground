@@ -38,7 +38,7 @@ const funcLoad = () => {
     //generate config command
     addEventListenerToElement(document.getElementById("configure-env"), "click", updateConfigVars);
 
-    //generate config command
+    //generate import project command
     addEventListenerToElement(document.getElementById("import-project"), "click", updateImportProjectScript);
 
     //open cluster url

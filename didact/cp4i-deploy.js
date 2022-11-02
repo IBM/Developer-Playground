@@ -98,7 +98,7 @@ function updateSelectedServices(e){
   let gitServicesList = document.getElementById("git-services");
   let gitServices = document.getElementsByName("services");
   if (e.target.checked) {
-    currentHTMLstateData.selectedServices.push(e.target.value)
+    currentHTMLstateData.selectedServices.indexOf(e.target.value) !== -1 && currentHTMLstateData.selectedServices.push(e.target.value)
     gitServicesList.insertBefore(e.target.parentElement, gitServicesList.firstChild);
   } else {
     currentHTMLstateData.selectedServices.indexOf(e.target.value) !== -1 && currentHTMLstateData.selectedServices.splice(currentHTMLstateData.selectedServices.indexOf(e.target.value), 1)

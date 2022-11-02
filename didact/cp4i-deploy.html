@@ -41,7 +41,7 @@
                 <label><input type="radio" id="kube_option" name="authentication-options" value="Kube" class="store-data" />Kube Admin</label>
                 <label><input type="radio" id="oc_option" name="authentication-options" value="OC-Login" class="store-data" />OC Login</label>
             </div>
-            <label id="oc_login$label" >OC Login: </label><input class="store-data env-variables" id="oc_login" name="oc_login" type="text" />
+            <label id="oc_login$label" class="hidden-state">OC Login: </label><input class="store-data env-variables hidden-state" id="oc_login" name="oc_login" type="text" />
             <label id="server$label" >Server: </label><input class="store-data env-variables" id="server" name="server" type="text" />
             <label id="api_token$label">API Token: </label><input class="store-data env-variables" id="api_token" name="api_token" type="text" />
             <label id="kubeadmin_user$label" class="hidden-state">Kube Admin User: </label><input class="store-data env-variables hidden-state" id="kubeadmin_user" name="kubeadmin_user" type="text" />
@@ -61,7 +61,7 @@
             <button class="button is-dark is-medium" id="configure-env" title="Configure Environment" numSuccess=1>Configure Environment</button><span class="spinner hidden-state"></span>
             <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
                 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
-            <button id="configure-env$2" class="send-to-extension hidden-state store-data" action="readfile"
+            <button id="configure-env$2" class="send-to-extension hidden-state" action="readfile"
                 command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;pip3.8 install pyYaml;python3.8 getInstalledServices.py cp4i"
                 filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
                 numSuccess=1 nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>

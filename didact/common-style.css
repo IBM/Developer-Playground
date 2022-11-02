@@ -473,3 +473,6 @@ label {
 .reset {
     float: right;
 }
+#reset-href:hover{
+    text-decoration: none;
+}

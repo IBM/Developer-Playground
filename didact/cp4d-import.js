@@ -38,6 +38,9 @@ const funcLoad = () => {
     //generate config command
     addEventListenerToElement(document.getElementById("configure-env"), "click", updateConfigVars);
 
+    //generate config command
+    addEventListenerToElement(document.getElementById("import-project"), "click", updateImportProjectScript);
+
     //open cluster url
     addEventListenerToElement(document.getElementById("open-cpd-cluster-button"), "click", openCluster);
 
@@ -85,6 +88,12 @@ function openCluster(){
     let openClusterCta = document.getElementById("open-cpd-cluster")
     openClusterCta.href = clusterUrl
     openClusterCta.click();
+}
+
+function updateImportProjectScript(){
+    let cta = document.getElementById("import-project$1")
+    cta.setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/sandbox/;python3.8 importProject.py project_assets ${currentHTMLstateData.demo}`)
+    cta.click();
 }
 
 window.addEventListener("load", funcLoad);

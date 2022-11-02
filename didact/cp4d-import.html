@@ -12,129 +12,108 @@
 
 <body>
     <div style="margin-top:2rem"></div>
-    <div id="workspaceID" class="hidden-state">$workspace_id</div>
     <div id="userID" class="hidden-state">$user_id</div>
-    <div id="environment" class="hidden-state">$environment</div>
+    <button id="update-workspace-state" action="update-workspace-state" class="send-to-extension hidden-state"></button>
+    <button id="get-workspace-state" action="get-workspace-state" class="send-to-extension hidden-state"></button>
+
     <div class="header">
         <div class="left-content">
             <div class="apptitle">Recreate shared demo assets onto your CPD cluster</div>
-            <div class="subheading">Demo assets include different types of artifacts such as Users, Governance artifacts, Analytics projects, Data integration projects etc.</br>Enter your CPD credentials and select one or more types of artifacts to recreate into your CPD cluster.</div>
+            <div class="subheading">Demo assets include different types of artifacts such as Users/groups/roles,
+                Governance artifacts, Analytics projects, Data integration projects etc. Enter your CP4D credentials and
+                select one or more types of artifacts to recreate into your CPD cluster.</div>
         </div>
     </div>
     <div class="section">
         <p style="font-size:24px">Pre-requisites</p>
         <div>
+            <p>To clear pre populated fields if any click <a id="reset-href">here</a>.</p>
+            <button id="reset-workspace-state" action="reset-workspace-state" class="send-to-extension hidden-state"
+                command="cd ${CHE_PROJECTS_ROOT};rm -rf techzone-demo">Reset</button>
             <p>Enter your CPD cluster details.</p>
             <div class="env-config">
-                <label>Hostname: </label><input class="env-variables" name="hostname" type="text" />
-                <label>User: </label><input class="env-variables" name="wkcuser" type="text" />
-                <label>Password: </label><input class="env-variables" name="password" type="password" />
-                <label class="hidden-state">API Key: </label><input class="env-variables hidden-state" name="api_key" type="text" />
+                <label>CP4D Hompage URL: </label><input class="store-data env-variables" id="hostname" name="hostname"
+                    type="text" />
+                <label>CP4D User: </label><input class="store-data env-variables" id="wkcuser" name="wkcuser" type="text" />
+                <label>CP4D Password: </label><input class="store-data env-variables" id="password" name="password"
+                    type="password" />
             </div>
         </div>
     </div>
     <div class="section" style="margin-top:5rem;">
         <p style="font-size:24px">Instructions</p>
-        <p>Please follow all the below steps in proper sequence.</p>
     </div>
-    <div class="timeline-container">
-        <div class="timeline timelinestep">
+    <div class="timeline-container" id="timeline-container">
+        <div class="timeline" id="private-git-CTA">
             <div class="content">
-                <p>Demo Name: <b id="selected-demo">$demo_name</b></p>
-				<p id="private-demo-url">Demo URL: <b id="demo-url"></b></p>
-				<p id="gittokeninput"><label>Git key: </label><input id="gittoken" type="text" /></p>
+                <p>Demo Name: <b id="selected-demo"></b></p>
+                <p id="private-demo-url">Demo URL: <b id="demo-url"></b></p>
+                <p id="gittokeninput"><label>Git key: </label><input id="gittoken" type="text" /></p>
             </div>
             <span class="dot"></span>
         </div>
-        <div class="timeline timelinestep">
+        <div class="timeline" id="configure-environment-CTA">
             <div class="content">
                 <p>Configure the environment with the required resources and connect to the specified CP4D cluster.</p>
             </div>
             <button class="button is-dark is-medium" id="configure-env" title="Configure Environment">Configure
-                Environment</button>
-            <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command="" numSuccess=2 nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
-            <button id="enable-timeline" class="hidden-state"></button>
-            <!--<button class="button is-dark is-medium" id="configure-env" title="Configure Environment">Configure Environment</button>
-            <a id="config_command_exec" ,href=""></a>-->
+                Environment</button></button><span class="spinner hidden-state"></span>
+            <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
+                numSuccess=2 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
+            <button id="configure-env$2" class="send-to-extension hidden-state store-data" action="readfile"
+            command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox;python3.8 checkImportArtifacts.py"
+            filePath="${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/ArtifactsToShow.json" preProcess="true" nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
+            <button id="enable-timeline" class="store-data hidden-state"></button>
             <span class="dot"></span>
+            <div id="artifact-message"class="content hidden-state" style="margin-top:1rem;">
+                <p>The following artifacts are available for import.</p>
+            </div>
         </div>
         <div class="timeline" id="task1">
             <div class="content">
-                <details>
-                    <summary>User management<span class="arrow"></span></summary>
-                    <br><br>
-                    <div>
-                        <div class="content">
-                            <p>Recreate demo users onto new CPD cluster.</p>
-                        </div>
-                        <!--<a class="button is-dark is-medium" title="Create Users"
-                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 createUsers.py users.csv">Create
-                            Users</a>-->
-                            <button class="send-to-extension button is-dark is-medium disable no-click" id="create-users" title="Create Users" command="">Create Users (Coming Soon)</button><span class="spinner hidden-state"></span>
-                    </div>
-                </details>
+                <p>User/Group/Role management</p>
+                <p>Recreate demo users/groups/roles onto new CP4D cluster.</p>
+                <p>Enter default pasword for the users: <input class="store-data" id="importuserspwd" type="text"></p>
             </div>
+                <button class="send-to-extension button is-dark is-medium disable no-click" id="create-users" title="Create Users"
+                    command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python3.8 createUsers.py users.csv {IMPORT_USERS_PASSWORD}">Import
+                    Users</button><span class="spinner hidden-state"></span>
             <span class="dot"></span>
         </div>
         <div class="timeline" id="task2">
             <div class="content">
-                <details>
-                    <summary>Governance Artifacts<span class="arrow"></span></summary>
-                    <br><br>
-                    <div>
-                        <div class="content">
-                            <p>Import Governance artifacts to new CPD cluster.</p>
-                        </div>
-                        <!--<a class="button is-dark is-medium" title="Import Gov Artifacts"
-                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 importGovArtifacts.py governance_artifacts.zip ;python3.8 importDataProtectionRules.py data_protection_rules.json">Import
-                            Artifacts</a>-->
-                            <button class="send-to-extension button is-dark is-medium" id="import-gov-artifacts" title="Import Gov Artifacts" command="cd /projects/techzone-demo/sandbox/;python3.8 importGovArtifacts.py governance_artifacts.zip ;python3.8 importDataProtectionRules.py data_protection_rules.json" numSuccess=2>Import Artifacts</button><span class="spinner hidden-state"></span>
-                    </div>
-                </details>
+                <p>Governance Artifacts</p>
             </div>
+            <button class="send-to-extension button is-dark is-medium" id="import-gov-artifacts"
+                title="Import Gov Artifacts"
+                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox"
+                numSuccess=1>Import Artifacts</button><span class="spinner hidden-state"></span>
             <span class="dot"></span>
         </div>
-        <!--<div class="timeline" id="task2">
-            <div class="content">
-                            <p>Validate</p>
-                        </div>
-                        <a class="button is-dark is-medium" title="Export Gov Artifacts"
-                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;">Validate</a>
-            <span class="dot"></span>
-        </div>-->
         <div class="timeline" id="task3">
             <div class="content">
-                <details>
-                    <summary>Project management<span class="arrow"></span></summary>
-                    <br><br>
-                    <div>
-                        <div class="content">
-                            <p>Import project</p>
-                        </div>
-                        <!--<a id="import-project" class="button is-dark is-medium" title="Import Project"
-                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 importProject.py project_assets ">Import
-                            Project</a>-->
-                            <button class="send-to-extension button is-dark is-medium" id="import-project" title="Import Project" command="cd /projects/techzone-demo/sandbox/;python3.8 importProject.py project_assets ">Import Project</button><span class="spinner hidden-state"></span>
-                        <span class="dot"></span>
-                    </div>
-                </details>
+                <p>Import project</p>
             </div>
+            <button class="send-to-extension button is-dark is-medium" id="import-project" title="Import Project"
+                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python3.8 importProject.py project_assets ">Import
+                Project</button><span class="spinner hidden-state"></span>
             <span class="dot"></span>
         </div>
-        <div class="timeline timelinestep">
+        <div class="timeline">
             <div class="content">
-                <p>Open the CPD cluster to  verify the resources created.</p>
+                <p>Open the CP4D cluster to verify the resources created.</p>
             </div>
-            <button id="open-cpd-cluster-button" class="button is-dark is-medium" title="Open Cluster"
-            >Open CPD Cluster</a>
-            <a id="open-cpd-cluster" class="hidden-state" title="Open Cluster"
-                href=""></a>
-            <span class="dot"></span>
+            <button id="open-cpd-cluster-button" class="button is-dark is-medium" title="Open Cluster">Open CP4D
+                Cluster</a>
+                <a id="open-cpd-cluster" class="hidden-state" title="Open Cluster" href=""></a>
+                <span class="dot"></span>
         </div>
     </div>
     </div>
     </div>
 </body>
+<script src="$$rootcommonjspath$$"></script>
 <script src="$$rootjspath$$"></script>
 <script src="$$rootvscodeutilspath$$"></script>
+
 </html>

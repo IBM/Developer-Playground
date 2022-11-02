@@ -10,9 +10,10 @@
 </head>
 <body>
     <div style="margin-top:2rem"></div>
-    <div id="workspaceID" class="hidden-state">$workspace_id</div>
     <div id="userID" class="hidden-state">$user_id</div>
-    <div id="environment" class="hidden-state">$environment</div>
+    <button id="update-workspace-state" action="update-workspace-state" class="send-to-extension hidden-state"></button>
+    <button id="get-workspace-state" action="get-workspace-state" class="send-to-extension hidden-state"></button>
+
     <div class="header">
         <div class="left-content">
             <div class="apptitle">Self-service customizable CP4I environment setup</div>
@@ -22,67 +23,61 @@
     <div class="section">
         <p style="font-size:24px">Pre-requisites</p>
         <div>
-        <p>Configure Openshift credentials (either use combination of server, user/password (OR) server, token).<br>
-            Openshift server name (including https://) and token can be obtained using one of two methods
+            <p>To clear pre populated fields if any click <a id="reset-href">here</a>.</p>
+            <button id="reset-workspace-state" action="reset-workspace-state" class="send-to-extension hidden-state" command="cd ${CHE_PROJECTS_ROOT};rm -rf techzone-demo">Reset</button>
+        <p>Configure Openshift credentials (either use combination of Openshift server URL, user/password (OR) Openshift server URL, token).
         <ol>
             <li>From Openshift console, select your profile on top right and select “Copy login command”</li>
             <li>From oc cli, run “oc config view --minify|grep server” to get server name and “oc whoami -t” to get token
             </li>
         </ol>
         </p>
-        <p>Obtain an Entitlement key from <a href="https://myibm.ibm.com/products-services/containerlibrary"> IBM Container Library</a> using your IBM ID. Click Get an entitlement key if you are not on the entitlement page.</p>
+        <p>Obtain an IBM Software Entitlement Key from <a href="https://myibm.ibm.com/products-services/containerlibrary"> IBM Container Library</a> using your IBM ID. Click Get an entitlement key if you are not on the entitlement page.</p>
         <div class="env-config">
-            <label>ICR Key: </label><input class="env-variables" name="icr_key" type="text" /><p></p><p></p>
-            <label>Server: </label><input class="env-variables" name="server" type="text" />
-            <label>API Token: </label><input class="env-variables" name="api_token" type="text" />
-            <p>-------OR-------</p>
-            <p></p>
-            <label>Kube Admin User: </label><input class="env-variables" name="kubeadmin_user" type="text" />
-            <label>Kube Admin Password: </label><input class="env-variables" name="kubeadmin_pass" type="password" />
+            <label id="icr_key$label">Entitlement Key: </label><input class="store-data env-variables" id="icr_key" name="icr_key" type="text" />
+            <label>Authentication Options:</label>
+            <div>
+                <label><input type="radio" id="server_option" name="authentication-options" value="Server" class="store-data" checked />API Key</label>
+                <label><input type="radio" id="kube_option" name="authentication-options" value="Kube" class="store-data" />Kube Admin</label>
+                <label><input type="radio" id="oc_option" name="authentication-options" value="OC-Login" class="store-data" />OC Login</label>
+            </div>
+            <label id="oc_login$label" >OC Login: </label><input class="store-data env-variables" id="oc_login" name="oc_login" type="text" />
+            <label id="server$label" >Server: </label><input class="store-data env-variables" id="server" name="server" type="text" />
+            <label id="api_token$label">API Token: </label><input class="store-data env-variables" id="api_token" name="api_token" type="text" />
+            <label id="kubeadmin_user$label" class="hidden-state">Kube Admin User: </label><input class="store-data env-variables hidden-state" id="kubeadmin_user" name="kubeadmin_user" type="text" />
+            <label id="kubeadmin_pass$label" class="hidden-state">Kube Admin Password: </label><input class="store-data env-variables hidden-state" id="kubeadmin_pass" name="kubeadmin_pass" type="password" />
         </div>
         </div>
     </div>
     <div class="section" style="margin-top:5rem;">
         <p style="font-size:24px">Instructions</p>
-        <p>Please follow all the below steps in proper sequence.</p>
-        <br>
-        At a high level the installation steps include:
-        <ol>
-            <li>Configure CP deployer on Openshift cluster.</li>
-            <li>Deploy selected CP4I services.</li>
-        </ol>
-        Please follow steps below as appropriate, some steps are optional depending on what needs to be done. Mandatory
-        steps are indicated using *<br><br>
     </div>
     <div class="timeline-container">
         <input type="text" class="hidden-state" id="data-fetched" />
-        <div class="timeline">
+        <div class="timeline" id="configure-environment-CTA">
             <div class="content">
-                <p>Get the resources required to deploy CP4I services and configure the openshift credentials.</p>
+                <p>Get the resources required to deploy CP4I services and connect to the openshift credentials.</p>
             </div>
-            <button class="button is-dark is-medium" id="configure-env" title="Configure Environment" numSuccess=1>Configure Environment</button>
+            <button class="button is-dark is-medium" id="configure-env" title="Configure Environment" numSuccess=1>Configure Environment</button><span class="spinner hidden-state"></span>
             <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
                 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
-            <button id="configure-env$2" class="send-to-extension hidden-state" action="readfile"
-                command="cd /projects/techzone-demo/olm-utils-v2;pip3.8 install pyYaml;python3.8 getInstalledServices.py cp4i"
-                filePath="/projects/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
+            <button id="configure-env$2" class="send-to-extension hidden-state store-data" action="readfile"
+                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;pip3.8 install pyYaml;python3.8 getInstalledServices.py cp4i"
+                filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
                 numSuccess=1 nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
-            <button id="enable-timeline" class="hidden-state">Enable</button>
+            <button id="enable-timeline" class="store-data hidden-state">Enable</button>
             <span class="dot"></span>
         </div>
         <div class="timeline">
             <div class="content">
-                    <p>CP4I</p>
-                <div style="padding: 1.5rem;">
-                    <div class="content">
                         <p>Deploy custom resources for selected CP4I services</p>
-                        <div class="env-config">
+                        <div id="cp4i-deploy" class="env-config">
                             <label>CP4I Version</label>
                             <input type="text" id="cp4i_version" value="2022.2.1-0">
-                            <label>Components list
+                            <label>CP4I Services List
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             <div id="service-list" class="dropdown-check-list" tabindex="100">
-                                <span class="anchor">Select Components</span>
+                                <span class="anchor" id="selected-components-string">Select Services</span>
                                 <div class="items">    
                                     <input id="services-search" type="search" placeholder="Search components" style="width: 100%" />
                                     <ul id="git-services">
@@ -103,31 +98,30 @@
                                 <ul>
                             </div>
                             <label></label>
-                            <select id="storage_value" style="width:150px;height:33px;padding-left: -150px">
+                            <select class="stroe-data" id="storage_value" style="width:150px;height:33px;padding-left: -150px">
                                 <option value="nfs">nfs</option>
                                 <option value="ocs">ocs</option>
                                 <option value="portworx">portworx</option>
                                 <option value="roks-classic">roks-classic</option>
                             </select>
                         </div>
-                    </div>
+                        </div>
                     <br /><br />
-                    <button class="button is-dark is-medium" id="install_cpd" title="Execute">Install selected services</button>
+                    <button class="button is-dark is-medium" id="install_cpd" title="Execute">Install selected services</button><span class="spinner hidden-state"></span>
                     <button id="install_cpd$1" class="send-to-extension hidden-state" action="senddata" command="" numSuccess=2></button><span class="spinner hidden-state"></span>
                     <span class="dot"></span>
-                </div>
-            </div>
         </div>
         <div class="timeline">
             <div class="content">
                 <p>Cleanup install utility artifacts</p>
             </div>
-            <button class="send-to-extension button is-dark is-medium" id="clean-up-job" title="Clean up" command="cd /projects/techzone-demo/olm-utils-v2/;sh delete.sh" numSuccess=1>Clean up</button><span class="spinner hidden-state"></span>
+            <button class="send-to-extension button is-dark is-medium" id="clean-up-job" title="Clean up" command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/;sh delete.sh" numSuccess=1>Clean up</button><span class="spinner hidden-state"></span>
             <span class="dot"></span>
         </div>
         </div>
     </div>
 </body>
+<script src="$$rootcommonjspath$$"></script>
 <script src="$$rootjspath$$"></script>
 <script src="$$rootvscodeutilspath$$"></script>
 </html>

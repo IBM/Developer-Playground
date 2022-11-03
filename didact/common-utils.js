@@ -169,6 +169,7 @@ function modifyVisibilityInTimeline(element, cursorValue, opacityValue, pointerE
         [...parentEle.getElementsByTagName("BUTTON")].forEach(ele => !ele.classList.contains("no-click") ? ele.style.pointerEvents = pointerEventValue : ele.style.pointerEvents = "none");
         [...parentEle.getElementsByTagName("INPUT")].forEach(ele => ele.style.pointerEvents = pointerEventValue);
         [...parentEle.getElementsByTagName("DETAILS")].forEach(ele => ele.style.pointerEvents = pointerEventValue);
+        [...parentEle.getElementsByTagName("DIV")].forEach(ele => ele.style.pointerEvents = pointerEventValue);
     });
 }
 

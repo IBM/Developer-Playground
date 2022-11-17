@@ -1,0 +1,16 @@
+apiVersion: v2
+publisher: Rajesh
+name: framework-ext
+version: 0.0.2
+type: VS Code extension
+displayName: FrameworkExtension
+title: Framework Extension
+description: This is cloudant explorer
+icon: https://www-03.ibm.com/press/us/en/attachment/20190.wss?fileId=ATTACH_FILE2&fileName=ibmpos_blue.jpg
+repository: https://github.com/IBM/vscode-custom-didact
+category: Editor
+firstPublicationDate: '2022-08-09'
+spec:
+    extensions:
+        - https://devplayground-tmp.s3.us-south.cloud-object-storage.appdomain.cloud/playground/next/framework_extension.vsix
+latestUpdateDate: "2022-09-22"

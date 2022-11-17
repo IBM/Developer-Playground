@@ -330,10 +330,10 @@ function pushToGit(){
   metadata = '\'' + JSON.stringify(metadata) + '\''
   if (document.getElementById("private-git-toggle").checked) {
     document.getElementById("pushToGit$1").setAttribute("command",
-      "bash ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/github.sh " + "\"" + demoName.replace(/ /g, '') + "\"" + " " + metadata + " " + "\"" + userID.replace(/ /g, '') + "\"" + " " + "\"" + desc + "\"" + " " + "\"" + currentHTMLstateData.requiredPrivateGithubFields["private-git-url"] + "\"" + " " + "\"" + currentHTMLstateData.requiredPrivateGithubFields["private-git-access-token"] + "\"");
+      "bash ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/github.sh " + "\"" + demoName.replace(/ /g, '') + "\"" + " " + metadata + " " + "\"" + userID.replace(/ /g, '') + "\"" + " " + "\"" + desc + "\"" + " " + "\""  +  "${GITHUB_KEY}" +  "\"" + " " + "\"" + currentHTMLstateData.requiredPrivateGithubFields["private-git-url"] + "\"" + " " + "\"" + currentHTMLstateData.requiredPrivateGithubFields["private-git-access-token"] + "\"");
   } else {
     document.getElementById("pushToGit$1").setAttribute("command",
-      "bash ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/github.sh " + "\"" + demoName.replace(/ /g, '') + "\"" + " " + metadata + " " + "\"" + userID.replace(/ /g, '') + "\"" + " " + "\"" + desc + "\"");
+      "bash ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/github.sh " + "\"" + demoName.replace(/ /g, '') + "\"" + " " + metadata + " " + "\"" + userID.replace(/ /g, '') + "\"" + " " + "\"" + desc + "\"" + " " + "\""  +  "${GITHUB_KEY}" +  "\"" );
   }
   document.getElementById("pushToGit$1").click();
 

@@ -38,7 +38,7 @@ const services = {
   "dods": 'Decision Optimization',
   "dp": 'Data Privacy',
   "dv": 'Data Virtualization',
-  "facsheet": 'AI Factsheets',
+  "factsheet": 'AI Factsheets',
   "hadoop": 'Execution Engine for Apache Hadoop',
   "mdm": 'Match360',
   "openpages": 'OpenPages',

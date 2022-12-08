@@ -321,7 +321,7 @@ function pushToGit(){
     "displayName": demoName,
     "desc": desc,
     "isPrivate": false,
-    "version": 2
+    "version": 2.0
   }
   if (currentHTMLstateData.isPrivateDemo) {
     metadata.isPrivate = true,

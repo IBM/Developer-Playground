@@ -78,7 +78,11 @@
                         <p>Deploy selected CP4D services</p>
                         <div id="cp4d-deploy"class="env-config">
                             <label>CP4D Version</label>
-                            <input class="store-data" type="text" id="cp4d_version" value="4.5.0">
+                            <input class="store-data" type="text" id="cp4d_version" value="4.6.0">
+                            <label>CP4D Admin Password</label>
+                            <input class="store-data" type="password" id="cp4d_admin_password">
+                            <label>CP4D Environment Name</label>
+                            <input class="store-data" type="text" id="cp4d_env_name">
                             <label>CP4D Services List</label>
                             <div id="service-list" class="dropdown-check-list" tabindex="100">
                                 <span class="anchor" id="selected-components-string">Select Services</span>
@@ -90,25 +94,6 @@
                             </div>
                         </div>
                         <p style="margin-top:1rem"><b>Selected Services: </b><span id="selected-services"></span></p>
-                        <div class="env-config">
-                            <b>Storage Vendor</b><br>
-                            <div>
-                                Valid values include:
-                                <ul>
-                                <li>nfs: If using NFS you should ensure that there is a storage class called managed-nfs-storage </li>
-                                <li>ocs: If you are using OCS storage for CP4D </li>
-                                <li>portworx: If you are using Portworx storage for CP4D </li>
-                                <li>roks-classic: If you want to use ibmc-file-gold-gid and ibm-block-gold-gid </li>
-                                <ul>
-                            </div>
-                            <label></label>
-                            <select class="store-data" id="storage_value" style="width:150px;height:33px;padding-left: -150px">
-                                <option value="nfs">nfs</option>
-                                <option value="ocs">ocs</option>
-                                <option value="portworx">portworx</option>
-                                <option value="roks-classic">roks-classic</option>
-                            </select>
-                        </div>
                         <br /><br />
                     </div>
                     <button class="button is-dark is-medium" id="install_cpd" title="Execute" command="">Install selected services</button><span class="spinner hidden-state"></span>

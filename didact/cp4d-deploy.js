@@ -104,12 +104,14 @@ function updateConfigVars(e) {
 
 function install_cpd() {
   let cp4dVersion = document.getElementById('cp4d_version').value;
+  let cp4dAdminPassword = document.getElementById('cp4d_admin_password').value
+  let cp4dEnvName = document.getElementById('cp4d_env_name').value
   let component_list = currentHTMLstateData.selectedServices.toString()
   if (!component_list) {
     component_list = "null"
   }
-  let storage = document.getElementById("storage_value").value;
-  document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d; bash deploy.sh cp4d`)
+  let storage = "auto" //document.getElementById("storage_value").value;
+  document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d; bash deploy.sh cp4d ${cp4dAdminPassword} ${cp4dEnvName}`)
   document.getElementById("install_cpd$1").click();
 }
 

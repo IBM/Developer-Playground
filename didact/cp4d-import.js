@@ -1,6 +1,6 @@
 //base command to configure the environment
 let configureCommand = "git clone -b ${BRANCH} https://github.com/IBM/CPDemoFramework ${CHE_PROJECTS_ROOT}/techzone-demo;bash ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/getDemoFiles.sh demo_name is_private git_url git_token;cd ${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8 install -r requirements.txt;cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python3.8 update-env.py ";
-//var createUsersCTACommand = "cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python3.8 createUsers.py users.csv {IMPORT_USERS_PASSWORD}";
+let createUsersCTACommand = "cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python3.8 createUsers.py users.csv {IMPORT_USERS_PASSWORD}";
 
 currentHTMLstateData = {
     prerequisites: {
@@ -34,6 +34,7 @@ const funcLoad = () => {
 
     //After env configured successfully enable timeline
     addEventListenerToElement(document.getElementById("enable-timeline"), "click", enableAll)
+    addEventListenerToElement(document.getElementById("enable-timeline"), "click", updateCreateUsersCommand)
 
     //generate config command
     addEventListenerToElement(document.getElementById("configure-env"), "click", updateConfigVars);
@@ -76,7 +77,6 @@ function enableOrDisableCreateUsersCTA(e){
     let createUsersCTA = document.getElementById("create-users");
     if (e.target.value.trim() !== "") {
         modifyVisibilityOfCTAs(["create-users"], "enable");
-        let createUsersCTACommand = createUsersCTA.getAttribute("command");
         createUsersCTA.setAttribute("command", createUsersCTACommand.replace("{IMPORT_USERS_PASSWORD}", e.target.value));
     } else {
         modifyVisibilityOfCTAs(["create-users"], "disable")
@@ -95,6 +95,10 @@ function updateImportProjectScript(){
     let cta = document.getElementById("import-project$1")
     cta.setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/sandbox/;python3.8 importProject.py project_assets ${currentHTMLstateData.demo}`)
     cta.click();
+}
+
+function updateCreateUsersCommand(){
+    createUsersCTACommand = document.getElementById("create-users").getAttribute("command");
 }
 
 window.addEventListener("load", funcLoad);

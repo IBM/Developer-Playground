@@ -63,7 +63,7 @@
                 <div class="checkbox-group">
                     <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
                         <input id="users-management" class="store-data" type="checkbox" name="checkboxtask" value="task1" />
-                        <label for="task1">Users/Groups</label>
+                        <label for="task1">Users/Groups/Roles</label>
                     </div>
                     <div style="float:left;padding: 0.2rem;flex: 1 1 31%;">
                         <input id="governance-artifacts"class="store-data" type="checkbox" name="checkboxtask" value="task2" />
@@ -80,16 +80,16 @@
         <div class="timeline" id="task1">
             <div class="content">
                 <details>
-                    <summary>Users/Groups<span class="arrow"></span></summary>
+                    <summary>Users/Groups/Roles<span class="arrow"></span></summary>
                     <br><br>
                     <div>
                         <div class="content">
-                            <p>Export Users/Groups from the specified CP4D cluster.</p>
+                            <p>Export Users/Groups/Roles from the specified CP4D cluster.</p>
                         </div>
                         <button class="send-to-extension button is-dark is-medium" id="export-user-list"
                             title="Export User List" action="senddata"
-                            command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python3.8 exportUsersv2.py users.csv">Export
-                            Users/Groups</button><span class="spinner hidden-state"></span>
+                            command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python3.8 exportUsersv3.py users.json groups.json roles.json">Export
+                            Users/Groups/Roles</button><span class="spinner hidden-state"></span>
                         <span class="dot"></span>
                     </div>
                 </details>

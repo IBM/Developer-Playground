@@ -70,13 +70,13 @@
             </div>
         </div>
         <div class="timeline" id="task1">
-            <div class="content">
-                <p>User/Group/Role management</p>
-                <p>Recreate demo users/groups/roles onto new CP4D cluster.</p>
-                <p>Enter default pasword for the users: <input class="store-data" id="importuserspwd" type="password"></p>
+            <div class="content" id="create-users-content">
+                <p id="create-users-content-line1">User/Group/Role management</p>
+                <p id="create-users-content-line2">Recreate demo users/groups/roles onto new CP4D cluster.</p>
+                <p id="create-users-content-line3">Enter default pasword for the users: <input class="store-data" id="importuserspwd" type="password"></p>
             </div>
                 <button class="send-to-extension button is-dark is-medium disable no-click" id="create-users" title="Create Users"
-                    command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python3.8 createUsers.py users.csv {IMPORT_USERS_PASSWORD}">Import
+                    command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/">Import
                     Users</button><span class="spinner hidden-state"></span>
             <span class="dot"></span>
         </div>

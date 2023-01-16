@@ -77,6 +77,9 @@ function funcLoad(){
   //After env configured successfully enable timeline
   addEventListenerToElement(document.getElementById("enable-timeline"), "click", enableAll)
 
+  //handle cp4d version
+  addEventListenerToElement(document.getElementById("cp4d_version"),"input", handleCP4dVersion)
+
   //open/close logic for all dropdowns
   toggleDropdowns(currentHTMLstateData.dropdownIds)
 
@@ -100,6 +103,12 @@ function funcLoad(){
 function updateConfigVars(e) {
   document.getElementById("configure-env$1").setAttribute("command", `${configureCommand}${Object.keys(currentHTMLstateData.prerequisites).map(val => `${currentHTMLstateData.prerequisites[val] || "\"\""}`).toString().replaceAll(",", "%20")}`);
   document.getElementById("configure-env$1").click();
+}
+
+function handleCP4dVersion(e){
+  if(e.target.value === "4.6"){
+    e.target.value = "4.6.0"
+  }
 }
 
 function install_cpd() {

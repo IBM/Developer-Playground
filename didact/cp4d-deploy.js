@@ -106,7 +106,7 @@ function updateConfigVars(e) {
 }
 
 function handleCP4dVersion(e){
-  if((e.target.value.trim()).match((/^\d.\d$/))){
+  if((e.target.value.trim()).match((/^\d\.\d$/))){
     e.target.value = e.target.value.trim() + ".0"
   }
 }

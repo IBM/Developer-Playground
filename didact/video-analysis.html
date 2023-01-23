@@ -1,0 +1,188 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="$$rootcsspath$$">
+  <style>
+    .header {
+      background-image: url('https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/video_insights.jpeg');
+    }
+  </style>
+</head>
+<body>
+  <div style="margin-top:2rem"></div>
+  <div id="userID" class="hidden-state">$user_id</div>
+  <button id="update-workspace-state" action="update-workspace-state" class="send-to-extension hidden-state"></button>
+  <button id="get-workspace-state" action="get-workspace-state" class="send-to-extension hidden-state"></button>
+  
+  <div class="header">
+    <div class="left-content">
+      <div class="apptitle">
+        Video Analysis Application
+      </div>
+      <div class="subheading">
+        Extract meaningful insights from video files using Watson Speech to Text, Natural Language Processing, and Tone
+        Analyzer services.
+      </div>
+    </div>
+  </div>
+  <div class="section" style="font-size:16px; margin-top:-1.25rem">
+    <p>The benefit of a virtually connected world is that important meetings and classes can be recorded, giving
+      attendees more opportunities to stay connected and tune into important events. But with so much content to
+      process, listening or watching all of this recorded content can be time-consuming and tedious.</p>
+    <p>This application uses IBM Watson Services to analyze a video recording and to generate a detailed report
+      highlighting its key points.</p>
+  </div>
+  <div class="section">
+    <p style="font-size:24px">Architecture Diagram</p>
+    <img class="flow-image"
+      src="https://developer.ibm.com/developer/default/patterns/extract-textual-insights-from-a-given-video/images/extract-textual-insights-from-a-given-video-flow.png">
+  </div>
+  <div class="section">
+    <p style="font-size:24px">Execution Flow</p>
+    <ol>
+      <li>User uploads recorded video file of the virtual meeting or a virtual classroom in the application.</li>
+      <li>FFMPG Library extracts audio from the video file.</li>
+      <li>Watson Speech To Text transcribes the audio to give a diarized textual output.</li>
+      <li>Watson Language Translator (Optionally) translates other languages into English transcript.</li>
+      <li>Watson Tone Analyzer analyses the transcript and highlights the top positive statements from the transcript.
+      </li>
+      <li>Watson Natural Language Understanding reads the transcript to identify key points and record the sentiments
+        and emotions.</li>
+      <li>The key points and a summary of the video is then presented to the user in the application.</li>
+      <li>The user can then download the textual insights.</li>
+    </ol>
+  </div>
+  <div class="section">
+    <p style="font-size:24px">Learning Resources</p>
+    <div>
+      <a href="https://developer.ibm.com/articles/text-mining-and-analysis-from-webex-recordings/">Understanding the
+        Extract insights from videos Asset</a>
+    </div>
+  </div>
+  <div class="section">
+    <p style="font-size:24px">Included Components</p>
+    <div>
+      <p>This Asset uses the following IBM Watson Services:</p>
+      <p><a href="https://cloud.ibm.com/catalog/services/natural-language-understanding">Watson Natural Language
+          Understanding</a>: Use advanced NLP to analyze text and extract meta-data from content such as concepts,
+        entities, keywords, categories, sentiment, emotion, relations, and semantic roles.</p>
+      <p><a href="https://cloud.ibm.com/catalog/services/speech-to-text">Watson Speech to Text</a>: The Speech to Text
+        service converts the human voice into the written word.</p>
+    </div>
+  </div>
+  <div class="section">
+    <p style="font-size:24px">Pre-requisites</p>
+    <div>
+      <p>IBM Cloud Account - <a
+          href="https://cloud.ibm.com/registration/trial?cm_sp=ibmdev--developer-sandbox--cloudreg"> Create</a> one for
+        free.</p>
+    </div>
+  </div>
+  <div class="section">
+    <p style="font-size:24px">Instructions</p>
+  </div>
+  <div class="timeline-container">
+    <input type="text" class="hidden-state" id="data-fetched" />
+        <div class="timeline" id="configure-environment-CTA">
+            <div class="content">
+                <p>Get the resources required to deploy video analysis app and install dependencies.</p>
+            </div>
+            <button class="button is-dark is-medium" id="configure-env" title="Configure Environment" numSuccess=1>Configure Environment</button><span class="spinner hidden-state"></span>
+            <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command="pip3.8%20install%20-r%20requirements.txt"></button><span class="spinner hidden-state"></span>
+            <button id="enable-timeline" class="store-data hidden-state">Enable</button>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline">
+            <div class="content">
+                <p>Log in to your IBM Cloud account.</p>
+            </div>
+            <button class="send-to-extension button is-dark is-medium" id="login-to-ibm" title="Login to IBM" command="cd%20${CHE_PROJECTS_ROOT}/video-analysis/video-insights;chmod%20%2Bx%20.%2Flogin.sh%20%26%26%20.%2Flogin.sh" numSuccess=1>Login to IBM Cloud</button><span class="spinner hidden-state"></span>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline">
+            <div class="content">
+                <p>Create services on IBM Cloud.</p>
+            </div>
+            <button class="send-to-extension button is-dark is-medium" id="create_services" title="Create services" command="cd%20${CHE_PROJECTS_ROOT}/video-analysis/video-insights;chmod%20%2Bx%20.%2Fcreate-ibm-cloud-services.sh%20%26%26%20.%2Fcreate-ibm-cloud-services.sh" numSuccess=1>Create Services</button><span class="spinner hidden-state"></span>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline">
+            <div class="content">
+                <p>Launch the application in the preview window.</p>
+            </div>
+            <button class="send-to-extension button is-dark is-medium" id="clean-up-job" title="Clean up" command="cd%20${CHE_PROJECTS_ROOT}/video-analysis/video-insights%20%26%26%20python3.8%20app.py" numSuccess=1>Launch the Application</button><span class="spinner hidden-state"></span>
+            <span class="dot"></span>
+        </div>
+  </div>
+  <div class="footer">
+    <div class="footer-cta">
+      <div class="footer-step" style="background:transparent">
+        <div class="content">
+          <p>To edit or explore the application, make sure to stop it first.</p>
+        </div>
+        <button class="send-to-extension button is-dark is-medium" id="stop-app" title="Stop app" command="" numSuccess=1>Stop the Application</button><span class="spinner hidden-state"></span>
+        <span class="dot"></span>
+    </div>
+      <div class="footer-step" style="background:transparent">
+        <div class="content">
+          <p>Explore and update the code as per your requirement.</p>
+        </div>
+        <button class="send-to-extension button is-dark is-medium" action="openPath" id="explore-code" title="Explore the Code" command="cd%20${CHE_PROJECTS_ROOT}/video-analysis/video-insights%20%26%26%20python3.8%20app.py" numSuccess=1>Explore the Code</button><span class="spinner hidden-state"></span>
+        <span class="dot"></span>
+    </div>
+      <div class="footer-step" style="background:transparent">
+          <div class="content">
+            <p>Re-launch the application to view the changes made.</p>
+          </div>
+          <button class="send-to-extension button is-dark is-medium" id="relaunch-app" title="Relaunch app" command="cd%20${CHE_PROJECTS_ROOT}/video-analysis/video-insights%20%26%26%20python3.8%20app.py" numSuccess=1>Re-Launch the Application</button><span class="spinner hidden-state"></span>
+          <span class="dot"></span>
+      </div>
+      <div class="footer-step" style="background:transparent">
+        <div class="content">
+          <p>Click on <bold>Clean up</bold> to delete the IBM Cloud services that were created.</p>
+        </div>
+        <button class="send-to-extension button is-dark is-medium" id="delete-services" title="Delete services from IBM Cloud" command="cd%20${CHE_PROJECTS_ROOT}/video-analysis/video-insights%20%26%26%20chmod%20%2Bx%20.%2Fdeleteservice.sh%20%26%26%20.%2Fdeleteservice.sh" numSuccess=1>Delete services from IBM Cloud</button><span class="spinner hidden-state"></span>
+        <span class="dot"></span>
+        <p style="margin-top:0.625rem;">You can also manage the services in <a href="https://cloud.ibm.com/resources">IBM
+          Cloud Dashboard</a>.</p>
+    <div class="footer-step" style="background:transparent">
+      <div class="content">
+        <p style="margin-top:0.625rem;">Click to push code to your own Github repository. You will need a personal
+          access token to complete this action via the CLI. Refer to this </p><a
+          href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">guide</a>
+        for generating your personal access token.</p>      </div>
+      <button class="send-to-extension button is-dark is-medium" id="push-to-github" title="Push to Github" command="sh%20/github.sh" numSuccess=1>Push to Github</button><span class="spinner hidden-state"></span>
+      <span class="dot"></span>
+  </div>
+    <div class="image-div">
+      <p class="image-content">Want to explore this project more?
+        <span style="font-size:15px;margin-top:0px;display:block;">Head over to the <a
+            href="https://github.com/IBM/Developer-Playground/tree/video-insights">Github Repository</a></span>
+        <span style="font-size:15px;margin-top:0px;display:block;">For further assistance reach out to <a
+            href="https://github.com/IBM/Technology-Sandbox-Support/issues/new/choose" target="_blank"> Help &
+            Support</a></span>
+        <span style="font-size:15px;margin-top:0px;display:block;">Check out our <a
+            href="https://ibm.github.io/Technology-Sandbox-Support/" target="_blank">FAQs</a></span>
+      </p>
+      <a class="image-link" href="https://developer.ibm.com/patterns/extract-textual-insights-from-a-given-video/"
+        target="_blank">
+        <div class="image-btn">
+          <p class="image-link">View Product Details</p>
+          <p class="image-link"> </p>
+          <p class="image-link">
+            <span>
+              <svg style="position: absolute; right: 0.625rem;" fill="#ffffff" focusable="false"
+                preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/  svg" width="25" height="25"
+                viewBox="0 0 32 32" aria-hidden="true">
+                <path d="M18 6L16.6 7.4 24.1 15 3 15 3 17 24.1 17 16.6 24.6 18 26 28 16z"></path>
+                <title>Arrow right</title>
+              </svg>
+            </span>
+          </p>
+        </div>
+      </a>
+    </div>
+  </div>
+</body>
+<script src="progressive.js"></script>
+</html>

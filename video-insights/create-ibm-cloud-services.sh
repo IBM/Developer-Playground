@@ -13,6 +13,4 @@ plan="free"
 filename="naturallanguageunderstanding.json"
 python3.8 gather_service_info.py $service $servicename $region $plan $filename|| exit 1
 
-
-
-
+echo "success"

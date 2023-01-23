@@ -8,3 +8,4 @@ python3.8 deleteservices.py $filename
 rm naturallanguageunderstanding.json
 touch naturallanguageunderstanding.json
 
+echo "success"

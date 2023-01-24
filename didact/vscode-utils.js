@@ -126,9 +126,16 @@ window.addEventListener('message', event => {
                     filePath: filePath,
                     silent: silent,
                     nextAction: nextAction,
-                    preProcess: preProcess,
                     elementId: elementId,
-                    numSuccess: numSuccess
+                    numSuccess: numSuccess,
+                });
+            }
+            else if (action == "openPath") {
+                command = anchor.getAttribute("command");
+                vscode.postMessage({
+                    command: 'openPath',
+                    filePath: filePath,
+                    elementId: elementId,
                 });
             }
             else if (action == "update-workspace-state") {

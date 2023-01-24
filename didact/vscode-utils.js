@@ -126,6 +126,7 @@ window.addEventListener('message', event => {
                     filePath: filePath,
                     silent: silent,
                     nextAction: nextAction,
+                    preProcess: preProcess,
                     elementId: elementId,
                     numSuccess: numSuccess,
                 });

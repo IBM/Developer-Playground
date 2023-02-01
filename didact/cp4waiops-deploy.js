@@ -79,12 +79,15 @@ function updateConfigVars(e) {
 }
 
 function install_cpd() {
+    let cp4waiopsVersion = "0";
+    let cp4waiopsAdminPassword = document.getElementById('cp4waiops_admin_password').value
+    let cp4waiopsEnvName = document.getElementById('cp4waiops_env_name').value
     let component_list = currentHTMLstateData.selectedServices.toString()
     if (!component_list) {
         component_list = "null"
     }
     let storage = "auto"
-    document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} cp4waiops; bash deploy.sh cp4waiops`)
+    document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4waiopsVersion} cp4waiops; bash deploy.sh cp4waiops ${cp4waiopsAdminPassword} ${cp4waiopsEnvName}`)
     document.getElementById("install_cpd$1").click();
 }
 

@@ -26,6 +26,7 @@
         "cp4d-backup": "Techzone CP4D Backup",
         "cp4d-restore": "Techzone CP4D Restore",
         "video-analysis": "Video Analysis",
-        "cp4d-deploy-air-gapped": "CP4D Installation for Air Gapped Environments"
+        "cp4d-deploy-air-gapped": "CP4D Installation for Air Gapped Environments",
+        "cp4waiops-deploy": "Techzone CP4WAIOps Deploy"
     }
 }

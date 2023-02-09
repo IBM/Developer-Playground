@@ -1,0 +1,104 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="$$rootcsspath$$">
+  <style>
+    .header {
+      background-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/video_insights.jpeg");
+    }
+  </style>
+</head>
+<body>
+    <div style="margin-top:2rem"></div>
+    <div id="userID" class="hidden-state">$user_id</div>
+    <button id="update-workspace-state" action="update-workspace-state" class="send-to-extension hidden-state"></button>
+    <button id="get-workspace-state" action="get-workspace-state" class="send-to-extension hidden-state"></button>
+
+    <div class="header">
+        <div class="left-content">
+            <div class="apptitle">Self-service customizable CP4D environment setup</div>
+            <div class="subheading">Cloud Pak for Data (CP4D) v4 adopted the Operator based installation & management pattern.
+            This gives us flexibility to custom build a demo environment based on our needs. If we are doing a simple data
+            science demo with services WS, WML you can choose to just install those 2 services in a self-service fashion on
+            an appropriately sized cluster for more cost effectiveness in addition to better performance as you would have
+            installed just services you need for your demo. This interface uses standard engineering-supported install
+            utility/mechanism for ongoing support/maintainability.</div>
+        </div>
+    </div>
+    <div class="section">
+        <p style="font-size:24px">Pre-requisites</p>
+        <div>
+            <p>To clear pre populated fields if any click <a id="reset-href" title="Reset">here</a>.</p>
+            <button id="reset-workspace-state" action="reset-workspace-state" class="send-to-extension hidden-state" command="cd ${CHE_PROJECTS_ROOT};rm -rf techzone-demo">Reset</button>
+        </p>
+        <p>Obtain an IBM Software Entitlement Key from <a href="https://myibm.ibm.com/products-services/containerlibrary"> IBM Container Library</a> using your IBM ID. Click Get an entitlement key if you are not on the entitlement page.</p>
+        <div class="env-config">
+            <label id="icr_key$label">Entitlement Key: </label><input class="store-data env-variables" id="icr_key" name="icr_key" type="text" />
+        </div>
+        </div>
+    </div>
+    <div class="section" style="margin-top:5rem;">
+        <p style="font-size:24px">Instructions</p>
+    </div>
+    <div class="timeline-container">
+        <div class="timeline" id="configure-environment-CTA">
+            <div class="content">
+                        <p>Registry Details</p>
+                        <div id="registry-details"class="env-config">
+                            <label>Registry Option</label>
+                            <div><input class="store-data" type="checkbox" id="registry_option">Portable</div>
+                            <label>Registry Host Name*</label>
+                            <input class="store-data" type="text" id="registry_host_name">
+                            <label>Registry Port*</label>
+                            <input class="store-data" type="text" id="registry_port" value="443">
+                            <label>Registry Namespace*</label>
+                            <input class="store-data" type="text" id="registry_namespace">
+                            <label>Registry User*</label>
+                            <input class="store-data" type="text" id="registry_user">
+                            <label>Registry Password*</label>
+                            <input class="store-data" type="password" id="registry_password">
+                        </div>
+            </div>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline" id="CP4D-services-CTA">
+            <div class="content">
+                        <p>Deploy selected CP4D services</p>
+                        <div id="cp4d-deploy"class="env-config">
+                            <label>CP4D Version</label>
+                            <input class="store-data" type="text" id="cp4d_version" value="4.6.0">
+                            <label>CP4D Admin Password</label>
+                            <input class="store-data" type="password" id="cp4d_admin_password">
+                            <label>CP4D Environment Name</label>
+                            <input class="store-data" type="text" id="cp4d_env_name">
+                            <label>CP4D Services List</label>
+                            <div id="service-list" class="dropdown-check-list" tabindex="100">
+                                <span class="anchor" id="selected-components-string">Select Services</span>
+                                <div class="items">
+                                    <input id="services-search" type="search" placeholder="Search components" style="width: 100%" />
+                                    <ul id="git-services">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <p style="margin-top:1rem"><b>Selected Services: </b><span id="selected-services"></span></p>
+                        <br /><br />
+                        <p>Explore and update the CP4D configuration as per your requirement.</p>
+                        </div>
+                        <button class="send-to-extension button is-dark is-medium" action="openPath" id="open-config" title="Open Configure file" command="openPath" filePath="/Users/suyashgupte/Documents/GitHub/Developer-Playground/didact/sample-json-to-render-dynamic-content.json" nextAction="enable-timeline">Explore CP4D Configure</button><span class="spinner hidden-state"></span>
+                        <button id="enable-timeline" class="store-data hidden-state">Enable</button>
+                    <span class="dot"></span>
+            </div>
+        <div class="timeline">
+            <div class="content">
+                <p>Mirror Image</p>
+            </div>
+            <button class="send-to-extension button is-dark is-medium" id="mirror-image" title="Mirror" command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/;sh delete.sh" numSuccess=1>Mirror</button><span class="spinner hidden-state"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+</body>
+<script src="$$rootcommonjspath$$"></script>
+<script src="$$rootjspath$$"></script>
+<script src="$$rootvscodeutilspath$$"></script>
+</html>

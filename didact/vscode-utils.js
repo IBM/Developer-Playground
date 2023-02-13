@@ -136,9 +136,12 @@ window.addEventListener('message', event => {
                 vscode.postMessage({
                     command: 'openPath',
                     text: command,
-                    nextAction: nextAction,
                     filePath: filePath,
+                    silent: silent,
+                    nextAction: nextAction,
+                    preProcess: preProcess,
                     elementId: elementId,
+                    numSuccess: numSuccess,
                 });
             }
             else if (action == "update-workspace-state") {

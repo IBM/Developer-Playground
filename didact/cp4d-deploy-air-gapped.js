@@ -77,11 +77,17 @@ function funcLoad(){
     addEventListenerToElement(document.getElementById(registryParam), "input", validateRegistryFields);
   }
 
+  //Update YAML
+  addEventListenerToElement(document.getElementById("open-config"),"click", updateCP4Dyaml)
+
   //After env configured successfully enable timeline
   addEventListenerToElement(document.getElementById("enable-timeline"), "click", enableAll)
   
   //create services dropdown
   createMultiSelectDropdownWithSearch("git-services", services, updateSelectedServices, "services", "services-search", filterServiceList)
+
+  //mirror-image
+  addEventListenerToElement(document.getElementById("mirror-image"),"click", mirrorImage)
 
   //Store required CTAs in state
   storeCTAInState();
@@ -97,6 +103,17 @@ function handleCP4dVersion(e){
   if((e.target.value.trim()).match((/^\d\.\d$/))){
     e.target.value = e.target.value.trim() + ".0"
   }
+}
+
+function updateCP4Dyaml() {
+  let cp4dVersion = document.getElementById('cp4d_version').value;
+  let component_list = currentHTMLstateData.selectedServices.toString()
+  if (!component_list) {
+    component_list = "null"
+  }
+  let storage="auto";
+  document.getElementById("open-config$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d;`+"mv ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/cp4d-config.yaml /opt/ansible/cpd-config/config/cpd-config.yaml")
+  document.getElementById("open-config$1").click();
 }
 
 function handleRegistryOption(e){
@@ -157,6 +174,23 @@ function filterServiceList(e) {
       htmlServices[idx].parentElement.style.display = "none"
     }
   })
+}
+
+function mirrorImage(e){
+  let cp4dAdminPassword = document.getElementById('cp4d_admin_password').value
+  let cp4dEnvName = document.getElementById('cp4d_env_name').value
+  let entitlementKey = document.getElementById('icr_key').value
+  let portable = document.getElementById("registry_option").checked
+  let registryHostName = document.getElementById('registry_host_name').value
+  let registryPort = document.getElementById('registry_portname').value
+  let registryNamespace = document.getElementById('registry_namespace').value
+  let registryUser = document.getElementById('registry_user').value
+  let registryPassword = document.getElementById('registry_password').value
+  document.getElementById("mirror-image$1").setAttribute("command", `sh /cloud-pak-deployer/cp-deploy.sh env download -e=env_id=${cp4dEnvName} -e=ibm_cp_entitlement_key=${entitlementKey} -v`)
+  document.getElementById("mirror-image$1").click();
+  ['/cloud-pak-deployer/cp-deploy.sh', 'env', 'download', '-e=env_id=test', '-e=ibm_cp_entitlement_key=key', '-v']
+  
+
 }
 
 window.addEventListener("load", funcLoad);

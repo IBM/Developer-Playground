@@ -135,6 +135,7 @@ window.addEventListener('message', event => {
                 command = anchor.getAttribute("command");
                 vscode.postMessage({
                     command: 'openPath',
+                    text: command,
                     nextAction: nextAction,
                     filePath: filePath,
                     elementId: elementId,

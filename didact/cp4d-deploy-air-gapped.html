@@ -85,7 +85,8 @@
                         <br /><br />
                         <p>Explore and update the CP4D configuration as per your requirement.</p>
                         </div>
-                        <button class="send-to-extension button is-dark is-medium" action="openPath" id="open-config" title="Open Configure file" command="openPath" filePath="/Users/suyashgupte/Documents/GitHub/Developer-Playground/didact/sample-json-to-render-dynamic-content.json" nextAction="enable-timeline">Explore CP4D Configure</button><span class="spinner hidden-state"></span>
+                        <button class="button is-dark is-medium" id="open-config" title="Open Configure file">Explore CP4D Configure</button><span class="spinner hidden-state"></span>
+                        <button class="send-to-extension button is-dark is-medium hidden-state" action="openPath" id="open-config$1" title="Open Configure file" command="" filePath="/opt/ansible/cpd-config/config/cpd-config.yaml" nextAction="enable-timeline">Explore CP4D Configure</button><span class="spinner hidden-state"></span>
                         <button id="enable-timeline" class="store-data hidden-state">Enable</button>
                     <span class="dot"></span>
             </div>
@@ -93,7 +94,8 @@
             <div class="content">
                 <p>Mirror Image</p>
             </div>
-            <button class="send-to-extension button is-dark is-medium" id="mirror-image" title="Mirror" command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/;sh delete.sh" numSuccess=1>Mirror</button><span class="spinner hidden-state"></span>
+            <button class="button is-dark is-medium" id="mirror-image" title="Mirror" >Mirror</button><span class="spinner hidden-state"></span>
+            <button class="send-to-extension button is-dark is-medium hidden-state" id="mirror-image" title="Mirror" command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/air-gapped/;python3.8 mirror-image.py" numSuccess=1>Mirror</button><span class="spinner hidden-state"></span>
             <span class="dot"></span>
         </div>
     </div>

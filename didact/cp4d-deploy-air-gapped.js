@@ -112,7 +112,7 @@ function updateCP4Dyaml() {
     component_list = "null"
   }
   let storage="auto";
-  document.getElementById("open-config$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d;`+"mv ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/cp4d-config.yaml /opt/ansible/cpd-config/config/cpd-config.yaml")
+  document.getElementById("open-config$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d;`+"cp ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/cp4d-config.yaml /opt/ansible/cpd-config/config/cpd-config.yaml")
   document.getElementById("open-config$1").click();
 }
 
@@ -182,7 +182,7 @@ function mirrorImage(e){
   let entitlementKey = document.getElementById('icr_key').value
   let portable = document.getElementById("registry_option").checked
   let registryHostName = document.getElementById('registry_host_name').value
-  let registryPort = document.getElementById('registry_portname').value
+  let registryPort = document.getElementById('registry_port').value
   let registryNamespace = document.getElementById('registry_namespace').value
   let registryUser = document.getElementById('registry_user').value
   let registryPassword = document.getElementById('registry_password').value

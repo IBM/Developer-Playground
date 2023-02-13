@@ -55,6 +55,7 @@ const services = {
 function funcLoad(){
   // Disable timeline
   disableTimelineFromElement("all");
+  document.getElementById("configure-env").click()
 
   //handle prerequisites
   for (let prerequisite of Object.keys(currentHTMLstateData.prerequisites)) {

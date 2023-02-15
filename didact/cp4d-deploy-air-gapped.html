@@ -29,7 +29,7 @@
         <p style="font-size:24px">Pre-requisites</p>
         <div>
             <p>To clear pre populated fields if any click <a id="reset-href" title="Reset">here</a>.</p>
-            <button id="reset-workspace-state" action="reset-workspace-state" class="send-to-extension hidden-state" command="cd ${CHE_PROJECTS_ROOT};rm -rf techzone-demo">Reset</button>
+            <button id="reset-workspace-state" action="reset-workspace-state" class="send-to-extension hidden-state" command="cd ${CHE_PROJECTS_ROOT}">Reset</button>
         </p>
         <p>Obtain an IBM Software Entitlement Key from <a href="https://myibm.ibm.com/products-services/containerlibrary"> IBM Container Library</a> using your IBM ID. Click Get an entitlement key if you are not on the entitlement page.</p>
         <div class="env-config">
@@ -43,10 +43,9 @@
     <div class="timeline-container">
         <div class="timeline" id="configure-environment-CTA">
             <div class="content">
-                <button id="configure-env" class="send-to-extension hidden-state" action="readfile"
-                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;pip3.8 install pyYaml;python3.8 getInstalledServices.py cp4d"
-                filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
-                numSuccess=1 silent="true"></button><span class="spinner hidden-state"></span>
+                <button id="configure-env" class="send-to-extension hidden-state" action="senddata"
+                command="cp ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/cp4d-config.yaml /opt/ansible/cpd-config/config/cpd-config.yaml"
+                numSuccess=1 silent="true"></button>
                         <p>Registry Details</p>
                         <div id="registry-details"class="env-config">
                             <label>Registry Option</label>
@@ -88,10 +87,9 @@
                         <p style="margin-top:1rem"><b>Selected Services: </b><span id="selected-services"></span></p>
                         <br /><br />
                         <p>Explore and update the CP4D configuration as per your requirement.</p>
-                        </div>
-                        <button class="button is-dark is-medium" id="open-config" title="Open Configure file">Explore CP4D Configure</button><span class="spinner hidden-state"></span>
-                        <button class="send-to-extension button is-dark is-medium hidden-state" action="openPath" id="open-config$1" title="Open Configure file" command="" filePath="/opt/ansible/cpd-config/config/cpd-config.yaml" nextAction="enable-timeline" silent="true" preProcess="true">Explore CP4D Configure</button><span class="spinner hidden-state"></span>
-                        <button id="enable-timeline" class="store-data hidden-state">Enable</button>
+                    </div>
+                        <button class="send-to-extension button is-dark is-medium" action="openPath" id="open-config" title="Open Configure file" command="" filePath="/opt/ansible/cpd-config/config/cpd-config.yaml" silent="true">Explore CP4D Configure</button><span class="spinner hidden-state"></span>
+                        <button class="send-to-extension button is-dark is-medium hidden-state" action="senddata" id="update-config" title="Open Configure file" command="" silent="true" preProcess="true"></button>
                     <span class="dot"></span>
             </div>
         <div class="timeline">

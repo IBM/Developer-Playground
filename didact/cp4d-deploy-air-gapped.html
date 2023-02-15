@@ -43,8 +43,9 @@
     <div class="timeline-container">
         <div class="timeline" id="configure-environment-CTA">
             <div class="content">
-                <button id="configure-env" class="send-to-extension hidden-state" action="senddata"
-                command="cp ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/cp4d-config.yaml /opt/ansible/cpd-config/config/cpd-config.yaml"
+                <button id="configure-env" class="send-to-extension hidden-state" action="readfile"
+                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;pip3.8 install pyYaml;python3.8 getInstalledServices.py cp4d"
+                filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
                 numSuccess=1 silent="true"></button>
                         <p>Registry Details</p>
                         <div id="registry-details"class="env-config">

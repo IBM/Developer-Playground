@@ -20,43 +20,13 @@ currentHTMLstateData = {
 
 let previousServicesState = "";
 
-const services = {
-  "analyticsengine": 'Analytics Engine Powered by Apache Spark',
-  "bigsql": 'Db2 Big SQL',
-  "ca": 'Cognos Analytics',
-  "cde": 'Cognos Dashboards',
-  "datagate": 'Data Gate',
-  "datastage-ent-plus": 'DataStage Enterprise Plus',
-  "db2": 'Db2',
-  "db2wh": 'Db2 Warehouse',
-  "dmc": 'Data Management Console',
-  "dods": 'Decision Optimization',
-  "dp": 'Data Privacy',
-  "dv": 'Data Virtualization',
-  "factsheet": 'AI Factsheets',
-  "hadoop": 'Execution Engine for Apache Hadoop',
-  "match360": 'Match360',
-  "openpages": 'OpenPages',
-  "planning-analytics": 'Planning Analytics',
-  "replication": 'Data Replication',
-  "rstudio": 'RStudio Server',
-  "spss": 'SPSS Modeler',
-  "voice-gateway": 'Voice Gateway',
-  "watson-assistant": 'Watson Assistant',
-  "watson-discovery": 'Watson Discovery',
-  "watson-ks": 'Watson Knowledge Studio',
-  "watson-openscale": 'IBM Watson OpenScale',
-  "watson-speech": 'Watson Speech to Text',
-  "wkc": 'Watson Knowledge Catalog',
-  "wml": 'Watson Machine Learning',
-  "wml-accelerator": 'Watson Machine Learning Accelerator',
-  "ws-pipelines": 'Watson Studio Pipelines',
-  "wsl": 'Watson Studio'
-}
 
 function funcLoad() {
   // Disable timeline
   disableTimelineFromElement("all");
+
+  //get service list
+  document.getElementById("configure-env").click()
 
   //handle prerequisites
   for (let prerequisite of Object.keys(currentHTMLstateData.prerequisites)) {
@@ -80,7 +50,10 @@ function funcLoad() {
   }
 
   //create services dropdown
-  createMultiSelectDropdownWithSearch("git-services", services, updateSelectedServices, "services", "services-search", filterServiceList)
+  //createMultiSelectDropdownWithSearch("git-services", services, updateSelectedServices, "services", "services-search", filterServiceList)
+
+  //add search function
+  addEventListenerToElement(document.getElementById("services-search"), "input", filterServiceList);
 
   //mirror-image
   addEventListenerToElement(document.getElementById("mirror-image"), "click", mirrorImage)
@@ -94,7 +67,6 @@ function funcLoad() {
   //reset workspace state
   addEventListenerToElement(document.getElementById("reset-href"), "click", resetWorkspace);
 
-  document.getElementById("configure-env").click()
 }
 
 function handleCP4dVersion(e) {
@@ -148,16 +120,40 @@ function validateRegistryFields(e) {
   enableTimelineTillElement("all");
 }
 
+function getDOMnode(htmlServices, service){
+  let listServices = [...htmlServices].map(service => service.value)
+  for (let i=0; i < listServices.length; i++){
+    //console.log(htmlServices, service)
+    if(service === listServices[i]){
+      return htmlServices[i].parentElement
+    }
+  }
+}
+
 function updateSelectedServices(e) {
   let gitServicesList = document.getElementById("git-services");
   let gitServices = document.getElementsByName("services");
   if (e.target.checked) {
     currentHTMLstateData.selectedServices.indexOf(e.target.value) == -1 && currentHTMLstateData.selectedServices.push(e.target.value)
-    gitServicesList.insertBefore(e.target.parentElement, gitServicesList.firstChild);
+    //gitServicesList.insertBefore(e.target.parentElement, gitServicesList.firstChild);
   } else {
     currentHTMLstateData.selectedServices.indexOf(e.target.value) !== -1 && currentHTMLstateData.selectedServices.splice(currentHTMLstateData.selectedServices.indexOf(e.target.value), 1)
-    gitServicesList.insertBefore(e.target.parentElement, gitServices[Object.keys(services).indexOf(e.target.value)].parentElement);
+    //gitServicesList.insertBefore(e.target.parentElement, gitServices[Object.keys(services).indexOf(e.target.value)].parentElement);
   }
+  //gitServicesList.innerHTML = "";
+  currentHTMLstateData.selectedServices.sort()
+  currentHTMLstateData.selectedServices.forEach(res => {
+    console.log(res)
+    gitServicesList.appendChild(getDOMnode(gitServices, res))
+  })
+  let listServices = [...gitServices].map(service => service.value)
+  listServices.sort()
+  listServices.forEach((res, idx) => {
+    if(currentHTMLstateData.selectedServices.indexOf(res) == -1){
+      gitServicesList.appendChild(getDOMnode(gitServices, res))
+    }
+  })
+    
   let showSeleted = document.getElementById("selected-services")
   showSeleted.textContent = currentHTMLstateData.selectedServices.toString().replaceAll(",", ", ")
   document.getElementById("selected-components-string").textContent = getShortenedString(currentHTMLstateData.selectedServices) || "Select Services";
@@ -169,8 +165,9 @@ function filterServiceList(e) {
   let htmlServices = document.getElementsByName("services")
   let listServices = [...htmlServices].map(service => service.value)
   listServices.forEach((res, idx) => {
-    if (res.toLowerCase().includes(e.target.value.toLowerCase()) || services[res].toLowerCase().includes(e.target.value.toLowerCase())) {
-      filteredServices[res] = services[res]
+    
+    if (res.toLowerCase().includes(e.target.value.toLowerCase()) || htmlServices[idx].nextSibling.textContent.trim().toLowerCase().includes(e.target.value.toLowerCase())) {
+      filteredServices[res] = htmlServices[idx].nextSibling.textContent.trim()
       htmlServices[idx].parentElement.style.display = "block"
     } else {
       htmlServices[idx].parentElement.style.display = "none"

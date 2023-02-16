@@ -113,12 +113,38 @@
                 </div>
                 <p style="margin-top:1rem"><b>Selected Services: </b><span id="selected-services"></span></p>
                 <br /><br />
+
+                <div id="cp4waiops-instana" class="hidden-state">
+                    <p><b>Instana Credentials</b></p>
+                    <div id="cp4waiops-addons" class="env-config">
+                        <label>Sales Key*</label>
+                        <input class="store-data" type="text" id="instana_saleskey">
+                        <label>Agent Key*</label>
+                        <input class="store-data" type="text" id="instana_agentkey">
+                        <br /><br />
+                    </div>
+                </div>
+
+                <div id="cp4waiops-turbonomic" class="hidden-state">
+                    <p><b>Turbonomic Credentials</b></p>
+                    <div id="cp4waiops-addons" class="env-config">
+                        <label>Turbo Licence*</label>
+                        <textarea rows="8" cols="25" class="store-data" id="turbo_lic"></textarea>
+                        <br /><br />
+                    </div>
+                </div>
+
                 <p>Explore and update the CP4WAIOps configuration as per your requirement.</p>
             </div>
-            <button class="send-to-extension button is-dark is-medium" action="openPath" id="open-config" title="Open Configure file" command="openPath" filePath="/projects/techzone-demo/olm-utils-v2/cp4waiops-config.yaml">Explore CP4WAIOps Configure</button><span class="spinner hidden-state"></span>
+            <button class="send-to-extension button is-dark is-medium" action="openPath" id="open-config"
+                title="Open Configure file" command="openPath"
+                filePath="/projects/techzone-demo/olm-utils-v2/cp4waiops-config.yaml">Explore CP4WAIOps
+                Configure</button><span class="spinner hidden-state"></span>
             <span class="dot"></span></br></br>
-            <button class="button is-dark is-medium" id="install_cpd" title="Execute" command="">Install Selected Services</button><span class="spinner hidden-state"></span>
-            <button id="install_cpd$1" class="send-to-extension hidden-state" action="senddata" command="" numSuccess=2></button><span class="spinner hidden-state"></span>
+            <button class="button is-dark is-medium" id="install_cpd" title="Execute" command="">Install Selected
+                Services</button><span class="spinner hidden-state"></span>
+            <button id="install_cpd$1" class="send-to-extension hidden-state" action="senddata" command=""
+                numSuccess=2></button><span class="spinner hidden-state"></span>
             <span class="dot"></span>
         </div>
 

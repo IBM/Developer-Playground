@@ -24,19 +24,7 @@ currentHTMLstateData = {
   doNotRestore: []
 }
 
-const services = {
-  "platform-navigator": "Platform Navigator",
-  "api-management": "API Management",
-  "automation-assets": "Automation Assets",
-  "enterprise-gateway": "Enterprise Gateway",
-  "event-endpoint-management": "Event Endpoint Management",
-  "event-streams": "Event Steam",
-  "high-speed-transfer-server": "High Speed Transfer Server",
-  "integration-dashboard": "Integration Dashboard",
-  "integration-design": "Integration Design",
-  "integration-tracing": "Integration tracing",
-  "messaging": "Messaging"
-}
+let previousServicesState = "";
 
 function funcLoad(){
   // Disable timeline
@@ -62,7 +50,9 @@ function funcLoad(){
   toggleDropdowns(currentHTMLstateData.dropdownIds)
 
   //create services dropdown
-  createMultiSelectDropdownWithSearch("git-services", services, updateSelectedServices, "services", "services-search", filterServiceList)
+  //createMultiSelectDropdownWithSearch("git-services", services, updateSelectedServices, "services", "services-search", filterServiceList)
+  //add search function
+  addEventListenerToElement(document.getElementById("services-search"), "input", filterServiceList);
 
   addEventListenerToElement(document.getElementById("install_cpd"), "click", install_cpd);
 
@@ -82,6 +72,19 @@ function updateConfigVars(e){
   document.getElementById("configure-env$1").setAttribute("command", `${configureCommand}${Object.keys(currentHTMLstateData.prerequisites).map(val => `"${currentHTMLstateData.prerequisites[val] || "\"\""}"`).toString().replaceAll(",", "%20")}`);
   document.getElementById("configure-env$1").click();
 }
+function updateCP4Iyaml() {
+  let cp4iVersion = document.getElementById('cp4i_version').value || " ";
+  let component_list = currentHTMLstateData.selectedServices.toString()
+  if (!component_list) {
+    component_list = "null"
+  }
+  let storage = "auto";
+  if (previousServicesState === component_list)
+    return
+  document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4iVersion} cp4i;`)
+  document.getElementById("update-config").click();
+  previousServicesState = component_list;
+}
 
 function install_cpd(){
   let cp4iVersion = document.getElementById('cp4i_version').value;
@@ -92,32 +95,48 @@ function install_cpd(){
     component_list = "null"
   }
   let storage = "auto"//document.getElementById("storage_value").value;
-  document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}"+`/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4iVersion} cp4i; bash deploy.sh cp4i ${cp4iAdminPassword} ${cp4iEnvName}`)
+  document.getElementById("install_cpd$1").setAttribute("command","cd ${CHE_PROJECTS_ROOT}" +  `bash deploy.sh cp4i ${cp4iAdminPassword} ${cp4iEnvName}`)
   document.getElementById("install_cpd$1").click();
 }
 
-function updateSelectedServices(e){
+function updateSelectedServices(e) {
   let gitServicesList = document.getElementById("git-services");
   let gitServices = document.getElementsByName("services");
   if (e.target.checked) {
     currentHTMLstateData.selectedServices.indexOf(e.target.value) == -1 && currentHTMLstateData.selectedServices.push(e.target.value)
-    gitServicesList.insertBefore(e.target.parentElement, gitServicesList.firstChild);
+    //gitServicesList.insertBefore(e.target.parentElement, gitServicesList.firstChild);
   } else {
     currentHTMLstateData.selectedServices.indexOf(e.target.value) !== -1 && currentHTMLstateData.selectedServices.splice(currentHTMLstateData.selectedServices.indexOf(e.target.value), 1)
-    gitServicesList.insertBefore(e.target.parentElement, gitServices[Object.keys(services).indexOf(e.target.value)].parentElement);
+    //gitServicesList.insertBefore(e.target.parentElement, gitServices[Object.keys(services).indexOf(e.target.value)].parentElement);
   }
+  //gitServicesList.innerHTML = "";
+  currentHTMLstateData.selectedServices.sort()
+  currentHTMLstateData.selectedServices.forEach(res => {
+    console.log(res)
+    gitServicesList.appendChild(getDOMnode(gitServices, res))
+  })
+  let listServices = [...gitServices].map(service => service.value)
+  listServices.sort()
+  listServices.forEach((res, idx) => {
+    if(currentHTMLstateData.selectedServices.indexOf(res) == -1){
+      gitServicesList.appendChild(getDOMnode(gitServices, res))
+    }
+  })
+    
   let showSeleted = document.getElementById("selected-services")
   showSeleted.textContent = currentHTMLstateData.selectedServices.toString().replaceAll(",", ", ")
-  document.getElementById("selected-components-string").textContent = getShortenedString(currentHTMLstateData.selectedServices) || "Select Components";
+  document.getElementById("selected-components-string").textContent = getShortenedString(currentHTMLstateData.selectedServices) || "Select Services";
+  updateCP4Iyaml();
 }
 
-function filterServiceList(e){
+function filterServiceList(e) {
   let filteredServices = {}
   let htmlServices = document.getElementsByName("services")
   let listServices = [...htmlServices].map(service => service.value)
   listServices.forEach((res, idx) => {
-    if (res.toLowerCase().includes(e.target.value.toLowerCase()) || services[res].toLowerCase().includes(e.target.value.toLowerCase())) {
-      filteredServices[res] = services[res]
+    
+    if (res.toLowerCase().includes(e.target.value.toLowerCase()) || htmlServices[idx].nextSibling.textContent.trim().toLowerCase().includes(e.target.value.toLowerCase())) {
+      filteredServices[res] = htmlServices[idx].nextSibling.textContent.trim()
       htmlServices[idx].parentElement.style.display = "block"
     } else {
       htmlServices[idx].parentElement.style.display = "none"

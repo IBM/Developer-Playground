@@ -84,7 +84,7 @@ function updateCP4Dyaml() {
   let storage = "auto";
   if (previousServicesState === component_list)
     return
-  document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d;` + "cp ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/cp4d-config.yaml /opt/ansible/cpd-config/config/cpd-config.yaml")
+  document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d`)
   document.getElementById("update-config").click();
   previousServicesState = component_list;
 }
@@ -185,7 +185,7 @@ function mirrorImage(e) {
   let registryNamespace = document.getElementById('registry_namespace').value
   let registryUser = document.getElementById('registry_user').value
   let registryPassword = document.getElementById('registry_password').value
-  document.getElementById("mirror-image$1").setAttribute("command", `sh /cloud-pak-deployer/cp-deploy.sh env download -e=env_id=${cp4dEnvName} -e=ibm_cp_entitlement_key=${entitlementKey} -v`)
+  document.getElementById("mirror-image$1").setAttribute("command", "cp ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/cp4d-config.yaml /opt/ansible/cpd-config/config/cpd-config.yaml;"+`sh /cloud-pak-deployer/cp-deploy.sh env download -e=env_id=${cp4dEnvName} -e=ibm_cp_entitlement_key=${entitlementKey} -v`)
   document.getElementById("mirror-image$1").click();
 }
 

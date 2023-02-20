@@ -93,7 +93,8 @@
                         <br /><br />
                         <p>Explore and update the CP4I configuration as per your requirement.</p>
                         </div>
-                        <button class="send-to-extension button is-dark is-medium" action="openPath" id="open-config" title="Open Configure file" command="openPath" filePath="/projects/techzone-demo/olm-utils-v2/cp4i-config.yaml">Explore CP4I Configure</button><span class="spinner hidden-state"></span>
+                        <button class="send-to-extension button is-dark is-medium" action="openPath" id="open-config" title="Open Configure file" command="" filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/cp4i-config.yaml" silent="true">Explore CP4I Configure</button><span class="spinner hidden-state"></span>
+                        <button class="send-to-extension button is-dark is-medium hidden-state" action="senddata" id="update-config" title="Update Configure file" command="" silent="true" preProcess="true"></button>
                         <span class="dot"></span></br></br>
                     <button class="button is-dark is-medium" id="install_cpd" title="Execute">Install selected services</button><span class="spinner hidden-state"></span>
                     <button id="install_cpd$1" class="send-to-extension hidden-state" action="senddata" command="" numSuccess=2></button><span class="spinner hidden-state"></span>

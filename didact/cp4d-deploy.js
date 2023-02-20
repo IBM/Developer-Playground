@@ -25,39 +25,7 @@ currentHTMLstateData = {
   doNotRestore: []
 }
 
-const services = {
-  "analyticsengine": 'Analytics Engine Powered by Apache Spark',
-  "bigsql": 'Db2 Big SQL',
-  "ca": 'Cognos Analytics',
-  "cde": 'Cognos Dashboards',
-  "datagate": 'Data Gate',
-  "datastage-ent-plus": 'DataStage Enterprise Plus',
-  "db2": 'Db2',
-  "db2wh": 'Db2 Warehouse',
-  "dmc": 'Data Management Console',
-  "dods": 'Decision Optimization',
-  "dp": 'Data Privacy',
-  "dv": 'Data Virtualization',
-  "factsheet": 'AI Factsheets',
-  "hadoop": 'Execution Engine for Apache Hadoop',
-  "match360": 'Match360',
-  "openpages": 'OpenPages',
-  "planning-analytics": 'Planning Analytics',
-  "replication": 'Data Replication',
-  "rstudio": 'RStudio Server',
-  "spss": 'SPSS Modeler',
-  "voice-gateway": 'Voice Gateway',
-  "watson-assistant": 'Watson Assistant',
-  "watson-discovery": 'Watson Discovery',
-  "watson-ks": 'Watson Knowledge Studio',
-  "watson-openscale": 'IBM Watson OpenScale',
-  "watson-speech": 'Watson Speech to Text',
-  "wkc": 'Watson Knowledge Catalog',
-  "wml": 'Watson Machine Learning',
-  "wml-accelerator": 'Watson Machine Learning Accelerator',
-  "ws-pipelines": 'Watson Studio Pipelines',
-  "wsl": 'Watson Studio'
-}
+let previousServicesState = "";
 
 function funcLoad(){
   // Disable timeline
@@ -84,11 +52,14 @@ function funcLoad(){
   toggleDropdowns(currentHTMLstateData.dropdownIds)
 
   //create services dropdown
-  createMultiSelectDropdownWithSearch("git-services", services, updateSelectedServices, "services", "services-search", filterServiceList)
+  //createMultiSelectDropdownWithSearch("git-services", services, updateSelectedServices, "services", "services-search", filterServiceList)
 
   addEventListenerToElement(document.getElementById("install_cpd"), "click", install_cpd);
 
-  addEventListenerToElement(document.getElementById("storage_value"), "change", () => { })
+  //addEventListenerToElement(document.getElementById("storage_value"), "change", () => { })
+
+  //add search function
+  addEventListenerToElement(document.getElementById("services-search"), "input", filterServiceList);
 
   //Store required CTAs in state
   storeCTAInState();
@@ -111,6 +82,20 @@ function handleCP4dVersion(e){
   }
 }
 
+function updateCP4Dyaml() {
+  let cp4dVersion = document.getElementById('cp4d_version').value || " ";
+  let component_list = currentHTMLstateData.selectedServices.toString()
+  if (!component_list) {
+    component_list = "null"
+  }
+  let storage = "auto";
+  if (previousServicesState === component_list)
+    return
+  document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d;`)
+  document.getElementById("update-config").click();
+  previousServicesState = component_list;
+}
+
 function install_cpd() {
   let cp4dVersion = document.getElementById('cp4d_version').value;
   let cp4dAdminPassword = document.getElementById('cp4d_admin_password').value
@@ -120,7 +105,7 @@ function install_cpd() {
     component_list = "null"
   }
   let storage = "auto" //document.getElementById("storage_value").value;
-  document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d; bash deploy.sh cp4d ${cp4dAdminPassword} ${cp4dEnvName}`)
+  document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `bash deploy.sh cp4d ${cp4dAdminPassword} ${cp4dEnvName}`)
   document.getElementById("install_cpd$1").click();
 }
 
@@ -129,14 +114,29 @@ function updateSelectedServices(e) {
   let gitServices = document.getElementsByName("services");
   if (e.target.checked) {
     currentHTMLstateData.selectedServices.indexOf(e.target.value) == -1 && currentHTMLstateData.selectedServices.push(e.target.value)
-    gitServicesList.insertBefore(e.target.parentElement, gitServicesList.firstChild);
+    //gitServicesList.insertBefore(e.target.parentElement, gitServicesList.firstChild);
   } else {
     currentHTMLstateData.selectedServices.indexOf(e.target.value) !== -1 && currentHTMLstateData.selectedServices.splice(currentHTMLstateData.selectedServices.indexOf(e.target.value), 1)
-    gitServicesList.insertBefore(e.target.parentElement, gitServices[Object.keys(services).indexOf(e.target.value)].parentElement);
+    //gitServicesList.insertBefore(e.target.parentElement, gitServices[Object.keys(services).indexOf(e.target.value)].parentElement);
   }
+  //gitServicesList.innerHTML = "";
+  currentHTMLstateData.selectedServices.sort()
+  currentHTMLstateData.selectedServices.forEach(res => {
+    console.log(res)
+    gitServicesList.appendChild(getDOMnode(gitServices, res))
+  })
+  let listServices = [...gitServices].map(service => service.value)
+  listServices.sort()
+  listServices.forEach((res, idx) => {
+    if(currentHTMLstateData.selectedServices.indexOf(res) == -1){
+      gitServicesList.appendChild(getDOMnode(gitServices, res))
+    }
+  })
+    
   let showSeleted = document.getElementById("selected-services")
   showSeleted.textContent = currentHTMLstateData.selectedServices.toString().replaceAll(",", ", ")
   document.getElementById("selected-components-string").textContent = getShortenedString(currentHTMLstateData.selectedServices) || "Select Services";
+  updateCP4Dyaml();
 }
 
 function filterServiceList(e) {
@@ -144,13 +144,13 @@ function filterServiceList(e) {
   let htmlServices = document.getElementsByName("services")
   let listServices = [...htmlServices].map(service => service.value)
   listServices.forEach((res, idx) => {
-    if (res.toLowerCase().includes(e.target.value.toLowerCase()) || services[res].toLowerCase().includes(e.target.value.toLowerCase())) {
-      filteredServices[res] = services[res]
+    
+    if (res.toLowerCase().includes(e.target.value.toLowerCase()) || htmlServices[idx].nextSibling.textContent.trim().toLowerCase().includes(e.target.value.toLowerCase())) {
+      filteredServices[res] = htmlServices[idx].nextSibling.textContent.trim()
       htmlServices[idx].parentElement.style.display = "block"
     } else {
       htmlServices[idx].parentElement.style.display = "none"
     }
   })
 }
-
 window.addEventListener("load", funcLoad);

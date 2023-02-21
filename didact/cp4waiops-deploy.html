@@ -1,0 +1,168 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="$$rootcsspath$$">
+    <style>
+        .header {
+            background-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/video_insights.jpeg");
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin-top:2rem"></div>
+    <div id="userID" class="hidden-state">$user_id</div>
+    <button id="update-workspace-state" action="update-workspace-state" class="send-to-extension hidden-state"></button>
+    <button id="get-workspace-state" action="get-workspace-state" class="send-to-extension hidden-state"></button>
+
+    <div class="header">
+        <div class="left-content">
+            <div class="apptitle">Self-service customizable CP4WAIOps environment setup</div>
+            <div class="subheading">Cloud Pak for Watson AIOps Application adopted the Operator based installation &
+                management pattern. This gives us flexibility to custom build a demo environment based on our needs. You
+                can choose to install just the required services in a self-service fashion on an appropriately sized
+                cluster for more cost effectiveness in addition to better performance as you would have installed just
+                services you need for your demo. This interface uses standard engineering-supported install
+                utility/mechanism for ongoing support/maintainability.</div>
+        </div>
+    </div>
+    <div class="section">
+        <p style="font-size:24px">Pre-requisites</p>
+        <div>
+            <p>To clear pre populated fields if any click <a id="reset-href" title="Reset">here</a>.</p>
+            <button id="reset-workspace-state" action="reset-workspace-state" class="send-to-extension hidden-state"
+                command="cd ${CHE_PROJECTS_ROOT};rm -rf techzone-demo">Reset</button>
+            <p>Configure Openshift credentials (either use combination of Openshift server URL, user/password (OR)
+                Openshift server URL, token).
+            <ol>
+                <li>From Openshift console, select your profile on top right and select “Copy login command”</li>
+                <li>From oc cli, run “oc config view --minify|grep server” to get server name and “oc whoami -t” to get
+                    token
+                </li>
+            </ol>
+            </p>
+            <p>Obtain an IBM Software Entitlement Key from <a
+                    href="https://myibm.ibm.com/products-services/containerlibrary"> IBM Container Library</a> using
+                your IBM ID. Click Get an entitlement key if you are not on the entitlement page.</p>
+            <div class="env-config">
+                <label id="icr_key$label">Entitlement Key: </label><input class="store-data env-variables" id="icr_key"
+                    name="icr_key" type="text" />
+                <label>Authentication Options:</label>
+                <div>
+                    <label><input type="radio" id="server_option" name="authentication-options" value="Server"
+                            class="store-data" checked />API Key</label>
+                    <label><input type="radio" id="kube_option" name="authentication-options" value="Kube"
+                            class="store-data" />Kube Admin</label>
+                    <label><input type="radio" id="oc_option" name="authentication-options" value="OC-Login"
+                            class="store-data" />OC Login</label>
+                </div>
+                <label id="oc_login$label" class="hidden-state">OC Login: </label><input
+                    class="store-data env-variables hidden-state" id="oc_login" name="oc_login" type="text" />
+                <label id="server$label">Server: </label><input class="store-data env-variables" id="server"
+                    name="server" type="text" />
+                <label id="api_token$label">API Token: </label><input class="store-data env-variables" id="api_token"
+                    name="api_token" type="text" />
+                <label id="kubeadmin_user$label" class="hidden-state">Kube Admin User: </label><input
+                    class="store-data env-variables hidden-state" id="kubeadmin_user" name="kubeadmin_user"
+                    type="text" />
+                <label id="kubeadmin_pass$label" class="hidden-state">Kube Admin Password: </label><input
+                    class="store-data env-variables hidden-state" id="kubeadmin_pass" name="kubeadmin_pass"
+                    type="password" />
+            </div>
+        </div>
+    </div>
+    <div class="section" style="margin-top:5rem;">
+        <p style="font-size:24px">Instructions</p>
+    </div>
+    <div class="timeline-container">
+        <input type="text" class="hidden-state" id="data-fetched" />
+        <div class="timeline" id="configure-environment-CTA">
+            <div class="content">
+                <p>Get the resources required to deploy CP4WAIOps services and connect to the openshift credentials.</p>
+            </div>
+            <button class="button is-dark is-medium" id="configure-env" title="Configure Environment"
+                numSuccess=1>Configure Environment</button><span class="spinner hidden-state"></span>
+            <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
+                nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
+            <button id="configure-env$2" class="send-to-extension hidden-state" action="readfile"
+                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;pip3.8 install pyYaml;python3.8 getInstalledServices.py cp4waiops"
+                filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
+                numSuccess=1 nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
+            <button id="enable-timeline" class="store-data hidden-state">Enable</button>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline">
+            <div class="content">
+                <p>Deploy selected CP4WAIOps services</p>
+                <div id="cp4waiops-deploy" class="env-config">
+                    <label>CP4WAIOps Admin Password</label>
+                    <input class="store-data" type="password" id="cp4waiops_admin_password">
+                    <label>CP4WAIOps Environment Name</label>
+                    <input class="store-data" type="text" id="cp4waiops_env_name">
+                    <label>CP4WAIOps Services List</label>
+                    <div id="service-list" class="dropdown-check-list" tabindex="100">
+                        <span class="anchor" id="selected-components-string">Select Services</span>
+                        <div class="items">
+                            <input id="services-search" type="search" placeholder="Search components"
+                                style="width: 100%" />
+                            <ul id="git-services">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top:1rem"><b>Selected Services: </b><span id="selected-services"></span></p>
+                <br /><br />
+
+                <div id="cp4waiops-instana" class="hidden-state">
+                    <p><b>Instana Credentials</b> (Get your licence <a
+                            href="https://w3.ibm.com/software/xl/download/ticket.wss">here</a>) </p>
+                    <div id="cp4waiops-addons" class="env-config">
+                        <label>Sales Key*</label>
+                        <input class="store-data" type="text" id="instana_saleskey">
+                        <label>Agent Key*</label>
+                        <input class="store-data" type="text" id="instana_agentkey">
+                        <br /><br />
+                    </div>
+                </div>
+
+                <div id="cp4waiops-turbonomic" class="hidden-state">
+                    <p><b>Turbonomic Credentials</b> (Get your Turbonomic Licence <a
+                            href="https://w3.ibm.com/software/xl/download/ticket.wss">here</a>) </p>
+                    <div id="cp4waiops-addons" class="env-config">
+                        <label style="inline-size: 110px;overflow-wrap: break-word;">Turbo Licence* (XML format)</label>
+                        <textarea rows="8" cols="25" class="store-data" id="turbo_lic"></textarea>
+                        <br /><br />
+                    </div>
+                </div>
+
+                <p>Explore and update the CP4WAIOps configuration as required.</p>
+            </div>
+            <button class="send-to-extension button is-dark is-medium" action="openPath" id="open-config"
+                title="Open Configure file" command="openPath"
+                filePath="/projects/techzone-demo/olm-utils-v2/cp4waiops-config.yaml">Edit Configuration</button><span class="spinner hidden-state"></span>
+            <span class="dot"></span></br></br>
+            <button class="button is-dark is-medium" id="install_cpd" title="Execute" command="">Install Selected
+                Services</button><span class="spinner hidden-state"></span>
+            <button id="install_cpd$1" class="send-to-extension hidden-state" action="senddata" command=""
+                numSuccess=2></button><span class="spinner hidden-state"></span>
+            <span class="dot"></span>
+        </div>
+
+
+        <div class="timeline">
+            <div class="content">
+                <p>Cleanup install utility artifacts</p>
+            </div>
+            <button class="send-to-extension button is-dark is-medium" id="clean-up-job" title="Clean up"
+                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/;sh delete.sh" numSuccess=1>Clean
+                up</button><span class="spinner hidden-state"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+</body>
+<script src="$$rootcommonjspath$$"></script>
+<script src="$$rootjspath$$"></script>
+<script src="$$rootvscodeutilspath$$"></script>
+
+</html>

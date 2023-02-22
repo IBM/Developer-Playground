@@ -9,6 +9,7 @@
     "test": "This is for testing!",
     "cp4i-deploy": "Techzone CP4I Deploy",
     "cp4d-deploy": "Techzone CP4D Deploy",
+    "cp4waiops-deploy": "Techzone CP4WAIOps Deploy",
     "cp4d-export": "Export Demo for CP4D",
     "cp4d-import": "Import Demo for CP4D",
     "cp4d-backup": "Techzone CP4D Backup",

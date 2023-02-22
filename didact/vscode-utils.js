@@ -20,6 +20,7 @@ window.addEventListener('message', event => {
             break;
         case 'renderFileData':
             const createElementWithAttributes = (parentElement, elementToRender, attributes, children) => {
+                let events = [];
                 let element = document.getElementById(attributes.id)
                 let newElementCreated = false;
                 if (elementToRender !== "TEXT_NODE") {
@@ -37,8 +38,12 @@ window.addEventListener('message', event => {
                                     element[key][action](...classes)
                                 }
                             } else if (key === "dispatchEvent") {
-                                element[key](new Event(value));
-                                console.log("event-triggered");
+                                //element[key](new Event(value));
+                                events.push({
+                                    element,
+                                    key,
+                                    value
+                                })
                             } else if (key === "command") {
                                 element.setAttribute(key,element.getAttribute(key)+value);
                             } else if (key === "numSuccess") {
@@ -52,7 +57,7 @@ window.addEventListener('message', event => {
                         }
                     }
                 } else {
-                    console.log("Text node", document.contains(parentElement))
+                    //console.log("Text node", document.contains(parentElement))
                     if (!document.contains(parentElement)) {
                         element = document.createTextNode(attributes.value)
                         newElementCreated = true
@@ -61,12 +66,13 @@ window.addEventListener('message', event => {
                 if (children) {
                     for (let i = 0; i < children.length; i++) {
                         let childElement = children[i]
-                        createElementWithAttributes(element, childElement.elementToRender, childElement.attributes, childElement.children)
+                        events = events.concat(createElementWithAttributes(element, childElement.elementToRender, childElement.attributes, childElement.children))
                     }
                 }
                 if (newElementCreated) {
                     parentElement.appendChild(element)
                 }
+                return events
             }
             console.log(receivedOutput.outputData)
             let dataFromFile = JSON.parse(receivedOutput.outputData)
@@ -74,7 +80,11 @@ window.addEventListener('message', event => {
                 let parentElement = document.getElementById(dataFromFile.componentsToRender[i].parentId);
                 for (let j = 0; j < dataFromFile.componentsToRender[i].dataToRender.length; j++) {
                     let element = dataFromFile.componentsToRender[i].dataToRender[j];
-                    createElementWithAttributes(parentElement, element.elementToRender, element.attributes, element.children);
+                    let events = createElementWithAttributes(parentElement, element.elementToRender, element.attributes, element.children);
+                    events.forEach(async ({element, key, value}) => {
+                        element[key](new Event(value));
+                    })
+                    console.log("event-triggered");
                 }
             }
             break;
@@ -128,7 +138,20 @@ window.addEventListener('message', event => {
                     nextAction: nextAction,
                     preProcess: preProcess,
                     elementId: elementId,
-                    numSuccess: numSuccess
+                    numSuccess: numSuccess,
+                });
+            }
+            else if (action == "openPath") {
+                command = anchor.getAttribute("command");
+                vscode.postMessage({
+                    command: 'openPath',
+                    text: command,
+                    filePath: filePath,
+                    silent: silent,
+                    nextAction: nextAction,
+                    preProcess: preProcess,
+                    elementId: elementId,
+                    numSuccess: numSuccess,
                 });
             }
             else if (action == "update-workspace-state") {

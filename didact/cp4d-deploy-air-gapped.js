@@ -1,62 +1,62 @@
+//base command to configure the environment
 let configureCommand = "git clone https://github.com/IBM/CPDemoFramework -b ${BRANCH} --single-branch ${CHE_PROJECTS_ROOT}/techzone-demo;cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;sh configure-env.sh ";
 
 currentHTMLstateData = {
   prerequisites: {
-    server: "",
-    api_token: "",
-    kubeadmin_user: "",
-    kubeadmin_pass: "",
     icr_key: "",
-    "oc_login":""
   },
   authenticationOptions: {
     required: ["icr_key"],
     additionalOptions: {
-      "server_option": ["server","api_token"],
-      "kube_option": ["server","kubeadmin_user", "kubeadmin_pass"],
-      "oc_option": ["oc_login"]
     },
   },
-  validPrerequisites: [["icr_key","oc_login"],["icr_key", "server", "api_token"], ["icr_key", "server", "kubeadmin_user", "kubeadmin_pass"]],
+  validPrerequisites: [["icr_key"]],
   dropdownIds: ["service-list"],
   envConfigured: false,
   selectedServices: [],
-  doNotRestore: []
+  doNotRestore: [],
+  registryParams: ["registry_host_name", "registry_port", "registry_namespace", "registry_user", "registry_password"]
 }
 
 let previousServicesState = "";
 
-function funcLoad(){
+
+function funcLoad() {
   // Disable timeline
   disableTimelineFromElement("all");
+
+  //get service list
+  document.getElementById("configure-env").click()
 
   //handle prerequisites
   for (let prerequisite of Object.keys(currentHTMLstateData.prerequisites)) {
     addEventListenerToElement(document.getElementById(prerequisite), "input", handlePrerequisiteValues);
   }
 
-  //handle authencation options
   [...document.getElementsByName("authentication-options")].forEach(element => addEventListenerToElement(element, "change", handleAuthenticationOptions))
 
-  addEventListenerToElement(document.getElementById("oc_login"),"input", handleOCLogin)
-
-  //generate config command
-  addEventListenerToElement(document.getElementById("configure-env"), "click", updateConfigVars);
-
-  //After env configured successfully enable timeline
-  addEventListenerToElement(document.getElementById("enable-timeline"), "click", enableAll)
+  //handle cp4d version
+  addEventListenerToElement(document.getElementById("cp4d_version"), "input", handleCP4dVersion)
 
   //open/close logic for all dropdowns
   toggleDropdowns(currentHTMLstateData.dropdownIds)
 
+  //portable registry option 
+  addEventListenerToElement(document.getElementById("registry_option"), "change", handleRegistryOption)
+
+  for (let registryParam of currentHTMLstateData.registryParams) {
+    console.log(registryParam)
+    addEventListenerToElement(document.getElementById(registryParam), "input", validateRegistryFields);
+  }
+
   //create services dropdown
   //createMultiSelectDropdownWithSearch("git-services", services, updateSelectedServices, "services", "services-search", filterServiceList)
+
   //add search function
   addEventListenerToElement(document.getElementById("services-search"), "input", filterServiceList);
 
-  addEventListenerToElement(document.getElementById("install_cpd"), "click", install_cpd);
-
-  //addEventListenerToElement(document.getElementById("storage_value"), "change", () => { })
+  //mirror-image
+  addEventListenerToElement(document.getElementById("mirror-image"), "click", mirrorImage)
 
   //Store required CTAs in state
   storeCTAInState();
@@ -66,14 +66,17 @@ function funcLoad(){
 
   //reset workspace state
   addEventListenerToElement(document.getElementById("reset-href"), "click", resetWorkspace);
+
 }
 
-function updateConfigVars(e){
-  document.getElementById("configure-env$1").setAttribute("command", `${configureCommand}${Object.keys(currentHTMLstateData.prerequisites).map(val => `"${currentHTMLstateData.prerequisites[val] || "\"\""}"`).toString().replaceAll(",", "%20")}`);
-  document.getElementById("configure-env$1").click();
+function handleCP4dVersion(e) {
+  if ((e.target.value.trim()).match((/^\d\.\d$/))) {
+    e.target.value = e.target.value.trim() + ".0"
+  }
 }
-function updateCP4Iyaml() {
-  let cp4iVersion = document.getElementById('cp4i_version').value || " ";
+
+function updateCP4Dyaml() {
+  let cp4dVersion = document.getElementById('cp4d_version').value || " ";
   let component_list = currentHTMLstateData.selectedServices.toString()
   if (!component_list) {
     component_list = "null"
@@ -81,22 +84,40 @@ function updateCP4Iyaml() {
   let storage = "auto";
   if (previousServicesState === component_list)
     return
-  document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4iVersion} cp4i`)
+  document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d`)
   document.getElementById("update-config").click();
   previousServicesState = component_list;
 }
 
-function install_cpd(){
-  let cp4iVersion = document.getElementById('cp4i_version').value;
-  let cp4iAdminPassword = document.getElementById('cp4i_admin_password').value
-  let cp4iEnvName = document.getElementById('cp4i_env_name').value
-  let component_list = currentHTMLstateData.selectedServices.toString()
-  if (!component_list) {
-    component_list = "null"
+function handleRegistryOption(e) {
+  let registryLabels = document.getElementById("registry-details").getElementsByTagName("label");
+  for (let label of registryLabels) {
+    if (e.target.checked && (label.innerHTML.includes("Host Name") || label.innerHTML.includes("User") || label.innerHTML.includes("Password"))) {
+      label.innerHTML = label.innerHTML.slice(0, -1);
+    } else if (!label.innerHTML.includes("*") && !label.innerHTML.includes("Option")) {
+      label.innerHTML = `${label.innerHTML}*`
+    }
   }
-  let storage = "auto"//document.getElementById("storage_value").value;
-  document.getElementById("install_cpd$1").setAttribute("command","cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;" +  `bash deploy.sh cp4i ${cp4iAdminPassword} ${cp4iEnvName}`)
-  document.getElementById("install_cpd$1").click();
+  validateRegistryFields("e")
+}
+
+function validateRegistryFields(e) {
+  let valid = false;
+  for (let registryParam of currentHTMLstateData.registryParams) {
+    if (document.getElementById(registryParam).value.trim() !== "") {
+      valid = true
+    }
+    else if (document.getElementById("registry_option").checked && ["registry_host_name", "registry_user", "registry_password"].includes(registryParam)) {
+      valid = true
+    } else {
+      valid = false
+    }
+    if (!valid) {
+      disableTimelineFromElement("configure-environment-CTA")
+      return
+    }
+  }
+  enableTimelineTillElement("all");
 }
 
 function getDOMnode(htmlServices, service){
@@ -136,7 +157,7 @@ function updateSelectedServices(e) {
   let showSeleted = document.getElementById("selected-services")
   showSeleted.textContent = currentHTMLstateData.selectedServices.toString().replaceAll(",", ", ")
   document.getElementById("selected-components-string").textContent = getShortenedString(currentHTMLstateData.selectedServices) || "Select Services";
-  updateCP4Iyaml();
+  updateCP4Dyaml();
 }
 
 function filterServiceList(e) {
@@ -152,6 +173,20 @@ function filterServiceList(e) {
       htmlServices[idx].parentElement.style.display = "none"
     }
   })
+}
+
+function mirrorImage(e) {
+  let cp4dAdminPassword = document.getElementById('cp4d_admin_password').value
+  let cp4dEnvName = document.getElementById('cp4d_env_name').value
+  let entitlementKey = document.getElementById('icr_key').value
+  let portable = document.getElementById("registry_option").checked
+  let registryHostName = document.getElementById('registry_host_name').value
+  let registryPort = document.getElementById('registry_port').value
+  let registryNamespace = document.getElementById('registry_namespace').value
+  let registryUser = document.getElementById('registry_user').value
+  let registryPassword = document.getElementById('registry_password').value
+  document.getElementById("mirror-image$1").setAttribute("command", "cp ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/cp4d-config.yaml /opt/ansible/cpd-config/config/cpd-config.yaml;"+`sh /cloud-pak-deployer/cp-deploy.sh env download -e=env_id=${cp4dEnvName} -e=ibm_cp_entitlement_key=${entitlementKey} -v`)
+  document.getElementById("mirror-image$1").click();
 }
 
 window.addEventListener("load", funcLoad);

@@ -74,6 +74,10 @@
                         <div id="cp4i-deploy" class="env-config">
                             <label>CP4I Version</label>
                             <input type="text" id="cp4i_version" value="2022.2.1-0">
+                            <label>CP4I Admin Password</label>
+                            <input class="store-data" type="password" id="cp4i_admin_password">
+                            <label>CP4I Environment Name</label>
+                            <input class="store-data" type="text" id="cp4i_env_name">
                             <label>CP4I Services List
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             <div id="service-list" class="dropdown-check-list" tabindex="100">
@@ -86,28 +90,15 @@
                         </div>
                     </div>
                         <p style="margin-top:1rem"><b>Selected Services: </b><span id="selected-services"></span></p>
-                        <div class="env-config">
-                            <b>Storage Vendor</b><br>
-                            <div>
-                                Valid values include:
-                                <ul>
-                                <li>nfs: If using NFS you should ensure that there is a storage class called managed-nfs-storage </li>
-                                <li>ocs: If you are using OCS storage for CP4I </li>
-                                <li>portworx: If you are using Portworx storage for CP4I </li>
-                                <li>roks-classic: If you want to use ibmc-file-gold-gid and ibm-block-gold-gid </li>
-                                <ul>
-                            </div>
-                            <label></label>
-                            <select class="stroe-data" id="storage_value" style="width:150px;height:33px;padding-left: -150px">
-                                <option value="nfs">nfs</option>
-                                <option value="ocs">ocs</option>
-                                <option value="portworx">portworx</option>
-                                <option value="roks-classic">roks-classic</option>
-                            </select>
+                        <br /><br />
+                        <p>Explore and update the CP4I configuration as required</p>
                         </div>
+                        <button class="send-to-extension button is-dark is-medium" action="openPath" id="open-config" title="Open Configure file" command="" filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/cp4i-config.yaml" silent="true">Edit Configuration</button><span class="spinner hidden-state"></span>
+                        <button class="send-to-extension button is-dark is-medium hidden-state" action="senddata" id="update-config" title="Update Configure file" command="" silent="true" preProcess="true"></button><span class="dot"></span></br></br>
+                        <div class="content">
+                            <p>Install selected services</p>
                         </div>
-                    <br /><br />
-                    <button class="button is-dark is-medium" id="install_cpd" title="Execute">Install selected services</button><span class="spinner hidden-state"></span>
+                    <button class="button is-dark is-medium" id="install_cpd" title="Execute" command="">Install Services</button><span class="spinner hidden-state"></span>
                     <button id="install_cpd$1" class="send-to-extension hidden-state" action="senddata" command="" numSuccess=2></button><span class="spinner hidden-state"></span>
                     <span class="dot"></span>
         </div>

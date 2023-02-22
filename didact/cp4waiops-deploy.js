@@ -31,9 +31,6 @@ function funcLoad() {
     // Disable timeline
     disableTimelineFromElement("all");
 
-    //get service list
-    document.getElementById("configure-env").click()
-
     //handle prerequisites
     for (let prerequisite of Object.keys(currentHTMLstateData.prerequisites)) {
         addEventListenerToElement(document.getElementById(prerequisite), "input", handlePrerequisiteValues);
@@ -53,12 +50,12 @@ function funcLoad() {
 
     //create services dropdown
     //createMultiSelectDropdownWithSearch("git-services", services, updateSelectedServices, "services", "services-search", filterServiceList)
-    
+
     //add search function
     addEventListenerToElement(document.getElementById("services-search"), "input", filterServiceList);
     addEventListenerToElement(document.getElementById("install_cpd"), "click", install_cpd);
 
-    addEventListenerToElement(document.getElementById("storage_value"), "change", () => { })
+    //addEventListenerToElement(document.getElementById("storage_value"), "change", () => { })
 
     //Store required CTAs in state
     storeCTAInState();
@@ -75,6 +72,19 @@ function updateConfigVars(e) {
     document.getElementById("configure-env$1").click();
 }
 
+function updateCP4WAIOpsyaml() {
+    let cp4waiopsVersion = document.getElementById('cp4waiops_version').value || " ";
+    let component_list = currentHTMLstateData.selectedServices.toString()
+    if (!component_list) {
+        component_list = "null"
+    }
+    let storage = "auto";
+    if (previousServicesState === component_list)
+        return
+    document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4waiopsVersion} cp4waiops`)
+    document.getElementById("update-config").click();
+    previousServicesState = component_list;
+}
 function install_cpd() {
     let cp4waiopsVersion = "0";
     let cp4waiopsAdminPassword = document.getElementById('cp4waiops_admin_password').value
@@ -143,7 +153,7 @@ function updateSelectedServices(e) {
     let listServices = [...gitServices].map(service => service.value)
     listServices.sort()
     listServices.forEach((res, idx) => {
-        if(currentHTMLstateData.selectedServices.indexOf(res) == -1){
+        if (currentHTMLstateData.selectedServices.indexOf(res) == -1) {
             gitServicesList.appendChild(getDOMnode(gitServices, res))
         }
     })
@@ -151,6 +161,7 @@ function updateSelectedServices(e) {
     let showSeleted = document.getElementById("selected-services")
     showSeleted.textContent = currentHTMLstateData.selectedServices.toString().replaceAll(",", ", ")
     document.getElementById("selected-components-string").textContent = getShortenedString(currentHTMLstateData.selectedServices) || "Select Services";
+    updateCP4WAIopsyaml();
 }
 
 function filterServiceList(e) {

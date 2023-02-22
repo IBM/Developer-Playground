@@ -109,6 +109,16 @@ function install_cpd() {
   document.getElementById("install_cpd$1").click();
 }
 
+function getDOMnode(htmlServices, service){
+  let listServices = [...htmlServices].map(service => service.value)
+  for (let i=0; i < listServices.length; i++){
+    //console.log(htmlServices, service)
+    if(service === listServices[i]){
+      return htmlServices[i].parentElement
+    }
+  }
+}
+
 function updateSelectedServices(e) {
   let gitServicesList = document.getElementById("git-services");
   let gitServices = document.getElementsByName("services");

@@ -85,7 +85,7 @@
                 numSuccess=1>Configure Environment</button><span class="spinner hidden-state"></span>
             <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
                 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
-            <button id="configure-env$2" class="send-to-extension hidden-state" action="readfile"
+            <button id="configure-env$2" class="store-data send-to-extension hidden-state" action="readfile"
                 command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;pip3.8 install pyYaml;python3.8 getInstalledServices.py cp4waiops"
                 filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
                 numSuccess=1 nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
@@ -115,7 +115,8 @@
                 <br /><br />
 
                 <div id="cp4waiops-instana" class="hidden-state">
-                    <p><b>Instana Credentials</b> (Get your licence <a href="https://w3.ibm.com/software/xl/download/ticket.wss">here</a>) </p>
+                    <p><b>Instana Credentials</b> (Get your licence <a
+                            href="https://w3.ibm.com/software/xl/download/ticket.wss">here</a>) </p>
                     <div id="cp4waiops-addons" class="env-config">
                         <label>Sales Key*</label>
                         <input class="store-data" type="text" id="instana_saleskey">
@@ -126,7 +127,8 @@
                 </div>
 
                 <div id="cp4waiops-turbonomic" class="hidden-state">
-                    <p><b>Turbonomic Credentials</b> (Get your Turbonomic Licence <a href="https://w3.ibm.com/software/xl/download/ticket.wss">here</a>) </p>
+                    <p><b>Turbonomic Credentials</b> (Get your Turbonomic Licence <a
+                            href="https://w3.ibm.com/software/xl/download/ticket.wss">here</a>) </p>
                     <div id="cp4waiops-addons" class="env-config">
                         <label style="inline-size: 110px;overflow-wrap: break-word;">Turbo Licence* (XML format)</label>
                         <textarea rows="8" cols="25" class="store-data" id="turbo_lic"></textarea>
@@ -134,14 +136,19 @@
                     </div>
                 </div>
 
-                <p>Explore and update the CP4WAIOps configuration as per your requirement.</p>
+                <p>Explore and update the CP4WAIOps configuration as required</p>
             </div>
             <button class="send-to-extension button is-dark is-medium" action="openPath" id="open-config"
-                title="Open Configure file" command="openPath"
-                filePath="/projects/techzone-demo/olm-utils-v2/cp4waiops-config.yaml">Explore CP4WAIOps
-                Configure</button><span class="spinner hidden-state"></span>
+                title="Open Configure file" command=""
+                filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/cp4waiops-config.yaml" silent="true">Edit
+                Configuration</button><span class="spinner hidden-state"></span>
+            <button class="send-to-extension button is-dark is-medium hidden-state" action="senddata" id="update-config"
+                title="Update Configure file" command="" silent="true" preProcess="true"></button>
             <span class="dot"></span></br></br>
-            <button class="button is-dark is-medium" id="install_cpd" title="Execute" command="">Install Selected
+            <div class="content">
+                <p>Install selected services</p>
+            </div>
+            <button class="button is-dark is-medium" id="install_cpd" title="Execute" command="">Install
                 Services</button><span class="spinner hidden-state"></span>
             <button id="install_cpd$1" class="send-to-extension hidden-state" action="senddata" command=""
                 numSuccess=2></button><span class="spinner hidden-state"></span>

@@ -42,7 +42,7 @@ function funcLoad() {
   addEventListenerToElement(document.getElementById("configure-env"), "click", updateConfigVars);
 
   //After env configured successfully enable timeline
-  addEventListenerToElement(document.getElementById("enable-timeline"), "click", enableAll)
+  addEventListenerToElement(document.getElementById("enable-timeline"), "click", backupCTAVisibility)
 
   //Store required CTAs in state
   storeCTAInState();
@@ -59,6 +59,24 @@ function updateConfigVars(e) {
   document.getElementById("configure-env$1").click();
 }
 
+function backupCTAVisibility() {
+  // enables all but disables the backup cta
+  enableTimelineTillElement("all");
+  modifyVisibilityOfCTAs(['backup_src'], "disable");
+}
+
+// check backup name format
+function checkbackupName(e) {
+  if ((e.target.value.trim()).match((/^(?=.{1,50}$)[a-z0-9]+(-[a-z0-9]+)*$/))) {
+    modifyVisibilityOfCTAs(['backup_src'], "enable");
+  }
+  else {
+    modifyVisibilityOfCTAs(['backup_src'], "disable");
+  }
+}
+
+
+addEventListenerToElement(document.getElementById("backup_name"), "input", checkbackupName)
 //start backup cta
 document.getElementById("backup_src").addEventListener("click", backup_src);
 

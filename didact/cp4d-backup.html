@@ -76,8 +76,9 @@
                 <div style="padding: 1.5rem;">
                     <div class="content">
                         <p>Backup the Cluster.</p>
+                        <p>The backup name must only consist of lowercase alphanumeric characters or '-', must start and end with an alphanumeric character and not exceed 50 characters.</p>
                         <div class="env-config">
-                        <label id="backup_name$label">CP4D Backup Name </label><input class="store-data env-variables" id="backup_name" value="cpd-backup" name="backup_name" type="text" />
+                        <label id="backup_name$label">CP4D Backup Name </label><input class="store-data env-variables" id="backup_name" placeholder="cpd-backup-name" maxlength = "50" name="backup_name" type="text" />
                         </div>
                     </div>
                     <br /><br />

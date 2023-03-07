@@ -46,7 +46,7 @@ function funcLoad() {
   [...document.getElementsByName("action-options")].forEach(element => addEventListenerToElement(element, "change", showAvailableOptions))
 
   //handle cp4d version
-  addEventListenerToElement(document.getElementById("cp4d_version"), "input", handleCP4dVersion)
+  addEventListenerToElement(document.getElementById("cp4d_version"), "onfocusout", updateCP4Dyaml)
 
   //open/close logic for all dropdowns
   toggleDropdowns(currentHTMLstateData.dropdownIds)
@@ -86,14 +86,18 @@ function funcLoad() {
   document.getElementById("mirror_option").dispatchEvent(new Event("change"));
 }
 
-function handleCP4dVersion(e) {
-  if ((e.target.value.trim()).match((/^\d\.\d$/))) {
-    e.target.value = e.target.value.trim() + ".0"
-  }
+function handleCP4dVersion(version) {
+  if (version.trim().match((/^\d\.\d\.\d$/)))
+    return version.trim()
+  else if (version.trim().match((/^\d\.\d$/)))
+    return version.trim() + ".0"
+  else
+    return "4.6.0"
 }
 
 function updateCP4Dyaml() {
-  let cp4dVersion = document.getElementById('cp4d_version').value || " ";
+  let cp4dVersion = handleCP4dVersion(document.getElementById('cp4d_version').value);
+
   let component_list = currentHTMLstateData.selectedServices.toString()
   if (!component_list) {
     component_list = "null"
@@ -183,13 +187,20 @@ function mirrorImage(e) {
   }
   data = JSON.stringify(data)
   console.log(data)
-  document.getElementById("mirror-image$1").setAttribute("command", "cp ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/cp4d-config.yaml /opt/ansible/cpd-config/config/cpd-config.yaml;" + "cd ${CHE_PROJECTS_ROOT}/scripts;"+`python3.8 get-data.py '${data}';` + "./air-gapped-deploy.sh ${CHE_PROJECTS_ROOT}/scripts/data.json")
+  document.getElementById("mirror-image$1").setAttribute("command", "cp ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/cp4d-config.yaml /opt/ansible/cpd-config/config/cpd-config.yaml;" + "cd ${CHE_PROJECTS_ROOT}/scripts;" + `python3.8 get-data.py '${data}';` + "./air-gapped-deploy.sh ${CHE_PROJECTS_ROOT}/scripts/data.json")
   document.getElementById("mirror-image$1").click();
 }
 
 function toggleContext(action, portable) {
   //console.log(action, env, portable)
   toggleFields("show")
+  document.getElementById("action-content").textContent = "Mirror Image"
+  let cta = document.getElementById("mirror-image")
+  document.getElementById("cp4d_env_name").disabled = false;
+    document.getElementById("cp4d_version").disabled = false;
+    document.getElementById("git-services").getElementsByTagName("INPUT").forEach(element => element.disabled=false)
+  cta.setAttribute("title", "Mirror")
+  cta.textContent = "Mirror"
   if (action === "air-gapped-mirror") {
     currentHTMLstateData.validPrerequisites.length === 3 ? currentHTMLstateData.validPrerequisites.push(["icr_key"]) : null;
     currentHTMLstateData.toggleFields = ["authentication_options_label", "authentication_options_div", "oc_login$label", "oc_login", "server$label", "server", "api_token$label", "api_token", "kubeadmin_user$label", "kubeadmin_user", "kubeadmin_pass$label", "kubeadmin_pass", "registry_option_label", "registry_option_div"]
@@ -208,9 +219,16 @@ function toggleContext(action, portable) {
   }
   else if (action === "install") {
     console.log("------", currentHTMLstateData.validPrerequisites.includes(["icr_key"]), currentHTMLstateData.validPrerequisites)
+    document.getElementById("action-content").textContent = "Install CP4D"
+    let cta = document.getElementById("mirror-image")
+    cta.setAttribute("title", "Install")
+    cta.textContent = "Install"
     currentHTMLstateData.validPrerequisites.length === 4 ? currentHTMLstateData.validPrerequisites.pop() : null;
     currentHTMLstateData.requiredRegistryFileds = ["registry_host_name", "registry_port", "registry_namespace", "registry_user", "registry_password"]
     currentHTMLstateData.toggleFields = ["icr_key$para", "icr_key$label", "icr_key", "registry_option_label", "registry_option_div"]
+    document.getElementById("cp4d_env_name").disabled = true;
+    document.getElementById("cp4d_version").disabled = true;
+    document.getElementById("git-services").getElementsByTagName("INPUT").forEach(element => element.disabled=true)
   }
   let prerequisiteFulfilled = checkAllPrequisiteFieldsfilled()
   if (prerequisiteFulfilled) {

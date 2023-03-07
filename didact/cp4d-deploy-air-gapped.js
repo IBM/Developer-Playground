@@ -196,6 +196,9 @@ function toggleContext(action, portable) {
   toggleFields("show")
   document.getElementById("action-content").textContent = "Mirror Image"
   let cta = document.getElementById("mirror-image")
+  document.getElementById("cp4d_env_name").disabled = false;
+    document.getElementById("cp4d_version").disabled = false;
+    document.getElementById("git-services").getElementsByTagName("INPUT").forEach(element => element.disabled=false)
   cta.setAttribute("title", "Mirror")
   cta.textContent = "Mirror"
   if (action === "air-gapped-mirror") {
@@ -223,6 +226,9 @@ function toggleContext(action, portable) {
     currentHTMLstateData.validPrerequisites.length === 4 ? currentHTMLstateData.validPrerequisites.pop() : null;
     currentHTMLstateData.requiredRegistryFileds = ["registry_host_name", "registry_port", "registry_namespace", "registry_user", "registry_password"]
     currentHTMLstateData.toggleFields = ["icr_key$para", "icr_key$label", "icr_key", "registry_option_label", "registry_option_div"]
+    document.getElementById("cp4d_env_name").disabled = true;
+    document.getElementById("cp4d_version").disabled = true;
+    document.getElementById("git-services").getElementsByTagName("INPUT").forEach(element => element.disabled=true)
   }
   let prerequisiteFulfilled = checkAllPrequisiteFieldsfilled()
   if (prerequisiteFulfilled) {

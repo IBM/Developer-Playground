@@ -76,7 +76,7 @@ function updateConfigVars(e) {
   document.getElementById("configure-env$1").click();
 }
 
-function handleCP4dVersion(e) {
+function handleCP4dVersion(version) {
   if (version.trim().match((/^\d\.\d\.\d$/)))
     return version.trim()
   else if (version.trim().match((/^\d\.\d$/)))

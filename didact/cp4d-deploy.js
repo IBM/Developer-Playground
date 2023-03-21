@@ -43,7 +43,7 @@ function funcLoad() {
   addEventListenerToElement(document.getElementById("configure-env"), "click", updateConfigVars);
 
   //After env configured successfully enable timeline
-  addEventListenerToElement(document.getElementById("enable-timeline"), "click", enableAll)
+  addEventListenerToElement(document.getElementById("enable-timeline"), "click", updateYamlAndEnableTimeline);
 
   //handle cp4d version
   addEventListenerToElement(document.getElementById("cp4d_version"), "onfocusout", updateCP4Dyaml)
@@ -53,6 +53,8 @@ function funcLoad() {
 
   //create services dropdown
   //createMultiSelectDropdownWithSearch("git-services", services, updateSelectedServices, "services", "services-search", filterServiceList)
+
+  addEventListenerToElement(document.getElementById("open-config"), "click", updateAndOpenConfig)
 
   addEventListenerToElement(document.getElementById("install_cpd"), "click", install_cpd);
 
@@ -74,6 +76,22 @@ function funcLoad() {
 function updateConfigVars(e) {
   document.getElementById("configure-env$1").setAttribute("command", `${configureCommand}${Object.keys(currentHTMLstateData.prerequisites).map(val => `"${currentHTMLstateData.prerequisites[val] || "\"\""}"`).toString().replaceAll(",", "%20")}`);
   document.getElementById("configure-env$1").click();
+}
+
+function updateYamlAndEnableTimeline(e){
+  updateCP4Dyaml()
+  enableAll()
+}
+
+function updateAndOpenConfig(e){
+  let cp4dVersion = handleCP4dVersion(document.getElementById('cp4d_version').value);
+  let component_list = currentHTMLstateData.selectedServices.toString()
+  if (!component_list) {
+    component_list = "null"
+  }
+  let storage = "auto";
+  document.getElementById("open-config$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d`)
+  document.getElementById("open-config$1").click();
 }
 
 function handleCP4dVersion(version) {
@@ -100,7 +118,7 @@ function updateCP4Dyaml() {
 }
 
 function install_cpd() {
-  //let cp4dVersion = document.getElementById('cp4d_version').value;
+  let cp4dVersion = handleCP4dVersion(document.getElementById('cp4d_version').value);
   let cp4dAdminPassword = document.getElementById('cp4d_admin_password').value
   let cp4dEnvName = document.getElementById('cp4d_env_name').value
   let component_list = currentHTMLstateData.selectedServices.toString()
@@ -108,7 +126,7 @@ function install_cpd() {
     component_list = "null"
   }
   let storage = "auto" //document.getElementById("storage_value").value;
-  document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;" + `bash deploy.sh cp4d ${cp4dAdminPassword} ${cp4dEnvName}`)
+  document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;" + `python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d;bash deploy.sh cp4d ${cp4dAdminPassword} ${cp4dEnvName}`)
   document.getElementById("install_cpd$1").click();
 }
 

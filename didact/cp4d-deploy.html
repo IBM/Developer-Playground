@@ -78,11 +78,11 @@
                         <p>Deploy selected CP4D services</p>
                         <div id="cp4d-deploy"class="env-config">
                             <label>CP4D Version</label>
-                            <input class="store-data" type="text" id="cp4d_version" value="4.6.0" onkeydown="return event.keyCode==8 ? event.key : /[0-9]|\./i.test(event.key)">
+                            <input class="store-data" type="text" id="cp4d_version" value="4.6.0" onkeydown="return (event.keyCode==8 || event.keyCode== 9) ? event.key : /[0-9]|\./i.test(event.key)">
                             <label>CP4D Admin Password</label>
                             <input class="store-data" type="password" id="cp4d_admin_password">
                             <label>CP4D Environment Name</label>
-                            <input class="store-data" type="text" id="cp4d_env_name">
+                            <input class="store-data" type="text" id="cp4d_env_name" value="CP4D">
                             <label>CP4D Services List</label>
                             <div id="service-list" class="dropdown-check-list" tabindex="100">
                                 <span class="anchor" id="selected-components-string">Select Services</span>
@@ -97,13 +97,14 @@
                         <br /><br />
                         <p>Explore and update the CP4D configuration as required</p>
                         </div>
-                        <button class="send-to-extension button is-dark is-medium" action="openPath" id="open-config" title="Open Configure file" command="" filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/cp4d-config.yaml" silent="true">Edit Configuration</button><span class="spinner hidden-state"></span>
+                        <button class="button is-dark is-medium" id="open-config" title="Open Configure file" numSuccess=1>Edit Configuration</button><span class="spinner hidden-state"></span>
+                        <button class="send-to-extension button is-dark is-medium hidden-state" action="openPath" id="open-config$1" title="Open Configure file" command="" filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/cp4d-config.yaml" silent="true" preProcess="true">Edit Configuration</button><span class="spinner hidden-state"></span>
                         <button class="send-to-extension button is-dark is-medium hidden-state" action="senddata" id="update-config" title="Update Configure file" command="" silent="true" preProcess="true"></button><span class="dot"></span></br></br>
                         <div class="content">
                             <p>Install selected services</p>
                         </div>
                     <button class="button is-dark is-medium" id="install_cpd" title="Execute" command="">Install Services</button><span class="spinner hidden-state"></span>
-                    <button id="install_cpd$1" class="send-to-extension hidden-state" action="senddata" command="" numSuccess=1></button><span class="spinner hidden-state"></span>
+                    <button id="install_cpd$1" class="send-to-extension hidden-state" action="senddata" command="" numSuccess=2></button><span class="spinner hidden-state"></span>
                     <span class="dot"></span>
             </div>
         <div class="timeline">

@@ -101,6 +101,7 @@ function updateAndOpenConfig(e){
     document.getElementById("open-config$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/`)
   }
   document.getElementById("open-config$1").click();
+  previousCP4DVersion = cp4dVersion;
 }
 
 function handleCP4dVersion(version) {
@@ -138,6 +139,7 @@ function install_cpd() {
   let storage = "auto" //document.getElementById("storage_value").value;
   document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;" + `python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d;bash deploy.sh cp4d ${cp4dAdminPassword} ${cp4dEnvName}`)
   document.getElementById("install_cpd$1").click();
+  previousCP4DVersion = cp4dVersion;
 }
 
 function getDOMnode(htmlServices, service) {

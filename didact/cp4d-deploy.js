@@ -46,7 +46,7 @@ function funcLoad() {
   addEventListenerToElement(document.getElementById("enable-timeline"), "click", updateYamlAndEnableTimeline);
 
   //handle cp4d version
-  addEventListenerToElement(document.getElementById("cp4d_version"), "onfocusout", updateCP4Dyaml)
+  //addEventListenerToElement(document.getElementById("cp4d_version"), "onfocusout", updateCP4Dyaml)
 
   //open/close logic for all dropdowns
   toggleDropdowns(currentHTMLstateData.dropdownIds)

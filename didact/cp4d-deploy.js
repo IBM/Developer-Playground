@@ -92,10 +92,14 @@ function updateAndOpenConfig(e){
   }
   let storage = "auto";
   console.log(cp4dVersion, previousCP4DVersion, cp4dVersion === previousCP4DVersion)
-  if(previousCP4DVersion != cp4dVersion)
+  if(previousCP4DVersion != cp4dVersion){
+    document.getElementById("open-config$1").setAttribute("preProcess", "true")
     document.getElementById("open-config$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d`)
-  else
+  }
+  else {
+    document.getElementById("open-config$1").removeAttribute("preProcess");
     document.getElementById("open-config$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/`)
+  }
   document.getElementById("open-config$1").click();
 }
 

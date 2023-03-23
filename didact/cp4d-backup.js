@@ -67,6 +67,7 @@ function backupCTAVisibility() {
 
 // check backup name format
 function checkbackupName(e) {
+  e.target.value = e.target.value.toLowerCase();
   if ((e.target.value.trim()).match((/^(?=.{1,50}$)[a-z0-9]+(-[a-z0-9]+)*$/))) {
     modifyVisibilityOfCTAs(['backup_src'], "enable");
   }
@@ -82,7 +83,7 @@ document.getElementById("backup_src").addEventListener("click", backup_src);
 
 
 function backup_src() {
-  let backupName = document.getElementById('backup_name').value;
+  let backupName = document.getElementById('backup_name').value.toLowerCase();
   document.getElementById("backup_src$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/cpd-backup/sandbox/cpdbr; bash cpdbr.sh cp4d backup ${backupName}`)
   document.getElementById("backup_src$1").click();
 }

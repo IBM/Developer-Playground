@@ -26,6 +26,7 @@ currentHTMLstateData = {
 }
 
 let previousServicesState = "";
+let previousCP4DVersion = "4.6.3"
 
 function funcLoad() {
   // Disable timeline
@@ -90,7 +91,8 @@ function updateAndOpenConfig(e){
     component_list = "null"
   }
   let storage = "auto";
-  document.getElementById("open-config$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d`)
+  if(previousCP4DVersion != cp4dVersion)
+    document.getElementById("open-config$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d`)
   document.getElementById("open-config$1").click();
 }
 
@@ -100,7 +102,7 @@ function handleCP4dVersion(version) {
   else if (version.trim().match((/^\d\.\d$/)))
     return version.trim() + ".0"
   else
-    return "4.6.0"
+    return "4.6.3"
 }
 
 function updateCP4Dyaml() {
@@ -115,6 +117,7 @@ function updateCP4Dyaml() {
   document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d`)
   document.getElementById("update-config").click();
   previousServicesState = component_list;
+  previousCP4DVersion = cp4dVersion;
 }
 
 function install_cpd() {

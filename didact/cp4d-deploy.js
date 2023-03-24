@@ -47,15 +47,13 @@ function funcLoad() {
   addEventListenerToElement(document.getElementById("enable-timeline"), "click", updateYamlAndEnableTimeline);
 
   //handle cp4d version
-  addEventListenerToElement(document.getElementById("cp4d_version"), "onfocusout", updateCP4Dyaml)
+  addEventListenerToElement(document.getElementById("cp4d_version"), "focusout", updateCP4Dyaml)
 
   //open/close logic for all dropdowns
   toggleDropdowns(currentHTMLstateData.dropdownIds)
 
   //create services dropdown
   //createMultiSelectDropdownWithSearch("git-services", services, updateSelectedServices, "services", "services-search", filterServiceList)
-
-  addEventListenerToElement(document.getElementById("open-config"), "click", updateAndOpenConfig)
 
   addEventListenerToElement(document.getElementById("install_cpd"), "click", install_cpd);
 
@@ -82,26 +80,6 @@ function updateConfigVars(e) {
 function updateYamlAndEnableTimeline(e){
   updateCP4Dyaml()
   enableAll()
-}
-
-function updateAndOpenConfig(e){
-  let cp4dVersion = handleCP4dVersion(document.getElementById('cp4d_version').value);
-  let component_list = currentHTMLstateData.selectedServices.toString()
-  if (!component_list) {
-    component_list = "null"
-  }
-  let storage = "auto";
-  console.log(cp4dVersion, previousCP4DVersion, cp4dVersion === previousCP4DVersion)
-  if(previousCP4DVersion != cp4dVersion){
-    document.getElementById("open-config$1").setAttribute("preProcess", "true")
-    document.getElementById("open-config$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d`)
-  }
-  else {
-    document.getElementById("open-config$1").removeAttribute("preProcess");
-    document.getElementById("open-config$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/`)
-  }
-  document.getElementById("open-config$1").click();
-  previousCP4DVersion = cp4dVersion;
 }
 
 function handleCP4dVersion(version) {

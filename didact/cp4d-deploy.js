@@ -25,8 +25,10 @@ currentHTMLstateData = {
   doNotRestore: []
 }
 
+const DEFAULT_CP4D_VERSION = "4.6.3"
+
 let previousServicesState = "";
-let previousCP4DVersion = "4.6.3"
+let previousCP4DVersion = DEFAULT_CP4D_VERSION
 
 function funcLoad() {
   // Disable timeline
@@ -82,17 +84,17 @@ function updateYamlAndEnableTimeline(e){
   enableAll()
 }
 
-function handleCP4dVersion(version) {
+function handleCP4DVersion(version) {
   if (version.trim().match((/^\d\.\d\.\d$/)))
     return version.trim()
   else if (version.trim().match((/^\d\.\d$/)))
     return version.trim() + ".0"
   else
-    return "4.6.3"
+    return DEFAULT_CP4D_VERSION
 }
 
 function updateCP4Dyaml() {
-  let cp4dVersion = handleCP4dVersion(document.getElementById('cp4d_version').value);
+  let cp4dVersion = handleCP4DVersion(document.getElementById('cp4d_version').value);
   let component_list = currentHTMLstateData.selectedServices.toString()
   if (!component_list) {
     component_list = "null"
@@ -107,7 +109,7 @@ function updateCP4Dyaml() {
 }
 
 function install_cpd() {
-  let cp4dVersion = handleCP4dVersion(document.getElementById('cp4d_version').value);
+  let cp4dVersion = handleCP4DVersion(document.getElementById('cp4d_version').value);
   let cp4dAdminPassword = document.getElementById('cp4d_admin_password').value
   let cp4dEnvName = document.getElementById('cp4d_env_name').value
   let component_list = currentHTMLstateData.selectedServices.toString()

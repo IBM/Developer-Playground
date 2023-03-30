@@ -122,7 +122,7 @@ function install_cpd() {
   }
   data = JSON.stringify(data)
   let storage = "auto" //document.getElementById("storage_value").value;
-  document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;" + `python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d;python3.8 store-data.py '${data}';bash deploy.sh cp4d /projects/techzone-demo/olm-utils-v2/data.json`)
+  document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;" + `python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d;bash deploy.sh cp4d '${data}'`)
   document.getElementById("install_cpd$1").click();
   previousCP4DVersion = cp4dVersion;
 }

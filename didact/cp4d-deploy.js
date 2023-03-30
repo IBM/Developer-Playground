@@ -116,8 +116,13 @@ function install_cpd() {
   if (!component_list) {
     component_list = "null"
   }
+  let data = {
+      cp4dAdminPassword: cp4dAdminPassword,
+      cp4dEnvName: cp4dEnvName
+  }
+  data = JSON.stringify(data)
   let storage = "auto" //document.getElementById("storage_value").value;
-  document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;" + `python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d;bash deploy.sh cp4d ${cp4dAdminPassword} ${cp4dEnvName}`)
+  document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;" + `python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d;bash deploy.sh cp4d '${data}'`)
   document.getElementById("install_cpd$1").click();
   previousCP4DVersion = cp4dVersion;
 }

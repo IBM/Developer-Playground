@@ -28,15 +28,15 @@ currentHTMLstateData = {
   toggleFields: []
 }
 
+const DEFAULT_CP4D_VERSION = "4.6.3"
+
 let previousServicesState = "";
+let previousCP4DVersion = DEFAULT_CP4D_VERSION
 
 
 function funcLoad() {
   // Disable timeline
   disableTimelineFromElement("all");
-
-  //get service list
-  document.getElementById("configure-env").click()
 
   //handle prerequisites
   for (let prerequisite of Object.keys(currentHTMLstateData.prerequisites)) {
@@ -46,7 +46,9 @@ function funcLoad() {
   [...document.getElementsByName("action-options")].forEach(element => addEventListenerToElement(element, "change", showAvailableOptions))
 
   //handle cp4d version
-  addEventListenerToElement(document.getElementById("cp4d_version"), "onfocusout", updateCP4Dyaml)
+  addEventListenerToElement(document.getElementById("cp4d_version"), "focusout", updateCP4Dyaml)
+
+
 
   //open/close logic for all dropdowns
   toggleDropdowns(currentHTMLstateData.dropdownIds)
@@ -59,7 +61,7 @@ function funcLoad() {
     addEventListenerToElement(document.getElementById(registryParam), "input", validateRegistryFields);
   }
 
-  //create services dropdown
+
   //createMultiSelectDropdownWithSearch("git-services", services, updateSelectedServices, "services", "services-search", filterServiceList)
   [...document.getElementsByName("action-options")].forEach(element => addEventListenerToElement(element, "change", showAvailableOptions));
 
@@ -76,38 +78,50 @@ function funcLoad() {
   //Store required CTAs in state
   storeCTAInState();
 
-  //Restore data if available
-  document.getElementById("get-workspace-state").click();
-
   //reset workspace state
   addEventListenerToElement(document.getElementById("reset-href"), "click", resetWorkspace);
 
+  //get service list
+  document.getElementById("configure-env").click()
+
   document.getElementById("mirror_option").checked = true;
   document.getElementById("mirror_option").dispatchEvent(new Event("change"));
+
+  document.getElementById("registry_option").checked = true;
+  document.getElementById("registry_option").dispatchEvent(new Event("change"));
+
+  //Restore data if available
+  document.getElementById("get-workspace-state").click();
+
 }
 
-function handleCP4dVersion(version) {
+function updateYamlAndEnableTimeline(e) {
+  updateCP4Dyaml()
+  enableAll()
+}
+
+function handleCP4DVersion(version) {
   if (version.trim().match((/^\d\.\d\.\d$/)))
     return version.trim()
   else if (version.trim().match((/^\d\.\d$/)))
     return version.trim() + ".0"
   else
-    return "4.6.0"
+    return DEFAULT_CP4D_VERSION
 }
 
 function updateCP4Dyaml() {
-  let cp4dVersion = handleCP4dVersion(document.getElementById('cp4d_version').value);
-
+  let cp4dVersion = handleCP4DVersion(document.getElementById('cp4d_version').value);
   let component_list = currentHTMLstateData.selectedServices.toString()
   if (!component_list) {
     component_list = "null"
   }
   let storage = "auto";
-  if (previousServicesState === component_list)
+  if (previousServicesState === component_list && previousCP4DVersion === cp4dVersion)
     return
   document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d`)
   document.getElementById("update-config").click();
   previousServicesState = component_list;
+  previousCP4DVersion = cp4dVersion;
 }
 
 function getDOMnode(htmlServices, service) {
@@ -197,8 +211,9 @@ function toggleContext(action, portable) {
   document.getElementById("action-content").textContent = "Mirror Image"
   let cta = document.getElementById("mirror-image")
   document.getElementById("cp4d_env_name").disabled = false;
-    document.getElementById("cp4d_version").disabled = false;
-    document.getElementById("git-services").getElementsByTagName("INPUT").forEach(element => element.disabled=false)
+  document.getElementById("cp4d_version").disabled = false;
+  let serviceListArray = [...document.getElementById("git-services").getElementsByTagName("INPUT")]
+  serviceListArray.forEach(element => element.disabled = false)
   cta.setAttribute("title", "Mirror")
   cta.textContent = "Mirror"
   if (action === "air-gapped-mirror") {
@@ -228,7 +243,8 @@ function toggleContext(action, portable) {
     currentHTMLstateData.toggleFields = ["icr_key$para", "icr_key$label", "icr_key", "registry_option_label", "registry_option_div"]
     document.getElementById("cp4d_env_name").disabled = true;
     document.getElementById("cp4d_version").disabled = true;
-    document.getElementById("git-services").getElementsByTagName("INPUT").forEach(element => element.disabled=true)
+    let serviceListArray = [...document.getElementById("git-services").getElementsByTagName("INPUT")]
+    serviceListArray.forEach(element => element.disabled = true)
   }
   let prerequisiteFulfilled = checkAllPrequisiteFieldsfilled()
   if (prerequisiteFulfilled) {

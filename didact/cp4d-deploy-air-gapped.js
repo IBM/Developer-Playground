@@ -201,7 +201,7 @@ function mirrorImage(e) {
   }
   data = JSON.stringify(data)
   console.log(data)
-  document.getElementById("mirror-image$1").setAttribute("command", "cp ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/cp4d-config.yaml /opt/ansible/cpd-config/config/cpd-config.yaml;" + "cd ${CHE_PROJECTS_ROOT}/scripts;" + `python3.8 get-data.py '${data}';` + "./air-gapped-deploy.sh ${CHE_PROJECTS_ROOT}/scripts/data.json")
+  document.getElementById("mirror-image$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}/scripts;" + `python3.8 get-data.py '${data}';` + "./air-gapped-deploy.sh ${CHE_PROJECTS_ROOT}/scripts/data.json")
   document.getElementById("mirror-image$1").click();
 }
 

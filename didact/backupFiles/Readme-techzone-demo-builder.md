@@ -317,7 +317,7 @@
       <div class="content">
         <p>Install required dependencies for executing python scripts.</p>
         <a class="button is-dark is-medium" title="Instal Dependencies"
-          href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$pip3.8 install pandas python-decouple requests ipython;cd /projects/techzone-demo/notebooks/sandbox/">Install
+          href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$pip install pandas python-decouple requests ipython;cd /projects/techzone-demo/notebooks/sandbox/">Install
           Dependencies
         </a>
       </div>

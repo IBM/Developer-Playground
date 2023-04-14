@@ -105,7 +105,7 @@
       </div>
       <input type="checkbox">
       <a id="step" class="button is-dark is-medium" title="Build the Application"
-        href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Cbuild%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/video-analysis%20%26%26%20pip3.8%20install%20-r%20requirements.txt">Install
+        href="didact://?commandId=extension.sendToTerminal&text=VideoAnalysis%7Cbuild%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/video-analysis%20%26%26%20pip%20install%20-r%20requirements.txt">Install
         Dependencies</a>
       <span class="dot"></span>
     </div>

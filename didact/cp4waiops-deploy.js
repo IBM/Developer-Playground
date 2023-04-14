@@ -81,7 +81,7 @@ function updateCP4WAIOpsyaml() {
     let storage = "auto";
     if (previousServicesState === component_list)
         return
-    document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python updateYaml.py  ${component_list} ${storage} ${cp4waiopsVersion} cp4waiops`)
+    document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip install PyYAML;python updateYaml.py  ${component_list} ${storage} ${cp4waiopsVersion} cp4waiops`)
     document.getElementById("update-config").click();
     previousServicesState = component_list;
 }
@@ -101,7 +101,7 @@ function install_cpd() {
         component_list = "null"
     }
     let storage = "auto"
-    document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python updateYaml.py  ${component_list} ${storage} ${cp4waiopsVersion} cp4waiops ${instana_sales_key} ${instana_agent_key} ${turbonomic_lic} ; bash deploy.sh cp4waiops ${cp4waiopsAdminPassword} ${cp4waiopsEnvName}`)
+    document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip install PyYAML;python updateYaml.py  ${component_list} ${storage} ${cp4waiopsVersion} cp4waiops ${instana_sales_key} ${instana_agent_key} ${turbonomic_lic} ; bash deploy.sh cp4waiops ${cp4waiopsAdminPassword} ${cp4waiopsEnvName}`)
     document.getElementById("install_cpd$1").click();
 }
 

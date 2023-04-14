@@ -360,7 +360,7 @@
       <div class="container right">
          <div class="content">
             <p>Clone the GitHub repository</p>
-            <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$git%20clone%20-b%20video-insights%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground.git%20%26%26%20cd%20Developer-Playground%2F%20%26%26%20pip3.8%20install%20-r%20requirements.txt" >Get Code</a>
+            <a class="button is-dark is-medium" title="Clone the Repo" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$git%20clone%20-b%20video-insights%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground.git%20%26%26%20cd%20Developer-Playground%2F%20%26%26%20pip%20install%20-r%20requirements.txt" >Get Code</a>
          </div>
       </div>
       <div class="container right">

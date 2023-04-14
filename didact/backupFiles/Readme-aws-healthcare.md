@@ -79,7 +79,7 @@
             </div>
             <input type="checkbox">
             <a id="step" class="button is-dark is-medium" title="Configure Resources"
-                href="didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20aws-healthcare%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground%20%24%7BCHE_PROJECTS_ROOT%7D%2Faws-healthcare%2C%2Fprojects%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd%20${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/;pip3.8%20install%20-r%20requirements.txt">Configure Environment</a>
+                href="didact://?commandId=extension.compositeCommand&&text=terminal-for-sandbox-container:new%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Cgit%20clone%20-b%20aws-healthcare%20https%3A%2F%2Fgithub.com%2FIBM%2FDeveloper-Playground%20%24%7BCHE_PROJECTS_ROOT%7D%2Faws-healthcare%2C%2Fprojects%7Cvscode.didact.sendNamedTerminalAString%2Csandbox%20terminal%2Ccd%20${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/;pip%20install%20-r%20requirements.txt">Configure Environment</a>
             <span class="dot"></span>
         </div>
         <div class="timeline step login-ibmcloud">

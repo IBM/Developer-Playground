@@ -349,7 +349,7 @@
       <div class="container right">
         <div class="content">
           <p>Install requirements</p>
-          <a class="button is-dark is-medium" title="Install Requirements" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cinstall-requirements%7Cnodejs%20terminal|cd%20bank-loan;pip3.8%20install%20-r%20requirements.txt">Install Requirements</a>
+          <a class="button is-dark is-medium" title="Install Requirements" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cinstall-requirements%7Cnodejs%20terminal|cd%20bank-loan;pip%20install%20-r%20requirements.txt">Install Requirements</a>
         </div>
       </div>
       <div class="container right">

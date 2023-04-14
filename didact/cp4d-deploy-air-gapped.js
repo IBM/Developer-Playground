@@ -118,7 +118,7 @@ function updateCP4Dyaml() {
   let storage = "auto";
   if (previousServicesState === component_list && previousCP4DVersion === cp4dVersion)
     return
-  document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d`)
+  document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip install PyYAML;python updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d`)
   document.getElementById("update-config").click();
   previousServicesState = component_list;
   previousCP4DVersion = cp4dVersion;

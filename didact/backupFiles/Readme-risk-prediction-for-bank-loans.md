@@ -105,7 +105,7 @@
       </div>
       <input type="checkbox">
       <a id="step" class="button is-dark is-medium" title="Install Dependencies"
-        href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cinstall-dependencies%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan;pip3.8%20install%20-r%20requirements.txt">Install
+        href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cinstall-dependencies%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan;pip%20install%20-r%20requirements.txt">Install
         Dependencies</a>
       <span class="dot"></span>
     </div>

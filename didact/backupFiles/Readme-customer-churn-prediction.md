@@ -101,7 +101,7 @@
       </div>
       <input type="checkbox">
       <a id="step" class="button is-dark is-medium" title="Install Dependencies"
-        href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cinstall-requirements%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;pip3.8%20install%20-r%20requirements.txt;npm%20install;">Install
+        href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cinstall-requirements%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;pip%20install%20-r%20requirements.txt;npm%20install;">Install
         Dependencies</a>
       <span class="dot"></span>
     </div>

@@ -216,7 +216,7 @@ To ensure a completely immersive experience with Cloud Pak services, create an a
 </ul>
 
 
-<a class="button is-dark is-medium" title="Deploy the model" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs terminal 1$$cd ${CHE_PROJECTS_ROOT}/LoanAPP-MQ ; pip3.8+install+-r+requirements.txt;python+./DeployModel/DeployMLModel.py">Deploy Model</a><br>
+<a class="button is-dark is-medium" title="Deploy the model" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs terminal 1$$cd ${CHE_PROJECTS_ROOT}/LoanAPP-MQ ; pip+install+-r+requirements.txt;python+./DeployModel/DeployMLModel.py">Deploy Model</a><br>
 
 
 <span style="color:grey"><h2>5. Build the App</h2></span>

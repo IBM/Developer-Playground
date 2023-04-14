@@ -1,5 +1,5 @@
 //base command to configure the environment
-let configureCommand = "git clone -b ${BRANCH} https://github.com/IBM/CPDemoFramework ${CHE_PROJECTS_ROOT}/techzone-demo;cd ${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8 install -r requirements.txt;cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python update-env.py ";
+let configureCommand = "git clone -b ${BRANCH} https://github.com/IBM/CPDemoFramework ${CHE_PROJECTS_ROOT}/techzone-demo;cd ${CHE_PROJECTS_ROOT}/techzone-demo;pip install -r requirements.txt;cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python update-env.py ";
 
 currentHTMLstateData = {
   prerequisites: {

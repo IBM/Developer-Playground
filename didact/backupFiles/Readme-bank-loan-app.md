@@ -355,19 +355,19 @@
       <div class="container right">
         <div class="content">
           <p>Create a Deployment Space on Cloud pak for Data</p>
-          <a class="button is-dark is-medium" title="Create Deployment Space" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-deployment-space%7Cnodejs%20terminal|cd%20bank-loan;python3.8%20create_space.py">Create Deployment Space</a>
+          <a class="button is-dark is-medium" title="Create Deployment Space" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Ccreate-deployment-space%7Cnodejs%20terminal|cd%20bank-loan;python%20create_space.py">Create Deployment Space</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
           <p>Click on the below button to deploy the model to the deployment space.</p>
-           <a class="button is-dark is-medium" title="Open File" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cdeploy-model%7Cnodejs%20terminal|python3.8%20DeployModel/DeploySavedModel.py">Deploy Model</a>
+           <a class="button is-dark is-medium" title="Open File" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cdeploy-model%7Cnodejs%20terminal|python%20DeployModel/DeploySavedModel.py">Deploy Model</a>
         </div>
       </div>
       <div class="container right">
         <div class="content">
           <p>Launch Application</p>
-          <a class="button is-dark is-medium" title="Launch Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cstart-app%7Cnodejs%20terminal|python3.8%20app.py">Launch Application</a>
+          <a class="button is-dark is-medium" title="Launch Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Cstart-app%7Cnodejs%20terminal|python%20app.py">Launch Application</a>
         </div>
       </div>
     </div>
@@ -378,7 +378,7 @@
         <p class="afterbutton">The stage is yours!</p>
         <a class="button is-dark is-medium" title="Explore the Code" href="didact://?commandId=extension.openFile&text=nodejs%20terminal%7Copen-file%7C${CHE_PROJECTS_ROOT}/bank-loan/templates/input.html">Explore the Code</a>
         <p class="afterbutton ">To view the changes you've made, re-launch the application</p>
-        <a class="button is-dark is-medium" title="Re-Launch Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Crestart-app%7Cnodejs%20terminal|python3.8%20app.py">Re-Launch Application</a>
+        <a class="button is-dark is-medium" title="Re-Launch Application" href="didact://?commandId=extension.sendToTerminal&text=nodejs%20terminal%7Crestart-app%7Cnodejs%20terminal|python%20app.py">Re-Launch Application</a>
         <p style="margin-top:10px;"> Click on
           <bold>Clean up</bold> to delete the IBM Cloud services that were created.
         </p>

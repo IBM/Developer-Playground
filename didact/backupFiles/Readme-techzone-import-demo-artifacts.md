@@ -62,7 +62,7 @@
                             <p>Recreate demo users onto new CPD cluster.</p>
                         </div>
                         <a class="button is-dark is-medium" title="Create Users"
-                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 createUsers.py users.csv">Create
+                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python createUsers.py users.csv">Create
                             Users</a>
                     </div>
                 </details>
@@ -79,7 +79,7 @@
                             <p>Import Governance artifacts to new CPD cluster.</p>
                         </div>
                         <a class="button is-dark is-medium" title="Import Gov Artifacts"
-                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 importGovArtifacts.py governance_artifacts.zip ;python3.8 importDataProtectionRules.py data_protection_rules.json">Import
+                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python importGovArtifacts.py governance_artifacts.zip ;python importDataProtectionRules.py data_protection_rules.json">Import
                             Artifacts</a>
                     </div>
                 </details>
@@ -104,7 +104,7 @@
                             <p>Import project</p>
                         </div>
                         <a id="import-project" class="button is-dark is-medium" title="Import Project"
-                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 importProject.py project_assets ">Import
+                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python importProject.py project_assets ">Import
                             Project</a>
                         <span class="dot"></span>
                     </div>

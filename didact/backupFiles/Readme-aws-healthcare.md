@@ -135,7 +135,7 @@
                 <p>Create Producer Lambda Function to encrypt the healthcare data.</p>
             </div>
             <input type="checkbox">
-            <a id="step" class="button is-dark is-medium" title="Create Lambda" href="didact://?commandId=extension.sendToTerminal&text=AwsHealthcare%7Ccreate-function%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/aws/%20%26%26%20python3.8%20create-lambda-producer-function.py">Create Lambda Function</a>
+            <a id="step" class="button is-dark is-medium" title="Create Lambda" href="didact://?commandId=extension.sendToTerminal&text=AwsHealthcare%7Ccreate-function%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/aws/%20%26%26%20python%20create-lambda-producer-function.py">Create Lambda Function</a>
             <span class="dot"></span>
         </div>
         <div class="timeline step create-event-notification">
@@ -151,7 +151,7 @@
                 <p>Create a new deployment space with the pre-loaded model. Make sure your <a href="https://dataplatform.cloud.ibm.com?cm_sp=ibmdev--developer-sandbox--cloudreg">IBM Cloud Pak for Data</a> account is active.</p>
             </div>
             <input type="checkbox">
-            <a id="step" class="button is-dark is-medium" title="Create Deployment Space" href="didact://?commandId=extension.sendToTerminal&text=AwsHealthcare%7Ccreate-deployment-space%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/ibm/deployment-files/%20%26%26%20python3.8%20create_space.py">Create Deployment Space</a>
+            <a id="step" class="button is-dark is-medium" title="Create Deployment Space" href="didact://?commandId=extension.sendToTerminal&text=AwsHealthcare%7Ccreate-deployment-space%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/ibm/deployment-files/%20%26%26%20python%20create_space.py">Create Deployment Space</a>
             <span class="dot"></span>
         </div>
         <div class="timeline dropdown-ctas error-ctas step">
@@ -241,7 +241,7 @@
                 <p>Deploy the model on Cloud Pak for Data.</p>
             </div>
             <input type="checkbox">
-            <a id="step" class="button is-dark is-medium" title="Deploy Model" href="didact://?commandId=extension.sendToTerminal&text=AwsHealthcare%7Cdeploy-model%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/ibm/deployment-files/%20%26%26%20python3.8%20DeploySavedModel.py">Deploy Model</a>
+            <a id="step" class="button is-dark is-medium" title="Deploy Model" href="didact://?commandId=extension.sendToTerminal&text=AwsHealthcare%7Cdeploy-model%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/ibm/deployment-files/%20%26%26%20python%20DeploySavedModel.py">Deploy Model</a>
             <span class="dot"></span>
         </div>
         <div class="timeline step create-lambda-function">
@@ -249,7 +249,7 @@
                 <p>Create Consumer Lambda Function to invoke the model from Cloud Pak for Data with the data received from kinesis streams.</p>
             </div>
             <input type="checkbox">
-            <a id="step" class="button is-dark is-medium" title="Create Lambda" href="didact://?commandId=extension.sendToTerminal&text=AwsHealthcare%7Ccreate-function%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/aws/%20%26%26%20python3.8%20create-lambda-consumer-function.py">Create Consumer Function</a>
+            <a id="step" class="button is-dark is-medium" title="Create Lambda" href="didact://?commandId=extension.sendToTerminal&text=AwsHealthcare%7Ccreate-function%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/aws/%20%26%26%20python%20create-lambda-consumer-function.py">Create Consumer Function</a>
             <span class="dot"></span>
         </div>
         <div class="timeline step upload-to-s3">
@@ -265,7 +265,7 @@
                 <p>From AWS CloudWatch, get the Consumer Logs having the data streamed from the Kinesis and the predictions received from the Watson ML. Fetching the logs might take some time. Please check the sandbox terminal for completion message.</p>
             </div>
             <input type="checkbox">
-            <a id="step" class="button is-dark is-medium" title="Get logs" href="didact://?commandId=extension.sendToTerminal&text=AwsHealthcare%7Cget-logs%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/aws/;python3.8%20print-logs.py">Get Logs</a>
+            <a id="step" class="button is-dark is-medium" title="Get logs" href="didact://?commandId=extension.sendToTerminal&text=AwsHealthcare%7Cget-logs%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/aws/;python%20print-logs.py">Get Logs</a>
             <span class="dot"></span>
         </div>
         <div class="timeline step open-cloudwatch-logs">
@@ -281,7 +281,7 @@
         <div class="footer-cta">
             <div class="footer-step clean-up-services" style="background:transparent">  
                 <p style="margin-top:0.625rem;">Click on Clean up to delete the AWS services that were created.</p>
-                <a class="button is-dark is-medium" title="Delete services from AWS" href="didact://?commandId=extension.sendToTerminal&text=AwsHealthcare%7Caws-clean-up%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/aws/;python3.8%20delete-aws-services.py">AWS Clean Up</a>
+                <a class="button is-dark is-medium" title="Delete services from AWS" href="didact://?commandId=extension.sendToTerminal&text=AwsHealthcare%7Caws-clean-up%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/aws-healthcare/proactive-healthcare-management/aws/;python%20delete-aws-services.py">AWS Clean Up</a>
                 <p style="margin-top:0.625rem;">You can also manage the AWS services in <a href="https://console.aws.amazon.com">AWS Console</a></p>
             </div>
             <div class="footer-step clean-up-services" style="background:transparent"> 

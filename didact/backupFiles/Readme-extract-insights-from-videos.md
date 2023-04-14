@@ -379,7 +379,7 @@
       <div class="container right">
          <div class="content">
             <p>Start the Application. View the result in the preview window</p>
-            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$python3.8%20app.py">Launch the Application</a>
+            <a class="button is-dark is-medium" title="Launch the Application" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal$$python%20app.py">Launch the Application</a>
          </div>
       </div>
    </div>

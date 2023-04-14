@@ -148,7 +148,7 @@
       </div>
       <input type="checkbox">
       <a id="step" class="button is-dark is-medium"
-        href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Ccreate-deployment-space%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan/deployment-files%20%26%26%20python3.8%20create_space.py">Create
+        href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Ccreate-deployment-space%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan/deployment-files%20%26%26%20python%20create_space.py">Create
         Deployment Space</a>
       <span class="dot"></span>
     </div>
@@ -260,7 +260,7 @@
       </div>
       <input type="checkbox">
       <a id="step" class="button is-dark is-medium" title="Deploy Model"
-        href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cdeploy-model%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan/deployment-files%20%26%26%20python3.8%20DeploySavedModel.py">Deploy
+        href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cdeploy-model%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan/deployment-files%20%26%26%20python%20DeploySavedModel.py">Deploy
         Model</a>
       <span class="dot"></span>
     </div>
@@ -270,7 +270,7 @@
       </div>
       <input type="checkbox">
       <a id="step" class="button is-dark is-medium" title="Launch Application"
-        href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cstart-app%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan;python3.8%20app.py">Launch
+        href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Cstart-app%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan;python%20app.py">Launch
         Application</a>
       <span class="dot"></span>
     </div>
@@ -291,7 +291,7 @@
       <div class="footer-step re-launch-application" style="background:transparent">
         <p>Re-launch the application to view the changes made.</p>
         <a class="button is-dark is-medium" title="Re-Launch Application"
-          href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Crestart-app%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan/;python3.8%20app.py">Re-Launch
+          href="didact://?commandId=extension.sendToTerminal&text=BankLoanApp%7Crestart-app%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/bank-loan/bankloan/;python%20app.py">Re-Launch
           Application</a>
       </div>
       <div class="footer-step clean-up-services" style="background:transparent">

@@ -144,7 +144,7 @@
       </div>
       <input type="checkbox">
       <a id="step" class="button is-dark is-medium" title="Create Deployment Space"
-        href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Ccreate-deployment-space%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;python3.8%20create_space.py">Create
+        href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Ccreate-deployment-space%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;python%20create_space.py">Create
         Deployment Space</a>
       <span class="dot"></span>
     </div>
@@ -154,7 +154,7 @@
       </div>
       <input type="checkbox">
       <a id="step" class="button is-dark is-medium" title="Deploy Model"
-        href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cdeploy-model%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;python3.8%20DeployModel/DeployMLModel.py">Deploy
+        href="didact://?commandId=extension.sendToTerminal&text=ChurnPrediction%7Cdeploy-model%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/churn-prediction;python%20DeployModel/DeployMLModel.py">Deploy
         Model</a>
       <span class="dot"></span>
     </div>

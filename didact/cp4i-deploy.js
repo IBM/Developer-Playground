@@ -84,7 +84,7 @@ function updateCP4Iyaml() {
   let storage = "auto";
   if (previousServicesState === component_list)
     return
-  document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python3.8 updateYaml.py  ${component_list} ${storage} ${cp4iVersion} cp4i`)
+  document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip3.8 install PyYAML;python updateYaml.py  ${component_list} ${storage} ${cp4iVersion} cp4i`)
   document.getElementById("update-config").click();
   previousServicesState = component_list;
 }

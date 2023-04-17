@@ -317,7 +317,7 @@
       <div class="content">
         <p>Install required dependencies for executing python scripts.</p>
         <a class="button is-dark is-medium" title="Instal Dependencies"
-          href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$pip3.8 install pandas python-decouple requests ipython;cd /projects/techzone-demo/notebooks/sandbox/">Install
+          href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$pip install pandas python-decouple requests ipython;cd /projects/techzone-demo/notebooks/sandbox/">Install
           Dependencies
         </a>
       </div>
@@ -371,7 +371,7 @@
                     <div class="content">
                       <p>Create users in the configured cp4d instance </p>
                       <a class="button is-dark is-medium" title="Create Users"
-                        href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python3.8 createUsers.py">Create
+                        href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python createUsers.py">Create
                         users</a>
                     </div>
                 </div>
@@ -379,7 +379,7 @@
                   <div class="content">
                     <p>Get all users from the cp4d instance configured</p>
                     <a class="button is-dark is-medium" title="Get Users"
-                      href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python3.8 exportUsers.py">Get
+                      href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python exportUsers.py">Get
                       users</a>
                   </div>
                 </div>
@@ -397,7 +397,7 @@
                   <div class="content">
                     <p style="margin-top:20px;">Export User List to the csv file</p>
                     <a class="button is-dark is-medium" title="Export User List"
-                      href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python3.8 exportUsers.py">Export
+                      href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python exportUsers.py">Export
                       User List</a>
                   </div>
                 </div>
@@ -413,7 +413,7 @@
                   <div class="content">
                     <p>Update users in the configured cp4d instance</p>
                     <a class="button is-dark is-medium" title="Update users"
-                      href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python3.8 updateUsers.py">Update
+                      href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python updateUsers.py">Update
                       users</a>
                   </div>
                 </div>
@@ -421,7 +421,7 @@
                   <div class="content">
                     <p>Get updated user list from the configured cp4d instance</p>
                     <a class="button is-dark is-medium" title="List Users"
-                      href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python3.8 exportUsers.py">Get
+                      href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python exportUsers.py">Get
                       users</a>
                   </div>
                 </div>
@@ -476,7 +476,7 @@
                 <div class="content">
                   <p>Create categories in the configured cp4d instance</p>
                   <a class="button is-dark is-medium" title="Create Categories"
-                    href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python3.8 create_categories.py">Create
+                    href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python create_categories.py">Create
                     categories</a>
                 </div>
               </div>
@@ -484,7 +484,7 @@
                 <div class="content">
                   <p>Get categories from the configured cp4d instance</p>
                   <a class="button is-dark is-medium" title="Create Categories"
-                    href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python3.8 export_categories.py">Get
+                    href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python export_categories.py">Get
                     categories</a>
                 </div>
               </div>
@@ -510,7 +510,7 @@
                 <div class="content">
                   <p>Create terms in the configured cp4d instance</p>
                   <a class="button is-dark is-medium" title="Create Terms"
-                    href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python3.8 create_terms.py">Create
+                    href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python create_terms.py">Create
                     terms</a>
                 </div>
               </div>
@@ -518,7 +518,7 @@
                 <div class="content">
                   <p>Get terms form the configured cp4d instance</p>
                   <a class="button is-dark is-medium" title="Create terms"
-                    href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python3.8 export_terms.py">Get
+                    href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python export_terms.py">Get
                     terms</a>
                 </div>
               </div>
@@ -536,7 +536,7 @@
                 <div class="content">
                   <p style="margin-top:20px;">Export Categories to a csv file</p>
                   <a class="button is-dark is-medium" title="Export Categories"
-                    href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python3.8 export_categories.py">Export
+                    href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python export_categories.py">Export
                     Categories</a>
                 </div>
               </div>
@@ -552,7 +552,7 @@
                 <div class="content">
                   <p>Update categories from the csv file in the configured cp4d instance</p>
                   <a class="button is-dark is-medium" title="Update Categories List"
-                    href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python3.8 update_categories.py">Update
+                    href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python update_categories.py">Update
                     categories</a>
                 </div>
               </div>
@@ -560,7 +560,7 @@
                 <div class="content">
                   <p>Get updated categories in the configured cp4d instance</p>
                   <a class="button is-dark is-medium" title="Get updated categories"
-                    href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python3.8 export_categories.py">Get
+                    href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python export_categories.py">Get
                     categories</a>
                 </div>
               </div>
@@ -578,7 +578,7 @@
                 <div class="content">
                   <p style="margin-top:20px;">Export terms to a csv file</p>
                   <a class="button is-dark is-medium" title="Export Terms"
-                    href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python3.8 export_terms.py">Export
+                    href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python export_terms.py">Export
                     Terms</a>
                 </div>
               </div>
@@ -594,7 +594,7 @@
                 <div class="content">
                   <p>Update terms form the csv file</p>
                   <a class="button is-dark is-medium" title="Update New Terms"
-                    href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python3.8 update_terms.py">Update
+                    href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python update_terms.py">Update
                     Terms</a>
                 </div>
               </div>
@@ -602,7 +602,7 @@
                 <div class="content">
                   <p>Get updated terms in the configured cp4d instance</p>
                   <a class="button is-dark is-medium" title="Get updatd terms"
-                    href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python3.8 export_terms.py">Get
+                    href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python export_terms.py">Get
                     updated terms</a>
                 </div>
               </div>
@@ -628,7 +628,7 @@
             <div class="content">
               <p>Export project from the configured cp4d instance</p>
               <a class="button is-dark is-medium" title="Export Project"
-                href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python3.8 exportProject.py">Export
+                href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python exportProject.py">Export
                 Project</a>
             </div>
           </div>
@@ -636,7 +636,7 @@
             <div class="content">
               <p>Import project from the configured cp4d instance</p>
               <a class="button is-dark is-medium" title="Import Project"
-                href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python3.8 importProject.py">Import
+                href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/notebooks/sandbox/;python importProject.py">Import
                 Project</a>
             </div>
           </div>

@@ -78,7 +78,7 @@
                             <p>Export Users from the specified CPD cluster.</p>
                         </div>
                         <a class="button is-dark is-medium" title="Export User List"
-                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportUsers.py users.csv">Export
+                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python exportUsers.py users.csv">Export
                             User List</a>
                         <span class="dot"></span>
                     </div>
@@ -125,7 +125,7 @@
                             <p>Export the selected Governance Artifacts.</p>
                         </div>
                         <a class="button is-dark is-medium" title="Export Governance Artifacts"
-                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py governance_artifacts.zip all;unzip governance_artifacts.zip -d governance_artifacts;python3.8 exportDataProtectionRules.py data_protection_rules.json">Export
+                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python exportGovArtifacts.py governance_artifacts.zip all;unzip governance_artifacts.zip -d governance_artifacts;python exportDataProtectionRules.py data_protection_rules.json">Export
                             Artifacts</a>
                         <span class="dot"></span>
                     </div>
@@ -143,7 +143,7 @@
                             <p>Click the action and select the project to be exported using the terminal below.</p>
                         </div>
                         <a class="button is-dark is-medium" title="Export Project"
-                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python3.8 exportProject.py project_assets.zip">Export
+                            href="didact://?commandId=vscode.didact.sendNamedTerminalAString&&text=sandbox terminal$$cd /projects/techzone-demo/sandbox/;python exportProject.py project_assets.zip">Export
                             Project</a>
                         <span class="dot"></span>
                     </div>

@@ -51,7 +51,7 @@
             <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
                 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
             <button id="configure-env$2" class="send-to-extension hidden-state store-data" action="readfile"
-                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox;python3.8 getProjects.py"
+                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox;python getProjects.py"
                 filePath="${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/projectData.json" preProcess="true"
                 nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
             <button id="enable-timeline" class="store-data hidden-state"></button>
@@ -88,7 +88,7 @@
                         </div>
                         <button class="send-to-extension button is-dark is-medium" id="export-user-list"
                             title="Export User List" action="senddata"
-                            command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python3.8 exportUsersv3.py users.json groups.json roles.json">Export
+                            command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python exportUsersv3.py users.json groups.json roles.json">Export
                             Users/Groups/Roles</button><span class="spinner hidden-state"></span>
                         <span class="dot"></span>
                     </div>
@@ -133,7 +133,7 @@
                     <div id="export-task">
                         <button class="send-to-extension button is-dark is-medium" id="export-governance-artifacts"
                             title="Export Governance Artifacts" action="senddata"
-                            command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python3.8 exportGovArtifacts.py governance_artifacts.zip all;unzip governance_artifacts.zip -d governance_artifacts;python3.8 exportDataProtectionRules.py data_protection_rules.json">Export
+                            command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python exportGovArtifacts.py governance_artifacts.zip all;unzip governance_artifacts.zip -d governance_artifacts;python exportDataProtectionRules.py data_protection_rules.json">Export
                             Governance Artifacts</button><span class="spinner hidden-state"></span><span class="dot"></span>
                     </div>
                 </details>

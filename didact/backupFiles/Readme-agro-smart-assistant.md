@@ -121,7 +121,7 @@
       </div>
       <input type="checkbox">
       <a id="step" class="button is-dark is-medium" title="Build the Application"
-        href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Cbuild%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/Agro-Smart-Assistant/chatbot%20%26%26%20npm%20install%26%26cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20pip3.8%20install%20-r%20requirements.txt">Install
+        href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Cbuild%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/Agro-Smart-Assistant/chatbot%20%26%26%20npm%20install%26%26cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant%20%26%26%20pip%20install%20-r%20requirements.txt">Install
         Dependencies</a>
       <span class="dot"></span>
     </div>
@@ -169,7 +169,7 @@
                   Data</a> account is active in the region given in sandbox terminal.</p>
             </div><input type="checkbox">
             <a id="step" class="button is-dark is-medium"
-              href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Ccreate-space%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/Agro-Smart-Assistant/deployment-files%20%26%26%20python3.8%20create_space.py">Create
+              href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Ccreate-space%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/Agro-Smart-Assistant/deployment-files%20%26%26%20python%20create_space.py">Create
               Deployment Space</a>
             <span class="dot"></span>
           </div>
@@ -281,7 +281,7 @@
               <p>Step 3 : Deploy the model.</p>
             </div><input type="checkbox">
             <a id="step" class="button is-dark is-medium"
-              href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Cdeploy-model%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/Agro-Smart-Assistant/deployment-files%20%26%26%20python3.8%20deploy_model.py">Deploy</a>
+              href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Cdeploy-model%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/Agro-Smart-Assistant/deployment-files%20%26%26%20python%20deploy_model.py">Deploy</a>
             <span class="dot"></span>
           </div>
           <div class="timeline step">
@@ -306,7 +306,7 @@
               <p>Step 1 : Create an Action in cloud functions with web action enabled.</p>
             </div><input type="checkbox">
             <a id="step" class="button is-dark is-medium" title="Create Action"
-              href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Ccreate-action%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/Agro-Smart-Assistant/scripts%20%26%26%20python3.8%20create_action.py">Create
+              href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Ccreate-action%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/Agro-Smart-Assistant/scripts%20%26%26%20python%20create_action.py">Create
               Action</a><span class="dot"></span>
           </div>
           <div class="timeline step">
@@ -341,7 +341,7 @@
               <p>Step 1 : Create the Dialog Skill.</p>
             </div><input type="checkbox">
             <a id="step" class="button is-dark is-medium"
-              href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Ccreate-skill%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/Agro-Smart-Assistant/chatbot%20%26%26%20python3.8%20watson-assistant.py">Create
+              href="didact://?commandId=extension.sendToTerminal&text=AgroSmartAssistant%7Ccreate-skill%7Csandbox%20terminal|cd%20${CHE_PROJECTS_ROOT}/cp4d-smart-virtual-assistant/Agro-Smart-Assistant/chatbot%20%26%26%20python%20watson-assistant.py">Create
               Skill</a><span class="dot"></span>
           </div>
           <div class="timeline step">

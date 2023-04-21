@@ -1,6 +1,6 @@
 //base command to configure the environment
-let configureCommand = "git clone -b ${BRANCH} https://github.com/IBM/CPDemoFramework ${CHE_PROJECTS_ROOT}/techzone-demo;bash ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/getDemoFiles.sh demo_name is_private git_url git_token;cd ${CHE_PROJECTS_ROOT}/techzone-demo;pip3.8 install -r requirements.txt;cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python3.8 update-env.py ";
-let createUsersCTACommand = "cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python3.8 createUsers.py users.csv {IMPORT_USERS_PASSWORD}";
+let configureCommand = "git clone -b ${BRANCH} https://github.com/IBM/CPDemoFramework ${CHE_PROJECTS_ROOT}/techzone-demo;bash ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/getDemoFiles.sh demo_name is_private git_url git_token;cd ${CHE_PROJECTS_ROOT}/techzone-demo;pip install -r requirements.txt;cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python update-env.py ";
+let createUsersCTACommand = "cd ${CHE_PROJECTS_ROOT}/techzone-demo/sandbox/;python createUsers.py users.csv {IMPORT_USERS_PASSWORD}";
 
 currentHTMLstateData = {
     prerequisites: {
@@ -61,7 +61,7 @@ function updateConfigVars(e){
     let cta = document.getElementById("configure-env$1");
     cta.setAttribute("command", `${configureCommand.replace("demo_name", currentHTMLstateData.demo).replace("is_private", currentHTMLstateData.isPrivateDemo).replace("git_url", currentHTMLstateData.privateGitRepoUrl).replace("git_token", gitToken)}${Object.values(currentHTMLstateData.prerequisites).toString().replaceAll(",", "%20")}`)
     cta.click();
-    document.getElementById("import-project").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/sandbox/;python3.8 importProject.py project_assets ${currentHTMLstateData.demo}`)
+    document.getElementById("import-project").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/sandbox/;python importProject.py project_assets ${currentHTMLstateData.demo}`)
 }
 
 function showConfigureCTA(e){
@@ -93,7 +93,7 @@ function openCluster(){
 
 function updateImportProjectScript(){
     let cta = document.getElementById("import-project$1")
-    cta.setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/sandbox/;python3.8 importProject.py project_assets ${currentHTMLstateData.demo}`)
+    cta.setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/sandbox/;python importProject.py project_assets ${currentHTMLstateData.demo}`)
     cta.click();
 }
 

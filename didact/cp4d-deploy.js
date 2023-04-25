@@ -8,8 +8,7 @@ currentHTMLstateData = {
     kubeadmin_user: "",
     kubeadmin_pass: "",
     icr_key: "",
-    oc_login: "",
-    cpak: "cp4d"
+    oc_login: ""
   },
   authenticationOptions: {
     required: ["icr_key"],
@@ -76,7 +75,7 @@ function funcLoad() {
 }
 
 function updateConfigVars(e) {
-  document.getElementById("configure-env$1").setAttribute("command", `${configureCommand}${Object.keys(currentHTMLstateData.prerequisites).map(val => `"${currentHTMLstateData.prerequisites[val] || "\"\""}"`).toString().replaceAll(",", "%20")}`);
+  document.getElementById("configure-env$1").setAttribute("command", `${configureCommand}${Object.keys(currentHTMLstateData.prerequisites).map(val => `"${currentHTMLstateData.prerequisites[val] || "\"\""} cp4d"`).toString().replaceAll(",", "%20")}`);
   document.getElementById("configure-env$1").click();
 }
 

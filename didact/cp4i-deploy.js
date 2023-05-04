@@ -1,4 +1,4 @@
-let configureCommand = "git clone https://github.com/IBM/CPDemoFramework -b ${BRANCH} --single-branch ${CHE_PROJECTS_ROOT}/techzone-demo;cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;sh configure-env.sh ";
+let configureCommand = "git clone https://github.com/IBM/CPDemoFramework -b ${BRANCH} --single-branch ${CHE_PROJECTS_ROOT}/techzone-demo; pip install PyYAML; cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;sh configure-env.sh ";
 
 currentHTMLstateData = {
   prerequisites: {
@@ -43,6 +43,9 @@ function funcLoad(){
   //generate config command
   addEventListenerToElement(document.getElementById("configure-env"), "click", updateConfigVars);
 
+  //update cp4i version in yaml
+  addEventListenerToElement(document.getElementById("cp4i_version"), "onfocusout", updateCP4Iyaml)
+
   //After env configured successfully enable timeline
   addEventListenerToElement(document.getElementById("enable-timeline"), "click", enableAll)
 
@@ -69,7 +72,7 @@ function funcLoad(){
 }
 
 function updateConfigVars(e){
-  document.getElementById("configure-env$1").setAttribute("command", `${configureCommand}${Object.keys(currentHTMLstateData.prerequisites).map(val => `"${currentHTMLstateData.prerequisites[val] || "\"\""}"`).toString().replaceAll(",", "%20")}`);
+  document.getElementById("configure-env$1").setAttribute("command", `${configureCommand}${Object.keys(currentHTMLstateData.prerequisites).map(val => `"${currentHTMLstateData.prerequisites[val] || "\"\""}"`).toString().replaceAll(",", "%20")} cp4i`);
   document.getElementById("configure-env$1").click();
 }
 function updateCP4Iyaml() {

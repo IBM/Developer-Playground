@@ -94,10 +94,10 @@
                     filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
                     numSuccess=1 silent="true"></button>
                     <button id="configure-env-install" class="send-to-extension hidden-state" action="readfile"
-                    command="cd ${CHE_PROJECTS_ROOT}/scripts;pip install pyYaml;python getInstalledServices.py cp4d /opt/ansible/cpd-status/generated/configs/cpd-config.yaml /opt/ansible/projects/techzone-demo/olm-utils-v2/default-cp4d-config.yaml"
+                    command="cd ${CHE_PROJECTS_ROOT}/scripts;pip install pyYaml;python getInstalledServicesAirGapped.py cp4d /opt/ansible/cpd-status/generated/configs/cpd-config.yaml"
                     filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
                     numSuccess=1 silent="true"></button>
-                <p>Registry Details</p>
+                <p id="registry-details-p">Registry Details</p>
                 <div id="registry-details" class="env-config">
                     <label id="registry_option_label">Registry Option</label>
                     <div id="registry_option_div"><input class="store-data" type="checkbox"
@@ -126,7 +126,7 @@
                     <input class="store-data" type="password" id="cp4d_admin_password">
                     <label id="cp4d_env_name_label">CP4D Environment Name</label>
                     <input class="store-data" type="text" id="cp4d_env_name" value="demo">
-                    <label>CP4D Services List</label>
+                    <label id="service-list-label">CP4D Services List</label>
                     <div id="service-list" class="dropdown-check-list" tabindex="100">
                         <span class="anchor" id="selected-components-string">Select Services</span>
                         <div class="items">

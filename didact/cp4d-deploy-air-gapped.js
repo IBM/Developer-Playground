@@ -222,16 +222,26 @@ function toggleContext(action, portable) {
   cta.setAttribute("title", "Mirror")
   cta.textContent = "Mirror"
   if (action === "air-gapped-mirror") {
+    document.getElementById("configure-env-install").click();
     currentHTMLstateData.validPrerequisites.length === 3 ? currentHTMLstateData.validPrerequisites.push(["icr_key"]) : null;
-    currentHTMLstateData.toggleFields = ["authentication_options_label", "authentication_options_div", "oc_login$label", "oc_login", "server$label", "server", "api_token$label", "api_token", "kubeadmin_user$label", "kubeadmin_user", "kubeadmin_pass$label", "kubeadmin_pass", "registry_option_label", "registry_option_div"]
-    //document.getElementById("message").classList.remove("hidden-state");
-    //document.getElementById("message").innerHTML = bastionMirrorMessage;
+    currentHTMLstateData.toggleFields =  ["service-list","service-list-label","registry_option_label", "registry_option_div"]
+    document.getElementById("action-content").textContent = "Install CP4D"
+    let cta = document.getElementById("mirror-image")
+    cta.setAttribute("title", "Install")
+    cta.textContent = "Install"
     currentHTMLstateData.requiredRegistryFileds = ["registry_host_name", "registry_port", "registry_user", "registry_password"]
+    document.getElementById("cp4d_env_name").disabled = true;
+    document.getElementById("cp4d_version").disabled = true;
+    document.getElementById("registry_host_name").disabled = true;
+    document.getElementById("registry_port").disabled = true;
+    document.getElementById("registry_namespace").disabled = true;
+    let serviceListArray = [...document.getElementById("git-services").getElementsByTagName("INPUT")]
+    serviceListArray.forEach(element => element.disabled = true)
   } else if (action === "mirror") {
     currentHTMLstateData.validPrerequisites.length === 3 ? currentHTMLstateData.validPrerequisites.push(["icr_key"]) : null;
     if (!portable) {
       currentHTMLstateData.requiredRegistryFileds = ["registry_host_name", "registry_port", "registry_namespace", "registry_user", "registry_password"]
-      currentHTMLstateData.toggleFields = ["authentication_options_label", "authentication_options_div", "oc_login$label", "oc_login", "server$label", "server", "api_token$label", "api_token", "kubeadmin_user$label", "kubeadmin_user", "kubeadmin_pass$label", "kubeadmin_pass", "cp4d_admin_password_label", "cp4d_admin_password"]
+      currentHTMLstateData.toggleFields = ["service-list","service-list-label","authentication_options_label", "authentication_options_div", "oc_login$label", "oc_login", "server$label", "server", "api_token$label", "api_token", "kubeadmin_user$label", "kubeadmin_user", "kubeadmin_pass$label", "kubeadmin_pass", "cp4d_admin_password_label", "cp4d_admin_password"]
     } else {
       currentHTMLstateData.requiredRegistryFileds = []
       currentHTMLstateData.toggleFields = ["authentication_options_label", "authentication_options_div", "oc_login$label", "oc_login", "server$label", "server", "api_token$label", "api_token", "kubeadmin_user$label", "kubeadmin_user", "kubeadmin_pass$label", "kubeadmin_pass", "registry_host_name_label", "registry_port_label", "registry_namespace_label", "registry_user_label", "registry_password_label", "registry_host_name", "registry_port", "registry_namespace", "registry_user", "registry_password", "cp4d_admin_password_label", "cp4d_admin_password"]
@@ -245,8 +255,8 @@ function toggleContext(action, portable) {
     cta.setAttribute("title", "Install")
     cta.textContent = "Install"
     currentHTMLstateData.validPrerequisites.length === 4 ? currentHTMLstateData.validPrerequisites.pop() : null;
-    currentHTMLstateData.requiredRegistryFileds = ["registry_host_name", "registry_port", "registry_namespace", "registry_user", "registry_password"]
-    currentHTMLstateData.toggleFields = ["icr_key$para", "icr_key$label", "icr_key", "registry_option_label", "registry_option_div"]
+    currentHTMLstateData.requiredRegistryFileds = []
+    currentHTMLstateData.toggleFields = ["service-list","service-list-label","icr_key$para", "icr_key$label", "icr_key","configure-environment-CTA", "registry-details-p","registry_option_label", "registry_option_div", "registry_host_name_label", "registry_port_label", "registry_namespace_label", "registry_user_label", "registry_password_label", "registry_host_name", "registry_port", "registry_namespace", "registry_user", "registry_password"]
     document.getElementById("cp4d_env_name").disabled = true;
     document.getElementById("cp4d_version").disabled = true;
     let serviceListArray = [...document.getElementById("git-services").getElementsByTagName("INPUT")]

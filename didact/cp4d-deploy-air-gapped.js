@@ -238,6 +238,7 @@ function toggleContext(action, portable) {
     }
   }
   else if (action === "install") {
+    document.getElementById("configure-env-install").click();
     console.log("------", currentHTMLstateData.validPrerequisites.includes(["icr_key"]), currentHTMLstateData.validPrerequisites)
     document.getElementById("action-content").textContent = "Install CP4D"
     let cta = document.getElementById("mirror-image")

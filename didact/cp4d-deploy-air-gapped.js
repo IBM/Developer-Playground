@@ -1,5 +1,3 @@
-let bastionMirrorMessage = "Mirroring Images is followed by CP4D Install in Bastion Node.";
-let installMessage = "Install is supported only for Bastion Node."
 
 currentHTMLstateData = {
   prerequisites: {
@@ -18,7 +16,7 @@ currentHTMLstateData = {
       "oc_option": ["oc_login"]
     },
   },
-  validPrerequisites: [["oc_login"], ["server", "api_token"], ["server", "kubeadmin_user", "kubeadmin_pass"]],
+  validPrerequisites: [["icr_key", "oc_login"], ["icr_key", "server", "api_token"], ["icr_key", "server", "kubeadmin_user", "kubeadmin_pass"]],
   dropdownIds: ["service-list"],
   envConfigured: false,
   selectedServices: [],
@@ -41,6 +39,7 @@ function funcLoad() {
   //handle prerequisites
   for (let prerequisite of Object.keys(currentHTMLstateData.prerequisites)) {
     addEventListenerToElement(document.getElementById(prerequisite), "input", handlePrerequisiteValues);
+    document.getElementById(prerequisite).addEventListener("input", validateRegistryFields)
   }
 
   [...document.getElementsByName("action-options")].forEach(element => addEventListenerToElement(element, "change", showAvailableOptions))
@@ -78,9 +77,6 @@ function funcLoad() {
   //mirror-image
   addEventListenerToElement(document.getElementById("mirror-image"), "click", mirrorImage)
 
-  //Store required CTAs in state
-  storeCTAInState();
-
   //reset workspace state
   addEventListenerToElement(document.getElementById("reset-href"), "click", resetWorkspace);
 
@@ -93,14 +89,6 @@ function funcLoad() {
   document.getElementById("registry_option").checked = true;
   document.getElementById("registry_option").dispatchEvent(new Event("change"));
 
-  //Restore data if available
-  document.getElementById("get-workspace-state").click();
-
-}
-
-function updateYamlAndEnableTimeline(e) {
-  updateCP4Dyaml()
-  enableAll()
 }
 
 function handleCP4DVersion(version) {
@@ -122,7 +110,7 @@ function updateCP4Dyaml() {
   let storage = "auto";
   if (previousServicesState === component_list && previousCP4DVersion === cp4dVersion)
     return
-  document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip install PyYAML;python updateYaml.py  ${component_list} ${storage} ${cp4dVersion} ${envName} cp4d`)
+  document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip install PyYAML;python updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d`)
   document.getElementById("update-config").click();
   previousServicesState = component_list;
   previousCP4DVersion = cp4dVersion;
@@ -196,7 +184,7 @@ function mirrorImage(e) {
       kubeadmin_pass: document.getElementById("kubeadmin_pass").value,
       oc_login: document.getElementById("oc_login").value
     },
-    componentsList:currentHTMLstateData.selectedServices.toString(),
+    componentsList: currentHTMLstateData.selectedServices.toString(),
     portable: document.getElementById("registry_option").checked,
     registryHostName: document.getElementById('registry_host_name').value,
     registryPort: document.getElementById('registry_port').value,
@@ -206,67 +194,50 @@ function mirrorImage(e) {
   }
   data = JSON.stringify(data)
   console.log(data)
-  document.getElementById("mirror-image$1").setAttribute("command","cd ${CHE_PROJECTS_ROOT}/scripts;" + `python3.8 get-data.py '${data}';` + "./air-gapped-deploy.sh ${CHE_PROJECTS_ROOT}/scripts/data.json")
+  document.getElementById("mirror-image$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}/scripts;" + `python3.8 get-data.py '${data}';` + "./air-gapped-deploy.sh ${CHE_PROJECTS_ROOT}/scripts/data.json")
   document.getElementById("mirror-image$1").click();
 }
 
-function toggleContext(action, portable) {
-  //console.log(action, env, portable)
-  toggleFields("show")
-  document.getElementById("action-content").textContent = "Mirror Image"
+function updateCtaText(ctaText, descriptionText) {
+  document.getElementById("action-content").textContent = descriptionText
   let cta = document.getElementById("mirror-image")
-  document.getElementById("cp4d_env_name").disabled = false;
-  document.getElementById("cp4d_version").disabled = false;
+  cta.setAttribute("title", ctaText)
+  cta.textContent = ctaText
+}
+
+function setInstallFieldsDisabled(boolean) {
+  document.getElementById("cp4d_env_name").disabled = boolean;
+  document.getElementById("cp4d_version").disabled = boolean;
+  document.getElementById("registry_host_name").disabled = boolean;
+  document.getElementById("registry_port").disabled = boolean;
+  document.getElementById("registry_namespace").disabled = boolean;
   let serviceListArray = [...document.getElementById("git-services").getElementsByTagName("INPUT")]
-  serviceListArray.forEach(element => element.disabled = false)
-  cta.setAttribute("title", "Mirror")
-  cta.textContent = "Mirror"
-  if (action === "air-gapped-mirror") {
-    document.getElementById("configure-env-install").click();
+  serviceListArray.forEach(element => element.disabled = boolean)
+}
+
+function toggleContext(action, portable) {
+  toggleFields("show")
+  if (action === "mirror") {
     currentHTMLstateData.validPrerequisites.length === 3 ? currentHTMLstateData.validPrerequisites.push(["icr_key"]) : null;
-    currentHTMLstateData.toggleFields =  ["service-list","service-list-label","registry_option_label", "registry_option_div"]
-    document.getElementById("action-content").textContent = "Install CP4D"
-    let cta = document.getElementById("mirror-image")
-    cta.setAttribute("title", "Install")
-    cta.textContent = "Install"
-    currentHTMLstateData.requiredRegistryFileds = ["registry_host_name", "registry_port", "registry_user", "registry_password"]
-    document.getElementById("cp4d_env_name").disabled = true;
-    document.getElementById("cp4d_version").disabled = true;
-    document.getElementById("registry_host_name").disabled = true;
-    document.getElementById("registry_port").disabled = true;
-    document.getElementById("registry_namespace").disabled = true;
-    let serviceListArray = [...document.getElementById("git-services").getElementsByTagName("INPUT")]
-    serviceListArray.forEach(element => element.disabled = true)
-  } else if (action === "mirror") {
-    currentHTMLstateData.validPrerequisites.length === 3 ? currentHTMLstateData.validPrerequisites.push(["icr_key"]) : null;
+    setInstallFieldsDisabled(false)
+    updateCtaText("Mirror", "Mirror Image")
+    currentHTMLstateData.requiredRegistryFileds = []
+    currentHTMLstateData.toggleFields = ["authentication_options_label", "authentication_options_div", "oc_login$label", "oc_login", "server$label", "server", "api_token$label", "api_token", "kubeadmin_user$label", "kubeadmin_user", "kubeadmin_pass$label", "kubeadmin_pass", "registry_host_name_label", "registry_port_label", "registry_namespace_label", "registry_user_label", "registry_password_label", "registry_host_name", "registry_port", "registry_namespace", "registry_user", "registry_password", "cp4d_admin_password_label", "cp4d_admin_password"]
     if (!portable) {
       currentHTMLstateData.requiredRegistryFileds = ["registry_host_name", "registry_port", "registry_namespace", "registry_user", "registry_password"]
-      currentHTMLstateData.toggleFields = ["service-list","service-list-label","authentication_options_label", "authentication_options_div", "oc_login$label", "oc_login", "server$label", "server", "api_token$label", "api_token", "kubeadmin_user$label", "kubeadmin_user", "kubeadmin_pass$label", "kubeadmin_pass", "cp4d_admin_password_label", "cp4d_admin_password"]
-    } else {
-      currentHTMLstateData.requiredRegistryFileds = []
-      currentHTMLstateData.toggleFields = ["authentication_options_label", "authentication_options_div", "oc_login$label", "oc_login", "server$label", "server", "api_token$label", "api_token", "kubeadmin_user$label", "kubeadmin_user", "kubeadmin_pass$label", "kubeadmin_pass", "registry_host_name_label", "registry_port_label", "registry_namespace_label", "registry_user_label", "registry_password_label", "registry_host_name", "registry_port", "registry_namespace", "registry_user", "registry_password", "cp4d_admin_password_label", "cp4d_admin_password"]
+      currentHTMLstateData.toggleFields = ["authentication_options_label", "authentication_options_div", "oc_login$label", "oc_login", "server$label", "server", "api_token$label", "api_token", "kubeadmin_user$label", "kubeadmin_user", "kubeadmin_pass$label", "kubeadmin_pass", "cp4d_admin_password_label", "cp4d_admin_password"]
     }
-  }
-  else if (action === "install") {
-    document.getElementById("configure-env-install").click();
-    console.log("------", currentHTMLstateData.validPrerequisites.includes(["icr_key"]), currentHTMLstateData.validPrerequisites)
-    document.getElementById("action-content").textContent = "Install CP4D"
-    let cta = document.getElementById("mirror-image")
-    cta.setAttribute("title", "Install")
-    cta.textContent = "Install"
-    currentHTMLstateData.validPrerequisites.length === 4 ? currentHTMLstateData.validPrerequisites.pop() : null;
-    currentHTMLstateData.requiredRegistryFileds = []
-    currentHTMLstateData.toggleFields = ["service-list","service-list-label","icr_key$para", "icr_key$label", "icr_key","configure-environment-CTA", "registry-details-p","registry_option_label", "registry_option_div", "registry_host_name_label", "registry_port_label", "registry_namespace_label", "registry_user_label", "registry_password_label", "registry_host_name", "registry_port", "registry_namespace", "registry_user", "registry_password"]
-    document.getElementById("cp4d_env_name").disabled = true;
-    document.getElementById("cp4d_version").disabled = true;
-    let serviceListArray = [...document.getElementById("git-services").getElementsByTagName("INPUT")]
-    serviceListArray.forEach(element => element.disabled = true)
-  }
-  let prerequisiteFulfilled = checkAllPrequisiteFieldsfilled()
-  if (prerequisiteFulfilled) {
-    enableTimelineTillElement("configure-environment-CTA");
   } else {
-    disableTimelineFromElement("all");
+    currentHTMLstateData.validPrerequisites.length === 4 ? currentHTMLstateData.validPrerequisites.pop() : null;
+    document.getElementById("configure-env-install").click();
+    updateCtaText("Install", "Install CP4D")
+    setInstallFieldsDisabled(true)
+    currentHTMLstateData.requiredRegistryFileds = []
+    currentHTMLstateData.toggleFields = ["edit-config-p", "open-config", "service-list", "service-list-label", "configure-environment-CTA", "registry-details-p", "registry_option_label", "registry_option_div", "registry_host_name_label", "registry_port_label", "registry_namespace_label", "registry_user_label", "registry_password_label", "registry_host_name", "registry_port", "registry_namespace", "registry_user", "registry_password"]
+    if (action === "private_registry_install") {
+      currentHTMLstateData.toggleFields = ["edit-config-p", "open-config", "service-list", "service-list-label", "registry_option_label", "registry_option_div"]
+      currentHTMLstateData.requiredRegistryFileds = ["registry_host_name", "registry_port", "registry_user", "registry_password"]
+    }
   }
   showRegistryOptions()
   toggleFields("hide")
@@ -274,8 +245,6 @@ function toggleContext(action, portable) {
 }
 
 function showAvailableOptions(e) {
-  //let env = document.getElementById("env-toggle").checked ? "bastion-node" : "internet-connection"
-  //let action = document.getElementById("action-toggle").checked ? "install" : "mirror"
   toggleContext(document.querySelector('input[name="action-options"]:checked').value, document.getElementById("registry_option").checked)
 }
 
@@ -296,7 +265,6 @@ function showRegistryOptions() {
 function toggleFields(toggleOption) {
   if (toggleOption == "show") {
     currentHTMLstateData.toggleFields.forEach(elementId => {
-      console.log(elementId)
       document.getElementById(elementId).style.display = "block"
     })
   } else if (toggleOption == "hide") {
@@ -306,6 +274,14 @@ function toggleFields(toggleOption) {
 
 function validateRegistryFields() {
   let valid = false;
+  if (!checkAllPrequisiteFieldsfilled()) {
+    disableTimelineFromElement("all");
+    return
+  }
+  if (document.getElementById("registry_option").checked && document.getElementById("registry_option").checked === "mirror") {
+    enableTimelineTillElement("all");
+    return
+  }
   for (let registryParam of currentHTMLstateData.registryParams) {
     console.log(registryParam, currentHTMLstateData.requiredRegistryFileds.includes(registryParam))
     if (document.getElementById(registryParam).value.trim() !== "") {

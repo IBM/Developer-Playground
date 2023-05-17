@@ -37,12 +37,12 @@
         <p style="font-size:24px">Action</p>
         <div class="env-config">
             <div>
-                <label><input type="radio" id="mirror_option" name="action-options" value="mirror" class="store-data"
-                        />Mirror Images</label>
-                <label><input type="radio" id="install_option" name="action-options" value="install"
-                        class="store-data" />Air Gapped Install</label>
-                <label><input type="radio" id="air_gapped_option" name="action-options" value="air-gapped-mirror"
-                        class="store-data" />Install with Private Registry</label>
+                <label><input type="radio" id="mirror_option" name="action-options" value="mirror" />Mirror
+                    Images</label>
+                <label><input type="radio" id="air_gapped_install_option" name="action-options"
+                        value="air_gapped_install" />Air Gapped Install</label>
+                <label><input type="radio" id="private_registry_install_option" name="action-options"
+                        value="private_registry_install" />Install with Private Registry</label>
             </div>
         </div>
     </div>
@@ -57,29 +57,27 @@
                     href="https://myibm.ibm.com/products-services/containerlibrary"> IBM Container Library</a> using
                 your IBM ID. Click Get an entitlement key if you are not on the entitlement page.</p>
             <div class="env-config">
-                <label id="icr_key$label">Entitlement Key: </label><input class="store-data env-variables" id="icr_key"
+                <label id="icr_key$label">Entitlement Key: </label><input class="env-variables" id="icr_key"
                     name="icr_key" type="text" />
                 <label id="authentication_options_label">Authentication Options:</label>
                 <div id="authentication_options_div">
                     <label><input type="radio" id="server_option" name="authentication-options" value="Server"
-                            class="store-data" checked />API Key</label>
-                    <label><input type="radio" id="kube_option" name="authentication-options" value="Kube"
-                            class="store-data" />Kube Admin</label>
-                    <label><input type="radio" id="oc_option" name="authentication-options" value="OC-Login"
-                            class="store-data" />OC Login</label>
+                            checked />API Key</label>
+                    <label><input type="radio" id="kube_option" name="authentication-options" value="Kube" />Kube
+                        Admin</label>
+                    <label><input type="radio" id="oc_option" name="authentication-options" value="OC-Login" />OC
+                        Login</label>
                 </div>
                 <label id="oc_login$label" class="hidden-state">OC Login: </label><input
-                    class="store-data env-variables hidden-state" id="oc_login" name="oc_login" type="text" />
-                <label id="server$label">Server: </label><input class="store-data env-variables" id="server"
-                    name="server" type="text" />
-                <label id="api_token$label">API Token: </label><input class="store-data env-variables" id="api_token"
+                    class="env-variables hidden-state" id="oc_login" name="oc_login" type="text" />
+                <label id="server$label">Server: </label><input class="env-variables" id="server" name="server"
+                    type="text" />
+                <label id="api_token$label">API Token: </label><input class="env-variables" id="api_token"
                     name="api_token" type="text" />
                 <label id="kubeadmin_user$label" class="hidden-state">Kube Admin User: </label><input
-                    class="store-data env-variables hidden-state" id="kubeadmin_user" name="kubeadmin_user"
-                    type="text" />
+                    class="env-variables hidden-state" id="kubeadmin_user" name="kubeadmin_user" type="text" />
                 <label id="kubeadmin_pass$label" class="hidden-state">Kube Admin Password: </label><input
-                    class="store-data env-variables hidden-state" id="kubeadmin_pass" name="kubeadmin_pass"
-                    type="password" />
+                    class="env-variables hidden-state" id="kubeadmin_pass" name="kubeadmin_pass" type="password" />
             </div>
         </div>
     </div>
@@ -93,25 +91,25 @@
                     command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;pip install pyYaml;python getInstalledServices.py cp4d "
                     filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
                     numSuccess=1 silent="true"></button>
-                    <button id="configure-env-install" class="send-to-extension hidden-state" action="readfile"
-                    command="cd ${CHE_PROJECTS_ROOT}/scripts;pip install pyYaml;python getInstalledServicesAirGapped.py cp4d /opt/ansible/cpd-status/generated/configs/cpd-config.yaml"
+                <button id="configure-env-install" class="send-to-extension hidden-state" action="readfile"
+                    command="cd ${CHE_PROJECTS_ROOT}/scripts;pip install pyYaml;python getInstalledServicesAirGapped.py cp4d /opt/ansible/cpd-status/configs/cpd-config.yaml"
                     filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
                     numSuccess=1 silent="true"></button>
                 <p id="registry-details-p">Registry Details</p>
                 <div id="registry-details" class="env-config">
                     <label id="registry_option_label">Registry Option</label>
-                    <div id="registry_option_div"><input class="store-data" type="checkbox"
+                    <div id="registry_option_div"><input  type="checkbox"
                             id="registry_option">Portable</div>
                     <label id="registry_host_name_label">Registry Host Name*</label>
-                    <input class="store-data" type="text" id="registry_host_name">
+                    <input  type="text" id="registry_host_name">
                     <label id="registry_port_label">Registry Port*</label>
-                    <input class="store-data" type="text" id="registry_port" value="443">
+                    <input  type="text" id="registry_port" value="443">
                     <label id="registry_namespace_label">Registry Namespace*</label>
-                    <input class="store-data" type="text" id="registry_namespace">
+                    <input  type="text" id="registry_namespace">
                     <label id="registry_user_label">Registry User*</label>
-                    <input class="store-data" type="text" id="registry_user">
+                    <input  type="text" id="registry_user">
                     <label id="registry_password_label">Registry Password*</label>
-                    <input class="store-data" type="password" id="registry_password">
+                    <input  type="password" id="registry_password">
                 </div>
             </div>
             <span class="dot"></span>
@@ -121,11 +119,12 @@
                 <p>Deploy selected CP4D services</p>
                 <div id="cp4d-deploy" class="env-config">
                     <label>CP4D Version</label>
-                    <input class="store-data" type="text" id="cp4d_version" value="4.6.3" onkeydown="return (event.keyCode==8 || event.keyCode== 9) ? event.key : /[0-9]|\./i.test(event.key)">
-                    <label id="cp4d_admin_password_label">CP4D Admin Password</label> 
-                    <input class="store-data" type="password" id="cp4d_admin_password">
+                    <input  type="text" id="cp4d_version" value="4.6.3"
+                        onkeydown="return (event.keyCode==8 || event.keyCode== 9) ? event.key : /[0-9]|\./i.test(event.key)">
+                    <label id="cp4d_admin_password_label">CP4D Admin Password</label>
+                    <input  type="password" id="cp4d_admin_password">
                     <label id="cp4d_env_name_label">CP4D Environment Name</label>
-                    <input class="store-data" type="text" id="cp4d_env_name" value="demo">
+                    <input  type="text" id="cp4d_env_name" value="demo">
                     <label id="service-list-label">CP4D Services List</label>
                     <div id="service-list" class="dropdown-check-list" tabindex="100">
                         <span class="anchor" id="selected-components-string">Select Services</span>
@@ -139,7 +138,7 @@
                 </div>
                 <p style="margin-top:1rem"><b>Selected Services: </b><span id="selected-services"></span></p>
                 <br /><br />
-                <p>Explore and update the CP4D configuration as per your requirement.</p>
+                <p id="edit-config-p">Explore and update the CP4D configuration as per your requirement.</p>
             </div>
             <button class="send-to-extension button is-dark is-medium" action="openPath" id="open-config"
                 title="Open Configure file" command=""

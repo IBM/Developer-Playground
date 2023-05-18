@@ -33,7 +33,7 @@
         </div>
     </div>
 
-    <div class="section">
+    <div class="section" id="action-section">
         <p style="font-size:24px">Action</p>
         <div class="env-config">
             <div>
@@ -44,15 +44,13 @@
                 <label><input type="radio" id="private_registry_install_option" name="action-options"
                         value="private_registry_install" />Install with Private Registry</label>
             </div>
+            <p></p>
         </div>
+        <p id="config-not-found" class="hidden-state" style="color: red;">hello</p>
     </div>
     <div id="pre-requisite-div" class="section" style="margin-top:5rem;">
         <p style="font-size:24px">Pre-requisites</p>
         <div>
-            <p>To clear pre populated fields if any click <a id="reset-href" title="Reset">here</a>.</p>
-            <button id="reset-workspace-state" action="reset-workspace-state" class="send-to-extension hidden-state"
-                command="cd ${CHE_PROJECTS_ROOT}">Reset</button>
-            </p>
             <p id="icr_key$para">Obtain an IBM Software Entitlement Key from <a
                     href="https://myibm.ibm.com/products-services/containerlibrary"> IBM Container Library</a> using
                 your IBM ID. Click Get an entitlement key if you are not on the entitlement page.</p>
@@ -92,7 +90,7 @@
                     filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
                     numSuccess=1 silent="true"></button>
                 <button id="configure-env-install" class="send-to-extension hidden-state" action="readfile"
-                    command="cd ${CHE_PROJECTS_ROOT}/scripts;pip install pyYaml;python getInstalledServicesAirGapped.py cp4d /opt/ansible/cpd-status/configs/cpd-config.yaml"
+                    command="cd ${CHE_PROJECTS_ROOT}/scripts;pip install pyYaml;python getInstalledServicesAirGapped.py cp4d /opt/ansible/cpd-status/cpd-config/config/cpd-config.yaml"
                     filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
                     numSuccess=1 silent="true"></button>
                 <p id="registry-details-p">Registry Details</p>

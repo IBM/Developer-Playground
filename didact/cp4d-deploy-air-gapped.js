@@ -77,18 +77,11 @@ function funcLoad() {
   //mirror-image
   addEventListenerToElement(document.getElementById("mirror-image"), "click", mirrorImage)
 
-  //reset workspace state
-  addEventListenerToElement(document.getElementById("reset-href"), "click", resetWorkspace);
-
-  //get service list
-  document.getElementById("configure-env").click()
-
   document.getElementById("mirror_option").checked = true;
   document.getElementById("mirror_option").dispatchEvent(new Event("change"));
 
   document.getElementById("registry_option").checked = true;
   document.getElementById("registry_option").dispatchEvent(new Event("change"));
-
 }
 
 function handleCP4DVersion(version) {
@@ -218,6 +211,8 @@ function setInstallFieldsDisabled(boolean) {
 function toggleContext(action, portable) {
   toggleFields("show")
   if (action === "mirror") {
+    document.getElementById("configure-env").click()
+    document.getElementById("config-not-found").classList.add("hidden-state")
     currentHTMLstateData.validPrerequisites.length === 3 ? currentHTMLstateData.validPrerequisites.push(["icr_key"]) : null;
     setInstallFieldsDisabled(false)
     updateCtaText("Mirror", "Mirror Image")

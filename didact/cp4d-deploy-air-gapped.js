@@ -224,7 +224,9 @@ function toggleContext(action, portable) {
     }
   } else {
     currentHTMLstateData.validPrerequisites.length === 4 ? currentHTMLstateData.validPrerequisites.pop() : null;
-    document.getElementById("configure-env-install").click();
+    let configCta = document.getElementById("configure-env-install")
+    configCta.setAttribute("command","cd ${CHE_PROJECTS_ROOT}/scripts;pip install pyYaml;python getInstalledServicesAirGapped.py cp4d "+`${action} /opt/ansible/cpd-status/cpd-config/config/cpd-config.yaml`)
+    configCta.click()
     updateCtaText("Install", "Install CP4D")
     setInstallFieldsDisabled(true)
     currentHTMLstateData.requiredRegistryFileds = []

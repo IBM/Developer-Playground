@@ -198,23 +198,21 @@ function updateCtaText(ctaText, descriptionText) {
   cta.textContent = ctaText
 }
 
-function setInstallFieldsDisabled(boolean) {
-  document.getElementById("cp4d_env_name").disabled = boolean;
-  document.getElementById("cp4d_version").disabled = boolean;
-  document.getElementById("registry_host_name").disabled = boolean;
-  document.getElementById("registry_port").disabled = boolean;
-  document.getElementById("registry_namespace").disabled = boolean;
+function setInstallFieldsDisabled(boolean, fields) {
+  for(let field of fields){
+    document.getElementById(field).disabled = boolean;
+  }
   let serviceListArray = [...document.getElementById("git-services").getElementsByTagName("INPUT")]
   serviceListArray.forEach(element => element.disabled = boolean)
 }
 
 function toggleContext(action, portable) {
   toggleFields("show")
+  setInstallFieldsDisabled(false,["cp4d_env_name", "cp4d_version", "registry_host_name", "registry_port", "registry_namespace"])
   if (action === "mirror") {
     document.getElementById("configure-env").click()
     document.getElementById("config-not-found").classList.add("hidden-state")
     currentHTMLstateData.validPrerequisites.length === 3 ? currentHTMLstateData.validPrerequisites.push(["icr_key"]) : null;
-    setInstallFieldsDisabled(false)
     updateCtaText("Mirror", "Mirror Image")
     currentHTMLstateData.requiredRegistryFileds = []
     currentHTMLstateData.toggleFields = ["authentication_options_label", "authentication_options_div", "oc_login$label", "oc_login", "server$label", "server", "api_token$label", "api_token", "kubeadmin_user$label", "kubeadmin_user", "kubeadmin_pass$label", "kubeadmin_pass", "registry_host_name_label", "registry_port_label", "registry_namespace_label", "registry_user_label", "registry_password_label", "registry_host_name", "registry_port", "registry_namespace", "registry_user", "registry_password", "cp4d_admin_password_label", "cp4d_admin_password"]
@@ -225,16 +223,15 @@ function toggleContext(action, portable) {
   } else {
     currentHTMLstateData.validPrerequisites.length === 4 ? currentHTMLstateData.validPrerequisites.pop() : null;
     let configCta = document.getElementById("configure-env-install")
-    configCta.setAttribute("command","cd ${CHE_PROJECTS_ROOT}/scripts;pip install pyYaml;python getInstalledServicesAirGapped.py cp4d "+`${action} /opt/ansible/cpd-status/cpd-config/config/cpd-config.yaml`)
+    configCta.setAttribute("command", "cd ${CHE_PROJECTS_ROOT}/scripts;pip install pyYaml;python getInstalledServicesAirGapped.py cp4d " + `${action} /opt/ansible/cpd-status/cpd-config/config/cpd-config.yaml`)
     configCta.click()
     updateCtaText("Install", "Install CP4D")
-    setInstallFieldsDisabled(true)
-    currentHTMLstateData.requiredRegistryFileds = []
-    currentHTMLstateData.toggleFields = ["edit-config-p", "open-config", "service-list", "service-list-label", "configure-environment-CTA", "registry-details-p", "registry_option_label", "registry_option_div", "registry_host_name_label", "registry_port_label", "registry_namespace_label", "registry_user_label", "registry_password_label", "registry_host_name", "registry_port", "registry_namespace", "registry_user", "registry_password"]
-    if (action === "private_registry_install") {
-      currentHTMLstateData.toggleFields = ["edit-config-p", "open-config", "service-list", "service-list-label", "registry_option_label", "registry_option_div"]
-      currentHTMLstateData.requiredRegistryFileds = ["registry_host_name", "registry_port", "registry_user", "registry_password"]
-    }
+    if(action === "private_registry_install")
+      setInstallFieldsDisabled(true, ["cp4d_env_name", "cp4d_version", "registry_host_name", "registry_port", "registry_namespace"])
+    else
+      setInstallFieldsDisabled(true, ["cp4d_env_name", "cp4d_version"])
+    currentHTMLstateData.toggleFields = ["edit-config-p", "open-config", "service-list", "service-list-label", "registry_option_label", "registry_option_div"]
+    currentHTMLstateData.requiredRegistryFileds = ["registry_host_name", "registry_port", "registry_user", "registry_password"]
   }
   showRegistryOptions()
   toggleFields("hide")

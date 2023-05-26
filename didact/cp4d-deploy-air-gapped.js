@@ -23,7 +23,8 @@ currentHTMLstateData = {
   doNotRestore: [],
   registryParams: ["registry_host_name", "registry_port", "registry_namespace", "registry_user", "registry_password"],
   requiredRegistryFileds: [],
-  toggleFields: []
+  toggleFields: [],
+  configYamlPath: ""
 }
 
 const DEFAULT_CP4D_VERSION = "4.6.3"
@@ -103,7 +104,7 @@ function updateCP4Dyaml() {
   let storage = "auto";
   if (previousServicesState === component_list && previousCP4DVersion === cp4dVersion)
     return
-  document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip install PyYAML;python updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d`)
+  document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip install PyYAML;python updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d aa`)
   document.getElementById("update-config").click();
   previousServicesState = component_list;
   previousCP4DVersion = cp4dVersion;
@@ -206,10 +207,17 @@ function setInstallFieldsDisabled(boolean, fields) {
   serviceListArray.forEach(element => element.disabled = boolean)
 }
 
+const updateConfigCTAs = () => {
+    let openConfigCTA = document.getElementById("open-config")
+    openConfigCTA.setAttribute("filePath", currentHTMLstateData.configYamlPath)
+}
+
 function toggleContext(action, portable) {
   toggleFields("show")
   setInstallFieldsDisabled(false,["cp4d_env_name", "cp4d_version", "registry_host_name", "registry_port", "registry_namespace"])
   if (action === "mirror") {
+    currentHTMLstateData.configYamlPath = "${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/cp4d-config.yaml"
+    updateConfigCTAs();
     document.getElementById("configure-env").click()
     document.getElementById("config-not-found").classList.add("hidden-state")
     currentHTMLstateData.validPrerequisites.length === 3 ? currentHTMLstateData.validPrerequisites.push(["icr_key"]) : null;
@@ -217,21 +225,23 @@ function toggleContext(action, portable) {
     currentHTMLstateData.requiredRegistryFileds = []
     currentHTMLstateData.toggleFields = ["authentication_options_label", "authentication_options_div", "oc_login$label", "oc_login", "server$label", "server", "api_token$label", "api_token", "kubeadmin_user$label", "kubeadmin_user", "kubeadmin_pass$label", "kubeadmin_pass", "registry_host_name_label", "registry_port_label", "registry_namespace_label", "registry_user_label", "registry_password_label", "registry_host_name", "registry_port", "registry_namespace", "registry_user", "registry_password", "cp4d_admin_password_label", "cp4d_admin_password"]
     if (!portable) {
-      currentHTMLstateData.requiredRegistryFileds = ["registry_host_name", "registry_port", "registry_namespace", "registry_user", "registry_password"]
+      currentHTMLstateData.requiredRegistryFileds = ["registry_host_name"]
       currentHTMLstateData.toggleFields = ["authentication_options_label", "authentication_options_div", "oc_login$label", "oc_login", "server$label", "server", "api_token$label", "api_token", "kubeadmin_user$label", "kubeadmin_user", "kubeadmin_pass$label", "kubeadmin_pass", "cp4d_admin_password_label", "cp4d_admin_password"]
     }
   } else {
+    currentHTMLstateData.configYamlPath = "/opt/ansible/cpd-status/cpd-config/config/cpd-config.yaml"
+    updateConfigCTAs();
     currentHTMLstateData.validPrerequisites.length === 4 ? currentHTMLstateData.validPrerequisites.pop() : null;
     let configCta = document.getElementById("configure-env-install")
-    configCta.setAttribute("command", "cd ${CHE_PROJECTS_ROOT}/scripts;pip install pyYaml;python getInstalledServicesAirGapped.py cp4d " + `${action} /opt/ansible/cpd-status/cpd-config/config/cpd-config.yaml`)
+    configCta.setAttribute("command", "cd ${CHE_PROJECTS_ROOT}/scripts;pip install pyYaml;python getInstalledServicesAirGapped.py cp4d " + `${!portable? "private_registry_install" :action} /opt/ansible/cpd-status/cpd-config/config/cpd-config.yaml`)
     configCta.click()
     updateCtaText("Install", "Install CP4D")
-    if(action === "private_registry_install")
+    if(!portable)
       setInstallFieldsDisabled(true, ["cp4d_env_name", "cp4d_version", "registry_host_name", "registry_port", "registry_namespace"])
     else
       setInstallFieldsDisabled(true, ["cp4d_env_name", "cp4d_version"])
-    currentHTMLstateData.toggleFields = ["edit-config-p", "open-config", "service-list", "service-list-label", "registry_option_label", "registry_option_div"]
-    currentHTMLstateData.requiredRegistryFileds = ["registry_host_name", "registry_port", "registry_user", "registry_password"]
+    currentHTMLstateData.toggleFields = ["service-list", "service-list-label"]
+    currentHTMLstateData.requiredRegistryFileds = ["registry_host_name"]
   }
   showRegistryOptions()
   toggleFields("hide")

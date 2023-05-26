@@ -41,8 +41,6 @@
                     Images</label>
                 <label><input type="radio" id="air_gapped_install_option" name="action-options"
                         value="air_gapped_install" />Air Gapped Install</label>
-                <label><input type="radio" id="private_registry_install_option" name="action-options"
-                        value="private_registry_install" />Install with Private Registry</label>
             </div>
             <p></p>
         </div>
@@ -59,18 +57,18 @@
                     name="icr_key" type="text" />
                 <label id="authentication_options_label">Authentication Options:</label>
                 <div id="authentication_options_div">
+                    <label><input type="radio" id="oc_option" name="authentication-options" value="OC-Login" checked/>OC
+                        Login</label>
                     <label><input type="radio" id="server_option" name="authentication-options" value="Server"
-                            checked />API Key</label>
+                            />API Key</label>
                     <label><input type="radio" id="kube_option" name="authentication-options" value="Kube" />Kube
                         Admin</label>
-                    <label><input type="radio" id="oc_option" name="authentication-options" value="OC-Login" />OC
-                        Login</label>
                 </div>
-                <label id="oc_login$label" class="hidden-state">OC Login: </label><input
-                    class="env-variables hidden-state" id="oc_login" name="oc_login" type="text" />
-                <label id="server$label">Server: </label><input class="env-variables" id="server" name="server"
+                <label id="oc_login$label">OC Login: </label><input
+                    class="env-variables" id="oc_login" name="oc_login" type="text" />
+                <label id="server$label" class="hidden-state">Server: </label><input class="env-variables hidden-state" id="server" name="server"
                     type="text" />
-                <label id="api_token$label">API Token: </label><input class="env-variables" id="api_token"
+                <label id="api_token$label" class="hidden-state">API Token: </label><input class="env-variables hidden-state" id="api_token"
                     name="api_token" type="text" />
                 <label id="kubeadmin_user$label" class="hidden-state">Kube Admin User: </label><input
                     class="env-variables hidden-state" id="kubeadmin_user" name="kubeadmin_user" type="text" />
@@ -140,7 +138,7 @@
             </div>
             <button class="send-to-extension button is-dark is-medium" action="openPath" id="open-config"
                 title="Open Configure file" command=""
-                filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/cp4d-config.yaml" silent="true">Explore CP4D
+                filePath="" silent="true">Explore CP4D
                 Configure</button><span class="spinner hidden-state"></span>
             <button class="send-to-extension button is-dark is-medium hidden-state" action="senddata" id="update-config"
                 title="Update Configure file" command="" silent="true" preProcess="true"></button>

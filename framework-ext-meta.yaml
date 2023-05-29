@@ -12,5 +12,5 @@ category: Editor
 firstPublicationDate: '2022-08-09'
 spec:
     extensions:
-        - https://s3.us-south.cloud-object-storage.appdomain.cloud/cpdf-extension/playground/next/framework_extension.vsix
+        - https://raw.githubusercontent.com/IBM/Developer-Playground/development/framework_extension.vsix
 latestUpdateDate: "2022-09-22"

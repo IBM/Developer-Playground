@@ -24,7 +24,7 @@ currentHTMLstateData = {
   registryParams: ["registry_host_name", "registry_port", "registry_namespace", "registry_user", "registry_password"],
   requiredRegistryFileds: [],
   toggleFields: [],
-  configYamlPath: ""
+  configYamlPath: "",
 }
 
 const DEFAULT_CP4D_VERSION = "4.6.3"
@@ -104,7 +104,7 @@ function updateCP4Dyaml() {
   let storage = "auto";
   if (previousServicesState === component_list && previousCP4DVersion === cp4dVersion)
     return
-  document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip install PyYAML;python updateYaml.py  ${component_list} ${storage} ${cp4dVersion} cp4d aa`)
+  document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/scripts;python updateYamlAirGapped.py  ${component_list} ${storage} ${cp4dVersion} cp4d ${currentHTMLstateData.configYamlPath}`)
   document.getElementById("update-config").click();
   previousServicesState = component_list;
   previousCP4DVersion = cp4dVersion;
@@ -124,6 +124,7 @@ function updateSelectedServices(e) {
   let gitServicesList = document.getElementById("git-services");
   let gitServices = document.getElementsByName("services");
   if (e.target.checked) {
+    e.target.disabled=false
     currentHTMLstateData.selectedServices.indexOf(e.target.value) == -1 && currentHTMLstateData.selectedServices.push(e.target.value)
     //gitServicesList.insertBefore(e.target.parentElement, gitServicesList.firstChild);
   } else {
@@ -207,9 +208,10 @@ function setInstallFieldsDisabled(boolean, fields) {
   serviceListArray.forEach(element => element.disabled = boolean)
 }
 
-const updateConfigCTAs = () => {
+const updateConfigCTAs = (command) => {
     let openConfigCTA = document.getElementById("open-config")
     openConfigCTA.setAttribute("filePath", currentHTMLstateData.configYamlPath)
+    openConfigCTA.setAttribute("editCommand", command)
 }
 
 function toggleContext(action, portable) {
@@ -217,7 +219,7 @@ function toggleContext(action, portable) {
   setInstallFieldsDisabled(false,["cp4d_env_name", "cp4d_version", "registry_host_name", "registry_port", "registry_namespace"])
   if (action === "mirror") {
     currentHTMLstateData.configYamlPath = "${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/cp4d-config.yaml"
-    updateConfigCTAs();
+    updateConfigCTAs("cd ${CHE_PROJECTS_ROOT}/scripts;pip install pyYaml;python getInstalledServicesAirGapped.py cp4d mirror /opt/ansible/projects/techzone-demo/olm-utils-v2/cp4d-config.yaml");
     document.getElementById("configure-env").click()
     document.getElementById("config-not-found").classList.add("hidden-state")
     currentHTMLstateData.validPrerequisites.length === 3 ? currentHTMLstateData.validPrerequisites.push(["icr_key"]) : null;
@@ -230,7 +232,7 @@ function toggleContext(action, portable) {
     }
   } else {
     currentHTMLstateData.configYamlPath = "/opt/ansible/cpd-status/cpd-config/config/cpd-config.yaml"
-    updateConfigCTAs();
+    updateConfigCTAs("cd ${CHE_PROJECTS_ROOT}/scripts;pip install pyYaml;python getInstalledServicesAirGapped.py cp4d mirror /opt/ansible/cpd-status/cpd-config/config/cpd-config.yaml");
     currentHTMLstateData.validPrerequisites.length === 4 ? currentHTMLstateData.validPrerequisites.pop() : null;
     let configCta = document.getElementById("configure-env-install")
     configCta.setAttribute("command", "cd ${CHE_PROJECTS_ROOT}/scripts;pip install pyYaml;python getInstalledServicesAirGapped.py cp4d " + `${!portable? "private_registry_install" :action} /opt/ansible/cpd-status/cpd-config/config/cpd-config.yaml`)
@@ -240,7 +242,7 @@ function toggleContext(action, portable) {
       setInstallFieldsDisabled(true, ["cp4d_env_name", "cp4d_version", "registry_host_name", "registry_port", "registry_namespace"])
     else
       setInstallFieldsDisabled(true, ["cp4d_env_name", "cp4d_version"])
-    currentHTMLstateData.toggleFields = ["service-list", "service-list-label"]
+    currentHTMLstateData.toggleFields = []
     currentHTMLstateData.requiredRegistryFileds = ["registry_host_name"]
   }
   showRegistryOptions()

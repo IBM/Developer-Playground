@@ -128,6 +128,7 @@ window.addEventListener('message', event => {
             var preProcess = anchor.getAttribute("preProcess") ? true : false;
             var elementId = anchor.getAttribute("id")
             var numSuccess = anchor.getAttribute("numSuccess") ? parseInt(anchor.getAttribute("numSuccess")) : 1;
+            var editCommand = anchor.getAttribute("editCommand") ? anchor.getAttribute("editCommand") : ""
             if (action == "readfile") {
                 command = anchor.getAttribute("command");
                 vscode.postMessage({
@@ -152,6 +153,7 @@ window.addEventListener('message', event => {
                     preProcess: preProcess,
                     elementId: elementId,
                     numSuccess: numSuccess,
+                    onEditCommand: editCommand
                 });
             }
             else if (action == "update-workspace-state") {

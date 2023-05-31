@@ -88,7 +88,7 @@
                     filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
                     numSuccess=1 silent="true"></button>
                 <button id="configure-env-install" class="send-to-extension hidden-state" action="readfile"
-                    command="cd ${CHE_PROJECTS_ROOT}/scripts;pip install pyYaml;python getInstalledServicesAirGapped.py cp4d /opt/ansible/cpd-status/cpd-config/config/cpd-config.yaml"
+                    command="cd ${CHE_PROJECTS_ROOT}/scripts;python getInstalledServicesAirGapped.py cp4d /opt/ansible/cpd-status/cpd-config/config/cpd-config.yaml"
                     filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
                     numSuccess=1 silent="true"></button>
                 <p id="registry-details-p">Registry Details</p>
@@ -138,7 +138,7 @@
             </div>
             <button class="send-to-extension button is-dark is-medium" action="openPath" id="open-config"
                 title="Open Configure file" command=""
-                filePath="" silent="true">Explore CP4D
+                filePath="" silent="true" editCommand="cd ${CHE_PROJECTS_ROOT}/scripts;python getInstalledServicesAirGapped.py cp4d /opt/ansible/cpd-status/cpd-config/config/cpd-config.yaml">Explore CP4D
                 Configure</button><span class="spinner hidden-state"></span>
             <button class="send-to-extension button is-dark is-medium hidden-state" action="senddata" id="update-config"
                 title="Update Configure file" command="" silent="true" preProcess="true"></button>

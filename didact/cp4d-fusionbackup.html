@@ -99,19 +99,8 @@
             <div class="content">
                 <p>Run Online Backup of CP4D </p>
             </div>
-            <button class="button is-dark is-medium" id="run_backup" title="Execute" command="">Start
-                Backup</button><span class="spinner hidden-state"></span>
-            <button id="run_backup$1" class="send-to-extension hidden-state" action="senddata" command=""
-                numSuccess=2></button><span class="spinner hidden-state"></span>
-            <span class="dot"></span>
-        </div>
-        <div class="timeline">
-            <div class="content">
-                <p>Cleanup install utility artifacts</p>
-            </div>
-            <button class="send-to-extension button is-dark is-medium" id="clean-up-job" title="Clean up"
-                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/;sh delete.sh" numSuccess=1>Clean
-                up</button><span class="spinner hidden-state"></span>
+            <button class="button is-dark is-medium" id="run_backup" title="Execute" numSuccess=1>Start Backup</button><span class="spinner hidden-state"></span>
+            <button id="run_backup$1" class="send-to-extension hidden-state" action="senddata" command=""></button><span class="spinner hidden-state"></span>
             <span class="dot"></span>
         </div>
     </div>

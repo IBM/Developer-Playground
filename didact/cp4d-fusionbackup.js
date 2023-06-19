@@ -7,17 +7,22 @@ currentHTMLstateData = {
         api_token: "",
         kubeadmin_user: "",
         kubeadmin_pass: "",
+        s3_url: "",
+        bucket: "",
+        region: "",
+        access_key: "",
+        access_id: "", 
         oc_login: ""
     },
     authenticationOptions: {
-        required: [],
+        required: ["s3_url", "bucket", "region", "access_key", "access_id"],
         additionalOptions: {
             "server_option": ["server", "api_token"],
             "kube_option": ["server", "kubeadmin_user", "kubeadmin_pass"],
             "oc_option": ["oc_login"]
         },
     },
-    validPrerequisites: [["oc_login"], ["server", "api_token"], ["server", "kubeadmin_user", "kubeadmin_pass"]],
+    validPrerequisites: [["oc_login", "s3_url", "bucket", "region", "access_key", "access_id"], ["server", "api_token", "s3_url", "bucket", "region", "access_key", "access_id"], ["server", "kubeadmin_user", "kubeadmin_pass", "s3_url", "bucket", "region", "access_key", "access_id"]],
     envConfigured: false,
     selectedServices: [],
     doNotRestore: []

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="$$rootpath$$/test.css">
+    <script src="$$rootpath$$/test.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="example">
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#option-droup-demo').multiselect();
+                });
+            </script>
+            <select id="option-droup-demo" multiple="multiple">
+                <optgroup label="Web Development">
+                    <option value="jQuery">jQuery</option>
+                    <option value="Bootstrap">Bootstrap</option>
+                    <option value="HTML" selected="selected">HTML</option>
+                    <option value="CSS" selected="selected">CSS</option>
+                    <option value="Angular">Angular</option>
+                </optgroup>
+                <optgroup label="Programming Languages">
+                    <option value="Java">Java</option>
+                    <option value="csharp">C#</option>
+                    <option value="Python">Python</option>
+                </optgroup>
+                <optgroup label="Databases">
+                    <option value="MySQL">MySQL</option>
+                    <option value="Oracle">Oracle</option>
+                    <option value="MSSQL">MS SQL Server</option>
+                </optgroup>
+            </select>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

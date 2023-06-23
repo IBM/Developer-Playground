@@ -4,10 +4,20 @@
 <head>
     <link rel="stylesheet" href="$$rootpath$$/test.css">
     <script src="$$rootpath$$/test.js"></script>
+    <style>
+        body{
+            background-color: black;
+        }
+        .example
+        {
+            margin-top:20px;
+            margin-left:10px;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
+    <div>
         <div class="example">
             <script type="text/javascript">
                 $(document).ready(function () {
@@ -15,22 +25,16 @@
                 });
             </script>
             <select id="option-droup-demo" multiple="multiple">
-                <optgroup label="Web Development">
-                    <option value="jQuery">jQuery</option>
-                    <option value="Bootstrap">Bootstrap</option>
-                    <option value="HTML" selected="selected">HTML</option>
-                    <option value="CSS" selected="selected">CSS</option>
-                    <option value="Angular">Angular</option>
+                <optgroup label="CP4BA - Foundation">
+                    <option value="bas">Business Automation Studio</option>
+                    <option value="bai">Business Automation Insights</option>
+                    <option value="ae">Application Engine</option>
                 </optgroup>
-                <optgroup label="Programming Languages">
-                    <option value="Java">Java</option>
-                    <option value="csharp">C#</option>
-                    <option value="Python">Python</option>
-                </optgroup>
-                <optgroup label="Databases">
-                    <option value="MySQL">MySQL</option>
-                    <option value="Oracle">Oracle</option>
-                    <option value="MSSQL">MS SQL Server</option>
+                <optgroup label="CP4BA - Decisions">
+                    <option value="decision_center">Decison Center</option>
+                    <option value="decision_runner">Decison Runner</option>
+                    <option value="decision_server_runtime">Decison Server</option>
+                    <option value="disabledDecisionModel">Disabled Decision Model</option>
                 </optgroup>
             </select>
         </div>

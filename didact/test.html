@@ -22,7 +22,12 @@
         <div class="example">
             <script type="text/javascript">
                 $(document).ready(function () {
-                    $('#option-droup-demo').multiselect();
+                    $('#option-droup-demo').multiselect(
+                        {
+                        enableClickableOptGroups: true,
+                        enableCollapsibleOptGroups: true
+                     }
+                    );
                     $("#selected-options").text($('#option-droup-demo').find(":selected").text());
                     $('#option-droup-demo').change(function() {
                         $("#selected-options").text($('#option-droup-demo').find(":selected").text());

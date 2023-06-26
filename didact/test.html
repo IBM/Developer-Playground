@@ -2,8 +2,8 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="$$rootpath$$/bootstrap.css">
-    <script src="$$rootpath$$/jquery-bootstrap.js"></script>
+    <link rel="stylesheet" href="test.css">
+    <script src="test.js"></script>
     <style>
         body{
             background-color: black;
@@ -12,6 +12,7 @@
         {
             margin-top:20px;
             margin-left:10px;
+            color:white;
         }
     </style>
 </head>
@@ -22,8 +23,13 @@
             <script type="text/javascript">
                 $(document).ready(function () {
                     $('#option-droup-demo').multiselect();
+                    $("#selected-options").text($('#option-droup-demo').find(":selected").text());
+                    $('#option-droup-demo').change(function() {
+                        $("#selected-options").text($('#option-droup-demo').find(":selected").text());
+                    });
                 });
             </script>
+            <div id="selected-options">SelectedOption:</div>
             <select id="option-droup-demo" multiple="multiple">
                 <optgroup label="CP4BA - Foundation">
                     <option value="bas">Business Automation Studio</option>

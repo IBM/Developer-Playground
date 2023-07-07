@@ -13,6 +13,8 @@
     "cp4d-export": "Export Demo for CP4D",
     "cp4d-import": "Import Demo for CP4D",
     "cp4d-backup": "Techzone CP4D Backup",
-    "cp4d-restore": "Techzone CP4D Restore"
+    "cp4d-restore": "Techzone CP4D Restore",
+    "execute-assets":"Execute Assets",
+    "cp4d-fusionbackup": "Techzone CP4D Spectrum Fusion Backup"
   }
 }

@@ -43,6 +43,9 @@ function funcLoad(){
   //generate config command
   addEventListenerToElement(document.getElementById("configure-env"), "click", updateConfigVars);
 
+  //update cp4i version in yaml
+  addEventListenerToElement(document.getElementById("cp4i_version"), "onfocusout", updateCP4Iyaml)
+
   //After env configured successfully enable timeline
   addEventListenerToElement(document.getElementById("enable-timeline"), "click", enableAll)
 

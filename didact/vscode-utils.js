@@ -2,6 +2,9 @@ const vscode = acquireVsCodeApi();
 window.addEventListener('message', event => {
     const receivedOutput = event.data; // The JSON data our extension sent
     switch (receivedOutput.command) {
+        case 'get-file-data':
+            currentHTMLstateData.fileContents = receivedOutput.outputData;
+            break;
         case 'receiveProductInfo':
             //document.querySelector('[id="message"]').innerHTML = message.message;
             productInfo = receivedOutput.productInfo;
@@ -133,6 +136,19 @@ window.addEventListener('message', event => {
                 command = anchor.getAttribute("command");
                 vscode.postMessage({
                     command: 'readfile',
+                    text: command,
+                    filePath: filePath,
+                    silent: silent,
+                    nextAction: nextAction,
+                    preProcess: preProcess,
+                    elementId: elementId,
+                    numSuccess: numSuccess,
+                });
+            }
+            else if (action == "get-file-data") {
+                command = anchor.getAttribute("command");
+                vscode.postMessage({
+                    command: 'get-file-data',
                     text: command,
                     filePath: filePath,
                     silent: silent,

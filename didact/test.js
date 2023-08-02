@@ -83,6 +83,8 @@ function toggleDropdowns(dropdownIds) {
 
 toggleDropdowns(["service-list"])
 
+console.log("----------- Check file content: -----------", currentHTMLstateData.fileContents)
+
 var groupCheckboxes = document.querySelectorAll('.group-checkbox');
 var optionCheckboxes = document.querySelectorAll('.option-checkbox');
 var selectedOptions = [];
@@ -273,3 +275,4 @@ function install_cpd() {
 //     })
 // }
 window.addEventListener("load", funcLoad);
+

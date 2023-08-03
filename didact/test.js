@@ -22,7 +22,8 @@ currentHTMLstateData = {
     dropdownIds: ["service-list"],
     envConfigured: false,
     selectedServices: [],
-    doNotRestore: []
+    doNotRestore: [],
+    fileContents: ""
 }
 
 

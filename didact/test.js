@@ -180,10 +180,12 @@ optionCheckboxes.forEach(function (checkbox) {
 function updateConfigVars(e) {
     document.getElementById("configure-env$1").setAttribute("command", `${configureCommand}${Object.keys(currentHTMLstateData.prerequisites).map(val => `"${currentHTMLstateData.prerequisites[val] || "\"\""}"`).toString().replaceAll(",", "%20")} cp4ba`);
     document.getElementById("configure-env$1").click();
+
 }
 
 function updateYamlAndEnableTimeline(e) {
     //updateCP4BAyaml()
+    console.log("----------- Check file content inside enable function: -----------", currentHTMLstateData.fileContents)
     enableAll()
 }
 

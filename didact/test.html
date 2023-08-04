@@ -91,15 +91,21 @@
             <div class="content">
                 <p>Get the resources required to deploy CP4BA services and connect to the openshift credentials.</p>
             </div>
-            <button class="button is-dark is-medium" id="configure-env" title="Configure Environment" numSuccess=1>Configure
-                Environment</button><span class="spinner hidden-state"></span>
+            <button class="button is-dark is-medium" id="configure-env" title="Configure Environment"
+                numSuccess=1>Configure Environment</button><span class="spinner hidden-state"></span>
             <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
                 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
-            <button id="configure-env$2" class="store-data send-to-extension hidden-state" action="get-file-data"
-                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;pip install pyYaml;"
-                filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/serviceList.txt" preProcess="true" numSuccess=1
-                nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
+            
+            <button id="configure-env$2" class="send-to-extension hidden-state" action="sendcommand" command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;echo second cta run;pip install pyYaml;"
+                numSuccess=1 nextAction="configure-env$3"></button><span class="spinner hidden-state"></span>
+
+            <button id="configure-env$3" class="store-data send-to-extension hidden-state" action="get-file-data"
+                command=""
+                filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/installed_cp4ba_services.txt" preProcess="true"
+                numSuccess=1 nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
+
             <button id="enable-timeline" class="store-data hidden-state">Enable</button>
+
             <span class="dot"></span>
         </div>
         <div class="timeline">
@@ -152,58 +158,73 @@
                                     Server</label>
                             </div>
                             <div>
-                                <input id="decisions_ads" name="sv" type="checkbox" value="decisions_ads" class="group-checkbox"
-                                    style="pointer-events: auto;"><label for="decisions_ads">Automation Decision Services</label>
+                                <input id="decisions_ads" name="sv" type="checkbox" value="decisions_ads"
+                                    class="group-checkbox" style="pointer-events: auto;"><label
+                                    for="decisions_ads">Automation Decision Services</label>
                                 <br>
-                                <input id="ads_designer" name="sv" class="option-checkbox child-checkbox" type="checkbox" value="ads_designer"
-                                    style="pointer-events: auto;"><label for="ads_designer">Designer</label>
+                                <input id="ads_designer" name="sv" class="option-checkbox child-checkbox"
+                                    type="checkbox" value="ads_designer" style="pointer-events: auto;"><label
+                                    for="ads_designer">Designer</label>
                                 <br>
-                                <input id="ads_runtime" name="sv" type="checkbox" class="option-checkbox child-checkbox" value="ads_runtime"
-                                    style="pointer-events: auto;"><label for="ads_runtime">Runtime</label>
+                                <input id="ads_runtime" name="sv" type="checkbox" class="option-checkbox child-checkbox"
+                                    value="ads_runtime" style="pointer-events: auto;"><label
+                                    for="ads_runtime">Runtime</label>
                             </div>
                             <div>
                                 <input id="content" name="sv" type="checkbox" value="content" class="group-checkbox"
                                     style="pointer-events: auto;"><label for="content">FileNet Content Manager</label>
                                 <br>
-                                <input id="cmis" name="sv" class="option-checkbox child-checkbox" type="checkbox" value="cmis"
-                                    style="pointer-events: auto;"><label for="cmis">Content Management Interoperability Services</label>
+                                <input id="cmis" name="sv" class="option-checkbox child-checkbox" type="checkbox"
+                                    value="cmis" style="pointer-events: auto;"><label for="cmis">Content Management
+                                    Interoperability Services</label>
                                 <br>
-                                <input id="css" name="sv" type="checkbox" class="option-checkbox child-checkbox" value="css"
-                                    style="pointer-events: auto;"><label for="css">Content Search Services</label>
+                                <input id="css" name="sv" type="checkbox" class="option-checkbox child-checkbox"
+                                    value="css" style="pointer-events: auto;"><label for="css">Content Search
+                                    Services</label>
                                 <br>
-                                <input id="es" name="sv" type="checkbox" class="option-checkbox child-checkbox" value="es"
-                                    style="pointer-events: auto;"><label for="es">External Share</label>
+                                <input id="es" name="sv" type="checkbox" class="option-checkbox child-checkbox"
+                                    value="es" style="pointer-events: auto;"><label for="es">External Share</label>
                                 <br>
-                                <input id="tm" name="sv" type="checkbox" class="option-checkbox child-checkbox" value="tm"
-                                    style="pointer-events: auto;"><label for="tm">Task Manager</label>
+                                <input id="tm" name="sv" type="checkbox" class="option-checkbox child-checkbox"
+                                    value="tm" style="pointer-events: auto;"><label for="tm">Task Manager</label>
                                 <br>
-                                <input id="ier" name="sv" type="checkbox" class="option-checkbox child-checkbox" value="ier"
-                                    style="pointer-events: auto;"><label for="ier">IBM Enterprise Records</label>
+                                <input id="ier" name="sv" type="checkbox" class="option-checkbox child-checkbox"
+                                    value="ier" style="pointer-events: auto;"><label for="ier">IBM Enterprise
+                                    Records</label>
                             </div>
                             <div>
-                                <input id="application" name="sv" type="checkbox" value="application" class="group-checkbox"
-                                    style="pointer-events: auto;"><label for="application">Business Automation Application</label>
+                                <input id="application" name="sv" type="checkbox" value="application"
+                                    class="group-checkbox" style="pointer-events: auto;"><label
+                                    for="application">Business Automation Application</label>
                                 <br>
-                                <input id="app_designer" name="sv" class="option-checkbox child-checkbox" type="checkbox" value="app_designer"
-                                    style="pointer-events: auto;"><label for="app_designer">App Designer</label>
+                                <input id="app_designer" name="sv" class="option-checkbox child-checkbox"
+                                    type="checkbox" value="app_designer" style="pointer-events: auto;"><label
+                                    for="app_designer">App Designer</label>
                                 <br>
-                                <input id="ae_data_persistence" name="sv" type="checkbox" class="option-checkbox child-checkbox"
-                                    value="ae_data_persistence" style="pointer-events: auto;"><label for="ae_data_persistence">App Engine data
+                                <input id="ae_data_persistence" name="sv" type="checkbox"
+                                    class="option-checkbox child-checkbox" value="ae_data_persistence"
+                                    style="pointer-events: auto;"><label for="ae_data_persistence">App Engine data
                                     persistence</label>
                             </div>
                             <div>
-                                <input id="document_processing" name="sv" type="checkbox" value="document_processing" class="group-checkbox"
-                                    style="pointer-events: auto;"><label for="document_processing">Automation Document Processing</label>
+                                <input id="document_processing" name="sv" type="checkbox" value="document_processing"
+                                    class="group-checkbox" style="pointer-events: auto;"><label
+                                    for="document_processing">Automation Document Processing</label>
                                 <br>
-                                <input id="document_processing_designer" name="sv" class="option-checkbox child-checkbox" type="checkbox" value="document_processing_designer" style="pointer-events: auto;"><label for="document_processing_designer">Designer</label>
+                                <input id="document_processing_designer" name="sv"
+                                    class="option-checkbox child-checkbox" type="checkbox"
+                                    value="document_processing_designer" style="pointer-events: auto;"><label
+                                    for="document_processing_designer">Designer</label>
                             </div>
 
                             <div>
                                 <input id="workflow" name="sv" type="checkbox" value="workflow" class="group-checkbox"
-                                    style="pointer-events: auto;"><label for="workflow">Business Automation Workflow</label>
+                                    style="pointer-events: auto;"><label for="workflow">Business Automation
+                                    Workflow</label>
                                 <br>
-                                <input id="baw_authoring" name="sv" class="option-checkbox child-checkbox" type="checkbox" value="baw_authoring"
-                                    style="pointer-events: auto;"><label for="baw_authoring">Workflow Authoring</label>
+                                <input id="baw_authoring" name="sv" class="option-checkbox child-checkbox"
+                                    type="checkbox" value="baw_authoring" style="pointer-events: auto;"><label
+                                    for="baw_authoring">Workflow Authoring</label>
                             </div>
 
 
@@ -218,26 +239,32 @@
                             </div>
 
                             <div>
-                                <input id="cloudbeaver_enabled" name="sv" type="checkbox" value="cloudbeaver_enabled" style="pointer-events: auto;" class="option-checkbox"><label for="cloudbeaver_enabled">CloudBeaver</label>
+                                <input id="cloudbeaver_enabled" name="sv" type="checkbox" value="cloudbeaver_enabled"
+                                    style="pointer-events: auto;" class="option-checkbox"><label
+                                    for="cloudbeaver_enabled">CloudBeaver</label>
                             </div>
 
                             <div>
-                                <input id="roundcube_enabled" name="sv" type="checkbox" value="roundcube_enabled" style="pointer-events: auto;"
-                                    class="option-checkbox"><label for="roundcube_enabled">Roundcube</label>
-                            </div>
-                            
-                            <div>
-                                <input id="cerebro_enabled" name="sv" type="checkbox" value="cerebro_enabled" style="pointer-events: auto;"
-                                    class="option-checkbox"><label for="cerebro_enabled">Cerebro</label>
+                                <input id="roundcube_enabled" name="sv" type="checkbox" value="roundcube_enabled"
+                                    style="pointer-events: auto;" class="option-checkbox"><label
+                                    for="roundcube_enabled">Roundcube</label>
                             </div>
 
                             <div>
-                                <input id="akhq_enabled" name="sv" type="checkbox" value="akhq_enabled" style="pointer-events: auto;"
-                                    class="option-checkbox"><label for="akhq_enabled">AKHQ</label>
+                                <input id="cerebro_enabled" name="sv" type="checkbox" value="cerebro_enabled"
+                                    style="pointer-events: auto;" class="option-checkbox"><label
+                                    for="cerebro_enabled">Cerebro</label>
                             </div>
 
                             <div>
-                                <input id="mongo_express_enabled" name="sv" type="checkbox" value="mongo_express_enabled" style="pointer-events: auto;"
+                                <input id="akhq_enabled" name="sv" type="checkbox" value="akhq_enabled"
+                                    style="pointer-events: auto;" class="option-checkbox"><label
+                                    for="akhq_enabled">AKHQ</label>
+                            </div>
+
+                            <div>
+                                <input id="mongo_express_enabled" name="sv" type="checkbox"
+                                    value="mongo_express_enabled" style="pointer-events: auto;"
                                     class="option-checkbox"><label for="mongo_express_enabled">Mongo Express</label>
                             </div>
 

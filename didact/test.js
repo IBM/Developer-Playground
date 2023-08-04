@@ -44,7 +44,7 @@ function funcLoad() {
     //generate config command
     addEventListenerToElement(document.getElementById("configure-env"), "click", updateConfigVars);
 
-    addEventListenerToElement(document.getElementById("configure-env"), "click", handleInstalledcp4baServices);
+    addEventListenerToElement(document.getElementById("enable-dd"), "click", handleInstalledcp4baServices);
 
     //After env configured successfully enable timeline
     addEventListenerToElement(document.getElementById("enable-timeline"), "click", updateYamlAndEnableTimeline);
@@ -185,6 +185,7 @@ function updateConfigVars(e) {
 }
 
 function handleInstalledcp4baServices(e){
+    
     console.log("----------- Check file content inside enable function: -----------", currentHTMLstateData.fileContents);
     var installed_services = JSON.parse(currentHTMLstateData.fileContents);
     console.log("these are the installed ones:")
@@ -196,7 +197,7 @@ function handleInstalledcp4baServices(e){
     else{
         console.log('cluster has services installed');
     }
-
+    document.getElementById(“configure-env$3”).click();
 }
 
 function updateYamlAndEnableTimeline(e) {

@@ -44,7 +44,7 @@ function funcLoad() {
     //generate config command
     addEventListenerToElement(document.getElementById("configure-env"), "click", updateConfigVars);
 
-    addEventListenerToElement(document.getElementById("enable-dd"), "click", handleInstalledcp4baServices);
+    // addEventListenerToElement(document.getElementById("enable-dd"), "click", handleInstalledcp4baServices);
 
     //After env configured successfully enable timeline
     addEventListenerToElement(document.getElementById("enable-timeline"), "click", updateYamlAndEnableTimeline);

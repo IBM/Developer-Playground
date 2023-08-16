@@ -44,8 +44,6 @@ function funcLoad() {
     //generate config command
     addEventListenerToElement(document.getElementById("configure-env"), "click", updateConfigVars);
 
-    // addEventListenerToElement(document.getElementById("enable-dd"), "click", handleInstalledcp4baServices);
-
     //After env configured successfully enable timeline
     addEventListenerToElement(document.getElementById("enable-timeline"), "click", updateYamlAndEnableTimeline);
 
@@ -86,6 +84,7 @@ function toggleDropdowns(dropdownIds) {
 
 toggleDropdowns(["service-list"])
 
+console.log("----------- Check file content: -----------", currentHTMLstateData.fileContents)
 
 var groupCheckboxes = document.querySelectorAll('.group-checkbox');
 var optionCheckboxes = document.querySelectorAll('.option-checkbox');
@@ -184,24 +183,9 @@ function updateConfigVars(e) {
 
 }
 
-function handleInstalledcp4baServices(e){
-    
-    console.log("----------- Check file content inside enable function: -----------", currentHTMLstateData.fileContents);
-    var installed_services = JSON.parse(currentHTMLstateData.fileContents);
-    console.log("these are the installed ones:")
-    console.log(installed_services);
-
-    if (installed_services.length === 0){
-        console.log("fresh cluster");
-    }
-    else{
-        console.log('cluster has services installed');
-    }
-    document.getElementById(“configure-env$3”).click();
-}
-
 function updateYamlAndEnableTimeline(e) {
     //updateCP4BAyaml()
+    console.log("----------- Check file content inside enable function: -----------", currentHTMLstateData.fileContents)
     enableAll()
 }
 

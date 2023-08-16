@@ -96,14 +96,12 @@
             <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
                 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
             
-            <button id="configure-env$2" class="send-to-extension hidden-state" action="sendcommand" command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;echo second cta run;pip install pyYaml"
+            <button id="configure-env$2" class="send-to-extension hidden-state" action="sendcommand" command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;echo second cta run;pip install pyYaml;"
                 numSuccess=1 nextAction="configure-env$3"></button><span class="spinner hidden-state"></span>
-            
-<!-- <button id="enable-dd" class="store-data hidden-state">Enable</button> -->
 
             <button id="configure-env$3" class="store-data send-to-extension hidden-state" action="get-file-data"
                 command=""
-                filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/installed_cp4ba_services.txt"
+                filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/installed_cp4ba_services.txt" preProcess="true"
                 numSuccess=1 nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
 
             <button id="enable-timeline" class="store-data hidden-state">Enable</button>

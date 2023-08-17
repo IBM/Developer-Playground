@@ -186,7 +186,8 @@ function updateConfigVars(e) {
 
 
 function handleInstalledcp4baServices(e){
-    console.log("----------- Check file content inside enable function: -----------", currentHTMLstateData.fileContents);
+    console.log("----------- Check file content inside enable function: ----------->", currentHTMLstateData.fileContents);
+    console.log("type check", typeof(currentHTMLstateData.fileContents));
     var installed_services = JSON.parse(currentHTMLstateData.fileContents);
     console.log("these are the installed ones:")
     console.log(installed_services);

@@ -3,7 +3,7 @@ window.addEventListener('message', event => {
     const receivedOutput = event.data; // The JSON data our extension sent
     switch (receivedOutput.command) {
         case 'get-file-data':
-            currentHTMLstateData.fileContents = JSON.stringify(receivedOutput.outputData);
+            currentHTMLstateData.fileContents = receivedOutput.outputData;
             break;
         case 'receiveProductInfo':
             //document.querySelector('[id="message"]').innerHTML = message.message;

@@ -27,7 +27,7 @@ currentHTMLstateData = {
   configYamlPath: "",
 }
 
-const DEFAULT_CP4D_VERSION = "4.6.3"
+const DEFAULT_CP4D_VERSION = "4.7.0"
 
 let previousServicesState = "";
 let previousCP4DVersion = DEFAULT_CP4D_VERSION

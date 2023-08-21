@@ -1,0 +1,309 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="$$rootcsspath$$">
+    <style>
+        .header {
+            background-image: url("https://raw.githubusercontent.com/IBM/Developer-Playground/master/didact/images/video_insights.jpeg");
+        }
+
+        .child-checkbox {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin-top:2rem"></div>
+    <div id="userID" class="hidden-state">$user_id</div>
+    <button id="update-workspace-state" action="update-workspace-state" class="send-to-extension hidden-state"></button>
+    <button id="get-workspace-state" action="get-workspace-state" class="send-to-extension hidden-state"></button>
+
+    <div class="header">
+        <div class="left-content">
+            <div class="apptitle">Self-service customizable CP4BA environment setup</div>
+            <div class="subheading">Cloud Pak for Business Automation (CP4BA) v4 adopted the Operator based installation
+                & management
+                pattern.
+                This gives us flexibility to custom build a demo environment based on our needs. If we are doing a
+                simple demo with services Application Engine, Workflow Authoring you can choose to just install those 2
+                services in a self-service
+                fashion on
+                an appropriately sized cluster for more cost effectiveness in addition to better performance as you
+                would have
+                installed just services you need for your demo. This interface uses standard engineering-supported
+                install
+                utility/mechanism for ongoing support/maintainability.</div>
+        </div>
+    </div>
+    <div class="section">
+        <p style="font-size:24px">Pre-requisites</p>
+        <div>
+            <p>To clear pre populated fields if any click <a id="reset-href" title="Reset">here</a>.</p>
+            <button id="reset-workspace-state" action="reset-workspace-state" class="send-to-extension hidden-state"
+                command="cd ${CHE_PROJECTS_ROOT};rm -rf techzone-demo">Reset</button>
+            <p>Configure Openshift credentials (either use combination of Openshift server URL, user/password (OR)
+                Openshift server URL, token).
+            <ol>
+                <li>From Openshift console, select your profile on top right and select “Copy login command”</li>
+                <li>From oc cli, run “oc config view --minify|grep server” to get server name and “oc whoami -t” to get
+                    token
+                </li>
+            </ol>
+            </p>
+            <p>Obtain an IBM Software Entitlement Key from <a
+                    href="https://myibm.ibm.com/products-services/containerlibrary"> IBM Container Library</a> using
+                your IBM ID. Click Get an entitlement key if you are not on the entitlement page.</p>
+            <div class="env-config">
+                <label id="icr_key$label">Entitlement Key: </label><input class="store-data env-variables" id="icr_key"
+                    name="icr_key" type="text" />
+                <label>Authentication Options:</label>
+                <div>
+                    <label><input type="radio" id="server_option" name="authentication-options" value="Server"
+                            class="store-data" checked />API Key</label>
+                    <label><input type="radio" id="kube_option" name="authentication-options" value="Kube"
+                            class="store-data" />Kube Admin</label>
+                    <label><input type="radio" id="oc_option" name="authentication-options" value="OC-Login"
+                            class="store-data" />OC Login</label>
+                </div>
+                <label id="oc_login$label" class="hidden-state">OC Login: </label><input
+                    class="store-data env-variables hidden-state" id="oc_login" name="oc_login" type="text" />
+                <label id="server$label">Server: </label><input class="store-data env-variables" id="server"
+                    name="server" type="text" />
+                <label id="api_token$label">API Token: </label><input class="store-data env-variables" id="api_token"
+                    name="api_token" type="text" />
+                <label id="kubeadmin_user$label" class="hidden-state">Kube Admin User: </label><input
+                    class="store-data env-variables hidden-state" id="kubeadmin_user" name="kubeadmin_user"
+                    type="text" />
+                <label id="kubeadmin_pass$label" class="hidden-state">Kube Admin Password: </label><input
+                    class="store-data env-variables hidden-state" id="kubeadmin_pass" name="kubeadmin_pass"
+                    type="password" />
+            </div>
+        </div>
+    </div>
+    <div class="section" style="margin-top:5rem;">
+        <p style="font-size:24px">Instructions</p>
+    </div>
+    <div class="timeline-container">
+        <input type="text" class="hidden-state" id="data-fetched" />
+        <div class="timeline" id="configure-environment-CTA">
+            <div class="content">
+                <p>Get the resources required to deploy CP4BA services and connect to the openshift credentials.</p>
+            </div>
+            <button class="button is-dark is-medium" id="configure-env" title="Configure Environment"
+                numSuccess=1>Configure Environment</button><span class="spinner hidden-state"></span>
+            <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
+                nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
+            
+            <button id="configure-env$2" class="send-to-extension hidden-state" action="sendcommand" command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;echo second cta run;pip install pyYaml"
+                numSuccess=0 nextAction="configure-env$3"></button><span class="spinner hidden-state"></span>
+            
+            <button id="configure-env$3" class="store-data send-to-extension hidden-state" action="get-file-data" command="" filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/installed_cp4ba_services.txt" numSuccess=1 nextAction="configure-env$4"></button><span class="spinner hidden-state"></span>
+            
+            <button id="configure-env$4" class="store-data hidden-state"></button><span class="spinner hidden-state"></span>
+
+            <button id="enable-timeline" class="store-data hidden-state">Enable</button>
+
+            <span class="dot"></span>
+        </div>
+        <div class="timeline">
+            <div class="content">
+                <p>Deploy selected CP4BA services</p>
+                <div id="cp4ba-deploy" class="env-config">
+
+                    <label>CP4BA Admin Password</label>
+                    <input class="store-data" type="password" id="cp4ba_admin_password">
+                    <label>CP4BA Environment Name</label>
+                    <input class="store-data" type="text" id="cp4ba_env_name" value="demo">
+                    <label>CP4BA Services List</label>
+                    <div id="service-list" class="dropdown-check-list" tabindex="100">
+                        <span class="anchor" id="selected-components-string">Select Services</span>
+                        <div class="items">
+                            <div>
+                                <input id="foundation" checked="checked" onclick="return false;" name="sv"
+                                    type="checkbox" value="foundation" class="group-checkbox"
+                                    style="pointer-events: auto;"><label for="foundation">Foundation</label>
+
+                                <br>
+                                <input id="bas" name="sv" class="option-checkbox child-checkbox" type="checkbox"
+                                    value="bas" style="pointer-events: auto;"><label for="bas">Business Automation
+                                    Studio</label>
+                                <br>
+                                <input id="bai" name="sv" type="checkbox" class="option-checkbox child-checkbox"
+                                    value="bai" style="pointer-events: auto;"><label for="bai">Business Automation
+                                    Insights</label>
+                                <br>
+                                <input id="ae" name="sv" class="option-checkbox child-checkbox" type="checkbox"
+                                    value="ae" style="pointer-events: auto;"><label for="ae">Application Engine</label>
+                            </div>
+
+                            <div>
+                                <input id="decisions" name="sv" type="checkbox" value="decisions" class="group-checkbox"
+                                    style="pointer-events: auto;"><label for="decisions">Operational Decision
+                                    Manager</label>
+                                <br>
+                                <input id="decision_center" name="sv" class="option-checkbox child-checkbox"
+                                    type="checkbox" value="decision_center" style="pointer-events: auto;"><label
+                                    for="decision_center">Decision Center</label>
+                                <br>
+                                <input id="decision_runner" name="sv" type="checkbox"
+                                    class="option-checkbox child-checkbox" value="decision_runner"
+                                    style="pointer-events: auto;"><label for="decision_runner">Decision Runner</label>
+                                <br>
+                                <input id="decision_server_runtime" name="sv" type="checkbox"
+                                    class="option-checkbox child-checkbox" value="decision_server_runtime"
+                                    style="pointer-events: auto;"><label for="decision_server_runtime">Decision
+                                    Server</label>
+                            </div>
+                            <div>
+                                <input id="decisions_ads" name="sv" type="checkbox" value="decisions_ads"
+                                    class="group-checkbox" style="pointer-events: auto;"><label
+                                    for="decisions_ads">Automation Decision Services</label>
+                                <br>
+                                <input id="ads_designer" name="sv" class="option-checkbox child-checkbox"
+                                    type="checkbox" value="ads_designer" style="pointer-events: auto;"><label
+                                    for="ads_designer">Designer</label>
+                                <br>
+                                <input id="ads_runtime" name="sv" type="checkbox" class="option-checkbox child-checkbox"
+                                    value="ads_runtime" style="pointer-events: auto;"><label
+                                    for="ads_runtime">Runtime</label>
+                            </div>
+                            <div>
+                                <input id="content" name="sv" type="checkbox" value="content" class="group-checkbox"
+                                    style="pointer-events: auto;"><label for="content">FileNet Content Manager</label>
+                                <br>
+                                <input id="cmis" name="sv" class="option-checkbox child-checkbox" type="checkbox"
+                                    value="cmis" style="pointer-events: auto;"><label for="cmis">Content Management
+                                    Interoperability Services</label>
+                                <br>
+                                <input id="css" name="sv" type="checkbox" class="option-checkbox child-checkbox"
+                                    value="css" style="pointer-events: auto;"><label for="css">Content Search
+                                    Services</label>
+                                <br>
+                                <input id="es" name="sv" type="checkbox" class="option-checkbox child-checkbox"
+                                    value="es" style="pointer-events: auto;"><label for="es">External Share</label>
+                                <br>
+                                <input id="tm" name="sv" type="checkbox" class="option-checkbox child-checkbox"
+                                    value="tm" style="pointer-events: auto;"><label for="tm">Task Manager</label>
+                                <br>
+                                <input id="ier" name="sv" type="checkbox" class="option-checkbox child-checkbox"
+                                    value="ier" style="pointer-events: auto;"><label for="ier">IBM Enterprise
+                                    Records</label>
+                            </div>
+                            <div>
+                                <input id="application" name="sv" type="checkbox" value="application"
+                                    class="group-checkbox" style="pointer-events: auto;"><label
+                                    for="application">Business Automation Application</label>
+                                <br>
+                                <input id="app_designer" name="sv" class="option-checkbox child-checkbox"
+                                    type="checkbox" value="app_designer" style="pointer-events: auto;"><label
+                                    for="app_designer">App Designer</label>
+                                <br>
+                                <input id="ae_data_persistence" name="sv" type="checkbox"
+                                    class="option-checkbox child-checkbox" value="ae_data_persistence"
+                                    style="pointer-events: auto;"><label for="ae_data_persistence">App Engine data
+                                    persistence</label>
+                            </div>
+                            <div>
+                                <input id="document_processing" name="sv" type="checkbox" value="document_processing"
+                                    class="group-checkbox" style="pointer-events: auto;"><label
+                                    for="document_processing">Automation Document Processing</label>
+                                <br>
+                                <input id="document_processing_designer" name="sv"
+                                    class="option-checkbox child-checkbox" type="checkbox"
+                                    value="document_processing_designer" style="pointer-events: auto;"><label
+                                    for="document_processing_designer">Designer</label>
+                            </div>
+
+                            <div>
+                                <input id="workflow" name="sv" type="checkbox" value="workflow" class="group-checkbox"
+                                    style="pointer-events: auto;"><label for="workflow">Business Automation
+                                    Workflow</label>
+                                <br>
+                                <input id="baw_authoring" name="sv" class="option-checkbox child-checkbox"
+                                    type="checkbox" value="baw_authoring" style="pointer-events: auto;"><label
+                                    for="baw_authoring">Workflow Authoring</label>
+                            </div>
+
+
+                            <div>
+                                <input id="pm" name="sv" type="checkbox" value="pm" style="pointer-events: auto;"
+                                    class="option-checkbox"><label for="pm">IBM Process mining</label>
+                            </div>
+
+                            <div>
+                                <input id="rpa" name="sv" type="checkbox" value="rpa" style="pointer-events: auto;"
+                                    class="option-checkbox"><label for="rpa">IBM Robotic Process Automation</label>
+                            </div>
+
+                            <div>
+                                <input id="cloudbeaver_enabled" name="sv" type="checkbox" value="cloudbeaver_enabled"
+                                    style="pointer-events: auto;" class="option-checkbox"><label
+                                    for="cloudbeaver_enabled">CloudBeaver</label>
+                            </div>
+
+                            <div>
+                                <input id="roundcube_enabled" name="sv" type="checkbox" value="roundcube_enabled"
+                                    style="pointer-events: auto;" class="option-checkbox"><label
+                                    for="roundcube_enabled">Roundcube</label>
+                            </div>
+
+                            <div>
+                                <input id="cerebro_enabled" name="sv" type="checkbox" value="cerebro_enabled"
+                                    style="pointer-events: auto;" class="option-checkbox"><label
+                                    for="cerebro_enabled">Cerebro</label>
+                            </div>
+
+                            <div>
+                                <input id="akhq_enabled" name="sv" type="checkbox" value="akhq_enabled"
+                                    style="pointer-events: auto;" class="option-checkbox"><label
+                                    for="akhq_enabled">AKHQ</label>
+                            </div>
+
+                            <div>
+                                <input id="mongo_express_enabled" name="sv" type="checkbox"
+                                    value="mongo_express_enabled" style="pointer-events: auto;"
+                                    class="option-checkbox"><label for="mongo_express_enabled">Mongo Express</label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top:1rem"><b>Selected Services: </b><span id="selected-services"></span></p>
+                <br /><br />
+                <p>Explore and update the CP4BA configuration as required</p>
+            </div>
+            <button class="send-to-extension button is-dark is-medium" action="openPath" id="open-config"
+                title="Open Configure file" command=""
+                filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/cp4ba-config.yaml" silent="true">Edit
+                Configuration</button><span class="spinner hidden-state"></span>
+            <button class="send-to-extension button is-dark is-medium hidden-state" action="senddata" id="update-config"
+                title="Update Configure file" command="" silent="true" preProcess="true"></button><span
+                class="dot"></span></br></br>
+            <div class="content">
+                <p>Install selected services</p>
+            </div>
+            <button class="button is-dark is-medium" id="install_cpd" title="Execute" command="">Install
+                Services</button><span class="spinner hidden-state"></span>
+            <button id="install_cpd$1" class="send-to-extension hidden-state" action="senddata" command=""
+                numSuccess=2></button><span class="spinner hidden-state"></span>
+            <span class="dot"></span>
+        </div>
+        <div class="timeline">
+            <div class="content">
+                <p>Cleanup install utility artifacts</p>
+            </div>
+            <button class="send-to-extension button is-dark is-medium" id="clean-up-job" title="Clean up"
+                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/;sh delete.sh" numSuccess=1>Clean
+                up</button><span class="spinner hidden-state"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+</body>
+
+<script src="$$rootcommonjspath$$"></script>
+<script src="$$rootjspath$$"></script>
+<script src="$$rootvscodeutilspath$$"></script>
+
+</html>

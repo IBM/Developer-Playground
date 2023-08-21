@@ -29,6 +29,6 @@
         "cp4d-deploy-air-gapped": "CP4D Installation for Air Gapped Environments",
         "cp4waiops-deploy": "Techzone CP4WAIOps Deploy",
         "execute-assets":"Execute Assets",
-        "cp4d-fusionbackup": "Techzone CP4D Spectrum Fusion Backup"
+        "cp4ba-deploy": "Techzone CP4BA Deploy"
     }
 }

@@ -49,8 +49,6 @@ function funcLoad() {
     //After env configured successfully enable timeline
     addEventListenerToElement(document.getElementById("enable-timeline"), "click", updateYamlAndEnableTimeline);
 
-    addEventListenerToElement(document.getElementById("service-list"), "mouseleave", updateCP4BAyaml)
-
     //open/close logic for all dropdowns
     toggleDropdowns(currentHTMLstateData.dropdownIds)
 
@@ -205,7 +203,7 @@ function handleInstalledcp4baServices(e) {
 }
 
 function updateYamlAndEnableTimeline(e) {
-    // updateCP4BAyaml()
+    //updateCP4BAyaml()
     enableAll()
 }
 
@@ -213,7 +211,6 @@ function updateYamlAndEnableTimeline(e) {
 function updateCP4BAyaml() {
     let cp4baVersion = "0";
     let component_list = storeSelected
-    
     if (!component_list) {
         component_list = "null"
     }
@@ -233,13 +230,9 @@ function install_cpd() {
     if (!component_list) {
         component_list = "null"
     }
-    let data = {
-        cp4baAdminPassword: cp4baAdminPassword,
-        cp4baEnvName: cp4baEnvName
-    }
-    data = JSON.stringify(data)
-    let storage = "auto" //document.getElementById("storage_value").value;
-    document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;" + `python updateYaml.py  ${component_list} ${storage} ${cp4baVersion} cp4ba;bash deploy.sh cp4ba '${data}'`)
+
+    let storage = "auto"
+    document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;" + `python updateYaml.py  ${component_list} ${storage} ${cp4baVersion} cp4ba;bash deploy.sh cp4ba ${cp4baAdminPassword} ${cp4baEnvName} `)
     document.getElementById("install_cpd$1").click();
 
 }

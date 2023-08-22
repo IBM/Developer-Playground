@@ -49,6 +49,8 @@ function funcLoad() {
     //After env configured successfully enable timeline
     addEventListenerToElement(document.getElementById("enable-timeline"), "click", updateYamlAndEnableTimeline);
 
+    addEventListenerToElement(document.getElementById("service-list"), "mouseleave", updateCP4BAyaml)
+
     //open/close logic for all dropdowns
     toggleDropdowns(currentHTMLstateData.dropdownIds)
 
@@ -203,21 +205,21 @@ function handleInstalledcp4baServices(e) {
 }
 
 function updateYamlAndEnableTimeline(e) {
-    //updateCP4BAyaml()
+    // updateCP4BAyaml()
     enableAll()
 }
 
 
 function updateCP4BAyaml() {
-    let cp4baVersion = document.getElementById('cp4ba_version').value || " ";
     let component_list = storeSelected
+    console.log("component list in func: ", component_list)
     if (!component_list) {
         component_list = "null"
     }
     let storage = "auto";
     if (previousServicesState === component_list)
         return
-    document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;python updateYaml.py  ${component_list} ${storage} ${cp4baVersion} cp4ba`)
+    document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;python updateYaml.py  ${component_list} ${storage} " " cp4ba`)
     document.getElementById("update-config").click();
     previousServicesState = component_list;
 }

@@ -211,15 +211,16 @@ function updateYamlAndEnableTimeline(e) {
 
 
 function updateCP4BAyaml() {
+    let cp4baVersion = "0";
     let component_list = storeSelected
-    console.log("component list in func: ", component_list)
+    
     if (!component_list) {
         component_list = "null"
     }
     let storage = "auto";
     if (previousServicesState === component_list)
         return
-    document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;python updateYaml.py  ${component_list} ${storage} " " cp4ba`)
+    document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;python updateYaml.py  ${component_list} ${storage} ${cp4baVersion} cp4ba`)
     document.getElementById("update-config").click();
     previousServicesState = component_list;
 }

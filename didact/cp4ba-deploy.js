@@ -49,6 +49,9 @@ function funcLoad() {
     //After env configured successfully enable timeline
     addEventListenerToElement(document.getElementById("enable-timeline"), "click", updateYamlAndEnableTimeline);
 
+    // handle yaml updation
+    addEventListenerToElement(document.getElementById("service-list"), "mouseleave", updateCP4BAyaml)
+
     //open/close logic for all dropdowns
     toggleDropdowns(currentHTMLstateData.dropdownIds)
 

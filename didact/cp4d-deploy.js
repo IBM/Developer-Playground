@@ -117,8 +117,8 @@ function install_cpd() {
     component_list = "null"
   }
   let data = {
-      cp4dAdminPassword: cp4dAdminPassword,
-      cp4dEnvName: cp4dEnvName
+      cpakAdminPassword: cp4dAdminPassword,
+      cpakEnvName: cp4dEnvName
   }
   data = JSON.stringify(data)
   let storage = "auto" //document.getElementById("storage_value").value;

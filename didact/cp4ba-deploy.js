@@ -220,7 +220,7 @@ function updateCP4BAyaml() {
     let storage = "auto";
     if (previousServicesState === component_list)
         return
-    document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;python updateYaml.py  ${component_list} ${storage} ${cp4baVersion} cp4ba`)
+    document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;python updateYaml.py  ${component_list} ${storage} "" cp4ba`)
     document.getElementById("update-config").click();
     previousServicesState = component_list;
 }
@@ -233,9 +233,14 @@ function install_cpd() {
     if (!component_list) {
         component_list = "null"
     }
+    let data = {
+        cpakAdminPassword: cp4baAdminPassword,
+        cpakEnvName: cp4baEnvName
+    }
+    data = JSON.stringify(data)
 
     let storage = "auto"
-    document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;" + `python updateYaml.py  ${component_list} ${storage} ${cp4baVersion} cp4ba;bash deploy.sh cp4ba ${cp4baAdminPassword} ${cp4baEnvName} `)
+    document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;" + `python updateYaml.py  ${component_list} ${storage} "" cp4ba;bash deploy.sh cp4ba '${data}' `)
     document.getElementById("install_cpd$1").click();
 
 }

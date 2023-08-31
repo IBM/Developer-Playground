@@ -97,8 +97,15 @@ function install_cpd(){
   if (!component_list) {
     component_list = "null"
   }
+
+  let data = {
+    cpakAdminPassword: cp4iAdminPassword,
+    cpakEnvName: cp4iEnvName
+  }
+  data = JSON.stringify(data)
+
   let storage = "auto"//document.getElementById("storage_value").value;
-  document.getElementById("install_cpd$1").setAttribute("command","cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;" +  `bash deploy.sh cp4i ${cp4iAdminPassword} ${cp4iEnvName}`)
+  document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;" + `bash deploy.sh cp4i '${data}'`)
   document.getElementById("install_cpd$1").click();
 }
 

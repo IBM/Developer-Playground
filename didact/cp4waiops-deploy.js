@@ -100,8 +100,15 @@ function install_cpd() {
     if (!component_list) {
         component_list = "null"
     }
+
+    let data = {
+        cpakAdminPassword: cp4waiopsAdminPassword,
+        cpakEnvName: cp4waiopsEnvName
+    }
+    data = JSON.stringify(data)
+
     let storage = "auto"
-    document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip install PyYAML;python updateYaml.py  ${component_list} ${storage} ${cp4waiopsVersion} cp4waiops ${instana_sales_key} ${instana_agent_key} ${turbonomic_lic} ; bash deploy.sh cp4waiops ${cp4waiopsAdminPassword} ${cp4waiopsEnvName}`)
+    document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;pip install PyYAML;python updateYaml.py  ${component_list} ${storage} ${cp4waiopsVersion} cp4waiops ${instana_sales_key} ${instana_agent_key} ${turbonomic_lic} ; bash deploy.sh cp4waiops '${data}'`)
     document.getElementById("install_cpd$1").click();
 }
 

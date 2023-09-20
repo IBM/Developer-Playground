@@ -94,8 +94,10 @@ var groupCheckboxes = document.querySelectorAll('.group-checkbox');
 var optionCheckboxes = document.querySelectorAll('.option-checkbox');
 var selectedOptions = [];
 
-var displaySelected = [];
-var storeSelected = [];
+var displaySelected = ['Foundation'];
+var storeSelected = ['foundation'];
+document.getElementById('selected-services').textContent = displaySelected.join(', ');
+document.getElementById("selected-components-string").textContent = getShortenedString(storeSelected) || "Select Services";
 
 function updateSelectedOptions() {
     var markedCheckbox = document.querySelectorAll('input[type="checkbox"]:checked');
@@ -109,6 +111,7 @@ function updateSelectedOptions() {
     }
 
     document.getElementById('selected-services').textContent = displaySelected.join(', ');
+    document.getElementById("selected-components-string").textContent = getShortenedString(storeSelected) || "Select Services";
 
 }
 
@@ -202,6 +205,7 @@ function handleInstalledcp4baServices(e) {
     }
 
     document.getElementById("enable-timeline").click();
+    document.getElementById("selected-components-string").textContent = getShortenedString(installed_services) || "Select Services";
 
 }
 
@@ -220,7 +224,7 @@ function updateCP4BAyaml() {
     let storage = "auto";
     if (previousServicesState === component_list)
         return
-    document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;python updateYaml.py  ${component_list} ${storage} "" cp4ba`)
+    document.getElementById("update-config").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}" + `/techzone-demo/olm-utils-v2/;python updateYaml.py ${component_list} ${storage} ${cp4baVersion} cp4ba`)
     document.getElementById("update-config").click();
     previousServicesState = component_list;
 }
@@ -240,7 +244,7 @@ function install_cpd() {
     data = JSON.stringify(data)
 
     let storage = "auto"
-    document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;" + `python updateYaml.py  ${component_list} ${storage} "" cp4ba;bash deploy.sh cp4ba '${data}' `)
+    document.getElementById("install_cpd$1").setAttribute("command", "cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;" + `python updateYaml.py ${component_list} ${storage} ${cp4baVersion} cp4ba;bash deploy.sh cp4ba '${data}' `)
     document.getElementById("install_cpd$1").click();
 
 }

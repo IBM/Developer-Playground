@@ -27,18 +27,16 @@
     <div class="header">
         <div class="left-content">
             <div class="apptitle">Self-service customizable CP4BA environment setup</div>
-            <div class="subheading">Cloud Pak for Business Automation (CP4BA) v4 adopted the Operator based installation
-                & management
-                pattern.
+            <div class="subheading">Cloud Pak for Business Automation (CP4BA) is using the Operator based installation &
+                management pattern.
                 This gives us flexibility to custom build a demo environment based on our needs. If we are doing a
                 simple demo with services Application Engine, Workflow Authoring you can choose to just install those 2
-                services in a self-service
-                fashion on
-                an appropriately sized cluster for more cost effectiveness in addition to better performance as you
-                would have
-                installed just services you need for your demo. This interface uses standard engineering-supported
-                install
-                utility/mechanism for ongoing support/maintainability.</div>
+                services in a self-service fashion on an appropriately sized cluster for more cost effectiveness in
+                addition to better performance as you would have installed just services you need for your demo. You
+                need to choose each of the prerequisite Pattern or Optional component needed for what you want. This
+                interface uses standard engineering-supported install utility/mechanism for ongoing
+                support/maintainability.
+            </div>
         </div>
     </div>
     <div class="section">
@@ -117,7 +115,10 @@
         </div>
         <div class="timeline">
             <div class="content">
-                <p>Deploy selected CP4BA services</p>
+                <p>Deploy selected CP4BA Patterns and Components. Please refer to <a
+                        href="https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/latest?topic=deployment-capability-patterns-production-deployments">this</a>
+                    documentation for assistance with the selection.
+                </p>
                 <div id="cp4ba-deploy" class="env-config">
 
                     <label>CP4BA Admin Password</label>
@@ -126,7 +127,8 @@
                     <input class="store-data" type="text" id="cp4ba_env_name" value="demo">
                     <label>CP4BA Services List</label>
                     <div id="service-list" class="dropdown-check-list" tabindex="100">
-                        <span class="anchor" id="selected-components-string" style="width: 21.35rem;">Select Services</span>
+                        <span class="anchor" id="selected-components-string" style="width: 21.35rem;">Select
+                            Services</span>
                         <div class="items">
                             <div>
                                 <input id="foundation" checked="checked" onclick="return false;" name="sv"
@@ -233,8 +235,8 @@
                                     type="checkbox" value="baw_authoring" style="pointer-events: auto;"><label
                                     for="baw_authoring">Workflow Authoring</label>
                                 <br>
-                                <input id="kafka" name="sv" class="option-checkbox child-checkbox" type="checkbox" value="kafka"
-                                    style="pointer-events: auto;"><label for="kafka">Kafka</label>
+                                <input id="kafka" name="sv" class="option-checkbox child-checkbox" type="checkbox"
+                                    value="kafka" style="pointer-events: auto;"><label for="kafka">Kafka</label>
                             </div>
 
 
@@ -283,7 +285,10 @@
                 </div>
                 <p style="margin-top:1rem"><b>Selected Services: </b><span id="selected-services"></span></p>
                 <br /><br />
-                <p>Explore and update the CP4BA configuration as required</p>
+                <p>Explore and update the CP4BA configuration as required. Please refer to <a
+                        href="https://ibm.github.io/cloud-pak-deployer/30-reference/configuration/cloud-pak/#cp4ba">this</a>
+                    documentation for assistance.
+                </p>
             </div>
             <button class="send-to-extension button is-dark is-medium" action="openPath" id="open-config"
                 title="Open Configure file" command=""

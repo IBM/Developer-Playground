@@ -6,9 +6,9 @@
     "description": "NOTE: This should be used in conjunction with the WGET to download files task. Upload a zip file to box/any location with multiple text files and 1 text file for the test data to use, eacha having a prompt you want to test. Now invoke this task as a 2nd step to read each of the prompt files and execute the prompt against the chosen model and display a F1  score compared to test dataset.",
     "isComposite": "1",
     "assetIds": [
+      "a2206d4841",
       "bdvlfuxcvc",
-      "bdvlfuxcvc",
-      "bdvlfuxcv"
+      "a2206d4841"
     ]
   },
   "asset2": {
@@ -18,9 +18,9 @@
     "description": "NOTE: This should be used in conjunction with the WGET to download files task. Upload a zip file to box/any location with multiple text files and 1 text file for the test data to use, each having a prompt you want to test. Now invoke this task as a 2nd step to read each of the prompt files and execute the prompt against the chosen model and display a F1  score compared to test dataset.",
     "isComposite": "1",
     "assetIds": [
+      "a2206d4841",
       "bdvlfuxcvc",
-      "bdvlfuxcvc",
-      "bdvlfuxcv"
+      "a2206d4841"
     ]
   }
 }

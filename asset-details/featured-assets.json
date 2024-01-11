@@ -1,26 +1,24 @@
 {
   "asset1": {
-    "id": "asset1",
-    "title": "Test multiple prompts against WatsonX.AI FLAN UL2 model ",
+    "id": "s3ops",
+    "title": "Connect to S3 bucket and check contents of bucket",
     "author": "Deepak Rangarao",
-    "description": "NOTE: TEST This should be used in conjunction with the WGET to download files task. Upload a zip file to box/any location with multiple text files and 1 text file for the test data to use, eacha having a prompt you want to test. Now invoke this task as a 2nd step to read each of the prompt files and execute the prompt against the chosen model and display a F1  score compared to test dataset.",
+    "description": "Note: Using the AWS S3 cli, we will take the connection parameters, list contents of an existing bucket and upload new files to a bucket",
     "isComposite": "1",
     "assetIds": [
+      "ususcjnoae",
       "hmlboevker",
-      "ahltfejoni",
-      "ususcjnoae"
+      "tbqczkuhfe"
     ]
   },
   "asset2": {
-    "id": "asset2",
-    "title": "Test multiple prompts against WatsonX.AI FLAN UL2 model ",
+    "id": "genaiapp",
+    "title": "Run ANY StreamLit application",
     "author": "Deepak Rangarao",
     "description": "NOTE: This should be used in conjunction with the WGET to download files task. Upload a zip file to box/any location with multiple text files and 1 text file for the test data to use, each having a prompt you want to test. Now invoke this task as a 2nd step to read each of the prompt files and execute the prompt against the chosen model and display a F1  score compared to test dataset.",
     "isComposite": "1",
     "assetIds": [
-      "a2206d4841",
-      "ahltfejoni",
-      "a2206d4841"
+      "almifbbhfb"
     ]
   }
 }

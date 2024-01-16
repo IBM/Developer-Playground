@@ -1,4 +1,5 @@
-asset1: {
+{
+  asset1: {
 id: "asset1",
 title: "Connect to S3 bucket and check contents of bucket",
 author: "Deepak Rangarao",

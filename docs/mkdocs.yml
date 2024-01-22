@@ -1,0 +1,133 @@
+---
+
+# Project Information
+site_name: "Playground"
+site_description: Automated deployer of OpenShift cluster and IBM Cloud Paks
+site_author: "Author"
+
+edit_uri: 'edit/main/docs'
+docs_dir: 'src'
+site_dir: 'site'
+remote_branch: 'gh-pages'
+remote_name: 'origin'
+
+nav:
+  - Home: index.md
+  - 'Architecture': ./architecture.md
+  - 'Demo manager': ./demo-manager.md
+  - 'Code Server': ./code-server.md
+  - 'Asset Hub': ./assethub.md
+  - 'DB schema': ./db.md
+  - 'Unit testing': ./unit-testing.md
+# Theme
+theme:
+  name: material
+  prev_next_buttons_location: bottom
+  collapse_navigation: False
+  sticky_navigation: True
+  titles_only: True
+  features:
+    - navigation.expand
+extra_css:
+  - css/extra.css
+  # - css/toolkit-code.css
+# Plugins
+plugins:
+  - search
+  - table-reader
+  - open-in-new-tab
+  # - git-revision-date-localized:
+  #     fallback_to_build_date: true
+  # - git-authors
+  - minify:
+      minify_html: true
+  - awesome-pages:
+      filename: .pages
+      collapse_single_pages: false
+      strict: false
+  - pdf-export:
+      verbose: true
+      media_type: print
+      enabled_if_env: ENABLE_PDF_EXPORT
+      combined: false
+
+
+# Markdown extensions
+markdown_extensions:
+  - markdown_blockdiag:
+      format: svg
+  - markdown.extensions.toc:
+      slugify: !!python/name:pymdownx.slugs.uslugify
+      permalink: "🔗"
+  - markdown.extensions.admonition:
+  - markdown.extensions.smarty:
+      smart_quotes: false
+  - pymdownx.betterem:
+  - pymdownx.critic:
+  - markdown.extensions.attr_list:
+  - markdown.extensions.def_list:
+  - markdown.extensions.tables:
+  - markdown.extensions.abbr:
+  - markdown.extensions.footnotes:
+  - markdown.extensions.md_in_html:
+  - pymdownx.superfences:
+      preserve_tabs: true
+      custom_fences:
+        - name: flow
+          class: uml-flowchart
+          format: !!python/name:pymdownx.superfences.fence_code_format
+        - name: sequence
+          class: uml-sequence-diagram
+          format: !!python/name:pymdownx.superfences.fence_code_format
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
+        - name: math
+          class: arithmatex
+          format: !!python/name:pymdownx.arithmatex.fence_mathjax_format
+  - pymdownx.tabbed: 
+      alternate_style: true         
+  - pymdownx.highlight:
+      css_class: codehilite
+      extend_pygments_lang:
+        - name: php-inline
+          lang: php
+          options:
+            startinline: true
+        - name: pycon3
+          lang: pycon
+          options:
+            python3: true
+      linenums_style: pymdownx-inline
+  - pymdownx.inlinehilite:
+        custom_inline:
+        - name: math
+          class: arithmatex
+          format: !!python/name:pymdownx.arithmatex.inline_mathjax_format
+  - pymdownx.magiclink:
+      provider: 'github'
+      repo_url_shortener: true
+      repo_url_shorthand: false
+      social_url_shorthand: true
+      user: xxxxxxxx
+      repo: IBM/cloud-pak-deployer
+  - pymdownx.tilde:
+  - pymdownx.caret:
+  - pymdownx.smartsymbols:
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_png
+  - pymdownx.escapeall:
+      hardbreak: true
+      nbsp: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.progressbar:
+  - pymdownx.arithmatex:
+  - pymdownx.mark:
+  - pymdownx.striphtml:
+  - pymdownx.snippets:
+      base_path: docs/src/markdown/_snippets
+  - pymdownx.keys:
+      separator: "\uff0b"
+  - pymdownx.details:
+

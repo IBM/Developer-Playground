@@ -7,7 +7,7 @@ site_author: "Author"
 
 # Repository Information
 repo_name: 'Developer-Playground'
-repo_url: 'https://github.com/bodarajeshkumar/Developer-Playgroun'
+repo_url: 'https://github.com/IBM/Developer-Playground'
 edit_uri: 'edit/development/docs'
 docs_dir: 'src'
 site_dir: 'site'

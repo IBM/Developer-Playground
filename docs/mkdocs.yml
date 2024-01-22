@@ -12,7 +12,7 @@ remote_branch: 'gh-pages'
 remote_name: 'origin'
 
 nav:
-  - Home: index.md
+  - Home: ./index.md
   - 'Architecture': ./architecture.md
   - 'Demo manager': ./demo-manager.md
   - 'Code Server': ./code-server.md

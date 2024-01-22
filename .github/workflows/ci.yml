@@ -6,10 +6,15 @@ name: build-playground-doc
 on:
   push:
     branches:
-    - main
+    - development
+    paths:
+    - 'docs/**'
+    - '.gitub/workflows/**'
   pull_request:
     branches:
-    - main
+    - development
+    paths:
+    - 'docs/**'
   # Allows running this workflow manually from the Actions tab
   workflow_dispatch:
 

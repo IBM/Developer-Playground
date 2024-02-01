@@ -10,6 +10,19 @@
       "egfhoyhrxj"
     ]
   },
+   "asset4": {
+    "id": "asset4",
+    "title": "Test multiple prompts against WatsonX.AI FLAN UL2 model",
+    "author": "Rajesh Kumar",
+    "description": "Test multiple prompts against WatsonX.AI FLAN UL2 model",
+    "isComposite": "1",
+    "assetIds": [
+      "svwnbxxbdi",
+      "areootubio",
+       "jwnvalptrt"
+    ]
+  },
+   
   "asset1": {
     "id": "asset1",
     "title": "Connect to S3 bucket and check contents of bucket",

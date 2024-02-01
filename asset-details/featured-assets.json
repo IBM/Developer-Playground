@@ -1,4 +1,15 @@
 {
+   "asset3": {
+    "id": "asset3",
+    "title": "Check OCP and CP4d status",
+    "author": "Rajesh Kumar",
+    "description": "Check OCP and CP4d status",
+    "isComposite": "1",
+    "assetIds": [
+      "emtetgpesh",
+      "egfhoyhrxj"
+    ]
+  },
   "asset1": {
     "id": "asset1",
     "title": "Connect to S3 bucket and check contents of bucket",

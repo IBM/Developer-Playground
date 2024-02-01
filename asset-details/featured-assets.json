@@ -17,9 +17,9 @@
     "description": "Test multiple prompts against WatsonX.AI FLAN UL2 model",
     "isComposite": "1",
     "assetIds": [
+       "jwnvalptrt"
       "svwnbxxbdi",
-      "areootubio",
-      "jwnvalptrt"
+      "areootubio"
     ]
   },
    

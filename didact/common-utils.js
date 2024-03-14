@@ -133,20 +133,23 @@ function handleOCLogin(e) {
 function modifyVisibilityOfCTAs(CTAids, visibility) {
     for (let CTAid of CTAids) {
         let CTA = document.getElementById(CTAid);
-        if (visibility === "disable") {
-            CTA.classList.remove("enable")
-            CTA.classList.add("disable")
-            CTA.classList.remove("allow-click")
-            CTA.classList.add("no-click")
-        } else if (visibility === "enable") {
-            CTA.classList.remove("disable")
-            CTA.classList.add("enable")
-            CTA.classList.remove("no-click")
-            CTA.classList.add("allow-click")
-        } else if (visibility === "unhide") {
-            CTA.classList.remove("hidden-state")
-        } else if (visibility === "hide") {
-            CTA.classList.add("hidden-state")
+        if(CTA)
+        {
+            if (visibility === "disable") {
+                CTA.classList.remove("enable")
+                CTA.classList.add("disable")
+                CTA.classList.remove("allow-click")
+                CTA.classList.add("no-click")
+            } else if (visibility === "enable") {
+                CTA.classList.remove("disable")
+                CTA.classList.add("enable")
+                CTA.classList.remove("no-click")
+                CTA.classList.add("allow-click")
+            } else if (visibility === "unhide") {
+                CTA.classList.remove("hidden-state")
+            } else if (visibility === "hide") {
+                CTA.classList.add("hidden-state")
+            }
         }
     }
 

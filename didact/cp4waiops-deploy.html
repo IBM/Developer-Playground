@@ -86,7 +86,7 @@
             <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
                 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
             <button id="configure-env$2" class="store-data send-to-extension hidden-state" action="readfile"
-                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;python getInstalledServices.py cp4waiops"
+                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;chmod 777 '/projects/techzone-demo/olm-utils-v2/cp4waiops-config.yaml';python getInstalledServices.py cp4waiops"
                 filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
                 numSuccess=1 nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
             <button id="enable-timeline" class="store-data hidden-state">Enable</button>

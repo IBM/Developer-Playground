@@ -99,7 +99,7 @@
                 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
 
             <button id="configure-env$2" class="send-to-extension hidden-state" action="sendcommand"
-                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;python getInstalledServices.py cp4ba '' "
+                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;chmod 777 '/projects/techzone-demo/olm-utils-v2/cp4ba-config.yaml';python getInstalledServices.py cp4ba '' "
                 numSuccess=0 nextAction="configure-env$3"></button><span class="spinner hidden-state"></span>
 
             <button id="configure-env$3" class="store-data send-to-extension hidden-state" action="get-file-data"

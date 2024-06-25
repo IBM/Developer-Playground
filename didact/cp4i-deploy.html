@@ -62,7 +62,7 @@
             <button id="configure-env$1" class="send-to-extension hidden-state" action="senddata" command=""
                 nextAction="configure-env$2"></button><span class="spinner hidden-state"></span>
             <button id="configure-env$2" class="send-to-extension hidden-state" action="readfile"
-                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;pip install pyYaml;python getInstalledServices.py cp4i"
+                command="cd ${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2;pip install pyYaml;chmod 777 '/projects/techzone-demo/olm-utils-v2/cp4i-config.yaml';python getInstalledServices.py cp4i"
                 filePath="${CHE_PROJECTS_ROOT}/techzone-demo/olm-utils-v2/serviceList.json" preProcess="true"
                 numSuccess=1 nextAction="enable-timeline"></button><span class="spinner hidden-state"></span>
             <button id="enable-timeline" class="store-data hidden-state">Enable</button>

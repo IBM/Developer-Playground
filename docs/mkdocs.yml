@@ -20,6 +20,7 @@ nav:
   - 'Demo manager': ./demo-manager.md
   - 'Code Server': ./code-server.md
   - 'Asset Hub': ./assethub.md
+  - 'Assethub components': ./components.md
   - 'DB schema': ./db.md
   - 'Unit testing': ./unit-testing.md
 # Theme
